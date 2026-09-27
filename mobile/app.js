@@ -32,7 +32,7 @@ const els = {
 const params = new URLSearchParams(location.search);
 
 const state = {
-  mode: "face", running: false, stream: null, track: null, torch: false, camLock: "",
+  mode: "face", running: false, stream: null, track: null, torch: false, camLock: "", lumaHist: [],
   samples: [], tracker: new OnlineHRTracker(), motionHist: [],
   bbox: null, lastDet: 0, frameNo: 0, prevGray: null, frameTimes: [], log: [], t0: 0, timer: null, lastBvp: null,
 };
@@ -117,6 +117,10 @@ function processFrame(tSec) {
 
   state.frameTimes.push(tSec);
   while (state.frameTimes.length > 30) state.frameTimes.shift();
+  let luma = 0, nl = 0;                            // kamera kilidinin görüntüyü karartıp karartmadığını izlemek için
+  for (let i = 0; i < d.length; i += 64) { luma += d[i] + d[i + 1] + d[i + 2]; nl++; }
+  state.lumaHist.push(luma / (3 * nl));
+  while (state.lumaHist.length > 10) state.lumaHist.shift();
 
   let rgb = null, motion = 0, rois = null;
   if (state.mode === "face") {
@@ -295,20 +299,35 @@ function drawSpectrum(c, p, hr) {
 // Otomatik pozlama / beyaz dengesi / odak, karelerin parlaklığını ve rengini nabız
 // sinyalinden (~%0.5) çok daha büyük oranda sürekli değiştirir (bkz. rppg/camera.py).
 // Destekleyen tarayıcıda (Android Chrome) o anki değerlerinde sabitlenir.
+// Bazı telefonlar manuel pozlamaya geçerken mevcut süreyi korumaz ve görüntü kararır;
+// kilitten sonra parlaklık belirgin değişirse pozlama otomatiğe geri alınır.
+const meanLuma = () => state.lumaHist.reduce((a, b) => a + b, 0) / (state.lumaHist.length || 1);
+const wait = (ms) => new Promise((r) => setTimeout(r, ms));
+
 async function lockCamera(track) {
   const caps = track.getCapabilities?.() || {}, cur = track.getSettings?.() || {};
   const want = [
-    ["exposureMode", { exposureMode: "manual", ...(cur.exposureTime ? { exposureTime: cur.exposureTime } : {}),
-      ...(cur.iso ? { iso: cur.iso } : {}) }],
     ["whiteBalanceMode", { whiteBalanceMode: "manual", ...(cur.colorTemperature ? { colorTemperature: cur.colorTemperature } : {}) }],
     ["focusMode", { focusMode: "manual", ...(cur.focusDistance ? { focusDistance: cur.focusDistance } : {}) }],
   ];
+  if (cur.exposureTime) {                          // süre bilinmiyorsa manuel pozlama kararır: deneme
+    want.unshift(["exposureMode", { exposureMode: "manual", exposureTime: cur.exposureTime,
+      ...(cur.iso ? { iso: cur.iso } : {}) }]);
+  }
   const locked = [];
   for (const [key, c] of want) {
     if (!caps[key]?.includes?.("manual")) continue;
+    const before = meanLuma();
     try {
       await track.applyConstraints({ advanced: [c] });
-      if (track.getSettings?.()[key] === "manual") locked.push(key);
+      if (track.getSettings?.()[key] !== "manual") continue;
+      await wait(700);
+      const ratio = meanLuma() / (before || 1);
+      if (ratio < 0.8 || ratio > 1.25) {           // görüntü karardı / patladı: geri al
+        await track.applyConstraints({ advanced: [{ [key]: "continuous" }] }).catch(() => {});
+        continue;
+      }
+      locked.push(key);
     } catch { /* bu ayar desteklenmiyor */ }
   }
   const names = { exposureMode: "pozlama", whiteBalanceMode: "beyaz dengesi", focusMode: "odak" };
@@ -362,6 +381,7 @@ async function start() {
   }
   resetMeasurement();
   state.camLock = "";
+  state.lumaHist = [];
   const track = state.track;
   setTimeout(async () => {          // pozlama önce sahneye otursun, sonra kilitle ve baştan ölç
     if (!state.running || state.track !== track) return;
