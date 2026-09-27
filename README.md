@@ -52,12 +52,21 @@ Sinyal işleme kodu ([`mobile/dsp.js`](mobile/dsp.js)) Python paketinin birebir 
 |---|---|---|
 | Sentetik yüz, sabit 84 BPM | 84 | 83.6–84.3 BPM, SNR 9.3 dB |
 | Sentetik parmak, 96 BPM | 96 | 95.9–96.0 BPM |
-| MCD-rPPG gerçek kişi (1020, dinlenme) | parmak PPG | MAE 4.1 BPM (aynı kesitte Python: 3.7) |
-| MCD-rPPG gerçek kişi (1024, egzersiz sonrası) | parmak PPG | MAE 4.6 BPM (aynı kesitte Python: 4.4) |
+
+**Gerçek veride doğrulama** ([`results/mobil_dogrulama/SONUCLAR.md`](results/mobil_dogrulama/SONUCLAR.md)): 28 gerçek kişi videosu (40 s) uygulamaya kamera gibi verildi, her saniyelik ölçüm parmak PPG referansıyla karşılaştırıldı.
+
+| Veri | Kesit | Uygulama MAE | ≤5 BPM pencere | Python hattı MAE |
+|---|---:|---:|---:|---:|
+| UBFC-rPPG (önden webcam) | 8 | **2.0 BPM** | %91 | 2.5 BPM |
+| MCD-rPPG dinlenme (önden webcam) | 10 | 5.7 BPM | %66 | 8.0 BPM |
+| MCD-rPPG egzersiz sonrası | 10 | 11.9 BPM | %39 | 11.5 BPM |
+
+Kesitlerin 18/28'inde ortalama hata ≤5 BPM (medyan 3.6 BPM). Başarısız kesitler Python hattında da başarısız; sorun uygulamada değil, o videoların koşullarında (uzak ve küçük yüz, sıkıştırma, egzersiz sonrası 120+ BPM ve hızlı değişim).
 
 ```bash
 node --test mobile/test/dsp.test.mjs                                   # Python eşdeğerlik testleri
 node mobile/test/e2e.mjs --video yuz.y4m --expect 84 --shot ekran.png  # tarayıcıda uçtan uca
+python scripts/validate_mobile.py                                     # gerçek veride doğrulama (UBFC + MCD)
 ```
 
 ## Komut Satırı
