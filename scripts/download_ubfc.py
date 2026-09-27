@@ -7,8 +7,8 @@ UBFC-rPPG veri setini resmi Google Drive klasöründen indirir (bkz. docs/03_ver
     python scripts/download_ubfc.py --dataset DATASET_1 --subjects 0   # DATASET_1'in tamamı
 
 İnmiş dosyalar atlanır; yarıda kalırsa aynı komutu tekrar çalıştırın.
-Google Drive "Too many users have viewed or downloaded this file" derse dosya kotası
-dolmuştur: birkaç saat (en fazla 24 saat) sonra tekrar deneyin ya da tarayıcıdan indirin.
+Google Drive "Too many users have viewed or downloaded this file" derse (dosya kotası),
+DATASET_2 dosyaları Hugging Face'teki kopyadan (thachha901/UBFC) indirilir.
 """
 import argparse
 import os
@@ -21,6 +21,20 @@ except ImportError:
     sys.exit("gdown kurulu değil: python -m pip install gdown")
 
 FOLDER_ID = "1o0XU4gTIo46YfwaWjIgbtCncc-oF44Xk"  # https://sites.google.com/view/ybenezeth/ubfcrppg
+HF_MIRROR = "https://huggingface.co/datasets/thachha901/UBFC/resolve/main/UBFC/"  # yalnızca DATASET_2
+
+
+def _download_hf(rel, dst):
+    """Drive kotası dolduğunda DATASET_2 için Hugging Face kopyası."""
+    import requests
+    parts = rel.split(os.sep)
+    if parts[0] != "DATASET_2":
+        raise RuntimeError("Hugging Face kopyasında yalnızca DATASET_2 var")
+    with requests.get(HF_MIRROR + "/".join(parts[1:]), stream=True, timeout=60) as r:
+        r.raise_for_status()
+        with open(dst, "wb") as f:
+            for chunk in r.iter_content(1 << 20):
+                f.write(chunk)
 
 
 def _subject_key(path):
@@ -55,11 +69,15 @@ def main():
         os.makedirs(os.path.dirname(dst), exist_ok=True)
         print(f"  {rel}")
         try:
-            if gdown.download(id=f.id, output=dst + ".part", quiet=False) is None:
-                raise RuntimeError("indirilemedi")
+            try:
+                if gdown.download(id=f.id, output=dst + ".part", quiet=False) is None:
+                    raise RuntimeError("indirilemedi")
+            except Exception:  # Drive kotası dolu -> Hugging Face kopyası
+                print("    Drive'dan inmedi, Hugging Face kopyası deneniyor...")
+                _download_hf(rel, dst + ".part")
             os.replace(dst + ".part", dst)
             ok += 1
-        except Exception as e:  # kota dolu, bağlantı hatası
+        except Exception as e:  # bağlantı hatası
             failed.append(rel)
             print(f"    HATA: {str(e).strip().splitlines()[0] if str(e).strip() else e}")
             if os.path.exists(dst + ".part"):

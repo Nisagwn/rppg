@@ -24,6 +24,7 @@ echo   7) Sentetik benchmark (tam, ~20-40 dk)
 echo   8) UBFC-rPPG degerlendirmesi (data\UBFC altina indirdiyseniz)
 echo   9) Testleri calistir
 echo   D) UBFC-rPPG veri setini indir (5 denek)
+echo   G) MCD-rPPG: 10 kisiyi indir + degerlendir (webcam/telefon, dinlenme/egzersiz)
 echo   R) Raporu derle (docs\05_rapor.docx)
 echo   M) Maske deneyi (kendi yuz fotografinla)
 echo   0) Cikis
@@ -39,6 +40,7 @@ if "%c%"=="7" python scripts\synthetic_benchmark.py --seeds 3 --duration 60 --ou
 if "%c%"=="8" python scripts\evaluate_ubfc.py --root data\UBFC --out results\ubfc
 if "%c%"=="9" python -m pytest -q
 if /i "%c%"=="D" python scripts\download_ubfc.py --subjects 5
+if /i "%c%"=="G" python scripts\evaluate_mcd.py --download 10 --out results\mcd
 if /i "%c%"=="R" python scripts\build_report.py && start "" docs\05_rapor.docx
 if /i "%c%"=="M" goto maske
 if "%c%"=="0" exit /b 0

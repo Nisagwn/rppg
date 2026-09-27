@@ -1,4 +1,4 @@
-# UBFC-rPPG Veri Setini İndirme
+# Hazır Veri Setleri: UBFC-rPPG ve MCD-rPPG
 
 **Resmi sayfa:** https://sites.google.com/view/ybenezeth/ubfcrppg
 
@@ -55,6 +55,25 @@ python scripts/evaluate_ubfc.py --root data/UBFC --max-subjects 3 --methods pos,
 > S. Bobbia, R. Macwan, Y. Benezeth, A. Mansouri, J. Dubois, "Unsupervised skin tissue segmentation for remote photoplethysmography", *Pattern Recognition Letters*, 2017/2019.
 
 Veri seti yalnızca akademik kullanım içindir. Videoları başkalarıyla paylaşmayın.
+
+## MCD-rPPG (kendi veri toplamanın yerine geçebilecek set)
+
+**Makale:** Egorov vd., "Gaze into the Heart: A Multi-View Video Dataset for rPPG and Health Biomarkers Estimation", ACM MM 2025. **Lisans:** CC-BY-4.0.
+
+- 600 kişi × {dinlenme (`before`), egzersiz sonrası (`after`)} × 3 kamera:
+  `FullHDwebcam` (önden webcam), `USBVideo` (soldan USB kamera), `IriunWebcam` (sağdan **cep telefonu**, Iriun uygulamasıyla)
+- Karelere hizalı parmak PPG (`ppg_sync/`), kare zaman damgaları (`meta/`), ~3 dk video, 640×480, ~24 fps
+- Video başına 16–80 MB; kişi başına (6 video) ~250 MB
+
+Kendi veri toplama protokolündeki "kamera türü" ve "egzersiz sonrası" koşullarını gerçek insanlarla karşılar.
+Resmi kopya (`kyegorov/mcd_rppg`) Hugging Face girişi ister; betik erişime açık kopyayı (`akramic/mcd_rppg`, ~1000 video) kullanır.
+
+```
+python scripts/evaluate_mcd.py --download 10            # 10 kişiyi indir + değerlendir -> results/mcd
+python scripts/evaluate_mcd.py --cameras IriunWebcam    # yalnızca telefon kamerası
+```
+
+**Dikkat:** Bu veri setinde kamera ve açı birbirine bağlı (webcam önden, telefon sağdan). "Telefon daha kötü" gibi bir sonucu açı farkından ayırmak mümkün değil; raporda böyle yazın.
 
 ## Derin Öğrenme Karşılaştırması (hibrit bölüm)
 

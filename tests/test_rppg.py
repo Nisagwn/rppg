@@ -160,3 +160,26 @@ def test_haar_cascade_available():
     assert hasattr(cv2, "CascadeClassifier"), "opencv-python<5 kurulmalı"
     t = FaceTracker()
     assert not t.cascade.empty()
+
+
+def test_mcd_loader_aligns_ppg_with_frame_timestamps(tmp_path):
+    """MCD-rPPG biçimi: meta'da kare zaman damgası, ppg_sync'te kare başına PPG; referans HR doğru çıkmalı."""
+    from datetime import datetime, timedelta
+
+    from rppg.io_utils import gt_window_hr, load_mcd_item
+    n, fps, hr = 24 * 40, 24.0, 72.0
+    t0 = datetime(2023, 11, 13, 14, 10, 51, 689451)
+    (tmp_path / "meta").mkdir()
+    (tmp_path / "ppg_sync").mkdir()
+    with open(tmp_path / "meta" / "x.txt", "w") as f:
+        for i in range(n + 11):  # meta'da kareden birkaç satır fazla olabiliyor
+            f.write(f"{i + 1}  {t0 + timedelta(seconds=i / fps)}\n")
+    ppg = 128 + 20 * np.sin(2 * np.pi * hr / 60 * np.arange(n) / fps)
+    with open(tmp_path / "ppg_sync" / "x.txt", "w") as f:
+        for v in ppg:
+            f.write(f"{int(v)} 0.005\n")
+    item = load_mcd_item(str(tmp_path), "video/x.avi", "meta/x.txt", "ppg_sync/x.txt")
+    assert len(item["timestamps"]) == n and item["timestamps"][0] == 0
+    assert abs(item["timestamps"][-1] - (n - 1) / fps) < 1e-3
+    ref = gt_window_hr(item["gt"], np.array([10.0, 20.0, 30.0]), 10.0)
+    assert np.all(np.abs(ref - hr) < 2)

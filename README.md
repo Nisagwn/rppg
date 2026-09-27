@@ -32,6 +32,7 @@ Sıradan bir webcam ile, yüze hiçbir şey takmadan **nabız (BPM)** ve **solun
 8) UBFC-rPPG değerlendirmesi
 9) Testleri çalıştır
 D) UBFC-rPPG veri setini indir
+G) MCD-rPPG indir + değerlendir
 ```
 
 Linux/macOS için: `bash kurulum.sh`, ardından `source .venv/bin/activate`.
@@ -55,6 +56,7 @@ python scripts/run_video.py --recording data/kayitlar/K01_gunisigi_sabit_<zaman>
 
 # Veri seti (UBFC-rPPG, resmi Google Drive klasöründen)
 python scripts/download_ubfc.py --subjects 5
+python scripts/evaluate_mcd.py --download 10     # MCD-rPPG: webcam/telefon x dinlenme/egzersiz
 
 # Deneyler
 python scripts/synthetic_benchmark.py --seeds 3 --duration 60
@@ -99,7 +101,7 @@ results/                  deney çıktıları (tablolar + şekiller)
 | 3 | **Zamanda yumuşatılmış ağırlıklı cilt maskesi** | `signals.py` | İkili maskenin ışık titremesini nabız sanması hatasını giderir (deneyle gösterildi) |
 | 4 | **Kontrollü zorluk senaryolu sentetik benchmark** | `synthetic.py` | 9 zorluk tipini tek tek ayırarak yöntemleri karşılaştırır |
 
-### Öne çıkan sonuçlar (sentetik / yarı-sentetik; gerçek veri betikleri hazır)
+### Öne çıkan sonuçlar — sentetik / yarı-sentetik
 
 - **POS + önerilen hat:** MAE **0.70 BPM**, r = 0.98, pencerelerin %100'ü ≤5 BPM (27 video, 9 zorluk senaryosu). Klasik POS hattı (tüm yüz + argmax): 1.87 BPM.
 - **"Hepsi birden" senaryosu:** klasik 11.6 BPM → önerilen 1.2 BPM (en büyük katkı Viterbi takibinden).
@@ -107,7 +109,30 @@ results/                  deney çıktıları (tablolar + şekiller)
 - **Maske deneyi (gerçek yüz fotoğrafı):** ikili cilt maskesi %1'lik ışık titremesinde denemelerin **%100'ünde** titremeye kilitleniyor (~33 BPM hata). Yumuşak maske ile hata ≤0.24 BPM.
 - Canlı demo 640×480'de ~32 kare/s (CPU).
 
-Sonuç dosyaları: [`results/synthetic/SONUCLAR.md`](results/synthetic/SONUCLAR.md), [`results/maske_deneyi/SONUCLAR.md`](results/maske_deneyi/SONUCLAR.md). Ayrıntılı tartışma: [`docs/05_rapor.md`](docs/05_rapor.md).
+### Öne çıkan sonuçlar — gerçek veri
+
+**UBFC-rPPG** (DATASET_2, 8 denek, parmak PPG referansı, 10 s pencere):
+
+- Klasik yöntemler (POS, CHROM, ICA, LGI) **1.5–2.0 BPM** MAE, pencerelerin ~%96'sı ≤5 BPM. En iyi: CHROM + alın/yanaklar + SNR füzyonu, **1.53 BPM**. GREEN 7–18 BPM.
+- Önerilen son işleme temiz gerçek veride **kazanç sağlamıyor**: POS klasik 1.62, önerilen 1.91 BPM. Nabız hızlı değiştiğinde Viterbi yumuşatması birkaç saniye geriden geliyor.
+
+**MCD-rPPG** (10 kişi, 58 video, 3 kamera × dinlenme / egzersiz sonrası):
+
+| POS MAE (BPM) | klasik | ortalama + Viterbi | önerilen (SNR + Viterbi) |
+|---|---:|---:|---:|
+| webcam (önden), dinlenme | 5.8 | **4.1** | 5.1 |
+| webcam (önden), egzersiz sonrası | 7.9 | **7.6** | 9.2 |
+| telefon (Iriun), dinlenme | 16.0 | **12.5** | 14.2 |
+| telefon (Iriun), egzersiz sonrası | 18.8 | 19.2 | 22.0 |
+| USB kamera (yan), dinlenme | 16.8 | **14.8** | 15.6 |
+
+(4 bölge; "klasik" = ortalama + argmax.)
+
+- **Kamera kalitesi belirleyici:** önden webcam 4–8 BPM, yüksek sıkıştırmalı telefon akışı ve yan açılı USB kamera 12–26 BPM. Yüzler küçük (~70 piksel), telefon videosu 3 dakikada 16 MB. Sentetik "JPEG sıkıştırma" senaryosuyla uyumlu.
+- **Viterbi takibi gerçek veride de işe yarıyor** (dinlenmede %12–29 iyileşme). **SNR ağırlıklı füzyon ise gerçek veride genellikle zararlı.** Sentetik veride en güçlü katkı olan füzyon, gerçek bölge gürültüsünde yanlış bölgeye ağırlık verebiliyor.
+- Egzersiz sonrasında (ortalama referans 88 BPM, dinlenmede 80 BPM) tüm hatlar kötüleşiyor.
+
+Sonuç dosyaları: [`results/ubfc/SONUCLAR.md`](results/ubfc/SONUCLAR.md), [`results/mcd/SONUCLAR.md`](results/mcd/SONUCLAR.md), [`results/synthetic/SONUCLAR.md`](results/synthetic/SONUCLAR.md), [`results/maske_deneyi/SONUCLAR.md`](results/maske_deneyi/SONUCLAR.md). Ayrıntılı tartışma: [`docs/05_rapor.md`](docs/05_rapor.md).
 
 ## Dokümanlar
 

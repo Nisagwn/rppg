@@ -76,6 +76,35 @@ def load_ubfc_gt(subject_dir: str) -> dict:
     return {"bvp": bvp, "t": t, "hr": hr, "source": "ubfc"}
 
 
+# ------------------------------------------------------------------ MCD-rPPG
+def load_mcd_timestamps(meta_path: str) -> np.ndarray:
+    """meta/*.txt: her satır 'kare_no  YYYY-MM-DD HH:MM:SS.ffffff' -> saniye (0'dan)."""
+    from datetime import datetime
+    ts = []
+    with open(meta_path) as f:
+        for line in f:
+            parts = line.split()
+            if len(parts) >= 3:
+                ts.append(datetime.strptime(f"{parts[1]} {parts[2]}", "%Y-%m-%d %H:%M:%S.%f").timestamp())
+    ts = np.array(ts)
+    return ts - ts[0]
+
+
+def load_mcd_ppg(ppg_sync_path: str) -> np.ndarray:
+    """ppg_sync/*.txt: her video karesi için bir satır; 1. sütun PPG (resmi rppglib.load_ppg ile aynı)."""
+    with open(ppg_sync_path) as f:
+        return np.array([float(l.split()[0]) for l in f if l.strip()])
+
+
+def load_mcd_item(root: str, video_rel: str, meta_rel: str, ppg_rel: str) -> dict:
+    """Video yolu, kare zaman damgaları ve karelere hizalı PPG referansı."""
+    ppg = load_mcd_ppg(os.path.join(root, ppg_rel))
+    ts = load_mcd_timestamps(os.path.join(root, meta_rel))
+    n = min(len(ppg), len(ts))
+    return {"video": os.path.join(root, video_rel), "timestamps": ts[:n],
+            "gt": {"bvp": ppg[:n], "t": ts[:n], "source": "mcd"}}
+
+
 # --------------------------------------------------- Kendi kayıtlarımız
 def load_recording(rec_dir: str) -> dict:
     """scripts/record_session.py çıktısını yükler."""
