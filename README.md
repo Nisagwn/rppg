@@ -1,7 +1,5 @@
 # Temassız Nabız ve Solunum Ölçümü (rPPG)
 
-**Sayısal Görüntü İşleme dönem projesi** — Hayrunnisa Güven, Fırat Üniversitesi Yazılım Mühendisliği
-
 Sıradan bir webcam ile, yüze hiçbir şey takmadan **nabız (BPM)** ve **solunum hızı** ölçen, gerçek zamanlı çalışan bir sistem. Derin öğrenme kullanılmaz; her aşama klasik görüntü ve sinyal işlemeyle çözülür: Haar yüz tespiti, NCC takip, YCrCb cilt segmentasyonu, morfoloji, renk uzayı projeksiyonları, FFT, Butterworth filtre, Gauss piramidi, optik akış.
 
 ![Sistem akışı](docs/sistem_akisi.png)
