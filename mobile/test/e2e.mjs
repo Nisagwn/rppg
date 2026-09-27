@@ -2,6 +2,7 @@
 // olarak verir, ölçülen nabzı beklenen değerle karşılaştırır ve ekran görüntüsü kaydeder.
 //
 //   node mobile/test/e2e.mjs --video yuz_84bpm.y4m --expect 84 [--mode finger] [--seconds 35] [--shot out.png]
+//                            [--url https://nisagwn.github.io/rppg/]   # yayındaki sürümü test et
 //
 // Chrome yolu: CHROME ortam değişkeni ya da Windows/Linux/macOS varsayılanları.
 import { spawn } from "node:child_process";
@@ -44,7 +45,7 @@ const proc = spawn(chrome, [
   "--headless=new", `--remote-debugging-port=${debugPort}`, `--user-data-dir=${mkdtempSync(join(tmpdir(), "rppg-"))}`,
   "--use-fake-ui-for-media-stream", "--use-fake-device-for-media-stream", `--use-file-for-fake-video-capture=${video}`,
   "--autoplay-policy=no-user-gesture-required", "--window-size=412,915", "--no-first-run", "--no-default-browser-check",
-  `http://127.0.0.1:${port}/index.html?autotest=${mode}`,
+  `${args.url || `http://127.0.0.1:${port}/index.html`}?autotest=${mode}`,
 ], { stdio: "ignore" });
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
