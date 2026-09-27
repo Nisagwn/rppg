@@ -6,7 +6,7 @@ Sıradan bir webcam ile, yüze hiçbir şey takmadan **nabız (BPM)** ve **solun
 
 ![Sistem akışı](docs/sistem_akisi.png)
 
-![Canlı demo](docs/canli_demo.png)
+![Canlı demo](docs/canli_demo_arayuz.png)
 *Canlı demo arayüzü: yüz ve ROI kutuları (alın, sol/sağ yanak, tüm yüz), anlık nabız, SNR, solunum, hareket güveni, ROI ağırlıkları, son 5 s BVP sinyali ve 42–180 BPM spektrumu.*
 
 ---
