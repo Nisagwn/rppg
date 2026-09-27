@@ -16,7 +16,7 @@ const ROI_DEFS = {               // rppg/roi.py ROI_DEFS ile aynı (yüz kutusun
   full: [0.20, 0.10, 0.60, 0.80],
 };
 const ROI_COLORS = { forehead: "#3b82f6", left_cheek: "#f97316", right_cheek: "#22c55e", full: "#a855f7" };
-const WIN_SEC = 10, MIN_SEC = 8, KEEP_SEC = 20, WORK_MAX = 480, DETECT_EVERY = 4, LOCK_AFTER_MS = 2000;
+const WIN_SEC = 10, MIN_SEC = 8, KEEP_SEC = 20, WORK_MAX = 480, DETECT_EVERY = 4, LOCK_AFTER_MS = 2000, RAW_MAX = 30 * 60 * 5;
 /* global pico */
 
 const $ = (id) => document.getElementById(id);
@@ -25,14 +25,14 @@ const els = {
   placeholder: $("placeholder"), placeholderText: $("placeholder-text"),
   hr: $("hr"), snr: $("snr"), conf: $("conf"), fps: $("fps"), status: $("status"),
   progressWrap: $("progress-wrap"), progress: $("progress"),
-  start: $("start"), csv: $("csv"), reset: $("reset"),
+  start: $("start"), csv: $("csv"), raw: $("raw"), reset: $("reset"),
   modeFace: $("mode-face"), modeFinger: $("mode-finger"),
   plotBvp: $("plot-bvp"), plotSpec: $("plot-spec"), plotHist: $("plot-hist"),
 };
 const params = new URLSearchParams(location.search);
 
 const state = {
-  mode: "face", running: false, stream: null, track: null, torch: false, camLock: "", lumaHist: [],
+  mode: "face", running: false, stream: null, track: null, torch: false, camLock: "", lumaHist: [], maskProb: {}, raw: [], wakeLock: null,
   samples: [], tracker: new OnlineHRTracker(), motionHist: [],
   bbox: null, lastDet: 0, frameNo: 0, prevGray: null, frameTimes: [], log: [], t0: 0, timer: null, lastBvp: null,
 };
@@ -96,6 +96,37 @@ function meanRgb(d, W, r, skinOnly) {
   return c >= 20 ? [R / c, G / c, B / c] : null;
 }
 
+// rppg/signals.py TraceExtractor mask_mode="soft": ROI'ye göre sabit 32x32 ızgarada cilt olasılığı
+// p ← β·p + (1−β)·m üstel ortalamayla güncellenir, renk p ağırlıklı ortalanır (eşik yok).
+// Her karede yeniden hesaplanan ikili maskede eşik sınırındaki pikseller maskeye girip çıkar
+// ve bu gürültü nabız sinyalini bastırır (bkz. results/maske_deneyi).
+const MASK_GRID = 32, MASK_BETA = 0.98, MIN_SKIN = 0.15;
+function meanRgbSoft(d, W, r, name) {
+  const G = MASK_GRID, cnt = new Float32Array(G * G), tot = new Float32Array(G * G);
+  const cx = new Int32Array(r.w), cy = new Int32Array(r.h);
+  for (let x = 0; x < r.w; x++) cx[x] = Math.min(G - 1, Math.floor((x * G) / r.w));
+  for (let y = 0; y < r.h; y++) cy[y] = Math.min(G - 1, Math.floor((y * G) / r.h)) * G;
+  for (let y = 0; y < r.h; y++) {
+    for (let x = 0; x < r.w; x++) {
+      const i = ((r.y + y) * W + r.x + x) * 4, k = cy[y] + cx[x];
+      tot[k]++;
+      if (isSkin(d[i], d[i + 1], d[i + 2])) cnt[k]++;
+    }
+  }
+  let p = state.maskProb[name];
+  if (!p) p = state.maskProb[name] = Float32Array.from(cnt, (c, k) => (tot[k] ? c / tot[k] : 0));
+  else for (let k = 0; k < p.length; k++) p[k] = MASK_BETA * p[k] + (1 - MASK_BETA) * (tot[k] ? cnt[k] / tot[k] : 0);
+  const ratio = p.reduce((a, b) => a + b, 0) / p.length;
+  let R = 0, Gs = 0, B = 0, ws = 0;
+  for (let y = 0; y < r.h; y++) {
+    for (let x = 0; x < r.w; x++) {
+      const i = ((r.y + y) * W + r.x + x) * 4, w = ratio >= MIN_SKIN ? p[cy[y] + cx[x]] : 1;
+      R += w * d[i]; Gs += w * d[i + 1]; B += w * d[i + 2]; ws += w;
+    }
+  }
+  return ws > 1e-6 ? { rgb: [R / ws, Gs / ws, B / ws], skin: ratio } : null;
+}
+
 function grayPatch(d, W, r) {                      // hareket indeksi için seyrek gri örnekler
   const out = [];
   for (let y = r.y; y < r.y + r.h; y += 4) {
@@ -123,6 +154,7 @@ function processFrame(tSec) {
   while (state.lumaHist.length > 10) state.lumaHist.shift();
 
   let rgb = null, motion = 0, rois = null;
+  const roiRaw = {};
   if (state.mode === "face") {
     if (state.frameNo++ % DETECT_EVERY === 0) {
       const f = detectFace(d, W, H);
@@ -131,14 +163,14 @@ function processFrame(tSec) {
         state.lastDet = tSec;
       }
     }
-    if (state.bbox && tSec - state.lastDet > 1.5) state.bbox = null;   // yüz 1.5 s görünmedi
+    if (state.bbox && tSec - state.lastDet > 1.5) { state.bbox = null; state.maskProb = {}; }   // yüz 1.5 s görünmedi
     if (state.bbox) {
       rois = {};
       const means = [];
       for (const [name, def] of Object.entries(ROI_DEFS)) {
         rois[name] = roiRect(state.bbox, def, W, H);
-        const m = meanRgb(d, W, rois[name], true);
-        if (m) means.push(m);
+        const m = meanRgbSoft(d, W, rois[name], name);
+        if (m) { means.push(m.rgb); roiRaw[name] = m; }
       }
       if (means.length) rgb = [0, 1, 2].map((c) => means.reduce((a, m) => a + m[c], 0) / means.length);
       const g = grayPatch(d, W, rois.full);
@@ -157,6 +189,11 @@ function processFrame(tSec) {
     rois = { finger: r };
   }
   state.samples.push({ t: tSec, rgb, motion });
+  if (state.raw.length < RAW_MAX) {            // teşhis için ham veri ("Ham veri indir")
+    state.raw.push({ t: tSec, mode: state.mode, rgb, motion, luma: state.lumaHist[state.lumaHist.length - 1],
+      face: state.bbox ? Math.round(state.bbox.w) : 0, W,
+      rois: Object.fromEntries(Object.entries(roiRaw).map(([k, m]) => [k, [...m.rgb.map((v) => +v.toFixed(3)), +m.skin.toFixed(3)]])) });
+  }
   while (state.samples.length && tSec - state.samples[0].t > KEEP_SEC) state.samples.shift();
   drawOverlay(rois);
 }
@@ -234,7 +271,7 @@ function analyze() {
 
   state.log.push({ t: tEnd - state.t0, hr, snr, conf, mode: state.mode, lock: state.camLock || "-" });
   state.lastBvp = res.bvp;
-  els.csv.disabled = false;
+  els.csv.disabled = els.raw.disabled = false;
   els.reset.disabled = false;
   drawLine(els.plotBvp, res.bvp.slice(-150), { color: "#60a5fa" });
   drawSpectrum(els.plotSpec, res.spec, hr);
@@ -299,8 +336,7 @@ function drawSpectrum(c, p, hr) {
 // Otomatik pozlama / beyaz dengesi / odak, karelerin parlaklığını ve rengini nabız
 // sinyalinden (~%0.5) çok daha büyük oranda sürekli değiştirir (bkz. rppg/camera.py).
 // Destekleyen tarayıcıda (Android Chrome) o anki değerlerinde sabitlenir.
-// Bazı telefonlar manuel pozlamaya geçerken mevcut süreyi korumaz ve görüntü kararır;
-// kilitten sonra parlaklık belirgin değişirse pozlama otomatiğe geri alınır.
+// Kilitten sonra parlaklık belirgin değişirse ayar otomatiğe geri alınır.
 const meanLuma = () => state.lumaHist.reduce((a, b) => a + b, 0) / (state.lumaHist.length || 1);
 const wait = (ms) => new Promise((r) => setTimeout(r, ms));
 
@@ -310,10 +346,8 @@ async function lockCamera(track) {
     ["whiteBalanceMode", { whiteBalanceMode: "manual", ...(cur.colorTemperature ? { colorTemperature: cur.colorTemperature } : {}) }],
     ["focusMode", { focusMode: "manual", ...(cur.focusDistance ? { focusDistance: cur.focusDistance } : {}) }],
   ];
-  if (cur.exposureTime) {                          // süre bilinmiyorsa manuel pozlama kararır: deneme
-    want.unshift(["exposureMode", { exposureMode: "manual", exposureTime: cur.exposureTime,
-      ...(cur.iso ? { iso: cur.iso } : {}) }]);
-  }
+  // Pozlama kilitlenmez: telefonlarda manuel pozlama görüntüyü karartıyor ve otomatiğe dönüş
+  // her cihazda çalışmıyor (sahada görüldü). Pozlama değişimlerine karşı ışık sabit tutulmalı.
   const locked = [];
   for (const [key, c] of want) {
     if (!caps[key]?.includes?.("manual")) continue;
@@ -382,6 +416,8 @@ async function start() {
   resetMeasurement();
   state.camLock = "";
   state.lumaHist = [];
+  state.raw = [];
+  navigator.wakeLock?.request("screen").then((w) => (state.wakeLock = w)).catch(() => {});   // ekran kararmasın
   const track = state.track;
   setTimeout(async () => {          // pozlama önce sahneye otursun, sonra kilitle ve baştan ölç
     if (!state.running || state.track !== track) return;
@@ -416,6 +452,9 @@ async function start() {
 
 function stop() {
   state.running = false;
+  state.wakeLock?.release().catch(() => {});
+  state.wakeLock = null;
+  els.raw.disabled = !state.raw.length;
   clearInterval(state.timer);
   state.stream?.getTracks().forEach((t) => t.stop());
   state.stream = null;
@@ -431,6 +470,7 @@ function stop() {
 
 function resetMeasurement() {
   state.samples = [];
+  state.maskProb = {};
   state.tracker.reset();
   state.motionHist = [];
   state.bbox = null;
@@ -464,6 +504,23 @@ function setMode(mode) {
   if (wasRunning) start();
 }
 
+function saveFile(name, text, type) {
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(new Blob([text], { type }));
+  a.download = name;
+  a.click();
+  setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+}
+
+const stamp = () => new Date().toISOString().slice(0, 19).replace(/[:T]/g, "-");
+
+// Teşhis: kare başına ham renk ortalamaları, zaman damgaları, yüz boyutu, cilt oranı, kamera kilidi
+function downloadRaw() {
+  const meta = { ua: navigator.userAgent, camera: state.track?.getSettings?.() || {}, lock: state.camLock,
+    work: [els.work.width, els.work.height], log: state.log };
+  saveFile(`rppg_ham_${stamp()}.json`, JSON.stringify({ meta, frames: state.raw }), "application/json");
+}
+
 function downloadCsv() {
   const rows = ["zaman_s,nabiz_bpm,snr_db,hareket_guveni,mod,kamera_kilidi",
     ...state.log.map((r) => [r.t.toFixed(1), r.hr.toFixed(2), r.snr.toFixed(2), r.conf.toFixed(2), r.mode,
@@ -480,11 +537,13 @@ els.start.addEventListener("click", () => (state.running ? stop() : start()));
 els.modeFace.addEventListener("click", () => setMode("face"));
 els.modeFinger.addEventListener("click", () => setMode("finger"));
 els.csv.addEventListener("click", downloadCsv);
+els.raw.addEventListener("click", downloadRaw);
 els.reset.addEventListener("click", () => {
   state.log = [];
   resetMeasurement();
   [els.plotBvp, els.plotSpec, els.plotHist].forEach((c) => fitCanvas(c));
-  els.csv.disabled = els.reset.disabled = true;
+  state.raw = [];
+  els.csv.disabled = els.raw.disabled = els.reset.disabled = true;
 });
 document.addEventListener("visibilitychange", () => { if (document.hidden && state.running) stop(); });
 els.stage.classList.add("mirror");

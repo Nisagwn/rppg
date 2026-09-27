@@ -1,5 +1,5 @@
 // Çevrimdışı çalışma: uygulama dosyalarını önbellekten sun, arka planda güncelle.
-const CACHE = "rppg-v4";
+const CACHE = "rppg-v5";
 const FILES = ["./", "index.html", "style.css", "app.js", "dsp.js", "manifest.webmanifest",
   "vendor/pico.js", "vendor/facefinder", "icons/icon.svg", "icons/icon-192.png", "icons/icon-512.png"];
 
