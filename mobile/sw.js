@@ -1,10 +1,10 @@
 // Çevrimdışı çalışma: uygulama dosyalarını önbellekten sun, arka planda güncelle.
-const CACHE = "rppg-v5";
+const CACHE = "rppg-v6";
 const FILES = ["./", "index.html", "style.css", "app.js", "dsp.js", "manifest.webmanifest",
   "vendor/pico.js", "vendor/facefinder", "icons/icon.svg", "icons/icon-192.png", "icons/icon-512.png"];
 
 self.addEventListener("install", (e) => {
-  e.waitUntil(caches.open(CACHE).then((c) => c.addAll(FILES)).then(() => self.skipWaiting()));
+  e.waitUntil(caches.open(CACHE).then((c) => c.addAll(FILES.map((f) => new Request(f, { cache: "reload" })))).then(() => self.skipWaiting()));
 });
 
 self.addEventListener("activate", (e) => {
