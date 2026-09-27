@@ -1,0 +1,6 @@
+{
+  "name": "rppg-mobil",
+  "private": true,
+  "type": "module",
+  "scripts": { "test": "node --test test/dsp.test.mjs" }
+}

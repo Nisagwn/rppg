@@ -37,6 +37,31 @@ G) MCD-rPPG indir + değerlendir
 
 Linux/macOS için: `bash kurulum.sh`, ardından `source .venv/bin/activate`.
 
+## Mobil Uygulama (telefonda çalışır)
+
+<img src="docs/mobil_qr.png" width="140" align="right" alt="Mobil uygulama QR kodu">
+
+**https://nisagwn.github.io/rppg/** adresini telefonun tarayıcısında açın (ya da QR kodu okutun). Kurulum gerekmez; Android ve iPhone'da çalışır. "Ana ekrana ekle" ile uygulama gibi kullanılır, sonra internetsiz de açılır.
+
+- **Yüz modu (ön kamera):** pico yüz tespiti (klasik, derin öğrenmesiz) → alın/yanak/tüm yüz ROI'leri + YCrCb cilt maskesi → POS → detrend + Butterworth → spektrum → hareket güvenli çevrimiçi Bayes takibi. ROI'ler ortalama füzyonla birleşir; gerçek veride en iyi sonucu bu hat verdi.
+- **Parmak modu (arka kamera + flaş):** temaslı PPG. Oksimetre yokken yüz ölçümünü doğrulamak için kullanılabilir.
+- Oturum **CSV** olarak indirilebilir (zaman, nabız, SNR, hareket güveni).
+- Görüntü telefondan çıkmaz; tüm hesaplama tarayıcıda yapılır.
+
+Sinyal işleme kodu ([`mobile/dsp.js`](mobile/dsp.js)) Python paketinin birebir karşılığıdır. Testler aynı girdide Python ile 1e-9 düzeyinde aynı sonucu verdiğini doğrular. Tarayıcıda uçtan uca test (Chrome'a video sahte kamera olarak verilir):
+
+| Test videosu | Beklenen | Uygulama |
+|---|---|---|
+| Sentetik yüz, sabit 84 BPM | 84 | 83.6–84.3 BPM, SNR 9.3 dB |
+| Sentetik parmak, 96 BPM | 96 | 95.9–96.0 BPM |
+| MCD-rPPG gerçek kişi (1020, dinlenme) | parmak PPG | MAE 4.1 BPM (aynı kesitte Python: 3.7) |
+| MCD-rPPG gerçek kişi (1024, egzersiz sonrası) | parmak PPG | MAE 4.6 BPM (aynı kesitte Python: 4.4) |
+
+```bash
+node --test mobile/test/dsp.test.mjs                                   # Python eşdeğerlik testleri
+node mobile/test/e2e.mjs --video yuz.y4m --expect 84 --shot ekran.png  # tarayıcıda uçtan uca
+```
+
 ## Komut Satırı
 
 ```bash
@@ -87,6 +112,7 @@ rppg/                     çekirdek kütüphane
   camera.py               webcam (oto pozlama/beyaz dengesi kilidi)
   plotting.py             rapor şekilleri
 scripts/                  çalıştırılabilir betikler (yukarıda)
+mobile/                   telefon uygulaması (PWA): index.html, app.js, dsp.js, vendor/pico.js
 tests/                    pytest birim + uçtan uca testler
 docs/                     öneri, protokol, veri seti, iş planı, RAPOR, sunum
 results/                  deney çıktıları (tablolar + şekiller)

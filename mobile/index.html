@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>rPPG Nabız</title>
+  <meta name="description" content="Telefon kamerasıyla temassız nabız ölçümü (rPPG) — Sayısal Görüntü İşleme dönem projesi">
+  <meta name="theme-color" content="#0f1115">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>rPPG Nabız</h1>
+    <div class="seg" role="tablist" aria-label="Ölçüm modu">
+      <button id="mode-face" class="on" role="tab" aria-selected="true">Yüz</button>
+      <button id="mode-finger" role="tab" aria-selected="false">Parmak</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="stage" id="stage">
+      <video id="video" playsinline muted autoplay></video>
+      <canvas id="overlay"></canvas>
+      <div class="guide" id="guide" aria-hidden="true"></div>
+      <div class="placeholder" id="placeholder">
+        <p id="placeholder-text">Yüzünüzü çerçeveye alın, iyi aydınlatılmış bir yerde hareketsiz durun.</p>
+      </div>
+    </section>
+
+    <section class="readout" aria-live="polite">
+      <div class="hr">
+        <span id="hr">--</span><small>BPM</small>
+      </div>
+      <div class="meta">
+        <div class="status" id="status"><i class="dot"></i><span>Hazır</span></div>
+        <div class="progress" id="progress-wrap" hidden><div id="progress"></div></div>
+        <dl>
+          <div><dt>SNR</dt><dd id="snr">--</dd></div>
+          <div><dt>Hareket güveni</dt><dd id="conf">--</dd></div>
+          <div><dt>Kare hızı</dt><dd id="fps">--</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <button id="start" class="primary">Ölçümü başlat</button>
+
+    <section class="plots">
+      <figure>
+        <figcaption>Nabız dalgası (son 5 s)</figcaption>
+        <canvas id="plot-bvp"></canvas>
+      </figure>
+      <figure>
+        <figcaption>Spektrum (42–210 BPM)</figcaption>
+        <canvas id="plot-spec"></canvas>
+      </figure>
+      <figure>
+        <figcaption>Nabız geçmişi</figcaption>
+        <canvas id="plot-hist"></canvas>
+      </figure>
+    </section>
+
+    <section class="actions">
+      <button id="csv" disabled>Oturumu CSV indir</button>
+      <button id="reset" disabled>Sıfırla</button>
+    </section>
+
+    <details class="help">
+      <summary>Nasıl kullanılır?</summary>
+      <h3>Yüz modu (ön kamera)</h3>
+      <ul>
+        <li>Telefonu sabit tutun ya da bir yere yaslayın; yüzünüz kesikli çerçevenin içinde olsun.</li>
+        <li>Işık yüzünüze <b>önden</b> gelsin; arkanızda pencere olmasın.</li>
+        <li>Konuşmayın, kıpırdamayın. İlk değer ~8 saniyede gelir, 20–30 saniyede oturur.</li>
+      </ul>
+      <h3>Parmak modu (arka kamera + flaş)</h3>
+      <ul>
+        <li>İşaret parmağınızın ucunu arka kamerayı <b>ve</b> flaşı kapatacak şekilde hafifçe koyun; bastırmayın.</li>
+        <li>Temaslı ölçüm olduğu için yüz modundan çok daha güvenilirdir; yüz ölçümünü doğrulamak için kullanabilirsiniz.</li>
+        <li>iPhone'da tarayıcı flaşı açamaz; aydınlık ortamda deneyin.</li>
+      </ul>
+      <p class="note">Tıbbi cihaz değildir. Ölçüm tamamen telefonunuzda yapılır; görüntü hiçbir yere gönderilmez.</p>
+    </details>
+  </main>
+
+  <footer>
+    Sayısal Görüntü İşleme dönem projesi · <a href="https://github.com/Nisagwn/rppg">GitHub</a>
+  </footer>
+
+  <canvas id="work" hidden></canvas>
+  <script src="vendor/pico.js"></script>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
