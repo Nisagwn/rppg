@@ -1,0 +1,10 @@
+.venv/
+__pycache__/
+.pytest_cache/
+data/
+results/*/cache/
+results/run/
+results/screenshots/
+*.avi
+*.mp4
+results/synthetic_quick/

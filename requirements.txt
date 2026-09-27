@@ -1,0 +1,10 @@
+# Temassız Nabız (rPPG) Projesi — Python 3.9–3.12
+numpy>=1.24
+scipy>=1.10
+opencv-python>=4.8,<5    # OpenCV 5 CascadeClassifier (Haar) sinifini kaldirdi
+scikit-learn>=1.3
+matplotlib>=3.7
+pandas>=2.0
+tabulate>=0.9
+pytest>=7.0
+gdown>=5.0              # UBFC-rPPG indirme (scripts/download_ubfc.py)

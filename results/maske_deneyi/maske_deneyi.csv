@@ -1,0 +1,73 @@
+deneme,koşul,maske,hat,hata,titremeye_kilitlendi
+0,titreme,none,klasik (tüm yüz),7.426975443247841,False
+0,titreme,none,önerilen (füzyon+Viterbi),0.03605297014858877,False
+0,titreme,binary,klasik (tüm yüz),27.593778934980456,True
+0,titreme,binary,önerilen (füzyon+Viterbi),27.593818046781074,True
+0,titreme,soft,klasik (tüm yüz),0.3039718013405235,False
+0,titreme,soft,önerilen (füzyon+Viterbi),0.050169719674386215,False
+0,titreme+hareket,none,klasik (tüm yüz),4.866233323488245,False
+0,titreme+hareket,none,önerilen (füzyon+Viterbi),0.34507120675507963,False
+0,titreme+hareket,binary,klasik (tüm yüz),27.55948877231068,True
+0,titreme+hareket,binary,önerilen (füzyon+Viterbi),27.565493988136538,True
+0,titreme+hareket,soft,klasik (tüm yüz),0.15861837531235778,False
+0,titreme+hareket,soft,önerilen (füzyon+Viterbi),0.01731870861250684,False
+0,güçlü titreme+hareket,none,klasik (tüm yüz),0.0384234668256056,False
+0,güçlü titreme+hareket,none,önerilen (füzyon+Viterbi),0.05447598567525347,False
+0,güçlü titreme+hareket,binary,klasik (tüm yüz),27.556452700686528,True
+0,güçlü titreme+hareket,binary,önerilen (füzyon+Viterbi),27.570485404063525,True
+0,güçlü titreme+hareket,soft,klasik (tüm yüz),0.26658822943605287,False
+0,güçlü titreme+hareket,soft,önerilen (füzyon+Viterbi),0.09936355429711341,False
+1,titreme,none,klasik (tüm yüz),0.13704239598220624,False
+1,titreme,none,önerilen (füzyon+Viterbi),0.12792068106917753,False
+1,titreme,binary,klasik (tüm yüz),71.4599393128448,True
+1,titreme,binary,önerilen (füzyon+Viterbi),71.4343961714903,True
+1,titreme,soft,klasik (tüm yüz),0.20094770622328895,False
+1,titreme,soft,önerilen (füzyon+Viterbi),0.11386182862327843,False
+1,titreme+hareket,none,klasik (tüm yüz),2.8062350249551713,False
+1,titreme+hareket,none,önerilen (füzyon+Viterbi),0.00697566982076836,False
+1,titreme+hareket,binary,klasik (tüm yüz),71.54401308968647,True
+1,titreme+hareket,binary,önerilen (füzyon+Viterbi),71.52426585386789,True
+1,titreme+hareket,soft,klasik (tüm yüz),0.46581445254494724,False
+1,titreme+hareket,soft,önerilen (füzyon+Viterbi),0.10801890616979648,False
+1,güçlü titreme+hareket,none,klasik (tüm yüz),5.618011728967382,False
+1,güçlü titreme+hareket,none,önerilen (füzyon+Viterbi),0.3224518393430742,False
+1,güçlü titreme+hareket,binary,klasik (tüm yüz),71.50781628078062,True
+1,güçlü titreme+hareket,binary,önerilen (füzyon+Viterbi),71.51532487303157,True
+1,güçlü titreme+hareket,soft,klasik (tüm yüz),0.14902966053148958,False
+1,güçlü titreme+hareket,soft,önerilen (füzyon+Viterbi),0.02029862372339153,False
+2,titreme,none,klasik (tüm yüz),0.037880446485047514,False
+2,titreme,none,önerilen (füzyon+Viterbi),0.1266300243438252,False
+2,titreme,binary,klasik (tüm yüz),15.761083212691602,True
+2,titreme,binary,önerilen (füzyon+Viterbi),15.762450637757382,True
+2,titreme,soft,klasik (tüm yüz),0.029953897890322878,False
+2,titreme,soft,önerilen (füzyon+Viterbi),0.14102811443873975,False
+2,titreme+hareket,none,klasik (tüm yüz),0.10334505214562739,False
+2,titreme+hareket,none,önerilen (füzyon+Viterbi),0.12334994088712392,False
+2,titreme+hareket,binary,klasik (tüm yüz),15.62575343286673,True
+2,titreme+hareket,binary,önerilen (füzyon+Viterbi),15.727137602879694,True
+2,titreme+hareket,soft,klasik (tüm yüz),0.19633339039701525,False
+2,titreme+hareket,soft,önerilen (füzyon+Viterbi),0.12421471225805192,False
+2,güçlü titreme+hareket,none,klasik (tüm yüz),0.18761352392880326,False
+2,güçlü titreme+hareket,none,önerilen (füzyon+Viterbi),0.04009692416252619,False
+2,güçlü titreme+hareket,binary,klasik (tüm yüz),15.637975048950324,True
+2,güçlü titreme+hareket,binary,önerilen (füzyon+Viterbi),15.712085742685076,True
+2,güçlü titreme+hareket,soft,klasik (tüm yüz),0.08419816174706796,False
+2,güçlü titreme+hareket,soft,önerilen (füzyon+Viterbi),0.017225716826132498,False
+3,titreme,none,klasik (tüm yüz),4.9675441911998774,False
+3,titreme,none,önerilen (füzyon+Viterbi),0.0018517937680115892,False
+3,titreme,binary,klasik (tüm yüz),16.972334822941647,True
+3,titreme,binary,önerilen (füzyon+Viterbi),16.96513467990667,True
+3,titreme,soft,klasik (tüm yüz),0.07982216456890967,False
+3,titreme,soft,önerilen (füzyon+Viterbi),0.01023558224092369,False
+3,titreme+hareket,none,klasik (tüm yüz),11.299790581411315,False
+3,titreme+hareket,none,önerilen (füzyon+Viterbi),0.607780798588081,False
+3,titreme+hareket,binary,klasik (tüm yüz),17.12761806228619,True
+3,titreme+hareket,binary,önerilen (füzyon+Viterbi),17.09169701303138,True
+3,titreme+hareket,soft,klasik (tüm yüz),0.1483222132034996,False
+3,titreme+hareket,soft,önerilen (füzyon+Viterbi),0.10659696380142236,False
+3,güçlü titreme+hareket,none,klasik (tüm yüz),3.0712294620463325,False
+3,güçlü titreme+hareket,none,önerilen (füzyon+Viterbi),0.12337028172603937,False
+3,güçlü titreme+hareket,binary,klasik (tüm yüz),17.026499167341612,True
+3,güçlü titreme+hareket,binary,önerilen (füzyon+Viterbi),17.0385516437091,True
+3,güçlü titreme+hareket,soft,klasik (tüm yüz),0.05653766085391965,False
+3,güçlü titreme+hareket,soft,önerilen (füzyon+Viterbi),0.11186535919463836,False
