@@ -16,7 +16,7 @@ const ROI_DEFS = {               // rppg/roi.py ROI_DEFS ile aynı (yüz kutusun
   full: [0.20, 0.10, 0.60, 0.80],
 };
 const ROI_COLORS = { forehead: "#3b82f6", left_cheek: "#f97316", right_cheek: "#22c55e", full: "#a855f7" };
-const WIN_SEC = 10, MIN_SEC = 8, KEEP_SEC = 20, WORK_MAX = 480, DETECT_EVERY = 4;
+const WIN_SEC = 10, MIN_SEC = 8, KEEP_SEC = 20, WORK_MAX = 480, DETECT_EVERY = 4, LOCK_AFTER_MS = 2000;
 /* global pico */
 
 const $ = (id) => document.getElementById(id);
@@ -32,7 +32,7 @@ const els = {
 const params = new URLSearchParams(location.search);
 
 const state = {
-  mode: "face", running: false, stream: null, track: null, torch: false,
+  mode: "face", running: false, stream: null, track: null, torch: false, camLock: "",
   samples: [], tracker: new OnlineHRTracker(), motionHist: [],
   bbox: null, lastDet: 0, frameNo: 0, prevGray: null, frameTimes: [], log: [], t0: 0, timer: null, lastBvp: null,
 };
@@ -196,7 +196,9 @@ function analyze() {
   if (span < MIN_SEC) {
     els.progressWrap.hidden = false;
     els.progress.style.width = `${Math.min(100, (100 * span) / MIN_SEC)}%`;
-    setStatus(`Ölçülüyor… ${Math.ceil(MIN_SEC - span)} s`, "fair");
+    const lock = !state.camLock ? "" : state.camLock === "yok"
+      ? " · kamera ayarı kilitlenemedi, ışığı sabit tutun" : ` · kilitli: ${state.camLock}`;
+    setStatus(`Ölçülüyor… ${Math.ceil(MIN_SEC - span)} s${lock}`, "fair");
     return;
   }
   els.progressWrap.hidden = true;
@@ -226,7 +228,7 @@ function analyze() {
   els.conf.textContent = state.mode === "face" ? conf.toFixed(2) : "—";
   setStatus(conf < 0.4 ? "Hareket algılandı — sabit durun" : label, conf < 0.4 ? "fair" : level);
 
-  state.log.push({ t: tEnd - state.t0, hr, snr, conf, mode: state.mode });
+  state.log.push({ t: tEnd - state.t0, hr, snr, conf, mode: state.mode, lock: state.camLock || "-" });
   state.lastBvp = res.bvp;
   els.csv.disabled = false;
   els.reset.disabled = false;
@@ -290,6 +292,29 @@ function drawSpectrum(c, p, hr) {
 }
 
 // ------------------------------------------------------------------ kamera
+// Otomatik pozlama / beyaz dengesi / odak, karelerin parlaklığını ve rengini nabız
+// sinyalinden (~%0.5) çok daha büyük oranda sürekli değiştirir (bkz. rppg/camera.py).
+// Destekleyen tarayıcıda (Android Chrome) o anki değerlerinde sabitlenir.
+async function lockCamera(track) {
+  const caps = track.getCapabilities?.() || {}, cur = track.getSettings?.() || {};
+  const want = [
+    ["exposureMode", { exposureMode: "manual", ...(cur.exposureTime ? { exposureTime: cur.exposureTime } : {}),
+      ...(cur.iso ? { iso: cur.iso } : {}) }],
+    ["whiteBalanceMode", { whiteBalanceMode: "manual", ...(cur.colorTemperature ? { colorTemperature: cur.colorTemperature } : {}) }],
+    ["focusMode", { focusMode: "manual", ...(cur.focusDistance ? { focusDistance: cur.focusDistance } : {}) }],
+  ];
+  const locked = [];
+  for (const [key, c] of want) {
+    if (!caps[key]?.includes?.("manual")) continue;
+    try {
+      await track.applyConstraints({ advanced: [c] });
+      if (track.getSettings?.()[key] === "manual") locked.push(key);
+    } catch { /* bu ayar desteklenmiyor */ }
+  }
+  const names = { exposureMode: "pozlama", whiteBalanceMode: "beyaz dengesi", focusMode: "odak" };
+  return locked.length ? locked.map((k) => names[k]).join(", ") : "yok";
+}
+
 async function start() {
   if (!navigator.mediaDevices?.getUserMedia) {
     setStatus("Bu tarayıcı kameraya erişemiyor (HTTPS gerekli)", "bad");
@@ -336,6 +361,13 @@ async function start() {
     }
   }
   resetMeasurement();
+  state.camLock = "";
+  const track = state.track;
+  setTimeout(async () => {          // pozlama önce sahneye otursun, sonra kilitle ve baştan ölç
+    if (!state.running || state.track !== track) return;
+    state.camLock = await lockCamera(track);
+    if (state.running && state.track === track) resetMeasurement();
+  }, LOCK_AFTER_MS);
   state.running = true;
   state.t0 = null;
   state.clock = null;
@@ -413,8 +445,9 @@ function setMode(mode) {
 }
 
 function downloadCsv() {
-  const rows = ["zaman_s,nabiz_bpm,snr_db,hareket_guveni,mod",
-    ...state.log.map((r) => [r.t.toFixed(1), r.hr.toFixed(2), r.snr.toFixed(2), r.conf.toFixed(2), r.mode].join(","))];
+  const rows = ["zaman_s,nabiz_bpm,snr_db,hareket_guveni,mod,kamera_kilidi",
+    ...state.log.map((r) => [r.t.toFixed(1), r.hr.toFixed(2), r.snr.toFixed(2), r.conf.toFixed(2), r.mode,
+      `"${r.lock}"`].join(","))];
   const a = document.createElement("a");
   a.href = URL.createObjectURL(new Blob([rows.join("\n")], { type: "text/csv" }));
   a.download = `rppg_oturum_${new Date().toISOString().slice(0, 19).replace(/[:T]/g, "-")}.csv`;
