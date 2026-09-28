@@ -85,7 +85,9 @@ def load_mcd_timestamps(meta_path: str) -> np.ndarray:
         for line in f:
             parts = line.split()
             if len(parts) >= 3:
-                ts.append(datetime.strptime(f"{parts[1]} {parts[2]}", "%Y-%m-%d %H:%M:%S.%f").timestamp())
+                # tam saniyeye denk gelen karelerde kesir yazılmamış olabilir ('15:07:14')
+                fmt = "%Y-%m-%d %H:%M:%S.%f" if "." in parts[2] else "%Y-%m-%d %H:%M:%S"
+                ts.append(datetime.strptime(f"{parts[1]} {parts[2]}", fmt).timestamp())
     ts = np.array(ts)
     return ts - ts[0]
 
