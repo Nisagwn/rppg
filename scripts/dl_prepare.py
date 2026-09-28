@@ -169,14 +169,19 @@ def process_pure(zip_path, dst, max_sec=None, **info):
 
 
 # -------------------------------------------------------------------- indirme
-def fetch(url, dst, retries=3):
+def fetch(url, dst, retries=8):
+    """İndirir; Hugging Face hız sınırında (429) Retry-After kadar bekler. HF_TOKEN ortam değişkeni varsa kullanılır."""
     import requests
     if os.path.exists(dst) and os.path.getsize(dst) > 0:
         return
     os.makedirs(os.path.dirname(dst), exist_ok=True)
+    headers = {"Authorization": f"Bearer {os.environ['HF_TOKEN']}"} if os.environ.get("HF_TOKEN") else {}
     for k in range(retries):
         try:
-            with requests.get(url, stream=True, timeout=120) as r:
+            with requests.get(url, stream=True, timeout=120, headers=headers) as r:
+                if r.status_code == 429:
+                    time.sleep(float(r.headers.get("Retry-After", 30 * (k + 1))))
+                    raise RuntimeError("429 hız sınırı")
                 r.raise_for_status()
                 with open(dst + ".part", "wb") as f:
                     for chunk in r.iter_content(1 << 20):
@@ -186,7 +191,7 @@ def fetch(url, dst, retries=3):
         except Exception:
             if k == retries - 1:
                 raise
-            time.sleep(5 * (k + 1))
+            time.sleep(min(60, 5 * 2 ** k))
 
 
 def job_mcd(row, raw_root, out_root, keep_raw, max_sec):
@@ -253,6 +258,33 @@ def job_test(kind, args, out_root):
     return name, f"{n} kare, yüz %{100 * rate:.0f}"
 
 
+def job_test_dl(kind, key, raw_root, out_root):
+    """Test videolarını Hugging Face'ten indirip işler (ör. Kaggle; yerelde --test ham dosyaları kullanır).
+    Ön işleme yereldeki test kümesiyle aynı: tam çözünürlükte Haar, süre sınırı yok."""
+    if kind == "ubfc":
+        dst = os.path.join(out_root, "test", f"ubfc_{key}.npz")
+        if os.path.exists(dst):
+            return key, "var"
+        sdir = os.path.join(raw_root, "ubfc_test", key)
+        fetch(UBFC_HF + key + "/ground_truth.txt", os.path.join(sdir, "ground_truth.txt"))
+        fetch(UBFC_HF + key + "/vid.avi", os.path.join(sdir, "vid.avi"))
+        n, rate = process_ubfc(sdir, dst, person=key, camera="C920", step="ubfc", source="ubfc")
+        os.remove(os.path.join(sdir, "vid.avi"))
+        return key, f"{n} kare, yüz %{100 * rate:.0f}"
+    row = key
+    name = os.path.splitext(os.path.basename(row["video"]))[0]
+    dst = os.path.join(out_root, "test", f"mcd_{name}.npz")
+    if os.path.exists(dst):
+        return name, "var"
+    for rel in (row["meta"], row["ppg_sync"], row["video"]):
+        fetch(MCD_HF + rel, os.path.join(raw_root, rel))
+    n, rate = process_mcd(os.path.join(raw_root, row["video"]), os.path.join(raw_root, row["meta"]),
+                          os.path.join(raw_root, row["ppg_sync"]), dst, None, person=int(row["patient_id"]),
+                          camera=row["camera"], step=row["step"], source="mcd")
+    os.remove(os.path.join(raw_root, row["video"]))
+    return name, f"{n} kare, yüz %{100 * rate:.0f}"
+
+
 def _init_worker():
     cv2.setNumThreads(1)  # çok süreçte OpenCV iş parçacıkları CPU'yu boğmasın
 
@@ -277,6 +309,7 @@ def main():
     ap.add_argument("--out", default="data/dl")
     ap.add_argument("--raw", default="data/dl/_raw", help="geçici indirme klasörü")
     ap.add_argument("--test", action="store_true", help="yereldeki 28 test videosunu işle")
+    ap.add_argument("--test-download", action="store_true", help="28 test videosunu HF'ten indirip işle (Kaggle)")
     ap.add_argument("--mcd", type=int, default=0, help="test dışı kaç MCD kişisi")
     ap.add_argument("--mcd-skip", type=int, default=0, help="listede ilk kaç kişiyi atla (parça parça indirmek için)")
     ap.add_argument("--cameras", default="FullHDwebcam,USBVideo,IriunWebcam")
@@ -298,6 +331,16 @@ def main():
                  if os.path.exists(os.path.join("data/MCD", r.video))]
         print(f"Test kümesi: {len(jobs)} video")
         failed = run(jobs, a.workers)
+
+    if a.test_download:
+        db_path = os.path.join(a.raw, "db.csv")
+        fetch(MCD_HF + "db.csv", db_path)
+        db = pd.read_csv(db_path)
+        db = db[db.patient_id.isin(MCD_TEST) & (db.camera == "FullHDwebcam")]
+        jobs = [(job_test_dl, ("ubfc", s, a.raw, a.out)) for s in sorted(UBFC_TEST)]
+        jobs += [(job_test_dl, ("mcd", r._asdict(), a.raw, a.out)) for r in db.itertuples()]
+        print(f"Test kümesi (indir): {len(jobs)} video")
+        failed += run(jobs, max(1, min(a.workers, 2)))
 
     if a.mcd:
         from scripts.evaluate_mcd import _available_videos

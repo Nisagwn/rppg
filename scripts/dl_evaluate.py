@@ -58,6 +58,8 @@ def main():
     ap.add_argument("--test", default=os.path.join(ROOT, "data/dl/test"))
     ap.add_argument("--prev", default=os.path.join(ROOT, "results/derin_ogrenme/tum_sonuclar.csv"))
     ap.add_argument("--out", default=os.path.join(ROOT, "results/derin_ogrenme/egitim"))
+    ap.add_argument("--data", default=os.path.join(ROOT, "data/dl"), help="eğitim verisi (rapordaki özet için)")
+    ap.add_argument("--history", default="", help="gecmis.json (varsayılan: modelin klasörü)")
     a = ap.parse_args()
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
@@ -94,9 +96,9 @@ def main():
 
 def write_report(a, t, info, w):
     """results/derin_ogrenme/egitim/SONUCLAR.md"""
-    hist_path = os.path.join(os.path.dirname(a.model), "gecmis.json")
+    hist_path = a.history or os.path.join(os.path.dirname(a.model), "gecmis.json")
     hist = json.load(open(hist_path)) if os.path.exists(hist_path) else None
-    data = os.path.join(ROOT, "data", "dl")
+    data = a.data
     metas = [np.load(p) for sub in ("mcd", "ubfc", "pure") for p in glob.glob(os.path.join(data, sub, "*.npz"))]
     used = [m for m in metas if float(m["face_rate"]) >= 0.5]
     people = {str(m["person"]) for m in used}
