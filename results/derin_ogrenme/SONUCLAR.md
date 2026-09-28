@@ -28,4 +28,20 @@ rPPG-Toolbox'ın **PURE** veri setinde eğitilmiş hazır modelleri (ince ayar y
 - Başka veri setinde eğitilmiş derin öğrenme modelleri **genel olarak klasik hattan iyi değil**. Dört modelden üçü MCD'de belirgin şekilde daha kötü (11–18 BPM); UBFC'de hepsi klasik hatla aynı düzeyde (1.5–2 BPM). Eğitim verisinden farklı kamera ve sıkıştırma koşullarına genelleme zayıf.
 - En yeni model (FactorizePhys, 2024) tipik videolarda klasik hatla eşdeğer, en zor videolarda hatayı azaltıyor ama düzeltmiyor.
 - Önerilen Viterbi takibi derin öğrenme çıktılarında da hatayı düşürüyor (FactorizePhys: 3.33 → 2.51).
-- Karar: klasik hat korunur. Derin öğrenme, eğitim verisi gerektirmesi, GPU / ağır bağımlılık ve telefonda gerçek zamanlı çalıştırma zorluğu karşısında tipik koşullarda ölçülebilir kazanç sağlamadı.
+- ~~Karar: klasik hat korunur.~~ Bu karar yalnızca **hazır** modeller için geçerliydi; ince ayardan sonra geçersiz (aşağıya bakın).
+
+## Güncelleme: ince ayarlı FactorizePhys (2026-09-28)
+
+FactorizePhys, test kişileri hariç MCD-rPPG (160 kişi, 3 kamera) + UBFC (3 denek) ile ince ayarlandı: 823 video, 27 saat. Ayrıntılar: [egitim/SONUCLAR.md](egitim/SONUCLAR.md).
+
+| Yöntem (aynı 28 video) | UBFC | MCD dinlenme | MCD egzersiz | Hepsi | ≤5 BPM % |
+|---|---:|---:|---:|---:|---:|
+| **FactorizePhys ince ayarlı + Viterbi** | 1.76 | **0.88** | **1.06** | **1.19** | **95.3** |
+| FactorizePhys PURE (hazır) + Viterbi | 1.42 | 2.19 | 3.88 | 2.57 | 88.9 |
+| POS tüm yüz + Viterbi (klasik) | 2.04 | 3.69 | 4.59 | 3.54 | 88.7 |
+
+- Ortalama hata klasik hatta göre 3.54 → 1.19 BPM. 28 videonun 13'ünde daha iyi, 14'ünde eşit (≤0.5 BPM), 1'inde daha kötü.
+- Klasik hattın başarısız olduğu videolar düzeldi: 1097 dinlenme 23.2 → 3.0, 1097 egzersiz 23.0 → 5.2, 1107 egzersiz 14.5 → 0.6 BPM.
+- UBFC'de hazır modelin biraz gerisinde (1.76 / 1.42). Eğitimde yalnızca 3 UBFC deneği var.
+- Sınırlar: test kümesi küçük (28 video, 18 kişi), yalnızca önden webcam. Telefonda (tarayıcıda) çalıştırma henüz yapılmadı.
+- Yeni karar: ince ayarlı model klasik hattan belirgin şekilde iyi. Sonraki adım, modeli mobil uygulamada çalıştırmak (ör. ONNX) ve telefon kamerasıyla doğrulamak.
