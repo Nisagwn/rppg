@@ -97,7 +97,7 @@ def write_report(a, t, info, w):
     hist_path = os.path.join(os.path.dirname(a.model), "gecmis.json")
     hist = json.load(open(hist_path)) if os.path.exists(hist_path) else None
     data = os.path.join(ROOT, "data", "dl")
-    metas = [np.load(p) for p in glob.glob(os.path.join(data, "mcd", "*.npz")) + glob.glob(os.path.join(data, "ubfc", "*.npz"))]
+    metas = [np.load(p) for sub in ("mcd", "ubfc", "pure") for p in glob.glob(os.path.join(data, sub, "*.npz"))]
     used = [m for m in metas if float(m["face_rate"]) >= 0.5]
     people = {str(m["person"]) for m in used}
     hours = sum(int(m["n"]) for m in used) / 30 / 3600
@@ -110,8 +110,9 @@ def write_report(a, t, info, w):
          f"- {len(used)} video, {len(people)} kişi, {hours:.1f} saat (yüz bulunma oranı <%50 olan "
          f"{len(metas) - len(used)} video çıkarıldı)",
          f"- MCD: {sum(str(m['source']) == 'mcd' for m in used)} video (3 kamera: önden webcam, sol USB, sağ telefon; "
-         "dinlenme + egzersiz sonrası), ilk 120 s",
+         "dinlenme + egzersiz sonrası), ilk 45 s (disk için; kişi çeşitliliği süreden önemli)",
          f"- UBFC: {sum(str(m['source']) == 'ubfc' for m in used)} denek",
+         f"- PURE: {sum(str(m['source']) == 'pure' for m in used)} oturum (10 kişi × 6 hareket senaryosu; HF kopyası)",
          "- Ön işleme toolbox ile aynı (Haar ×1.5, 30 karede bir tespit, 72×72, ham kare); hepsi 30 fps'e yeniden örneklendi",
          "- MCD parmak PPG'si UBFC/PURE'a göre ters işaretli (ön-eğitimli model çıktısıyla korelasyon ≈ −0.75, "
          "gecikme ≈ 0); eğitimde ters çevrildi",

@@ -12,6 +12,7 @@ bunlar --test ile yalnızca yereldeki dosyalardan ayrı klasöre (data/dl/test) 
     python scripts/dl_prepare.py --test                      # 28 test videosu (yerel)
     python scripts/dl_prepare.py --mcd 60                    # test dışı 60 kişi, 3 kamera (indir-işle-sil)
     python scripts/dl_prepare.py --ubfc 10                   # UBFC'nin test dışı 10 deneği (indir-işle-sil)
+    python scripts/dl_prepare.py --pure 60                   # PURE'un 60 oturumu (HF kopyası, indir-işle-sil)
 
 İnmiş/işlenmiş dosyalar atlanır; yarıda kalırsa aynı komut tekrar çalıştırılır.
 """
@@ -54,15 +55,27 @@ def _detect(det, rgb, scale=2):
     return int(x), int(y), int(BOX_COEF * w), int(BOX_COEF * h)
 
 
-def crop_video(path, max_frames=None, det_scale=1):
-    """Kareler -> 72x72 RGB yüz kırpıntısı (uint8) ve yüz bulunma oranı.
-    Toolbox'tan tek fark: yüz bulunamazsa tüm kare yerine son bulunan kutu kullanılır."""
-    det = cv2.CascadeClassifier(HAAR)
+def _video_frames(path):
     cap = cv2.VideoCapture(path)
-    out, box, n_det, n_found, i = [], None, 0, 0, 0
     while True:
         ok, bgr = cap.read()
-        if not ok or (max_frames and i >= max_frames):
+        if not ok:
+            break
+        yield bgr
+    cap.release()
+
+
+def crop_video(path, max_frames=None, det_scale=1):
+    return crop_frames(_video_frames(path), max_frames, det_scale, path)
+
+
+def crop_frames(frames_bgr, max_frames=None, det_scale=1, name=""):
+    """Kareler (BGR) -> 72x72 RGB yüz kırpıntısı (uint8) ve yüz bulunma oranı.
+    Toolbox'tan tek fark: yüz bulunamazsa tüm kare yerine son bulunan kutu kullanılır."""
+    det = cv2.CascadeClassifier(HAAR)
+    out, box, n_det, n_found, i = [], None, 0, 0, 0
+    for bgr in frames_bgr:
+        if max_frames and i >= max_frames:
             break
         rgb = cv2.cvtColor(bgr, cv2.COLOR_BGR2RGB)
         if i % DET_FREQ == 0:
@@ -77,9 +90,8 @@ def crop_video(path, max_frames=None, det_scale=1):
             crop = rgb[y:min(y + h, rgb.shape[0]), x:min(x + w, rgb.shape[1])]
         out.append(cv2.resize(crop, (SIZE, SIZE), interpolation=cv2.INTER_AREA))
         i += 1
-    cap.release()
     if not out:
-        raise RuntimeError(f"video okunamadı: {path}")
+        raise RuntimeError(f"video okunamadı: {name}")
     return np.stack(out), n_found / max(n_det, 1)
 
 
@@ -128,6 +140,30 @@ def process_ubfc(subject_dir, dst, **info):
     bvp = np.interp(np.linspace(0, 1, len(frames)), np.linspace(0, 1, len(gt["bvp"])), gt["bvp"])
     t = np.arange(len(frames)) / FS
     f, b = resample(frames, t, bvp, t)
+    save(dst, f, b, rate, **info)
+    return len(f), rate
+
+
+def process_pure(zip_path, dst, max_sec=None, **info):
+    """PURE oturumu (zip): PNG kareler (ad = zaman damgası, ns) + JSON'da parmak oksimetresi dalga formu.
+    Toolbox'ın PURE yükleyicisi gibi 'waveform' kullanılır; kare zamanlarına enterpole edilir."""
+    import json
+    import zipfile
+    z = zipfile.ZipFile(zip_path)
+    pngs = sorted((int(os.path.basename(n)[5:-4]), n) for n in z.namelist() if n.endswith(".png"))
+    meta = json.loads(z.read(next(n for n in z.namelist() if n.endswith(".json"))))
+    t_img = np.array([t for t, _ in pngs], dtype=float) / 1e9
+    if max_sec:
+        pngs = [p for p, t in zip(pngs, t_img) if t - t_img[0] <= max_sec + 0.1]
+        t_img = t_img[:len(pngs)]
+    ppg = meta["/FullPackage"]
+    t_ppg = np.array([p["Timestamp"] for p in ppg], dtype=float) / 1e9
+    wave = np.array([p["Value"]["waveform"] for p in ppg], dtype=float)
+    bvp = np.interp(t_img, t_ppg, wave)
+    decode = (cv2.imdecode(np.frombuffer(z.read(n), np.uint8), cv2.IMREAD_COLOR) for _, n in pngs)
+    frames, rate = crop_frames(decode, None, 2, zip_path)
+    n = min(len(frames), len(t_img))
+    f, b = resample(frames[:n], t_img[:n], bvp[:n], t_img[:n])
     save(dst, f, b, rate, **info)
     return len(f), rate
 
@@ -181,6 +217,22 @@ def job_ubfc(subject, raw_root, out_root, keep_raw):
     return subject, f"{n} kare, yüz %{100 * rate:.0f}"
 
 
+PURE_HF = "https://huggingface.co/datasets/Thinhnb29/PURE/resolve/main/PURE/"
+
+
+def job_pure(session, raw_root, out_root, keep_raw):
+    dst = os.path.join(out_root, "pure", session + ".npz")
+    if os.path.exists(dst):
+        return session, "var"
+    zp = os.path.join(raw_root, session + ".zip")
+    fetch(PURE_HF + session + ".zip", zp)
+    n, rate = process_pure(zp, dst, None, person="pure_" + session[:2], camera="PURE", step=session[3:],
+                           source="pure")
+    if not keep_raw:
+        os.remove(zp)
+    return session, f"{n} kare, yüz %{100 * rate:.0f}"
+
+
 def job_test(kind, args, out_root):
     if kind == "ubfc":
         sdir = args
@@ -229,6 +281,7 @@ def main():
     ap.add_argument("--mcd-skip", type=int, default=0, help="listede ilk kaç kişiyi atla (parça parça indirmek için)")
     ap.add_argument("--cameras", default="FullHDwebcam,USBVideo,IriunWebcam")
     ap.add_argument("--ubfc", type=int, default=0, help="UBFC'nin test dışı kaç deneği (video başına 1.8 GB)")
+    ap.add_argument("--pure", type=int, default=0, help="kaç PURE oturumu (10 kişi x 6 hareket = 60; HF kopyası)")
     ap.add_argument("--workers", type=int, default=4)
     ap.add_argument("--keep-raw", action="store_true")
     ap.add_argument("--max-sec", type=float, default=120, help="eğitim videosundan saklanacak süre (disk için)")
@@ -265,6 +318,13 @@ def main():
         print(f"UBFC: {len(subjects)} denek (test dışı)")
         failed += run([(job_ubfc, (s, os.path.join(a.raw, "ubfc"), a.out, a.keep_raw)) for s in subjects],
             max(1, min(a.workers, 2)))  # video başına 1.8 GB; aynı anda en çok 2
+    if a.pure:
+        import requests
+        tree = requests.get("https://huggingface.co/api/datasets/Thinhnb29/PURE/tree/main/PURE", timeout=60).json()
+        sessions = sorted(os.path.basename(x["path"])[:-4] for x in tree if x["path"].endswith(".zip"))[:a.pure]
+        print(f"PURE: {len(sessions)} oturum")
+        failed += run([(job_pure, (s, os.path.join(a.raw, "pure"), a.out, a.keep_raw)) for s in sessions],
+                      max(1, min(a.workers, 2)))  # oturum başına ~700 MB zip
     if failed:
         sys.exit(f"{failed} video başarısız; tekrar çalıştırın (tamamlananlar atlanır)")
 

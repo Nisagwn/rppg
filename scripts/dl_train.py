@@ -27,15 +27,33 @@ import numpy as np
 from dl_common import CHUNK, build_model, hr_from_bvp, predict_video, reference_hr, to_input
 
 
+_VCACHE = {}  # yol -> (mtime, kayıt | None): her epoch'ta binlerce dosyayı yeniden taramamak için
+
+
+def _video_entry(p, min_face):
+    m = np.load(p)
+    if float(m["face_rate"]) < min_face or int(m["n"]) < CHUNK * 2:
+        return None
+    b = m["bvp"]  # bozuk referans: NaN ya da düz (sensör kayıt almamış, ör. MCD 4952) -> kayıp patlar
+    if not np.all(np.isfinite(b)) or (np.lib.stride_tricks.sliding_window_view(b, CHUNK)[::40].std(1) < 1e-6).mean() > 0.2:
+        return None
+    return {"npz": p, "npy": p[:-4] + ".npy", "n": int(m["n"]), "person": str(m["person"]),
+            "source": str(m["source"]), "camera": str(m["camera"])}
+
+
 def list_videos(root, min_face=0.5):
     vids = []
-    for p in sorted(glob.glob(os.path.join(root, "mcd", "*.npz")) + glob.glob(os.path.join(root, "ubfc", "*.npz"))):
-        m = np.load(p)
-        if float(m["face_rate"]) < min_face or int(m["n"]) < CHUNK * 2:
-            continue
-        vids.append({"npz": p, "npy": p[:-4] + ".npy", "n": int(m["n"]), "person": str(m["person"]),
-                     "source": str(m["source"]), "camera": str(m["camera"])})
+    for p in sorted(glob.glob(os.path.join(root, "mcd", "*.npz")) + glob.glob(os.path.join(root, "ubfc", "*.npz"))
+                    + glob.glob(os.path.join(root, "pure", "*.npz"))):
+        mt = os.path.getmtime(p)
+        if p not in _VCACHE or _VCACHE[p][0] != mt:
+            _VCACHE[p] = (mt, _video_entry(p, min_face))
+        if _VCACHE[p][1] is not None:
+            vids.append(_VCACHE[p][1])
     return vids
+
+
+MAX_SPAN = int(np.ceil(CHUNK * 1.25)) + 1  # en hızlı artırmada gereken kare sayısı
 
 
 def is_val(person):
@@ -59,33 +77,56 @@ class ChunkSampler:
         return item
 
     def sample(self, rng):
+        for _ in range(20):  # etiketi düz/bozuk parçayı reddet
+            clip, lab, prm = self._sample(rng)
+            if np.isfinite(lab).all() and np.abs(lab).max() < 50:
+                return clip, lab, prm
+        return clip, lab, prm
+
+    def _sample(self, rng):
+        """CPU'da yalnızca ham uint8 kareler kopyalanır; hız/çevirme/parlaklık GPU'da (gpu_augment) uygulanır."""
         v = self.vids[rng.choice(len(self.vids), p=self.p)]
         frames, bvp = self._frames(v)
         speed = rng.uniform(0.8, 1.25) if rng.random() < 0.5 else 1.0
-        span = int(np.ceil(CHUNK * speed)) + 1
-        span = min(span, len(frames))
-        s = rng.integers(0, len(frames) - span + 1)
-        clip = np.asarray(frames[s:s + span], dtype=np.float32)
+        span = min(int(np.ceil(CHUNK * speed)) + 1, len(frames))
+        s = rng.integers(0, len(frames) - MAX_SPAN + 1) if len(frames) >= MAX_SPAN else 0
+        s = min(s, len(frames) - span)
+        clip = np.zeros((MAX_SPAN,) + frames.shape[1:], dtype=np.uint8)
+        n = min(MAX_SPAN, len(frames) - s)
+        clip[:n] = frames[s:s + n]
         lab = np.asarray(bvp[s:s + span], dtype=np.float32)
-        if speed != 1.0:  # zaman ekseninde yeniden örnekle -> nabız speed katına çıkar
-            pos = np.arange(CHUNK) * speed
-            pos = np.minimum(pos, len(clip) - 1.001)
-            j = pos.astype(int)
-            w = (pos - j)[:, None, None, None]
-            clip = clip[j] * (1 - w) + clip[j + 1] * w
-            lab = np.interp(pos, np.arange(len(lab)), lab)
-        else:
-            clip, lab = clip[:CHUNK], lab[:CHUNK]
-        if rng.random() < 0.5:
-            clip = clip[:, :, ::-1]
-        clip = np.clip(clip * rng.uniform(0.8, 1.2), 0, 255)
-        lab = (lab - lab.mean()) / (lab.std() + 1e-8)
-        return clip, lab
+        pos = np.minimum(np.arange(CHUNK) * speed, span - 1.001)
+        lab = np.interp(pos, np.arange(len(lab)), lab)  # zaman ekseninde yeniden örnekle -> nabız speed katı
+        prm = np.array([speed, span, rng.random() < 0.5, rng.uniform(0.8, 1.2)], dtype=np.float32)
+        sd = lab.std()
+        if sd < 1e-6:
+            return clip, np.full(CHUNK, np.nan, dtype=np.float32), prm
+        return clip, ((lab - lab.mean()) / sd).astype(np.float32), prm
 
     def batch(self, bs, seed):
         rng = np.random.default_rng(seed)  # iş parçacığı başına ayrı üreteç
-        xs, ys = zip(*(self.sample(rng) for _ in range(bs)))
-        return np.stack(xs), np.stack(ys).astype(np.float32)
+        xs, ys, ps = zip(*(self.sample(rng) for _ in range(bs)))
+        return np.stack(xs), np.stack(ys), np.stack(ps)
+
+
+def gpu_augment(clips_u8, prm, device):
+    """[B,MAX_SPAN,72,72,3] uint8 + [B,4] (hız, gerçek uzunluk, çevir, parlaklık) -> [B,3,CHUNK+1,72,72] float.
+    Toolbox gibi son kare tekrarlanır (model içinde diff alınır)."""
+    import torch
+    x = torch.as_tensor(clips_u8, device=device).float()
+    prm = torch.as_tensor(prm, device=device)
+    t = torch.arange(CHUNK, device=device, dtype=torch.float32)
+    out = []
+    for i in range(x.shape[0]):
+        pos = torch.clamp(t * prm[i, 0], max=prm[i, 1] - 1.001)
+        j = pos.long()
+        w = (pos - j)[:, None, None, None]
+        c = x[i, j] * (1 - w) + x[i, j + 1] * w
+        if prm[i, 2] > 0.5:
+            c = torch.flip(c, dims=[2])
+        out.append(torch.clamp(c * prm[i, 3], 0, 255))
+    x = torch.stack(out).permute(0, 4, 1, 2, 3)
+    return torch.cat([x, x[:, :, -1:]], dim=2)
 
 
 class Prefetcher:
@@ -164,9 +205,14 @@ def main():
     last = os.path.join(a.out, "last.pth")
     if os.path.exists(last):
         ck = torch.load(last, map_location=device)
-        model.load_state_dict(ck["model"])
-        opt.load_state_dict(ck["opt"])
+        model.load_state_dict(ck["model"], strict=False)
         sched.load_state_dict(ck["sched"])
+        try:
+            opt.load_state_dict(ck["opt"])
+        except (ValueError, KeyError, TypeError):  # onarılmış kontrol noktası: taze optimizer, kaldığı öğrenme oranı
+            for g in opt.param_groups:
+                g["lr"] = sched.get_last_lr()[0]
+            print("  optimizer durumu yok/uyumsuz: taze optimizer", flush=True)
         state = ck["state"]
         print(f"devam: epoch {state['epoch']}", flush=True)
         names = sorted(v["npz"] for v in val)
@@ -188,7 +234,7 @@ def main():
     epoch_time = None
     while state["epoch"] < a.epochs:
         if time.time() > deadline or (epoch_time and time.time() + epoch_time > deadline):
-            print("süre sınırı: eğitim durduruldu", flush=True)
+            print(f"süre sınırı: eğitim durduruldu [{datetime.now():%H:%M:%S}]", flush=True)
             break
         t0 = time.time()
         new = [v for v in list_videos(a.data) if not is_val(v["person"])]  # indirme sürerken yeni gelenler
@@ -200,8 +246,8 @@ def main():
         losses = []
         pf = Prefetcher(sampler, a.bs, seed=100000 * state["epoch"] + 1234)
         for step in range(a.steps):
-            x, y = pf.next()
-            x = to_input(x, device)
+            x, y, prm = pf.next()
+            x = gpu_augment(x, prm, device)
             y = torch.as_tensor(y, device=device)
             pred = model(x)[0]
             loss = neg_pearson(pred, y)
@@ -209,7 +255,10 @@ def main():
                 continue
             opt.zero_grad(set_to_none=True)
             loss.backward()
-            torch.nn.utils.clip_grad_norm_(model.parameters(), 5.0)
+            gnorm = torch.nn.utils.clip_grad_norm_(model.parameters(), 5.0)
+            if not torch.isfinite(gnorm):  # sayısal patlama: bu adımı atla
+                opt.zero_grad(set_to_none=True)
+                continue
             opt.step()
             sched.step()
             losses.append(loss.item())
@@ -217,6 +266,13 @@ def main():
                 print(f"  epoch {state['epoch'] + 1} adım {step + 1}/{a.steps} kayıp {np.mean(losses[-100:]):.4f}",
                       flush=True)
         pf.close()
+        if not all(torch.isfinite(q).all() for q in model.parameters()):  # ağırlıklar bozulduysa en iyiye dön
+            print(f"  UYARI: ağırlıklar NaN oldu; en iyi modele dönülüyor, optimizer sıfırlanıyor "
+                  f"[{datetime.now():%H:%M:%S}]", flush=True)
+            model.load_state_dict(torch.load(os.path.join(a.out, "best.pth"), map_location=device)["model"])
+            opt = torch.optim.AdamW(model.parameters(), lr=sched.get_last_lr()[0], weight_decay=1e-4)
+            sched.optimizer = opt
+            continue
         state["epoch"] += 1
         mae = validate(model, val, device) if val else float("nan")
         state["history"].append({"epoch": state["epoch"], "val_mae": mae, "loss": float(np.mean(losses))})
@@ -228,7 +284,8 @@ def main():
         os.replace(last + ".part", last)
         epoch_time = time.time() - t0
         print(f"epoch {state['epoch']}: kayıp {np.mean(losses):.4f}, doğrulama MAE {mae:.2f} BPM, "
-              f"en iyi {state['best']['val_mae']:.2f} (epoch {state['best']['epoch']}), {epoch_time:.0f} s", flush=True)
+              f"en iyi {state['best']['val_mae']:.2f} (epoch {state['best']['epoch']}), {epoch_time:.0f} s "
+              f"[{datetime.now():%H:%M:%S}]", flush=True)
         json.dump(state, open(os.path.join(a.out, "gecmis.json"), "w"), indent=1)
     print("bitti", flush=True)
 

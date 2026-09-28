@@ -104,6 +104,8 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--mcd", type=int, default=90)
     ap.add_argument("--ubfc", type=int, default=10)
+    ap.add_argument("--pure", type=int, default=0)
+    ap.add_argument("--max-sec", type=float, default=120, help="MCD videosundan saklanacak süre (disk için)")
     ap.add_argument("--prep-until", default="2026-09-28 03:30")
     ap.add_argument("--train-until", default="2026-09-28 04:10")
     ap.add_argument("--finish", default="2026-09-28 04:45")
@@ -123,16 +125,18 @@ def main():
     ctypes.windll.kernel32.SetThreadExecutionState(0x80000000 | 0x00000001)
     log("yönetici başladı")
 
-    mcd = Step("hazirla_mcd", ["scripts/dl_prepare.py", "--mcd", str(a.mcd), "--workers", "6"], max_runs=12)
+    mcd = Step("hazirla_mcd", ["scripts/dl_prepare.py", "--mcd", str(a.mcd), "--workers", "6",
+                                     "--max-sec", str(a.max_sec)], max_runs=12)
     ubfc = Step("hazirla_ubfc", ["scripts/dl_prepare.py", "--ubfc", str(a.ubfc), "--workers", "1"], max_runs=12)
+    pure = Step("hazirla_pure", ["scripts/dl_prepare.py", "--pure", str(a.pure), "--workers", "2"], max_runs=12)
     train = Step("egitim", ["scripts/dl_train.py", "--epochs", "200", "--steps", "500",
                             "--deadline", a.train_until], max_runs=8)
     ev = Step("degerlendirme", ["scripts/dl_evaluate.py"], max_runs=3)
 
     while True:
         now = time.time()
-        for s in (mcd, ubfc):
-            if s.done:
+        for s in (mcd, ubfc, pure):
+            if s.done or (s is pure and not a.pure):
                 continue
             if now > prep_until:
                 if s.running():
@@ -148,7 +152,7 @@ def main():
             open(mcd.donefile, "w").write("disk doldu")
             log("hazirla_mcd: boş alan < 6 GB, indirme durduruldu")
 
-        ready = n_ready("mcd") + n_ready("ubfc")
+        ready = n_ready("mcd") + n_ready("ubfc") + n_ready("pure")
         if not train.done and not train.running() and not train.finished_ok():
             if now < train_until - 300 and ready >= a.min_videos and train.runs() < train.max_runs:
                 train.start()
@@ -159,7 +163,7 @@ def main():
             open(train.donefile, "w").write("zorla durduruldu")
 
         if train.done and not ev.done and not ev.running() and not ev.finished_ok() and ev.runs() < ev.max_runs:
-            for s in (mcd, ubfc):  # değerlendirme sırasında CPU/disk boşalsın
+            for s in (mcd, ubfc, pure):  # değerlendirme sırasında CPU/disk boşalsın
                 if s.running():
                     s.stop()
             ev.start()
