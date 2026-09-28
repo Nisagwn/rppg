@@ -8,3 +8,4 @@ results/screenshots/
 *.avi
 *.mp4
 results/synthetic_quick/
+external/
