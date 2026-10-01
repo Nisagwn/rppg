@@ -74,6 +74,16 @@ h1 { font-size: 18px; margin: 0; letter-spacing: .2px; }
 }
 .placeholder[hidden] { display: none; }
 
+.flip {
+  position: absolute; right: 10px; bottom: 10px; z-index: 2;
+  border: 1px solid rgba(255, 255, 255, .25); border-radius: 999px;
+  background: rgba(15, 17, 21, .72); color: var(--text);
+  padding: 8px 14px; min-height: 40px; cursor: pointer;
+  backdrop-filter: blur(4px);
+}
+.flip:disabled { opacity: .5; cursor: default; }
+.stage.finger .flip { display: none; }
+
 .readout {
   display: grid; grid-template-columns: auto 1fr; gap: 16px; align-items: center;
   margin: 14px 0 10px;

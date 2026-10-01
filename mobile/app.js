@@ -1,5 +1,5 @@
 // rPPG Nabız — telefon uygulaması.
-// Yüz modu:   ön kamera -> pico yüz tespiti (Markuš vd. 2013; piksel karşılaştırmalı karar ağaçları,
+// Yüz modu:   ön ya da arka kamera (⇄ düğmesi) -> pico yüz tespiti (Markuš vd. 2013; piksel karşılaştırmalı karar ağaçları,
 //             Viola–Jones ailesinden klasik yöntem) -> 4 ROI (alın, yanaklar, tüm yüz) + YCrCb cilt maskesi
 //             -> cilt piksellerinin RGB ortalaması -> POS -> detrend + bant geçiren -> spektrum
 //             -> hareket güvenli çevrimiçi Bayes takibi (Viterbi'nin çevrimiçi eşi).
@@ -26,11 +26,11 @@ const els = {
   hr: $("hr"), snr: $("snr"), conf: $("conf"), fps: $("fps"), status: $("status"),
   progressWrap: $("progress-wrap"), progress: $("progress"),
   start: $("start"), csv: $("csv"), raw: $("raw"), reset: $("reset"),
-  modeFace: $("mode-face"), modeFinger: $("mode-finger"),
+  modeFace: $("mode-face"), modeFinger: $("mode-finger"), flip: $("flip"), flipLabel: $("flip-label"),
   plotBvp: $("plot-bvp"), plotSpec: $("plot-spec"), plotHist: $("plot-hist"),
 };
 const params = new URLSearchParams(location.search);
-const VERSION = "v6";
+const VERSION = "v7";
 document.getElementById("version").textContent = VERSION;
 
 const state = {
@@ -39,6 +39,12 @@ const state = {
   bbox: null, lastDet: 0, frameNo: 0, prevGray: null, frameTimes: [], log: [], t0: 0, timer: null, lastBvp: null,
 };
 window.__rppg = state; // tarayıcı testleri ve hata ayıklama için
+
+// Yüz modunda kamera yönü: "user" (ön) ya da "environment" (arka). Tercih tarayıcıda hatırlanır; ?kamera=arka ile de seçilir.
+const FACING_KEY = "rppg.facing";
+state.facing = params.get("kamera") === "arka" ? "environment" : params.get("kamera") === "on" ? "user"
+  : (() => { try { return localStorage.getItem(FACING_KEY) || "user"; } catch { return "user"; } })();
+const camName = () => (state.mode === "finger" ? "arka (parmak)" : state.facing === "user" ? "ön" : "arka");
 
 // ------------------------------------------------------------------ yardımcılar
 function isSkin(r, g, b) {                         // rppg/roi.py skin_mask (OpenCV YCrCb eşikleri)
@@ -192,7 +198,7 @@ function processFrame(tSec) {
   }
   state.samples.push({ t: tSec, rgb, motion });
   if (state.raw.length < RAW_MAX) {            // teşhis için ham veri ("Ham veri indir")
-    state.raw.push({ t: tSec, mode: state.mode, rgb, motion, luma: state.lumaHist[state.lumaHist.length - 1],
+    state.raw.push({ t: tSec, mode: state.mode, cam: camName(), rgb, motion, luma: state.lumaHist[state.lumaHist.length - 1],
       face: state.bbox ? Math.round(state.bbox.w) : 0, W,
       rois: Object.fromEntries(Object.entries(roiRaw).map(([k, m]) => [k, [...m.rgb.map((v) => +v.toFixed(3)), +m.skin.toFixed(3)]])) });
   }
@@ -271,7 +277,7 @@ function analyze() {
   els.conf.textContent = state.mode === "face" ? conf.toFixed(2) : "—";
   setStatus(conf < 0.4 ? "Hareket algılandı — sabit durun" : label, conf < 0.4 ? "fair" : level);
 
-  state.log.push({ t: tEnd - state.t0, hr, snr, conf, mode: state.mode, lock: state.camLock || "-" });
+  state.log.push({ t: tEnd - state.t0, hr, snr, conf, mode: state.mode, cam: camName(), lock: state.camLock || "-" });
   state.lastBvp = res.bvp;
   els.csv.disabled = els.raw.disabled = false;
   els.reset.disabled = false;
@@ -375,7 +381,7 @@ async function start() {
     setStatus("Bu tarayıcı kameraya erişemiyor (HTTPS gerekli)", "bad");
     return;
   }
-  const facingMode = state.mode === "face" ? "user" : "environment";
+  const facingMode = state.mode === "face" ? state.facing : "environment";
   try {
     state.stream = await navigator.mediaDevices.getUserMedia({
       video: { facingMode, width: { ideal: 640 }, height: { ideal: 480 }, frameRate: { ideal: 30 } },
@@ -498,12 +504,31 @@ function setMode(mode) {
   els.modeFinger.classList.toggle("on", mode === "finger");
   els.modeFace.setAttribute("aria-selected", mode === "face");
   els.modeFinger.setAttribute("aria-selected", mode === "finger");
-  els.stage.classList.toggle("mirror", mode === "face");
+  applyFacing();
   els.stage.classList.toggle("finger", mode === "finger");
   els.placeholderText.textContent = mode === "face"
     ? "Yüzünüzü çerçeveye alın, iyi aydınlatılmış bir yerde hareketsiz durun."
     : "Parmak ucunuzu arka kamerayı ve flaşı kapatacak şekilde hafifçe koyun.";
   if (wasRunning) start();
+}
+
+// Görüntü yalnızca ön kamerada aynalanır (ayna gibi doğal görünsün); arka kamerada gerçek yön.
+function applyFacing() {
+  els.stage.classList.toggle("mirror", state.mode === "face" && state.facing === "user");
+  els.flipLabel.textContent = state.facing === "user" ? "Ön kamera" : "Arka kamera";
+  els.flip.setAttribute("aria-label", `Kamerayı değiştir (şu an ${els.flipLabel.textContent.toLowerCase()})`);
+}
+
+async function flipCamera() {
+  state.facing = state.facing === "user" ? "environment" : "user";
+  try { localStorage.setItem(FACING_KEY, state.facing); } catch { /* gizli sekme vb. */ }
+  applyFacing();
+  if (state.running) {               // ölçüm sürüyorsa yeni kamerayla baştan başlar
+    els.flip.disabled = true;
+    stop();
+    await start();
+    els.flip.disabled = false;
+  }
 }
 
 function saveFile(name, text, type) {
@@ -518,15 +543,15 @@ const stamp = () => new Date().toISOString().slice(0, 19).replace(/[:T]/g, "-");
 
 // Teşhis: kare başına ham renk ortalamaları, zaman damgaları, yüz boyutu, cilt oranı, kamera kilidi
 function downloadRaw() {
-  const meta = { ua: navigator.userAgent, camera: state.track?.getSettings?.() || {}, lock: state.camLock,
+  const meta = { ua: navigator.userAgent, facing: camName(), camera: state.track?.getSettings?.() || {}, lock: state.camLock,
     work: [els.work.width, els.work.height], log: state.log };
   saveFile(`rppg_ham_${stamp()}.json`, JSON.stringify({ meta, frames: state.raw }), "application/json");
 }
 
 function downloadCsv() {
-  const rows = ["zaman_s,nabiz_bpm,snr_db,hareket_guveni,mod,kamera_kilidi",
+  const rows = ["zaman_s,nabiz_bpm,snr_db,hareket_guveni,mod,kamera,kamera_kilidi",
     ...state.log.map((r) => [r.t.toFixed(1), r.hr.toFixed(2), r.snr.toFixed(2), r.conf.toFixed(2), r.mode,
-      `"${r.lock}"`].join(","))];
+      r.cam || "", `"${r.lock}"`].join(","))];
   const a = document.createElement("a");
   a.href = URL.createObjectURL(new Blob([rows.join("\n")], { type: "text/csv" }));
   a.download = `rppg_oturum_${new Date().toISOString().slice(0, 19).replace(/[:T]/g, "-")}.csv`;
@@ -538,6 +563,7 @@ function downloadCsv() {
 els.start.addEventListener("click", () => (state.running ? stop() : start()));
 els.modeFace.addEventListener("click", () => setMode("face"));
 els.modeFinger.addEventListener("click", () => setMode("finger"));
+els.flip.addEventListener("click", flipCamera);
 els.csv.addEventListener("click", downloadCsv);
 els.raw.addEventListener("click", downloadRaw);
 els.reset.addEventListener("click", () => {
@@ -548,7 +574,7 @@ els.reset.addEventListener("click", () => {
   els.csv.disabled = els.raw.disabled = els.reset.disabled = true;
 });
 document.addEventListener("visibilitychange", () => { if (document.hidden && state.running) stop(); });
-els.stage.classList.add("mirror");
+applyFacing();
 
 if ("serviceWorker" in navigator && !params.has("autotest")) {
   navigator.serviceWorker.register("sw.js").catch(() => {});

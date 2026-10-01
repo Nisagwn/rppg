@@ -3,6 +3,7 @@
 //
 //   node mobile/test/e2e.mjs --video yuz_84bpm.y4m --expect 84 [--mode finger] [--seconds 35] [--shot out.png]
 //                            [--url https://nisagwn.github.io/rppg/]   # yayındaki sürümü test et
+//                            [--kamera arka]                           # yüz modunda arka kamera seçimi
 //
 // Chrome yolu: CHROME ortam değişkeni ya da Windows/Linux/macOS varsayılanları.
 import { spawn } from "node:child_process";
@@ -45,7 +46,7 @@ const proc = spawn(chrome, [
   "--headless=new", `--remote-debugging-port=${debugPort}`, `--user-data-dir=${mkdtempSync(join(tmpdir(), "rppg-"))}`,
   "--use-fake-ui-for-media-stream", "--use-fake-device-for-media-stream", `--use-file-for-fake-video-capture=${video}`,
   "--autoplay-policy=no-user-gesture-required", "--window-size=412,915", "--no-first-run", "--no-default-browser-check",
-  `${args.url || `http://127.0.0.1:${port}/index.html`}?autotest=${mode}`,
+  `${args.url || `http://127.0.0.1:${port}/index.html`}?autotest=${mode}${args.kamera ? `&kamera=${args.kamera}` : ""}`,
 ], { stdio: "ignore" });
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
@@ -72,6 +73,8 @@ const evaluate = async (expr) => (await cdp("Runtime.evaluate", { expression: ex
 
 await sleep(seconds * 1000);
 const log = await evaluate("window.__rppg.log");
+const cam = await evaluate("({ facing: window.__rppg.facing, mirror: document.getElementById('stage').classList.contains('mirror'), " +
+  "label: document.getElementById('flip-label').textContent, csvCam: window.__rppg.log.at(-1)?.cam })");
 const status = await evaluate("document.querySelector('#status span').textContent");
 if (args.shot) {
   const { data } = await cdp("Page.captureScreenshot", { format: "png", captureBeyondViewport: true });
@@ -84,7 +87,7 @@ server.close();
 const last = log.slice(-15).map((r) => r.hr).sort((a, b) => a - b);
 const median = last[Math.floor(last.length / 2)];
 console.log(JSON.stringify({ mode, expect, windows: log.length, median_last15: median,
-  hr: log.map((r) => +r.hr.toFixed(1)), snr_last: log.at(-1)?.snr.toFixed(1), status }, null, 1));
+  hr: log.map((r) => +r.hr.toFixed(1)), snr_last: log.at(-1)?.snr.toFixed(1), status, cam }, null, 1));
 if (args.log) writeFileSync(args.log, JSON.stringify(log));
 const ok = log.length >= 10 && Math.abs(median - expect) < 3;
 console.log(ok ? "BAŞARILI" : "BAŞARISIZ");
