@@ -45,3 +45,10 @@ FactorizePhys, test kişileri hariç MCD-rPPG (160 kişi, 3 kamera) + UBFC (3 de
 - UBFC'de hazır modelin biraz gerisinde (1.76 / 1.42). Eğitimde yalnızca 3 UBFC deneği var.
 - Sınırlar: test kümesi küçük (28 video, 18 kişi), yalnızca önden webcam. Telefonda (tarayıcıda) çalıştırma henüz yapılmadı.
 - Yeni karar: ince ayarlı model klasik hattan belirgin şekilde iyi. Sonraki adım, modeli mobil uygulamada çalıştırmak (ör. ONNX) ve telefon kamerasıyla doğrulamak.
+
+## Güncelleme: büyük veriyle Kaggle eğitimi (2026-10-02)
+
+Eğitim Kaggle GPU'sunda MCD-rPPG 590 kişi + PURE ile 200 epoch'a tamamlandı (UBFC Kaggle'da işlenemedi). Aynı 28 videoda
+sonuç **değişmedi**: ince ayarlı + Viterbi 1.19 BPM (önceki 1.19; 26/28 videoda fark ≤0.5 BPM). Veri ~3.5 kat büyüdü ama bu
+webcam test kümesi doymuş durumda (medyan hata 0.57 BPM); daha geniş verinin faydası ancak telefonla toplanacak test verisiyle
+ölçülebilir. Ayrıntılar: [kaggle/SONUCLAR.md](kaggle/SONUCLAR.md).

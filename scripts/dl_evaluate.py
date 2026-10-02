@@ -62,6 +62,10 @@ def main():
     ap.add_argument("--history", default="", help="gecmis.json (varsayılan: modelin klasörü)")
     a = ap.parse_args()
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    n_test = len(glob.glob(os.path.join(a.test, "*.npz")))
+    if n_test == 0:
+        raise SystemExit(f"Test klasöründe video yok: {a.test} (önce scripts/dl_prepare.py --test ya da --test-download)")
+    print(f"test: {n_test} video", flush=True)
 
     rows = evaluate(build_model(device, PRETRAINED), device, a.test, "FactorizePhys PURE (hazır)")
     rows += evaluate(build_model(device, a.model), device, a.test, "FactorizePhys ince ayarlı")
