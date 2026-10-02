@@ -35,6 +35,14 @@
       </button>
     </section>
 
+    <div class="method" id="method">
+      <span>Yöntem</span>
+      <div class="seg" role="tablist" aria-label="Ölçüm yöntemi">
+        <button id="method-ai" class="on" role="tab" aria-selected="true">Yapay zekâ</button>
+        <button id="method-pos" role="tab" aria-selected="false">Klasik</button>
+      </div>
+    </div>
+
     <section class="readout" aria-live="polite">
       <div class="hr">
         <span id="hr">--</span><small>BPM</small>
@@ -82,6 +90,9 @@
           telefonu ona doğru tutun. Arka kamera genelde daha kalitelidir.</li>
         <li>Işık yüzünüze <b>önden</b> gelsin; arkanızda pencere olmasın.</li>
         <li>Konuşmayın, kıpırdamayın. İlk değer ~8 saniyede gelir, 20–30 saniyede oturur.</li>
+        <li><b>Yapay zekâ</b> yöntemi (varsayılan) ~600 kişilik veriyle eğitilmiş bir derin öğrenme modeli kullanır;
+          testlerde klasik yöntemden belirgin şekilde daha doğru. İlk açılışta model (~14 MB) bir kez indirilir.
+          Eski veya yavaş telefonlarda <b>Klasik</b> yöntemi seçebilirsiniz.</li>
       </ul>
       <h3>Parmak modu (arka kamera + flaş)</h3>
       <ul>

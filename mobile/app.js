@@ -4,9 +4,11 @@
 //             -> cilt piksellerinin RGB ortalaması -> POS -> detrend + bant geçiren -> spektrum
 //             -> hareket güvenli çevrimiçi Bayes takibi (Viterbi'nin çevrimiçi eşi).
 //             ROI'ler ortalama füzyonla birleşir: gerçek veride (UBFC, MCD-rPPG) en iyi sonucu veren hat.
+//             Yapay zekâ yöntemi (varsayılan): yüz kutusu x1.5 -> 72x72 RGB -> 30 fps ızgara -> FactorizePhys
+//             (ince ayarlı, ONNX, Web Worker'da) -> örtüşen parçaların birleşimi -> aynı spektrum + takip.
 // Parmak modu: arka kamera + flaş, merkez bölgenin G/R kanalı (temaslı PPG).
 import {
-  BPM_GRID, OnlineHRTracker, analyzeWindow, motionConfidence, windowSnr,
+  BPM_GRID, OnlineHRTracker, analyzeWindow, motionConfidence, preprocessBvp, spectrumBpm, windowSnr,
 } from "./dsp.js";
 
 const ROI_DEFS = {               // rppg/roi.py ROI_DEFS ile aynı (yüz kutusuna göre kesirler)
@@ -27,10 +29,11 @@ const els = {
   progressWrap: $("progress-wrap"), progress: $("progress"),
   start: $("start"), csv: $("csv"), raw: $("raw"), reset: $("reset"),
   modeFace: $("mode-face"), modeFinger: $("mode-finger"), flip: $("flip"), flipLabel: $("flip-label"),
+  method: $("method"), methodAi: $("method-ai"), methodPos: $("method-pos"),
   plotBvp: $("plot-bvp"), plotSpec: $("plot-spec"), plotHist: $("plot-hist"),
 };
 const params = new URLSearchParams(location.search);
-const VERSION = "v7";
+const VERSION = "v8";
 document.getElementById("version").textContent = VERSION;
 
 const state = {
@@ -44,6 +47,11 @@ window.__rppg = state; // tarayıcı testleri ve hata ayıklama için
 const FACING_KEY = "rppg.facing";
 state.facing = params.get("kamera") === "arka" ? "environment" : params.get("kamera") === "on" ? "user"
   : (() => { try { return localStorage.getItem(FACING_KEY) || "user"; } catch { return "user"; } })();
+// Yüz modunda yöntem: "ai" (derin öğrenme modeli) ya da "pos" (klasik). ?yontem=klasik|ai ile de seçilir.
+const METHOD_KEY = "rppg.method";
+state.method = params.get("yontem") === "klasik" ? "pos" : params.get("yontem") === "ai" ? "ai"
+  : (() => { try { return localStorage.getItem(METHOD_KEY) || "ai"; } catch { return "ai"; } })();
+const methodName = () => (state.mode === "finger" ? "parmak" : state.method === "ai" ? "yapay zekâ" : "klasik (POS)");
 const camName = () => (state.mode === "finger" ? "arka (parmak)" : state.facing === "user" ? "ön" : "arka");
 
 // ------------------------------------------------------------------ yardımcılar
@@ -186,6 +194,10 @@ function processFrame(tSec) {
         motion = g.reduce((a, v2, i) => a + Math.abs(v2 - state.prevGray[i]), 0) / g.length;
       }
       state.prevGray = g;
+      if (state.method === "ai" && !dl.failed) {
+        dlCapture(tSec);
+        dlSchedule();
+      }
     } else {
       state.prevGray = null;
     }
@@ -234,7 +246,7 @@ function analyze() {
   const win = S.filter((s) => s.t >= tEnd - WIN_SEC);
   const valid = win.filter((s) => s.rgb);
   const fps = (state.frameTimes.length - 1) / (state.frameTimes[state.frameTimes.length - 1] - state.frameTimes[0] || 1);
-  els.fps.textContent = `${fps.toFixed(0)} fps`;
+  els.fps.textContent = state.mode === "face" && state.method === "ai" && dl.ms ? `${fps.toFixed(0)} fps · YZ ${dl.ms.toFixed(0)} ms` : `${fps.toFixed(0)} fps`;
 
   const lostMsg = state.mode === "face" ? "Yüz bulunamadı — çerçeveye girin, ışığı artırın" : "Parmağınızı kamera ve flaşın üzerine koyun";
   if (valid.length < win.length * 0.7) {
@@ -254,7 +266,17 @@ function analyze() {
 
   const t = valid.map((s) => s.t), rgb = valid.map((s) => s.rgb);
   let res;
-  if (state.mode === "face") {
+  if (state.mode === "face" && state.method === "ai" && !dl.failed) {
+    const ser = dlSeries(WIN_SEC), dspan = ser ? ser.t[ser.t.length - 1] - ser.t[0] : 0;
+    if (dspan < MIN_SEC) {                         // model dalgası henüz 8 s'ye ulaşmadı
+      els.progressWrap.hidden = false;
+      els.progress.style.width = `${Math.min(100, (100 * dspan) / MIN_SEC)}%`;
+      setStatus(dl.ready ? "Yapay zekâ ölçüyor…" : "Yapay zekâ modeli yükleniyor…", "fair");
+      return;
+    }
+    const bvp = preprocessBvp(ser.x);
+    res = { bvp, spec: spectrumBpm(bvp) };
+  } else if (state.mode === "face") {
     res = analyzeWindow(t, rgb, { method: "pos" });
   } else {                                          // parmak: G ve R kanalından SNR'si yüksek olan
     const cands = [1, 0].map((ch) => analyzeWindow(t, rgb, { method: "channel", channel: ch }));
@@ -275,9 +297,10 @@ function analyze() {
   els.hr.textContent = hr.toFixed(0);
   els.snr.textContent = `${snr.toFixed(1)} dB`;
   els.conf.textContent = state.mode === "face" ? conf.toFixed(2) : "—";
-  setStatus(conf < 0.4 ? "Hareket algılandı — sabit durun" : label, conf < 0.4 ? "fair" : level);
+  const fallback = state.mode === "face" && state.method === "ai" && dl.failed ? " · model çalışmadı, klasik yöntem" : "";
+  setStatus((conf < 0.4 ? "Hareket algılandı — sabit durun" : label) + fallback, conf < 0.4 ? "fair" : level);
 
-  state.log.push({ t: tEnd - state.t0, hr, snr, conf, mode: state.mode, cam: camName(), lock: state.camLock || "-" });
+  state.log.push({ t: tEnd - state.t0, hr, snr, conf, mode: state.mode, method: methodName(), cam: camName(), lock: state.camLock || "-" });
   state.lastBvp = res.bvp;
   els.csv.disabled = els.raw.disabled = false;
   els.reset.disabled = false;
@@ -338,6 +361,123 @@ function drawSpectrum(c, p, hr) {
   ctx.moveTo(sx(hr), 0);
   ctx.lineTo(sx(hr), h - 14 * dpr);
   ctx.stroke();
+}
+
+// ------------------------------------------------------------------ yapay zekâ (derin öğrenme) hattı
+// Eğitimdeki ön işlemeyle aynı: yüz kutusu merkez sabit x1.5 büyütülür, 72x72'ye küçültülür (ham RGB, 0–255),
+// kareler zaman damgalarına göre 30 fps'lik sabit ızgaraya doğrusal enterpole edilir. Model 161 karelik
+// pencereden 160 örneklik nabız dalgası verir; pencereler yarı örtüşür (80 kare ≈ 2.7 s'de bir) ve Hann
+// ağırlıklarıyla birleştirilir. Sonuç klasik hattaki gibi detrend + bant geçiren + spektrum + takipten geçer.
+const DL_SIZE = 72, DL_T = 160, DL_HOP = 80, DL_FS = 30, DL_BOX = 1.5, DL_KEEP_SEC = 12, DL_MAX_GAP = 0.35;
+const dl = { worker: null, ready: false, failed: "", busy: false, gen: 0, frames: [], t0: null, nextK: null,
+  acc: new Map(), ms: 0, canvas: null };
+window.__rppgDl = dl; // tarayıcı testleri için
+
+function dlInit() {
+  if (dl.worker || dl.failed) return;
+  try {
+    dl.worker = new Worker("dl_worker.js", { type: "module" });
+  } catch (e) {
+    dl.failed = "bu tarayıcı modeli çalıştıramıyor";
+    return;
+  }
+  dl.worker.onmessage = (e) => {
+    const m = e.data;
+    if (m.type === "ready") dl.ready = true;
+    else if (m.type === "error") { dl.failed = m.message; dl.busy = false; }
+    else if (m.type === "bvp") {
+      dl.busy = false;
+      dl.ms = m.ms;
+      if (m.gen === dl.gen) dlAddBvp(m.k0, m.bvp);
+      dlSchedule();
+    }
+  };
+  dl.worker.onerror = (e) => { dl.failed = e.message || "model yüklenemedi"; dl.busy = false; };
+  dl.worker.postMessage({ type: "load" });
+}
+
+function dlReset() {
+  dl.gen++;
+  dl.frames = [];
+  dl.t0 = null;
+  dl.nextK = null;
+  dl.acc.clear();
+}
+
+function dlCapture(tSec) {                     // yüz kutusundan 72x72 RGB kırpıntı (tam çözünürlüklü kareden)
+  const v = els.video, b = state.bbox, vw = v.videoWidth, vh = v.videoHeight, sc = vw / els.work.width;
+  if (!dl.canvas) {
+    dl.canvas = document.createElement("canvas");
+    dl.canvas.width = dl.canvas.height = DL_SIZE;
+  }
+  const size = Math.max(b.w, b.h) * DL_BOX * sc, cx = (b.x + b.w / 2) * sc, cy = (b.y + b.h / 2) * sc;
+  const x0 = Math.max(0, cx - size / 2), y0 = Math.max(0, cy - size / 2);
+  const x1 = Math.min(vw, cx + size / 2), y1 = Math.min(vh, cy + size / 2);
+  if (x1 - x0 < 8 || y1 - y0 < 8) return;
+  const ctx = dl.canvas.getContext("2d", { willReadFrequently: true });
+  ctx.imageSmoothingEnabled = true;
+  ctx.imageSmoothingQuality = "high";            // alan ortalamasına yakın küçültme (eğitimde INTER_AREA)
+  ctx.drawImage(v, x0, y0, x1 - x0, y1 - y0, 0, 0, DL_SIZE, DL_SIZE);
+  const d = ctx.getImageData(0, 0, DL_SIZE, DL_SIZE).data, px = new Uint8Array(DL_SIZE * DL_SIZE * 3);
+  for (let i = 0, j = 0; j < px.length; i += 4, j += 3) { px[j] = d[i]; px[j + 1] = d[i + 1]; px[j + 2] = d[i + 2]; }
+  dl.frames.push({ t: tSec, px });
+  if (dl.t0 === null) dl.t0 = tSec;
+  while (dl.frames.length && tSec - dl.frames[0].t > DL_KEEP_SEC) dl.frames.shift();
+}
+
+function dlSchedule() {
+  if (!dl.ready || dl.busy || dl.frames.length < 2 || dl.t0 === null) return;
+  const F = dl.frames, kLast = Math.floor((F[F.length - 1].t - dl.t0) * DL_FS);
+  if (dl.nextK === null) dl.nextK = Math.max(DL_T, Math.ceil((F[0].t - dl.t0) * DL_FS) + DL_T);
+  if (kLast < dl.nextK) return;
+  const kEnd = kLast - dl.nextK > DL_HOP ? kLast : dl.nextK;   // geride kaldıysa en yeniye atla
+  const k0 = kEnd - DL_T, T = DL_T + 1, P = DL_SIZE * DL_SIZE;
+  dl.nextK = kEnd + DL_HOP;
+  if (dl.t0 + k0 / DL_FS < F[0].t) return;                   // pencerenin başı artık bellekte yok
+  const out = new Float32Array(3 * T * P);
+  let j = 0;
+  for (let i = 0; i < T; i++) {
+    const t = dl.t0 + (k0 + i) / DL_FS;
+    while (j < F.length - 2 && F[j + 1].t <= t) j++;
+    const a = F[j], b = F[j + 1];
+    if (b.t - a.t > DL_MAX_GAP) return;                       // yüz kayboldu / kare atlandı: bu pencereyi geç
+    const w = Math.min(1, Math.max(0, (t - a.t) / (b.t - a.t || 1)));
+    for (let p = 0, q = 0; p < P; p++, q += 3) {
+      for (let c = 0; c < 3; c++) out[c * T * P + i * P + p] = a.px[q + c] * (1 - w) + b.px[q + c] * w;
+    }
+  }
+  dl.busy = true;
+  dl.worker.postMessage({ type: "run", frames: out, T, k0, gen: dl.gen }, [out.buffer]);
+}
+
+function dlAddBvp(k0, bvp) {
+  let m = 0, s = 0;
+  for (const v of bvp) m += v;
+  m /= bvp.length;
+  for (const v of bvp) s += (v - m) ** 2;
+  s = Math.sqrt(s / bvp.length) || 1;
+  for (let i = 0; i < bvp.length; i++) {
+    const w = Math.sin((Math.PI * (i + 0.5)) / bvp.length) ** 2, k = k0 + i, e = dl.acc.get(k) || [0, 0];
+    e[0] += (w * (bvp[i] - m)) / s;
+    e[1] += w;
+    dl.acc.set(k, e);
+  }
+  const kMin = k0 + bvp.length - 20 * DL_FS;
+  for (const k of dl.acc.keys()) if (k < kMin) dl.acc.delete(k);
+}
+
+function dlSeries(winSec) {                    // son winSec saniyenin birleşik nabız dalgası (30 Hz)
+  if (!dl.acc.size) return null;
+  const ks = [...dl.acc.keys()].sort((a, b) => a - b), kMax = ks[ks.length - 1];
+  const t = [], x = [];
+  for (const k of ks) {
+    if (k <= kMax - winSec * DL_FS) continue;
+    const [v, w] = dl.acc.get(k);
+    if (w < 0.1) continue;                      // pencere kenarındaki çok düşük ağırlıklı örnekler
+    t.push(dl.t0 + k / DL_FS);
+    x.push(v / w);
+  }
+  return x.length ? { t, x } : null;
 }
 
 // ------------------------------------------------------------------ kamera
@@ -413,6 +553,7 @@ async function start() {
   }
 
   if (state.mode === "face") {
+    if (state.method === "ai") dlInit();
     try {
       await loadFaceDetector();
     } catch {
@@ -477,6 +618,7 @@ function stop() {
 }
 
 function resetMeasurement() {
+  dlReset();
   state.samples = [];
   state.maskProb = {};
   state.tracker.reset();
@@ -505,6 +647,7 @@ function setMode(mode) {
   els.modeFace.setAttribute("aria-selected", mode === "face");
   els.modeFinger.setAttribute("aria-selected", mode === "finger");
   applyFacing();
+  els.method.hidden = mode !== "face";
   els.stage.classList.toggle("finger", mode === "finger");
   els.placeholderText.textContent = mode === "face"
     ? "Yüzünüzü çerçeveye alın, iyi aydınlatılmış bir yerde hareketsiz durun."
@@ -517,6 +660,24 @@ function applyFacing() {
   els.stage.classList.toggle("mirror", state.mode === "face" && state.facing === "user");
   els.flipLabel.textContent = state.facing === "user" ? "Ön kamera" : "Arka kamera";
   els.flip.setAttribute("aria-label", `Kamerayı değiştir (şu an ${els.flipLabel.textContent.toLowerCase()})`);
+}
+
+function applyMethod() {
+  els.methodAi.classList.toggle("on", state.method === "ai");
+  els.methodPos.classList.toggle("on", state.method === "pos");
+  els.methodAi.setAttribute("aria-selected", state.method === "ai");
+  els.methodPos.setAttribute("aria-selected", state.method === "pos");
+}
+
+function setMethod(m) {
+  if (m === state.method) return;
+  state.method = m;
+  try { localStorage.setItem(METHOD_KEY, m); } catch { /* gizli sekme vb. */ }
+  applyMethod();
+  if (state.running) {               // aynı kamera akışıyla baştan ölç
+    if (m === "ai") dlInit();
+    resetMeasurement();
+  }
 }
 
 async function flipCamera() {
@@ -543,15 +704,15 @@ const stamp = () => new Date().toISOString().slice(0, 19).replace(/[:T]/g, "-");
 
 // Teşhis: kare başına ham renk ortalamaları, zaman damgaları, yüz boyutu, cilt oranı, kamera kilidi
 function downloadRaw() {
-  const meta = { ua: navigator.userAgent, facing: camName(), camera: state.track?.getSettings?.() || {}, lock: state.camLock,
+  const meta = { ua: navigator.userAgent, method: methodName(), dl_ms: dl.ms, dl_error: dl.failed, facing: camName(), camera: state.track?.getSettings?.() || {}, lock: state.camLock,
     work: [els.work.width, els.work.height], log: state.log };
   saveFile(`rppg_ham_${stamp()}.json`, JSON.stringify({ meta, frames: state.raw }), "application/json");
 }
 
 function downloadCsv() {
-  const rows = ["zaman_s,nabiz_bpm,snr_db,hareket_guveni,mod,kamera,kamera_kilidi",
+  const rows = ["zaman_s,nabiz_bpm,snr_db,hareket_guveni,mod,yontem,kamera,kamera_kilidi",
     ...state.log.map((r) => [r.t.toFixed(1), r.hr.toFixed(2), r.snr.toFixed(2), r.conf.toFixed(2), r.mode,
-      r.cam || "", `"${r.lock}"`].join(","))];
+      `"${r.method || ""}"`, r.cam || "", `"${r.lock}"`].join(","))];
   const a = document.createElement("a");
   a.href = URL.createObjectURL(new Blob([rows.join("\n")], { type: "text/csv" }));
   a.download = `rppg_oturum_${new Date().toISOString().slice(0, 19).replace(/[:T]/g, "-")}.csv`;
@@ -564,6 +725,8 @@ els.start.addEventListener("click", () => (state.running ? stop() : start()));
 els.modeFace.addEventListener("click", () => setMode("face"));
 els.modeFinger.addEventListener("click", () => setMode("finger"));
 els.flip.addEventListener("click", flipCamera);
+els.methodAi.addEventListener("click", () => setMethod("ai"));
+els.methodPos.addEventListener("click", () => setMethod("pos"));
 els.csv.addEventListener("click", downloadCsv);
 els.raw.addEventListener("click", downloadRaw);
 els.reset.addEventListener("click", () => {
@@ -575,6 +738,7 @@ els.reset.addEventListener("click", () => {
 });
 document.addEventListener("visibilitychange", () => { if (document.hidden && state.running) stop(); });
 applyFacing();
+applyMethod();
 
 if ("serviceWorker" in navigator && !params.has("autotest")) {
   navigator.serviceWorker.register("sw.js").catch(() => {});

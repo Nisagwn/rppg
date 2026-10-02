@@ -1,7 +1,8 @@
 // Çevrimdışı çalışma: uygulama dosyalarını önbellekten sun, arka planda güncelle.
-const CACHE = "rppg-v7";
+const CACHE = "rppg-v8";
 const FILES = ["./", "index.html", "style.css", "app.js", "dsp.js", "manifest.webmanifest",
-  "vendor/pico.js", "vendor/facefinder", "icons/icon.svg", "icons/icon-192.png", "icons/icon-512.png"];
+  "vendor/pico.js", "vendor/facefinder", "icons/icon.svg", "icons/icon-192.png", "icons/icon-512.png",
+  "dl_worker.js", "model/factorizephys.onnx", "vendor/ort/ort.wasm.bundle.min.mjs", "vendor/ort/ort-wasm-simd-threaded.wasm", "vendor/ort/ort-wasm-simd-threaded.mjs"];
 
 self.addEventListener("install", (e) => {
   e.waitUntil(caches.open(CACHE).then((c) => c.addAll(FILES.map((f) => new Request(f, { cache: "reload" })))).then(() => self.skipWaiting()));

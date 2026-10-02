@@ -4,6 +4,7 @@
 //   node mobile/test/e2e.mjs --video yuz_84bpm.y4m --expect 84 [--mode finger] [--seconds 35] [--shot out.png]
 //                            [--url https://nisagwn.github.io/rppg/]   # yayındaki sürümü test et
 //                            [--kamera arka]                           # yüz modunda arka kamera seçimi
+//                            [--yontem ai|klasik]                      # yüz modunda yöntem (varsayılan: ai)
 //
 // Chrome yolu: CHROME ortam değişkeni ya da Windows/Linux/macOS varsayılanları.
 import { spawn } from "node:child_process";
@@ -31,7 +32,8 @@ const chrome = process.env.CHROME || [
 ].find(existsSync);
 if (!chrome) throw new Error("Chrome bulunamadı; CHROME ortam değişkenini ayarlayın");
 
-const types = { ".html": "text/html", ".js": "text/javascript", ".css": "text/css", ".png": "image/png",
+const types = { ".html": "text/html", ".js": "text/javascript", ".mjs": "text/javascript", ".css": "text/css",
+  ".png": "image/png", ".wasm": "application/wasm", ".onnx": "application/octet-stream",
   ".svg": "image/svg+xml", ".webmanifest": "application/manifest+json", ".json": "application/json" };
 const server = createServer((req, res) => {
   const p = join(root, decodeURIComponent(new URL(req.url, "http://x").pathname).replace(/\/$/, "/index.html"));
@@ -46,7 +48,7 @@ const proc = spawn(chrome, [
   "--headless=new", `--remote-debugging-port=${debugPort}`, `--user-data-dir=${mkdtempSync(join(tmpdir(), "rppg-"))}`,
   "--use-fake-ui-for-media-stream", "--use-fake-device-for-media-stream", `--use-file-for-fake-video-capture=${video}`,
   "--autoplay-policy=no-user-gesture-required", "--window-size=412,915", "--no-first-run", "--no-default-browser-check",
-  `${args.url || `http://127.0.0.1:${port}/index.html`}?autotest=${mode}${args.kamera ? `&kamera=${args.kamera}` : ""}`,
+  `${args.url || `http://127.0.0.1:${port}/index.html`}?autotest=${mode}${args.kamera ? `&kamera=${args.kamera}` : ""}${args.yontem ? `&yontem=${args.yontem}` : ""}`,
 ], { stdio: "ignore" });
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
@@ -74,7 +76,9 @@ const evaluate = async (expr) => (await cdp("Runtime.evaluate", { expression: ex
 await sleep(seconds * 1000);
 const log = await evaluate("window.__rppg.log");
 const cam = await evaluate("({ facing: window.__rppg.facing, mirror: document.getElementById('stage').classList.contains('mirror'), " +
-  "label: document.getElementById('flip-label').textContent, csvCam: window.__rppg.log.at(-1)?.cam })");
+  "label: document.getElementById('flip-label').textContent, csvCam: window.__rppg.log.at(-1)?.cam, " +
+  "method: window.__rppg.log.at(-1)?.method, dl: { ready: window.__rppgDl.ready, failed: window.__rppgDl.failed, " +
+  "ms: Math.round(window.__rppgDl.ms), samples: window.__rppgDl.acc.size } })");
 const status = await evaluate("document.querySelector('#status span').textContent");
 if (args.shot) {
   const { data } = await cdp("Page.captureScreenshot", { format: "png", captureBeyondViewport: true });
@@ -89,6 +93,8 @@ const median = last[Math.floor(last.length / 2)];
 console.log(JSON.stringify({ mode, expect, windows: log.length, median_last15: median,
   hr: log.map((r) => +r.hr.toFixed(1)), snr_last: log.at(-1)?.snr.toFixed(1), status, cam }, null, 1));
 if (args.log) writeFileSync(args.log, JSON.stringify(log));
-const ok = log.length >= 10 && Math.abs(median - expect) < 3;
+const dlBroken = mode === "face" && args.yontem !== "klasik" && cam?.dl?.failed;   // klasiğe sessizce düşmesin
+if (dlBroken) console.log("model çalışmadı:", cam.dl.failed);
+const ok = !dlBroken && log.length >= 10 && Math.abs(median - expect) < 3;
 console.log(ok ? "BAŞARILI" : "BAŞARISIZ");
 process.exit(ok ? 0 : 1);
