@@ -1,0 +1,23 @@
+UBFC-Phys: 48 zip
+  [1/48] s17.zip: s17_T1: 3601 kare, yüz %100, işaret - (r=0.67); s17_T2: 3601 kare, yüz %90, işaret - (r=0.18); s17_T3: 3601 kare, yüz %99, işaret - (r=0.12)  (1367 s)
+av_interleaved_write_frame(): Broken pipe
+av_interleaved_write_frame(): Broken pipe
+  [2/48] s18.zip: s18_T1: 3601 kare, yüz %100, işaret + (r=0.86); s18_T2: 3601 kare, yüz %100, işaret - (r=0.41); s18_T3: 3601 kare, yüz %100, işaret + (r=0.46)  (2728 s)
+  [3/48] s19.zip: s19_T1: 3601 kare, yüz %100, işaret - (r=0.71); s19_T2: 3601 kare, yüz %66, işaret - (r=0.13); s19_T3: 3601 kare, yüz %99, işaret + (r=0.04)  (4144 s)
+av_interleaved_write_frame(): Broken pipe
+  [4/48] s20.zip: s20_T1: 3601 kare, yüz %100, işaret + (r=0.73); s20_T2: 3601 kare, yüz %100, işaret - (r=0.07); s20_T3: 3601 kare, yüz %99, işaret - (r=0.07)  (5481 s)
+av_interleaved_write_frame(): Broken pipe
+  [5/48] s21.zip: s21_T1: 3601 kare, yüz %100, işaret - (r=0.37); s21_T2: 3601 kare, yüz %100, işaret + (r=0.05); s21_T3: 3601 kare, yüz %100, işaret + (r=0.13)  (6755 s)
+  [6/48] s22.zip: s22_T1: 3601 kare, yüz %100, işaret + (r=0.40); s22_T2: 3601 kare, yüz %99, işaret + (r=0.12); s22_T3: 3601 kare, yüz %99, işaret - (r=0.04)  (8022 s)
+  [7/48] s23.zip: s23_T1: 3601 kare, yüz %100, işaret - (r=0.40); s23_T2: 3601 kare, yüz %99, işaret + (r=0.04); s23_T3: 3601 kare, yüz %100, işaret + (r=0.06)  (9224 s)
+  [8/48] s24.zip: s24_T1: 3601 kare, yüz %100, işaret - (r=0.23); s24_T2: 3601 kare, yüz %100, işaret - (r=0.27); s24_T3: 3601 kare, yüz %96, işaret + (r=0.08)  (10558 s)
+  [9/48] s25.zip: s25_T1: 3601 kare, yüz %100, işaret + (r=0.27); s25_T2: 3601 kare, yüz %100, işaret - (r=0.10); s25_T3: 3601 kare, yüz %98, işaret + (r=0.03)  (11760 s)
+  [10/48] s26.zip: s26_T1: 3601 kare, yüz %98, işaret + (r=0.07); s26_T2: 3601 kare, yüz %100, işaret - (r=0.09); s26_T3: 3601 kare, yüz %100, işaret + (r=0.12)  (12994 s)
+  [11/48] s27.zip: s27_T1: 3601 kare, yüz %100, işaret - (r=0.27); s27_T2: 3601 kare, yüz %100, işaret + (r=0.04); s27_T3: 3601 kare, yüz %95, işaret - (r=0.12)  (14197 s)
+  [12/48] s28.zip: s28_T1: 3601 kare, yüz %100, işaret - (r=0.09); s28_T2: 3601 kare, yüz %99, işaret - (r=0.08); s28_T3: 3601 kare, yüz %100, işaret - (r=0.12)  (15297 s)
+  [13/48] s29.zip: s29_T1: 3601 kare, yüz %94, işaret + (r=0.34); s29_T2: 3601 kare, yüz %95, işaret + (r=0.15); s29_T3: 3601 kare, yüz %88, işaret + (r=0.22)  (16544 s)
+  [14/48] s30.zip: s30_T1: 3601 kare, yüz %51, işaret - (r=0.12); s30_T2: 3601 kare, yüz %98, işaret + (r=0.03); s30_T3: 3601 kare, yüz %98, işaret - (r=0.09)  (17836 s)
+  [15/48] s31.zip: s31_T1: 3601 kare, yüz %100, işaret + (r=0.04); s31_T2: 3601 kare, yüz %100, işaret - (r=0.07); s31_T3: 3601 kare, yüz %94, işaret - (r=0.18)  (19077 s)
+  [16/48] s32.zip: s32_T1: 3601 kare, yüz %100, işaret - (r=0.14); s32_T2: 3601 kare, yüz %98, işaret - (r=0.04); s32_T3: 3601 kare, yüz %100, işaret - (r=0.06)  (20242 s)
+  [17/48] s33.zip: s33_T1: 3601 kare, yüz %91, işaret - (r=0.06); s33_T2: 3601 kare, yüz %91, işaret + (r=0.01); s33_T3: 3601 kare, yüz %66, işaret + (r=0.09)  (21487 s)
+  [18/48] s34.zip: s34_T1: 3601 kare, yüz %100, işaret + (r=0.52); s34_T2: 3601 kare, yüz %48, işaret - (r=0.01); s34_T3: 3601 kare, yüz %77, işaret + (r=0.02)  (22667 s)
