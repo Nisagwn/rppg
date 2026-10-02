@@ -39,6 +39,7 @@ jobs:
         run: |
           mkdir _site
           cp -r mobile/index.html mobile/style.css mobile/app.js mobile/dsp.js mobile/sw.js \
+                mobile/dl_worker.js mobile/model \
                 mobile/manifest.webmanifest mobile/icons mobile/vendor _site/
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
