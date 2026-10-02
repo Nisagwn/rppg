@@ -4,7 +4,7 @@
 //             -> cilt piksellerinin RGB ortalaması -> POS -> detrend + bant geçiren -> spektrum
 //             -> hareket güvenli çevrimiçi Bayes takibi (Viterbi'nin çevrimiçi eşi).
 //             ROI'ler ortalama füzyonla birleşir: gerçek veride (UBFC, MCD-rPPG) en iyi sonucu veren hat.
-//             Yapay zekâ yöntemi (varsayılan): yüz kutusu x1.5 -> 72x72 RGB -> 30 fps ızgara -> FactorizePhys
+//             Eğitilmiş model (FactorizePhys): yüz kutusu x1.5 -> 72x72 RGB -> 30 fps ızgara -> FactorizePhys
 //             (ince ayarlı, ONNX, Web Worker'da) -> örtüşen parçaların birleşimi -> aynı spektrum + takip.
 // Parmak modu: arka kamera + flaş, merkez bölgenin G/R kanalı (temaslı PPG).
 import {
@@ -29,11 +29,10 @@ const els = {
   progressWrap: $("progress-wrap"), progress: $("progress"),
   start: $("start"), csv: $("csv"), raw: $("raw"), reset: $("reset"),
   modeFace: $("mode-face"), modeFinger: $("mode-finger"), flip: $("flip"), flipLabel: $("flip-label"),
-  method: $("method"), methodAi: $("method-ai"), methodPos: $("method-pos"),
   plotBvp: $("plot-bvp"), plotSpec: $("plot-spec"), plotHist: $("plot-hist"),
 };
 const params = new URLSearchParams(location.search);
-const VERSION = "v8";
+const VERSION = "v9";
 document.getElementById("version").textContent = VERSION;
 
 const state = {
@@ -47,11 +46,10 @@ window.__rppg = state; // tarayıcı testleri ve hata ayıklama için
 const FACING_KEY = "rppg.facing";
 state.facing = params.get("kamera") === "arka" ? "environment" : params.get("kamera") === "on" ? "user"
   : (() => { try { return localStorage.getItem(FACING_KEY) || "user"; } catch { return "user"; } })();
-// Yüz modunda yöntem: "ai" (derin öğrenme modeli) ya da "pos" (klasik). ?yontem=klasik|ai ile de seçilir.
-const METHOD_KEY = "rppg.method";
-state.method = params.get("yontem") === "klasik" ? "pos" : params.get("yontem") === "ai" ? "ai"
-  : (() => { try { return localStorage.getItem(METHOD_KEY) || "ai"; } catch { return "ai"; } })();
-const methodName = () => (state.mode === "finger" ? "parmak" : state.method === "ai" ? "yapay zekâ" : "klasik (POS)");
+// Yüz modunda her zaman eğitilmiş model kullanılır. Klasik POS yalnızca model açılamazsa otomatik yedektir
+// (karşılaştırma testleri için ?yontem=klasik ile zorlanabilir).
+state.method = params.get("yontem") === "klasik" ? "pos" : "ai";
+const methodName = () => (state.mode === "finger" ? "parmak" : state.method === "ai" && !dl.failed ? "model" : "klasik (POS)");
 const camName = () => (state.mode === "finger" ? "arka (parmak)" : state.facing === "user" ? "ön" : "arka");
 
 // ------------------------------------------------------------------ yardımcılar
@@ -246,7 +244,7 @@ function analyze() {
   const win = S.filter((s) => s.t >= tEnd - WIN_SEC);
   const valid = win.filter((s) => s.rgb);
   const fps = (state.frameTimes.length - 1) / (state.frameTimes[state.frameTimes.length - 1] - state.frameTimes[0] || 1);
-  els.fps.textContent = state.mode === "face" && state.method === "ai" && dl.ms ? `${fps.toFixed(0)} fps · YZ ${dl.ms.toFixed(0)} ms` : `${fps.toFixed(0)} fps`;
+  els.fps.textContent = state.mode === "face" && state.method === "ai" && dl.ms ? `${fps.toFixed(0)} fps · model ${dl.ms.toFixed(0)} ms` : `${fps.toFixed(0)} fps`;
 
   const lostMsg = state.mode === "face" ? "Yüz bulunamadı — çerçeveye girin, ışığı artırın" : "Parmağınızı kamera ve flaşın üzerine koyun";
   if (valid.length < win.length * 0.7) {
@@ -271,7 +269,7 @@ function analyze() {
     if (dspan < MIN_SEC) {                         // model dalgası henüz 8 s'ye ulaşmadı
       els.progressWrap.hidden = false;
       els.progress.style.width = `${Math.min(100, (100 * dspan) / MIN_SEC)}%`;
-      setStatus(dl.ready ? "Yapay zekâ ölçüyor…" : "Yapay zekâ modeli yükleniyor…", "fair");
+      setStatus(dl.ready ? "Model ölçüyor…" : "Model yükleniyor…", "fair");
       return;
     }
     const bvp = preprocessBvp(ser.x);
@@ -297,7 +295,7 @@ function analyze() {
   els.hr.textContent = hr.toFixed(0);
   els.snr.textContent = `${snr.toFixed(1)} dB`;
   els.conf.textContent = state.mode === "face" ? conf.toFixed(2) : "—";
-  const fallback = state.mode === "face" && state.method === "ai" && dl.failed ? " · model çalışmadı, klasik yöntem" : "";
+  const fallback = state.mode === "face" && state.method === "ai" && dl.failed ? " · model açılamadı, yedek yöntem (POS)" : "";
   setStatus((conf < 0.4 ? "Hareket algılandı — sabit durun" : label) + fallback, conf < 0.4 ? "fair" : level);
 
   state.log.push({ t: tEnd - state.t0, hr, snr, conf, mode: state.mode, method: methodName(), cam: camName(), lock: state.camLock || "-" });
@@ -647,7 +645,6 @@ function setMode(mode) {
   els.modeFace.setAttribute("aria-selected", mode === "face");
   els.modeFinger.setAttribute("aria-selected", mode === "finger");
   applyFacing();
-  els.method.hidden = mode !== "face";
   els.stage.classList.toggle("finger", mode === "finger");
   els.placeholderText.textContent = mode === "face"
     ? "Yüzünüzü çerçeveye alın, iyi aydınlatılmış bir yerde hareketsiz durun."
@@ -660,24 +657,6 @@ function applyFacing() {
   els.stage.classList.toggle("mirror", state.mode === "face" && state.facing === "user");
   els.flipLabel.textContent = state.facing === "user" ? "Ön kamera" : "Arka kamera";
   els.flip.setAttribute("aria-label", `Kamerayı değiştir (şu an ${els.flipLabel.textContent.toLowerCase()})`);
-}
-
-function applyMethod() {
-  els.methodAi.classList.toggle("on", state.method === "ai");
-  els.methodPos.classList.toggle("on", state.method === "pos");
-  els.methodAi.setAttribute("aria-selected", state.method === "ai");
-  els.methodPos.setAttribute("aria-selected", state.method === "pos");
-}
-
-function setMethod(m) {
-  if (m === state.method) return;
-  state.method = m;
-  try { localStorage.setItem(METHOD_KEY, m); } catch { /* gizli sekme vb. */ }
-  applyMethod();
-  if (state.running) {               // aynı kamera akışıyla baştan ölç
-    if (m === "ai") dlInit();
-    resetMeasurement();
-  }
 }
 
 async function flipCamera() {
@@ -725,8 +704,6 @@ els.start.addEventListener("click", () => (state.running ? stop() : start()));
 els.modeFace.addEventListener("click", () => setMode("face"));
 els.modeFinger.addEventListener("click", () => setMode("finger"));
 els.flip.addEventListener("click", flipCamera);
-els.methodAi.addEventListener("click", () => setMethod("ai"));
-els.methodPos.addEventListener("click", () => setMethod("pos"));
 els.csv.addEventListener("click", downloadCsv);
 els.raw.addEventListener("click", downloadRaw);
 els.reset.addEventListener("click", () => {
@@ -738,7 +715,6 @@ els.reset.addEventListener("click", () => {
 });
 document.addEventListener("visibilitychange", () => { if (document.hidden && state.running) stop(); });
 applyFacing();
-applyMethod();
 
 if ("serviceWorker" in navigator && !params.has("autotest")) {
   navigator.serviceWorker.register("sw.js").catch(() => {});
