@@ -18,6 +18,7 @@ bunlar --test ile yalnızca yereldeki dosyalardan ayrı klasöre (data/dl/test) 
 """
 import argparse
 import os
+import re
 import sys
 import time
 from concurrent.futures import ProcessPoolExecutor, as_completed
@@ -65,8 +66,32 @@ def _video_frames(path):
     cap.release()
 
 
-def crop_video(path, max_frames=None, det_scale=1):
-    return crop_frames(_video_frames(path), max_frames, det_scale, path)
+def _ffmpeg_frames(path):
+    """ffmpeg ile çözme (BGR). UBFC'nin sıkıştırılmamış rawvideo AVI'leri bazı OpenCV sürümlerinde (Kaggle)
+    çözücü süreci çökertiyor (BrokenProcessPool); ffmpeg aynı pikselleri verir."""
+    import subprocess
+    info = subprocess.run(["ffprobe", "-v", "error", "-select_streams", "v:0", "-show_entries", "stream=width,height",
+                           "-of", "csv=p=0", path], capture_output=True, text=True, check=True).stdout
+    w, h = [int(v) for v in info.strip().split(",")[:2]]
+    proc = subprocess.Popen(["ffmpeg", "-v", "error", "-i", path, "-f", "rawvideo", "-pix_fmt", "bgr24", "-"],
+                            stdout=subprocess.PIPE)
+    n = w * h * 3
+    try:
+        while True:
+            buf = proc.stdout.read(n)
+            if len(buf) < n:
+                break
+            yield np.frombuffer(buf, np.uint8).reshape(h, w, 3)
+    finally:
+        proc.stdout.close()
+        proc.kill()
+        proc.wait()
+
+
+def crop_video(path, max_frames=None, det_scale=1, decoder="cv2"):
+    import shutil
+    frames = _ffmpeg_frames(path) if decoder == "ffmpeg" and shutil.which("ffmpeg") else _video_frames(path)
+    return crop_frames(frames, max_frames, det_scale, path)
 
 
 def crop_frames(frames_bgr, max_frames=None, det_scale=1, name=""):
@@ -134,7 +159,7 @@ def process_mcd(video, meta, ppg, dst, max_sec=None, **info):
 
 
 def process_ubfc(subject_dir, dst, **info):
-    frames, rate = crop_video(os.path.join(subject_dir, "vid.avi"))
+    frames, rate = crop_video(os.path.join(subject_dir, "vid.avi"), decoder="ffmpeg")  # rawvideo: bkz. _ffmpeg_frames
     gt = load_ubfc_gt(subject_dir)
     # UBFC 30 fps; toolbox gibi PPG kare sayısına yeniden örneklenir
     bvp = np.interp(np.linspace(0, 1, len(frames)), np.linspace(0, 1, len(gt["bvp"])), gt["bvp"])
@@ -222,6 +247,142 @@ def job_ubfc(subject, raw_root, out_root, keep_raw):
     return subject, f"{n} kare, yüz %{100 * rate:.0f}"
 
 
+def label_polarity(frames, bvp, fs=FS):
+    """Etiketin işaretini videodan bağımsız bir kestirimle (yüz kırpıntısının ortasında POS) karşılaştırır.
+    Döndürür: (etiketi modelin kuralına getiren çarpan ±1, |korelasyon|).
+    Ayar: POS bu kırpıntılarda modelin kuralına göre ters işaretli çıkar. Doğrulama: UBFC 20/20 ve PURE 12/12
+    negatif korelasyon (etiket doğru), MCD 9/12 pozitif (etiket ters; elle de bulunmuştu, r ~ -0.75).
+    Tek videoda güvenilir değil (MCD'de güvenli görünen 12 videonun 2'sinde yanlış): karar veri seti düzeyinde,
+    korelasyonla ağırlıklı çoğunluk oyuyla verilir (dl_train.list_videos)."""
+    from rppg.filtering import preprocess_bvp
+    from rppg.methods import pos
+    rgb = frames[:, 15:57, 15:57].reshape(len(frames), -1, 3).mean(axis=1).astype(float)
+    a, b = preprocess_bvp(pos(rgb, fs), fs), preprocess_bvp(bvp, fs)
+    best = 0.0
+    for k in range(-4, 5):  # ±0.13 s: daha geniş aralık yarım periyot kaydırıp işareti çevirebilir
+        c = np.corrcoef(np.roll(a, k)[20:-20], b[20:-20])[0, 1]
+        if abs(c) > abs(best):
+            best = c
+    return (-1 if best > 0 else 1), abs(best)
+
+
+UBFCPHYS_HF = "https://huggingface.co/datasets/jjuik2014/UBFC-Phys-all/resolve/main/"  # erişim: HF hesabı + koşul onayı
+
+
+def process_ubfcphys(avi, bvp_csv, dst, max_sec=None, **info):
+    """UBFC-Phys görevi: vid_sX_Tk.avi (35 fps) + bvp_sX_Tk.csv (Empatica E4, 64 Hz).
+    Toolbox gibi PPG video süresine eşit aralıklı yayılır; işaret label_polarity ile denetlenir."""
+    import subprocess
+    r = subprocess.run(["ffprobe", "-v", "error", "-select_streams", "v:0", "-show_entries", "stream=r_frame_rate",
+                        "-of", "csv=p=0", avi], capture_output=True, text=True)
+    num, den = (r.stdout.strip() or "35/1").split("/")
+    vfs = float(num) / float(den or 1)
+    frames, rate = crop_video(avi, int(max_sec * vfs) + 2 if max_sec else None, 2, decoder="ffmpeg")
+    ppg = pd.read_csv(bvp_csv, header=None).iloc[:, 0].to_numpy(dtype=float)
+    t_v = np.arange(len(frames)) / vfs
+    f, b = resample(frames, t_v, np.interp(t_v, np.arange(len(ppg)) / 64.0, ppg), t_v)
+    sign, corr = label_polarity(f, b)       # etiket olduğu gibi saklanır; işaret eğitimde veri seti oyuyla
+    save(dst, f, b, rate, polarity=sign, polarity_corr=corr, **info)
+    return len(f), rate, sign, corr
+
+
+def job_ubfcphys(zipname, raw_root, out_root, keep_raw, max_sec):
+    """Bir zip (kişi ya da kişi grubu): indir, içindeki her görev videosunu çıkarıp işle, sil."""
+    import re
+    import zipfile
+    zp = os.path.join(raw_root, zipname)
+    done_mark = os.path.join(out_root, "ubfcphys", f".{zipname}.done")
+    if os.path.exists(done_mark):
+        return zipname, "var"
+    fetch(UBFCPHYS_HF + zipname, zp)
+    msgs = []
+    with zipfile.ZipFile(zp) as z:
+        names = z.namelist()
+        for vid in sorted(n for n in names if re.search(r"vid_(s\d+_T\d)\.avi$", n)):
+            key = re.search(r"vid_(s\d+_T\d)\.avi$", vid).group(1)
+            dst = os.path.join(out_root, "ubfcphys", f"ubfcphys_{key}.npz")
+            if os.path.exists(dst):
+                continue
+            bvp = next((n for n in names if n.endswith(f"bvp_{key}.csv")), None)
+            if bvp is None:
+                msgs.append(f"{key}: bvp yok")
+                continue
+            tmp = os.path.join(raw_root, "ubfcphys_tmp", key)
+            os.makedirs(tmp, exist_ok=True)
+            avi_p, bvp_p = z.extract(vid, tmp), z.extract(bvp, tmp)
+            subj = key.split("_")[0]
+            n, rate, sign, corr = process_ubfcphys(avi_p, bvp_p, dst, max_sec, person=f"ubfcphys_{subj}",
+                                                   camera="UBFC-Phys", step=key.split("_")[1], source="ubfcphys")
+            import shutil
+            shutil.rmtree(tmp, ignore_errors=True)
+            msgs.append(f"{key}: {n} kare, yüz %{100 * rate:.0f}, işaret {'+' if sign > 0 else '-'} (r={corr:.2f})")
+    if not keep_raw:
+        os.remove(zp)
+    os.makedirs(os.path.dirname(done_mark), exist_ok=True)
+    open(done_mark, "w").write("\n".join(msgs))
+    return zipname, "; ".join(msgs) or "video bulunamadı"
+
+
+def ubfcphys_zips(n):
+    """Erişilebilir UBFC-Phys zip listesi; erişim yoksa (HF_TOKEN yok / koşullar onaylanmadı) boş liste."""
+    import requests
+    tree = requests.get("https://huggingface.co/api/datasets/jjuik2014/UBFC-Phys-all/tree/main", timeout=60).json()
+    zips = sorted((x["path"] for x in tree if re.match(r"^(s\d+|UBFC_Phys_part\d+)\.zip$", x["path"])),
+                  key=lambda p: (not p.startswith("s"), int(re.findall(r"\d+", p)[0])))
+    headers = {"Authorization": f"Bearer {os.environ['HF_TOKEN']}"} if os.environ.get("HF_TOKEN") else {}
+    r = requests.head(UBFCPHYS_HF + zips[0], headers=headers, allow_redirects=True, timeout=60)
+    if r.status_code in (401, 403):
+        print("UBFC-Phys: erişim yok — huggingface.co/datasets/jjuik2014/UBFC-Phys-all sayfasında koşulları kabul "
+              "edip HF_TOKEN verin. Atlanıyor.", flush=True)
+        return []
+    return zips[:n]
+
+
+MPU_FIGSHARE = "https://api.figshare.com/v2/articles/29377835"  # MPU-rPPG örnek alt kümesi (CC BY 4.0)
+
+
+def process_mpu(video, csv_path, dst, max_sec=None, **info):
+    """MPU-rPPG: 60 fps video + Output.csv (Count, PPG, HR, SPO2), kare başına bir PPG satırı."""
+    ppg = pd.read_csv(csv_path)["PPG"].to_numpy(dtype=float)
+    max_frames = int(max_sec * 60) if max_sec else None
+    frames, rate = crop_video(video, max_frames, 2)
+    n = min(len(frames), len(ppg))
+    t = np.arange(n) / 60.0
+    f, b = resample(frames[:n], t, ppg[:n], t)
+    save(dst, f, b, rate, **info)
+    return len(f), rate
+
+
+def job_mpu(pair, raw_root, out_root, keep_raw, max_sec):
+    vid_file, csv_file = pair
+    name = f"mpu_{vid_file['id']}"
+    dst = os.path.join(out_root, "mpu", name + ".npz")
+    if os.path.exists(dst):
+        return name, "var"
+    vp = os.path.join(raw_root, f"{vid_file['id']}_{vid_file['name']}")
+    cp = os.path.join(raw_root, f"{csv_file['id']}_{csv_file['name']}")
+    fetch(csv_file["download_url"], cp)
+    fetch(vid_file["download_url"], vp)
+    n, rate = process_mpu(vp, cp, dst, max_sec, person=name, camera="MPU", step="mpu", source="mpu")
+    if not keep_raw:
+        os.remove(vp)
+    return name, f"{n} kare, yüz %{100 * rate:.0f}"
+
+
+def mpu_pairs():
+    """Figshare'deki dosyalar sırayla (csv, video) çiftleri halinde."""
+    import requests
+    files = requests.get(MPU_FIGSHARE, timeout=60).json()["files"]
+    pairs, csv = [], None
+    for f in files:
+        if f["name"].lower().endswith(".csv"):
+            csv = f
+        elif csv is not None:
+            pairs.append((f, csv))
+            csv = None
+    return pairs
+
+
 PURE_HF = "https://huggingface.co/datasets/Thinhnb29/PURE/resolve/main/PURE/"
 
 
@@ -290,17 +451,37 @@ def _init_worker():
 
 
 def run(jobs, workers):
-    """İşleri paralel çalıştırır; başarısız iş sayısını döndürür."""
-    t0, failed = time.time(), 0
+    """İşleri paralel çalıştırır; başarısız iş sayısını döndürür.
+    Bir işçi süreç çökerse (ör. çözücü segfault) havuz bozulur ve bekleyen tüm işler düşer; o zaman kalan
+    işler her biri kendi tek kullanımlık sürecinde yeniden denenir, böylece çökme yalnızca o işi etkiler."""
+    from concurrent.futures.process import BrokenProcessPool
+    t0, failed, done, broken = time.time(), 0, set(), False
     with ProcessPoolExecutor(workers, initializer=_init_worker) as ex:
         futs = {ex.submit(fn, *args): i for i, (fn, args) in enumerate(jobs)}
-        for k, fut in enumerate(as_completed(futs), 1):
+        for fut in as_completed(futs):
+            i = futs[fut]
             try:
                 name, msg = fut.result()
-                print(f"  [{k}/{len(jobs)}] {name}: {msg}  ({time.time() - t0:.0f} s)", flush=True)
+                done.add(i)
+                print(f"  [{len(done)}/{len(jobs)}] {name}: {msg}  ({time.time() - t0:.0f} s)", flush=True)
+            except BrokenProcessPool:
+                broken = True
             except Exception as e:
+                done.add(i)
                 failed += 1
-                print(f"  [{k}/{len(jobs)}] HATA: {e!r}", flush=True)
+                print(f"  [{len(done)}/{len(jobs)}] HATA: {e!r}", flush=True)
+    if broken:
+        rest = [i for i in range(len(jobs)) if i not in done]
+        print(f"  işçi süreç çöktü; kalan {len(rest)} iş tek tek yeniden deneniyor", flush=True)
+        for i in rest:
+            fn, args = jobs[i]
+            with ProcessPoolExecutor(1, initializer=_init_worker) as ex:
+                try:
+                    name, msg = ex.submit(fn, *args).result()
+                    print(f"  [tekrar] {name}: {msg}  ({time.time() - t0:.0f} s)", flush=True)
+                except Exception as e:
+                    failed += 1
+                    print(f"  [tekrar] HATA ({args[0] if args else '?'}): {e!r}", flush=True)
     return failed
 
 
@@ -315,6 +496,8 @@ def main():
     ap.add_argument("--cameras", default="FullHDwebcam,USBVideo,IriunWebcam")
     ap.add_argument("--ubfc", type=int, default=0, help="UBFC'nin test dışı kaç deneği (video başına 1.8 GB)")
     ap.add_argument("--pure", type=int, default=0, help="kaç PURE oturumu (10 kişi x 6 hareket = 60; HF kopyası)")
+    ap.add_argument("--ubfcphys", type=int, default=0, help="kaç UBFC-Phys zip'i (kişi başına ~15 GB; HF_TOKEN gerekir)")
+    ap.add_argument("--mpu", type=int, default=0, help="kaç MPU-rPPG örnek kaydı (PPG zamanlaması güvenilmez; varsayılan kapalı)")
     ap.add_argument("--workers", type=int, default=4)
     ap.add_argument("--keep-raw", action="store_true")
     ap.add_argument("--max-sec", type=float, default=120, help="eğitim videosundan saklanacak süre (disk için)")
@@ -361,6 +544,18 @@ def main():
         print(f"UBFC: {len(subjects)} denek (test dışı)")
         failed += run([(job_ubfc, (s, os.path.join(a.raw, "ubfc"), a.out, a.keep_raw)) for s in subjects],
             max(1, min(a.workers, 2)))  # video başına 1.8 GB; aynı anda en çok 2
+    if a.ubfcphys:
+        zips = ubfcphys_zips(a.ubfcphys)
+        if zips:
+            print(f"UBFC-Phys: {len(zips)} zip", flush=True)
+            failed += run([(job_ubfcphys, (z, os.path.join(a.raw, "ubfcphys"), a.out, a.keep_raw, a.max_sec))
+                           for z in zips], max(1, min(a.workers, 2)))
+
+    if a.mpu:
+        pairs = mpu_pairs()[:a.mpu]
+        print(f"MPU-rPPG: {len(pairs)} kayıt", flush=True)
+        failed += run([(job_mpu, (pr, os.path.join(a.raw, "mpu"), a.out, a.keep_raw, a.max_sec)) for pr in pairs], 1)
+
     if a.pure:
         import requests
         tree = requests.get("https://huggingface.co/api/datasets/Thinhnb29/PURE/tree/main/PURE", timeout=60).json()

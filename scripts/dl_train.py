@@ -38,18 +38,26 @@ def _video_entry(p, min_face):
     if not np.all(np.isfinite(b)) or (np.lib.stride_tricks.sliding_window_view(b, CHUNK)[::40].std(1) < 1e-6).mean() > 0.2:
         return None
     return {"npz": p, "npy": p[:-4] + ".npy", "n": int(m["n"]), "person": str(m["person"]),
-            "source": str(m["source"]), "camera": str(m["camera"])}
+            "source": str(m["source"]), "camera": str(m["camera"]),
+            "vote": float(m["polarity"]) * float(m["polarity_corr"]) if "polarity" in m.files else 0.0}
 
 
 def list_videos(root, min_face=0.5):
     vids = []
-    for p in sorted(glob.glob(os.path.join(root, "mcd", "*.npz")) + glob.glob(os.path.join(root, "ubfc", "*.npz"))
-                    + glob.glob(os.path.join(root, "pure", "*.npz"))):
+    for p in sorted(p for sub in ("mcd", "ubfc", "pure", "ubfcphys", "mpu")
+                    for p in glob.glob(os.path.join(root, sub, "*.npz"))):
         mt = os.path.getmtime(p)
         if p not in _VCACHE or _VCACHE[p][0] != mt:
             _VCACHE[p] = (mt, _video_entry(p, min_face))
         if _VCACHE[p][1] is not None:
             vids.append(_VCACHE[p][1])
+    # Etiket işareti (modelin kuralına göre çarpan). MCD: ters (elle bulundu). İşaret oyu kaydedilmiş veri setleri
+    # (UBFC-Phys): aynı sensör -> tek karar, videoların korelasyonla ağırlıklı oyu (bkz. dl_prepare.label_polarity).
+    votes = {}
+    for v in vids:
+        votes[v["source"]] = votes.get(v["source"], 0.0) + v["vote"]
+    for v in vids:
+        v["mult"] = -1.0 if v["source"] == "mcd" else (-1.0 if votes.get(v["source"], 0.0) < 0 else 1.0)
     return vids
 
 
@@ -71,8 +79,9 @@ class ChunkSampler:
         item = self.cache.get(v["npy"])
         if item is None:  # iş parçacıkları arasında güvenli: çift tek seferde yazılır
             bvp = np.load(v["npz"])["bvp"]
-            # MCD parmak PPG'si UBFC/PURE'a göre ters işaretli (ön-eğitimli modelle korelasyon ~ -0.75, gecikme ~0)
-            item = (np.load(v["npy"], mmap_mode="r"), -bvp if v["source"] == "mcd" else bvp)
+            # MCD parmak PPG'si UBFC/PURE'a göre ters işaretli (ön-eğitimli modelle korelasyon ~ -0.75, gecikme ~0);
+            # diğer veri setleri için çarpan list_videos'ta belirlenir
+            item = (np.load(v["npy"], mmap_mode="r"), v.get("mult", 1.0) * bvp)
             self.cache[v["npy"]] = item
         return item
 
@@ -184,6 +193,8 @@ def main():
     ap.add_argument("--lr", type=float, default=3e-4)
     ap.add_argument("--deadline", default="", help='"YYYY-MM-DD HH:MM": bu saatte güvenle dur')
     ap.add_argument("--val-max", type=int, default=40, help="doğrulamada en çok kaç video")
+    ap.add_argument("--init", default="", help="last.pth yoksa bu ağırlıklardan başla (yeni veriyle ince ayar turu); "
+                                               "varsayılan: PURE ön-eğitimli")
     a = ap.parse_args()
     deadline = datetime.strptime(a.deadline, "%Y-%m-%d %H:%M").timestamp() if a.deadline else float("inf")
 
@@ -198,7 +209,9 @@ def main():
     if not train:
         raise SystemExit("Eğitim verisi yok: önce scripts/dl_prepare.py --mcd N")
 
-    model = build_model(device)
+    model = build_model(device, a.init) if a.init else build_model(device)
+    if a.init:
+        print(f"başlangıç ağırlıkları: {a.init}", flush=True)
     opt = torch.optim.AdamW(model.parameters(), lr=a.lr, weight_decay=1e-4)
     sched = torch.optim.lr_scheduler.CosineAnnealingLR(opt, T_max=a.epochs * a.steps, eta_min=a.lr / 50)
     state = {"epoch": 0, "best": None, "history": []}
@@ -224,7 +237,7 @@ def main():
                   f"yeniden ölçüldü: {state['best']['val_mae']:.2f} BPM", flush=True)
     elif val:
         mae0 = validate(model, val, device)
-        print(f"ön-eğitimli (PURE) doğrulama MAE: {mae0:.2f} BPM", flush=True)
+        print(f"başlangıç modeli doğrulama MAE: {mae0:.2f} BPM", flush=True)
         state["history"].append({"epoch": 0, "val_mae": mae0, "loss": None})
         state["best"] = {"epoch": 0, "val_mae": mae0}
         torch.save({"model": model.state_dict()}, os.path.join(a.out, "best.pth"))
