@@ -24,9 +24,12 @@ from datetime import datetime
 
 import numpy as np
 
-from dl_common import CHUNK, build_model, hr_from_bvp, predict_video, reference_hr, to_input
+from dl_common import (CHUNK, PER_VIDEO_SYNC, build_model, hr_from_bvp, label_shift, predict_video, reference_hr,
+                       shift_label, to_input, video_decision)
+from dl_quality import compute as quality
 
 
+CLEAN = True  # --no-clean ile kapatılır (karşılaştırma için)
 _VCACHE = {}  # yol -> (mtime, kayıt | None): her epoch'ta binlerce dosyayı yeniden taramamak için
 
 
@@ -37,8 +40,12 @@ def _video_entry(p, min_face):
     b = m["bvp"]  # bozuk referans: NaN ya da düz (sensör kayıt almamış, ör. MCD 4952) -> kayıp patlar
     if not np.all(np.isfinite(b)) or (np.lib.stride_tricks.sliding_window_view(b, CHUNK)[::40].std(1) < 1e-6).mean() > 0.2:
         return None
+    source = str(m["source"])
+    q = quality(p) if CLEAN else None  # etiket kalitesi (dl_quality.py); yoksa burada hesaplanıp .kal yazılır
+    if q is not None and not video_decision(q, source):
+        return None
     return {"npz": p, "npy": p[:-4] + ".npy", "n": int(m["n"]), "person": str(m["person"]),
-            "source": str(m["source"]), "camera": str(m["camera"]),
+            "source": source, "camera": str(m["camera"]), "q": q,
             "vote": float(m["polarity"]) * float(m["polarity_corr"]) if "polarity" in m.files else 0.0}
 
 
@@ -58,6 +65,9 @@ def list_videos(root, min_face=0.5):
         votes[v["source"]] = votes.get(v["source"], 0.0) + v["vote"]
     for v in vids:
         v["mult"] = -1.0 if v["source"] == "mcd" else (-1.0 if votes.get(v["source"], 0.0) < 0 else 1.0)
+        v["shift"] = label_shift(v["q"], v["source"], v["camera"]) if CLEAN else 0
+        if CLEAN and v["source"] in PER_VIDEO_SYNC:
+            v["mult"] = 1.0  # işaret yerine hizalama: tepe korelasyonu pozitif olacak şekilde kaydırıldı
     return vids
 
 
@@ -81,7 +91,10 @@ class ChunkSampler:
             bvp = np.load(v["npz"])["bvp"]
             # MCD parmak PPG'si UBFC/PURE'a göre ters işaretli (ön-eğitimli modelle korelasyon ~ -0.75, gecikme ~0);
             # diğer veri setleri için çarpan list_videos'ta belirlenir
-            item = (np.load(v["npy"], mmap_mode="r"), v.get("mult", 1.0) * bvp)
+            kal = v["npz"][:-4] + ".kal"
+            ok = np.load(kal)["frame_ok"] if CLEAN and os.path.exists(kal) else np.ones(len(bvp), bool)
+            bvp = shift_label(bvp, v.get("shift", 0))  # etiket-video zaman hizası (dl_common.CAMERA_SHIFT)
+            item = (np.load(v["npy"], mmap_mode="r"), v.get("mult", 1.0) * bvp, ok)
             self.cache[v["npy"]] = item
         return item
 
@@ -95,7 +108,7 @@ class ChunkSampler:
     def _sample(self, rng):
         """CPU'da yalnızca ham uint8 kareler kopyalanır; hız/çevirme/parlaklık GPU'da (gpu_augment) uygulanır."""
         v = self.vids[rng.choice(len(self.vids), p=self.p)]
-        frames, bvp = self._frames(v)
+        frames, bvp, ok = self._frames(v)
         speed = rng.uniform(0.8, 1.25) if rng.random() < 0.5 else 1.0
         span = min(int(np.ceil(CHUNK * speed)) + 1, len(frames))
         s = rng.integers(0, len(frames) - MAX_SPAN + 1) if len(frames) >= MAX_SPAN else 0
@@ -108,7 +121,7 @@ class ChunkSampler:
         lab = np.interp(pos, np.arange(len(lab)), lab)  # zaman ekseninde yeniden örnekle -> nabız speed katı
         prm = np.array([speed, span, rng.random() < 0.5, rng.uniform(0.8, 1.2)], dtype=np.float32)
         sd = lab.std()
-        if sd < 1e-6:
+        if sd < 1e-6 or ok[s:s + span].mean() < 0.8:  # etiketin kötü olduğu bölüm (sensör kayması vb.)
             return clip, np.full(CHUNK, np.nan, dtype=np.float32), prm
         return clip, ((lab - lab.mean()) / sd).astype(np.float32), prm
 
@@ -195,7 +208,10 @@ def main():
     ap.add_argument("--val-max", type=int, default=40, help="doğrulamada en çok kaç video")
     ap.add_argument("--init", default="", help="last.pth yoksa bu ağırlıklardan başla (yeni veriyle ince ayar turu); "
                                                "varsayılan: PURE ön-eğitimli")
+    ap.add_argument("--no-clean", action="store_true", help="etiket kalitesi filtresini kapat")
     a = ap.parse_args()
+    global CLEAN
+    CLEAN = not a.no_clean
     deadline = datetime.strptime(a.deadline, "%Y-%m-%d %H:%M").timestamp() if a.deadline else float("inf")
 
     os.makedirs(a.out, exist_ok=True)

@@ -60,6 +60,8 @@ def main():
     ap.add_argument("--out", default=os.path.join(ROOT, "results/derin_ogrenme/egitim"))
     ap.add_argument("--data", default=os.path.join(ROOT, "data/dl"), help="eğitim verisi (rapordaki özet için)")
     ap.add_argument("--history", default="", help="gecmis.json (varsayılan: modelin klasörü)")
+    ap.add_argument("--compare", nargs="*", default=[], metavar="AD=YOL",
+                    help="aynı test videolarında ayrıca ölçülecek modeller (ör. önceki tur)")
     a = ap.parse_args()
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     n_test = len(glob.glob(os.path.join(a.test, "*.npz")))
@@ -72,6 +74,10 @@ def main():
     last = os.path.join(os.path.dirname(a.model), "last.pth")
     if os.path.exists(last) and os.path.abspath(last) != os.path.abspath(a.model):
         rows += evaluate(build_model(device, last), device, a.test, "FactorizePhys ince ayarlı (son epoch)")
+    for item in a.compare:
+        name, path = item.split("=", 1)
+        if os.path.exists(path):
+            rows += evaluate(build_model(device, path), device, a.test, name)
     df = pd.DataFrame(rows)
     if os.path.exists(a.prev):
         prev = pd.read_csv(a.prev)
@@ -84,6 +90,20 @@ def main():
     t.round(2).to_csv(os.path.join(a.out, "test_ozet.csv"))
     print(t.round(2).to_string())
 
+    # Referans etiketi temiz test videoları (dl_quality: etiketin ≥%80'i iyi). Ana tablo değişmez; bu ek bilgi:
+    # bazı test videolarında hatanın kaynağı modelden çok referans sensörün kendisi.
+    from dl_quality import compute as quality
+    ref_q = {}
+    for p in sorted(glob.glob(os.path.join(a.test, "*.npz"))):
+        q = quality(p)
+        if q:
+            ref_q[os.path.basename(p)[:-4].split("_", 1)[1]] = q
+    clean = [v for v, q in ref_q.items() if q["ok_frac"] >= 0.8]
+    t_clean = table(df[df.video.isin(clean)]) if clean else None
+    if t_clean is not None:
+        t_clean.round(2).to_csv(os.path.join(a.out, "test_ozet_temiz_referans.csv"))
+        print(f"\nreferansı temiz {len(clean)} video:\n" + t_clean.round(2).to_string())
+
     # video bazında: ince ayarlı + Viterbi vs POS tüm yüz + Viterbi
     w = df.pivot_table(index="video", columns="yöntem", values="MAE")
     a_, b_ = "FactorizePhys ince ayarlı+Viterbi", "POS tüm yüz+Viterbi"
@@ -95,10 +115,10 @@ def main():
         print(info)
     else:
         info = None
-    write_report(a, t, info, w)
+    write_report(a, t, info, w, t_clean, ref_q)
 
 
-def write_report(a, t, info, w):
+def write_report(a, t, info, w, t_clean=None, ref_q=None):
     """results/derin_ogrenme/egitim/SONUCLAR.md"""
     hist_path = a.history or os.path.join(os.path.dirname(a.model), "gecmis.json")
     hist = json.load(open(hist_path)) if os.path.exists(hist_path) else None
@@ -144,6 +164,16 @@ def write_report(a, t, info, w):
             L.append(f"| {v} | {w.loc[v, 'POS tüm yüz+Viterbi']:.2f} | "
                      f"{w.loc[v, 'FactorizePhys PURE (hazır)+Viterbi']:.2f} | "
                      f"{w.loc[v, 'FactorizePhys ince ayarlı+Viterbi']:.2f} |")
+    if t_clean is not None:
+        bad = {v: q for v, q in ref_q.items() if q["ok_frac"] < 0.8}
+        L += ["", f"## Referans etiketi temiz test videoları ({len(ref_q) - len(bad)}/{len(ref_q)})", "",
+              "Referans sensör sinyalinin ≥%80'i iyi olan videolar (`scripts/dl_quality.py`: SNR ≥ 0 dB, nabız 40–180, "
+              "sıçrama yok). Çıkarılanlar: " + ", ".join(f"{v} (iyi %{100 * q['ok_frac']:.0f}, SNR {q['snr_med']:.1f} dB)"
+                                                       for v, q in bad.items()) + ".", "",
+              "| Yöntem | UBFC | MCD dinlenme | MCD egzersiz | Hepsi | ≤5 BPM % | Medyan |",
+              "|---|---:|---:|---:|---:|---:|---:|"]
+        for name, r in t_clean.iterrows():
+            L.append(f"| {name} | " + " | ".join(f"{v:.2f}" if v == v else "–" for v in r.values) + " |")
     L += ["", "Ayrıntı: `test_sonuclari.csv` (video × yöntem), `test_ozet.csv`, `gecmis.json` (epoch geçmişi).",
           "Yeniden üretmek: `scripts/dl_prepare.py` → `scripts/dl_train.py` → `scripts/dl_evaluate.py` "
           "(ya da hepsi: `scripts/dl_pipeline.py`)."]
