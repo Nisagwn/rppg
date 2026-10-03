@@ -20,18 +20,39 @@ import pandas as pd
 from dl_common import PRETRAINED, ROOT, build_model, hr_from_bvp, predict_video, reference_hr
 
 
+CAMERA_NAMES = {"IriunWebcam": "telefon", "USBVideo": "USB"}
+
+
 def group_of(meta):
     if str(meta["source"]) == "ubfc":
         return "UBFC"
-    return "MCD dinlenme" if str(meta["step"]) == "before" else "MCD egzersiz"
+    g = "MCD dinlenme" if str(meta["step"]) == "before" else "MCD egzersiz"
+    cam = CAMERA_NAMES.get(str(meta["camera"]))
+    return f"{g} ({cam})" if cam else g
+
+
+def pos_crop(frames, fs=30.0):
+    """Klasik taban çizgisi: modelle aynı 72x72 yüz kırpıntısının ortasında POS (her test kümesinde ölçülebilir)."""
+    from rppg.methods import pos
+    rgb = np.concatenate([np.asarray(frames[i:i + 600, 15:57, 15:57], dtype=np.float32).mean((1, 2))
+                          for i in range(0, len(frames), 600)])  # parça parça: memory-map'i belleğe almadan
+    return pos(rgb.astype(float), fs)
+
+
+MIN_FACE = 0.5  # eğitimdeki kural: yüzün karelerin yarısından azında bulunduğu video kırpıntısı anlamsız
+
+
+def test_videos(test_dir):
+    return [p for p in sorted(glob.glob(os.path.join(test_dir, "*.npz"))) if float(np.load(p)["face_rate"]) >= MIN_FACE]
 
 
 def evaluate(model, device, test_dir, label):
+    """model: FactorizePhys ya da "POS" (pos_crop)."""
     rows = []
-    for p in sorted(glob.glob(os.path.join(test_dir, "*.npz"))):
+    for p in test_videos(test_dir):
         meta = np.load(p)
         frames = np.load(p[:-4] + ".npy", mmap_mode="r")
-        pred = predict_video(model, np.asarray(frames), device)
+        pred = pos_crop(frames) if model == "POS" else predict_video(model, np.asarray(frames), device)
         c, hr_a, hr_v = hr_from_bvp(pred)
         ref = reference_hr(meta["bvp"], c)
         name = os.path.basename(p)[:-4].split("_", 1)[1]
@@ -44,6 +65,7 @@ def evaluate(model, device, test_dir, label):
 
 def table(df):
     order = ["UBFC", "MCD dinlenme", "MCD egzersiz"]
+    order = [c for c in order if c in set(df.grup)] + sorted(set(df.grup) - set(order))
     g = df.pivot_table(index="yöntem", columns="grup", values="MAE", aggfunc="mean").reindex(columns=order)
     g["Hepsi"] = df.groupby("yöntem")["MAE"].mean()
     g["≤5 BPM %"] = df.groupby("yöntem")["p5"].mean()
@@ -64,12 +86,16 @@ def main():
                     help="aynı test videolarında ayrıca ölçülecek modeller (ör. önceki tur)")
     a = ap.parse_args()
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    n_test = len(glob.glob(os.path.join(a.test, "*.npz")))
+    n_all = len(glob.glob(os.path.join(a.test, "*.npz")))
+    n_test = len(test_videos(a.test))
+    if n_all > n_test:
+        print(f"{n_all - n_test} video yüz bulunma oranı <%{100 * MIN_FACE:.0f} olduğu için dışarıda", flush=True)
     if n_test == 0:
         raise SystemExit(f"Test klasöründe video yok: {a.test} (önce scripts/dl_prepare.py --test ya da --test-download)")
     print(f"test: {n_test} video", flush=True)
 
-    rows = evaluate(build_model(device, PRETRAINED), device, a.test, "FactorizePhys PURE (hazır)")
+    rows = evaluate("POS", device, a.test, "POS (yüz kırpıntısı)")
+    rows += evaluate(build_model(device, PRETRAINED), device, a.test, "FactorizePhys PURE (hazır)")
     rows += evaluate(build_model(device, a.model), device, a.test, "FactorizePhys ince ayarlı")
     last = os.path.join(os.path.dirname(a.model), "last.pth")
     if os.path.exists(last) and os.path.abspath(last) != os.path.abspath(a.model):
@@ -94,7 +120,7 @@ def main():
     # bazı test videolarında hatanın kaynağı modelden çok referans sensörün kendisi.
     from dl_quality import compute as quality
     ref_q = {}
-    for p in sorted(glob.glob(os.path.join(a.test, "*.npz"))):
+    for p in test_videos(a.test):
         q = quality(p)
         if q:
             ref_q[os.path.basename(p)[:-4].split("_", 1)[1]] = q
@@ -116,6 +142,10 @@ def main():
     else:
         info = None
     write_report(a, t, info, w, t_clean, ref_q)
+
+
+def md_header(t):
+    return ["| Yöntem | " + " | ".join(t.columns) + " |", "|---|" + "---:|" * len(t.columns)]
 
 
 def write_report(a, t, info, w, t_clean=None, ref_q=None):
@@ -148,9 +178,7 @@ def write_report(a, t, info, w, t_clean=None, ref_q=None):
         h = [x for x in hist["history"] if x.get("val_mae") is not None]
         L += [f"Eğitim: {hist['epoch']} epoch (500 adım × 8 parça). Doğrulama MAE: ön-eğitimli "
               f"{h[0]['val_mae']:.2f} → en iyi {hist['best']['val_mae']:.2f} BPM (epoch {hist['best']['epoch']}).", ""]
-    L += ["## Ortalama MAE (BPM) — 28 test videosu", "",
-          "| Yöntem | UBFC | MCD dinlenme | MCD egzersiz | Hepsi | ≤5 BPM % | Medyan |",
-          "|---|---:|---:|---:|---:|---:|---:|"]
+    L += [f"## Ortalama MAE (BPM) — {len(w)} test videosu", "", *md_header(t)]
     for name, r in t.iterrows():
         L.append(f"| {name} | " + " | ".join(f"{v:.2f}" if v == v else "–" for v in r.values) + " |")
     if info:
@@ -170,8 +198,7 @@ def write_report(a, t, info, w, t_clean=None, ref_q=None):
               "Referans sensör sinyalinin ≥%80'i iyi olan videolar (`scripts/dl_quality.py`: SNR ≥ 0 dB, nabız 40–180, "
               "sıçrama yok). Çıkarılanlar: " + ", ".join(f"{v} (iyi %{100 * q['ok_frac']:.0f}, SNR {q['snr_med']:.1f} dB)"
                                                        for v, q in bad.items()) + ".", "",
-              "| Yöntem | UBFC | MCD dinlenme | MCD egzersiz | Hepsi | ≤5 BPM % | Medyan |",
-              "|---|---:|---:|---:|---:|---:|---:|"]
+              *md_header(t_clean)]
         for name, r in t_clean.iterrows():
             L.append(f"| {name} | " + " | ".join(f"{v:.2f}" if v == v else "–" for v in r.values) + " |")
     L += ["", "Ayrıntı: `test_sonuclari.csv` (video × yöntem), `test_ozet.csv`, `gecmis.json` (epoch geçmişi).",

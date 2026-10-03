@@ -419,11 +419,11 @@ def job_test(kind, args, out_root):
     return name, f"{n} kare, yüz %{100 * rate:.0f}"
 
 
-def job_test_dl(kind, key, raw_root, out_root):
+def job_test_dl(kind, key, raw_root, out_root, sub="test"):
     """Test videolarını Hugging Face'ten indirip işler (ör. Kaggle; yerelde --test ham dosyaları kullanır).
     Ön işleme yereldeki test kümesiyle aynı: tam çözünürlükte Haar, süre sınırı yok."""
     if kind == "ubfc":
-        dst = os.path.join(out_root, "test", f"ubfc_{key}.npz")
+        dst = os.path.join(out_root, sub, f"ubfc_{key}.npz")
         if os.path.exists(dst):
             return key, "var"
         sdir = os.path.join(raw_root, "ubfc_test", key)
@@ -434,7 +434,7 @@ def job_test_dl(kind, key, raw_root, out_root):
         return key, f"{n} kare, yüz %{100 * rate:.0f}"
     row = key
     name = os.path.splitext(os.path.basename(row["video"]))[0]
-    dst = os.path.join(out_root, "test", f"mcd_{name}.npz")
+    dst = os.path.join(out_root, sub, f"mcd_{name}.npz")
     if os.path.exists(dst):
         return name, "var"
     for rel in (row["meta"], row["ppg_sync"], row["video"]):
@@ -491,6 +491,10 @@ def main():
     ap.add_argument("--raw", default="data/dl/_raw", help="geçici indirme klasörü")
     ap.add_argument("--test", action="store_true", help="yereldeki 28 test videosunu işle")
     ap.add_argument("--test-download", action="store_true", help="28 test videosunu HF'ten indirip işle (Kaggle)")
+    ap.add_argument("--test-cameras", default="FullHDwebcam",
+                    help="--test-download: test kişilerinin hangi MCD kameraları (ör. IriunWebcam,USBVideo)")
+    ap.add_argument("--test-sub", default="test", help="--test-download çıktı alt klasörü")
+    ap.add_argument("--no-test-ubfc", dest="test_ubfc", action="store_false", help="--test-download: UBFC'yi atla")
     ap.add_argument("--mcd", type=int, default=0, help="test dışı kaç MCD kişisi")
     ap.add_argument("--mcd-skip", type=int, default=0, help="listede ilk kaç kişiyi atla (parça parça indirmek için)")
     ap.add_argument("--cameras", default="FullHDwebcam,USBVideo,IriunWebcam")
@@ -519,9 +523,9 @@ def main():
         db_path = os.path.join(a.raw, "db.csv")
         fetch(MCD_HF + "db.csv", db_path)
         db = pd.read_csv(db_path)
-        db = db[db.patient_id.isin(MCD_TEST) & (db.camera == "FullHDwebcam")]
-        jobs = [(job_test_dl, ("ubfc", s, a.raw, a.out)) for s in sorted(UBFC_TEST)]
-        jobs += [(job_test_dl, ("mcd", r._asdict(), a.raw, a.out)) for r in db.itertuples()]
+        db = db[db.patient_id.isin(MCD_TEST) & db.camera.isin(a.test_cameras.split(","))]
+        jobs = [(job_test_dl, ("ubfc", s, a.raw, a.out, a.test_sub)) for s in sorted(UBFC_TEST)] if a.test_ubfc else []
+        jobs += [(job_test_dl, ("mcd", r._asdict(), a.raw, a.out, a.test_sub)) for r in db.itertuples()]
         print(f"Test kümesi (indir): {len(jobs)} video")
         failed += run(jobs, max(1, min(a.workers, 2)))
 
