@@ -146,9 +146,46 @@ def gpu_augment(clips_u8, prm, device):
         c = x[i, j] * (1 - w) + x[i, j + 1] * w
         if prm[i, 2] > 0.5:
             c = torch.flip(c, dims=[2])
-        out.append(torch.clamp(c * prm[i, 3], 0, 255))
+        c = torch.clamp(c * prm[i, 3], 0, 255)
+        if PHONE_AUG and torch.rand(()) < 0.6:
+            c = phone_degrade(c)
+        out.append(c)
     x = torch.stack(out).permute(0, 4, 1, 2, 3)
     return torch.cat([x, x[:, :, -1:]], dim=2)
+
+
+PHONE_AUG = False  # --phone-aug
+
+
+def phone_degrade(c):
+    """Telefon kamerası benzeri bozulmalar, [T,72,72,3] float 0-255 (her biri ayrı olasılıkla):
+    el titremesi (yumuşak rastgele yürüyüş, ±4 px), düşük çözünürlük / sıkıştırma bulanıklığı (24-56 px'e küçültüp
+    geri büyütme), renk sıcaklığı (kanal kazancı ±%15), loş ışık (kazanç 0.35-1) + sensör gürültüsü + 8 bit
+    nicemleme. Eğitim verisi laboratuvar webcam'i; uygulama telefonda çalışıyor."""
+    import torch
+    import torch.nn.functional as F
+    T = c.shape[0]
+    dev = c.device
+    x = c.permute(0, 3, 1, 2)  # [T,3,H,W]
+    if torch.rand(()) < 0.5:  # el titremesi
+        step = torch.randn(T, 2, device=dev) * 0.35
+        walk = torch.clamp(torch.cumsum(step, 0) - step.mean(0) * torch.arange(1, T + 1, device=dev)[:, None], -4, 4)
+        theta = torch.zeros(T, 2, 3, device=dev)
+        theta[:, 0, 0] = theta[:, 1, 1] = 1
+        theta[:, :, 2] = walk * (2 / x.shape[-1])
+        grid = F.affine_grid(theta, list(x.shape), align_corners=False)
+        x = F.grid_sample(x, grid, mode="bilinear", padding_mode="border", align_corners=False)
+    if torch.rand(()) < 0.5:  # düşük çözünürlük / sıkıştırma
+        size = int(torch.randint(24, 57, ()))
+        x = F.interpolate(F.interpolate(x, size=size, mode="area"), size=x.shape[-1], mode="bilinear",
+                          align_corners=False)
+    if torch.rand(()) < 0.5:  # renk sıcaklığı
+        x = x * (0.85 + 0.3 * torch.rand(1, 3, 1, 1, device=dev))
+    if torch.rand(()) < 0.5:  # loş ışık + gürültü + nicemleme
+        g = 0.35 + 0.65 * torch.rand((), device=dev)
+        sigma = 1.0 + 5.0 * torch.rand((), device=dev)
+        x = torch.round(torch.clamp(x * g + torch.randn_like(x) * sigma, 0, 255))
+    return torch.clamp(x, 0, 255).permute(0, 2, 3, 1)
 
 
 class Prefetcher:
@@ -181,9 +218,12 @@ def neg_pearson(pred, lab):
     return (1 - r).mean()
 
 
+VAL_GROUPS = {}  # son doğrulamanın kaynak/kamera bazında MAE'si (günlüğe yazılır)
+
+
 def validate(model, vids, device, max_frames=1800):
     """Doğrulama videolarının ilk 60 s'sinde pencere MAE (argmax)."""
-    errs = []
+    errs, groups = [], {}
     for v in vids:
         frames = np.load(v["npy"], mmap_mode="r")[:max_frames]
         bvp = np.load(v["npz"])["bvp"][:max_frames]
@@ -192,6 +232,9 @@ def validate(model, vids, device, max_frames=1800):
             continue
         c, hr_a, _ = hr_from_bvp(pred)
         errs.append(np.mean(np.abs(hr_a - reference_hr(bvp, c))))
+        groups.setdefault(f"{v['source']}/{v['camera']}", []).append(errs[-1])
+    VAL_GROUPS.clear()
+    VAL_GROUPS.update({k: (float(np.mean(e)), len(e)) for k, e in sorted(groups.items())})
     return float(np.mean(errs)) if errs else float("nan")
 
 
@@ -209,9 +252,11 @@ def main():
     ap.add_argument("--init", default="", help="last.pth yoksa bu ağırlıklardan başla (yeni veriyle ince ayar turu); "
                                                "varsayılan: PURE ön-eğitimli")
     ap.add_argument("--no-clean", action="store_true", help="etiket kalitesi filtresini kapat")
+    ap.add_argument("--phone-aug", action="store_true", help="telefon benzeri bozulmalar (phone_degrade)")
     a = ap.parse_args()
-    global CLEAN
+    global CLEAN, PHONE_AUG
     CLEAN = not a.no_clean
+    PHONE_AUG = a.phone_aug
     deadline = datetime.strptime(a.deadline, "%Y-%m-%d %H:%M").timestamp() if a.deadline else float("inf")
 
     os.makedirs(a.out, exist_ok=True)
@@ -254,6 +299,7 @@ def main():
     elif val:
         mae0 = validate(model, val, device)
         print(f"başlangıç modeli doğrulama MAE: {mae0:.2f} BPM", flush=True)
+        print("  doğrulama: " + ", ".join(f"{k} {m:.2f} ({n})" for k, (m, n) in VAL_GROUPS.items()), flush=True)
         state["history"].append({"epoch": 0, "val_mae": mae0, "loss": None})
         state["best"] = {"epoch": 0, "val_mae": mae0}
         torch.save({"model": model.state_dict()}, os.path.join(a.out, "best.pth"))
@@ -315,6 +361,7 @@ def main():
         print(f"epoch {state['epoch']}: kayıp {np.mean(losses):.4f}, doğrulama MAE {mae:.2f} BPM, "
               f"en iyi {state['best']['val_mae']:.2f} (epoch {state['best']['epoch']}), {epoch_time:.0f} s "
               f"[{datetime.now():%H:%M:%S}]", flush=True)
+        print("  doğrulama: " + ", ".join(f"{k} {m:.2f} ({n})" for k, (m, n) in VAL_GROUPS.items()), flush=True)
         json.dump(state, open(os.path.join(a.out, "gecmis.json"), "w"), indent=1)
     print("bitti", flush=True)
 
