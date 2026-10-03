@@ -1,0 +1,22 @@
+UBFC-Phys: 48 zip
+[vost#0:0/rawvideo @ 0x57c20a1ad780] [vost#0:0/rawvideo @ 0x59a9587d8780]   [1/48] s17.zip: s17_T1: 3601 kare, yüz %100, işaret - (r=0.67); s17_T2: 3601 kare, yüz %90, işaret - (r=0.18); s17_T3: 3601 kare, yüz %99, işaret - (r=0.12)  (2198 s)
+[vost#0:0/rawvideo @ 0x577c79787780]   [2/48] s18.zip: s18_T1: 3601 kare, yüz %100, işaret + (r=0.86); s18_T2: 3601 kare, yüz %100, işaret - (r=0.41); s18_T3: 3601 kare, yüz %100, işaret + (r=0.46)  (4266 s)
+[vost#0:0/rawvideo @ 0x5842b0656780] [vost#0:0/rawvideo @ 0x5cc62b0ca780] [vost#0:0/rawvideo @ 0x5a33ae863780]   [3/48] s19.zip: s19_T1: 3601 kare, yüz %100, işaret - (r=0.71); s19_T2: 3601 kare, yüz %66, işaret - (r=0.13); s19_T3: 3601 kare, yüz %99, işaret + (r=0.04)  (6311 s)
+[vost#0:0/rawvideo @ 0x5c6db666a780] [vost#0:0/rawvideo @ 0x57aab177e780]   [4/48] s20.zip: s20_T1: 3601 kare, yüz %100, işaret + (r=0.73); s20_T2: 3601 kare, yüz %100, işaret - (r=0.07); s20_T3: 3601 kare, yüz %99, işaret - (r=0.07)  (8334 s)
+[vost#0:0/rawvideo @ 0x5c6cd819c780] Error submitting a packet to the muxer: Broken pipe
+[out#0/rawvideo @ 0x5c6cd819b740] Error muxing a packet
+[vost#0:0/rawvideo @ 0x5ce76e8db780]   [5/48] s21.zip: s21_T1: 3601 kare, yüz %100, işaret - (r=0.37); s21_T2: 3601 kare, yüz %100, işaret + (r=0.05); s21_T3: 3601 kare, yüz %100, işaret + (r=0.13)  (10317 s)
+[vost#0:0/rawvideo @ 0x5cd2aafb0780] Error submitting a packet to the muxer: Broken pipe
+[out#0/rawvideo @ 0x5cd2aafaf740] Error muxing a packet
+  [6/48] s22.zip: s22_T1: 3601 kare, yüz %100, işaret + (r=0.40); s22_T2: 3601 kare, yüz %99, işaret + (r=0.12); s22_T3: 3601 kare, yüz %99, işaret - (r=0.04)  (12364 s)
+[vost#0:0/rawvideo @ 0x594ff24d4780] [vost#0:0/rawvideo @ 0x5c6decb5c780]   [7/48] s23.zip: s23_T1: 3601 kare, yüz %100, işaret - (r=0.40); s23_T2: 3601 kare, yüz %99, işaret + (r=0.04); s23_T3: 3601 kare, yüz %100, işaret + (r=0.06)  (14280 s)
+[vost#0:0/rawvideo @ 0x58fbcd7d7780]   [8/48] s24.zip: s24_T1: 3601 kare, yüz %100, işaret - (r=0.23); s24_T2: 3601 kare, yüz %100, işaret - (r=0.27); s24_T3: 3601 kare, yüz %96, işaret + (r=0.08)  (16294 s)
+  [9/48] s25.zip: s25_T1: 3601 kare, yüz %100, işaret + (r=0.27); s25_T2: 3601 kare, yüz %100, işaret - (r=0.10); s25_T3: 3601 kare, yüz %98, işaret + (r=0.03)  (18048 s)
+[vost#0:0/rawvideo @ 0x5d37f956f780]   [10/48] s26.zip: s26_T1: 3601 kare, yüz %98, işaret + (r=0.07); s26_T2: 3601 kare, yüz %100, işaret - (r=0.09); s26_T3: 3601 kare, yüz %100, işaret + (r=0.12)  (19848 s)
+  [11/48] s27.zip: s27_T1: 3601 kare, yüz %100, işaret - (r=0.27); s27_T2: 3601 kare, yüz %100, işaret + (r=0.04); s27_T3: 3601 kare, yüz %95, işaret - (r=0.12)  (21756 s)
+  [12/48] s28.zip: s28_T1: 3601 kare, yüz %100, işaret - (r=0.09); s28_T2: 3601 kare, yüz %99, işaret - (r=0.08); s28_T3: 3601 kare, yüz %100, işaret - (r=0.12)  (23554 s)
+[vost#0:0/rawvideo @ 0x5630e37a6780] [vost#0:0/rawvideo @ 0x5cd8dbdbb780]   [13/48] s29.zip: s29_T1: 3601 kare, yüz %94, işaret + (r=0.34); s29_T2: 3601 kare, yüz %95, işaret + (r=0.15); s29_T3: 3601 kare, yüz %88, işaret + (r=0.22)  (25527 s)
+  [14/48] s30.zip: s30_T1: 3601 kare, yüz %51, işaret - (r=0.12); s30_T2: 3601 kare, yüz %98, işaret + (r=0.03); s30_T3: 3601 kare, yüz %98, işaret - (r=0.09)  (27416 s)
+[vost#0:0/rawvideo @ 0x58008d72e780] [vost#0:0/rawvideo @ 0x5a7fe76dc780]   [15/48] s31.zip: s31_T1: 3601 kare, yüz %100, işaret + (r=0.04); s31_T2: 3601 kare, yüz %100, işaret - (r=0.07); s31_T3: 3601 kare, yüz %94, işaret - (r=0.18)  (29525 s)
+  [16/48] s32.zip: s32_T1: 3601 kare, yüz %100, işaret - (r=0.14); s32_T2: 3601 kare, yüz %98, işaret - (r=0.04); s32_T3: 3601 kare, yüz %100, işaret - (r=0.06)  (31403 s)
+  [17/48] s33.zip: s33_T1: 3601 kare, yüz %91, işaret - (r=0.06); s33_T2: 3601 kare, yüz %91, işaret + (r=0.01); s33_T3: 3601 kare, yüz %66, işaret + (r=0.09)  (33389 s)

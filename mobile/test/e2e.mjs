@@ -7,7 +7,7 @@
 //                            [--yontem ai|klasik]                      # yüz modunda yöntem (varsayılan: ai)
 //
 // Chrome yolu: CHROME ortam değişkeni ya da Windows/Linux/macOS varsayılanları.
-import { spawn } from "node:child_process";
+import { spawn, spawnSync } from "node:child_process";
 import { existsSync, mkdtempSync, readFileSync, writeFileSync } from "node:fs";
 import { createServer } from "node:http";
 import { tmpdir } from "node:os";
@@ -85,7 +85,9 @@ if (args.shot) {
   writeFileSync(args.shot, Buffer.from(data, "base64"));
 }
 ws.close();
-proc.kill();
+// Windows: kill() yalnızca ana süreci kapatır, Chrome alt süreçleri açık kalır (sonraki testleri yavaşlatır)
+if (process.platform === "win32") spawnSync("taskkill", ["/PID", String(proc.pid), "/T", "/F"]);
+else proc.kill();
 server.close();
 
 const last = log.slice(-15).map((r) => r.hr).sort((a, b) => a - b);

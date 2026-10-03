@@ -41,3 +41,22 @@ Burada aynı kişiler telefon kamerasıyla ve yandan bir açıyla ölçülüyor.
   - 28 video, 10 kişiden geliyor ve aynı kişinin videoları birbirinden bağımsız değil.
   - "Telefon" burada Wi-Fi ile bilgisayara aktarılan bir telefon kamerası. Gerçek uygulama telefonun tarayıcısında
     ve farklı ışık koşullarında çalışıyor; bu test o koşulları tam temsil etmiyor.
+
+## 4. tur (PURE'dan sıfırdan, temiz etiket, telefon benzeri bozulmalar)
+
+Ölçümler aynı 28 videoda yapıldı; ayrıntılar `../test_kamera_tur4/`.
+
+| Model | Takipli (Viterbi) | Takipsiz (argmax) | Ana test (28 video, Viterbi) |
+|---|---:|---:|---:|
+| **3. tur, son epoch** | **1.71** | **2.82** | 1.13 |
+| 4. tur, en iyi (epoch 97) | 2.27 | 3.37 | **1.10** |
+| 4. tur, son epoch | 2.30 | 3.32 | 1.12 |
+| 1. tur | 1.95 | 3.70 | 1.19 |
+
+- Sıfırdan eğitim ve telefon benzeri bozulmalar ana testte 3. turla aynı sonucu verdi.
+- Telefon ve USB kamera testinde 4. tur 3. turdan kötü.
+- Muhtemel neden eğitim süresi:
+  - 3. tur, PURE'dan başlayıp toplam 300 epoch eğitildi (1. tur 200 + 3. tur 100).
+  - 4. tur 160 epoch eğitildi ve bozulmalar eğitimi zorlaştırdı. Eğitim kaybı 0.48'de kaldı; 3. turda 0.385'ti.
+- UBFC-Phys bu turda girdi: 17 kişiden 51 video geldi, kalite filtresinden 8'i geçti (dinlenme görevinden 6).
+- **Sonuç:** uygulama için en iyi model 3. turun son epoch modeli.
