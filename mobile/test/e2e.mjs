@@ -5,6 +5,8 @@
 //                            [--url https://nisagwn.github.io/rppg/]   # yayındaki sürümü test et
 //                            [--kamera arka]                           # yüz modunda arka kamera seçimi
 //                            [--yontem ai|klasik]                      # yüz modunda yöntem (varsayılan: ai)
+//                            [--crop kirpinti.json]                    # modelin gördüğü son kırpıntı
+//                            [--frames kareler.json]                   # modelin girdisi: bellekteki tüm kırpıntılar
 //
 // Chrome yolu: CHROME ortam değişkeni ya da Windows/Linux/macOS varsayılanları.
 import { spawn, spawnSync } from "node:child_process";
@@ -80,6 +82,17 @@ const cam = await evaluate("({ facing: window.__rppg.facing, mirror: document.ge
   "method: window.__rppg.log.at(-1)?.method, dl: { ready: window.__rppgDl.ready, failed: window.__rppgDl.failed, " +
   "ms: Math.round(window.__rppgDl.ms), samples: window.__rppgDl.acc.size } })");
 const status = await evaluate("document.querySelector('#status span').textContent");
+if (args.crop) {   // modelin gördüğü son 72x72 kırpıntı (eğitim kırpıntısıyla karşılaştırmak için)
+  writeFileSync(args.crop, JSON.stringify(await evaluate("({ px: Array.from(window.__rppgDl.frames.at(-1)?.px || []), " +
+    "box: window.__rppgDl.box, updates: window.__rppgDl.boxUpdates, w: document.getElementById('video').videoWidth, " +
+    "h: document.getElementById('video').videoHeight })")));
+}
+if (args.frames) {   // modelin girdisi: bellekteki tüm kırpıntılar (zaman damgalı), base64
+  writeFileSync(args.frames, JSON.stringify(await evaluate(`(() => { const F = window.__rppgDl.frames;
+    const all = new Uint8Array(F.length * F[0].px.length); F.forEach((f, i) => all.set(f.px, i * f.px.length));
+    let s = ""; for (let i = 0; i < all.length; i += 32768) s += String.fromCharCode.apply(null, all.subarray(i, i + 32768));
+    return { t: F.map((f) => f.t), b64: btoa(s), size: 72 }; })()`)));
+}
 if (args.shot) {
   const { data } = await cdp("Page.captureScreenshot", { format: "png", captureBeyondViewport: true });
   writeFileSync(args.shot, Buffer.from(data, "base64"));
