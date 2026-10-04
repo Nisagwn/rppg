@@ -32,7 +32,7 @@ const els = {
   plotBvp: $("plot-bvp"), plotSpec: $("plot-spec"), plotHist: $("plot-hist"),
 };
 const params = new URLSearchParams(location.search);
-const VERSION = "v9";
+const VERSION = "v10";
 document.getElementById("version").textContent = VERSION;
 
 const state = {
@@ -367,8 +367,11 @@ function drawSpectrum(c, p, hr) {
 // pencereden 160 örneklik nabız dalgası verir; pencereler yarı örtüşür (80 kare ≈ 2.7 s'de bir) ve Hann
 // ağırlıklarıyla birleştirilir. Sonuç klasik hattaki gibi detrend + bant geçiren + spektrum + takipten geçer.
 const DL_SIZE = 72, DL_T = 160, DL_HOP = 80, DL_FS = 30, DL_BOX = 1.5, DL_KEEP_SEC = 12, DL_MAX_GAP = 0.35;
+// Kırpma kutusu eğitimdeki gibi (rPPG-Toolbox: 30 karede bir yüz bulma, arada sabit) ~1 s sabit tutulur. Her karede
+// kayan kutu, modelin görmediği yapay bir hareket ekler. Yüz kutunun %20'sinden fazla kayarsa beklemeden güncellenir.
+const DL_BOX_SEC = 1.0, DL_BOX_MOVE = 0.2;
 const dl = { worker: null, ready: false, failed: "", busy: false, gen: 0, frames: [], t0: null, nextK: null,
-  acc: new Map(), ms: 0, canvas: null };
+  acc: new Map(), ms: 0, canvas: null, box: null, boxT: 0, boxUpdates: 0 };
 window.__rppgDl = dl; // tarayıcı testleri için
 
 function dlInit() {
@@ -400,6 +403,7 @@ function dlReset() {
   dl.t0 = null;
   dl.nextK = null;
   dl.acc.clear();
+  dl.box = null;
 }
 
 function dlCapture(tSec) {                     // yüz kutusundan 72x72 RGB kırpıntı (tam çözünürlüklü kareden)
@@ -408,7 +412,15 @@ function dlCapture(tSec) {                     // yüz kutusundan 72x72 RGB kır
     dl.canvas = document.createElement("canvas");
     dl.canvas.width = dl.canvas.height = DL_SIZE;
   }
-  const size = Math.max(b.w, b.h) * DL_BOX * sc, cx = (b.x + b.w / 2) * sc, cy = (b.y + b.h / 2) * sc;
+  const cur = { size: Math.max(b.w, b.h) * DL_BOX * sc, cx: (b.x + b.w / 2) * sc, cy: (b.y + b.h / 2) * sc };
+  const B = dl.box;
+  if (!B || tSec - dl.boxT >= DL_BOX_SEC || Math.hypot(cur.cx - B.cx, cur.cy - B.cy) > DL_BOX_MOVE * B.size ||
+      Math.abs(cur.size / B.size - 1) > DL_BOX_MOVE) {
+    dl.box = cur;
+    dl.boxT = tSec;
+    dl.boxUpdates++;
+  }
+  const { size, cx, cy } = dl.box;
   const x0 = Math.max(0, cx - size / 2), y0 = Math.max(0, cy - size / 2);
   const x1 = Math.min(vw, cx + size / 2), y1 = Math.min(vh, cy + size / 2);
   if (x1 - x0 < 8 || y1 - y0 < 8) return;
