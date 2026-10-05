@@ -19,7 +19,7 @@ import numpy as np
 
 from dl_common import label_quality, video_decision
 
-SOURCES = ("mcd", "ubfc", "pure", "ubfcphys", "mpu", "test")
+SOURCES = ("mcd", "ubfc", "pure", "ubfcphys", "mpu", "mmpd", "vipl", "cohface", "test")
 FIELDS = ("ok_frac", "snr_med", "agree_frac", "agree_ok_frac", "r0", "lag_best", "r_best", "lag_pos", "r_pos")
 
 

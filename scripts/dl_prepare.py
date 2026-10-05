@@ -200,7 +200,8 @@ def fetch(url, dst, retries=8):
     if os.path.exists(dst) and os.path.getsize(dst) > 0:
         return
     os.makedirs(os.path.dirname(dst), exist_ok=True)
-    headers = {"Authorization": f"Bearer {os.environ['HF_TOKEN']}"} if os.environ.get("HF_TOKEN") else {}
+    tok = hf_token()
+    headers = {"Authorization": f"Bearer {tok}"} if tok and "huggingface.co" in url else {}
     for k in range(retries):
         try:
             with requests.get(url, stream=True, timeout=120, headers=headers) as r:
@@ -450,6 +451,201 @@ def _init_worker():
     cv2.setNumThreads(1)  # çok süreçte OpenCV iş parçacıkları CPU'yu boğmasın
 
 
+# ------------------------------------------------------------------ MMPD, VIPL-HR, COHFACE (Hugging Face kopyaları)
+# Kopyalar erişim onaylı (gated): HF hesabıyla sayfada istek gönderilip onay beklenir, indirmede HF_TOKEN gerekir.
+# Her veri setinde numarası 5'e bölünen kişiler ayrı test klasörüne (test_<kaynak>) gider, eğitime hiç girmez:
+# MMPD ve VIPL-HR (kaynak 4) gerçek telefon kamerası videoları -> ilk telefon testi.
+MMPD_HF, VIPL_HF, COHFACE_HF = "WeiQian98/mini_MMPD", "WeiQian98/VIPL-HR", "WeiQian98/COHFACE"
+VIPL_SOURCES = ("source1", "source2", "source4")  # source3 kızılötesi (renksiz): RGB modele uygun değil
+
+
+def is_new_test(person_no):
+    return int(person_no) % 5 == 0
+
+
+def hf_token():
+    tok = os.environ.get("HF_TOKEN")
+    p = os.path.join(os.path.expanduser("~"), ".cache", "huggingface", "token")
+    if not tok and os.path.exists(p):
+        tok = open(p).read().strip()
+    return tok
+
+
+def hf_url(repo, path):
+    from urllib.parse import quote
+    return f"https://huggingface.co/datasets/{repo}/resolve/main/{quote(path)}"
+
+
+def hf_files(repo):
+    """Kopyadaki dosya listesi; erişim yoksa (istek onaylanmadı / HF_TOKEN yok) uyarı ve boş liste."""
+    import requests
+    s = requests.get(f"https://huggingface.co/api/datasets/{repo}", timeout=60).json().get("siblings", [])
+    files = [x["rfilename"] for x in s]
+    probe = next((f for f in files if not f.startswith(".")), None)
+    tok = hf_token()
+    r = requests.head(hf_url(repo, probe), headers={"Authorization": f"Bearer {tok}"} if tok else {},
+                      allow_redirects=True, timeout=60) if probe else None
+    if r is None or r.status_code in (401, 403):
+        print(f"{repo}: erişim yok — huggingface.co/datasets/{repo} sayfasında erişim isteyin, onaydan sonra HF_TOKEN "
+              "verin. Atlanıyor.", flush=True)
+        return []
+    return files
+
+
+def _frames_bgr_from_rgb(video, upscale=1):
+    for fr in video:
+        bgr = cv2.cvtColor(np.ascontiguousarray(fr), cv2.COLOR_RGB2BGR)
+        yield cv2.resize(bgr, None, fx=upscale, fy=upscale, interpolation=cv2.INTER_CUBIC) if upscale > 1 else bgr
+
+
+def _load_mat(path):
+    """MATLAB v5 (scipy) ya da v7.3 (HDF5) -> dict; v7.3'te diziler ters eksen sıralı okunur."""
+    try:
+        from scipy.io import loadmat
+        return {k: v for k, v in loadmat(path).items() if not k.startswith("__")}
+    except NotImplementedError:
+        import h5py
+        with h5py.File(path, "r") as f:
+            return {k: np.array(f[k]).transpose() for k in f.keys() if isinstance(f[k], h5py.Dataset)}
+
+
+def process_mmpd(mat_path, dst, **info):
+    """mini MMPD: 'video' [T,60,80,3] (0-1 ya da 0-255), 'GT_ppg' kare başına PPG (30 fps, Samsung S22 Ultra).
+    80x60 karede yüz küçük: Haar için 4x büyütülür. Koşul bilgisi (ışık, hareket, ten rengi...) meta'ya yazılır."""
+    m = _load_mat(mat_path)
+    video = np.asarray(m["video"])
+    if video.ndim == 4 and video.shape[-1] != 3 and video.shape[1] == 3:
+        video = video.transpose(0, 2, 3, 1)
+    if video.dtype != np.uint8:
+        video = np.round(video * (255.0 if video.max() <= 1.5 else 1.0)).clip(0, 255).astype(np.uint8)
+    bvp = np.asarray(m["GT_ppg"], dtype=float).reshape(-1)
+    n = min(len(video), len(bvp))
+    frames, rate = crop_frames(_frames_bgr_from_rgb(video[:n], upscale=4), None, 1, mat_path)
+    cond = {k: str(np.asarray(m[k]).reshape(-1)[0]) for k in
+            ("light", "motion", "exercise", "skin_color", "gender", "glasser", "hair_cover", "makeup") if k in m}
+    t = np.arange(len(frames)) / FS
+    f, b = resample(frames, t, bvp[:len(frames)], t)
+    sign, corr = label_polarity(f, b)
+    save(dst, f, b, rate, polarity=sign, polarity_corr=corr, **cond, **info)
+    return len(f), rate, cond
+
+
+def _read_numbers(path):
+    with open(path, encoding="utf-8", errors="ignore") as fh:
+        return np.array([float(x) for x in re.findall(r"-?\d+(?:\.\d+)?", fh.read())])
+
+
+def process_vipl(avi, wave_csv, time_txt, dst, max_sec=None, **info):
+    """VIPL-HR: video.avi + wave.csv (parmak oksimetresi BVP, 60 Hz) + time.txt (kare zaman damgaları, ms; kaynak
+    2'de yok). Zaman damgası yoksa ya da PPG süresi videodan >%5 farklıysa PPG videoya eşit aralıkla yayılır."""
+    vfs = cv2.VideoCapture(avi).get(cv2.CAP_PROP_FPS) or 30.0
+    frames, rate = crop_video(avi, int(max_sec * vfs) + 2 if max_sec else None, 2)
+    wave = pd.read_csv(wave_csv).iloc[:, 0].to_numpy(dtype=float)
+    ts = _read_numbers(time_txt) if time_txt and os.path.exists(time_txt) else np.array([])
+    if len(ts) >= len(frames) and np.all(np.diff(ts[:len(frames)]) > 0):
+        t_v = (ts[:len(frames)] - ts[0]) / 1000.0
+    else:
+        t_v = np.arange(len(frames)) / vfs
+    dur_w = len(wave) / 60.0
+    if abs(dur_w - t_v[-1]) / max(t_v[-1], 1e-6) > 0.05:
+        t_w = np.linspace(0, t_v[-1], len(wave))      # süreler tutmuyor: UBFC'deki gibi eşit aralıkla yay
+    else:
+        t_w = np.arange(len(wave)) / 60.0
+    f, b = resample(frames, t_v, np.interp(t_v, t_w, wave), t_v)
+    sign, corr = label_polarity(f, b)
+    save(dst, f, b, rate, polarity=sign, polarity_corr=corr, **info)
+    return len(f), rate
+
+
+def process_cohface(avi, hdf5, dst, **info):
+    """COHFACE: data.avi (640x480, 20 fps, yoğun MPEG-4 sıkıştırma) + data.hdf5 ('pulse' 256 Hz, 'time' s)."""
+    import h5py
+    vfs = cv2.VideoCapture(avi).get(cv2.CAP_PROP_FPS) or 20.0
+    frames, rate = crop_video(avi, None, 1)
+    with h5py.File(hdf5, "r") as h:
+        pulse, t_p = np.array(h["pulse"], dtype=float), np.array(h["time"], dtype=float)
+    t_v = np.arange(len(frames)) / vfs
+    f, b = resample(frames, t_v, np.interp(t_v, t_p - t_p[0], pulse), t_v)
+    sign, corr = label_polarity(f, b)
+    save(dst, f, b, rate, polarity=sign, polarity_corr=corr, **info)
+    return len(f), rate
+
+
+def _new_dst(out_root, src, person_no, name):
+    sub = f"test_{src}" if is_new_test(person_no) else src
+    return os.path.join(out_root, sub, f"{src}_{name}.npz")
+
+
+def job_mmpd(rel, raw_root, out_root, keep_raw):
+    sm = re.search(r"p(\d+)_(\d+)\.mat$", rel)
+    pno, k = int(sm.group(1)), int(sm.group(2))
+    dst = _new_dst(out_root, "mmpd", pno, f"p{pno}_{k}")
+    if os.path.exists(dst):
+        return rel, "var"
+    local = os.path.join(raw_root, rel)
+    fetch(hf_url(MMPD_HF, rel), local)
+    n, rate, cond = process_mmpd(local, dst, person=f"mmpd_p{pno}", camera="Galaxy S22 Ultra", step=str(k),
+                                 source="mmpd")
+    if not keep_raw:
+        os.remove(local)
+    return rel, f"{n} kare, yüz %{100 * rate:.0f}, " + ", ".join(f"{a}={b}" for a, b in cond.items())
+
+
+def job_vipl(d, raw_root, out_root, keep_raw, max_sec):
+    p, v, s = d.split("/")[1:4]
+    pno = int(p[1:])
+    dst = _new_dst(out_root, "vipl", pno, f"{p}_{v}_{s}")
+    if os.path.exists(dst):
+        return d, "var"
+    local = os.path.join(raw_root, d)
+    for fn in ("video.avi", "wave.csv"):
+        fetch(hf_url(VIPL_HF, f"{d}/{fn}"), os.path.join(local, fn))
+    tt = None
+    try:
+        fetch(hf_url(VIPL_HF, f"{d}/time.txt"), os.path.join(local, "time.txt"), retries=1)
+        tt = os.path.join(local, "time.txt")
+    except Exception:  # kaynak 2'de zaman damgası dosyası yok
+        pass
+    n, rate = process_vipl(os.path.join(local, "video.avi"), os.path.join(local, "wave.csv"), tt, dst, max_sec,
+                           person=f"vipl_{p}", camera=s, step=v, source="vipl")
+    if not keep_raw:
+        import shutil
+        shutil.rmtree(local, ignore_errors=True)
+    return d, f"{n} kare, yüz %{100 * rate:.0f}"
+
+
+def job_cohface(d, raw_root, out_root, keep_raw):
+    pno, k = (int(x) for x in d.split("/"))
+    dst = _new_dst(out_root, "cohface", pno, f"{pno}_{k}")
+    if os.path.exists(dst):
+        return d, "var"
+    local = os.path.join(raw_root, d)
+    for fn in ("data.avi", "data.hdf5"):
+        fetch(hf_url(COHFACE_HF, f"{d}/{fn}"), os.path.join(local, fn))
+    n, rate = process_cohface(os.path.join(local, "data.avi"), os.path.join(local, "data.hdf5"), dst,
+                              person=f"cohface_{pno}", camera="COHFACE", step=str(k), source="cohface")
+    if not keep_raw:
+        import shutil
+        shutil.rmtree(local, ignore_errors=True)
+    return d, f"{n} kare, yüz %{100 * rate:.0f}"
+
+
+def new_jobs(kind, n, raw_root, out_root, keep_raw, max_sec):
+    """MMPD/VIPL/COHFACE işleri; test kişileri önce (değerlendirme erken hazır olsun)."""
+    if kind == "mmpd":
+        files = sorted((f for f in hf_files(MMPD_HF) if f.endswith(".mat")),
+                       key=lambda f: (not is_new_test(re.search(r"p(\d+)_", f).group(1)), f))
+        return [(job_mmpd, (f, os.path.join(raw_root, "mmpd"), out_root, keep_raw)) for f in files[:n]]
+    if kind == "vipl":
+        dirs = sorted({f.rsplit("/", 1)[0] for f in hf_files(VIPL_HF)
+                       if f.endswith("/video.avi") and f.split("/")[3] in VIPL_SOURCES},
+                      key=lambda d: (not is_new_test(d.split("/")[1][1:]), d))
+        return [(job_vipl, (d, os.path.join(raw_root, "vipl"), out_root, keep_raw, max_sec)) for d in dirs[:n]]
+    dirs = sorted({f.rsplit("/", 1)[0] for f in hf_files(COHFACE_HF) if f.endswith("/data.avi")},
+                  key=lambda d: (not is_new_test(d.split("/")[0]), d))
+    return [(job_cohface, (d, os.path.join(raw_root, "cohface"), out_root, keep_raw)) for d in dirs[:n]]
+
+
 def run(jobs, workers):
     """İşleri paralel çalıştırır; başarısız iş sayısını döndürür.
     Bir işçi süreç çökerse (ör. çözücü segfault) havuz bozulur ve bekleyen tüm işler düşer; o zaman kalan
@@ -501,6 +697,9 @@ def main():
     ap.add_argument("--ubfc", type=int, default=0, help="UBFC'nin test dışı kaç deneği (video başına 1.8 GB)")
     ap.add_argument("--pure", type=int, default=0, help="kaç PURE oturumu (10 kişi x 6 hareket = 60; HF kopyası)")
     ap.add_argument("--ubfcphys", type=int, default=0, help="kaç UBFC-Phys zip'i (kişi başına ~15 GB; HF_TOKEN gerekir)")
+    ap.add_argument("--mmpd", type=int, default=0, help="kaç mini MMPD videosu (660; telefon; HF erişimi gerekir)")
+    ap.add_argument("--vipl", type=int, default=0, help="kaç VIPL-HR video klasörü (kaynak 1, 2, 4; ~2400)")
+    ap.add_argument("--cohface", type=int, default=0, help="kaç COHFACE videosu (164)")
     ap.add_argument("--mpu", type=int, default=0, help="kaç MPU-rPPG örnek kaydı (PPG zamanlaması güvenilmez; varsayılan kapalı)")
     ap.add_argument("--workers", type=int, default=4)
     ap.add_argument("--keep-raw", action="store_true")
@@ -554,6 +753,13 @@ def main():
             print(f"UBFC-Phys: {len(zips)} zip", flush=True)
             failed += run([(job_ubfcphys, (z, os.path.join(a.raw, "ubfcphys"), a.out, a.keep_raw, a.max_sec))
                            for z in zips], max(1, min(a.workers, 2)))
+
+    for kind in ("cohface", "mmpd", "vipl"):
+        n = getattr(a, kind)
+        if n:
+            jobs = new_jobs(kind, n, a.raw, a.out, a.keep_raw, a.max_sec)
+            print(f"{kind}: {len(jobs)} video", flush=True)
+            failed += run(jobs, a.workers)
 
     if a.mpu:
         pairs = mpu_pairs()[:a.mpu]

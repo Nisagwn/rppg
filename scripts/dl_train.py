@@ -49,9 +49,12 @@ def _video_entry(p, min_face):
             "vote": float(m["polarity"]) * float(m["polarity_corr"]) if "polarity" in m.files else 0.0}
 
 
+TRAIN_SOURCES = ("mcd", "ubfc", "pure", "ubfcphys", "mpu", "mmpd", "vipl", "cohface")  # test_* klasörleri hiç okunmaz
+
+
 def list_videos(root, min_face=0.5):
     vids = []
-    for p in sorted(p for sub in ("mcd", "ubfc", "pure", "ubfcphys", "mpu")
+    for p in sorted(p for sub in TRAIN_SOURCES
                     for p in glob.glob(os.path.join(root, sub, "*.npz"))):
         mt = os.path.getmtime(p)
         if p not in _VCACHE or _VCACHE[p][0] != mt:

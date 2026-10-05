@@ -23,9 +23,19 @@ from dl_common import PRETRAINED, ROOT, build_model, hr_from_bvp, predict_video,
 CAMERA_NAMES = {"IriunWebcam": "telefon", "USBVideo": "USB"}
 
 
+VIPL_CAMERAS = {"source1": "webcam", "source2": "RealSense", "source4": "telefon"}
+
+
 def group_of(meta):
-    if str(meta["source"]) == "ubfc":
+    src = str(meta["source"])
+    if src == "ubfc":
         return "UBFC"
+    if src == "mmpd":
+        return "MMPD (telefon)"
+    if src == "vipl":
+        return f"VIPL ({VIPL_CAMERAS.get(str(meta['camera']), str(meta['camera']))})"
+    if src == "cohface":
+        return "COHFACE"
     g = "MCD dinlenme" if str(meta["step"]) == "before" else "MCD egzersiz"
     cam = CAMERA_NAMES.get(str(meta["camera"]))
     return f"{g} ({cam})" if cam else g
