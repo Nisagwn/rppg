@@ -36,6 +36,8 @@ def group_of(meta):
         return f"VIPL ({VIPL_CAMERAS.get(str(meta['camera']), str(meta['camera']))})"
     if src == "cohface":
         return "COHFACE"
+    if src == "dlcn":
+        return "DLCN gece " + str(meta["step"]).split("_")[0]
     g = "MCD dinlenme" if str(meta["step"]) == "before" else "MCD egzersiz"
     cam = CAMERA_NAMES.get(str(meta["camera"]))
     return f"{g} ({cam})" if cam else g

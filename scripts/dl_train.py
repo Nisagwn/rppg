@@ -49,7 +49,7 @@ def _video_entry(p, min_face):
             "vote": float(m["polarity"]) * float(m["polarity_corr"]) if "polarity" in m.files else 0.0}
 
 
-TRAIN_SOURCES = ("mcd", "ubfc", "pure", "ubfcphys", "mpu", "mmpd", "vipl", "cohface")  # test_* klasörleri hiç okunmaz
+TRAIN_SOURCES = ("mcd", "ubfc", "pure", "ubfcphys", "mpu", "mmpd", "vipl", "cohface", "dlcn")  # test_* klasörleri hiç okunmaz
 
 
 def list_videos(root, min_face=0.5):

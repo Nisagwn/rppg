@@ -17,6 +17,7 @@ bunlar --test ile yalnızca yereldeki dosyalardan ayrı klasöre (data/dl/test) 
 İnmiş/işlenmiş dosyalar atlanır; yarıda kalırsa aynı komut tekrar çalıştırılır.
 """
 import argparse
+import glob
 import os
 import re
 import sys
@@ -646,6 +647,41 @@ def new_jobs(kind, n, raw_root, out_root, keep_raw, max_sec):
     return [(job_cohface, (d, os.path.join(raw_root, "cohface"), out_root, keep_raw)) for d in dirs[:n]]
 
 
+def process_dlcn(h5_path, dst, **info):
+    """DLCN (Kaggle: dalaoplan/rppg-dlcn): 'imgs' [T,128,128,3] RGB yüz kırpıntıları (MTCNN kutusu x1.2, ilk karede
+    bulunup sabit; Logitech C922, 30 fps), 'bvp' kare sayısına enterpole edilmiş CMS50E parmak PPG'si.
+    Kutu bizimkinden (Haar x1.5) dar: kırpıntı doğrudan 72x72'ye küçültülür (ölçek çeşitliliği)."""
+    import h5py
+    with h5py.File(h5_path, "r") as h:
+        imgs, bvp = h["imgs"], np.array(h["bvp"], dtype=float).reshape(-1)
+        n = min(len(imgs), len(bvp))
+        frames = np.empty((n, SIZE, SIZE, 3), dtype=np.uint8)
+        for k in range(0, n, 300):  # parça parça: gzip'li dizi belleğe toptan alınmaz
+            blk = imgs[k:k + 300]
+            for j, im in enumerate(blk):
+                frames[k + j] = cv2.resize(im, (SIZE, SIZE), interpolation=cv2.INTER_AREA)
+    sign, corr = label_polarity(frames, bvp[:n])
+    save(dst, frames, bvp[:n].astype(np.float32), 1.0, polarity=sign, polarity_corr=corr, **info)
+    return n, sign, corr
+
+
+def job_dlcn(path, out_root):
+    sm = re.search(r"P(\d+)_(\d+)\.h5$", path)
+    pno, v = int(sm.group(1)), int(sm.group(2))
+    dst = _new_dst(out_root, "dlcn", pno, f"P{pno}_{v}")
+    if os.path.exists(dst):
+        return os.path.basename(path), "var"
+    n, sign, corr = process_dlcn(path, dst, person=f"dlcn_P{pno}", camera="C922",
+                                 step=("dinlenme" if v <= 4 else "egzersiz") + f"_v{v}", source="dlcn")
+    return os.path.basename(path), f"{n} kare, işaret {'+' if sign > 0 else '-'} (r={corr:.2f})"
+
+
+def dlcn_files(root, n):
+    files = sorted(glob.glob(os.path.join(root, "**", "P*_*.h5"), recursive=True),
+                   key=lambda p: (not is_new_test(re.search(r"P(\d+)_", os.path.basename(p)).group(1)), p))
+    return files[:n]
+
+
 def run(jobs, workers):
     """İşleri paralel çalıştırır; başarısız iş sayısını döndürür.
     Bir işçi süreç çökerse (ör. çözücü segfault) havuz bozulur ve bekleyen tüm işler düşer; o zaman kalan
@@ -700,6 +736,8 @@ def main():
     ap.add_argument("--mmpd", type=int, default=0, help="kaç mini MMPD videosu (660; telefon; HF erişimi gerekir)")
     ap.add_argument("--vipl", type=int, default=0, help="kaç VIPL-HR video klasörü (kaynak 1, 2, 4; ~2400)")
     ap.add_argument("--cohface", type=int, default=0, help="kaç COHFACE videosu (164)")
+    ap.add_argument("--dlcn", type=int, default=0, help="kaç DLCN videosu (784; --dlcn-dir'deki .h5 dosyaları)")
+    ap.add_argument("--dlcn-dir", default="/kaggle/input", help="DLCN .h5 dosyalarının klasörü (alt klasörler aranır)")
     ap.add_argument("--mpu", type=int, default=0, help="kaç MPU-rPPG örnek kaydı (PPG zamanlaması güvenilmez; varsayılan kapalı)")
     ap.add_argument("--workers", type=int, default=4)
     ap.add_argument("--keep-raw", action="store_true")
@@ -753,6 +791,11 @@ def main():
             print(f"UBFC-Phys: {len(zips)} zip", flush=True)
             failed += run([(job_ubfcphys, (z, os.path.join(a.raw, "ubfcphys"), a.out, a.keep_raw, a.max_sec))
                            for z in zips], max(1, min(a.workers, 2)))
+
+    if a.dlcn:
+        files = dlcn_files(a.dlcn_dir, a.dlcn)
+        print(f"dlcn: {len(files)} video ({a.dlcn_dir})", flush=True)
+        failed += run([(job_dlcn, (f, a.out)) for f in files], a.workers)
 
     for kind in ("cohface", "mmpd", "vipl"):
         n = getattr(a, kind)
