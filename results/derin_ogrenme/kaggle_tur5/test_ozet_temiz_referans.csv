@@ -1,0 +1,16 @@
+yöntem,UBFC,MCD dinlenme,MCD egzersiz,Hepsi,≤5 BPM %,Medyan
+FactorizePhys ince ayarlı+Viterbi,0.79,0.81,0.76,0.79,97.74,0.53
+FactorizePhys ince ayarlı (son epoch)+Viterbi,0.8,0.8,0.92,0.85,97.49,0.52
+3. tur (başlangıç)+Viterbi,0.79,0.9,0.9,0.87,97.13,0.53
+1. tur+Viterbi,0.94,0.85,1.02,0.94,96.49,0.56
+FactorizePhys ince ayarlı (son epoch),0.71,1.43,1.27,1.2,96.84,0.48
+FactorizePhys ince ayarlı,0.7,1.5,1.29,1.24,96.82,0.48
+3. tur (başlangıç),0.7,1.53,1.31,1.25,96.68,0.46
+1. tur,0.74,1.53,1.38,1.29,95.91,0.5
+FactorizePhys PURE (hazır)+Viterbi,0.78,2.19,3.88,2.51,89.34,0.95
+FactorizePhys PURE (hazır),0.73,3.42,4.78,3.32,88.15,1.15
+POS tüm yüz+Viterbi,1.31,3.69,4.59,3.49,89.67,1.12
+POS (yüz kırpıntısı)+Viterbi,0.81,5.73,6.12,4.75,85.23,1.17
+POS ortalama+Viterbi,1.29,4.09,7.6,4.79,86.34,1.32
+POS klasik (ortalama+argmax),1.29,5.77,7.87,5.54,84.1,2.16
+POS (yüz kırpıntısı),2.54,6.5,7.64,6.03,80.97,3.38

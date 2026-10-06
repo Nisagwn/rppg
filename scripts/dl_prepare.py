@@ -666,7 +666,7 @@ def process_dlcn(h5_path, dst, **info):
 
 
 def job_dlcn(path, out_root):
-    sm = re.search(r"P(\d+)_(\d+)\.h5$", path)
+    sm = re.search(r"[Pp](\d+)_(\d+)\.h5$", path)
     pno, v = int(sm.group(1)), int(sm.group(2))
     dst = _new_dst(out_root, "dlcn", pno, f"P{pno}_{v}")
     if os.path.exists(dst):
@@ -677,8 +677,14 @@ def job_dlcn(path, out_root):
 
 
 def dlcn_files(root, n):
-    files = sorted(glob.glob(os.path.join(root, "**", "P*_*.h5"), recursive=True),
-                   key=lambda p: (not is_new_test(re.search(r"P(\d+)_", os.path.basename(p)).group(1)), p))
+    """Kaggle girdi klasöründe DLCN .h5 dosyaları (büyük/küçük harf duyarsız; Kaggle yolu sürüme göre değişiyor)."""
+    files = [p for p in glob.glob(os.path.join(root, "**", "*.h5"), recursive=True)
+             if re.fullmatch(r"p\d+_\d+\.h5", os.path.basename(p), re.I)]
+    if not files:
+        found = sorted(glob.glob(os.path.join(root, "*")) + glob.glob(os.path.join(root, "*", "*")))[:20]
+        print(f"DLCN .h5 bulunamadı ({root}); 'Add Input' ile dalaoplan/rppg-dlcn eklendi mi? Klasörde: {found}",
+              flush=True)
+    files.sort(key=lambda p: (not is_new_test(re.search(r"(\d+)_", os.path.basename(p)).group(1)), p))
     return files[:n]
 
 
