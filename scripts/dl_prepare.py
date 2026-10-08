@@ -458,6 +458,7 @@ def _init_worker():
 # MMPD ve VIPL-HR (kaynak 4) gerçek telefon kamerası videoları -> ilk telefon testi.
 MMPD_HF, VIPL_HF, COHFACE_HF = "WeiQian98/mini_MMPD", "WeiQian98/VIPL-HR", "WeiQian98/COHFACE"
 VIPL_SOURCES = ("source1", "source2", "source4")  # source3 kızılötesi (renksiz): RGB modele uygun değil
+VIPL_ORDER = ("source4", "source1", "source2")    # indirme sırası: telefon 0.7 GB, webcam 7.6 GB, RealSense 33 GB
 
 
 def is_new_test(person_no):
@@ -640,7 +641,8 @@ def new_jobs(kind, n, raw_root, out_root, keep_raw, max_sec):
     if kind == "vipl":
         dirs = sorted({f.rsplit("/", 1)[0] for f in hf_files(VIPL_HF)
                        if f.endswith("/video.avi") and f.split("/")[3] in VIPL_SOURCES},
-                      key=lambda d: (not is_new_test(d.split("/")[1][1:]), d))
+                      key=lambda d: (not is_new_test(d.split("/")[1][1:]),       # önce test kişileri,
+                                     VIPL_ORDER.index(d.split("/")[3]), d))         # sonra telefon (küçük, en değerli)
         return [(job_vipl, (d, os.path.join(raw_root, "vipl"), out_root, keep_raw, max_sec)) for d in dirs[:n]]
     dirs = sorted({f.rsplit("/", 1)[0] for f in hf_files(COHFACE_HF) if f.endswith("/data.avi")},
                   key=lambda d: (not is_new_test(d.split("/")[0]), d))
