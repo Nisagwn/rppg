@@ -30,16 +30,18 @@ def iter_frames(path: str, max_frames: Optional[int] = None, resize_width: Optio
                 ) -> Iterator[np.ndarray]:
     cap = cv2.VideoCapture(path)
     i = 0
-    while True:
-        ok, f = cap.read()
-        if not ok or (max_frames is not None and i >= max_frames):
-            break
-        if resize_width and f.shape[1] > resize_width:
-            s = resize_width / f.shape[1]
-            f = cv2.resize(f, (resize_width, int(f.shape[0] * s)), interpolation=cv2.INTER_AREA)
-        yield f
-        i += 1
-    cap.release()
+    try:  # üreteç erken kapatılsa da (break, max_frames) video dosyası serbest bırakılır
+        while max_frames is None or i < max_frames:
+            ok, f = cap.read()
+            if not ok:
+                break
+            if resize_width and f.shape[1] > resize_width:
+                s = resize_width / f.shape[1]
+                f = cv2.resize(f, (resize_width, int(f.shape[0] * s)), interpolation=cv2.INTER_AREA)
+            yield f
+            i += 1
+    finally:
+        cap.release()
 
 
 # ----------------------------------------------------------------- UBFC-rPPG
@@ -65,7 +67,8 @@ def load_ubfc_gt(subject_dir: str) -> dict:
         hr = np.array([float(v) for v in lines[1].split()]) if len(lines) > 1 else None
         t = np.array([float(v) for v in lines[2].split()]) if len(lines) > 2 else None
     elif os.path.exists(p1):
-        rows = list(csv.reader(open(p1)))
+        with open(p1, newline="") as f:
+            rows = list(csv.reader(f))
         arr = np.array([[float(v) for v in r[:4]] for r in rows if len(r) >= 4])
         t, hr, bvp = arr[:, 0] / 1000.0, arr[:, 1], arr[:, 3]
     else:
@@ -110,7 +113,8 @@ def load_mcd_item(root: str, video_rel: str, meta_rel: str, ppg_rel: str) -> dic
 # --------------------------------------------------- Kendi kayıtlarımız
 def load_recording(rec_dir: str) -> dict:
     """scripts/record_session.py çıktısını yükler."""
-    meta = json.load(open(os.path.join(rec_dir, "meta.json"), encoding="utf-8"))
+    with open(os.path.join(rec_dir, "meta.json"), encoding="utf-8") as f:
+        meta = json.load(f)
     video = os.path.join(rec_dir, meta["video_file"])
     ts = np.loadtxt(os.path.join(rec_dir, "frames.csv"), delimiter=",", skiprows=1, usecols=1)
     ref_path = os.path.join(rec_dir, "reference.csv")

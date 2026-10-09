@@ -48,10 +48,10 @@ class Traces:
 
     @staticmethod
     def load(path: str) -> "Traces":
-        z = np.load(path)
-        rgb = {k[5:]: z[k] for k in z.files if k.startswith("rgb__")}
-        skin = {k[6:]: z[k] for k in z.files if k.startswith("skin__")}
-        return Traces(float(z["fps"]), rgb, skin, z["motion"], z["bboxes"], z["chest_dy"], z["face_cy"])
+        with np.load(path) as z:
+            rgb = {k[5:]: z[k] for k in z.files if k.startswith("rgb__")}
+            skin = {k[6:]: z[k] for k in z.files if k.startswith("skin__")}
+            return Traces(float(z["fps"]), rgb, skin, z["motion"], z["bboxes"], z["chest_dy"], z["face_cy"])
 
     def slice(self, start: int, end: int) -> "Traces":
         return Traces(self.fps, {k: v[start:end] for k, v in self.rgb.items()},
