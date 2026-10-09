@@ -169,6 +169,28 @@ def md_header(t):
     return ["| Yöntem | " + " | ".join(t.columns) + " |", "|---|" + "---:|" * len(t.columns)]
 
 
+def training_lines(cfg):
+    """Rapordaki artırma/kayıp/seçim satırları; gecmis.json'daki eğitim ayarlarından (eski turlarda yok: varsayılanlar)."""
+    cfg = cfg or {}
+    lo, hi = cfg.get("speed", [0.8, 1.25])
+    aug = f"- Artırma: yatay çevirme, hız {lo:g}–{hi:g}× (HR aralığını genişletir), parlaklık ×0.8–1.2"
+    if cfg.get("phone_aug"):
+        aug += "; telefon bozulmaları (el titremesi, düşük çözünürlük, renk sıcaklığı, loş ışık + gürültü)"
+    if cfg.get("hr_balance", 0) > 1:
+        aug += f"; nabız dengeli örnekleme (seyrek nabız aralıkları en fazla {cfg['hr_balance']:g}×)"
+    loss = "- Kayıp: negatif Pearson"
+    if cfg.get("spec_loss", 0) > 0:
+        loss += f" + {cfg['spec_loss']:g} × spektral KL (nabız bandı)"
+    loss += "; AdamW, cosine öğrenme oranı"
+    if cfg.get("amp"):
+        loss += ", karışık hassasiyet (float16)"
+    sel = "Viterbi" if cfg.get("val_viterbi") else "argmax"
+    sel = f"- Seçim: en iyi epoch doğrulama kişilerinde pencere MAE ({sel}) ile"
+    if cfg.get("ema", 0) > 0:
+        sel += f"; ağırlıkların EMA'sı ({cfg['ema']:g}) doğrulandı ve kaydedildi"
+    return [aug, loss, sel]
+
+
 def write_report(a, t, info, w, t_clean=None, ref_q=None):
     """results/derin_ogrenme/egitim/SONUCLAR.md"""
     hist_path = a.history or os.path.join(os.path.dirname(a.model), "gecmis.json")
@@ -193,8 +215,7 @@ def write_report(a, t, info, w, t_clean=None, ref_q=None):
          "- Ön işleme toolbox ile aynı (Haar ×1.5, 30 karede bir tespit, 72×72, ham kare); hepsi 30 fps'e yeniden örneklendi",
          "- MCD parmak PPG'si UBFC/PURE'a göre ters işaretli (ön-eğitimli model çıktısıyla korelasyon ≈ −0.75, "
          "gecikme ≈ 0); eğitimde ters çevrildi",
-         "- Artırma: yatay çevirme, hız 0.8–1.25× (HR aralığını genişletir), parlaklık ×0.8–1.2",
-         "- Kayıp: negatif Pearson; AdamW, cosine öğrenme oranı; en iyi epoch doğrulama kişilerinde pencere MAE ile seçildi", ""]
+         *training_lines(hist.get("ayarlar") if hist else None), ""]
     if hist:
         h = [x for x in hist["history"] if x.get("val_mae") is not None]
         L += [f"Eğitim: {hist['epoch']} epoch (500 adım × 8 parça). Doğrulama MAE: ön-eğitimli "

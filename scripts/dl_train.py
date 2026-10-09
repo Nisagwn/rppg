@@ -409,6 +409,7 @@ def main():
         state["best"] = {"epoch": 0, "val_mae": mae0}
         torch.save({"model": eval_model().state_dict()}, os.path.join(a.out, "best.pth"))
     state["val_set"] = sorted(v["npz"] for v in val)
+    state["ayarlar"] = {k: v for k, v in vars(a).items() if k not in ("data", "out", "deadline")}  # rapor için
 
     sampler = ChunkSampler(train)
     epoch_time = None
