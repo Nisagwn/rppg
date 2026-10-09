@@ -52,8 +52,9 @@ def chunk_starts(n, hop):
 
 
 # Örtüşmeli birleştirme penceresi: parça ortasına ağırlık verir, sınırdaki (modelin bağlamı kısa) kareleri
-# komşu parçaya bırakır. Taban değeri, videonun ilk/son karelerini yalnızca bir parça kapsadığında 0/0'ı önler.
-_BLEND = (np.hanning(CHUNK) + 1e-3).astype(np.float32)
+# komşu parçaya bırakır. Mobil uygulamayla aynı (mobile/app.js dlAddBvp: sin²(π(i+0.5)/T), DL_HOP = 80);
+# yarım örnek kayması sayesinde uçlarda sıfır olmaz, videonun ilk/son karelerinde 0/0 oluşmaz.
+_BLEND = (np.sin(np.pi * (np.arange(CHUNK) + 0.5) / CHUNK) ** 2).astype(np.float32)
 
 
 def predict_video(model, frames, device, batch=4, hop=CHUNK, flip=False):

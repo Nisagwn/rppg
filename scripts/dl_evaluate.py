@@ -97,7 +97,7 @@ def main():
     ap.add_argument("--compare", nargs="*", default=[], metavar="AD=YOL",
                     help="aynı test videolarında ayrıca ölçülecek modeller (ör. önceki tur)")
     ap.add_argument("--tta", action="store_true",
-                    help="ince ayarlı modeli ayrıca örtüşmeli parçalarla (%%50) ve yatay çevirmeyle de ölç "
+                    help="ince ayarlı modeli ayrıca örtüşmeli parçalarla (%%50, mobil uygulamadaki gibi) ve yatay çevirmeyle de ölç "
                          "(yeniden eğitim gerektirmeyen çıkarım iyileştirmesi; ek satırlar)")
     a = ap.parse_args()
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
