@@ -58,7 +58,12 @@ def list_videos(root, min_face=0.5):
                     for p in glob.glob(os.path.join(root, sub, "*.npz"))):
         mt = os.path.getmtime(p)
         if p not in _VCACHE or _VCACHE[p][0] != mt:
-            _VCACHE[p] = (mt, _video_entry(p, min_face))
+            try:
+                entry = _video_entry(p, min_face)
+            except Exception as e:  # noqa: BLE001  yeni veri setinden bozuk/beklenmedik dosya eğitimi düşürmesin
+                print(f"  atlandı {os.path.basename(p)}: {e!r}", flush=True)
+                entry = None
+            _VCACHE[p] = (mt, entry)
         if _VCACHE[p][1] is not None:
             vids.append(_VCACHE[p][1])
     # Etiket işareti (modelin kuralına göre çarpan). MCD: ters (elle bulundu). İşaret oyu kaydedilmiş veri setleri
