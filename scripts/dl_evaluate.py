@@ -17,7 +17,7 @@ import os
 import numpy as np
 import pandas as pd
 
-from dl_common import PRETRAINED, ROOT, build_model, hr_from_bvp, predict_video, reference_hr
+from dl_common import CHUNK, PRETRAINED, ROOT, build_model, hr_from_bvp, predict_video, reference_hr
 
 
 CAMERA_NAMES = {"IriunWebcam": "telefon", "USBVideo": "USB"}
@@ -58,13 +58,13 @@ def test_videos(test_dir):
     return [p for p in sorted(glob.glob(os.path.join(test_dir, "*.npz"))) if float(np.load(p)["face_rate"]) >= MIN_FACE]
 
 
-def evaluate(model, device, test_dir, label):
-    """model: FactorizePhys ya da "POS" (pos_crop)."""
+def evaluate(model, device, test_dir, label, **predict_kw):
+    """model: FactorizePhys ya da "POS" (pos_crop). predict_kw: predict_video'ya (hop, flip)."""
     rows = []
     for p in test_videos(test_dir):
         meta = np.load(p)
         frames = np.load(p[:-4] + ".npy", mmap_mode="r")
-        pred = pos_crop(frames) if model == "POS" else predict_video(model, np.asarray(frames), device)
+        pred = pos_crop(frames) if model == "POS" else predict_video(model, np.asarray(frames), device, **predict_kw)
         c, hr_a, hr_v = hr_from_bvp(pred)
         ref = reference_hr(meta["bvp"], c)
         name = os.path.basename(p)[:-4].split("_", 1)[1]
@@ -96,6 +96,9 @@ def main():
     ap.add_argument("--history", default="", help="gecmis.json (varsayılan: modelin klasörü)")
     ap.add_argument("--compare", nargs="*", default=[], metavar="AD=YOL",
                     help="aynı test videolarında ayrıca ölçülecek modeller (ör. önceki tur)")
+    ap.add_argument("--tta", action="store_true",
+                    help="ince ayarlı modeli ayrıca örtüşmeli parçalarla (%%50) ve yatay çevirmeyle de ölç "
+                         "(yeniden eğitim gerektirmeyen çıkarım iyileştirmesi; ek satırlar)")
     a = ap.parse_args()
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     n_all = len(glob.glob(os.path.join(a.test, "*.npz")))
@@ -108,7 +111,13 @@ def main():
 
     rows = evaluate("POS", device, a.test, "POS (yüz kırpıntısı)")
     rows += evaluate(build_model(device, PRETRAINED), device, a.test, "FactorizePhys PURE (hazır)")
-    rows += evaluate(build_model(device, a.model), device, a.test, "FactorizePhys ince ayarlı")
+    tuned = build_model(device, a.model)
+    rows += evaluate(tuned, device, a.test, "FactorizePhys ince ayarlı")
+    if a.tta:
+        rows += evaluate(tuned, device, a.test, "FactorizePhys ince ayarlı (örtüşmeli)", hop=CHUNK // 2)
+        rows += evaluate(tuned, device, a.test, "FactorizePhys ince ayarlı (örtüşmeli+çevirme)",
+                         hop=CHUNK // 2, flip=True)
+    del tuned
     last = os.path.join(os.path.dirname(a.model), "last.pth")
     if os.path.exists(last) and os.path.abspath(last) != os.path.abspath(a.model):
         rows += evaluate(build_model(device, last), device, a.test, "FactorizePhys ince ayarlı (son epoch)")

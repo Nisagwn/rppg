@@ -43,30 +43,59 @@ def to_input(frames_uint8, device):
     return torch.cat([x, x[:, :, -1:]], dim=2)
 
 
-def predict_video(model, frames, device, batch=4):
-    """Tüm video için BVP: ardışık 160 karelik parçalar; son parça sona hizalanıp eksik kısmı alınır."""
+def chunk_starts(n, hop):
+    """hop adımlı 160 karelik parça başlangıçları; son parça videonun sonuna hizalanır."""
+    starts = list(range(0, n - CHUNK + 1, hop))
+    if starts[-1] + CHUNK < n:
+        starts.append(n - CHUNK)
+    return starts
+
+
+# Örtüşmeli birleştirme penceresi: parça ortasına ağırlık verir, sınırdaki (modelin bağlamı kısa) kareleri
+# komşu parçaya bırakır. Taban değeri, videonun ilk/son karelerini yalnızca bir parça kapsadığında 0/0'ı önler.
+_BLEND = (np.hanning(CHUNK) + 1e-3).astype(np.float32)
+
+
+def predict_video(model, frames, device, batch=4, hop=CHUNK, flip=False):
+    """Tüm video için BVP.
+
+    hop=CHUNK (varsayılan, eski davranış): ardışık 160 karelik parçalar; son parça sona hizalanıp eksik kısmı alınır.
+    hop<CHUNK: örtüşmeli parçalar Hann ağırlıklı ortalamayla birleştirilir; parça sınırlarındaki süreksizlik
+    (her parça ayrı normalize edilir, kenarlarda modelin zamansal bağlamı kısadır) yumuşar. ör. hop=80 -> %50 örtüşme.
+    flip=True: kareler yatay çevrilerek de tahmin alınır ve iki çıktı ortalanır (test zamanı artırma; eğitimde
+    yatay çevirme artırması kullanıldığı için model iki yönde de geçerli).
+    """
     import torch
     n = len(frames)
     if n < CHUNK:
         return None
-    starts = list(range(0, n - CHUNK + 1, CHUNK))
-    if starts[-1] + CHUNK < n:
-        starts.append(n - CHUNK)
+    hop = int(max(1, min(hop, CHUNK)))
+    starts = chunk_starts(n, hop)
     out = np.zeros(n, dtype=np.float32)
+    wsum = np.zeros(n, dtype=np.float32)
     model.eval()
     with torch.no_grad():
         for i in range(0, len(starts), batch):
             ss = starts[i:i + batch]
-            x = to_input(np.stack([frames[s:s + CHUNK] for s in ss]), device)
-            y = model(x)[0].float().cpu().numpy()
-            for s, yy in zip(ss, y):
-                yy = (yy - yy.mean()) / (yy.std() + 1e-8)
-                if s % CHUNK:  # sona hizalı son parça: yalnızca önceki parçaların kapsamadığı kısım
+            clips = np.stack([frames[s:s + CHUNK] for s in ss])
+            y = model(to_input(clips, device))[0].float().cpu().numpy()
+            if flip:
+                y = _znorm(y) + _znorm(model(to_input(clips[:, :, :, ::-1], device))[0].float().cpu().numpy())
+            for s, yy in zip(ss, _znorm(y)):
+                if hop < CHUNK:
+                    out[s:s + CHUNK] += yy * _BLEND
+                    wsum[s:s + CHUNK] += _BLEND
+                elif s % CHUNK:  # sona hizalı son parça: yalnızca önceki parçaların kapsamadığı kısım
                     done = (n // CHUNK) * CHUNK
                     out[done:] = yy[done - s:]
                 else:
                     out[s:s + CHUNK] = yy
-    return out
+    return out / wsum if hop < CHUNK else out
+
+
+def _znorm(y):
+    """Parça başına (son eksen) sıfır ortalama, birim varyans."""
+    return (y - y.mean(-1, keepdims=True)) / (y.std(-1, keepdims=True) + 1e-8)
 
 
 def hr_from_bvp(bvp, fs=30.0, win=10.0, step=1.0):
