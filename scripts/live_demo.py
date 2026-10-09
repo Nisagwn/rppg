@@ -31,7 +31,7 @@ from rppg.filtering import preprocess_bvp, resample_uniform  # noqa: E402
 from rppg.hr import BPM_GRID, OnlineHRTracker, peak_bpm, spectrum_bpm, window_snr_from_spectrum  # noqa: E402
 from rppg.methods import apply_method  # noqa: E402
 from rppg.respiration import respiration_rate  # noqa: E402
-from rppg.roi import FaceTracker, roi_rects, skin_mask  # noqa: E402
+from rppg.roi import FaceTracker, skin_mask  # noqa: E402
 from rppg.signals import TraceExtractor  # noqa: E402
 
 ROIS = ["forehead", "left_cheek", "right_cheek", "full"]

@@ -143,7 +143,10 @@ class OnlineHRTracker:
         k = int(np.ceil(4 * sigma / step))
         kern = np.exp(-0.5 * ((np.arange(-k, k + 1) * step) / sigma) ** 2)
         kern /= kern.sum()
-        pred = np.convolve(self.belief, kern, mode="same") + 1e-9
+        # "same" kip, çekirdek ızgaradan uzunsa (dt > ~5 s) daha uzun dizi döndürür;
+        # tam evrişimin ortasını kırpmak her dt için ızgara boyunu korur (dsp.js ile aynı).
+        F = len(self.belief)
+        pred = np.convolve(self.belief, kern, mode="full")[k:k + F] + 1e-9
         like = (p / (p.max() + 1e-15) + 1e-6) ** conf
         post = pred * like
         self.belief = post / post.sum()

@@ -25,7 +25,7 @@ from datetime import datetime
 import numpy as np
 
 from dl_common import (CHUNK, PER_VIDEO_SYNC, build_model, hr_from_bvp, label_shift, predict_video, reference_hr,
-                       shift_label, to_input, video_decision)
+                       shift_label, video_decision)
 from dl_quality import compute as quality
 
 

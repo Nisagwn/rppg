@@ -20,7 +20,7 @@ import pandas as pd
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 
-from rppg.evaluation import METHOD_LIST, ROI_SETS, config_grid, evaluate, summary  # noqa: E402
+from rppg.evaluation import METHOD_LIST, config_grid, evaluate, summary  # noqa: E402
 from rppg.io_utils import gt_window_hr  # noqa: E402
 from rppg.pipeline import Config, estimate  # noqa: E402
 from rppg.plotting import plot_bars, plot_bland_altman, plot_heatmap, plot_result, plot_roi_weights  # noqa: E402

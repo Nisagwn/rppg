@@ -86,6 +86,31 @@ def test_online_tracker_converges():
     assert abs(est - 88) < 1
 
 
+@pytest.mark.parametrize("dt", [0.5, 6.0, 30.0])
+def test_online_tracker_survives_long_gaps(dt):
+    """Canlı demoda pencere takılınca dt büyür; Gauss çekirdeği ızgaradan uzun olsa da çökmemeli."""
+    tr = OnlineHRTracker()
+    p = np.exp(-0.5 * ((BPM_GRID - 70) / 2) ** 2)
+    tr.update(p / p.sum(), 0.5)
+    est = tr.update(p / p.sum(), dt)
+    assert tr.belief.shape == BPM_GRID.shape
+    assert abs(est - 70) < 1
+
+
+def test_traces_save_load_roundtrip(tmp_path):
+    from rppg.signals import Traces
+    n = 50
+    rng = np.random.default_rng(0)
+    tr = Traces(30.0, {"full": rng.random((n, 3))}, {"full": rng.random(n)}, rng.random(n),
+                rng.random((n, 4)), rng.random(n), rng.random(n))
+    path = tmp_path / "iz.npz"
+    tr.save(str(path))
+    back = Traces.load(str(path))
+    assert back.fps == 30.0 and back.n == n
+    assert np.allclose(back.rgb["full"], tr.rgb["full"])
+    path.unlink()  # dosya açık kalmamalı (Windows'ta silme hatası verirdi)
+
+
 def test_resample_uniform():
     ts = np.cumsum(np.r_[0, np.random.default_rng(1).uniform(0.025, 0.042, 299)])
     grid, y = resample_uniform(np.sin(ts), ts, 30.0)

@@ -51,7 +51,8 @@ class Result:
         return float(np.mean(self.hr))
 
 
-def estimate(traces: Traces, cfg: Config = Config()) -> Result:
+def estimate(traces: Traces, cfg: Optional[Config] = None) -> Result:
+    cfg = cfg if cfg is not None else Config()
     fs = traces.fps
     rois = [r for r in cfg.rois if r in traces.rgb]
     if not rois:
