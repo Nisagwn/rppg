@@ -537,11 +537,37 @@ def _read_numbers(path):
         return np.array([float(x) for x in re.findall(r"-?\d+(?:\.\d+)?", fh.read())])
 
 
+ROTATIONS = (None, cv2.ROTATE_90_CLOCKWISE, cv2.ROTATE_90_COUNTERCLOCKWISE, cv2.ROTATE_180)
+
+
+def best_rotation(path, n_frames=90, step=15):
+    """Videonun ilk saniyelerinde dört yönü dener; Haar'ın en çok yüz bulduğu döndürme (None: döndürme yok).
+    VIPL-HR'ın telefon (Huawei P9) videoları yan yatık kaydedilmiş: dik yüz arayan Haar hiç bulamıyor."""
+    det = cv2.CascadeClassifier(HAAR)
+    hits = dict.fromkeys(range(len(ROTATIONS)), 0)
+    for i, bgr in enumerate(_video_frames(path)):
+        if i >= n_frames:
+            break
+        if i % step:
+            continue
+        sc = 640.0 / max(bgr.shape[:2])
+        small = cv2.resize(bgr, None, fx=sc, fy=sc, interpolation=cv2.INTER_AREA) if sc < 1 else bgr
+        for k, r in enumerate(ROTATIONS):
+            img = small if r is None else cv2.rotate(small, r)
+            hits[k] += len(det.detectMultiScale(img)) > 0
+    k = max(hits, key=lambda j: (hits[j], j == 0))   # eşitlikte döndürmeme tercih edilir
+    return ROTATIONS[k]
+
+
 def process_vipl(avi, wave_csv, time_txt, dst, max_sec=None, **info):
     """VIPL-HR: video.avi + wave.csv (parmak oksimetresi BVP, 60 Hz) + time.txt (kare zaman damgaları, ms; kaynak
     2'de yok). Zaman damgası yoksa ya da PPG süresi videodan >%5 farklıysa PPG videoya eşit aralıkla yayılır."""
     vfs = cv2.VideoCapture(avi).get(cv2.CAP_PROP_FPS) or 30.0
-    frames, rate = crop_video(avi, int(max_sec * vfs) + 2 if max_sec else None, 2)
+    rot = best_rotation(avi)
+    src = _video_frames(avi) if rot is None else (cv2.rotate(f, rot) for f in _video_frames(avi))
+    frames, rate = crop_frames(src, int(max_sec * vfs) + 2 if max_sec else None, 2, avi)
+    info["rotation"] = "yok" if rot is None else {cv2.ROTATE_90_CLOCKWISE: "90 sağa",
+                                                  cv2.ROTATE_90_COUNTERCLOCKWISE: "90 sola", cv2.ROTATE_180: "180"}[rot]
     wave = pd.read_csv(wave_csv).iloc[:, 0].to_numpy(dtype=float)
     ts = _read_numbers(time_txt) if time_txt and os.path.exists(time_txt) else np.array([])
     if len(ts) >= len(frames) and np.all(np.diff(ts[:len(frames)]) > 0):
@@ -556,7 +582,7 @@ def process_vipl(avi, wave_csv, time_txt, dst, max_sec=None, **info):
     f, b = resample(frames, t_v, np.interp(t_v, t_w, wave), t_v)
     sign, corr = label_polarity(f, b)
     save(dst, f, b, rate, polarity=sign, polarity_corr=corr, **info)
-    return len(f), rate
+    return len(f), rate, info["rotation"]
 
 
 def process_cohface(avi, hdf5, dst, **info):
@@ -608,12 +634,12 @@ def job_vipl(d, raw_root, out_root, keep_raw, max_sec):
         tt = os.path.join(local, "time.txt")
     except Exception:  # kaynak 2'de zaman damgası dosyası yok
         pass
-    n, rate = process_vipl(os.path.join(local, "video.avi"), os.path.join(local, "wave.csv"), tt, dst, max_sec,
-                           person=f"vipl_{p}", camera=s, step=v, source="vipl")
+    n, rate, rot = process_vipl(os.path.join(local, "video.avi"), os.path.join(local, "wave.csv"), tt, dst, max_sec,
+                                person=f"vipl_{p}", camera=s, step=v, source="vipl")
     if not keep_raw:
         import shutil
         shutil.rmtree(local, ignore_errors=True)
-    return d, f"{n} kare, yüz %{100 * rate:.0f}"
+    return d, f"{n} kare, yüz %{100 * rate:.0f}, döndürme {rot}"
 
 
 def job_cohface(d, raw_root, out_root, keep_raw):
