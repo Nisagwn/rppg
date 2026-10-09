@@ -457,8 +457,11 @@ def _init_worker():
 # Her veri setinde numarası 5'e bölünen kişiler ayrı test klasörüne (test_<kaynak>) gider, eğitime hiç girmez:
 # MMPD ve VIPL-HR (kaynak 4) gerçek telefon kamerası videoları -> ilk telefon testi.
 MMPD_HF, VIPL_HF, COHFACE_HF = "WeiQian98/mini_MMPD", "WeiQian98/VIPL-HR", "WeiQian98/COHFACE"
-VIPL_SOURCES = ("source1", "source2", "source4")  # source3 kızılötesi (renksiz): RGB modele uygun değil
-VIPL_ORDER = ("source4", "source1", "source2")    # indirme sırası: telefon 0.7 GB, webcam 7.6 GB, RealSense 33 GB
+# Bu kopyada videolar yüze kırpılmış, 25 fps MJPEG. Kaynak numarası -> kamera eşlemesi belgelenmemiş: Kaggle'daki
+# incelemede source1 (394x430) ve source2 (480x532) renkli, source4 (126x204) gri/karanlık = kızılötesi çıktı.
+# Renksiz videolar is_gray ile ayrıca atlanır; source4 en sona (büyük olasılıkla hepsi atlanır).
+VIPL_SOURCES = ("source1", "source2", "source3", "source4")
+VIPL_ORDER = ("source1", "source3", "source2", "source4")    # küçükten büyüğe (7.6, 10, 33 GB), kızılötesi en son
 
 
 def is_new_test(person_no):
@@ -559,6 +562,18 @@ def best_rotation(path, n_frames=90, step=15):
     return ROTATIONS[k]
 
 
+def is_gray(path, n_frames=90, step=15, tol=3.0):
+    """Kızılötesi (renksiz) video mu: kanallar arası ortalama mutlak fark çok küçükse."""
+    diffs = []
+    for i, bgr in enumerate(_video_frames(path)):
+        if i >= n_frames:
+            break
+        if i % step == 0:
+            f = bgr.astype(np.int16)
+            diffs.append(float(np.abs(f[..., 0] - f[..., 1]).mean() + np.abs(f[..., 1] - f[..., 2]).mean()))
+    return bool(diffs) and float(np.median(diffs)) < tol
+
+
 def process_vipl(avi, wave_csv, time_txt, dst, max_sec=None, **info):
     """VIPL-HR: video.avi + wave.csv (parmak oksimetresi BVP, 60 Hz) + time.txt (kare zaman damgaları, ms; kaynak
     2'de yok). Zaman damgası yoksa ya da PPG süresi videodan >%5 farklıysa PPG videoya eşit aralıkla yayılır."""
@@ -623,11 +638,19 @@ def job_vipl(d, raw_root, out_root, keep_raw, max_sec):
     p, v, s = d.split("/")[1:4]
     pno = int(p[1:])
     dst = _new_dst(out_root, "vipl", pno, f"{p}_{v}_{s}")
-    if os.path.exists(dst):
+    skip_mark = dst + ".kizilotesi"
+    if os.path.exists(dst) or os.path.exists(skip_mark):
         return d, "var"
     local = os.path.join(raw_root, d)
     for fn in ("video.avi", "wave.csv"):
         fetch(hf_url(VIPL_HF, f"{d}/{fn}"), os.path.join(local, fn))
+    if is_gray(os.path.join(local, "video.avi")):
+        os.makedirs(os.path.dirname(skip_mark), exist_ok=True)
+        open(skip_mark, "w").close()
+        if not keep_raw:
+            import shutil
+            shutil.rmtree(local, ignore_errors=True)
+        return d, "kızılötesi (renksiz), atlandı"
     tt = None
     try:
         fetch(hf_url(VIPL_HF, f"{d}/time.txt"), os.path.join(local, "time.txt"), retries=1)

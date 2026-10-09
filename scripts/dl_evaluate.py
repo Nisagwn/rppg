@@ -23,7 +23,7 @@ from dl_common import PRETRAINED, ROOT, build_model, hr_from_bvp, predict_video,
 CAMERA_NAMES = {"IriunWebcam": "telefon", "USBVideo": "USB"}
 
 
-VIPL_CAMERAS = {"source1": "webcam", "source2": "RealSense", "source4": "telefon"}
+VIPL_CAMERAS = {}  # kaynak -> kamera eşlemesi bu kopyada belgelenmemiş; gruplar kaynak adıyla raporlanır
 
 
 def group_of(meta):
