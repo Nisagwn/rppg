@@ -81,3 +81,26 @@ def test_spectral_kl_gradient_finite():
     lab = torch.sin(2 * np.pi * 1.2 * torch.arange(CHUNK) / FS).repeat(3, 1)
     spectral_kl(p, lab).backward()
     assert torch.isfinite(p.grad).all()
+
+
+def test_hr_balance_weights_boost_rare_and_cap():
+    from dl_train import hr_balance_weights
+    hrs = [65] * 20 + [72] * 10 + [125] * 2 + [150]
+    w = hr_balance_weights(hrs, max_boost=4.0)
+    assert w[0] == 1.0                      # en kalabalık kutu
+    assert w[20] == 2.0                     # yarı kalabalık
+    assert w[30] == 4.0 and w[-1] == 4.0    # seyrek kutular sınırda
+
+
+def test_video_hr_from_label():
+    from dl_train import video_hr
+    t = np.arange(900) / FS
+    assert abs(video_hr(np.sin(2 * np.pi * 2.0 * t)) - 120.0) < 1.0
+
+
+def test_video_hr_prefers_good_windows_from_kal(tmp_path):
+    from dl_train import video_hr
+    kal = tmp_path / "v.kal"
+    with open(kal, "wb") as f:
+        np.savez(f, hr_l=np.array([70.0, 72.0, 160.0, 71.0]), win_ok=np.array([True, True, False, True]))
+    assert video_hr(np.zeros(900), str(kal)) == 71.0

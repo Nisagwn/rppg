@@ -20,6 +20,7 @@ MCD-rPPG (3 kamera, dinlenme + egzersiz) ve UBFC-rPPG'nin test DIŞI kişileriyl
   --val-viterbi       en iyi epoch'u raporlanan yöntemle (Viterbi) seç
   --amp               float16 karışık hassasiyet (CUDA), T4'te daha hızlı
   --speed 0.7 1.5     daha geniş hız artırması (yüksek nabız örnekleri)
+  --hr-balance 3      seyrek nabız aralıklarındaki videoları en fazla 3 kat sık örnekle
 """
 import argparse
 import glob
@@ -52,8 +53,33 @@ def _video_entry(p, min_face):
     if q is not None and not video_decision(q, source):
         return None
     return {"npz": p, "npy": p[:-4] + ".npy", "n": int(m["n"]), "person": str(m["person"]),
-            "source": source, "camera": str(m["camera"]), "q": q,
+            "source": source, "camera": str(m["camera"]), "q": q, "hr": video_hr(b, p[:-4] + ".kal"),
             "vote": float(m["polarity"]) * float(m["polarity_corr"]) if "polarity" in m.files else 0.0}
+
+
+def video_hr(bvp, kal=None, fs=30.0):
+    """Videonun tipik nabzı (BPM): etiket kalitesi dosyası (.kal, dl_quality) varsa iyi pencerelerin medyanı, yoksa
+    tüm etiketin spektral tepesi. --hr-balance örneklemesinde ve günlükteki nabız dağılımında kullanılır."""
+    if kal and os.path.exists(kal):
+        with np.load(kal) as k:
+            if "win_ok" in k.files and k["win_ok"].any():
+                return float(np.median(k["hr_l"][k["win_ok"]]))
+    from rppg.filtering import preprocess_bvp
+    from rppg.hr import hr_fft
+    return float(hr_fft(preprocess_bvp(np.asarray(bvp, dtype=float), fs), fs))
+
+
+HR_BIN = 10.0  # BPM
+
+
+def hr_balance_weights(hrs, max_boost=4.0):
+    """Video başına çarpan: nabız histogramında (10 BPM kutular) seyrek kutudaki videolar daha sık örneklenir.
+    Çarpan = (en kalabalık kutu / kendi kutusu), max_boost ile sınırlı; aşırı seyrek (tek videoluk) kutuların
+    birkaç videoyu ezberletmesini önler."""
+    hrs = np.asarray(hrs, dtype=float)
+    bins = np.floor(hrs / HR_BIN).astype(int)
+    _, inv, cnt = np.unique(bins, return_inverse=True, return_counts=True)
+    return np.minimum(cnt.max() / cnt[inv], max_boost)
 
 
 TRAIN_SOURCES = ("mcd", "ubfc", "pure", "ubfcphys", "mpu", "mmpd", "vipl", "cohface", "dlcn")  # test_* klasörleri hiç okunmaz
@@ -94,10 +120,15 @@ def is_val(person):
     return zlib.crc32(person.encode()) % 10 == 0
 
 
+HR_BALANCE = 0.0  # --hr-balance: en fazla kaç kat (0: kapalı, örnekleme yalnızca uzunlukla orantılı)
+
+
 class ChunkSampler:
     def __init__(self, vids):
         self.vids = vids
         w = np.array([v["n"] for v in vids], dtype=float)
+        if HR_BALANCE > 1:
+            w = w * hr_balance_weights([v["hr"] for v in vids], HR_BALANCE)
         self.p = w / w.sum()
         self.cache = {}
 
@@ -301,13 +332,17 @@ def main():
                     help="karışık hassasiyet (float16, yalnızca CUDA): T4'te ~2x hız. Kayıp NaN olursa kapatın")
     ap.add_argument("--speed", type=float, nargs=2, default=[0.8, 1.25], metavar=("MIN", "MAX"),
                     help="hız artırma aralığı (ör. 0.7 1.5: yüksek nabız örneklerini çoğaltır)")
+    ap.add_argument("--hr-balance", type=float, default=0.0, metavar="K",
+                    help="nabız aralığına göre dengeli örnekleme: seyrek nabızlı (ör. egzersiz sonrası 120+) videolar "
+                         "en fazla K kat sık seçilir (ör. 3); 0: kapalı")
     a = ap.parse_args()
-    global CLEAN, PHONE_AUG, VAL_VITERBI, SPEED, MAX_SPAN
+    global CLEAN, PHONE_AUG, VAL_VITERBI, SPEED, MAX_SPAN, HR_BALANCE
     CLEAN = not a.no_clean
     PHONE_AUG = a.phone_aug
     VAL_VITERBI = a.val_viterbi
     SPEED = (a.speed[0], a.speed[1])
     MAX_SPAN = int(np.ceil(CHUNK * SPEED[1])) + 1
+    HR_BALANCE = a.hr_balance
     deadline = datetime.strptime(a.deadline, "%Y-%m-%d %H:%M").timestamp() if a.deadline else float("inf")
 
     os.makedirs(a.out, exist_ok=True)
@@ -318,6 +353,11 @@ def main():
     val = [val[i] for i in np.linspace(0, len(val) - 1, min(a.val_max, len(val))).astype(int)] if val else []
     print(f"eğitim {len(train)} video ({len({v['person'] for v in train})} kişi), "
           f"doğrulama {len(val)} video, cihaz {device}", flush=True)
+    if train:
+        h = np.array([v["hr"] for v in train])
+        edges = [40, 70, 90, 110, 130, 250]
+        print("  eğitim nabız dağılımı: " + ", ".join(
+            f"{lo}-{hi}: {int(((h >= lo) & (h < hi)).sum())}" for lo, hi in zip(edges, edges[1:])), flush=True)
     if not train:
         raise SystemExit("Eğitim verisi yok: önce scripts/dl_prepare.py --mcd N")
 
