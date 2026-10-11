@@ -102,9 +102,11 @@ class ChunkSampler:
             kal = v["npz"][:-4] + ".kal"
             ok = np.load(kal)["frame_ok"] if CLEAN and os.path.exists(kal) else np.ones(len(bvp), bool)
             bvp = shift_label(bvp, v.get("shift", 0))  # etiket-video zaman hizası (dl_common.CAMERA_SHIFT)
-            item = (np.load(v["npy"], mmap_mode="r"), v.get("mult", 1.0) * bvp, ok)
+            item = (v.get("mult", 1.0) * bvp, ok)
             self.cache[v["npy"]] = item
-        return item
+        # Kareler her çağrıda yeniden eşlenir (mmap) ve parça kopyalanınca bırakılır: binlerce videonun eşlemesini
+        # açık tutmak saatler içinde süreç belleğinde birikiyordu (6. tur ~3 saatte durdu); yalnızca etiketler önbellekte
+        return (np.load(v["npy"], mmap_mode="r"),) + item
 
     def sample(self, rng):
         for _ in range(20):  # etiketi düz/bozuk parçayı reddet
