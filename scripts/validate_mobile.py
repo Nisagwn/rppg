@@ -94,14 +94,19 @@ def main():
     rows = []
     items = clips(a)
     print(f"{len(items)} kesit doğrulanacak ({a.duration:.0f} s)")
-    with tempfile.TemporaryDirectory() as tmp:
+    with tempfile.TemporaryDirectory(ignore_cleanup_errors=True) as tmp:
         for i, c in enumerate(items, 1):
             frames = read_clip(c["video"], c["s0"], a.duration)
             dur = len(frames) / FPS
             y4m, logf = os.path.join(tmp, "clip.y4m"), os.path.join(tmp, "log.json")
             write_y4m(y4m, frames)
-            subprocess.run(["node", E2E, "--video", y4m, "--expect", "0", "--seconds", str(dur - 1), "--log", logf],
-                           stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, timeout=dur + 60)
+            if os.path.exists(logf):
+                os.remove(logf)
+            try:
+                subprocess.run(["node", E2E, "--video", y4m, "--expect", "0", "--seconds", str(dur - 1), "--log", logf],
+                               stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, timeout=dur + 60)
+            except subprocess.TimeoutExpired:
+                print(f"  ! {c['ad']}: tarayıcı zaman aşımı")
             log = json.load(open(logf)) if os.path.exists(logf) else []
 
             # uygulama: t anındaki ölçüm son 10 s'yi kapsar -> pencere merkezi t - 5
