@@ -14,6 +14,7 @@ Anahtarlar: okuma HF_TOKEN, yazma HF_WRITE_TOKEN (Kaggle Secrets). Depo: <kullan
 
     python scripts/dl_hf_sync.py --data /tmp/dl --subs mmpd test_mmpd vipl test_vipl --pull
     python scripts/dl_hf_sync.py --data /tmp/dl --subs mmpd test_mmpd vipl test_vipl --push --loop 900 --until-pid 123
+    python scripts/dl_hf_sync.py --data /tmp/dl --subs vipl test_vipl --download --ignore '*_source2.*'   # eğitim
 """
 import argparse
 import glob
@@ -42,15 +43,15 @@ def _api(write):
     return HfApi(token=tok)
 
 
-def pull(api, repo, data, subs, full=False):
-    """Depodaki işaret dosyalarını (full: kareler dahil her şeyi) data/ altına indirir."""
+def pull(api, repo, data, subs, full=False, ignore=None):
+    """Depodaki işaret dosyalarını (full: kareler dahil her şeyi) data/ altına indirir; ignore: atlanacak desenler."""
     from huggingface_hub import snapshot_download
     if not api.repo_exists(repo, repo_type="dataset"):
         print(f"{repo} henüz yok; sıfırdan başlanıyor", flush=True)
         return
     pats = [f"{s}/*" for s in subs] if full else [f"{s}/{m}" for s in subs for m in MARKS]
-    snapshot_download(repo, repo_type="dataset", local_dir=data, allow_patterns=pats, token=api.token,
-                      max_workers=8)
+    snapshot_download(repo, repo_type="dataset", local_dir=data, allow_patterns=pats, ignore_patterns=ignore,
+                      token=api.token, max_workers=8)
     for s in subs:
         d = os.path.join(data, s)
         n = len(glob.glob(os.path.join(d, "*.npz")))
@@ -145,6 +146,7 @@ def main():
     ap.add_argument("--pull", action="store_true", help="işaret dosyalarını indir (kalınan yerden devam)")
     ap.add_argument("--push", action="store_true", help="bekleyen videoları yükle")
     ap.add_argument("--download", action="store_true", help="eğitim için her şeyi indir")
+    ap.add_argument("--ignore", nargs="*", default=None, help="--download: atlanacak desenler, ör. '*_source2.*'")
     ap.add_argument("--loop", type=int, default=0, help="--push: kaç saniyede bir")
     ap.add_argument("--until-pid", type=int, default=0, help="--loop: bu süreç bitince son kez yükle ve çık")
     a = ap.parse_args()
@@ -152,7 +154,7 @@ def main():
     api = _api(write=a.push)
     repo = repo_id(api)
     if a.pull or a.download:
-        pull(api, repo, a.data, a.subs, full=a.download)
+        pull(api, repo, a.data, a.subs, full=a.download, ignore=a.ignore)
     if a.push:
         while True:
             finished = a.until_pid and not _alive(a.until_pid)

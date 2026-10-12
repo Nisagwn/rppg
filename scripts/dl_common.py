@@ -182,6 +182,16 @@ SNR_MIN = 0.0  # dB
 REF_LAG = -2
 CAMERA_SHIFT = {("mcd", "IriunWebcam"): 4, ("mcd", "USBVideo"): 8}
 PER_VIDEO_SYNC = {"ubfcphys"}  # bilek sensörü; senkron kişiden kişiye değişiyor -> video başına hizalama
+# Model tabanlı video başına hizalama (dl_sync_check.py --write -> <ad>.snk). 2026-10-12 denetimi (5. tur modeli,
+# kamera başına 60 video; senkronu bilinen ana test videolarında tepe 0 kare, r 0.82-0.84): VIPL source1/3 nabız
+# uyumu %81-83 ama kayma videodan videoya -27..+11 kare (medyan -13/-15); POS bu kaynaklarda güvenilmez.
+# .snk'si olmayan video eğitime girmez; hizalı korelasyonu SYNC_R_MIN altındaki video çıkarılır.
+MODEL_SYNC = {"vipl", "dlcn"}
+SYNC_R_MIN = 0.4
+DROP_CAMERAS = {("vipl", "source2")}  # RealSense: model-etiket nabız uyumu %39, kaymalar rastgele (etiket uyumsuz)
+# Eğitime girmeyen kaynaklar (test klasörleri yine değerlendirilir). MMPD mini 80x60: modelin nabız hatası medyan
+# 18 BPM, POS da başarısız; işaret doğru, kayma ~-5 kare: sorun çözünürlük. COHFACE: yoğun sıkıştırma.
+DROP_SOURCES = {"mmpd", "cohface"}
 
 
 def shift_label(b, d):
@@ -193,20 +203,29 @@ def shift_label(b, d):
     return np.concatenate([b[-d:], np.full(-d, b[-1])])
 
 
-def label_shift(q, source, camera):
-    """Etiketi video ile hizalamak için shift_label'a verilecek kaydırma (kare)."""
+def label_shift(q, source, camera, snk=None):
+    """Etiketi video ile hizalamak için shift_label'a verilecek kaydırma (kare).
+    snk (model tabanlı): lag_pos = argmax_k corr(tahmin k kaydırılmış, etiket); referans tepe 0 olduğundan
+    etiket -lag_pos kare kaydırılınca tahminle (dolayısıyla videoyla) hizalanır."""
+    if source in MODEL_SYNC:
+        return -int(snk["lag_pos"]) if snk is not None else 0
     if source in PER_VIDEO_SYNC and q is not None:
         return -(q["lag_pos"] - REF_LAG)
     return CAMERA_SHIFT.get((source, camera), 0)
 
 
-def video_decision(q, source):
+def video_decision(q, source, camera=None, snk=None):
     """Video eğitimde kalsın mı. Etiketin yarısından fazlası kötüyse (düşük SNR, imkânsız/sıçrayan nabız) çıkar.
     Video başına hizalanan kaynaklarda (UBFC-Phys) ayrıca hizalı korelasyon zayıfsa çıkar: etiket görüntüyle
     örtüşmüyor. POS'un nabız uyumu karar için kullanılmaz: MCD yan kameralarında POS başarısız (aynı oturumun
-    önden POS'uyla %22-28 uyum) ama etiket doğru; ölçüt zor ama geçerli videoları atardı."""
+    önden POS'uyla %22-28 uyum) ama etiket doğru; ölçüt zor ama geçerli videoları atardı.
+    Model tabanlı hizalanan kaynaklarda (MODEL_SYNC) aynı kural modelin hizalı korelasyonuyla uygulanır."""
+    if source in DROP_SOURCES or (source, camera) in DROP_CAMERAS:
+        return False
     if q["ok_frac"] < 0.5:
         return False
+    if source in MODEL_SYNC:
+        return snk is not None and snk["r_pos"] >= SYNC_R_MIN
     if source in PER_VIDEO_SYNC:
         return q["r_pos"] >= 0.4
     return True

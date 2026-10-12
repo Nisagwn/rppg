@@ -10,19 +10,25 @@ Eğitilmiş model (5. tur, telefon/USB testinde 1.6 BPM) çok daha güçlü bir 
 Referans tepe, senkronu bilinen ana test videolarında (UBFC + MCD önden webcam, MCD etiketi ters çevrilerek) ölçülür.
 
     python scripts/dl_sync_check.py                       # HF'teki rppg-veri deposundan kamera başına 60 video
+    python scripts/dl_sync_check.py --write --data /tmp/dl --subs vipl dlcn   # eğitim öncesi: her videoya <ad>.snk
+
+--write: dl_train.py MODEL_SYNC kaynaklarında etiketi .snk'deki kaymayla hizalar ve hizalı korelasyonu zayıf
+videoları çıkarır (dl_common.video_decision). Test klasörlerine yazılmaz: test etiketleri olduğu gibi kalır.
 """
 import argparse
 import csv
 import glob
 import os
 import re
+import time
 
 import numpy as np
 
 from dl_common import ROOT, build_model, hr_from_bvp, predict_video, reference_hr
 from rppg.filtering import preprocess_bvp
 
-LAGS = np.arange(-30, 31)
+LAGS = np.arange(-45, 46)  # VIPL'de -30 sınırına dayanan videolar vardı (±1.5 s)
+TRIM = 50  # np.roll'un sardığı uçlar korelasyona girmesin (> en büyük kayma)
 MAX_FRAMES = 1800  # ilk 60 s
 
 
@@ -35,14 +41,14 @@ def group_of(path):
 
 def lag_curve(pred, label, fs=30.0):
     p, b = preprocess_bvp(pred, fs), preprocess_bvp(label, fs)
-    return np.array([np.corrcoef(np.roll(p, k)[40:-40], b[40:-40])[0, 1] for k in LAGS])
+    return np.array([np.corrcoef(np.roll(p, k)[TRIM:-TRIM], b[TRIM:-TRIM])[0, 1] for k in LAGS])
 
 
 def analyze(model, device, npz, mult=1.0):
     frames = np.asarray(np.load(npz[:-4] + ".npy", mmap_mode="r")[:MAX_FRAMES])
     bvp = mult * np.load(npz)["bvp"][:len(frames)].astype(float)
     pred = predict_video(model, frames, device)
-    if pred is None or len(frames) < 300:
+    if pred is None or len(frames) < 300 or np.std(bvp) < 1e-8:
         return None
     r = lag_curve(pred, bvp)
     c, hr_a, _ = hr_from_bvp(pred)
@@ -90,6 +96,31 @@ def summarize(rows, title):
     return out
 
 
+def write_all(model, device, data, subs):
+    """Her videoya <ad>.snk yazar (varsa ve güncelse atlar). Hizalanan/çıkarılan sayısını basar."""
+    from dl_common import SYNC_R_MIN
+    files = [p for s in subs for p in sorted(glob.glob(os.path.join(data, s, "*.npz")))
+             if os.path.exists(p[:-4] + ".npy")]
+    kept, t0 = {}, time.time()
+    for i, npz in enumerate(files, 1):
+        out = npz[:-4] + ".snk"
+        if not (os.path.exists(out) and os.path.getmtime(out) >= os.path.getmtime(npz)):
+            r = analyze(model, device, npz)
+            if r is None:
+                continue
+            with open(out + ".part", "wb") as f:
+                np.savez(f, **{k: r[k] for k in ("lag_pos", "r_pos", "lag_peak", "r_peak", "hr_ok")})
+            os.replace(out + ".part", out)
+        s = dict(np.load(out))
+        g = group_of(npz)
+        n, k = kept.get(g, (0, 0))
+        kept[g] = (n + 1, k + int(s["r_pos"] >= SYNC_R_MIN))
+        if i % 200 == 0:
+            print(f"  {i}/{len(files)} ({time.time() - t0:.0f} s)", flush=True)
+    for g, (n, k) in sorted(kept.items()):
+        print(f"  {g}: {n} video, hizalı korelasyon >= {SYNC_R_MIN}: {k} (%{100 * k / max(n, 1):.0f})", flush=True)
+
+
 def main():
     import torch
     ap = argparse.ArgumentParser()
@@ -99,10 +130,17 @@ def main():
     ap.add_argument("--per-group", type=int, default=60)
     ap.add_argument("--test", default=os.path.join(ROOT, "data/dl/test"))
     ap.add_argument("--out", default=os.path.join(ROOT, "results/derin_ogrenme/senkron_model.csv"))
+    ap.add_argument("--write", action="store_true", help="--data/--subs altındaki her videoya .snk yaz")
+    ap.add_argument("--data", default=os.path.join(ROOT, "data/dl"))
+    ap.add_argument("--subs", nargs="*", default=["vipl", "dlcn"])
     a = ap.parse_args()
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     model = build_model(device, a.model)
+    if a.write:
+        assert not any(s.startswith("test") for s in a.subs), "test etiketleri hizalanmaz"
+        write_all(model, device, a.data, a.subs)
+        return
     rows = []
     for npz in sorted(glob.glob(os.path.join(a.test, "*.npz"))):  # referans: senkronu bilinen videolar
         src = str(np.load(npz)["source"])

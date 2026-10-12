@@ -68,8 +68,11 @@ def main():
                 print(f"  HATA {npz}: {err}", flush=True)
             elif q is not None:
                 src = os.path.basename(os.path.dirname(npz))
+                snk = npz[:-4] + ".snk"  # model tabanlı hizalama (dl_sync_check.py --write), varsa
+                snk = {k: v.item() for k, v in np.load(snk).items()} if os.path.exists(snk) else None
                 rows.append({"source": src, "video": os.path.basename(npz)[:-4], **q,
-                             "keep": int(video_decision(q, src))})
+                             "keep": int(video_decision(q, src.removeprefix("test_"), str(np.load(npz)["camera"]),
+                                                        snk))})
             if i % 200 == 0:
                 print(f"  {i}/{len(files)}  ({time.time() - t0:.0f} s)", flush=True)
 

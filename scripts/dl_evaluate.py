@@ -94,6 +94,7 @@ def main():
     ap.add_argument("--out", default=os.path.join(ROOT, "results/derin_ogrenme/egitim"))
     ap.add_argument("--data", default=os.path.join(ROOT, "data/dl"), help="eğitim verisi (rapordaki özet için)")
     ap.add_argument("--history", default="", help="gecmis.json (varsayılan: modelin klasörü)")
+    ap.add_argument("--name", default="FactorizePhys ince ayarlı", help="eğitilen modelin tablodaki adı")
     ap.add_argument("--compare", nargs="*", default=[], metavar="AD=YOL",
                     help="aynı test videolarında ayrıca ölçülecek modeller (ör. önceki tur)")
     a = ap.parse_args()
@@ -108,10 +109,10 @@ def main():
 
     rows = evaluate("POS", device, a.test, "POS (yüz kırpıntısı)")
     rows += evaluate(build_model(device, PRETRAINED), device, a.test, "FactorizePhys PURE (hazır)")
-    rows += evaluate(build_model(device, a.model), device, a.test, "FactorizePhys ince ayarlı")
+    rows += evaluate(build_model(device, a.model), device, a.test, a.name)
     last = os.path.join(os.path.dirname(a.model), "last.pth")
     if os.path.exists(last) and os.path.abspath(last) != os.path.abspath(a.model):
-        rows += evaluate(build_model(device, last), device, a.test, "FactorizePhys ince ayarlı (son epoch)")
+        rows += evaluate(build_model(device, last), device, a.test, f"{a.name} (son epoch)")
     for item in a.compare:
         name, path = item.split("=", 1)
         if os.path.exists(path):
@@ -144,7 +145,7 @@ def main():
 
     # video bazında: ince ayarlı + Viterbi vs POS tüm yüz + Viterbi
     w = df.pivot_table(index="video", columns="yöntem", values="MAE")
-    a_, b_ = "FactorizePhys ince ayarlı+Viterbi", "POS tüm yüz+Viterbi"
+    a_, b_ = f"{a.name}+Viterbi", "POS tüm yüz+Viterbi"
     if a_ in w and b_ in w:
         d = w[a_] - w[b_]
         info = {"esit_0.5": int((d.abs() <= 0.5).sum()), "dl_daha_iyi": int((d < -0.5).sum()),
@@ -170,7 +171,7 @@ def write_report(a, t, info, w, t_clean=None, ref_q=None):
     people = {str(m["person"]) for m in used}
     hours = sum(int(m["n"]) for m in used) / 30 / 3600
 
-    L = ["# İnce Ayarlı FactorizePhys — Test Sonuçları", "",
+    L = [f"# {a.name} — Test Sonuçları", "",
          "PURE'da ön-eğitimli FactorizePhys (rPPG-Toolbox) MCD-rPPG + UBFC-rPPG'nin **test dışı** kişileriyle "
          "ince ayarlandı ve önceki karşılaştırmanın aynı 28 videosunda (UBFC 8 denek + MCD önden webcam 20 video, "
          "10 kişi) test edildi. Test kişileri eğitim ve doğrulamada hiç kullanılmadı.", "",
@@ -198,12 +199,12 @@ def write_report(a, t, info, w, t_clean=None, ref_q=None):
               f"- {info['n']} videonun {info['esit_0.5']}'inde fark ≤0.5 BPM, {info['dl_daha_iyi']}'inde ince ayarlı "
               f"model daha iyi, {info['dl_daha_kotu']}'inde daha kötü."]
         worst = w["POS tüm yüz+Viterbi"].sort_values(ascending=False).head(5)
-        L += ["", "En zor 5 video (POS'a göre):", "", "| Video | POS+Viterbi | PURE hazır+Viterbi | İnce ayarlı+Viterbi |",
+        L += ["", "En zor 5 video (POS'a göre):", "", f"| Video | POS+Viterbi | PURE hazır+Viterbi | {a.name}+Viterbi |",
               "|---|---:|---:|---:|"]
         for v in worst.index:
             L.append(f"| {v} | {w.loc[v, 'POS tüm yüz+Viterbi']:.2f} | "
                      f"{w.loc[v, 'FactorizePhys PURE (hazır)+Viterbi']:.2f} | "
-                     f"{w.loc[v, 'FactorizePhys ince ayarlı+Viterbi']:.2f} |")
+                     f"{w.loc[v, a.name + '+Viterbi']:.2f} |")
     if t_clean is not None:
         bad = {v: q for v, q in ref_q.items() if q["ok_frac"] < 0.8}
         L += ["", f"## Referans etiketi temiz test videoları ({len(ref_q) - len(bad)}/{len(ref_q)})", "",

@@ -27,8 +27,8 @@ from datetime import datetime
 
 import numpy as np
 
-from dl_common import (ARCHS, CHUNK, PER_VIDEO_SYNC, PRETRAINED, build_model, hr_from_bvp, label_shift,
-                       predict_video, reference_hr, shift_label, video_decision)
+from dl_common import (ARCHS, CHUNK, MODEL_SYNC, PER_VIDEO_SYNC, PRETRAINED, build_model, hr_from_bvp,
+                       label_shift, predict_video, reference_hr, shift_label, video_decision)
 from dl_quality import compute as quality
 
 
@@ -43,13 +43,20 @@ def _video_entry(p, min_face):
     b = m["bvp"]  # bozuk referans: NaN ya da düz (sensör kayıt almamış, ör. MCD 4952) -> kayıp patlar
     if not np.all(np.isfinite(b)) or (np.lib.stride_tricks.sliding_window_view(b, CHUNK)[::40].std(1) < 1e-6).mean() > 0.2:
         return None
-    source = str(m["source"])
+    source, camera = str(m["source"]), str(m["camera"])
     q = quality(p) if CLEAN else None  # etiket kalitesi (dl_quality.py); yoksa burada hesaplanıp .kal yazılır
-    if q is not None and not video_decision(q, source):
+    snk = load_sync(p) if source in MODEL_SYNC else None
+    if q is not None and not video_decision(q, source, camera, snk):
         return None
     return {"npz": p, "npy": p[:-4] + ".npy", "n": int(m["n"]), "person": str(m["person"]),
-            "source": source, "camera": str(m["camera"]), "q": q,
+            "source": source, "camera": camera, "q": q, "snk": snk,
             "vote": float(m["polarity"]) * float(m["polarity_corr"]) if "polarity" in m.files else 0.0}
+
+
+def load_sync(npz):
+    """dl_sync_check.py --write çıktısı (model tabanlı hizalama); yoksa None."""
+    p = npz[:-4] + ".snk"
+    return {k: v.item() for k, v in np.load(p).items()} if os.path.exists(p) else None
 
 
 TRAIN_SOURCES = ("mcd", "ubfc", "pure", "ubfcphys", "mpu", "mmpd", "vipl", "cohface", "dlcn")  # test_* klasörleri hiç okunmaz
@@ -59,7 +66,8 @@ def list_videos(root, min_face=0.5):
     vids = []
     for p in sorted(p for sub in TRAIN_SOURCES
                     for p in glob.glob(os.path.join(root, sub, "*.npz"))):
-        mt = os.path.getmtime(p)
+        snk = p[:-4] + ".snk"  # hizalama eğitim başladıktan sonra yazılabilir: değişince video yeniden okunur
+        mt = (os.path.getmtime(p), os.path.getmtime(snk) if os.path.exists(snk) else 0.0)
         if p not in _VCACHE or _VCACHE[p][0] != mt:
             try:
                 entry = _video_entry(p, min_face)
@@ -76,8 +84,8 @@ def list_videos(root, min_face=0.5):
         votes[v["source"]] = votes.get(v["source"], 0.0) + v["vote"]
     for v in vids:
         v["mult"] = -1.0 if v["source"] == "mcd" else (-1.0 if votes.get(v["source"], 0.0) < 0 else 1.0)
-        v["shift"] = label_shift(v["q"], v["source"], v["camera"]) if CLEAN else 0
-        if CLEAN and v["source"] in PER_VIDEO_SYNC:
+        v["shift"] = label_shift(v["q"], v["source"], v["camera"], v["snk"]) if CLEAN else 0
+        if CLEAN and (v["source"] in PER_VIDEO_SYNC or v["source"] in MODEL_SYNC):
             v["mult"] = 1.0  # işaret yerine hizalama: tepe korelasyonu pozitif olacak şekilde kaydırıldı
     return vids
 
@@ -87,6 +95,21 @@ MAX_SPAN = int(np.ceil(CHUNK * 1.25)) + 1  # en hızlı artırmada gereken kare 
 
 def is_val(person):
     return zlib.crc32(person.encode()) % 10 == 0
+
+
+def pick_val(vids, n):
+    """Doğrulama videoları: doğrulama kişilerinden veri seti başına eşit pay, her birinde eşit aralıklı.
+    6. turda doğrulama ilk gelen MCD/UBFC videolarından seçilmişti; yeni verinin etkisi görülemiyordu."""
+    groups = {}
+    for v in vids:
+        if is_val(v["person"]):
+            groups.setdefault(v["source"], []).append(v)
+    k = max(1, n // max(1, len(groups)))
+    out = []
+    for g in sorted(groups):
+        vs = groups[g]
+        out += [vs[i] for i in np.linspace(0, len(vs) - 1, min(k, len(vs))).astype(int)]
+    return out
 
 
 class ChunkSampler:
@@ -289,8 +312,7 @@ def main():
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     vids = list_videos(a.data)
     train = [v for v in vids if not is_val(v["person"])]
-    val = [v for v in vids if is_val(v["person"])]
-    val = [val[i] for i in np.linspace(0, len(val) - 1, min(a.val_max, len(val))).astype(int)] if val else []
+    val = pick_val(vids, a.val_max)
     print(f"eğitim {len(train)} video ({len({v['person'] for v in train})} kişi), "
           f"doğrulama {len(val)} video, cihaz {device}", flush=True)
     if not train:
@@ -308,6 +330,21 @@ def main():
     sched = torch.optim.lr_scheduler.CosineAnnealingLR(opt, T_max=a.epochs * a.steps, eta_min=a.lr / 50)
     state = {"epoch": 0, "best": None, "history": []}
     last = os.path.join(a.out, "last.pth")
+
+    def remeasure_best(state, val):
+        """Doğrulama kümesi değiştiyse en iyi modeli yeni kümede yeniden ölçer (karşılaştırma aynı kümede olsun)."""
+        names = sorted(v["npz"] for v in val)
+        if not val or state.get("val_set") == names:
+            return
+        state["val_set"] = names
+        if state["best"] is None or not os.path.exists(os.path.join(a.out, "best.pth")):
+            return
+        best_model = build_model(device, os.path.join(a.out, "best.pth"))
+        state["best"]["val_mae"] = validate(best_model, val, device)
+        del best_model
+        print(f"  doğrulama kümesi değişti ({len(val)} video); en iyi (epoch {state['best']['epoch']}) "
+              f"yeniden ölçüldü: {state['best']['val_mae']:.2f} BPM", flush=True)
+
     if os.path.exists(last):
         ck = torch.load(last, map_location=device)
         model.load_state_dict(ck["model"], strict=False)
@@ -320,13 +357,7 @@ def main():
             print("  optimizer durumu yok/uyumsuz: taze optimizer", flush=True)
         state = ck["state"]
         print(f"devam: epoch {state['epoch']}", flush=True)
-        names = sorted(v["npz"] for v in val)
-        if val and state.get("val_set") != names:  # doğrulama kümesi değişti: en iyiyi yeni kümede yeniden ölç
-            best_model = build_model(device, os.path.join(a.out, "best.pth"))
-            state["best"]["val_mae"] = validate(best_model, val, device)
-            del best_model
-            print(f"  doğrulama kümesi değişti ({len(val)} video); en iyi (epoch {state['best']['epoch']}) "
-                  f"yeniden ölçüldü: {state['best']['val_mae']:.2f} BPM", flush=True)
+        remeasure_best(state, val)
     elif val:
         mae0 = validate(model, val, device)
         print(f"başlangıç modeli doğrulama MAE: {mae0:.2f} BPM", flush=True)
@@ -343,11 +374,14 @@ def main():
             print(f"süre sınırı: eğitim durduruldu [{datetime.now():%H:%M:%S}]", flush=True)
             break
         t0 = time.time()
-        new = [v for v in list_videos(a.data) if not is_val(v["person"])]  # indirme sürerken yeni gelenler
-        if len(new) > len(train):
+        allv = list_videos(a.data)  # indirme/hazırlama/hizalama sürerken gelenler
+        new = [v for v in allv if not is_val(v["person"])]
+        if {v["npz"] for v in new} != {v["npz"] for v in train}:
             train = new
             sampler = ChunkSampler(train)
             print(f"  eğitim kümesi: {len(train)} video ({len({v['person'] for v in train})} kişi)", flush=True)
+        val = pick_val(allv, a.val_max)
+        remeasure_best(state, val)
         model.train()
         losses = []
         pf = Prefetcher(sampler, a.bs, seed=100000 * state["epoch"] + 1234)
