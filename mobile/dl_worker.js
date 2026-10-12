@@ -3,6 +3,7 @@
 // Girdi:  [1, 3, 161, 72, 72] float32, 0–255 ham RGB yüz kırpıntıları (30 fps; son kare tekrarlı, model içinde fark alınır)
 // Çıktı:  [1, 160] nabız dalgası (BVP)
 import * as ort from "./vendor/ort/ort.wasm.bundle.min.mjs";
+import { packWindow } from "./dl_pack.js";
 
 ort.env.wasm.numThreads = 1;              // GitHub Pages çapraz köken yalıtımı sunmuyor: tek iş parçacığı
 ort.env.wasm.wasmPaths = new URL("./vendor/ort/", import.meta.url).href;
@@ -23,8 +24,10 @@ self.onmessage = async (e) => {
       const ms = await load();
       self.postMessage({ type: "ready", ms });
     } else if (msg.type === "run") {
+      // Ana iş parçacığı yalnızca kırpıntıları ve enterpolasyon planını gönderir; tensör burada doldurulur.
+      const frames = packWindow(msg.px, msg.ia, msg.w, msg.T, 72 * 72);
       const t0 = performance.now();
-      const input = new ort.Tensor("float32", msg.frames, [1, 3, msg.T, 72, 72]);
+      const input = new ort.Tensor("float32", frames, [1, 3, msg.T, 72, 72]);
       const out = await session.run({ video: input });
       const bvp = Float32Array.from(out.bvp.data);
       self.postMessage({ type: "bvp", k0: msg.k0, gen: msg.gen, bvp, ms: performance.now() - t0 }, [bvp.buffer]);

@@ -10,6 +10,7 @@
 import {
   BPM_GRID, OnlineHRTracker, analyzeWindow, motionConfidence, preprocessBvp, spectrumBpm, windowSnr,
 } from "./dsp.js";
+import { planWindow } from "./dl_pack.js";
 
 const ROI_DEFS = {               // rppg/roi.py ROI_DEFS ile aynı (yüz kutusuna göre kesirler)
   forehead: [0.30, 0.08, 0.40, 0.17],
@@ -32,7 +33,7 @@ const els = {
   plotBvp: $("plot-bvp"), plotSpec: $("plot-spec"), plotHist: $("plot-hist"),
 };
 const params = new URLSearchParams(location.search);
-const VERSION = "v10";
+const VERSION = "v11";
 document.getElementById("version").textContent = VERSION;
 
 const state = {
@@ -73,12 +74,22 @@ async function loadFaceDetector() {
   detMemory = pico.instantiate_detection_memory(5);
 }
 
-function detectFace(d, W, H) {
+// Tarama süresini en küçük ölçekler belirler (konum sayısı ~1/boyut²). Yüz takip edilirken yalnızca kutunun
+// 0.4–2.5 katı ölçekler taranır: IoU > 0.2 ile yüz kümesine girebilecek tespitler (0.45–2.24 kat) bu aralıkta kalır
+// ve ölçek ızgarası (minsize·1.1^k) korunur, yani yüzün tespiti tam taramayla aynıdır (20 MCD kesitinde 0 px fark).
+const DET_SCALE = 1.1, DET_TRACK_RANGE = [0.4, 2.5];
+function detectFace(d, W, H, track) {
   const gray = new Uint8Array(W * H);
   for (let i = 0, j = 0; i < gray.length; i++, j += 4) gray[i] = (2 * d[j] + 7 * d[j + 1] + d[j + 2]) / 10;
-  const m = Math.min(W, H);
+  const m = Math.min(W, H), base = Math.max(20, 0.1 * m);
+  let minsize = base, maxsize = m;
+  if (track) {
+    const k = Math.max(0, Math.floor(Math.log((DET_TRACK_RANGE[0] * track.w) / base) / Math.log(DET_SCALE)));
+    minsize = base * DET_SCALE ** k;
+    maxsize = Math.min(m, DET_TRACK_RANGE[1] * track.w);
+  }
   let dets = pico.run_cascade({ pixels: gray, nrows: H, ncols: W, ldim: W }, classifyRegion,
-    { shiftfactor: 0.1, minsize: Math.max(20, 0.1 * m), maxsize: m, scalefactor: 1.1 });
+    { shiftfactor: 0.1, minsize, maxsize, scalefactor: DET_SCALE });
   dets = pico.cluster_detections(detMemory(dets), 0.2);
   let best = null;
   for (const [r, c, sz, q] of dets) if (q > 50 && (!best || q > best.q)) best = { r, c, sz, q };
@@ -171,7 +182,7 @@ function processFrame(tSec) {
   const roiRaw = {};
   if (state.mode === "face") {
     if (state.frameNo++ % DETECT_EVERY === 0) {
-      const f = detectFace(d, W, H);
+      const f = detectFace(d, W, H, state.bbox);
       if (f) {
         state.bbox = smoothBox(state.bbox, f, state.bbox ? 0.3 : 1);
         state.lastDet = tSec;
@@ -441,23 +452,15 @@ function dlSchedule() {
   if (dl.nextK === null) dl.nextK = Math.max(DL_T, Math.ceil((F[0].t - dl.t0) * DL_FS) + DL_T);
   if (kLast < dl.nextK) return;
   const kEnd = kLast - dl.nextK > DL_HOP ? kLast : dl.nextK;   // geride kaldıysa en yeniye atla
-  const k0 = kEnd - DL_T, T = DL_T + 1, P = DL_SIZE * DL_SIZE;
+  const k0 = kEnd - DL_T, T = DL_T + 1;
   dl.nextK = kEnd + DL_HOP;
   if (dl.t0 + k0 / DL_FS < F[0].t) return;                   // pencerenin başı artık bellekte yok
-  const out = new Float32Array(3 * T * P);
-  let j = 0;
-  for (let i = 0; i < T; i++) {
-    const t = dl.t0 + (k0 + i) / DL_FS;
-    while (j < F.length - 2 && F[j + 1].t <= t) j++;
-    const a = F[j], b = F[j + 1];
-    if (b.t - a.t > DL_MAX_GAP) return;                       // yüz kayboldu / kare atlandı: bu pencereyi geç
-    const w = Math.min(1, Math.max(0, (t - a.t) / (b.t - a.t || 1)));
-    for (let p = 0, q = 0; p < P; p++, q += 3) {
-      for (let c = 0; c < 3; c++) out[c * T * P + i * P + p] = a.px[q + c] * (1 - w) + b.px[q + c] * w;
-    }
-  }
+  // 30 fps ızgaraya enterpolasyon planı burada (yalnızca zaman damgaları), tensörün doldurulması worker'da (dl_pack.js)
+  const plan = planWindow(F, dl.t0, k0, T, DL_FS, DL_MAX_GAP);
+  if (!plan) return;                                          // yüz kayboldu / kare atlandı: bu pencereyi geç
+  const px = F.slice(plan.lo, plan.hi + 1).map((f) => f.px);  // ~162 kırpıntı (~2.5 MB) kopyalanır, kareler bellekte kalır
   dl.busy = true;
-  dl.worker.postMessage({ type: "run", frames: out, T, k0, gen: dl.gen }, [out.buffer]);
+  dl.worker.postMessage({ type: "run", px, ia: plan.ia, w: plan.w, T, k0, gen: dl.gen }, [plan.ia.buffer, plan.w.buffer]);
 }
 
 function dlAddBvp(k0, bvp) {
