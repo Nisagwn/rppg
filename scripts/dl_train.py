@@ -8,11 +8,14 @@ MCD-rPPG (3 kamera, dinlenme + egzersiz) ve UBFC-rPPG'nin test DIŞI kişileriyl
 * Her epoch: videolardan rastgele başlangıçlı 160 karelik parçalar (uzunlukla orantılı örnekleme).
 * Artırma: yatay çevirme, hız değişimi (0.8–1.25x; HR dağılımını genişletir), parlaklık ölçeği.
 * Kayıp: örnek başına negatif Pearson. MCD etiketi ters çevrilir (bkz. ChunkSampler).
+* --arch mmrphys: MMRPhys (Joshi ve Cho 2025) rastgele başlatmayla (sıfırdan). Makaledeki gibi SmoothL1 kaybı
+  (standartlaştırılmış tahmin ve etiket); TSFM eğitimde etiketi kullanır. --scratch: FactorizePhys de sıfırdan.
 * Seçim: doğrulama videolarında pencere MAE (argmax, 10 s) en düşük epoch -> best.pth
 * Dayanıklılık: her epoch sonunda last.pth (model + optimizer + zamanlayıcı); tekrar çalıştırınca devam eder.
   --deadline "2026-09-28 04:15" verilirse o saatte güvenle durur.
 
     python scripts/dl_train.py --epochs 30 --steps 600 --deadline "2026-09-28 04:15"
+    python scripts/dl_train.py --arch mmrphys --epochs 200 --lr 1e-3
 """
 import argparse
 import glob
@@ -24,8 +27,8 @@ from datetime import datetime
 
 import numpy as np
 
-from dl_common import (CHUNK, PER_VIDEO_SYNC, build_model, hr_from_bvp, label_shift, predict_video, reference_hr,
-                       shift_label, video_decision)
+from dl_common import (ARCHS, CHUNK, PER_VIDEO_SYNC, PRETRAINED, build_model, hr_from_bvp, label_shift,
+                       predict_video, reference_hr, shift_label, video_decision)
 from dl_quality import compute as quality
 
 
@@ -228,6 +231,15 @@ def neg_pearson(pred, lab):
     return (1 - r).mean()
 
 
+def smooth_l1(pred, lab):
+    import torch
+    p = (pred - pred.mean(dim=1, keepdim=True)) / (pred.std(dim=1, keepdim=True) + 1e-8)
+    return torch.nn.functional.smooth_l1_loss(p, lab)  # etiket zaten parça başına standartlaştırılmış
+
+
+LOSSES = {"pearson": neg_pearson, "smoothl1": smooth_l1}
+
+
 VAL_GROUPS = {}  # son doğrulamanın kaynak/kamera bazında MAE'si (günlüğe yazılır)
 
 
@@ -263,6 +275,10 @@ def main():
                                                "varsayılan: PURE ön-eğitimli")
     ap.add_argument("--no-clean", action="store_true", help="etiket kalitesi filtresini kapat")
     ap.add_argument("--phone-aug", action="store_true", help="telefon benzeri bozulmalar (phone_degrade)")
+    ap.add_argument("--arch", choices=ARCHS, default="factorizephys")
+    ap.add_argument("--scratch", action="store_true", help="rastgele başlat (mmrphys'te her zaman)")
+    ap.add_argument("--loss", choices=tuple(LOSSES), default="", help="varsayılan: factorizephys pearson, "
+                                                                        "mmrphys smoothl1 (makaledeki gibi)")
     a = ap.parse_args()
     global CLEAN, PHONE_AUG
     CLEAN = not a.no_clean
@@ -280,9 +296,14 @@ def main():
     if not train:
         raise SystemExit("Eğitim verisi yok: önce scripts/dl_prepare.py --mcd N")
 
-    model = build_model(device, a.init) if a.init else build_model(device)
-    if a.init:
-        print(f"başlangıç ağırlıkları: {a.init}", flush=True)
+    scratch = a.scratch or (a.arch != "factorizephys" and not a.init)  # MMRPhys'in hazır ağırlığı kodla uyumsuz
+    init = None if scratch else (a.init or PRETRAINED)
+    model = build_model(device, init, arch=a.arch)
+    loss_fn = LOSSES[a.loss or ("pearson" if a.arch == "factorizephys" else "smoothl1")]
+    with_label = a.arch == "mmrphys"  # TSFM eğitimde etiketi kısıt olarak kullanır
+    print(f"mimari {a.arch} ({sum(p.numel() for p in model.parameters())} parametre), "
+          f"{'rastgele başlatma' if scratch else 'başlangıç ağırlıkları: ' + init}, kayıp {loss_fn.__name__}",
+          flush=True)
     opt = torch.optim.AdamW(model.parameters(), lr=a.lr, weight_decay=1e-4)
     sched = torch.optim.lr_scheduler.CosineAnnealingLR(opt, T_max=a.epochs * a.steps, eta_min=a.lr / 50)
     state = {"epoch": 0, "best": None, "history": []}
@@ -312,7 +333,7 @@ def main():
         print("  doğrulama: " + ", ".join(f"{k} {m:.2f} ({n})" for k, (m, n) in VAL_GROUPS.items()), flush=True)
         state["history"].append({"epoch": 0, "val_mae": mae0, "loss": None})
         state["best"] = {"epoch": 0, "val_mae": mae0}
-        torch.save({"model": model.state_dict()}, os.path.join(a.out, "best.pth"))
+        torch.save({"model": model.state_dict(), "arch": a.arch}, os.path.join(a.out, "best.pth"))
     state["val_set"] = sorted(v["npz"] for v in val)
 
     sampler = ChunkSampler(train)
@@ -334,8 +355,8 @@ def main():
             x, y, prm = pf.next()
             x = gpu_augment(x, prm, device)
             y = torch.as_tensor(y, device=device)
-            pred = model(x)[0]
-            loss = neg_pearson(pred, y)
+            pred = model(x, label_bvp=y)[0] if with_label else model(x)[0]
+            loss = loss_fn(pred, y)
             if not torch.isfinite(loss):
                 continue
             opt.zero_grad(set_to_none=True)
@@ -363,8 +384,8 @@ def main():
         state["history"].append({"epoch": state["epoch"], "val_mae": mae, "loss": float(np.mean(losses))})
         if state["best"] is None or mae < state["best"]["val_mae"]:
             state["best"] = {"epoch": state["epoch"], "val_mae": mae}
-            torch.save({"model": model.state_dict()}, os.path.join(a.out, "best.pth"))
-        torch.save({"model": model.state_dict(), "opt": opt.state_dict(), "sched": sched.state_dict(),
+            torch.save({"model": model.state_dict(), "arch": a.arch}, os.path.join(a.out, "best.pth"))
+        torch.save({"model": model.state_dict(), "arch": a.arch, "opt": opt.state_dict(), "sched": sched.state_dict(),
                     "state": state}, last + ".part")
         os.replace(last + ".part", last)
         epoch_time = time.time() - t0

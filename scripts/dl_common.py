@@ -21,17 +21,56 @@ MD_CONFIG = {"FRAME_NUM": CHUNK, "MD_TYPE": "NMF", "MD_FSAM": True, "MD_TRANSFOR
              "MD_S": 1, "MD_R": 1, "MD_STEPS": 4, "MD_INFERENCE": True, "MD_RESIDUAL": True}
 
 
-def build_model(device, weights=PRETRAINED, dropout=0.1):
+# MMRPhys (Joshi ve Cho 2025; github.com/PhysiologicAILab/MMRPhys, yalnızca araştırma lisansı): RGB, 72x72, yalnızca
+# nabız (BVP) görevi. TSFM etiketi yalnızca eğitimde kullanır (MD_INFERENCE False: çıkarımda etiket gerekmez).
+MMRPHYS = os.path.join(ROOT, "external", "MMRPhys")
+MMRPHYS_COMMIT = "2cedee232bac5e18b02d7121ccca7020b851ac22"
+MMR_CONFIG = {"FRAME_NUM": CHUNK, "MD_TYPE": "SNMF_Label", "MD_FSAM": True, "MD_S": 1, "MD_R": 1, "MD_STEPS": 4,
+              "MD_INFERENCE": False, "MD_RESIDUAL": True, "TASKS": ["BVP"], "BP_USE_RSP": False, "FS": 30}
+ARCHS = ("factorizephys", "mmrphys")
+
+
+def _mmrphys_class():
+    # İki depo da "neural_methods" paketini kullanıyor: MMRPhys alt paketi toolbox'un model paketine eklenir
+    import neural_methods.model as nm
+    path = os.path.join(MMRPHYS, "neural_methods", "model")
+    if not os.path.isdir(os.path.join(path, "MMRPhys")):
+        raise SystemExit(f"MMRPhys yok: git clone https://github.com/PhysiologicAILab/MMRPhys.git {MMRPHYS}")
+    if path not in nm.__path__:
+        nm.__path__.append(path)
+    from neural_methods.model.MMRPhys.MMRPhysLEF import MMRPhysLEF
+    return MMRPhysLEF
+
+
+def build_model(device, weights=PRETRAINED, dropout=0.1, arch=None):
+    """weights boşsa rastgele başlatma. Mimari verilmezse kontrol noktasındaki "arch" alanından okunur
+    (yoksa FactorizePhys: eski kontrol noktaları ve toolbox'un hazır ağırlığı)."""
     import torch
-    from neural_methods.model.FactorizePhys.FactorizePhys import FactorizePhys
-    model = FactorizePhys(frames=CHUNK, md_config=dict(MD_CONFIG), in_channels=3, dropout=dropout, device=device)
+    sd = None
     if weights:
-        sd = torch.load(weights, map_location=device)
-        sd = sd.get("model", sd)
+        ck = torch.load(weights, map_location=device)
+        arch = arch or (ck.get("arch") if isinstance(ck, dict) else None)
+        sd = ck.get("model", ck)
         sd = {k.removeprefix("module."): v for k, v in sd.items()}
+    arch = arch or "factorizephys"
+    if arch == "mmrphys":
+        model = _mmrphys_class()(frames=CHUNK, md_config=dict(MMR_CONFIG), in_channels=3, dropout=dropout,
+                                 device=device)
+    elif arch == "factorizephys":
+        from neural_methods.model.FactorizePhys.FactorizePhys import FactorizePhys
+        model = FactorizePhys(frames=CHUNK, md_config=dict(MD_CONFIG), in_channels=3, dropout=dropout, device=device)
+    else:
+        raise ValueError(f"bilinmeyen mimari {arch!r} (seçenekler: {', '.join(ARCHS)})")
+    if sd is not None:
         missing, unexpected = model.load_state_dict(sd, strict=False)
+        # bias1: modellerde nn.Parameter(...).to(device) -> GPU'da kayıtsız sabit 1.0, kontrol noktasında hiç yok;
+        # varsayılanı da 1.0 olduğu için eksik olması sonucu değiştirmez
+        missing = [k for k in missing if not k.endswith("bias1")]
+        if len(missing) > len(model.state_dict()) // 2:  # başka mimarinin ağırlığı: sessizce rastgele kalmasın
+            raise ValueError(f"{weights}: ağırlıklar {arch} mimarisine uymuyor (eksik {len(missing)})")
         if missing or unexpected:
             print(f"  ağırlık uyarısı: eksik {len(missing)}, fazla {len(unexpected)}")
+    model.arch = arch
     return model.to(device)
 
 
