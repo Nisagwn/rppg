@@ -132,7 +132,7 @@ def main():
     ap.add_argument("--out", default=os.path.join(ROOT, "results/derin_ogrenme/senkron_model.csv"))
     ap.add_argument("--write", action="store_true", help="--data/--subs altındaki her videoya .snk yaz")
     ap.add_argument("--data", default=os.path.join(ROOT, "data/dl"))
-    ap.add_argument("--subs", nargs="*", default=["vipl", "dlcn"])
+    ap.add_argument("--subs", nargs="*", default=["vipl", "dlcn", "cohface"])
     a = ap.parse_args()
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")

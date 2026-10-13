@@ -186,12 +186,13 @@ PER_VIDEO_SYNC = {"ubfcphys"}  # bilek sensörü; senkron kişiden kişiye deği
 # kamera başına 60 video; senkronu bilinen ana test videolarında tepe 0 kare, r 0.82-0.84): VIPL source1/3 nabız
 # uyumu %81-83 ama kayma videodan videoya -27..+11 kare (medyan -13/-15); POS bu kaynaklarda güvenilmez.
 # .snk'si olmayan video eğitime girmez; hizalı korelasyonu SYNC_R_MIN altındaki video çıkarılır.
-MODEL_SYNC = {"vipl", "dlcn"}
+# COHFACE (13 Ekim, 164 video): model nabız hatası medyan 1.0 BPM, kayma medyan +1 kare ama birkaç videoda -20..-25.
+MODEL_SYNC = {"vipl", "dlcn", "cohface"}
 SYNC_R_MIN = 0.4
 DROP_CAMERAS = {("vipl", "source2")}  # RealSense: model-etiket nabız uyumu %39, kaymalar rastgele (etiket uyumsuz)
 # Eğitime girmeyen kaynaklar (test klasörleri yine değerlendirilir). MMPD mini 80x60: modelin nabız hatası medyan
-# 18 BPM, POS da başarısız; işaret doğru, kayma ~-5 kare: sorun çözünürlük. COHFACE: yoğun sıkıştırma.
-DROP_SOURCES = {"mmpd", "cohface"}
+# 18 BPM, POS da başarısız; işaret doğru, kayma ~-5 kare: sorun çözünürlük.
+DROP_SOURCES = {"mmpd"}
 
 
 def shift_label(b, d):
