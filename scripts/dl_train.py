@@ -97,9 +97,12 @@ def is_val(person):
     return zlib.crc32(person.encode()) % 10 == 0
 
 
-def pick_val(vids, n):
+def pick_val(vids, n, prev=()):
     """Doğrulama videoları: doğrulama kişilerinden veri seti başına eşit pay, her birinde eşit aralıklı.
-    6. turda doğrulama ilk gelen MCD/UBFC videolarından seçilmişti; yeni verinin etkisi görülemiyordu."""
+    6. turda doğrulama ilk gelen MCD/UBFC videolarından seçilmişti; yeni verinin etkisi görülemiyordu.
+    prev: önceki seçim; hâlâ geçerli olanlar korunur, yalnızca boş kalan pay doldurulur (7. tur B: küme her epoch
+    değişince aynı en iyi model 1.4-4.3 BPM arasında ölçülüyordu, en iyi epoch seçimi gürültülüydü)."""
+    prev = set(prev)
     groups = {}
     for v in vids:
         if is_val(v["person"]):
@@ -108,7 +111,10 @@ def pick_val(vids, n):
     out = []
     for g in sorted(groups):
         vs = groups[g]
-        out += [vs[i] for i in np.linspace(0, len(vs) - 1, min(k, len(vs))).astype(int)]
+        keep = [v for v in vs if v["npz"] in prev][:k]
+        rest = [v for v in vs if v["npz"] not in prev]
+        need = min(k - len(keep), len(rest))
+        out += keep + ([rest[i] for i in np.linspace(0, len(rest) - 1, need).astype(int)] if need > 0 else [])
     return out
 
 
@@ -357,6 +363,7 @@ def main():
             print("  optimizer durumu yok/uyumsuz: taze optimizer", flush=True)
         state = ck["state"]
         print(f"devam: epoch {state['epoch']}", flush=True)
+        val = pick_val(vids, a.val_max, state.get("val_set", ()))  # önceki oturumun doğrulama videoları korunur
         remeasure_best(state, val)
     elif val:
         mae0 = validate(model, val, device)
@@ -380,7 +387,7 @@ def main():
             train = new
             sampler = ChunkSampler(train)
             print(f"  eğitim kümesi: {len(train)} video ({len({v['person'] for v in train})} kişi)", flush=True)
-        val = pick_val(allv, a.val_max)
+        val = pick_val(allv, a.val_max, state.get("val_set", ()))
         remeasure_best(state, val)
         model.train()
         losses = []

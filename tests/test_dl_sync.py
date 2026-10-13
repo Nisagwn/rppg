@@ -43,3 +43,12 @@ def test_pick_val_balances_sources():
     counts = {src: sum(v["source"] == src for v in val) for src in ("mcd", "vipl")}
     assert counts == {"mcd": 20, "vipl": 20}
     assert all(t.is_val(v["person"]) for v in val)
+
+
+def test_pick_val_is_stable_as_data_grows():
+    mk = lambda src, i: {"person": f"{src}_{i}", "source": src, "npz": f"{src}{i}"}
+    vids = [mk("mcd", i) for i in range(1000)] + [mk("vipl", i) for i in range(200)]
+    first = [v["npz"] for v in t.pick_val(vids, 20)]
+    vids += [mk("mcd", i) for i in range(1000, 3000)]  # hazırlama sürerken gelenler
+    again = [v["npz"] for v in t.pick_val(vids, 20, first)]
+    assert again == first
