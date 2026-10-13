@@ -600,11 +600,11 @@ def process_vipl(avi, wave_csv, time_txt, dst, max_sec=None, **info):
     return len(f), rate, info["rotation"]
 
 
-def process_cohface(avi, hdf5, dst, **info):
+def process_cohface(avi, hdf5, dst, max_sec=None, **info):
     """COHFACE: data.avi (640x480, 20 fps, yoğun MPEG-4 sıkıştırma) + data.hdf5 ('pulse' 256 Hz, 'time' s)."""
     import h5py
     vfs = cv2.VideoCapture(avi).get(cv2.CAP_PROP_FPS) or 20.0
-    frames, rate = crop_video(avi, None, 1)
+    frames, rate = crop_video(avi, int(max_sec * vfs) + 2 if max_sec else None, 1)
     with h5py.File(hdf5, "r") as h:
         pulse, t_p = np.array(h["pulse"], dtype=float), np.array(h["time"], dtype=float)
     t_v = np.arange(len(frames)) / vfs
@@ -665,7 +665,7 @@ def job_vipl(d, raw_root, out_root, keep_raw, max_sec):
     return d, f"{n} kare, yüz %{100 * rate:.0f}, döndürme {rot}"
 
 
-def job_cohface(d, raw_root, out_root, keep_raw):
+def job_cohface(d, raw_root, out_root, keep_raw, max_sec=None):
     pno, k = (int(x) for x in d.split("/"))
     dst = _new_dst(out_root, "cohface", pno, f"{pno}_{k}")
     if os.path.exists(dst):
@@ -673,7 +673,7 @@ def job_cohface(d, raw_root, out_root, keep_raw):
     local = os.path.join(raw_root, d)
     for fn in ("data.avi", "data.hdf5"):
         fetch(hf_url(COHFACE_HF, f"{d}/{fn}"), os.path.join(local, fn))
-    n, rate = process_cohface(os.path.join(local, "data.avi"), os.path.join(local, "data.hdf5"), dst,
+    n, rate = process_cohface(os.path.join(local, "data.avi"), os.path.join(local, "data.hdf5"), dst, max_sec,
                               person=f"cohface_{pno}", camera="COHFACE", step=str(k), source="cohface")
     if not keep_raw:
         import shutil
@@ -695,17 +695,17 @@ def new_jobs(kind, n, raw_root, out_root, keep_raw, max_sec):
         return [(job_vipl, (d, os.path.join(raw_root, "vipl"), out_root, keep_raw, max_sec)) for d in dirs[:n]]
     dirs = sorted({f.rsplit("/", 1)[0] for f in hf_files(COHFACE_HF) if f.endswith("/data.avi")},
                   key=lambda d: (not is_new_test(d.split("/")[0]), d))
-    return [(job_cohface, (d, os.path.join(raw_root, "cohface"), out_root, keep_raw)) for d in dirs[:n]]
+    return [(job_cohface, (d, os.path.join(raw_root, "cohface"), out_root, keep_raw, max_sec)) for d in dirs[:n]]
 
 
-def process_dlcn(h5_path, dst, **info):
+def process_dlcn(h5_path, dst, max_sec=None, **info):
     """DLCN (Kaggle: dalaoplan/rppg-dlcn): 'imgs' [T,128,128,3] RGB yüz kırpıntıları (MTCNN kutusu x1.2, ilk karede
     bulunup sabit; Logitech C922, 30 fps), 'bvp' kare sayısına enterpole edilmiş CMS50E parmak PPG'si.
     Kutu bizimkinden (Haar x1.5) dar: kırpıntı doğrudan 72x72'ye küçültülür (ölçek çeşitliliği)."""
     import h5py
     with h5py.File(h5_path, "r") as h:
         imgs, bvp = h["imgs"], np.array(h["bvp"], dtype=float).reshape(-1)
-        n = min(len(imgs), len(bvp))
+        n = min(len(imgs), len(bvp), int(max_sec * FS) if max_sec else len(imgs))  # DLCN 30 fps
         frames = np.empty((n, SIZE, SIZE, 3), dtype=np.uint8)
         for k in range(0, n, 300):  # parça parça: gzip'li dizi belleğe toptan alınmaz
             blk = imgs[k:k + 300]
@@ -716,13 +716,13 @@ def process_dlcn(h5_path, dst, **info):
     return n, sign, corr
 
 
-def job_dlcn(path, out_root):
+def job_dlcn(path, out_root, max_sec=None):
     sm = re.search(r"[Pp](\d+)_(\d+)\.h5$", path)
     pno, v = int(sm.group(1)), int(sm.group(2))
     dst = _new_dst(out_root, "dlcn", pno, f"P{pno}_{v}")
     if os.path.exists(dst):
         return os.path.basename(path), "var"
-    n, sign, corr = process_dlcn(path, dst, person=f"dlcn_P{pno}", camera="C922",
+    n, sign, corr = process_dlcn(path, dst, max_sec, person=f"dlcn_P{pno}", camera="C922",
                                  step=("dinlenme" if v <= 4 else "egzersiz") + f"_v{v}", source="dlcn")
     return os.path.basename(path), f"{n} kare, işaret {'+' if sign > 0 else '-'} (r={corr:.2f})"
 
@@ -852,7 +852,7 @@ def main():
     if a.dlcn:
         files = dlcn_files(a.dlcn_dir, a.dlcn)
         print(f"dlcn: {len(files)} video ({a.dlcn_dir})", flush=True)
-        failed += run([(job_dlcn, (f, a.out)) for f in files], a.workers)
+        failed += run([(job_dlcn, (f, a.out, a.max_sec)) for f in files], a.workers)
 
     for kind in ("cohface", "mmpd", "vipl"):
         n = getattr(a, kind)
