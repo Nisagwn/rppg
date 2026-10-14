@@ -80,11 +80,14 @@ Tüm deneyler aynı veri, aynı ön işleme ve aynı test kümeleriyle:
 | | Hazır ağırlıktan | Sıfırdan |
 |---|---|---|
 | FactorizePhys | 5. tur (var) ve Deney A (yeni veri) | Deney C |
-| MMRPhys | — | **Deney B (ana hedef)** |
+| MMRPhys | Deney D (B'nin kendi ağırlıklarından, + DLCN, COHFACE) | **Deney B (ana hedef)** |
 
 - A ile 5. tur karşılaştırması → yeni verinin (telefon videoları) etkisi
 - A ile C karşılaştırması → ön-eğitimin etkisi
 - C ile B karşılaştırması → mimarinin etkisi
+- D ile B karşılaştırması → kendi modelimizin yeni veriyle (gece ışığı, sıkıştırma) ince ayarı hatayı düşürüyor mu
+
+Sonuç (14 Ekim): B ana testte 1.13 BPM (5. tur 1.10), telefon/USB 1.96 (1.64), VIPL 3.49 (5.23).
 
 Test kümeleri: ana test (28), telefon/USB testi (28), MMPD testi, VIPL-HR testi, DLCN testi.
 Ölçütler: MAE, RMSE, ≤5 BPM %, medyan, Pearson r, Bland-Altman; mobilde kare/s ve gecikme.
