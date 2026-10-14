@@ -166,30 +166,45 @@ def write_report(a, t, info, w, t_clean=None, ref_q=None):
     hist_path = a.history or os.path.join(os.path.dirname(a.model), "gecmis.json")
     hist = json.load(open(hist_path)) if os.path.exists(hist_path) else None
     data = a.data
-    metas = [np.load(p) for sub in ("mcd", "ubfc", "pure") for p in glob.glob(os.path.join(data, sub, "*.npz"))]
+    subs = ("mcd", "ubfc", "pure", "vipl", "dlcn", "cohface")
+    metas = [np.load(p) for sub in subs for p in glob.glob(os.path.join(data, sub, "*.npz"))]
     used = [m for m in metas if float(m["face_rate"]) >= 0.5]
     people = {str(m["person"]) for m in used}
     hours = sum(int(m["n"]) for m in used) / 30 / 3600
 
+    import torch
+    ck = torch.load(a.model, map_location="cpu")
+    arch = ck.get("arch", "factorizephys") if isinstance(ck, dict) else "factorizephys"
+    if arch == "mmrphys":
+        what = ("MMRPhys (Joshi ve Cho 2025) **rastgele başlatılarak (sıfırdan)** eğitildi; hiçbir hazır ağırlık "
+                "kullanılmadı")
+        loss = "SmoothL1 (standartlaştırılmış tahmin ve etiket; TSFM eğitimde etiketi kısıt olarak kullanır)"
+    else:
+        what = "FactorizePhys (rPPG-Toolbox) eğitildi (başlangıç ağırlıkları eğitim günlüğünde)"
+        loss = "negatif Pearson"
     L = [f"# {a.name} — Test Sonuçları", "",
-         "PURE'da ön-eğitimli FactorizePhys (rPPG-Toolbox) MCD-rPPG + UBFC-rPPG'nin **test dışı** kişileriyle "
-         "ince ayarlandı ve önceki karşılaştırmanın aynı 28 videosunda (UBFC 8 denek + MCD önden webcam 20 video, "
-         "10 kişi) test edildi. Test kişileri eğitim ve doğrulamada hiç kullanılmadı.", "",
+         f"{what}. Eğitimde yalnızca test **dışı** kişiler kullanıldı; test kümesi `{os.path.basename(a.test)}`. "
+         "Test kişileri eğitim ve doğrulamada hiç kullanılmadı.", "",
          "## Eğitim verisi", "",
          f"- {len(used)} video, {len(people)} kişi, {hours:.1f} saat (yüz bulunma oranı <%50 olan "
          f"{len(metas) - len(used)} video çıkarıldı)",
          f"- MCD: {sum(str(m['source']) == 'mcd' for m in used)} video (3 kamera: önden webcam, sol USB, sağ telefon; "
-         "dinlenme + egzersiz sonrası), ilk 45 s (disk için; kişi çeşitliliği süreden önemli)",
+         "dinlenme + egzersiz sonrası), video başına ilk "
+         f"{np.median([int(m['n']) for m in used if str(m['source']) == 'mcd'] or [0]) / 30:.0f} s",
          f"- UBFC: {sum(str(m['source']) == 'ubfc' for m in used)} denek",
          f"- PURE: {sum(str(m['source']) == 'pure' for m in used)} oturum (10 kişi × 6 hareket senaryosu; HF kopyası)",
+         *[f"- {name}: {sum(str(m['source']) == src for m in used)} video (etiket model tabanlı video başına hizalandı; "
+           "hizalı korelasyonu zayıf olanlar eğitimde çıkarıldı)"
+           for src, name in (("vipl", "VIPL-HR (source1/3)"), ("dlcn", "DLCN"), ("cohface", "COHFACE"))
+           if any(str(m['source']) == src for m in used)],
          "- Ön işleme toolbox ile aynı (Haar ×1.5, 30 karede bir tespit, 72×72, ham kare); hepsi 30 fps'e yeniden örneklendi",
          "- MCD parmak PPG'si UBFC/PURE'a göre ters işaretli (ön-eğitimli model çıktısıyla korelasyon ≈ −0.75, "
          "gecikme ≈ 0); eğitimde ters çevrildi",
          "- Artırma: yatay çevirme, hız 0.8–1.25× (HR aralığını genişletir), parlaklık ×0.8–1.2",
-         "- Kayıp: negatif Pearson; AdamW, cosine öğrenme oranı; en iyi epoch doğrulama kişilerinde pencere MAE ile seçildi", ""]
+         f"- Kayıp: {loss}; AdamW, cosine öğrenme oranı; en iyi epoch doğrulama kişilerinde pencere MAE ile seçildi", ""]
     if hist:
         h = [x for x in hist["history"] if x.get("val_mae") is not None]
-        L += [f"Eğitim: {hist['epoch']} epoch (500 adım × 8 parça). Doğrulama MAE: ön-eğitimli "
+        L += [f"Eğitim: {hist['epoch']} epoch (500 adım × 8 parça). Doğrulama MAE: başlangıç "
               f"{h[0]['val_mae']:.2f} → en iyi {hist['best']['val_mae']:.2f} BPM (epoch {hist['best']['epoch']}).", ""]
     L += [f"## Ortalama MAE (BPM) — {len(w)} test videosu", "", *md_header(t)]
     for name, r in t.iterrows():

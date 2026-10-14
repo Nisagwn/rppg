@@ -1,0 +1,13 @@
+yöntem,MMPD (telefon),Hepsi,≤5 BPM %,Medyan
+5. tur+Viterbi,11.48,11.48,59.07,6.23
+3. tur (uygulamadaki)+Viterbi,11.87,11.87,58.87,6.55
+MMRPhys sıfırdan (7. tur) (son epoch)+Viterbi,12.26,12.26,58.09,5.99
+MMRPhys sıfırdan (7. tur)+Viterbi,12.27,12.27,58.13,6.16
+FactorizePhys PURE (hazır)+Viterbi,12.94,12.94,56.85,6.25
+MMRPhys sıfırdan (7. tur),14.52,14.52,52.82,12.49
+MMRPhys sıfırdan (7. tur) (son epoch),14.68,14.68,52.75,12.85
+FactorizePhys PURE (hazır),15.52,15.52,50.02,12.5
+5. tur,15.83,15.83,51.16,13.88
+3. tur (uygulamadaki),15.88,15.88,50.71,13.99
+POS (yüz kırpıntısı)+Viterbi,18.13,18.13,41.98,13.07
+POS (yüz kırpıntısı),20.06,20.06,37.44,17.73

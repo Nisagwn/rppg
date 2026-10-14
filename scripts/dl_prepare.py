@@ -484,10 +484,21 @@ def hf_url(repo, path):
 def hf_files(repo):
     """Kopyadaki dosya listesi; erişim yoksa (istek onaylanmadı / HF_TOKEN yok) uyarı ve boş liste."""
     import requests
-    s = requests.get(f"https://huggingface.co/api/datasets/{repo}", timeout=60).json().get("siblings", [])
+    tok = hf_token()
+    # Anahtarla sorulur: Kaggle'ın ortak IP'lerinden anahtarsız istek sınıra takılıp boş liste dönebiliyor
+    # (7. tur B'de COHFACE erişimi varken "erişim yok" sanıldı)
+    for k in range(6):
+        r = requests.get(f"https://huggingface.co/api/datasets/{repo}", timeout=60,
+                         headers={"Authorization": f"Bearer {tok}"} if tok else {})
+        if r.status_code in (200, 401, 403):
+            break
+        print(f"{repo}: dosya listesi alınamadı (HTTP {r.status_code}); {30 * (k + 1)} s sonra tekrar", flush=True)
+        time.sleep(30 * (k + 1))
+    if r.status_code not in (200, 401, 403):
+        r.raise_for_status()
+    s = r.json().get("siblings", [])
     files = [x["rfilename"] for x in s]
     probe = next((f for f in files if not f.startswith(".")), None)
-    tok = hf_token()
     r = requests.head(hf_url(repo, probe), headers={"Authorization": f"Bearer {tok}"} if tok else {},
                       allow_redirects=True, timeout=60) if probe else None
     if r is None or r.status_code in (401, 403):
