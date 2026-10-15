@@ -22,10 +22,11 @@ self.onmessage = async (e) => {
   try {
     if (msg.type === "load") {
       const ms = await load();
-      self.postMessage({ type: "ready", ms });
+      self.postMessage({ type: "ready", ms, proto: 2 });   // proto 2: kırpıntı + plan alır (v11+)
     } else if (msg.type === "run") {
       // Ana iş parçacığı yalnızca kırpıntıları ve enterpolasyon planını gönderir; tensör burada doldurulur.
-      const frames = packWindow(msg.px, msg.ia, msg.w, msg.T, 72 * 72);
+      // Sürüm geçişinde (service worker yeni worker'ı eski sayfaya verir) eski sayfa hazır tensör gönderir.
+      const frames = msg.frames || packWindow(msg.px, msg.ia, msg.w, msg.T, 72 * 72);
       const t0 = performance.now();
       const input = new ort.Tensor("float32", frames, [1, 3, msg.T, 72, 72]);
       const out = await session.run({ video: input });

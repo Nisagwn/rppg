@@ -10,7 +10,7 @@
 import {
   BPM_GRID, OnlineHRTracker, analyzeWindow, motionConfidence, preprocessBvp, spectrumBpm, windowSnr,
 } from "./dsp.js";
-import { planWindow } from "./dl_pack.js";
+import { packWindow, planWindow } from "./dl_pack.js";
 
 const ROI_DEFS = {               // rppg/roi.py ROI_DEFS ile aynı (yüz kutusuna göre kesirler)
   forehead: [0.30, 0.08, 0.40, 0.17],
@@ -33,7 +33,7 @@ const els = {
   plotBvp: $("plot-bvp"), plotSpec: $("plot-spec"), plotHist: $("plot-hist"),
 };
 const params = new URLSearchParams(location.search);
-const VERSION = "v11";
+const VERSION = "v12";
 document.getElementById("version").textContent = VERSION;
 
 const state = {
@@ -395,7 +395,7 @@ function dlInit() {
   }
   dl.worker.onmessage = (e) => {
     const m = e.data;
-    if (m.type === "ready") dl.ready = true;
+    if (m.type === "ready") { dl.ready = true; dl.proto = m.proto || 1; }
     else if (m.type === "error") { dl.failed = m.message; dl.busy = false; }
     else if (m.type === "bvp") {
       dl.busy = false;
@@ -460,6 +460,13 @@ function dlSchedule() {
   if (!plan) return;                                          // yüz kayboldu / kare atlandı: bu pencereyi geç
   const px = F.slice(plan.lo, plan.hi + 1).map((f) => f.px);  // ~162 kırpıntı (~2.5 MB) kopyalanır, kareler bellekte kalır
   dl.busy = true;
+  if (dl.proto < 2) {                                         // sürüm geçişi: önbellekten eski worker geldi
+    // v10 worker hazır tensör (frames), v11 worker kırpıntı + plan bekliyor; ikisi de "proto" bildirmiyor: ikisini de gönder
+    const frames = packWindow(px, plan.ia, plan.w, T, DL_SIZE * DL_SIZE);
+    dl.worker.postMessage({ type: "run", frames, px, ia: plan.ia, w: plan.w, T, k0, gen: dl.gen },
+      [frames.buffer, plan.ia.buffer, plan.w.buffer]);
+    return;
+  }
   dl.worker.postMessage({ type: "run", px, ia: plan.ia, w: plan.w, T, k0, gen: dl.gen }, [plan.ia.buffer, plan.w.buffer]);
 }
 
