@@ -98,7 +98,9 @@ def is_val(person):
 
 
 def pick_val(vids, n, prev=()):
-    """Doğrulama videoları: doğrulama kişilerinden veri seti başına eşit pay, her birinde eşit aralıklı.
+    """Doğrulama videoları: doğrulama kişilerinden veri seti/kamera başına eşit pay, her birinde eşit aralıklı.
+    Kamera ayrı grup: 7. tur D'de MCD'nin 3 kamerası tek grupta 6 videoyla temsil ediliyordu; telefon/USB
+    testindeki kötüleşme en iyi epoch seçiminde görülmedi.
     6. turda doğrulama ilk gelen MCD/UBFC videolarından seçilmişti; yeni verinin etkisi görülemiyordu.
     prev: önceki seçim; hâlâ geçerli olanlar korunur, yalnızca boş kalan pay doldurulur (7. tur B: küme her epoch
     değişince aynı en iyi model 1.4-4.3 BPM arasında ölçülüyordu, en iyi epoch seçimi gürültülüydü)."""
@@ -106,7 +108,7 @@ def pick_val(vids, n, prev=()):
     groups = {}
     for v in vids:
         if is_val(v["person"]):
-            groups.setdefault(v["source"], []).append(v)
+            groups.setdefault((v["source"], v.get("camera", "")), []).append(v)
     k = max(1, n // max(1, len(groups)))
     out = []
     for g in sorted(groups):
@@ -118,12 +120,31 @@ def pick_val(vids, n, prev=()):
     return out
 
 
+SOURCE_WEIGHTS = {}  # --source-weights: veri setinin eğitim parçalarındaki payı (boşsa kare sayısıyla orantılı)
+
+
+def source_shares(vids, weights):
+    """Veri seti başına örnekleme payı. weights boşsa kare sayısıyla orantılı (1-6. tur, 7. tur B/D);
+    verilmişse yalnızca eldeki veri setleri arasında normalleştirilir, listede olmayanın payı 0."""
+    frames = {}
+    for v in vids:
+        frames[v["source"]] = frames.get(v["source"], 0) + v["n"]
+    raw = {s: (weights.get(s, 0.0) if weights else f) for s, f in frames.items()}
+    tot = sum(raw.values()) or 1.0
+    return {s: r / tot for s, r in raw.items()}, frames
+
+
 class ChunkSampler:
     def __init__(self, vids):
         self.vids = vids
-        w = np.array([v["n"] for v in vids], dtype=float)
+        shares, frames = source_shares(vids, SOURCE_WEIGHTS)
+        # veri seti içinde kare sayısıyla orantılı; veri setleri arasında shares (7. tur D: MCD 30 s'ye inip DLCN ve
+        # COHFACE eklenince MCD'nin kare payı ~%78'den ~%62'ye düştü, MCD tabanlı testler kötüleşti)
+        w = np.array([shares[v["source"]] * v["n"] / frames[v["source"]] for v in vids], dtype=float)
         self.p = w / w.sum()
         self.cache = {}
+        print("  örnekleme payı: " + ", ".join(f"{s} %{100 * x:.0f}" for s, x in sorted(shares.items(), key=lambda t: -t[1])),
+              flush=True)
 
     def _frames(self, v):
         item = self.cache.get(v["npy"])
@@ -306,12 +327,15 @@ def main():
     ap.add_argument("--phone-aug", action="store_true", help="telefon benzeri bozulmalar (phone_degrade)")
     ap.add_argument("--arch", choices=ARCHS, default="factorizephys")
     ap.add_argument("--scratch", action="store_true", help="rastgele başlat (mmrphys'te her zaman)")
+    ap.add_argument("--source-weights", default="", metavar="mcd=0.7,vipl=0.15,...",
+                    help="veri setlerinin eğitimdeki payı (varsayılan: kare sayısıyla orantılı)")
     ap.add_argument("--loss", choices=tuple(LOSSES), default="", help="varsayılan: factorizephys pearson, "
                                                                         "mmrphys smoothl1 (makaledeki gibi)")
     a = ap.parse_args()
-    global CLEAN, PHONE_AUG
+    global CLEAN, PHONE_AUG, SOURCE_WEIGHTS
     CLEAN = not a.no_clean
     PHONE_AUG = a.phone_aug
+    SOURCE_WEIGHTS = {k: float(x) for k, x in (kv.split("=") for kv in a.source_weights.split(",") if kv)}
     deadline = datetime.strptime(a.deadline, "%Y-%m-%d %H:%M").timestamp() if a.deadline else float("inf")
 
     os.makedirs(a.out, exist_ok=True)

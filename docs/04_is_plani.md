@@ -88,6 +88,8 @@ Tüm deneyler aynı veri, aynı ön işleme ve aynı test kümeleriyle:
 - D ile B karşılaştırması → kendi modelimizin yeni veriyle (gece ışığı, sıkıştırma) ince ayarı hatayı düşürüyor mu
 
 Sonuç (14 Ekim): B ana testte 1.13 BPM (5. tur 1.10), telefon/USB 1.96 (1.64), VIPL 3.49 (5.23).
+Sonuç (16 Ekim): D DLCN testinde 1.69 -> 1.31 BPM iyileşti ama ana test 1.29, telefon/USB 2.36, VIPL 4.06'ya kötüleşti
+(MCD'nin eğitimdeki payı %78 -> %62). E: aynı veri, veri seti payları sabit (MCD %70), doğrulama kamera başına dengeli.
 
 Test kümeleri: ana test (28), telefon/USB testi (28), MMPD testi, VIPL-HR testi, DLCN testi.
 Ölçütler: MAE, RMSE, ≤5 BPM %, medyan, Pearson r, Bland-Altman; mobilde kare/s ve gecikme.

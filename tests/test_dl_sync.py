@@ -52,3 +52,18 @@ def test_pick_val_is_stable_as_data_grows():
     vids += [mk("mcd", i) for i in range(1000, 3000)]  # hazırlama sürerken gelenler
     again = [v["npz"] for v in t.pick_val(vids, 20, first)]
     assert again == first
+
+
+def test_pick_val_separates_cameras():
+    mk = lambda cam, i: {"person": f"mcd_{i}", "source": "mcd", "camera": cam, "npz": f"{cam}{i}"}
+    vids = [mk(c, i) for c in ("FullHDwebcam", "USBVideo", "IriunWebcam") for i in range(1000)]
+    cams = [v["camera"] for v in t.pick_val(vids, 30)]
+    assert {c: cams.count(c) for c in set(cams)} == {"FullHDwebcam": 10, "USBVideo": 10, "IriunWebcam": 10}
+
+
+def test_source_shares():
+    vids = [{"source": "mcd", "n": 900}] * 3000 + [{"source": "dlcn", "n": 900}] * 600 + [{"source": "pure", "n": 1800}] * 50
+    natural, _ = t.source_shares(vids, {})
+    assert abs(natural["mcd"] - 3000 * 900 / (3000 * 900 + 600 * 900 + 50 * 1800)) < 1e-9
+    fixed, _ = t.source_shares(vids, {"mcd": 0.7, "dlcn": 0.08, "cohface": 0.03})  # cohface yok: eldekiler arasında
+    assert abs(fixed["mcd"] - 0.7 / 0.78) < 1e-9 and fixed["pure"] == 0.0
