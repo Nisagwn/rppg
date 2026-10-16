@@ -1,0 +1,393 @@
+grup,video,yöntem,MAE,p5
+MCD egzersiz (telefon),1020_IriunWebcam_after,POS (yüz kırpıntısı),17.9770489887004,18.93491124260355
+MCD egzersiz (telefon),1020_IriunWebcam_after,POS (yüz kırpıntısı)+Viterbi,19.442045569100625,9.467455621301776
+MCD dinlenme (telefon),1020_IriunWebcam_before,POS (yüz kırpıntısı),9.23466383559377,54.11764705882353
+MCD dinlenme (telefon),1020_IriunWebcam_before,POS (yüz kırpıntısı)+Viterbi,6.940558652550246,55.88235294117647
+MCD egzersiz (USB),1020_USBVideo_after,POS (yüz kırpıntısı),14.593685480904764,28.235294117647058
+MCD egzersiz (USB),1020_USBVideo_after,POS (yüz kırpıntısı)+Viterbi,11.808174655638007,22.35294117647059
+MCD dinlenme (USB),1020_USBVideo_before,POS (yüz kırpıntısı),11.644359176802977,55.88235294117647
+MCD dinlenme (USB),1020_USBVideo_before,POS (yüz kırpıntısı)+Viterbi,4.895935277945163,67.05882352941175
+MCD egzersiz (telefon),1024_IriunWebcam_after,POS (yüz kırpıntısı),11.133539802431326,45.294117647058826
+MCD egzersiz (telefon),1024_IriunWebcam_after,POS (yüz kırpıntısı)+Viterbi,4.931416659943467,64.11764705882354
+MCD dinlenme (telefon),1024_IriunWebcam_before,POS (yüz kırpıntısı),16.022615039262174,15.384615384615385
+MCD dinlenme (telefon),1024_IriunWebcam_before,POS (yüz kırpıntısı)+Viterbi,14.571841118947718,14.792899408284024
+MCD egzersiz (telefon),1035_IriunWebcam_after,POS (yüz kırpıntısı),7.865919178818699,54.437869822485204
+MCD egzersiz (telefon),1035_IriunWebcam_after,POS (yüz kırpıntısı)+Viterbi,4.2762565323251085,73.96449704142012
+MCD dinlenme (telefon),1035_IriunWebcam_before,POS (yüz kırpıntısı),8.786707654574514,59.06432748538012
+MCD dinlenme (telefon),1035_IriunWebcam_before,POS (yüz kırpıntısı)+Viterbi,5.750731465391396,69.00584795321637
+MCD egzersiz (telefon),1091_IriunWebcam_after,POS (yüz kırpıntısı),27.008889289739482,20.0
+MCD egzersiz (telefon),1091_IriunWebcam_after,POS (yüz kırpıntısı)+Viterbi,33.90634708475492,0.0
+MCD dinlenme (telefon),1091_IriunWebcam_before,POS (yüz kırpıntısı),21.25779938614218,12.352941176470589
+MCD dinlenme (telefon),1091_IriunWebcam_before,POS (yüz kırpıntısı)+Viterbi,19.792801806866446,7.647058823529412
+MCD egzersiz (USB),1091_USBVideo_after,POS (yüz kırpıntısı),28.82541132101018,18.93491124260355
+MCD egzersiz (USB),1091_USBVideo_after,POS (yüz kırpıntısı)+Viterbi,27.094003354801984,14.201183431952662
+MCD dinlenme (USB),1091_USBVideo_before,POS (yüz kırpıntısı),15.40486067928165,31.176470588235293
+MCD dinlenme (USB),1091_USBVideo_before,POS (yüz kırpıntısı)+Viterbi,18.321284933995834,14.117647058823529
+MCD egzersiz (telefon),1097_IriunWebcam_after,POS (yüz kırpıntısı),21.74005199046007,14.117647058823529
+MCD egzersiz (telefon),1097_IriunWebcam_after,POS (yüz kırpıntısı)+Viterbi,21.63455073534804,7.647058823529412
+MCD dinlenme (telefon),1097_IriunWebcam_before,POS (yüz kırpıntısı),26.492194124852887,7.100591715976331
+MCD dinlenme (telefon),1097_IriunWebcam_before,POS (yüz kırpıntısı)+Viterbi,35.39051552165387,0.0
+MCD egzersiz (telefon),1099_IriunWebcam_after,POS (yüz kırpıntısı),20.553382335157966,15.976331360946746
+MCD egzersiz (telefon),1099_IriunWebcam_after,POS (yüz kırpıntısı)+Viterbi,19.655109335637235,8.875739644970414
+MCD dinlenme (telefon),1099_IriunWebcam_before,POS (yüz kırpıntısı),15.720065629176982,29.761904761904763
+MCD dinlenme (telefon),1099_IriunWebcam_before,POS (yüz kırpıntısı)+Viterbi,10.198425051591968,41.66666666666667
+MCD egzersiz (USB),1099_USBVideo_after,POS (yüz kırpıntısı),25.652518123759155,10.650887573964498
+MCD egzersiz (USB),1099_USBVideo_after,POS (yüz kırpıntısı)+Viterbi,20.45800491051052,8.284023668639055
+MCD dinlenme (USB),1099_USBVideo_before,POS (yüz kırpıntısı),16.806396082020576,33.13609467455622
+MCD dinlenme (USB),1099_USBVideo_before,POS (yüz kırpıntısı)+Viterbi,12.41702915398476,31.360946745562128
+MCD egzersiz (telefon),1107_IriunWebcam_after,POS (yüz kırpıntısı),37.63291058711115,17.058823529411764
+MCD egzersiz (telefon),1107_IriunWebcam_after,POS (yüz kırpıntısı)+Viterbi,42.74208156257722,6.470588235294119
+MCD dinlenme (telefon),1107_IriunWebcam_before,POS (yüz kırpıntısı),22.71162233984618,10.0
+MCD dinlenme (telefon),1107_IriunWebcam_before,POS (yüz kırpıntısı)+Viterbi,19.255241564992435,10.588235294117647
+MCD dinlenme (USB),1107_USBVideo_before,POS (yüz kırpıntısı),25.46179698941778,16.470588235294116
+MCD dinlenme (USB),1107_USBVideo_before,POS (yüz kırpıntısı)+Viterbi,22.994319981542393,8.823529411764707
+MCD egzersiz (telefon),1113_IriunWebcam_after,POS (yüz kırpıntısı),15.317192968720029,26.47058823529412
+MCD egzersiz (telefon),1113_IriunWebcam_after,POS (yüz kırpıntısı)+Viterbi,12.561086400917699,27.058823529411764
+MCD dinlenme (telefon),1113_IriunWebcam_before,POS (yüz kırpıntısı),18.349371779534284,11.242603550295858
+MCD dinlenme (telefon),1113_IriunWebcam_before,POS (yüz kırpıntısı)+Viterbi,12.751283813902909,18.34319526627219
+MCD egzersiz (telefon),1115_IriunWebcam_after,POS (yüz kırpıntısı),22.236139776472005,21.764705882352942
+MCD egzersiz (telefon),1115_IriunWebcam_after,POS (yüz kırpıntısı)+Viterbi,24.168342414735815,8.235294117647058
+MCD egzersiz (telefon),1149_IriunWebcam_after,POS (yüz kırpıntısı),2.853869864824926,85.11904761904762
+MCD egzersiz (telefon),1149_IriunWebcam_after,POS (yüz kırpıntısı)+Viterbi,1.9743903607756539,91.66666666666666
+MCD dinlenme (telefon),1149_IriunWebcam_before,POS (yüz kırpıntısı),8.231400520605458,64.49704142011834
+MCD dinlenme (telefon),1149_IriunWebcam_before,POS (yüz kırpıntısı)+Viterbi,3.592528292008392,77.51479289940828
+MCD egzersiz (USB),1149_USBVideo_after,POS (yüz kırpıntısı),11.860041790809381,52.071005917159766
+MCD egzersiz (USB),1149_USBVideo_after,POS (yüz kırpıntısı)+Viterbi,3.330327201657179,80.4733727810651
+MCD dinlenme (USB),1149_USBVideo_before,POS (yüz kırpıntısı),10.727910880307997,65.88235294117646
+MCD dinlenme (USB),1149_USBVideo_before,POS (yüz kırpıntısı)+Viterbi,2.801365961940787,85.88235294117646
+MCD egzersiz (telefon),1020_IriunWebcam_after,FactorizePhys PURE (hazır),8.109303151481637,59.171597633136095
+MCD egzersiz (telefon),1020_IriunWebcam_after,FactorizePhys PURE (hazır)+Viterbi,4.678425151330637,67.45562130177515
+MCD dinlenme (telefon),1020_IriunWebcam_before,FactorizePhys PURE (hazır),5.920938190552061,78.82352941176471
+MCD dinlenme (telefon),1020_IriunWebcam_before,FactorizePhys PURE (hazır)+Viterbi,2.198043660196173,88.8235294117647
+MCD egzersiz (USB),1020_USBVideo_after,FactorizePhys PURE (hazır),8.983917663463242,54.70588235294118
+MCD egzersiz (USB),1020_USBVideo_after,FactorizePhys PURE (hazır)+Viterbi,4.620065125053856,69.41176470588235
+MCD dinlenme (USB),1020_USBVideo_before,FactorizePhys PURE (hazır),8.800545381712544,56.470588235294116
+MCD dinlenme (USB),1020_USBVideo_before,FactorizePhys PURE (hazır)+Viterbi,4.543955638429066,64.11764705882354
+MCD egzersiz (telefon),1024_IriunWebcam_after,FactorizePhys PURE (hazır),9.3066995254414,64.70588235294117
+MCD egzersiz (telefon),1024_IriunWebcam_after,FactorizePhys PURE (hazır)+Viterbi,4.596476598238146,71.76470588235294
+MCD dinlenme (telefon),1024_IriunWebcam_before,FactorizePhys PURE (hazır),12.534028114393873,28.994082840236686
+MCD dinlenme (telefon),1024_IriunWebcam_before,FactorizePhys PURE (hazır)+Viterbi,7.423325478175444,43.19526627218935
+MCD egzersiz (telefon),1035_IriunWebcam_after,FactorizePhys PURE (hazır),7.86698823086435,72.18934911242604
+MCD egzersiz (telefon),1035_IriunWebcam_after,FactorizePhys PURE (hazır)+Viterbi,3.1780786191359924,84.02366863905326
+MCD dinlenme (telefon),1035_IriunWebcam_before,FactorizePhys PURE (hazır),10.478163167944272,58.47953216374269
+MCD dinlenme (telefon),1035_IriunWebcam_before,FactorizePhys PURE (hazır)+Viterbi,3.0780550745489936,81.87134502923976
+MCD egzersiz (telefon),1091_IriunWebcam_after,FactorizePhys PURE (hazır),12.642507350462807,55.88235294117647
+MCD egzersiz (telefon),1091_IriunWebcam_after,FactorizePhys PURE (hazır)+Viterbi,3.575306578765851,82.35294117647058
+MCD dinlenme (telefon),1091_IriunWebcam_before,FactorizePhys PURE (hazır),18.325510196419774,21.764705882352942
+MCD dinlenme (telefon),1091_IriunWebcam_before,FactorizePhys PURE (hazır)+Viterbi,13.537277455143954,25.882352941176475
+MCD egzersiz (USB),1091_USBVideo_after,FactorizePhys PURE (hazır),21.984639002979186,33.13609467455622
+MCD egzersiz (USB),1091_USBVideo_after,FactorizePhys PURE (hazır)+Viterbi,10.28947330323352,43.786982248520715
+MCD dinlenme (USB),1091_USBVideo_before,FactorizePhys PURE (hazır),6.343200925946504,72.94117647058823
+MCD dinlenme (USB),1091_USBVideo_before,FactorizePhys PURE (hazır)+Viterbi,4.847295352578489,80.0
+MCD egzersiz (telefon),1097_IriunWebcam_after,FactorizePhys PURE (hazır),19.385333555373848,27.058823529411764
+MCD egzersiz (telefon),1097_IriunWebcam_after,FactorizePhys PURE (hazır)+Viterbi,11.942879708742883,35.88235294117647
+MCD dinlenme (telefon),1097_IriunWebcam_before,FactorizePhys PURE (hazır),17.661971806633304,10.650887573964498
+MCD dinlenme (telefon),1097_IriunWebcam_before,FactorizePhys PURE (hazır)+Viterbi,12.249694734967669,19.526627218934912
+MCD egzersiz (telefon),1099_IriunWebcam_after,FactorizePhys PURE (hazır),11.755420277162782,43.786982248520715
+MCD egzersiz (telefon),1099_IriunWebcam_after,FactorizePhys PURE (hazır)+Viterbi,5.670773578966583,63.905325443786985
+MCD dinlenme (telefon),1099_IriunWebcam_before,FactorizePhys PURE (hazır),12.954983734303667,47.61904761904761
+MCD dinlenme (telefon),1099_IriunWebcam_before,FactorizePhys PURE (hazır)+Viterbi,6.727799468659732,61.904761904761905
+MCD egzersiz (USB),1099_USBVideo_after,FactorizePhys PURE (hazır),16.35193294590185,24.2603550295858
+MCD egzersiz (USB),1099_USBVideo_after,FactorizePhys PURE (hazır)+Viterbi,16.166241405699235,18.34319526627219
+MCD dinlenme (USB),1099_USBVideo_before,FactorizePhys PURE (hazır),9.309577971055655,52.071005917159766
+MCD dinlenme (USB),1099_USBVideo_before,FactorizePhys PURE (hazır)+Viterbi,8.736688401128019,46.74556213017752
+MCD egzersiz (telefon),1107_IriunWebcam_after,FactorizePhys PURE (hazır),24.173448368757047,24.705882352941178
+MCD egzersiz (telefon),1107_IriunWebcam_after,FactorizePhys PURE (hazır)+Viterbi,23.474780243270576,20.0
+MCD dinlenme (telefon),1107_IriunWebcam_before,FactorizePhys PURE (hazır),19.965146050939843,20.588235294117645
+MCD dinlenme (telefon),1107_IriunWebcam_before,FactorizePhys PURE (hazır)+Viterbi,18.948907374170197,18.823529411764707
+MCD dinlenme (USB),1107_USBVideo_before,FactorizePhys PURE (hazır),15.791045596632731,28.235294117647058
+MCD dinlenme (USB),1107_USBVideo_before,FactorizePhys PURE (hazır)+Viterbi,10.324951297708116,40.0
+MCD egzersiz (telefon),1113_IriunWebcam_after,FactorizePhys PURE (hazır),12.363866315041161,38.23529411764706
+MCD egzersiz (telefon),1113_IriunWebcam_after,FactorizePhys PURE (hazır)+Viterbi,7.679038898143118,50.0
+MCD dinlenme (telefon),1113_IriunWebcam_before,FactorizePhys PURE (hazır),15.941816921622612,27.218934911242602
+MCD dinlenme (telefon),1113_IriunWebcam_before,FactorizePhys PURE (hazır)+Viterbi,9.518429238870064,40.828402366863905
+MCD egzersiz (telefon),1115_IriunWebcam_after,FactorizePhys PURE (hazır),6.230419525614886,75.29411764705883
+MCD egzersiz (telefon),1115_IriunWebcam_after,FactorizePhys PURE (hazır)+Viterbi,2.488626750660291,90.0
+MCD egzersiz (telefon),1149_IriunWebcam_after,FactorizePhys PURE (hazır),2.4914309962117094,94.64285714285714
+MCD egzersiz (telefon),1149_IriunWebcam_after,FactorizePhys PURE (hazır)+Viterbi,0.9913890132006136,100.0
+MCD dinlenme (telefon),1149_IriunWebcam_before,FactorizePhys PURE (hazır),5.69125833533507,85.20710059171599
+MCD dinlenme (telefon),1149_IriunWebcam_before,FactorizePhys PURE (hazır)+Viterbi,2.2262279070826465,92.3076923076923
+MCD egzersiz (USB),1149_USBVideo_after,FactorizePhys PURE (hazır),9.325946235538991,64.49704142011834
+MCD egzersiz (USB),1149_USBVideo_after,FactorizePhys PURE (hazır)+Viterbi,5.185655817540975,75.7396449704142
+MCD dinlenme (USB),1149_USBVideo_before,FactorizePhys PURE (hazır),8.776586141731208,67.05882352941175
+MCD dinlenme (USB),1149_USBVideo_before,FactorizePhys PURE (hazır)+Viterbi,3.4066262205685542,81.17647058823529
+MCD egzersiz (telefon),1020_IriunWebcam_after,MMRPhys B'den ince ayar (7. tur),1.1113277927908833,95.26627218934911
+MCD egzersiz (telefon),1020_IriunWebcam_after,MMRPhys B'den ince ayar (7. tur)+Viterbi,1.0082105641194792,97.0414201183432
+MCD dinlenme (telefon),1020_IriunWebcam_before,MMRPhys B'den ince ayar (7. tur),1.0403148378793714,95.88235294117648
+MCD dinlenme (telefon),1020_IriunWebcam_before,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.9563094882446996,97.05882352941177
+MCD egzersiz (USB),1020_USBVideo_after,MMRPhys B'den ince ayar (7. tur),1.2677076084082177,98.23529411764706
+MCD egzersiz (USB),1020_USBVideo_after,MMRPhys B'den ince ayar (7. tur)+Viterbi,1.3273031279553136,97.05882352941177
+MCD dinlenme (USB),1020_USBVideo_before,MMRPhys B'den ince ayar (7. tur),1.8578647265715857,91.17647058823529
+MCD dinlenme (USB),1020_USBVideo_before,MMRPhys B'den ince ayar (7. tur)+Viterbi,1.6087955789822646,92.94117647058823
+MCD egzersiz (telefon),1024_IriunWebcam_after,MMRPhys B'den ince ayar (7. tur),0.7524241301662032,100.0
+MCD egzersiz (telefon),1024_IriunWebcam_after,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.7448472941498516,100.0
+MCD dinlenme (telefon),1024_IriunWebcam_before,MMRPhys B'den ince ayar (7. tur),9.233120434371694,59.76331360946746
+MCD dinlenme (telefon),1024_IriunWebcam_before,MMRPhys B'den ince ayar (7. tur)+Viterbi,3.0776018878635942,78.10650887573965
+MCD egzersiz (telefon),1035_IriunWebcam_after,MMRPhys B'den ince ayar (7. tur),1.093993172343345,97.0414201183432
+MCD egzersiz (telefon),1035_IriunWebcam_after,MMRPhys B'den ince ayar (7. tur)+Viterbi,1.3325162363466336,95.26627218934911
+MCD dinlenme (telefon),1035_IriunWebcam_before,MMRPhys B'den ince ayar (7. tur),0.6370218012559368,100.0
+MCD dinlenme (telefon),1035_IriunWebcam_before,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.6396115027327276,100.0
+MCD egzersiz (telefon),1091_IriunWebcam_after,MMRPhys B'den ince ayar (7. tur),0.534613424859017,100.0
+MCD egzersiz (telefon),1091_IriunWebcam_after,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.534613424859017,100.0
+MCD dinlenme (telefon),1091_IriunWebcam_before,MMRPhys B'den ince ayar (7. tur),12.68759946909654,42.94117647058823
+MCD dinlenme (telefon),1091_IriunWebcam_before,MMRPhys B'den ince ayar (7. tur)+Viterbi,6.865005320663411,55.294117647058826
+MCD egzersiz (USB),1091_USBVideo_after,MMRPhys B'den ince ayar (7. tur),0.9040097245697708,97.63313609467455
+MCD egzersiz (USB),1091_USBVideo_after,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.8971697495036586,97.63313609467455
+MCD dinlenme (USB),1091_USBVideo_before,MMRPhys B'den ince ayar (7. tur),0.917315948939468,98.82352941176471
+MCD dinlenme (USB),1091_USBVideo_before,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.6377209270637965,100.0
+MCD egzersiz (telefon),1097_IriunWebcam_after,MMRPhys B'den ince ayar (7. tur),10.205636664198764,58.82352941176471
+MCD egzersiz (telefon),1097_IriunWebcam_after,MMRPhys B'den ince ayar (7. tur)+Viterbi,3.499906647737823,80.58823529411765
+MCD dinlenme (telefon),1097_IriunWebcam_before,MMRPhys B'den ince ayar (7. tur),16.60974797773352,26.035502958579883
+MCD dinlenme (telefon),1097_IriunWebcam_before,MMRPhys B'den ince ayar (7. tur)+Viterbi,14.99384139312115,26.035502958579883
+MCD egzersiz (telefon),1099_IriunWebcam_after,MMRPhys B'den ince ayar (7. tur),1.7003223764847741,96.44970414201184
+MCD egzersiz (telefon),1099_IriunWebcam_after,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.8171447470610192,100.0
+MCD dinlenme (telefon),1099_IriunWebcam_before,MMRPhys B'den ince ayar (7. tur),2.367784551346717,91.66666666666666
+MCD dinlenme (telefon),1099_IriunWebcam_before,MMRPhys B'den ince ayar (7. tur)+Viterbi,1.369675324495712,94.64285714285714
+MCD egzersiz (USB),1099_USBVideo_after,MMRPhys B'den ince ayar (7. tur),3.4992654043351195,82.84023668639054
+MCD egzersiz (USB),1099_USBVideo_after,MMRPhys B'den ince ayar (7. tur)+Viterbi,2.414648006747784,84.61538461538461
+MCD dinlenme (USB),1099_USBVideo_before,MMRPhys B'den ince ayar (7. tur),5.788001650720548,81.06508875739645
+MCD dinlenme (USB),1099_USBVideo_before,MMRPhys B'den ince ayar (7. tur)+Viterbi,2.4534321995978154,88.75739644970415
+MCD egzersiz (telefon),1107_IriunWebcam_after,MMRPhys B'den ince ayar (7. tur),5.322914432486972,86.47058823529412
+MCD egzersiz (telefon),1107_IriunWebcam_after,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.9818822861643803,97.6470588235294
+MCD dinlenme (telefon),1107_IriunWebcam_before,MMRPhys B'den ince ayar (7. tur),1.380703340806064,96.47058823529412
+MCD dinlenme (telefon),1107_IriunWebcam_before,MMRPhys B'den ince ayar (7. tur)+Viterbi,1.018837203327537,98.23529411764706
+MCD dinlenme (USB),1107_USBVideo_before,MMRPhys B'den ince ayar (7. tur),11.89178226255414,47.05882352941176
+MCD dinlenme (USB),1107_USBVideo_before,MMRPhys B'den ince ayar (7. tur)+Viterbi,8.241514830432138,56.470588235294116
+MCD egzersiz (telefon),1113_IriunWebcam_after,MMRPhys B'den ince ayar (7. tur),4.025096522670744,79.41176470588235
+MCD egzersiz (telefon),1113_IriunWebcam_after,MMRPhys B'den ince ayar (7. tur)+Viterbi,3.0297744758330896,85.29411764705883
+MCD dinlenme (telefon),1113_IriunWebcam_before,MMRPhys B'den ince ayar (7. tur),3.265262030421778,86.98224852071006
+MCD dinlenme (telefon),1113_IriunWebcam_before,MMRPhys B'den ince ayar (7. tur)+Viterbi,2.9716320977057213,84.61538461538461
+MCD egzersiz (telefon),1115_IriunWebcam_after,MMRPhys B'den ince ayar (7. tur),0.5282391162391183,100.0
+MCD egzersiz (telefon),1115_IriunWebcam_after,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.5240990378303656,100.0
+MCD egzersiz (telefon),1149_IriunWebcam_after,MMRPhys B'den ince ayar (7. tur),1.4335143515674356,98.80952380952381
+MCD egzersiz (telefon),1149_IriunWebcam_after,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.5992901329957555,100.0
+MCD dinlenme (telefon),1149_IriunWebcam_before,MMRPhys B'den ince ayar (7. tur),0.8904661126844129,98.81656804733728
+MCD dinlenme (telefon),1149_IriunWebcam_before,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.7049529941294616,100.0
+MCD egzersiz (USB),1149_USBVideo_after,MMRPhys B'den ince ayar (7. tur),5.185697269595081,90.53254437869822
+MCD egzersiz (USB),1149_USBVideo_after,MMRPhys B'den ince ayar (7. tur)+Viterbi,1.4353169911893333,97.0414201183432
+MCD dinlenme (USB),1149_USBVideo_before,MMRPhys B'den ince ayar (7. tur),3.7378796825159397,91.76470588235294
+MCD dinlenme (USB),1149_USBVideo_before,MMRPhys B'den ince ayar (7. tur)+Viterbi,1.3977239988465322,97.05882352941177
+MCD egzersiz (telefon),1020_IriunWebcam_after,MMRPhys B'den ince ayar (7. tur) (son epoch),1.050368066503651,97.0414201183432
+MCD egzersiz (telefon),1020_IriunWebcam_after,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,1.0488035388867758,97.0414201183432
+MCD dinlenme (telefon),1020_IriunWebcam_before,MMRPhys B'den ince ayar (7. tur) (son epoch),1.0421831230797491,95.88235294117648
+MCD dinlenme (telefon),1020_IriunWebcam_before,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.9533729061413337,97.05882352941177
+MCD egzersiz (USB),1020_USBVideo_after,MMRPhys B'den ince ayar (7. tur) (son epoch),1.478765695768814,96.47058823529412
+MCD egzersiz (USB),1020_USBVideo_after,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,1.349606647865948,97.05882352941177
+MCD dinlenme (USB),1020_USBVideo_before,MMRPhys B'den ince ayar (7. tur) (son epoch),1.9473770989505712,90.58823529411765
+MCD dinlenme (USB),1020_USBVideo_before,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,1.133624987772652,98.23529411764706
+MCD egzersiz (telefon),1024_IriunWebcam_after,MMRPhys B'den ince ayar (7. tur) (son epoch),0.697096789638139,100.0
+MCD egzersiz (telefon),1024_IriunWebcam_after,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.6947081316664563,100.0
+MCD dinlenme (telefon),1024_IriunWebcam_before,MMRPhys B'den ince ayar (7. tur) (son epoch),10.18866169419503,58.57988165680473
+MCD dinlenme (telefon),1024_IriunWebcam_before,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,3.7217405627768088,72.18934911242604
+MCD egzersiz (telefon),1035_IriunWebcam_after,MMRPhys B'den ince ayar (7. tur) (son epoch),1.0285051050926004,97.63313609467455
+MCD egzersiz (telefon),1035_IriunWebcam_after,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,1.3112781836307952,95.26627218934911
+MCD dinlenme (telefon),1035_IriunWebcam_before,MMRPhys B'den ince ayar (7. tur) (son epoch),0.7185571742890159,99.41520467836257
+MCD dinlenme (telefon),1035_IriunWebcam_before,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.649010231899552,100.0
+MCD egzersiz (telefon),1091_IriunWebcam_after,MMRPhys B'den ince ayar (7. tur) (son epoch),0.5395307316041321,100.0
+MCD egzersiz (telefon),1091_IriunWebcam_after,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.5395307316041321,100.0
+MCD dinlenme (telefon),1091_IriunWebcam_before,MMRPhys B'den ince ayar (7. tur) (son epoch),10.310675753620794,45.294117647058826
+MCD dinlenme (telefon),1091_IriunWebcam_before,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,6.922668305472978,54.70588235294118
+MCD egzersiz (USB),1091_USBVideo_after,MMRPhys B'den ince ayar (7. tur) (son epoch),0.8989929655086202,97.63313609467455
+MCD egzersiz (USB),1091_USBVideo_after,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.911817249190114,97.63313609467455
+MCD dinlenme (USB),1091_USBVideo_before,MMRPhys B'den ince ayar (7. tur) (son epoch),1.022235761547034,98.23529411764706
+MCD dinlenme (USB),1091_USBVideo_before,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.6022606789282134,100.0
+MCD egzersiz (telefon),1097_IriunWebcam_after,MMRPhys B'den ince ayar (7. tur) (son epoch),9.632549807660617,64.11764705882354
+MCD egzersiz (telefon),1097_IriunWebcam_after,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,3.524998100823949,81.17647058823529
+MCD dinlenme (telefon),1097_IriunWebcam_before,MMRPhys B'den ince ayar (7. tur) (son epoch),15.713606913273122,29.585798816568047
+MCD dinlenme (telefon),1097_IriunWebcam_before,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,9.107106682075452,43.19526627218935
+MCD egzersiz (telefon),1099_IriunWebcam_after,MMRPhys B'den ince ayar (7. tur) (son epoch),1.2863361388486345,97.63313609467455
+MCD egzersiz (telefon),1099_IriunWebcam_after,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.8015631284393054,100.0
+MCD dinlenme (telefon),1099_IriunWebcam_before,MMRPhys B'den ince ayar (7. tur) (son epoch),2.4899451645042756,92.85714285714286
+MCD dinlenme (telefon),1099_IriunWebcam_before,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,1.3950211102080476,94.64285714285714
+MCD egzersiz (USB),1099_USBVideo_after,MMRPhys B'den ince ayar (7. tur) (son epoch),3.1125952636499297,85.79881656804734
+MCD egzersiz (USB),1099_USBVideo_after,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,2.326234921672058,85.20710059171599
+MCD dinlenme (USB),1099_USBVideo_before,MMRPhys B'den ince ayar (7. tur) (son epoch),5.658195482656504,81.65680473372781
+MCD dinlenme (USB),1099_USBVideo_before,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,2.1745226483874824,89.3491124260355
+MCD egzersiz (telefon),1107_IriunWebcam_after,MMRPhys B'den ince ayar (7. tur) (son epoch),5.661643185284633,86.47058823529412
+MCD egzersiz (telefon),1107_IriunWebcam_after,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.6484012353746362,100.0
+MCD dinlenme (telefon),1107_IriunWebcam_before,MMRPhys B'den ince ayar (7. tur) (son epoch),1.2634050948355142,97.05882352941177
+MCD dinlenme (telefon),1107_IriunWebcam_before,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,1.0068000079654629,98.23529411764706
+MCD dinlenme (USB),1107_USBVideo_before,MMRPhys B'den ince ayar (7. tur) (son epoch),12.464278326133442,48.8235294117647
+MCD dinlenme (USB),1107_USBVideo_before,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,12.012997932808695,54.11764705882353
+MCD egzersiz (telefon),1113_IriunWebcam_after,MMRPhys B'den ince ayar (7. tur) (son epoch),4.2129614167913925,78.82352941176471
+MCD egzersiz (telefon),1113_IriunWebcam_after,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,2.9764551219442077,85.88235294117646
+MCD dinlenme (telefon),1113_IriunWebcam_before,MMRPhys B'den ince ayar (7. tur) (son epoch),3.2563284311908416,87.57396449704143
+MCD dinlenme (telefon),1113_IriunWebcam_before,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,2.9936740174526926,84.61538461538461
+MCD egzersiz (telefon),1115_IriunWebcam_after,MMRPhys B'den ince ayar (7. tur) (son epoch),0.5158758913222675,100.0
+MCD egzersiz (telefon),1115_IriunWebcam_after,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.5152132659723253,100.0
+MCD egzersiz (telefon),1149_IriunWebcam_after,MMRPhys B'den ince ayar (7. tur) (son epoch),1.003848163432324,99.40476190476191
+MCD egzersiz (telefon),1149_IriunWebcam_after,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.5810707369076761,100.0
+MCD dinlenme (telefon),1149_IriunWebcam_before,MMRPhys B'den ince ayar (7. tur) (son epoch),0.7588772445270524,99.40828402366864
+MCD dinlenme (telefon),1149_IriunWebcam_before,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.6847269965939511,100.0
+MCD egzersiz (USB),1149_USBVideo_after,MMRPhys B'den ince ayar (7. tur) (son epoch),5.322075105750133,90.53254437869822
+MCD egzersiz (USB),1149_USBVideo_after,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,1.4018066055919869,97.0414201183432
+MCD dinlenme (USB),1149_USBVideo_before,MMRPhys B'den ince ayar (7. tur) (son epoch),3.6523416067574432,91.76470588235294
+MCD dinlenme (USB),1149_USBVideo_before,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,1.5649361543393077,94.70588235294117
+MCD egzersiz (telefon),1020_IriunWebcam_after,5. tur,0.959078213230111,97.0414201183432
+MCD egzersiz (telefon),1020_IriunWebcam_after,5. tur+Viterbi,0.9631991983377377,97.0414201183432
+MCD dinlenme (telefon),1020_IriunWebcam_before,5. tur,0.8086107376381785,97.05882352941177
+MCD dinlenme (telefon),1020_IriunWebcam_before,5. tur+Viterbi,0.8090286718661793,97.05882352941177
+MCD egzersiz (USB),1020_USBVideo_after,5. tur,1.0965252606772378,97.6470588235294
+MCD egzersiz (USB),1020_USBVideo_after,5. tur+Viterbi,1.1970564561015848,97.05882352941177
+MCD dinlenme (USB),1020_USBVideo_before,5. tur,1.0072384058957742,98.82352941176471
+MCD dinlenme (USB),1020_USBVideo_before,5. tur+Viterbi,1.0243669016036427,98.82352941176471
+MCD egzersiz (telefon),1024_IriunWebcam_after,5. tur,0.5981657064069545,100.0
+MCD egzersiz (telefon),1024_IriunWebcam_after,5. tur+Viterbi,0.5988054388030003,100.0
+MCD dinlenme (telefon),1024_IriunWebcam_before,5. tur,7.046494911326123,69.8224852071006
+MCD dinlenme (telefon),1024_IriunWebcam_before,5. tur+Viterbi,2.779701018236329,84.02366863905326
+MCD egzersiz (telefon),1035_IriunWebcam_after,5. tur,0.6546597664112709,100.0
+MCD egzersiz (telefon),1035_IriunWebcam_after,5. tur+Viterbi,0.6561253549035114,100.0
+MCD dinlenme (telefon),1035_IriunWebcam_before,5. tur,0.5217216287777032,99.41520467836257
+MCD dinlenme (telefon),1035_IriunWebcam_before,5. tur+Viterbi,0.4531269869353472,100.0
+MCD egzersiz (telefon),1091_IriunWebcam_after,5. tur,0.48615934087865126,100.0
+MCD egzersiz (telefon),1091_IriunWebcam_after,5. tur+Viterbi,0.48615934087865126,100.0
+MCD dinlenme (telefon),1091_IriunWebcam_before,5. tur,8.550064326415495,57.647058823529406
+MCD dinlenme (telefon),1091_IriunWebcam_before,5. tur+Viterbi,5.756651471446908,62.35294117647059
+MCD egzersiz (USB),1091_USBVideo_after,5. tur,0.5866767079061256,100.0
+MCD egzersiz (USB),1091_USBVideo_after,5. tur+Viterbi,0.5866767079061256,100.0
+MCD dinlenme (USB),1091_USBVideo_before,5. tur,0.5546851612832805,100.0
+MCD dinlenme (USB),1091_USBVideo_before,5. tur+Viterbi,0.5561427330456291,100.0
+MCD egzersiz (telefon),1097_IriunWebcam_after,5. tur,7.416530527251076,65.29411764705883
+MCD egzersiz (telefon),1097_IriunWebcam_after,5. tur+Viterbi,3.7146366483405058,78.82352941176471
+MCD dinlenme (telefon),1097_IriunWebcam_before,5. tur,13.19700090517898,37.278106508875744
+MCD dinlenme (telefon),1097_IriunWebcam_before,5. tur+Viterbi,5.201339914554383,60.946745562130175
+MCD egzersiz (telefon),1099_IriunWebcam_after,5. tur,0.754498504821233,100.0
+MCD egzersiz (telefon),1099_IriunWebcam_after,5. tur+Viterbi,0.7556436660310217,100.0
+MCD dinlenme (telefon),1099_IriunWebcam_before,5. tur,1.3243318526069259,94.04761904761905
+MCD dinlenme (telefon),1099_IriunWebcam_before,5. tur+Viterbi,1.113132257523345,95.83333333333334
+MCD egzersiz (USB),1099_USBVideo_after,5. tur,1.444272786707729,94.67455621301775
+MCD egzersiz (USB),1099_USBVideo_after,5. tur+Viterbi,0.9744047934270051,100.0
+MCD dinlenme (USB),1099_USBVideo_before,5. tur,3.145359665335518,88.16568047337277
+MCD dinlenme (USB),1099_USBVideo_before,5. tur+Viterbi,1.6979054237627627,92.89940828402366
+MCD egzersiz (telefon),1107_IriunWebcam_after,5. tur,2.0047306206600597,95.29411764705881
+MCD egzersiz (telefon),1107_IriunWebcam_after,5. tur+Viterbi,0.6426425391121322,100.0
+MCD dinlenme (telefon),1107_IriunWebcam_before,5. tur,0.8829212150804203,97.6470588235294
+MCD dinlenme (telefon),1107_IriunWebcam_before,5. tur+Viterbi,0.6141947330933019,100.0
+MCD dinlenme (USB),1107_USBVideo_before,5. tur,10.430197589053922,55.88235294117647
+MCD dinlenme (USB),1107_USBVideo_before,5. tur+Viterbi,6.9622526382169765,62.94117647058823
+MCD egzersiz (telefon),1113_IriunWebcam_after,5. tur,2.236881347770285,90.58823529411765
+MCD egzersiz (telefon),1113_IriunWebcam_after,5. tur+Viterbi,1.7164541460210456,92.3529411764706
+MCD dinlenme (telefon),1113_IriunWebcam_before,5. tur,2.065360719601027,92.3076923076923
+MCD dinlenme (telefon),1113_IriunWebcam_before,5. tur+Viterbi,2.122011128320789,90.53254437869822
+MCD egzersiz (telefon),1115_IriunWebcam_after,5. tur,0.5301789705229855,100.0
+MCD egzersiz (telefon),1115_IriunWebcam_after,5. tur+Viterbi,0.5283018607316642,100.0
+MCD egzersiz (telefon),1149_IriunWebcam_after,5. tur,0.7837539224228866,99.40476190476191
+MCD egzersiz (telefon),1149_IriunWebcam_after,5. tur+Viterbi,0.5914818405099515,100.0
+MCD dinlenme (telefon),1149_IriunWebcam_before,5. tur,0.6010530411434873,100.0
+MCD dinlenme (telefon),1149_IriunWebcam_before,5. tur+Viterbi,0.6033820703342853,100.0
+MCD egzersiz (USB),1149_USBVideo_after,5. tur,3.6156450660686796,88.16568047337277
+MCD egzersiz (USB),1149_USBVideo_after,5. tur+Viterbi,1.6095063257051214,91.71597633136095
+MCD dinlenme (USB),1149_USBVideo_before,5. tur,3.3941258812266843,92.3529411764706
+MCD dinlenme (USB),1149_USBVideo_before,5. tur+Viterbi,1.2347015595678148,97.05882352941177
+MCD egzersiz (telefon),1020_IriunWebcam_after,3. tur (uygulamadaki),0.9367771353634967,97.0414201183432
+MCD egzersiz (telefon),1020_IriunWebcam_after,3. tur (uygulamadaki)+Viterbi,0.936242579443089,97.0414201183432
+MCD dinlenme (telefon),1020_IriunWebcam_before,3. tur (uygulamadaki),0.8552907213738673,96.47058823529412
+MCD dinlenme (telefon),1020_IriunWebcam_before,3. tur (uygulamadaki)+Viterbi,0.8218739403573133,97.05882352941177
+MCD egzersiz (USB),1020_USBVideo_after,3. tur (uygulamadaki),1.1412469145373745,98.23529411764706
+MCD egzersiz (USB),1020_USBVideo_after,3. tur (uygulamadaki)+Viterbi,1.239575169430074,97.05882352941177
+MCD dinlenme (USB),1020_USBVideo_before,3. tur (uygulamadaki),1.070646024090402,98.23529411764706
+MCD dinlenme (USB),1020_USBVideo_before,3. tur (uygulamadaki)+Viterbi,1.0127570479549148,98.82352941176471
+MCD egzersiz (telefon),1024_IriunWebcam_after,3. tur (uygulamadaki),0.6142048080783138,100.0
+MCD egzersiz (telefon),1024_IriunWebcam_after,3. tur (uygulamadaki)+Viterbi,0.6142449523217108,100.0
+MCD dinlenme (telefon),1024_IriunWebcam_before,3. tur (uygulamadaki),6.7967529505377815,67.45562130177515
+MCD dinlenme (telefon),1024_IriunWebcam_before,3. tur (uygulamadaki)+Viterbi,2.9846676725590155,82.24852071005917
+MCD egzersiz (telefon),1035_IriunWebcam_after,3. tur (uygulamadaki),0.7077007294708691,100.0
+MCD egzersiz (telefon),1035_IriunWebcam_after,3. tur (uygulamadaki)+Viterbi,0.7063720452337254,100.0
+MCD dinlenme (telefon),1035_IriunWebcam_before,3. tur (uygulamadaki),0.6896907875636299,98.24561403508771
+MCD dinlenme (telefon),1035_IriunWebcam_before,3. tur (uygulamadaki)+Viterbi,0.4954704900459991,100.0
+MCD egzersiz (telefon),1091_IriunWebcam_after,3. tur (uygulamadaki),0.507553299726549,100.0
+MCD egzersiz (telefon),1091_IriunWebcam_after,3. tur (uygulamadaki)+Viterbi,0.507553299726549,100.0
+MCD dinlenme (telefon),1091_IriunWebcam_before,3. tur (uygulamadaki),8.94381854474967,52.94117647058824
+MCD dinlenme (telefon),1091_IriunWebcam_before,3. tur (uygulamadaki)+Viterbi,5.762719632637643,60.588235294117645
+MCD egzersiz (USB),1091_USBVideo_after,3. tur (uygulamadaki),0.9724105756497661,98.22485207100591
+MCD egzersiz (USB),1091_USBVideo_after,3. tur (uygulamadaki)+Viterbi,0.5747789685884448,100.0
+MCD dinlenme (USB),1091_USBVideo_before,3. tur (uygulamadaki),0.5378222382117077,100.0
+MCD dinlenme (USB),1091_USBVideo_before,3. tur (uygulamadaki)+Viterbi,0.5383953718122125,100.0
+MCD egzersiz (telefon),1097_IriunWebcam_after,3. tur (uygulamadaki),8.612802927452474,64.70588235294117
+MCD egzersiz (telefon),1097_IriunWebcam_after,3. tur (uygulamadaki)+Viterbi,3.392595356751849,84.11764705882354
+MCD dinlenme (telefon),1097_IriunWebcam_before,3. tur (uygulamadaki),12.238497186938663,40.23668639053255
+MCD dinlenme (telefon),1097_IriunWebcam_before,3. tur (uygulamadaki)+Viterbi,5.335105940384447,60.35502958579882
+MCD egzersiz (telefon),1099_IriunWebcam_after,3. tur (uygulamadaki),0.7481504415307518,100.0
+MCD egzersiz (telefon),1099_IriunWebcam_after,3. tur (uygulamadaki)+Viterbi,0.750549339530302,100.0
+MCD dinlenme (telefon),1099_IriunWebcam_before,3. tur (uygulamadaki),1.3086825258077592,94.04761904761905
+MCD dinlenme (telefon),1099_IriunWebcam_before,3. tur (uygulamadaki)+Viterbi,1.080538249966166,95.83333333333334
+MCD egzersiz (USB),1099_USBVideo_after,3. tur (uygulamadaki),1.2908166748482475,95.85798816568047
+MCD egzersiz (USB),1099_USBVideo_after,3. tur (uygulamadaki)+Viterbi,0.9428354813624353,100.0
+MCD dinlenme (USB),1099_USBVideo_before,3. tur (uygulamadaki),3.1018892899813904,88.16568047337277
+MCD dinlenme (USB),1099_USBVideo_before,3. tur (uygulamadaki)+Viterbi,1.739362818140947,92.89940828402366
+MCD egzersiz (telefon),1107_IriunWebcam_after,3. tur (uygulamadaki),2.484562327692736,93.52941176470588
+MCD egzersiz (telefon),1107_IriunWebcam_after,3. tur (uygulamadaki)+Viterbi,0.6477606244437673,100.0
+MCD dinlenme (telefon),1107_IriunWebcam_before,3. tur (uygulamadaki),0.9938992271183831,97.05882352941177
+MCD dinlenme (telefon),1107_IriunWebcam_before,3. tur (uygulamadaki)+Viterbi,0.9117870018173901,97.6470588235294
+MCD dinlenme (USB),1107_USBVideo_before,3. tur (uygulamadaki),10.654747665546058,55.294117647058826
+MCD dinlenme (USB),1107_USBVideo_before,3. tur (uygulamadaki)+Viterbi,8.587115436638152,56.470588235294116
+MCD egzersiz (telefon),1113_IriunWebcam_after,3. tur (uygulamadaki),2.5814435041598243,89.41176470588236
+MCD egzersiz (telefon),1113_IriunWebcam_after,3. tur (uygulamadaki)+Viterbi,1.7110575001004293,91.76470588235294
+MCD dinlenme (telefon),1113_IriunWebcam_before,3. tur (uygulamadaki),2.1379939216510335,89.94082840236686
+MCD dinlenme (telefon),1113_IriunWebcam_before,3. tur (uygulamadaki)+Viterbi,2.0927084704680716,90.53254437869822
+MCD egzersiz (telefon),1115_IriunWebcam_after,3. tur (uygulamadaki),0.5062057791798551,100.0
+MCD egzersiz (telefon),1115_IriunWebcam_after,3. tur (uygulamadaki)+Viterbi,0.502873259823622,100.0
+MCD egzersiz (telefon),1149_IriunWebcam_after,3. tur (uygulamadaki),0.7481688796841733,99.40476190476191
+MCD egzersiz (telefon),1149_IriunWebcam_after,3. tur (uygulamadaki)+Viterbi,0.5605564779096341,100.0
+MCD dinlenme (telefon),1149_IriunWebcam_before,3. tur (uygulamadaki),0.6058501739356318,100.0
+MCD dinlenme (telefon),1149_IriunWebcam_before,3. tur (uygulamadaki)+Viterbi,0.6081468815079013,100.0
+MCD egzersiz (USB),1149_USBVideo_after,3. tur (uygulamadaki),3.6992981935116838,86.98224852071006
+MCD egzersiz (USB),1149_USBVideo_after,3. tur (uygulamadaki)+Viterbi,1.5335833882441814,93.49112426035504
+MCD dinlenme (USB),1149_USBVideo_before,3. tur (uygulamadaki),3.380829577727258,92.3529411764706
+MCD dinlenme (USB),1149_USBVideo_before,3. tur (uygulamadaki)+Viterbi,1.2330626719672044,96.47058823529412
+MCD egzersiz (telefon),1020_IriunWebcam_after,7. tur B (MMRPhys sıfırdan),1.0623785822882243,96.44970414201184
+MCD egzersiz (telefon),1020_IriunWebcam_after,7. tur B (MMRPhys sıfırdan)+Viterbi,1.0051748890277608,97.0414201183432
+MCD dinlenme (telefon),1020_IriunWebcam_before,7. tur B (MMRPhys sıfırdan),1.0072331441411986,95.88235294117648
+MCD dinlenme (telefon),1020_IriunWebcam_before,7. tur B (MMRPhys sıfırdan)+Viterbi,0.9189746544353167,97.05882352941177
+MCD egzersiz (USB),1020_USBVideo_after,7. tur B (MMRPhys sıfırdan),1.5470028053249005,95.29411764705881
+MCD egzersiz (USB),1020_USBVideo_after,7. tur B (MMRPhys sıfırdan)+Viterbi,1.3711503206377493,96.47058823529412
+MCD dinlenme (USB),1020_USBVideo_before,7. tur B (MMRPhys sıfırdan),1.444905148790016,95.29411764705881
+MCD dinlenme (USB),1020_USBVideo_before,7. tur B (MMRPhys sıfırdan)+Viterbi,1.130353562528744,98.82352941176471
+MCD egzersiz (telefon),1024_IriunWebcam_after,7. tur B (MMRPhys sıfırdan),1.4649287531596147,98.82352941176471
+MCD egzersiz (telefon),1024_IriunWebcam_after,7. tur B (MMRPhys sıfırdan)+Viterbi,0.7118161011899753,100.0
+MCD dinlenme (telefon),1024_IriunWebcam_before,7. tur B (MMRPhys sıfırdan),8.523527296398154,65.68047337278107
+MCD dinlenme (telefon),1024_IriunWebcam_before,7. tur B (MMRPhys sıfırdan)+Viterbi,3.873244352710301,75.7396449704142
+MCD egzersiz (telefon),1035_IriunWebcam_after,7. tur B (MMRPhys sıfırdan),1.2083645652004227,97.0414201183432
+MCD egzersiz (telefon),1035_IriunWebcam_after,7. tur B (MMRPhys sıfırdan)+Viterbi,1.0453011954287739,97.0414201183432
+MCD dinlenme (telefon),1035_IriunWebcam_before,7. tur B (MMRPhys sıfırdan),0.8057283981631225,98.24561403508771
+MCD dinlenme (telefon),1035_IriunWebcam_before,7. tur B (MMRPhys sıfırdan)+Viterbi,0.6306176028893706,100.0
+MCD egzersiz (telefon),1091_IriunWebcam_after,7. tur B (MMRPhys sıfırdan),0.5449793161632023,100.0
+MCD egzersiz (telefon),1091_IriunWebcam_after,7. tur B (MMRPhys sıfırdan)+Viterbi,0.5449793161632023,100.0
+MCD dinlenme (telefon),1091_IriunWebcam_before,7. tur B (MMRPhys sıfırdan),10.200019720448386,47.647058823529406
+MCD dinlenme (telefon),1091_IriunWebcam_before,7. tur B (MMRPhys sıfırdan)+Viterbi,6.523919118337094,55.294117647058826
+MCD egzersiz (USB),1091_USBVideo_after,7. tur B (MMRPhys sıfırdan),2.0674753493766107,94.67455621301775
+MCD egzersiz (USB),1091_USBVideo_after,7. tur B (MMRPhys sıfırdan)+Viterbi,0.7406012249654419,100.0
+MCD dinlenme (USB),1091_USBVideo_before,7. tur B (MMRPhys sıfırdan),0.7801378250609282,99.41176470588235
+MCD dinlenme (USB),1091_USBVideo_before,7. tur B (MMRPhys sıfırdan)+Viterbi,0.6309542435946396,100.0
+MCD egzersiz (telefon),1097_IriunWebcam_after,7. tur B (MMRPhys sıfırdan),10.133829148978123,62.35294117647059
+MCD egzersiz (telefon),1097_IriunWebcam_after,7. tur B (MMRPhys sıfırdan)+Viterbi,3.4378936302382184,82.94117647058825
+MCD dinlenme (telefon),1097_IriunWebcam_before,7. tur B (MMRPhys sıfırdan),15.61014633279697,29.585798816568047
+MCD dinlenme (telefon),1097_IriunWebcam_before,7. tur B (MMRPhys sıfırdan)+Viterbi,6.3491692272253974,57.396449704142015
+MCD egzersiz (telefon),1099_IriunWebcam_after,7. tur B (MMRPhys sıfırdan),0.9607618917622038,98.81656804733728
+MCD egzersiz (telefon),1099_IriunWebcam_after,7. tur B (MMRPhys sıfırdan)+Viterbi,0.7966547951437561,100.0
+MCD dinlenme (telefon),1099_IriunWebcam_before,7. tur B (MMRPhys sıfırdan),1.9713480670778378,94.04761904761905
+MCD dinlenme (telefon),1099_IriunWebcam_before,7. tur B (MMRPhys sıfırdan)+Viterbi,1.3700823924319223,94.64285714285714
+MCD egzersiz (USB),1099_USBVideo_after,7. tur B (MMRPhys sıfırdan),3.760718834556176,83.4319526627219
+MCD egzersiz (USB),1099_USBVideo_after,7. tur B (MMRPhys sıfırdan)+Viterbi,1.8336757130857444,90.53254437869822
+MCD dinlenme (USB),1099_USBVideo_before,7. tur B (MMRPhys sıfırdan),5.660830436178784,83.4319526627219
+MCD dinlenme (USB),1099_USBVideo_before,7. tur B (MMRPhys sıfırdan)+Viterbi,1.3924025832385651,97.63313609467455
+MCD egzersiz (telefon),1107_IriunWebcam_after,7. tur B (MMRPhys sıfırdan),5.714011803849336,84.70588235294117
+MCD egzersiz (telefon),1107_IriunWebcam_after,7. tur B (MMRPhys sıfırdan)+Viterbi,0.6848344092838593,100.0
+MCD dinlenme (telefon),1107_IriunWebcam_before,7. tur B (MMRPhys sıfırdan),1.4527600819731872,95.88235294117648
+MCD dinlenme (telefon),1107_IriunWebcam_before,7. tur B (MMRPhys sıfırdan)+Viterbi,2.0569850901624886,93.52941176470588
+MCD dinlenme (USB),1107_USBVideo_before,7. tur B (MMRPhys sıfırdan),13.22665217756843,48.23529411764706
+MCD dinlenme (USB),1107_USBVideo_before,7. tur B (MMRPhys sıfırdan)+Viterbi,7.61384730142,61.76470588235294
+MCD egzersiz (telefon),1113_IriunWebcam_after,7. tur B (MMRPhys sıfırdan),3.647358509004887,83.52941176470588
+MCD egzersiz (telefon),1113_IriunWebcam_after,7. tur B (MMRPhys sıfırdan)+Viterbi,3.2660427579695224,83.52941176470588
+MCD dinlenme (telefon),1113_IriunWebcam_before,7. tur B (MMRPhys sıfırdan),3.036578033585607,88.75739644970415
+MCD dinlenme (telefon),1113_IriunWebcam_before,7. tur B (MMRPhys sıfırdan)+Viterbi,2.390105497433904,88.16568047337277
+MCD egzersiz (telefon),1115_IriunWebcam_after,7. tur B (MMRPhys sıfırdan),0.4718059179778051,100.0
+MCD egzersiz (telefon),1115_IriunWebcam_after,7. tur B (MMRPhys sıfırdan)+Viterbi,0.4726214414847506,100.0
+MCD egzersiz (telefon),1149_IriunWebcam_after,7. tur B (MMRPhys sıfırdan),2.039876212571767,97.61904761904762
+MCD egzersiz (telefon),1149_IriunWebcam_after,7. tur B (MMRPhys sıfırdan)+Viterbi,0.6163244021921144,100.0
+MCD dinlenme (telefon),1149_IriunWebcam_before,7. tur B (MMRPhys sıfırdan),0.8107610757806237,99.40828402366864
+MCD dinlenme (telefon),1149_IriunWebcam_before,7. tur B (MMRPhys sıfırdan)+Viterbi,0.7420079385169283,100.0
+MCD egzersiz (USB),1149_USBVideo_after,7. tur B (MMRPhys sıfırdan),3.477322524469185,90.53254437869822
+MCD egzersiz (USB),1149_USBVideo_after,7. tur B (MMRPhys sıfırdan)+Viterbi,1.420771593516848,96.44970414201184
+MCD dinlenme (USB),1149_USBVideo_before,7. tur B (MMRPhys sıfırdan),3.7053444457422193,92.3529411764706
+MCD dinlenme (USB),1149_USBVideo_before,7. tur B (MMRPhys sıfırdan)+Viterbi,1.4384810184147019,97.05882352941177

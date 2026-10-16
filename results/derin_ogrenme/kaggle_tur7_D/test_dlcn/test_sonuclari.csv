@@ -1,0 +1,2129 @@
+grup,video,yöntem,MAE,p5
+DLCN gece dinlenme,P10_1,POS (yüz kırpıntısı),12.827736437222157,66.66666666666666
+DLCN gece dinlenme,P10_1,POS (yüz kırpıntısı)+Viterbi,2.1221366091307656,95.23809523809523
+DLCN gece dinlenme,P10_2,POS (yüz kırpıntısı),6.139962653167332,71.42857142857143
+DLCN gece dinlenme,P10_2,POS (yüz kırpıntısı)+Viterbi,2.7724139460633666,76.19047619047619
+DLCN gece dinlenme,P10_3,POS (yüz kırpıntısı),10.045877470854995,61.904761904761905
+DLCN gece dinlenme,P10_3,POS (yüz kırpıntısı)+Viterbi,4.113242551151636,66.66666666666666
+DLCN gece dinlenme,P10_4,POS (yüz kırpıntısı),4.223208060945458,71.42857142857143
+DLCN gece dinlenme,P10_4,POS (yüz kırpıntısı)+Viterbi,2.6442833864782935,71.42857142857143
+DLCN gece egzersiz,P10_5,POS (yüz kırpıntısı),8.674618846375418,57.14285714285714
+DLCN gece egzersiz,P10_5,POS (yüz kırpıntısı)+Viterbi,5.2078394936955235,61.904761904761905
+DLCN gece egzersiz,P10_6,POS (yüz kırpıntısı),8.32139601651784,71.42857142857143
+DLCN gece egzersiz,P10_6,POS (yüz kırpıntısı)+Viterbi,3.2543463516564723,71.42857142857143
+DLCN gece egzersiz,P10_7,POS (yüz kırpıntısı),11.700268441569456,76.19047619047619
+DLCN gece egzersiz,P10_7,POS (yüz kırpıntısı)+Viterbi,1.6138943795921432,90.47619047619048
+DLCN gece egzersiz,P10_8,POS (yüz kırpıntısı),9.878458722187023,76.19047619047619
+DLCN gece egzersiz,P10_8,POS (yüz kırpıntısı)+Viterbi,1.4695447719577648,100.0
+DLCN gece dinlenme,P15_1,POS (yüz kırpıntısı),2.6885043936568387,85.71428571428571
+DLCN gece dinlenme,P15_1,POS (yüz kırpıntısı)+Viterbi,2.9603230759530215,80.95238095238095
+DLCN gece dinlenme,P15_2,POS (yüz kırpıntısı),2.404267743666612,85.71428571428571
+DLCN gece dinlenme,P15_2,POS (yüz kırpıntısı)+Viterbi,1.3190696348872488,95.23809523809523
+DLCN gece dinlenme,P15_3,POS (yüz kırpıntısı),8.730670740555908,61.904761904761905
+DLCN gece dinlenme,P15_3,POS (yüz kırpıntısı)+Viterbi,2.661978223739029,95.23809523809523
+DLCN gece dinlenme,P15_4,POS (yüz kırpıntısı),16.234947570455628,9.523809523809524
+DLCN gece dinlenme,P15_4,POS (yüz kırpıntısı)+Viterbi,14.486378206225108,0.0
+DLCN gece egzersiz,P15_5,POS (yüz kırpıntısı),2.797512690634165,85.71428571428571
+DLCN gece egzersiz,P15_5,POS (yüz kırpıntısı)+Viterbi,3.9261164802501947,76.19047619047619
+DLCN gece egzersiz,P15_6,POS (yüz kırpıntısı),2.9035070803031564,76.19047619047619
+DLCN gece egzersiz,P15_6,POS (yüz kırpıntısı)+Viterbi,3.005111367307154,76.19047619047619
+DLCN gece egzersiz,P15_7,POS (yüz kırpıntısı),23.19274801978284,28.57142857142857
+DLCN gece egzersiz,P15_7,POS (yüz kırpıntısı)+Viterbi,25.385481398355687,19.047619047619047
+DLCN gece egzersiz,P15_8,POS (yüz kırpıntısı),17.31976748811217,9.523809523809524
+DLCN gece egzersiz,P15_8,POS (yüz kırpıntısı)+Viterbi,21.196826956481853,0.0
+DLCN gece dinlenme,P20_1,POS (yüz kırpıntısı),1.3972262423439745,100.0
+DLCN gece dinlenme,P20_1,POS (yüz kırpıntısı)+Viterbi,1.3972262423439745,100.0
+DLCN gece dinlenme,P20_2,POS (yüz kırpıntısı),7.840342823324251,76.19047619047619
+DLCN gece dinlenme,P20_2,POS (yüz kırpıntısı)+Viterbi,3.6503511603193934,76.19047619047619
+DLCN gece dinlenme,P20_3,POS (yüz kırpıntısı),15.081967593106878,47.61904761904761
+DLCN gece dinlenme,P20_3,POS (yüz kırpıntısı)+Viterbi,7.092539611865954,57.14285714285714
+DLCN gece dinlenme,P20_4,POS (yüz kırpıntısı),4.130928006108505,85.71428571428571
+DLCN gece dinlenme,P20_4,POS (yüz kırpıntısı)+Viterbi,0.4704535321163343,100.0
+DLCN gece egzersiz,P20_5,POS (yüz kırpıntısı),17.14727863987155,57.14285714285714
+DLCN gece egzersiz,P20_5,POS (yüz kırpıntısı)+Viterbi,1.3279460648508497,100.0
+DLCN gece egzersiz,P20_6,POS (yüz kırpıntısı),3.2323077115322327,76.19047619047619
+DLCN gece egzersiz,P20_6,POS (yüz kırpıntısı)+Viterbi,3.203704802108954,76.19047619047619
+DLCN gece egzersiz,P20_7,POS (yüz kırpıntısı),25.326224139701623,33.33333333333333
+DLCN gece egzersiz,P20_7,POS (yüz kırpıntısı)+Viterbi,44.44887341030759,0.0
+DLCN gece egzersiz,P20_8,POS (yüz kırpıntısı),28.96165569849888,14.285714285714285
+DLCN gece egzersiz,P20_8,POS (yüz kırpıntısı)+Viterbi,10.13687957192323,38.095238095238095
+DLCN gece dinlenme,P25_1,POS (yüz kırpıntısı),31.36091931993917,14.285714285714285
+DLCN gece dinlenme,P25_1,POS (yüz kırpıntısı)+Viterbi,10.451826023991405,19.047619047619047
+DLCN gece dinlenme,P25_2,POS (yüz kırpıntısı),5.9165884271261096,76.19047619047619
+DLCN gece dinlenme,P25_2,POS (yüz kırpıntısı)+Viterbi,3.8549230983265934,76.19047619047619
+DLCN gece dinlenme,P25_3,POS (yüz kırpıntısı),5.628724610886406,66.66666666666666
+DLCN gece dinlenme,P25_3,POS (yüz kırpıntısı)+Viterbi,1.264651874923714,100.0
+DLCN gece dinlenme,P25_4,POS (yüz kırpıntısı),7.149142050908246,76.19047619047619
+DLCN gece dinlenme,P25_4,POS (yüz kırpıntısı)+Viterbi,1.6102353322230318,100.0
+DLCN gece egzersiz,P25_5,POS (yüz kırpıntısı),15.7490686554424,0.0
+DLCN gece egzersiz,P25_5,POS (yüz kırpıntısı)+Viterbi,14.352644286291303,0.0
+DLCN gece egzersiz,P25_6,POS (yüz kırpıntısı),0.9329031864506048,100.0
+DLCN gece egzersiz,P25_6,POS (yüz kırpıntısı)+Viterbi,0.9329031864506048,100.0
+DLCN gece egzersiz,P25_7,POS (yüz kırpıntısı),9.670178649196238,76.19047619047619
+DLCN gece egzersiz,P25_7,POS (yüz kırpıntısı)+Viterbi,1.9033785568031807,100.0
+DLCN gece egzersiz,P25_8,POS (yüz kırpıntısı),16.949975544967316,47.61904761904761
+DLCN gece egzersiz,P25_8,POS (yüz kırpıntısı)+Viterbi,13.694280962827271,38.095238095238095
+DLCN gece dinlenme,P30_1,POS (yüz kırpıntısı),0.49597269496561175,100.0
+DLCN gece dinlenme,P30_1,POS (yüz kırpıntısı)+Viterbi,0.49597269496561175,100.0
+DLCN gece dinlenme,P30_2,POS (yüz kırpıntısı),0.5334799899742021,100.0
+DLCN gece dinlenme,P30_2,POS (yüz kırpıntısı)+Viterbi,0.5334799899742021,100.0
+DLCN gece dinlenme,P30_3,POS (yüz kırpıntısı),5.094843190485194,76.19047619047619
+DLCN gece dinlenme,P30_3,POS (yüz kırpıntısı)+Viterbi,1.4447540156447494,100.0
+DLCN gece dinlenme,P30_4,POS (yüz kırpıntısı),9.568951897053621,61.904761904761905
+DLCN gece dinlenme,P30_4,POS (yüz kırpıntısı)+Viterbi,3.7493205844629047,61.904761904761905
+DLCN gece egzersiz,P30_5,POS (yüz kırpıntısı),0.4543642729614114,100.0
+DLCN gece egzersiz,P30_5,POS (yüz kırpıntısı)+Viterbi,0.4543642729614114,100.0
+DLCN gece egzersiz,P30_6,POS (yüz kırpıntısı),0.43849793053079805,100.0
+DLCN gece egzersiz,P30_6,POS (yüz kırpıntısı)+Viterbi,0.4457782624131405,100.0
+DLCN gece egzersiz,P30_7,POS (yüz kırpıntısı),17.33119228459933,71.42857142857143
+DLCN gece egzersiz,P30_7,POS (yüz kırpıntısı)+Viterbi,0.9549292837468384,100.0
+DLCN gece egzersiz,P30_8,POS (yüz kırpıntısı),15.902067510175087,61.904761904761905
+DLCN gece egzersiz,P30_8,POS (yüz kırpıntısı)+Viterbi,2.7266280808174237,76.19047619047619
+DLCN gece dinlenme,P35_1,POS (yüz kırpıntısı),6.980297302952652,80.95238095238095
+DLCN gece dinlenme,P35_1,POS (yüz kırpıntısı)+Viterbi,1.6432738437365129,95.23809523809523
+DLCN gece dinlenme,P35_2,POS (yüz kırpıntısı),8.86341530560562,71.42857142857143
+DLCN gece dinlenme,P35_2,POS (yüz kırpıntısı)+Viterbi,1.0615820570607266,100.0
+DLCN gece dinlenme,P35_3,POS (yüz kırpıntısı),11.160378398938454,47.61904761904761
+DLCN gece dinlenme,P35_3,POS (yüz kırpıntısı)+Viterbi,9.163378621684599,42.857142857142854
+DLCN gece dinlenme,P35_4,POS (yüz kırpıntısı),23.012088703583725,23.809523809523807
+DLCN gece dinlenme,P35_4,POS (yüz kırpıntısı)+Viterbi,29.880411961763023,0.0
+DLCN gece egzersiz,P35_5,POS (yüz kırpıntısı),3.000288194286807,90.47619047619048
+DLCN gece egzersiz,P35_5,POS (yüz kırpıntısı)+Viterbi,1.7082394151465015,90.47619047619048
+DLCN gece egzersiz,P35_6,POS (yüz kırpıntısı),6.475050405617056,85.71428571428571
+DLCN gece egzersiz,P35_6,POS (yüz kırpıntısı)+Viterbi,1.1228084621001644,100.0
+DLCN gece egzersiz,P35_7,POS (yüz kırpıntısı),32.42512702081187,4.761904761904762
+DLCN gece egzersiz,P35_7,POS (yüz kırpıntısı)+Viterbi,35.193602018978815,0.0
+DLCN gece egzersiz,P35_8,POS (yüz kırpıntısı),31.736231376044376,14.285714285714285
+DLCN gece egzersiz,P35_8,POS (yüz kırpıntısı)+Viterbi,35.46021535177715,0.0
+DLCN gece dinlenme,P40_1,POS (yüz kırpıntısı),0.5863263840535948,100.0
+DLCN gece dinlenme,P40_1,POS (yüz kırpıntısı)+Viterbi,0.5863263840535948,100.0
+DLCN gece dinlenme,P40_2,POS (yüz kırpıntısı),0.7873273070331088,100.0
+DLCN gece dinlenme,P40_2,POS (yüz kırpıntısı)+Viterbi,0.7873273070331088,100.0
+DLCN gece dinlenme,P40_3,POS (yüz kırpıntısı),18.646627625799074,42.857142857142854
+DLCN gece dinlenme,P40_3,POS (yüz kırpıntısı)+Viterbi,6.466621301868129,52.38095238095239
+DLCN gece dinlenme,P40_4,POS (yüz kırpıntısı),12.417674273364739,52.38095238095239
+DLCN gece dinlenme,P40_4,POS (yüz kırpıntısı)+Viterbi,6.153112727477275,42.857142857142854
+DLCN gece egzersiz,P40_5,POS (yüz kırpıntısı),0.5478882582154254,100.0
+DLCN gece egzersiz,P40_5,POS (yüz kırpıntısı)+Viterbi,0.4983447192734514,100.0
+DLCN gece egzersiz,P40_6,POS (yüz kırpıntısı),2.1640450432745357,85.71428571428571
+DLCN gece egzersiz,P40_6,POS (yüz kırpıntısı)+Viterbi,3.558030889872243,76.19047619047619
+DLCN gece egzersiz,P40_7,POS (yüz kırpıntısı),12.618978749751328,52.38095238095239
+DLCN gece egzersiz,P40_7,POS (yüz kırpıntısı)+Viterbi,4.020857780238485,76.19047619047619
+DLCN gece egzersiz,P40_8,POS (yüz kırpıntısı),32.97016195584957,38.095238095238095
+DLCN gece egzersiz,P40_8,POS (yüz kırpıntısı)+Viterbi,53.51884378357132,0.0
+DLCN gece dinlenme,P45_1,POS (yüz kırpıntısı),6.00477031244085,85.71428571428571
+DLCN gece dinlenme,P45_1,POS (yüz kırpıntısı)+Viterbi,0.886248283284719,100.0
+DLCN gece dinlenme,P45_2,POS (yüz kırpıntısı),1.6496931884118649,95.23809523809523
+DLCN gece dinlenme,P45_2,POS (yüz kırpıntısı)+Viterbi,1.4452706382727687,95.23809523809523
+DLCN gece dinlenme,P45_3,POS (yüz kırpıntısı),12.008219156362872,66.66666666666666
+DLCN gece dinlenme,P45_3,POS (yüz kırpıntısı)+Viterbi,1.8440994200910512,100.0
+DLCN gece dinlenme,P45_4,POS (yüz kırpıntısı),33.51466501037171,4.761904761904762
+DLCN gece dinlenme,P45_4,POS (yüz kırpıntısı)+Viterbi,45.62142377786558,0.0
+DLCN gece egzersiz,P45_5,POS (yüz kırpıntısı),6.422796190922149,71.42857142857143
+DLCN gece egzersiz,P45_5,POS (yüz kırpıntısı)+Viterbi,5.134472949081136,71.42857142857143
+DLCN gece egzersiz,P45_6,POS (yüz kırpıntısı),15.717230295671563,52.38095238095239
+DLCN gece egzersiz,P45_6,POS (yüz kırpıntısı)+Viterbi,3.166674940348839,76.19047619047619
+DLCN gece egzersiz,P45_7,POS (yüz kırpıntısı),19.282467298538897,52.38095238095239
+DLCN gece egzersiz,P45_7,POS (yüz kırpıntısı)+Viterbi,0.987458964304888,100.0
+DLCN gece egzersiz,P45_8,POS (yüz kırpıntısı),9.592583537413933,52.38095238095239
+DLCN gece egzersiz,P45_8,POS (yüz kırpıntısı)+Viterbi,2.4958421788763947,76.19047619047619
+DLCN gece dinlenme,P50_1,POS (yüz kırpıntısı),0.6678159668502701,100.0
+DLCN gece dinlenme,P50_1,POS (yüz kırpıntısı)+Viterbi,0.6678159668502701,100.0
+DLCN gece dinlenme,P50_2,POS (yüz kırpıntısı),5.008093425422962,80.95238095238095
+DLCN gece dinlenme,P50_2,POS (yüz kırpıntısı)+Viterbi,1.3150436917657171,100.0
+DLCN gece dinlenme,P50_3,POS (yüz kırpıntısı),17.421640808128096,42.857142857142854
+DLCN gece dinlenme,P50_3,POS (yüz kırpıntısı)+Viterbi,14.639454567890144,9.523809523809524
+DLCN gece dinlenme,P50_4,POS (yüz kırpıntısı),6.064117191156064,76.19047619047619
+DLCN gece dinlenme,P50_4,POS (yüz kırpıntısı)+Viterbi,3.8831280533848194,80.95238095238095
+DLCN gece egzersiz,P50_5,POS (yüz kırpıntısı),0.7844927877140015,100.0
+DLCN gece egzersiz,P50_5,POS (yüz kırpıntısı)+Viterbi,0.7727193610270616,100.0
+DLCN gece egzersiz,P50_6,POS (yüz kırpıntısı),15.281783022032156,61.904761904761905
+DLCN gece egzersiz,P50_6,POS (yüz kırpıntısı)+Viterbi,1.0860638151036188,100.0
+DLCN gece egzersiz,P50_7,POS (yüz kırpıntısı),5.2891008471539385,80.95238095238095
+DLCN gece egzersiz,P50_7,POS (yüz kırpıntısı)+Viterbi,0.775024603086254,100.0
+DLCN gece egzersiz,P50_8,POS (yüz kırpıntısı),44.63645887667798,4.761904761904762
+DLCN gece egzersiz,P50_8,POS (yüz kırpıntısı)+Viterbi,10.520158550912916,23.809523809523807
+DLCN gece dinlenme,P55_1,POS (yüz kırpıntısı),0.37568762689838614,100.0
+DLCN gece dinlenme,P55_1,POS (yüz kırpıntısı)+Viterbi,0.37568762689838614,100.0
+DLCN gece dinlenme,P55_2,POS (yüz kırpıntısı),0.4384627817406715,100.0
+DLCN gece dinlenme,P55_2,POS (yüz kırpıntısı)+Viterbi,0.4384627817406715,100.0
+DLCN gece dinlenme,P55_3,POS (yüz kırpıntısı),0.40142956974840466,100.0
+DLCN gece dinlenme,P55_3,POS (yüz kırpıntısı)+Viterbi,0.40142956974840466,100.0
+DLCN gece dinlenme,P55_4,POS (yüz kırpıntısı),19.68542897528589,66.66666666666666
+DLCN gece dinlenme,P55_4,POS (yüz kırpıntısı)+Viterbi,1.5565531745997303,100.0
+DLCN gece egzersiz,P55_5,POS (yüz kırpıntısı),0.4515784620983887,100.0
+DLCN gece egzersiz,P55_5,POS (yüz kırpıntısı)+Viterbi,0.4515784620983887,100.0
+DLCN gece egzersiz,P55_6,POS (yüz kırpıntısı),0.8372361448956201,100.0
+DLCN gece egzersiz,P55_6,POS (yüz kırpıntısı)+Viterbi,0.8372361448956201,100.0
+DLCN gece egzersiz,P55_7,POS (yüz kırpıntısı),0.9480804965602645,100.0
+DLCN gece egzersiz,P55_7,POS (yüz kırpıntısı)+Viterbi,0.9480804965602645,100.0
+DLCN gece egzersiz,P55_8,POS (yüz kırpıntısı),1.7072204249372915,90.47619047619048
+DLCN gece egzersiz,P55_8,POS (yüz kırpıntısı)+Viterbi,0.9027385316221112,100.0
+DLCN gece dinlenme,P5_1,POS (yüz kırpıntısı),0.26564113430084324,100.0
+DLCN gece dinlenme,P5_1,POS (yüz kırpıntısı)+Viterbi,0.26564113430084324,100.0
+DLCN gece dinlenme,P5_2,POS (yüz kırpıntısı),2.494981989510207,95.23809523809523
+DLCN gece dinlenme,P5_2,POS (yüz kırpıntısı)+Viterbi,1.4488669045967046,95.23809523809523
+DLCN gece dinlenme,P5_3,POS (yüz kırpıntısı),13.03955615887871,66.66666666666666
+DLCN gece dinlenme,P5_3,POS (yüz kırpıntısı)+Viterbi,3.671945104861516,71.42857142857143
+DLCN gece dinlenme,P5_4,POS (yüz kırpıntısı),2.281051778898152,85.71428571428571
+DLCN gece dinlenme,P5_4,POS (yüz kırpıntısı)+Viterbi,1.1608539227381225,100.0
+DLCN gece egzersiz,P5_5,POS (yüz kırpıntısı),0.5742582065727098,100.0
+DLCN gece egzersiz,P5_5,POS (yüz kırpıntısı)+Viterbi,0.6303712741039613,100.0
+DLCN gece egzersiz,P5_6,POS (yüz kırpıntısı),3.6359418790331675,71.42857142857143
+DLCN gece egzersiz,P5_6,POS (yüz kırpıntısı)+Viterbi,3.515518498519595,71.42857142857143
+DLCN gece egzersiz,P5_7,POS (yüz kırpıntısı),0.9935847882770833,100.0
+DLCN gece egzersiz,P5_7,POS (yüz kırpıntısı)+Viterbi,0.9935847882770833,100.0
+DLCN gece egzersiz,P5_8,POS (yüz kırpıntısı),6.045961800444959,80.95238095238095
+DLCN gece egzersiz,P5_8,POS (yüz kırpıntısı)+Viterbi,1.1299245297975584,100.0
+DLCN gece dinlenme,P60_1,POS (yüz kırpıntısı),0.2020670100108524,100.0
+DLCN gece dinlenme,P60_1,POS (yüz kırpıntısı)+Viterbi,0.2020670100108524,100.0
+DLCN gece dinlenme,P60_2,POS (yüz kırpıntısı),0.47392759313571275,100.0
+DLCN gece dinlenme,P60_2,POS (yüz kırpıntısı)+Viterbi,0.4837868445221438,100.0
+DLCN gece dinlenme,P60_3,POS (yüz kırpıntısı),26.782700605512847,0.0
+DLCN gece dinlenme,P60_3,POS (yüz kırpıntısı)+Viterbi,16.233542569355905,0.0
+DLCN gece dinlenme,P60_4,POS (yüz kırpıntısı),2.7242218942161185,80.95238095238095
+DLCN gece dinlenme,P60_4,POS (yüz kırpıntısı)+Viterbi,3.6572206955516853,80.95238095238095
+DLCN gece egzersiz,P60_5,POS (yüz kırpıntısı),0.5137398693906929,100.0
+DLCN gece egzersiz,P60_5,POS (yüz kırpıntısı)+Viterbi,0.5137398693906929,100.0
+DLCN gece egzersiz,P60_6,POS (yüz kırpıntısı),0.4060632746741431,100.0
+DLCN gece egzersiz,P60_6,POS (yüz kırpıntısı)+Viterbi,0.4060632746741431,100.0
+DLCN gece egzersiz,P60_7,POS (yüz kırpıntısı),21.76049695232151,33.33333333333333
+DLCN gece egzersiz,P60_7,POS (yüz kırpıntısı)+Viterbi,8.09110354882796,52.38095238095239
+DLCN gece egzersiz,P60_8,POS (yüz kırpıntısı),13.248641005033955,42.857142857142854
+DLCN gece egzersiz,P60_8,POS (yüz kırpıntısı)+Viterbi,8.118099110451606,47.61904761904761
+DLCN gece dinlenme,P65_1,POS (yüz kırpıntısı),3.18002557911779,85.71428571428571
+DLCN gece dinlenme,P65_1,POS (yüz kırpıntısı)+Viterbi,2.5260168969818992,85.71428571428571
+DLCN gece dinlenme,P65_2,POS (yüz kırpıntısı),11.681760707475402,33.33333333333333
+DLCN gece dinlenme,P65_2,POS (yüz kırpıntısı)+Viterbi,5.097499612682352,61.904761904761905
+DLCN gece dinlenme,P65_3,POS (yüz kırpıntısı),13.192036466253274,52.38095238095239
+DLCN gece dinlenme,P65_3,POS (yüz kırpıntısı)+Viterbi,13.077433580467456,52.38095238095239
+DLCN gece dinlenme,P65_4,POS (yüz kırpıntısı),11.992698949061,42.857142857142854
+DLCN gece dinlenme,P65_4,POS (yüz kırpıntısı)+Viterbi,10.59089428791959,42.857142857142854
+DLCN gece egzersiz,P65_5,POS (yüz kırpıntısı),4.17595045586789,71.42857142857143
+DLCN gece egzersiz,P65_5,POS (yüz kırpıntısı)+Viterbi,3.1459640141447536,76.19047619047619
+DLCN gece egzersiz,P65_6,POS (yüz kırpıntısı),1.2291764727947074,100.0
+DLCN gece egzersiz,P65_6,POS (yüz kırpıntısı)+Viterbi,1.2291764727947074,100.0
+DLCN gece egzersiz,P65_7,POS (yüz kırpıntısı),22.406062942113124,61.904761904761905
+DLCN gece egzersiz,P65_7,POS (yüz kırpıntısı)+Viterbi,61.130196361279616,0.0
+DLCN gece egzersiz,P65_8,POS (yüz kırpıntısı),54.18953986600687,0.0
+DLCN gece egzersiz,P65_8,POS (yüz kırpıntısı)+Viterbi,62.83014815720369,0.0
+DLCN gece dinlenme,P70_1,POS (yüz kırpıntısı),0.642832318293614,100.0
+DLCN gece dinlenme,P70_1,POS (yüz kırpıntısı)+Viterbi,0.642832318293614,100.0
+DLCN gece dinlenme,P70_2,POS (yüz kırpıntısı),21.704347805506078,28.57142857142857
+DLCN gece dinlenme,P70_2,POS (yüz kırpıntısı)+Viterbi,5.822448218461211,52.38095238095239
+DLCN gece dinlenme,P70_3,POS (yüz kırpıntısı),30.280981138115315,9.523809523809524
+DLCN gece dinlenme,P70_3,POS (yüz kırpıntısı)+Viterbi,37.170805205418006,0.0
+DLCN gece dinlenme,P70_4,POS (yüz kırpıntısı),24.86732259288376,28.57142857142857
+DLCN gece dinlenme,P70_4,POS (yüz kırpıntısı)+Viterbi,32.20708678839751,0.0
+DLCN gece egzersiz,P70_5,POS (yüz kırpıntısı),7.806565388227633,90.47619047619048
+DLCN gece egzersiz,P70_5,POS (yüz kırpıntısı)+Viterbi,0.855664751570884,100.0
+DLCN gece egzersiz,P70_6,POS (yüz kırpıntısı),38.82025660958368,28.57142857142857
+DLCN gece egzersiz,P70_6,POS (yüz kırpıntısı)+Viterbi,37.548453658304005,0.0
+DLCN gece egzersiz,P70_7,POS (yüz kırpıntısı),37.71976903638534,23.809523809523807
+DLCN gece egzersiz,P70_7,POS (yüz kırpıntısı)+Viterbi,69.27005935240757,0.0
+DLCN gece egzersiz,P70_8,POS (yüz kırpıntısı),36.59195020783376,0.0
+DLCN gece egzersiz,P70_8,POS (yüz kırpıntısı)+Viterbi,57.50017303819401,0.0
+DLCN gece dinlenme,P75_1,POS (yüz kırpıntısı),1.319784075235432,100.0
+DLCN gece dinlenme,P75_1,POS (yüz kırpıntısı)+Viterbi,1.3183426508283915,100.0
+DLCN gece dinlenme,P75_2,POS (yüz kırpıntısı),6.8273671978450485,61.904761904761905
+DLCN gece dinlenme,P75_2,POS (yüz kırpıntısı)+Viterbi,1.6787524476633504,100.0
+DLCN gece dinlenme,P75_3,POS (yüz kırpıntısı),1.5368474542989943,100.0
+DLCN gece dinlenme,P75_3,POS (yüz kırpıntısı)+Viterbi,1.5287565066175655,100.0
+DLCN gece dinlenme,P75_4,POS (yüz kırpıntısı),5.687374971669105,66.66666666666666
+DLCN gece dinlenme,P75_4,POS (yüz kırpıntısı)+Viterbi,1.8954880055663244,100.0
+DLCN gece egzersiz,P75_5,POS (yüz kırpıntısı),1.2595983116172282,100.0
+DLCN gece egzersiz,P75_5,POS (yüz kırpıntısı)+Viterbi,1.2541744301048188,100.0
+DLCN gece egzersiz,P75_6,POS (yüz kırpıntısı),0.562605707916461,100.0
+DLCN gece egzersiz,P75_6,POS (yüz kırpıntısı)+Viterbi,0.562605707916461,100.0
+DLCN gece egzersiz,P75_7,POS (yüz kırpıntısı),1.7487824843907704,100.0
+DLCN gece egzersiz,P75_7,POS (yüz kırpıntısı)+Viterbi,1.6696306614176908,100.0
+DLCN gece egzersiz,P75_8,POS (yüz kırpıntısı),10.38074664154002,42.857142857142854
+DLCN gece egzersiz,P75_8,POS (yüz kırpıntısı)+Viterbi,8.131801769666488,33.33333333333333
+DLCN gece dinlenme,P80_1,POS (yüz kırpıntısı),0.7261511848758007,100.0
+DLCN gece dinlenme,P80_1,POS (yüz kırpıntısı)+Viterbi,0.7261511848758007,100.0
+DLCN gece dinlenme,P80_2,POS (yüz kırpıntısı),1.8609098906827801,90.47619047619048
+DLCN gece dinlenme,P80_2,POS (yüz kırpıntısı)+Viterbi,2.343739317463234,85.71428571428571
+DLCN gece dinlenme,P80_3,POS (yüz kırpıntısı),4.797088870832476,80.95238095238095
+DLCN gece dinlenme,P80_3,POS (yüz kırpıntısı)+Viterbi,0.6179271564771207,100.0
+DLCN gece dinlenme,P80_4,POS (yüz kırpıntısı),21.47559203026059,9.523809523809524
+DLCN gece dinlenme,P80_4,POS (yüz kırpıntısı)+Viterbi,32.560463760929245,0.0
+DLCN gece egzersiz,P80_5,POS (yüz kırpıntısı),0.4518006115762305,100.0
+DLCN gece egzersiz,P80_5,POS (yüz kırpıntısı)+Viterbi,0.4518006115762305,100.0
+DLCN gece egzersiz,P80_6,POS (yüz kırpıntısı),8.181741233357773,90.47619047619048
+DLCN gece egzersiz,P80_6,POS (yüz kırpıntısı)+Viterbi,1.0940418158401937,100.0
+DLCN gece egzersiz,P80_7,POS (yüz kırpıntısı),42.82985307577185,19.047619047619047
+DLCN gece egzersiz,P80_7,POS (yüz kırpıntısı)+Viterbi,64.21131289162544,0.0
+DLCN gece egzersiz,P80_8,POS (yüz kırpıntısı),35.71497264870542,38.095238095238095
+DLCN gece egzersiz,P80_8,POS (yüz kırpıntısı)+Viterbi,60.22369386582008,0.0
+DLCN gece dinlenme,P85_1,POS (yüz kırpıntısı),0.9804467559286509,100.0
+DLCN gece dinlenme,P85_1,POS (yüz kırpıntısı)+Viterbi,0.9229611264534894,100.0
+DLCN gece dinlenme,P85_2,POS (yüz kırpıntısı),16.642225214038117,9.523809523809524
+DLCN gece dinlenme,P85_2,POS (yüz kırpıntısı)+Viterbi,11.980518768220561,14.285714285714285
+DLCN gece dinlenme,P85_3,POS (yüz kırpıntısı),18.33531874447951,47.61904761904761
+DLCN gece dinlenme,P85_3,POS (yüz kırpıntısı)+Viterbi,5.256240238769656,61.904761904761905
+DLCN gece dinlenme,P85_4,POS (yüz kırpıntısı),5.925995622391332,61.904761904761905
+DLCN gece dinlenme,P85_4,POS (yüz kırpıntısı)+Viterbi,4.452726929508791,71.42857142857143
+DLCN gece egzersiz,P85_5,POS (yüz kırpıntısı),29.57219650313572,0.0
+DLCN gece egzersiz,P85_5,POS (yüz kırpıntısı)+Viterbi,26.797366178042196,0.0
+DLCN gece egzersiz,P85_6,POS (yüz kırpıntısı),54.46783635847809,0.0
+DLCN gece egzersiz,P85_6,POS (yüz kırpıntısı)+Viterbi,60.251391316075754,0.0
+DLCN gece egzersiz,P85_7,POS (yüz kırpıntısı),27.295127202006267,47.61904761904761
+DLCN gece egzersiz,P85_7,POS (yüz kırpıntısı)+Viterbi,1.4789816699735578,100.0
+DLCN gece egzersiz,P85_8,POS (yüz kırpıntısı),48.9704937768218,4.761904761904762
+DLCN gece egzersiz,P85_8,POS (yüz kırpıntısı)+Viterbi,70.22521142855155,0.0
+DLCN gece dinlenme,P90_1,POS (yüz kırpıntısı),12.760086411595786,57.14285714285714
+DLCN gece dinlenme,P90_1,POS (yüz kırpıntısı)+Viterbi,4.4810697134800845,57.14285714285714
+DLCN gece dinlenme,P90_2,POS (yüz kırpıntısı),2.104884929334039,95.23809523809523
+DLCN gece dinlenme,P90_2,POS (yüz kırpıntısı)+Viterbi,2.1162776261427987,95.23809523809523
+DLCN gece dinlenme,P90_3,POS (yüz kırpıntısı),15.398802304985312,71.42857142857143
+DLCN gece dinlenme,P90_3,POS (yüz kırpıntısı)+Viterbi,1.4331736498486305,100.0
+DLCN gece dinlenme,P90_4,POS (yüz kırpıntısı),25.679388089567663,19.047619047619047
+DLCN gece dinlenme,P90_4,POS (yüz kırpıntısı)+Viterbi,29.039218095181166,0.0
+DLCN gece egzersiz,P90_5,POS (yüz kırpıntısı),4.182565077368023,80.95238095238095
+DLCN gece egzersiz,P90_5,POS (yüz kırpıntısı)+Viterbi,1.5162965945284217,100.0
+DLCN gece egzersiz,P90_6,POS (yüz kırpıntısı),2.1032932007085128,85.71428571428571
+DLCN gece egzersiz,P90_6,POS (yüz kırpıntısı)+Viterbi,1.1937344008746458,95.23809523809523
+DLCN gece egzersiz,P90_7,POS (yüz kırpıntısı),40.89592520711705,19.047619047619047
+DLCN gece egzersiz,P90_7,POS (yüz kırpıntısı)+Viterbi,67.65500652195577,0.0
+DLCN gece egzersiz,P90_8,POS (yüz kırpıntısı),20.322277597738466,71.42857142857143
+DLCN gece egzersiz,P90_8,POS (yüz kırpıntısı)+Viterbi,0.910757587674515,100.0
+DLCN gece dinlenme,P95_1,POS (yüz kırpıntısı),4.932757065654991,61.904761904761905
+DLCN gece dinlenme,P95_1,POS (yüz kırpıntısı)+Viterbi,2.587686190584474,90.47619047619048
+DLCN gece dinlenme,P95_2,POS (yüz kırpıntısı),1.0059752031814104,100.0
+DLCN gece dinlenme,P95_2,POS (yüz kırpıntısı)+Viterbi,1.0059752031814104,100.0
+DLCN gece dinlenme,P95_3,POS (yüz kırpıntısı),12.746312434107201,42.857142857142854
+DLCN gece dinlenme,P95_3,POS (yüz kırpıntısı)+Viterbi,4.502774002578581,61.904761904761905
+DLCN gece dinlenme,P95_4,POS (yüz kırpıntısı),17.6248377536902,19.047619047619047
+DLCN gece dinlenme,P95_4,POS (yüz kırpıntısı)+Viterbi,12.491623645245827,23.809523809523807
+DLCN gece egzersiz,P95_5,POS (yüz kırpıntısı),2.4699842154377296,90.47619047619048
+DLCN gece egzersiz,P95_5,POS (yüz kırpıntısı)+Viterbi,4.473351278927457,80.95238095238095
+DLCN gece egzersiz,P95_6,POS (yüz kırpıntısı),32.098166984661816,38.095238095238095
+DLCN gece egzersiz,P95_6,POS (yüz kırpıntısı)+Viterbi,40.83442198224603,0.0
+DLCN gece egzersiz,P95_7,POS (yüz kırpıntısı),43.375325728612175,4.761904761904762
+DLCN gece egzersiz,P95_7,POS (yüz kırpıntısı)+Viterbi,53.44615330266344,0.0
+DLCN gece egzersiz,P95_8,POS (yüz kırpıntısı),22.673028157093754,33.33333333333333
+DLCN gece egzersiz,P95_8,POS (yüz kırpıntısı)+Viterbi,11.713217196833817,33.33333333333333
+DLCN gece dinlenme,P10_1,FactorizePhys PURE (hazır),1.0681611117370402,100.0
+DLCN gece dinlenme,P10_1,FactorizePhys PURE (hazır)+Viterbi,1.0681611117370402,100.0
+DLCN gece dinlenme,P10_2,FactorizePhys PURE (hazır),2.104114454624827,85.71428571428571
+DLCN gece dinlenme,P10_2,FactorizePhys PURE (hazır)+Viterbi,0.6015720935995365,100.0
+DLCN gece dinlenme,P10_3,FactorizePhys PURE (hazır),1.8332978158048223,90.47619047619048
+DLCN gece dinlenme,P10_3,FactorizePhys PURE (hazır)+Viterbi,1.8523127358442955,90.47619047619048
+DLCN gece dinlenme,P10_4,FactorizePhys PURE (hazır),3.205690359021768,76.19047619047619
+DLCN gece dinlenme,P10_4,FactorizePhys PURE (hazır)+Viterbi,2.910004498657968,76.19047619047619
+DLCN gece egzersiz,P10_5,FactorizePhys PURE (hazır),6.959605924926987,71.42857142857143
+DLCN gece egzersiz,P10_5,FactorizePhys PURE (hazır)+Viterbi,3.6117724726425124,76.19047619047619
+DLCN gece egzersiz,P10_6,FactorizePhys PURE (hazır),7.126207466621438,71.42857142857143
+DLCN gece egzersiz,P10_6,FactorizePhys PURE (hazır)+Viterbi,3.3177981187836485,71.42857142857143
+DLCN gece egzersiz,P10_7,FactorizePhys PURE (hazır),0.8118724269764532,100.0
+DLCN gece egzersiz,P10_7,FactorizePhys PURE (hazır)+Viterbi,0.8418781629397115,100.0
+DLCN gece egzersiz,P10_8,FactorizePhys PURE (hazır),4.738663190496009,76.19047619047619
+DLCN gece egzersiz,P10_8,FactorizePhys PURE (hazır)+Viterbi,3.831031773809423,76.19047619047619
+DLCN gece dinlenme,P15_1,FactorizePhys PURE (hazır),2.191378151757688,90.47619047619048
+DLCN gece dinlenme,P15_1,FactorizePhys PURE (hazır)+Viterbi,3.424747129416447,80.95238095238095
+DLCN gece dinlenme,P15_2,FactorizePhys PURE (hazır),1.3907320302209611,95.23809523809523
+DLCN gece dinlenme,P15_2,FactorizePhys PURE (hazır)+Viterbi,0.9724594363692408,95.23809523809523
+DLCN gece dinlenme,P15_3,FactorizePhys PURE (hazır),11.84272493724579,52.38095238095239
+DLCN gece dinlenme,P15_3,FactorizePhys PURE (hazır)+Viterbi,3.2986749296976305,76.19047619047619
+DLCN gece dinlenme,P15_4,FactorizePhys PURE (hazır),15.09120222580753,9.523809523809524
+DLCN gece dinlenme,P15_4,FactorizePhys PURE (hazır)+Viterbi,10.097129221403728,38.095238095238095
+DLCN gece egzersiz,P15_5,FactorizePhys PURE (hazır),3.002848497666482,80.95238095238095
+DLCN gece egzersiz,P15_5,FactorizePhys PURE (hazır)+Viterbi,3.6813798585527033,76.19047619047619
+DLCN gece egzersiz,P15_6,FactorizePhys PURE (hazır),7.032620244179784,57.14285714285714
+DLCN gece egzersiz,P15_6,FactorizePhys PURE (hazır)+Viterbi,5.166356384474793,57.14285714285714
+DLCN gece egzersiz,P15_7,FactorizePhys PURE (hazır),18.66731857489262,28.57142857142857
+DLCN gece egzersiz,P15_7,FactorizePhys PURE (hazır)+Viterbi,30.375509276828684,19.047619047619047
+DLCN gece egzersiz,P15_8,FactorizePhys PURE (hazır),21.7723219206858,0.0
+DLCN gece egzersiz,P15_8,FactorizePhys PURE (hazır)+Viterbi,13.387130563050361,0.0
+DLCN gece dinlenme,P20_1,FactorizePhys PURE (hazır),1.6945509980019262,100.0
+DLCN gece dinlenme,P20_1,FactorizePhys PURE (hazır)+Viterbi,1.6945509980019262,100.0
+DLCN gece dinlenme,P20_2,FactorizePhys PURE (hazır),2.9714457425988337,80.95238095238095
+DLCN gece dinlenme,P20_2,FactorizePhys PURE (hazır)+Viterbi,2.969045564985985,85.71428571428571
+DLCN gece dinlenme,P20_3,FactorizePhys PURE (hazır),9.744536194238647,52.38095238095239
+DLCN gece dinlenme,P20_3,FactorizePhys PURE (hazır)+Viterbi,3.803893792507856,76.19047619047619
+DLCN gece dinlenme,P20_4,FactorizePhys PURE (hazır),0.7122448803016965,100.0
+DLCN gece dinlenme,P20_4,FactorizePhys PURE (hazır)+Viterbi,0.7122448803016965,100.0
+DLCN gece egzersiz,P20_5,FactorizePhys PURE (hazır),11.699736216669619,71.42857142857143
+DLCN gece egzersiz,P20_5,FactorizePhys PURE (hazır)+Viterbi,0.8941687501355285,100.0
+DLCN gece egzersiz,P20_6,FactorizePhys PURE (hazır),3.102144048177045,80.95238095238095
+DLCN gece egzersiz,P20_6,FactorizePhys PURE (hazır)+Viterbi,3.0776341764325665,80.95238095238095
+DLCN gece egzersiz,P20_7,FactorizePhys PURE (hazır),4.755420946830878,90.47619047619048
+DLCN gece egzersiz,P20_7,FactorizePhys PURE (hazır)+Viterbi,1.2060668064055557,100.0
+DLCN gece egzersiz,P20_8,FactorizePhys PURE (hazır),27.639249551095396,0.0
+DLCN gece egzersiz,P20_8,FactorizePhys PURE (hazır)+Viterbi,33.692906808442594,0.0
+DLCN gece dinlenme,P25_1,FactorizePhys PURE (hazır),5.735791498797696,80.95238095238095
+DLCN gece dinlenme,P25_1,FactorizePhys PURE (hazır)+Viterbi,1.3320135130009008,100.0
+DLCN gece dinlenme,P25_2,FactorizePhys PURE (hazır),1.4028560151191807,95.23809523809523
+DLCN gece dinlenme,P25_2,FactorizePhys PURE (hazır)+Viterbi,0.5465654535582106,100.0
+DLCN gece dinlenme,P25_3,FactorizePhys PURE (hazır),1.2501024291202198,100.0
+DLCN gece dinlenme,P25_3,FactorizePhys PURE (hazır)+Viterbi,1.24357283915758,100.0
+DLCN gece dinlenme,P25_4,FactorizePhys PURE (hazır),12.219499349936015,57.14285714285714
+DLCN gece dinlenme,P25_4,FactorizePhys PURE (hazır)+Viterbi,1.045412948856408,100.0
+DLCN gece egzersiz,P25_5,FactorizePhys PURE (hazır),2.0798714824728988,85.71428571428571
+DLCN gece egzersiz,P25_5,FactorizePhys PURE (hazır)+Viterbi,0.8821131384155566,100.0
+DLCN gece egzersiz,P25_6,FactorizePhys PURE (hazır),0.7234688887549144,100.0
+DLCN gece egzersiz,P25_6,FactorizePhys PURE (hazır)+Viterbi,0.7234688887549144,100.0
+DLCN gece egzersiz,P25_7,FactorizePhys PURE (hazır),5.405684629662901,85.71428571428571
+DLCN gece egzersiz,P25_7,FactorizePhys PURE (hazır)+Viterbi,1.7710540939095072,100.0
+DLCN gece egzersiz,P25_8,FactorizePhys PURE (hazır),12.71219164545611,47.61904761904761
+DLCN gece egzersiz,P25_8,FactorizePhys PURE (hazır)+Viterbi,13.375615686228606,42.857142857142854
+DLCN gece dinlenme,P30_1,FactorizePhys PURE (hazır),0.39224507957673826,100.0
+DLCN gece dinlenme,P30_1,FactorizePhys PURE (hazır)+Viterbi,0.39224507957673826,100.0
+DLCN gece dinlenme,P30_2,FactorizePhys PURE (hazır),0.7525970939387572,100.0
+DLCN gece dinlenme,P30_2,FactorizePhys PURE (hazır)+Viterbi,0.7525970939387572,100.0
+DLCN gece dinlenme,P30_3,FactorizePhys PURE (hazır),4.347729624343446,80.95238095238095
+DLCN gece dinlenme,P30_3,FactorizePhys PURE (hazır)+Viterbi,0.5651225536560822,100.0
+DLCN gece dinlenme,P30_4,FactorizePhys PURE (hazır),3.5677320041903844,85.71428571428571
+DLCN gece dinlenme,P30_4,FactorizePhys PURE (hazır)+Viterbi,1.156611781801605,100.0
+DLCN gece egzersiz,P30_5,FactorizePhys PURE (hazır),0.2809209822206538,100.0
+DLCN gece egzersiz,P30_5,FactorizePhys PURE (hazır)+Viterbi,0.2809209822206538,100.0
+DLCN gece egzersiz,P30_6,FactorizePhys PURE (hazır),0.34603139357080065,100.0
+DLCN gece egzersiz,P30_6,FactorizePhys PURE (hazır)+Viterbi,0.34603139357080065,100.0
+DLCN gece egzersiz,P30_7,FactorizePhys PURE (hazır),1.1778336021597227,100.0
+DLCN gece egzersiz,P30_7,FactorizePhys PURE (hazır)+Viterbi,1.1718290988967193,100.0
+DLCN gece egzersiz,P30_8,FactorizePhys PURE (hazır),2.6549035741208553,90.47619047619048
+DLCN gece egzersiz,P30_8,FactorizePhys PURE (hazır)+Viterbi,0.8329253297381091,100.0
+DLCN gece dinlenme,P35_1,FactorizePhys PURE (hazır),1.3477332857757272,100.0
+DLCN gece dinlenme,P35_1,FactorizePhys PURE (hazır)+Viterbi,1.361433397979005,100.0
+DLCN gece dinlenme,P35_2,FactorizePhys PURE (hazır),2.4243458240206914,85.71428571428571
+DLCN gece dinlenme,P35_2,FactorizePhys PURE (hazır)+Viterbi,1.1831285997260235,100.0
+DLCN gece dinlenme,P35_3,FactorizePhys PURE (hazır),4.283555563819792,80.95238095238095
+DLCN gece dinlenme,P35_3,FactorizePhys PURE (hazır)+Viterbi,1.2977279917053302,100.0
+DLCN gece dinlenme,P35_4,FactorizePhys PURE (hazır),23.511447935829487,4.761904761904762
+DLCN gece dinlenme,P35_4,FactorizePhys PURE (hazır)+Viterbi,29.602166831197255,0.0
+DLCN gece egzersiz,P35_5,FactorizePhys PURE (hazır),1.0558722332974977,95.23809523809523
+DLCN gece egzersiz,P35_5,FactorizePhys PURE (hazır)+Viterbi,1.536360595834321,90.47619047619048
+DLCN gece egzersiz,P35_6,FactorizePhys PURE (hazır),5.851598873565077,80.95238095238095
+DLCN gece egzersiz,P35_6,FactorizePhys PURE (hazır)+Viterbi,1.6779581277292868,100.0
+DLCN gece egzersiz,P35_7,FactorizePhys PURE (hazır),4.841407359804235,76.19047619047619
+DLCN gece egzersiz,P35_7,FactorizePhys PURE (hazır)+Viterbi,1.7070901617083616,100.0
+DLCN gece egzersiz,P35_8,FactorizePhys PURE (hazır),20.90911381266512,38.095238095238095
+DLCN gece egzersiz,P35_8,FactorizePhys PURE (hazır)+Viterbi,14.00036836827318,38.095238095238095
+DLCN gece dinlenme,P40_1,FactorizePhys PURE (hazır),0.4523033777357495,100.0
+DLCN gece dinlenme,P40_1,FactorizePhys PURE (hazır)+Viterbi,0.4523033777357495,100.0
+DLCN gece dinlenme,P40_2,FactorizePhys PURE (hazır),0.5908214880925368,100.0
+DLCN gece dinlenme,P40_2,FactorizePhys PURE (hazır)+Viterbi,0.5908214880925368,100.0
+DLCN gece dinlenme,P40_3,FactorizePhys PURE (hazır),5.098147917978328,90.47619047619048
+DLCN gece dinlenme,P40_3,FactorizePhys PURE (hazır)+Viterbi,1.7380408520403319,100.0
+DLCN gece dinlenme,P40_4,FactorizePhys PURE (hazır),6.064754362723214,66.66666666666666
+DLCN gece dinlenme,P40_4,FactorizePhys PURE (hazır)+Viterbi,5.428965756947524,61.904761904761905
+DLCN gece egzersiz,P40_5,FactorizePhys PURE (hazır),0.6318126429588143,100.0
+DLCN gece egzersiz,P40_5,FactorizePhys PURE (hazır)+Viterbi,0.5959429750996273,100.0
+DLCN gece egzersiz,P40_6,FactorizePhys PURE (hazır),0.528202416305115,100.0
+DLCN gece egzersiz,P40_6,FactorizePhys PURE (hazır)+Viterbi,0.528202416305115,100.0
+DLCN gece egzersiz,P40_7,FactorizePhys PURE (hazır),2.1874932407877403,85.71428571428571
+DLCN gece egzersiz,P40_7,FactorizePhys PURE (hazır)+Viterbi,3.2175702467729304,76.19047619047619
+DLCN gece egzersiz,P40_8,FactorizePhys PURE (hazır),7.0942412854483665,66.66666666666666
+DLCN gece egzersiz,P40_8,FactorizePhys PURE (hazır)+Viterbi,9.48244818694205,57.14285714285714
+DLCN gece dinlenme,P45_1,FactorizePhys PURE (hazır),0.9205868737768087,100.0
+DLCN gece dinlenme,P45_1,FactorizePhys PURE (hazır)+Viterbi,0.9205868737768087,100.0
+DLCN gece dinlenme,P45_2,FactorizePhys PURE (hazır),3.1113845888916836,90.47619047619048
+DLCN gece dinlenme,P45_2,FactorizePhys PURE (hazır)+Viterbi,1.8877606840588315,95.23809523809523
+DLCN gece dinlenme,P45_3,FactorizePhys PURE (hazır),5.430699693069607,76.19047619047619
+DLCN gece dinlenme,P45_3,FactorizePhys PURE (hazır)+Viterbi,3.0627975327796033,76.19047619047619
+DLCN gece dinlenme,P45_4,FactorizePhys PURE (hazır),17.85074159125667,47.61904761904761
+DLCN gece dinlenme,P45_4,FactorizePhys PURE (hazır)+Viterbi,2.437756114438225,90.47619047619048
+DLCN gece egzersiz,P45_5,FactorizePhys PURE (hazır),3.4439375261273777,80.95238095238095
+DLCN gece egzersiz,P45_5,FactorizePhys PURE (hazır)+Viterbi,3.6876968112279913,76.19047619047619
+DLCN gece egzersiz,P45_6,FactorizePhys PURE (hazır),5.028654703371897,76.19047619047619
+DLCN gece egzersiz,P45_6,FactorizePhys PURE (hazır)+Viterbi,4.1563640915891416,76.19047619047619
+DLCN gece egzersiz,P45_7,FactorizePhys PURE (hazır),0.839972518704571,100.0
+DLCN gece egzersiz,P45_7,FactorizePhys PURE (hazır)+Viterbi,0.839972518704571,100.0
+DLCN gece egzersiz,P45_8,FactorizePhys PURE (hazır),5.380396703297326,71.42857142857143
+DLCN gece egzersiz,P45_8,FactorizePhys PURE (hazır)+Viterbi,2.0437132827229516,90.47619047619048
+DLCN gece dinlenme,P50_1,FactorizePhys PURE (hazır),0.4604456405432267,100.0
+DLCN gece dinlenme,P50_1,FactorizePhys PURE (hazır)+Viterbi,0.4604456405432267,100.0
+DLCN gece dinlenme,P50_2,FactorizePhys PURE (hazır),4.833863833100335,76.19047619047619
+DLCN gece dinlenme,P50_2,FactorizePhys PURE (hazır)+Viterbi,5.043916147319405,71.42857142857143
+DLCN gece dinlenme,P50_3,FactorizePhys PURE (hazır),6.906321185801312,76.19047619047619
+DLCN gece dinlenme,P50_3,FactorizePhys PURE (hazır)+Viterbi,0.8918861880013144,100.0
+DLCN gece dinlenme,P50_4,FactorizePhys PURE (hazır),3.824345528605203,80.95238095238095
+DLCN gece dinlenme,P50_4,FactorizePhys PURE (hazır)+Viterbi,2.192023969051474,90.47619047619048
+DLCN gece egzersiz,P50_5,FactorizePhys PURE (hazır),0.6900405519540143,100.0
+DLCN gece egzersiz,P50_5,FactorizePhys PURE (hazır)+Viterbi,0.6911991119119678,100.0
+DLCN gece egzersiz,P50_6,FactorizePhys PURE (hazır),7.574506961537281,71.42857142857143
+DLCN gece egzersiz,P50_6,FactorizePhys PURE (hazır)+Viterbi,4.906024449047519,71.42857142857143
+DLCN gece egzersiz,P50_7,FactorizePhys PURE (hazır),2.3755256856188605,90.47619047619048
+DLCN gece egzersiz,P50_7,FactorizePhys PURE (hazır)+Viterbi,0.5837750944720516,100.0
+DLCN gece egzersiz,P50_8,FactorizePhys PURE (hazır),13.726335868402359,38.095238095238095
+DLCN gece egzersiz,P50_8,FactorizePhys PURE (hazır)+Viterbi,5.514401103811334,52.38095238095239
+DLCN gece dinlenme,P55_1,FactorizePhys PURE (hazır),0.4094762629707922,100.0
+DLCN gece dinlenme,P55_1,FactorizePhys PURE (hazır)+Viterbi,0.4094762629707922,100.0
+DLCN gece dinlenme,P55_2,FactorizePhys PURE (hazır),0.4695185764921744,100.0
+DLCN gece dinlenme,P55_2,FactorizePhys PURE (hazır)+Viterbi,0.4695185764921744,100.0
+DLCN gece dinlenme,P55_3,FactorizePhys PURE (hazır),0.4131074304119473,100.0
+DLCN gece dinlenme,P55_3,FactorizePhys PURE (hazır)+Viterbi,0.4131074304119473,100.0
+DLCN gece dinlenme,P55_4,FactorizePhys PURE (hazır),0.7339788505458434,100.0
+DLCN gece dinlenme,P55_4,FactorizePhys PURE (hazır)+Viterbi,0.7339788505458434,100.0
+DLCN gece egzersiz,P55_5,FactorizePhys PURE (hazır),0.4504207764497489,100.0
+DLCN gece egzersiz,P55_5,FactorizePhys PURE (hazır)+Viterbi,0.4504207764497489,100.0
+DLCN gece egzersiz,P55_6,FactorizePhys PURE (hazır),7.4680574231550665,85.71428571428571
+DLCN gece egzersiz,P55_6,FactorizePhys PURE (hazır)+Viterbi,0.9630772604959761,100.0
+DLCN gece egzersiz,P55_7,FactorizePhys PURE (hazır),0.8861631886017305,100.0
+DLCN gece egzersiz,P55_7,FactorizePhys PURE (hazır)+Viterbi,0.8861631886017305,100.0
+DLCN gece egzersiz,P55_8,FactorizePhys PURE (hazır),0.6144849388233531,100.0
+DLCN gece egzersiz,P55_8,FactorizePhys PURE (hazır)+Viterbi,0.6144849388233531,100.0
+DLCN gece dinlenme,P5_1,FactorizePhys PURE (hazır),0.4443742067765482,100.0
+DLCN gece dinlenme,P5_1,FactorizePhys PURE (hazır)+Viterbi,0.4443742067765482,100.0
+DLCN gece dinlenme,P5_2,FactorizePhys PURE (hazır),1.2330833892044395,95.23809523809523
+DLCN gece dinlenme,P5_2,FactorizePhys PURE (hazır)+Viterbi,1.2422298961057292,95.23809523809523
+DLCN gece dinlenme,P5_3,FactorizePhys PURE (hazır),0.9145414480192743,100.0
+DLCN gece dinlenme,P5_3,FactorizePhys PURE (hazır)+Viterbi,0.9311932073891873,100.0
+DLCN gece dinlenme,P5_4,FactorizePhys PURE (hazır),0.9691988565052299,100.0
+DLCN gece dinlenme,P5_4,FactorizePhys PURE (hazır)+Viterbi,0.9691988565052299,100.0
+DLCN gece egzersiz,P5_5,FactorizePhys PURE (hazır),0.6057777015860637,100.0
+DLCN gece egzersiz,P5_5,FactorizePhys PURE (hazır)+Viterbi,0.6350463930478069,100.0
+DLCN gece egzersiz,P5_6,FactorizePhys PURE (hazır),1.173216309746881,95.23809523809523
+DLCN gece egzersiz,P5_6,FactorizePhys PURE (hazır)+Viterbi,0.8876793993721017,100.0
+DLCN gece egzersiz,P5_7,FactorizePhys PURE (hazır),1.1677430277060576,100.0
+DLCN gece egzersiz,P5_7,FactorizePhys PURE (hazır)+Viterbi,1.1677430277060576,100.0
+DLCN gece egzersiz,P5_8,FactorizePhys PURE (hazır),0.8647011144969208,100.0
+DLCN gece egzersiz,P5_8,FactorizePhys PURE (hazır)+Viterbi,0.8647011144969208,100.0
+DLCN gece dinlenme,P60_1,FactorizePhys PURE (hazır),0.36150126471507654,100.0
+DLCN gece dinlenme,P60_1,FactorizePhys PURE (hazır)+Viterbi,0.36150126471507654,100.0
+DLCN gece dinlenme,P60_2,FactorizePhys PURE (hazır),2.4642241153206936,85.71428571428571
+DLCN gece dinlenme,P60_2,FactorizePhys PURE (hazır)+Viterbi,0.5176894701638892,100.0
+DLCN gece dinlenme,P60_3,FactorizePhys PURE (hazır),5.5351342220133635,71.42857142857143
+DLCN gece dinlenme,P60_3,FactorizePhys PURE (hazır)+Viterbi,2.6215718925581077,76.19047619047619
+DLCN gece dinlenme,P60_4,FactorizePhys PURE (hazır),2.9687490964592333,76.19047619047619
+DLCN gece dinlenme,P60_4,FactorizePhys PURE (hazır)+Viterbi,3.6402219987470605,66.66666666666666
+DLCN gece egzersiz,P60_5,FactorizePhys PURE (hazır),0.34843684787628876,100.0
+DLCN gece egzersiz,P60_5,FactorizePhys PURE (hazır)+Viterbi,0.34843684787628876,100.0
+DLCN gece egzersiz,P60_6,FactorizePhys PURE (hazır),0.5379641620615944,100.0
+DLCN gece egzersiz,P60_6,FactorizePhys PURE (hazır)+Viterbi,0.5379641620615944,100.0
+DLCN gece egzersiz,P60_7,FactorizePhys PURE (hazır),8.349984363940369,66.66666666666666
+DLCN gece egzersiz,P60_7,FactorizePhys PURE (hazır)+Viterbi,13.859685042848447,42.857142857142854
+DLCN gece egzersiz,P60_8,FactorizePhys PURE (hazır),9.133000038962654,57.14285714285714
+DLCN gece egzersiz,P60_8,FactorizePhys PURE (hazır)+Viterbi,3.9195588976916462,71.42857142857143
+DLCN gece dinlenme,P65_1,FactorizePhys PURE (hazır),1.5690122091043643,85.71428571428571
+DLCN gece dinlenme,P65_1,FactorizePhys PURE (hazır)+Viterbi,1.5196444039010633,90.47619047619048
+DLCN gece dinlenme,P65_2,FactorizePhys PURE (hazır),2.3980127967132074,90.47619047619048
+DLCN gece dinlenme,P65_2,FactorizePhys PURE (hazır)+Viterbi,2.2944566960742514,90.47619047619048
+DLCN gece dinlenme,P65_3,FactorizePhys PURE (hazır),5.629259721541367,76.19047619047619
+DLCN gece dinlenme,P65_3,FactorizePhys PURE (hazır)+Viterbi,0.8211361609225681,100.0
+DLCN gece dinlenme,P65_4,FactorizePhys PURE (hazır),6.188047538282002,47.61904761904761
+DLCN gece dinlenme,P65_4,FactorizePhys PURE (hazır)+Viterbi,4.110640658443995,61.904761904761905
+DLCN gece egzersiz,P65_5,FactorizePhys PURE (hazır),2.832378409719798,80.95238095238095
+DLCN gece egzersiz,P65_5,FactorizePhys PURE (hazır)+Viterbi,0.576330286188755,100.0
+DLCN gece egzersiz,P65_6,FactorizePhys PURE (hazır),3.018546122760592,90.47619047619048
+DLCN gece egzersiz,P65_6,FactorizePhys PURE (hazır)+Viterbi,1.681953928821039,100.0
+DLCN gece egzersiz,P65_7,FactorizePhys PURE (hazır),20.69854375462816,61.904761904761905
+DLCN gece egzersiz,P65_7,FactorizePhys PURE (hazır)+Viterbi,1.242972922114244,100.0
+DLCN gece egzersiz,P65_8,FactorizePhys PURE (hazır),45.01478860290073,0.0
+DLCN gece egzersiz,P65_8,FactorizePhys PURE (hazır)+Viterbi,47.890893970695714,0.0
+DLCN gece dinlenme,P70_1,FactorizePhys PURE (hazır),0.6717908082924133,100.0
+DLCN gece dinlenme,P70_1,FactorizePhys PURE (hazır)+Viterbi,0.6717908082924133,100.0
+DLCN gece dinlenme,P70_2,FactorizePhys PURE (hazır),3.4562649485229238,80.95238095238095
+DLCN gece dinlenme,P70_2,FactorizePhys PURE (hazır)+Viterbi,1.8498693424848653,100.0
+DLCN gece dinlenme,P70_3,FactorizePhys PURE (hazır),10.474924434818478,66.66666666666666
+DLCN gece dinlenme,P70_3,FactorizePhys PURE (hazır)+Viterbi,3.287033534821595,76.19047619047619
+DLCN gece dinlenme,P70_4,FactorizePhys PURE (hazır),13.278422667101236,61.904761904761905
+DLCN gece dinlenme,P70_4,FactorizePhys PURE (hazır)+Viterbi,1.4801134253916772,100.0
+DLCN gece egzersiz,P70_5,FactorizePhys PURE (hazır),0.7317912465534846,100.0
+DLCN gece egzersiz,P70_5,FactorizePhys PURE (hazır)+Viterbi,0.7317912465534846,100.0
+DLCN gece egzersiz,P70_6,FactorizePhys PURE (hazır),37.82540719542525,23.809523809523807
+DLCN gece egzersiz,P70_6,FactorizePhys PURE (hazır)+Viterbi,45.570097638715005,0.0
+DLCN gece egzersiz,P70_7,FactorizePhys PURE (hazır),7.706768302975268,85.71428571428571
+DLCN gece egzersiz,P70_7,FactorizePhys PURE (hazır)+Viterbi,0.82507455484594,100.0
+DLCN gece egzersiz,P70_8,FactorizePhys PURE (hazır),45.565771589050854,0.0
+DLCN gece egzersiz,P70_8,FactorizePhys PURE (hazır)+Viterbi,55.6230157095316,0.0
+DLCN gece dinlenme,P75_1,FactorizePhys PURE (hazır),0.6626078216695901,100.0
+DLCN gece dinlenme,P75_1,FactorizePhys PURE (hazır)+Viterbi,0.6626078216695901,100.0
+DLCN gece dinlenme,P75_2,FactorizePhys PURE (hazır),14.593133524356578,42.857142857142854
+DLCN gece dinlenme,P75_2,FactorizePhys PURE (hazır)+Viterbi,2.6445767499935706,80.95238095238095
+DLCN gece dinlenme,P75_3,FactorizePhys PURE (hazır),1.0536175791544569,100.0
+DLCN gece dinlenme,P75_3,FactorizePhys PURE (hazır)+Viterbi,1.0703769204986349,100.0
+DLCN gece dinlenme,P75_4,FactorizePhys PURE (hazır),5.900922410074311,71.42857142857143
+DLCN gece dinlenme,P75_4,FactorizePhys PURE (hazır)+Viterbi,2.994138125552778,80.95238095238095
+DLCN gece egzersiz,P75_5,FactorizePhys PURE (hazır),0.7988620467934175,100.0
+DLCN gece egzersiz,P75_5,FactorizePhys PURE (hazır)+Viterbi,0.7988620467934175,100.0
+DLCN gece egzersiz,P75_6,FactorizePhys PURE (hazır),0.7851789649920589,100.0
+DLCN gece egzersiz,P75_6,FactorizePhys PURE (hazır)+Viterbi,0.7851789649920589,100.0
+DLCN gece egzersiz,P75_7,FactorizePhys PURE (hazır),1.0320453881475786,100.0
+DLCN gece egzersiz,P75_7,FactorizePhys PURE (hazır)+Viterbi,1.0100592382217854,100.0
+DLCN gece egzersiz,P75_8,FactorizePhys PURE (hazır),9.343522277588201,42.857142857142854
+DLCN gece egzersiz,P75_8,FactorizePhys PURE (hazır)+Viterbi,7.978919714862217,42.857142857142854
+DLCN gece dinlenme,P80_1,FactorizePhys PURE (hazır),0.5775925359344001,100.0
+DLCN gece dinlenme,P80_1,FactorizePhys PURE (hazır)+Viterbi,0.5775925359344001,100.0
+DLCN gece dinlenme,P80_2,FactorizePhys PURE (hazır),1.0529859512372333,100.0
+DLCN gece dinlenme,P80_2,FactorizePhys PURE (hazır)+Viterbi,1.0632976701206338,100.0
+DLCN gece dinlenme,P80_3,FactorizePhys PURE (hazır),1.7364785152130806,90.47619047619048
+DLCN gece dinlenme,P80_3,FactorizePhys PURE (hazır)+Viterbi,1.2370733511938805,95.23809523809523
+DLCN gece dinlenme,P80_4,FactorizePhys PURE (hazır),14.999800836538245,23.809523809523807
+DLCN gece dinlenme,P80_4,FactorizePhys PURE (hazır)+Viterbi,12.142227411158999,14.285714285714285
+DLCN gece egzersiz,P80_5,FactorizePhys PURE (hazır),0.5166021576872967,100.0
+DLCN gece egzersiz,P80_5,FactorizePhys PURE (hazır)+Viterbi,0.5166021576872967,100.0
+DLCN gece egzersiz,P80_6,FactorizePhys PURE (hazır),0.9996427704009805,100.0
+DLCN gece egzersiz,P80_6,FactorizePhys PURE (hazır)+Viterbi,0.9996427704009805,100.0
+DLCN gece egzersiz,P80_7,FactorizePhys PURE (hazır),17.47648768424875,61.904761904761905
+DLCN gece egzersiz,P80_7,FactorizePhys PURE (hazır)+Viterbi,1.6800128826512466,100.0
+DLCN gece egzersiz,P80_8,FactorizePhys PURE (hazır),16.504088124029675,52.38095238095239
+DLCN gece egzersiz,P80_8,FactorizePhys PURE (hazır)+Viterbi,1.9226375524950354,100.0
+DLCN gece dinlenme,P85_1,FactorizePhys PURE (hazır),0.6320534343320936,100.0
+DLCN gece dinlenme,P85_1,FactorizePhys PURE (hazır)+Viterbi,0.6378660108115897,100.0
+DLCN gece dinlenme,P85_2,FactorizePhys PURE (hazır),17.620697255147793,0.0
+DLCN gece dinlenme,P85_2,FactorizePhys PURE (hazır)+Viterbi,10.816490809347288,9.523809523809524
+DLCN gece dinlenme,P85_3,FactorizePhys PURE (hazır),4.808877162494411,85.71428571428571
+DLCN gece dinlenme,P85_3,FactorizePhys PURE (hazır)+Viterbi,0.9134003927478683,100.0
+DLCN gece dinlenme,P85_4,FactorizePhys PURE (hazır),11.922307161153272,9.523809523809524
+DLCN gece dinlenme,P85_4,FactorizePhys PURE (hazır)+Viterbi,8.36155037335943,14.285714285714285
+DLCN gece egzersiz,P85_5,FactorizePhys PURE (hazır),1.0077261367347061,100.0
+DLCN gece egzersiz,P85_5,FactorizePhys PURE (hazır)+Viterbi,1.0046873275681376,100.0
+DLCN gece egzersiz,P85_6,FactorizePhys PURE (hazır),35.61254895117046,19.047619047619047
+DLCN gece egzersiz,P85_6,FactorizePhys PURE (hazır)+Viterbi,30.915811024713786,0.0
+DLCN gece egzersiz,P85_7,FactorizePhys PURE (hazır),9.736179123630007,66.66666666666666
+DLCN gece egzersiz,P85_7,FactorizePhys PURE (hazır)+Viterbi,1.5276913480870373,100.0
+DLCN gece egzersiz,P85_8,FactorizePhys PURE (hazır),32.631876669444196,9.523809523809524
+DLCN gece egzersiz,P85_8,FactorizePhys PURE (hazır)+Viterbi,25.636412292715423,9.523809523809524
+DLCN gece dinlenme,P90_1,FactorizePhys PURE (hazır),6.8791911143212685,80.95238095238095
+DLCN gece dinlenme,P90_1,FactorizePhys PURE (hazır)+Viterbi,1.4439023044244361,100.0
+DLCN gece dinlenme,P90_2,FactorizePhys PURE (hazır),1.9078662679685228,90.47619047619048
+DLCN gece dinlenme,P90_2,FactorizePhys PURE (hazır)+Viterbi,1.7627526832307756,95.23809523809523
+DLCN gece dinlenme,P90_3,FactorizePhys PURE (hazır),5.749076414068128,76.19047619047619
+DLCN gece dinlenme,P90_3,FactorizePhys PURE (hazır)+Viterbi,0.9459283384523867,100.0
+DLCN gece dinlenme,P90_4,FactorizePhys PURE (hazır),20.12219194081313,33.33333333333333
+DLCN gece dinlenme,P90_4,FactorizePhys PURE (hazır)+Viterbi,7.390994265328213,61.904761904761905
+DLCN gece egzersiz,P90_5,FactorizePhys PURE (hazır),1.8347615538435937,90.47619047619048
+DLCN gece egzersiz,P90_5,FactorizePhys PURE (hazır)+Viterbi,1.0022096414756914,100.0
+DLCN gece egzersiz,P90_6,FactorizePhys PURE (hazır),4.905745524173112,80.95238095238095
+DLCN gece egzersiz,P90_6,FactorizePhys PURE (hazır)+Viterbi,1.0217634418196684,100.0
+DLCN gece egzersiz,P90_7,FactorizePhys PURE (hazır),7.144131226635325,80.95238095238095
+DLCN gece egzersiz,P90_7,FactorizePhys PURE (hazır)+Viterbi,0.8713022542271535,100.0
+DLCN gece egzersiz,P90_8,FactorizePhys PURE (hazır),4.874156049873049,76.19047619047619
+DLCN gece egzersiz,P90_8,FactorizePhys PURE (hazır)+Viterbi,6.218294358666729,61.904761904761905
+DLCN gece dinlenme,P95_1,FactorizePhys PURE (hazır),6.126835945869107,61.904761904761905
+DLCN gece dinlenme,P95_1,FactorizePhys PURE (hazır)+Viterbi,2.223677913927856,85.71428571428571
+DLCN gece dinlenme,P95_2,FactorizePhys PURE (hazır),3.10395455018583,85.71428571428571
+DLCN gece dinlenme,P95_2,FactorizePhys PURE (hazır)+Viterbi,1.3181450218026716,100.0
+DLCN gece dinlenme,P95_3,FactorizePhys PURE (hazır),10.196997221584619,42.857142857142854
+DLCN gece dinlenme,P95_3,FactorizePhys PURE (hazır)+Viterbi,3.763783671498849,61.904761904761905
+DLCN gece dinlenme,P95_4,FactorizePhys PURE (hazır),9.836420758172327,61.904761904761905
+DLCN gece dinlenme,P95_4,FactorizePhys PURE (hazır)+Viterbi,6.207440124297322,61.904761904761905
+DLCN gece egzersiz,P95_5,FactorizePhys PURE (hazır),1.5925815299497483,95.23809523809523
+DLCN gece egzersiz,P95_5,FactorizePhys PURE (hazır)+Viterbi,1.0695671997112732,95.23809523809523
+DLCN gece egzersiz,P95_6,FactorizePhys PURE (hazır),17.98106510481424,57.14285714285714
+DLCN gece egzersiz,P95_6,FactorizePhys PURE (hazır)+Viterbi,45.56504196584975,0.0
+DLCN gece egzersiz,P95_7,FactorizePhys PURE (hazır),2.8858932636506003,80.95238095238095
+DLCN gece egzersiz,P95_7,FactorizePhys PURE (hazır)+Viterbi,2.9740017301628967,76.19047619047619
+DLCN gece egzersiz,P95_8,FactorizePhys PURE (hazır),26.757291636154545,33.33333333333333
+DLCN gece egzersiz,P95_8,FactorizePhys PURE (hazır)+Viterbi,10.359123534588658,42.857142857142854
+DLCN gece dinlenme,P10_1,MMRPhys B'den ince ayar (7. tur),0.573684454248527,100.0
+DLCN gece dinlenme,P10_1,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.573684454248527,100.0
+DLCN gece dinlenme,P10_2,MMRPhys B'den ince ayar (7. tur),0.44290302943573423,100.0
+DLCN gece dinlenme,P10_2,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.44290302943573423,100.0
+DLCN gece dinlenme,P10_3,MMRPhys B'den ince ayar (7. tur),1.134919244863531,100.0
+DLCN gece dinlenme,P10_3,MMRPhys B'den ince ayar (7. tur)+Viterbi,1.0782390832777475,100.0
+DLCN gece dinlenme,P10_4,MMRPhys B'den ince ayar (7. tur),0.7469244428912641,100.0
+DLCN gece dinlenme,P10_4,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.7469244428912641,100.0
+DLCN gece egzersiz,P10_5,MMRPhys B'den ince ayar (7. tur),0.7704004472222058,100.0
+DLCN gece egzersiz,P10_5,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.6659523873569161,100.0
+DLCN gece egzersiz,P10_6,MMRPhys B'den ince ayar (7. tur),0.8232063359946997,100.0
+DLCN gece egzersiz,P10_6,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.8608060007569046,100.0
+DLCN gece egzersiz,P10_7,MMRPhys B'den ince ayar (7. tur),0.6450427478370806,100.0
+DLCN gece egzersiz,P10_7,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.6354769556879692,100.0
+DLCN gece egzersiz,P10_8,MMRPhys B'den ince ayar (7. tur),0.4790997314385636,100.0
+DLCN gece egzersiz,P10_8,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.4790997314385636,100.0
+DLCN gece dinlenme,P15_1,MMRPhys B'den ince ayar (7. tur),0.9576442833539512,100.0
+DLCN gece dinlenme,P15_1,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.9576442833539512,100.0
+DLCN gece dinlenme,P15_2,MMRPhys B'den ince ayar (7. tur),0.6599190135073817,100.0
+DLCN gece dinlenme,P15_2,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.6599190135073817,100.0
+DLCN gece dinlenme,P15_3,MMRPhys B'den ince ayar (7. tur),1.968999040511243,95.23809523809523
+DLCN gece dinlenme,P15_3,MMRPhys B'den ince ayar (7. tur)+Viterbi,1.63187281558557,100.0
+DLCN gece dinlenme,P15_4,MMRPhys B'den ince ayar (7. tur),1.4725808308841355,100.0
+DLCN gece dinlenme,P15_4,MMRPhys B'den ince ayar (7. tur)+Viterbi,1.4651802559442113,100.0
+DLCN gece egzersiz,P15_5,MMRPhys B'den ince ayar (7. tur),2.0459244216843033,90.47619047619048
+DLCN gece egzersiz,P15_5,MMRPhys B'den ince ayar (7. tur)+Viterbi,2.5813329593073036,85.71428571428571
+DLCN gece egzersiz,P15_6,MMRPhys B'den ince ayar (7. tur),0.9495054463911375,100.0
+DLCN gece egzersiz,P15_6,MMRPhys B'den ince ayar (7. tur)+Viterbi,1.5505060667017934,95.23809523809523
+DLCN gece egzersiz,P15_7,MMRPhys B'den ince ayar (7. tur),4.448931019194345,85.71428571428571
+DLCN gece egzersiz,P15_7,MMRPhys B'den ince ayar (7. tur)+Viterbi,3.647961553117015,85.71428571428571
+DLCN gece egzersiz,P15_8,MMRPhys B'den ince ayar (7. tur),13.333430096314379,61.904761904761905
+DLCN gece egzersiz,P15_8,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.9799648518491405,100.0
+DLCN gece dinlenme,P20_1,MMRPhys B'den ince ayar (7. tur),1.6772529718045937,100.0
+DLCN gece dinlenme,P20_1,MMRPhys B'den ince ayar (7. tur)+Viterbi,1.6772529718045937,100.0
+DLCN gece dinlenme,P20_2,MMRPhys B'den ince ayar (7. tur),0.5899972006912354,100.0
+DLCN gece dinlenme,P20_2,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.5899972006912354,100.0
+DLCN gece dinlenme,P20_3,MMRPhys B'den ince ayar (7. tur),6.956992508013412,52.38095238095239
+DLCN gece dinlenme,P20_3,MMRPhys B'den ince ayar (7. tur)+Viterbi,3.104330226187085,71.42857142857143
+DLCN gece dinlenme,P20_4,MMRPhys B'den ince ayar (7. tur),4.695003465059777,85.71428571428571
+DLCN gece dinlenme,P20_4,MMRPhys B'den ince ayar (7. tur)+Viterbi,1.022768596371136,100.0
+DLCN gece egzersiz,P20_5,MMRPhys B'den ince ayar (7. tur),1.1260304921163864,100.0
+DLCN gece egzersiz,P20_5,MMRPhys B'den ince ayar (7. tur)+Viterbi,1.122236224717901,100.0
+DLCN gece egzersiz,P20_6,MMRPhys B'den ince ayar (7. tur),0.48839592019414674,100.0
+DLCN gece egzersiz,P20_6,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.4984517217727874,100.0
+DLCN gece egzersiz,P20_7,MMRPhys B'den ince ayar (7. tur),0.9030318104161537,100.0
+DLCN gece egzersiz,P20_7,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.8322401092440821,100.0
+DLCN gece egzersiz,P20_8,MMRPhys B'den ince ayar (7. tur),12.136056114519839,61.904761904761905
+DLCN gece egzersiz,P20_8,MMRPhys B'den ince ayar (7. tur)+Viterbi,7.464454248806863,61.904761904761905
+DLCN gece dinlenme,P25_1,MMRPhys B'den ince ayar (7. tur),0.3590827258752818,100.0
+DLCN gece dinlenme,P25_1,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.3590827258752818,100.0
+DLCN gece dinlenme,P25_2,MMRPhys B'den ince ayar (7. tur),0.38315089988024637,100.0
+DLCN gece dinlenme,P25_2,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.38315089988024637,100.0
+DLCN gece dinlenme,P25_3,MMRPhys B'den ince ayar (7. tur),0.6316573403424686,100.0
+DLCN gece dinlenme,P25_3,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.6316573403424686,100.0
+DLCN gece dinlenme,P25_4,MMRPhys B'den ince ayar (7. tur),0.6525361423071159,100.0
+DLCN gece dinlenme,P25_4,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.6525361423071159,100.0
+DLCN gece egzersiz,P25_5,MMRPhys B'den ince ayar (7. tur),0.489075844649534,100.0
+DLCN gece egzersiz,P25_5,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.489075844649534,100.0
+DLCN gece egzersiz,P25_6,MMRPhys B'den ince ayar (7. tur),0.5695327830671013,100.0
+DLCN gece egzersiz,P25_6,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.5695327830671013,100.0
+DLCN gece egzersiz,P25_7,MMRPhys B'den ince ayar (7. tur),4.003218960302831,85.71428571428571
+DLCN gece egzersiz,P25_7,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.7248889752022614,100.0
+DLCN gece egzersiz,P25_8,MMRPhys B'den ince ayar (7. tur),9.205403463068278,71.42857142857143
+DLCN gece egzersiz,P25_8,MMRPhys B'den ince ayar (7. tur)+Viterbi,2.9732685652609776,76.19047619047619
+DLCN gece dinlenme,P30_1,MMRPhys B'den ince ayar (7. tur),0.3572640332803865,100.0
+DLCN gece dinlenme,P30_1,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.3572640332803865,100.0
+DLCN gece dinlenme,P30_2,MMRPhys B'den ince ayar (7. tur),0.29676171330006,100.0
+DLCN gece dinlenme,P30_2,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.29676171330006,100.0
+DLCN gece dinlenme,P30_3,MMRPhys B'den ince ayar (7. tur),0.6756521223467954,100.0
+DLCN gece dinlenme,P30_3,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.6756521223467954,100.0
+DLCN gece dinlenme,P30_4,MMRPhys B'den ince ayar (7. tur),0.6248764771938701,100.0
+DLCN gece dinlenme,P30_4,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.6248764771938701,100.0
+DLCN gece egzersiz,P30_5,MMRPhys B'den ince ayar (7. tur),0.3236461486772169,100.0
+DLCN gece egzersiz,P30_5,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.3236461486772169,100.0
+DLCN gece egzersiz,P30_6,MMRPhys B'den ince ayar (7. tur),0.5321649618014277,100.0
+DLCN gece egzersiz,P30_6,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.5321649618014277,100.0
+DLCN gece egzersiz,P30_7,MMRPhys B'den ince ayar (7. tur),0.674031806328166,100.0
+DLCN gece egzersiz,P30_7,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.674031806328166,100.0
+DLCN gece egzersiz,P30_8,MMRPhys B'den ince ayar (7. tur),0.5517037693243609,100.0
+DLCN gece egzersiz,P30_8,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.5517037693243609,100.0
+DLCN gece dinlenme,P35_1,MMRPhys B'den ince ayar (7. tur),0.5850537921122542,100.0
+DLCN gece dinlenme,P35_1,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.5968243355991227,100.0
+DLCN gece dinlenme,P35_2,MMRPhys B'den ince ayar (7. tur),0.4942213449316191,100.0
+DLCN gece dinlenme,P35_2,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.4942213449316191,100.0
+DLCN gece dinlenme,P35_3,MMRPhys B'den ince ayar (7. tur),0.7367324295960458,100.0
+DLCN gece dinlenme,P35_3,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.7367324295960458,100.0
+DLCN gece dinlenme,P35_4,MMRPhys B'den ince ayar (7. tur),5.016986346150869,80.95238095238095
+DLCN gece dinlenme,P35_4,MMRPhys B'den ince ayar (7. tur)+Viterbi,1.2941953099769177,100.0
+DLCN gece egzersiz,P35_5,MMRPhys B'den ince ayar (7. tur),1.0275730567550028,95.23809523809523
+DLCN gece egzersiz,P35_5,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.5363457570657466,100.0
+DLCN gece egzersiz,P35_6,MMRPhys B'den ince ayar (7. tur),0.6494170407117753,100.0
+DLCN gece egzersiz,P35_6,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.6494170407117753,100.0
+DLCN gece egzersiz,P35_7,MMRPhys B'den ince ayar (7. tur),1.1468149653466884,100.0
+DLCN gece egzersiz,P35_7,MMRPhys B'den ince ayar (7. tur)+Viterbi,1.1468149653466884,100.0
+DLCN gece egzersiz,P35_8,MMRPhys B'den ince ayar (7. tur),10.369039834590394,52.38095238095239
+DLCN gece egzersiz,P35_8,MMRPhys B'den ince ayar (7. tur)+Viterbi,5.199963133940468,66.66666666666666
+DLCN gece dinlenme,P40_1,MMRPhys B'den ince ayar (7. tur),0.5183405688924139,100.0
+DLCN gece dinlenme,P40_1,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.5183405688924139,100.0
+DLCN gece dinlenme,P40_2,MMRPhys B'den ince ayar (7. tur),0.325314544645962,100.0
+DLCN gece dinlenme,P40_2,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.325314544645962,100.0
+DLCN gece dinlenme,P40_3,MMRPhys B'den ince ayar (7. tur),0.87243071647339,100.0
+DLCN gece dinlenme,P40_3,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.87243071647339,100.0
+DLCN gece dinlenme,P40_4,MMRPhys B'den ince ayar (7. tur),1.449865416475529,95.23809523809523
+DLCN gece dinlenme,P40_4,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.9792108037086271,100.0
+DLCN gece egzersiz,P40_5,MMRPhys B'den ince ayar (7. tur),0.5395861985188224,100.0
+DLCN gece egzersiz,P40_5,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.5213284951021231,100.0
+DLCN gece egzersiz,P40_6,MMRPhys B'den ince ayar (7. tur),0.44213092262636233,100.0
+DLCN gece egzersiz,P40_6,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.43146384727223464,100.0
+DLCN gece egzersiz,P40_7,MMRPhys B'den ince ayar (7. tur),0.6774622845075468,100.0
+DLCN gece egzersiz,P40_7,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.5263050067580928,100.0
+DLCN gece egzersiz,P40_8,MMRPhys B'den ince ayar (7. tur),4.38687207706017,66.66666666666666
+DLCN gece egzersiz,P40_8,MMRPhys B'den ince ayar (7. tur)+Viterbi,5.30152025966051,57.14285714285714
+DLCN gece dinlenme,P45_1,MMRPhys B'den ince ayar (7. tur),0.6880491451659955,100.0
+DLCN gece dinlenme,P45_1,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.6880491451659955,100.0
+DLCN gece dinlenme,P45_2,MMRPhys B'den ince ayar (7. tur),1.9427599470459367,95.23809523809523
+DLCN gece dinlenme,P45_2,MMRPhys B'den ince ayar (7. tur)+Viterbi,1.390501605854902,95.23809523809523
+DLCN gece dinlenme,P45_3,MMRPhys B'den ince ayar (7. tur),2.2117367908695478,85.71428571428571
+DLCN gece dinlenme,P45_3,MMRPhys B'den ince ayar (7. tur)+Viterbi,2.7488250090629243,80.95238095238095
+DLCN gece dinlenme,P45_4,MMRPhys B'den ince ayar (7. tur),0.5572532937657771,100.0
+DLCN gece dinlenme,P45_4,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.5572532937657771,100.0
+DLCN gece egzersiz,P45_5,MMRPhys B'den ince ayar (7. tur),3.1482183226306613,80.95238095238095
+DLCN gece egzersiz,P45_5,MMRPhys B'den ince ayar (7. tur)+Viterbi,3.8479944317880928,76.19047619047619
+DLCN gece egzersiz,P45_6,MMRPhys B'den ince ayar (7. tur),1.873312029114923,95.23809523809523
+DLCN gece egzersiz,P45_6,MMRPhys B'den ince ayar (7. tur)+Viterbi,2.960988050019469,80.95238095238095
+DLCN gece egzersiz,P45_7,MMRPhys B'den ince ayar (7. tur),1.1134028988078213,95.23809523809523
+DLCN gece egzersiz,P45_7,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.5340371375657266,100.0
+DLCN gece egzersiz,P45_8,MMRPhys B'den ince ayar (7. tur),0.9514469614686463,100.0
+DLCN gece egzersiz,P45_8,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.9514469614686463,100.0
+DLCN gece dinlenme,P50_1,MMRPhys B'den ince ayar (7. tur),0.3311874090902539,100.0
+DLCN gece dinlenme,P50_1,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.3311874090902539,100.0
+DLCN gece dinlenme,P50_2,MMRPhys B'den ince ayar (7. tur),0.5453570640170398,100.0
+DLCN gece dinlenme,P50_2,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.5453570640170398,100.0
+DLCN gece dinlenme,P50_3,MMRPhys B'den ince ayar (7. tur),1.0054256658740375,100.0
+DLCN gece dinlenme,P50_3,MMRPhys B'den ince ayar (7. tur)+Viterbi,1.0054256658740375,100.0
+DLCN gece dinlenme,P50_4,MMRPhys B'den ince ayar (7. tur),11.175532153676144,76.19047619047619
+DLCN gece dinlenme,P50_4,MMRPhys B'den ince ayar (7. tur)+Viterbi,1.838175571892149,95.23809523809523
+DLCN gece egzersiz,P50_5,MMRPhys B'den ince ayar (7. tur),0.8628122507330797,100.0
+DLCN gece egzersiz,P50_5,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.8556072465862896,100.0
+DLCN gece egzersiz,P50_6,MMRPhys B'den ince ayar (7. tur),0.8171973447297665,100.0
+DLCN gece egzersiz,P50_6,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.8171973447297665,100.0
+DLCN gece egzersiz,P50_7,MMRPhys B'den ince ayar (7. tur),3.102634441956739,85.71428571428571
+DLCN gece egzersiz,P50_7,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.5273616279029658,100.0
+DLCN gece egzersiz,P50_8,MMRPhys B'den ince ayar (7. tur),9.826644024455197,71.42857142857143
+DLCN gece egzersiz,P50_8,MMRPhys B'den ince ayar (7. tur)+Viterbi,1.3498429089406774,100.0
+DLCN gece dinlenme,P55_1,MMRPhys B'den ince ayar (7. tur),0.2470187802214417,100.0
+DLCN gece dinlenme,P55_1,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.2470187802214417,100.0
+DLCN gece dinlenme,P55_2,MMRPhys B'den ince ayar (7. tur),0.2271974836967237,100.0
+DLCN gece dinlenme,P55_2,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.2271974836967237,100.0
+DLCN gece dinlenme,P55_3,MMRPhys B'den ince ayar (7. tur),0.4054268095124258,100.0
+DLCN gece dinlenme,P55_3,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.4054268095124258,100.0
+DLCN gece dinlenme,P55_4,MMRPhys B'den ince ayar (7. tur),0.4176184089664102,100.0
+DLCN gece dinlenme,P55_4,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.4176184089664102,100.0
+DLCN gece egzersiz,P55_5,MMRPhys B'den ince ayar (7. tur),0.45273603043603267,100.0
+DLCN gece egzersiz,P55_5,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.45273603043603267,100.0
+DLCN gece egzersiz,P55_6,MMRPhys B'den ince ayar (7. tur),0.29972378816987666,100.0
+DLCN gece egzersiz,P55_6,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.29972378816987666,100.0
+DLCN gece egzersiz,P55_7,MMRPhys B'den ince ayar (7. tur),0.52128127684958,100.0
+DLCN gece egzersiz,P55_7,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.52128127684958,100.0
+DLCN gece egzersiz,P55_8,MMRPhys B'den ince ayar (7. tur),0.3277484714221266,100.0
+DLCN gece egzersiz,P55_8,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.3277484714221266,100.0
+DLCN gece dinlenme,P5_1,MMRPhys B'den ince ayar (7. tur),0.3661564354509378,100.0
+DLCN gece dinlenme,P5_1,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.3661564354509378,100.0
+DLCN gece dinlenme,P5_2,MMRPhys B'den ince ayar (7. tur),0.33569118216933075,100.0
+DLCN gece dinlenme,P5_2,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.33569118216933075,100.0
+DLCN gece dinlenme,P5_3,MMRPhys B'den ince ayar (7. tur),0.6245387363981534,100.0
+DLCN gece dinlenme,P5_3,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.6284241372228385,100.0
+DLCN gece dinlenme,P5_4,MMRPhys B'den ince ayar (7. tur),0.3645570756171735,100.0
+DLCN gece dinlenme,P5_4,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.3645570756171735,100.0
+DLCN gece egzersiz,P5_5,MMRPhys B'den ince ayar (7. tur),0.6001695936926565,100.0
+DLCN gece egzersiz,P5_5,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.6059076758747411,100.0
+DLCN gece egzersiz,P5_6,MMRPhys B'den ince ayar (7. tur),0.6339559849815402,100.0
+DLCN gece egzersiz,P5_6,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.6339559849815402,100.0
+DLCN gece egzersiz,P5_7,MMRPhys B'den ince ayar (7. tur),0.9441737931358561,100.0
+DLCN gece egzersiz,P5_7,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.9441737931358561,100.0
+DLCN gece egzersiz,P5_8,MMRPhys B'den ince ayar (7. tur),0.45577958891414094,100.0
+DLCN gece egzersiz,P5_8,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.45577958891414094,100.0
+DLCN gece dinlenme,P60_1,MMRPhys B'den ince ayar (7. tur),0.4041547953850722,100.0
+DLCN gece dinlenme,P60_1,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.4041547953850722,100.0
+DLCN gece dinlenme,P60_2,MMRPhys B'den ince ayar (7. tur),0.3287395419999262,100.0
+DLCN gece dinlenme,P60_2,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.3287395419999262,100.0
+DLCN gece dinlenme,P60_3,MMRPhys B'den ince ayar (7. tur),1.92976916345023,95.23809523809523
+DLCN gece dinlenme,P60_3,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.6651052789710257,100.0
+DLCN gece dinlenme,P60_4,MMRPhys B'den ince ayar (7. tur),0.7656497250849386,100.0
+DLCN gece dinlenme,P60_4,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.7713954743302426,100.0
+DLCN gece egzersiz,P60_5,MMRPhys B'den ince ayar (7. tur),0.2260201648856273,100.0
+DLCN gece egzersiz,P60_5,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.2260201648856273,100.0
+DLCN gece egzersiz,P60_6,MMRPhys B'den ince ayar (7. tur),0.31838967554230296,100.0
+DLCN gece egzersiz,P60_6,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.31838967554230296,100.0
+DLCN gece egzersiz,P60_7,MMRPhys B'den ince ayar (7. tur),5.797501017606784,76.19047619047619
+DLCN gece egzersiz,P60_7,MMRPhys B'den ince ayar (7. tur)+Viterbi,5.167406662138452,71.42857142857143
+DLCN gece egzersiz,P60_8,MMRPhys B'den ince ayar (7. tur),0.8887035921080568,100.0
+DLCN gece egzersiz,P60_8,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.8887035921080568,100.0
+DLCN gece dinlenme,P65_1,MMRPhys B'den ince ayar (7. tur),0.2708799763212005,100.0
+DLCN gece dinlenme,P65_1,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.2708799763212005,100.0
+DLCN gece dinlenme,P65_2,MMRPhys B'den ince ayar (7. tur),1.1677941699213201,95.23809523809523
+DLCN gece dinlenme,P65_2,MMRPhys B'den ince ayar (7. tur)+Viterbi,1.7673200586705342,90.47619047619048
+DLCN gece dinlenme,P65_3,MMRPhys B'den ince ayar (7. tur),2.5789426377538445,85.71428571428571
+DLCN gece dinlenme,P65_3,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.8082957443248192,100.0
+DLCN gece dinlenme,P65_4,MMRPhys B'den ince ayar (7. tur),2.4852278223916064,85.71428571428571
+DLCN gece dinlenme,P65_4,MMRPhys B'den ince ayar (7. tur)+Viterbi,1.0546339227523962,100.0
+DLCN gece egzersiz,P65_5,MMRPhys B'den ince ayar (7. tur),0.7359833121311722,100.0
+DLCN gece egzersiz,P65_5,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.7359833121311722,100.0
+DLCN gece egzersiz,P65_6,MMRPhys B'den ince ayar (7. tur),0.5454923654567313,100.0
+DLCN gece egzersiz,P65_6,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.5454923654567313,100.0
+DLCN gece egzersiz,P65_7,MMRPhys B'den ince ayar (7. tur),0.8901674476093595,100.0
+DLCN gece egzersiz,P65_7,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.8901674476093595,100.0
+DLCN gece egzersiz,P65_8,MMRPhys B'den ince ayar (7. tur),12.798951244577758,71.42857142857143
+DLCN gece egzersiz,P65_8,MMRPhys B'den ince ayar (7. tur)+Viterbi,1.1785163328234955,100.0
+DLCN gece dinlenme,P70_1,MMRPhys B'den ince ayar (7. tur),0.7249834669941619,100.0
+DLCN gece dinlenme,P70_1,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.7249834669941619,100.0
+DLCN gece dinlenme,P70_2,MMRPhys B'den ince ayar (7. tur),0.6850572735580646,100.0
+DLCN gece dinlenme,P70_2,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.6850572735580646,100.0
+DLCN gece dinlenme,P70_3,MMRPhys B'den ince ayar (7. tur),1.2708224700594346,100.0
+DLCN gece dinlenme,P70_3,MMRPhys B'den ince ayar (7. tur)+Viterbi,1.2708224700594346,100.0
+DLCN gece dinlenme,P70_4,MMRPhys B'den ince ayar (7. tur),0.7829000240599088,100.0
+DLCN gece dinlenme,P70_4,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.7829000240599088,100.0
+DLCN gece egzersiz,P70_5,MMRPhys B'den ince ayar (7. tur),0.5117986051352025,100.0
+DLCN gece egzersiz,P70_5,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.5117986051352025,100.0
+DLCN gece egzersiz,P70_6,MMRPhys B'den ince ayar (7. tur),1.042480035674526,100.0
+DLCN gece egzersiz,P70_6,MMRPhys B'den ince ayar (7. tur)+Viterbi,1.042480035674526,100.0
+DLCN gece egzersiz,P70_7,MMRPhys B'den ince ayar (7. tur),0.40237519633548674,100.0
+DLCN gece egzersiz,P70_7,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.40237519633548674,100.0
+DLCN gece egzersiz,P70_8,MMRPhys B'den ince ayar (7. tur),26.235076488185207,23.809523809523807
+DLCN gece egzersiz,P70_8,MMRPhys B'den ince ayar (7. tur)+Viterbi,9.079359137235647,52.38095238095239
+DLCN gece dinlenme,P75_1,MMRPhys B'den ince ayar (7. tur),0.5399190557371123,100.0
+DLCN gece dinlenme,P75_1,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.5399190557371123,100.0
+DLCN gece dinlenme,P75_2,MMRPhys B'den ince ayar (7. tur),0.5416260554800076,100.0
+DLCN gece dinlenme,P75_2,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.5416260554800076,100.0
+DLCN gece dinlenme,P75_3,MMRPhys B'den ince ayar (7. tur),0.5258395519319399,100.0
+DLCN gece dinlenme,P75_3,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.5258395519319399,100.0
+DLCN gece dinlenme,P75_4,MMRPhys B'den ince ayar (7. tur),2.6383079828029032,80.95238095238095
+DLCN gece dinlenme,P75_4,MMRPhys B'den ince ayar (7. tur)+Viterbi,2.725564246354616,80.95238095238095
+DLCN gece egzersiz,P75_5,MMRPhys B'den ince ayar (7. tur),0.6824724327684276,100.0
+DLCN gece egzersiz,P75_5,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.6824724327684276,100.0
+DLCN gece egzersiz,P75_6,MMRPhys B'den ince ayar (7. tur),0.5403545463203463,100.0
+DLCN gece egzersiz,P75_6,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.5403545463203463,100.0
+DLCN gece egzersiz,P75_7,MMRPhys B'den ince ayar (7. tur),0.6951745471309668,100.0
+DLCN gece egzersiz,P75_7,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.6951745471309668,100.0
+DLCN gece egzersiz,P75_8,MMRPhys B'den ince ayar (7. tur),6.316315212041978,71.42857142857143
+DLCN gece egzersiz,P75_8,MMRPhys B'den ince ayar (7. tur)+Viterbi,4.303671068972639,80.95238095238095
+DLCN gece dinlenme,P80_1,MMRPhys B'den ince ayar (7. tur),0.5304506811617914,100.0
+DLCN gece dinlenme,P80_1,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.5304506811617914,100.0
+DLCN gece dinlenme,P80_2,MMRPhys B'den ince ayar (7. tur),0.4776225185154588,100.0
+DLCN gece dinlenme,P80_2,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.4776225185154588,100.0
+DLCN gece dinlenme,P80_3,MMRPhys B'den ince ayar (7. tur),2.2567834771993605,90.47619047619048
+DLCN gece dinlenme,P80_3,MMRPhys B'den ince ayar (7. tur)+Viterbi,1.1723519067194248,100.0
+DLCN gece dinlenme,P80_4,MMRPhys B'den ince ayar (7. tur),1.1873692622875995,100.0
+DLCN gece dinlenme,P80_4,MMRPhys B'den ince ayar (7. tur)+Viterbi,1.1873692622875995,100.0
+DLCN gece egzersiz,P80_5,MMRPhys B'den ince ayar (7. tur),0.4524683052177311,100.0
+DLCN gece egzersiz,P80_5,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.4524683052177311,100.0
+DLCN gece egzersiz,P80_6,MMRPhys B'den ince ayar (7. tur),0.474492475267687,100.0
+DLCN gece egzersiz,P80_6,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.474492475267687,100.0
+DLCN gece egzersiz,P80_7,MMRPhys B'den ince ayar (7. tur),3.158670851881625,80.95238095238095
+DLCN gece egzersiz,P80_7,MMRPhys B'den ince ayar (7. tur)+Viterbi,1.3458161818606995,100.0
+DLCN gece egzersiz,P80_8,MMRPhys B'den ince ayar (7. tur),2.990481087041732,80.95238095238095
+DLCN gece egzersiz,P80_8,MMRPhys B'den ince ayar (7. tur)+Viterbi,1.0103790622701088,100.0
+DLCN gece dinlenme,P85_1,MMRPhys B'den ince ayar (7. tur),0.6805102624740125,100.0
+DLCN gece dinlenme,P85_1,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.6922320674013769,100.0
+DLCN gece dinlenme,P85_2,MMRPhys B'den ince ayar (7. tur),0.8979157107834842,100.0
+DLCN gece dinlenme,P85_2,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.9004926241255462,100.0
+DLCN gece dinlenme,P85_3,MMRPhys B'den ince ayar (7. tur),2.3203289285546607,90.47619047619048
+DLCN gece dinlenme,P85_3,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.5132491909185216,100.0
+DLCN gece dinlenme,P85_4,MMRPhys B'den ince ayar (7. tur),12.862487173147004,61.904761904761905
+DLCN gece dinlenme,P85_4,MMRPhys B'den ince ayar (7. tur)+Viterbi,3.046662637102478,76.19047619047619
+DLCN gece egzersiz,P85_5,MMRPhys B'den ince ayar (7. tur),0.6875603158880969,100.0
+DLCN gece egzersiz,P85_5,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.6875603158880969,100.0
+DLCN gece egzersiz,P85_6,MMRPhys B'den ince ayar (7. tur),3.8701288801145046,80.95238095238095
+DLCN gece egzersiz,P85_6,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.34354991934193346,100.0
+DLCN gece egzersiz,P85_7,MMRPhys B'den ince ayar (7. tur),2.0935108559286832,95.23809523809523
+DLCN gece egzersiz,P85_7,MMRPhys B'den ince ayar (7. tur)+Viterbi,1.0135179606636369,100.0
+DLCN gece egzersiz,P85_8,MMRPhys B'den ince ayar (7. tur),33.63911016460296,33.33333333333333
+DLCN gece egzersiz,P85_8,MMRPhys B'den ince ayar (7. tur)+Viterbi,31.77059845795181,0.0
+DLCN gece dinlenme,P90_1,MMRPhys B'den ince ayar (7. tur),1.0063617156745632,100.0
+DLCN gece dinlenme,P90_1,MMRPhys B'den ince ayar (7. tur)+Viterbi,1.0063617156745632,100.0
+DLCN gece dinlenme,P90_2,MMRPhys B'den ince ayar (7. tur),0.9486926737186103,95.23809523809523
+DLCN gece dinlenme,P90_2,MMRPhys B'den ince ayar (7. tur)+Viterbi,1.0462162010975025,95.23809523809523
+DLCN gece dinlenme,P90_3,MMRPhys B'den ince ayar (7. tur),0.7717468966475707,100.0
+DLCN gece dinlenme,P90_3,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.7717468966475707,100.0
+DLCN gece dinlenme,P90_4,MMRPhys B'den ince ayar (7. tur),2.9475555085713796,85.71428571428571
+DLCN gece dinlenme,P90_4,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.7927917132233964,100.0
+DLCN gece egzersiz,P90_5,MMRPhys B'den ince ayar (7. tur),0.7474498842661901,100.0
+DLCN gece egzersiz,P90_5,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.7474498842661901,100.0
+DLCN gece egzersiz,P90_6,MMRPhys B'den ince ayar (7. tur),0.7852012062865116,100.0
+DLCN gece egzersiz,P90_6,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.8069956833357457,100.0
+DLCN gece egzersiz,P90_7,MMRPhys B'den ince ayar (7. tur),0.44860564065875036,100.0
+DLCN gece egzersiz,P90_7,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.44860564065875036,100.0
+DLCN gece egzersiz,P90_8,MMRPhys B'den ince ayar (7. tur),0.659271744531232,100.0
+DLCN gece egzersiz,P90_8,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.659271744531232,100.0
+DLCN gece dinlenme,P95_1,MMRPhys B'den ince ayar (7. tur),2.7003653759821264,85.71428571428571
+DLCN gece dinlenme,P95_1,MMRPhys B'den ince ayar (7. tur)+Viterbi,1.6748216254066288,90.47619047619048
+DLCN gece dinlenme,P95_2,MMRPhys B'den ince ayar (7. tur),0.4916884482921078,100.0
+DLCN gece dinlenme,P95_2,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.4916884482921078,100.0
+DLCN gece dinlenme,P95_3,MMRPhys B'den ince ayar (7. tur),1.9365507523866288,100.0
+DLCN gece dinlenme,P95_3,MMRPhys B'den ince ayar (7. tur)+Viterbi,1.9349686896946288,100.0
+DLCN gece dinlenme,P95_4,MMRPhys B'den ince ayar (7. tur),1.1824568323610725,100.0
+DLCN gece dinlenme,P95_4,MMRPhys B'den ince ayar (7. tur)+Viterbi,1.1824568323610725,100.0
+DLCN gece egzersiz,P95_5,MMRPhys B'den ince ayar (7. tur),1.0995211278424595,95.23809523809523
+DLCN gece egzersiz,P95_5,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.7552372893446482,100.0
+DLCN gece egzersiz,P95_6,MMRPhys B'den ince ayar (7. tur),0.9514850446591199,95.23809523809523
+DLCN gece egzersiz,P95_6,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.6441197156405517,100.0
+DLCN gece egzersiz,P95_7,MMRPhys B'den ince ayar (7. tur),0.8660474236812525,100.0
+DLCN gece egzersiz,P95_7,MMRPhys B'den ince ayar (7. tur)+Viterbi,0.8693483041366011,100.0
+DLCN gece egzersiz,P95_8,MMRPhys B'den ince ayar (7. tur),4.67984737497586,80.95238095238095
+DLCN gece egzersiz,P95_8,MMRPhys B'den ince ayar (7. tur)+Viterbi,3.637800417267914,80.95238095238095
+DLCN gece dinlenme,P10_1,MMRPhys B'den ince ayar (7. tur) (son epoch),0.5317380944863173,100.0
+DLCN gece dinlenme,P10_1,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.5355070587728837,100.0
+DLCN gece dinlenme,P10_2,MMRPhys B'den ince ayar (7. tur) (son epoch),0.4499412118695303,100.0
+DLCN gece dinlenme,P10_2,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.4499412118695303,100.0
+DLCN gece dinlenme,P10_3,MMRPhys B'den ince ayar (7. tur) (son epoch),1.1512765374540006,100.0
+DLCN gece dinlenme,P10_3,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,1.1316322541463135,100.0
+DLCN gece dinlenme,P10_4,MMRPhys B'den ince ayar (7. tur) (son epoch),0.7486715017318529,100.0
+DLCN gece dinlenme,P10_4,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.7486715017318529,100.0
+DLCN gece egzersiz,P10_5,MMRPhys B'den ince ayar (7. tur) (son epoch),0.7321820574363539,100.0
+DLCN gece egzersiz,P10_5,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.6520980109683775,100.0
+DLCN gece egzersiz,P10_6,MMRPhys B'den ince ayar (7. tur) (son epoch),0.8445670692400095,100.0
+DLCN gece egzersiz,P10_6,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.8423930837653464,100.0
+DLCN gece egzersiz,P10_7,MMRPhys B'den ince ayar (7. tur) (son epoch),0.6730969557348853,100.0
+DLCN gece egzersiz,P10_7,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.6790782113368727,100.0
+DLCN gece egzersiz,P10_8,MMRPhys B'den ince ayar (7. tur) (son epoch),0.4746253214428381,100.0
+DLCN gece egzersiz,P10_8,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.4746253214428381,100.0
+DLCN gece dinlenme,P15_1,MMRPhys B'den ince ayar (7. tur) (son epoch),0.8752358413816902,100.0
+DLCN gece dinlenme,P15_1,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.8752358413816902,100.0
+DLCN gece dinlenme,P15_2,MMRPhys B'den ince ayar (7. tur) (son epoch),0.6938352050029382,100.0
+DLCN gece dinlenme,P15_2,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.6938352050029382,100.0
+DLCN gece dinlenme,P15_3,MMRPhys B'den ince ayar (7. tur) (son epoch),5.001114785121275,85.71428571428571
+DLCN gece dinlenme,P15_3,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,1.6795352753002946,100.0
+DLCN gece dinlenme,P15_4,MMRPhys B'den ince ayar (7. tur) (son epoch),1.6807548533268486,90.47619047619048
+DLCN gece dinlenme,P15_4,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,1.6492226127000944,95.23809523809523
+DLCN gece egzersiz,P15_5,MMRPhys B'den ince ayar (7. tur) (son epoch),2.0580515465788745,90.47619047619048
+DLCN gece egzersiz,P15_5,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,2.6027920706039844,85.71428571428571
+DLCN gece egzersiz,P15_6,MMRPhys B'den ince ayar (7. tur) (son epoch),0.9460264054358603,100.0
+DLCN gece egzersiz,P15_6,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,1.7059538660930367,95.23809523809523
+DLCN gece egzersiz,P15_7,MMRPhys B'den ince ayar (7. tur) (son epoch),6.927393501201054,71.42857142857143
+DLCN gece egzersiz,P15_7,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,3.572070087919331,85.71428571428571
+DLCN gece egzersiz,P15_8,MMRPhys B'den ince ayar (7. tur) (son epoch),9.821613328781886,66.66666666666666
+DLCN gece egzersiz,P15_8,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.9546811208036023,100.0
+DLCN gece dinlenme,P20_1,MMRPhys B'den ince ayar (7. tur) (son epoch),1.7192812996625961,100.0
+DLCN gece dinlenme,P20_1,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,1.7192812996625961,100.0
+DLCN gece dinlenme,P20_2,MMRPhys B'den ince ayar (7. tur) (son epoch),0.6103838715446299,100.0
+DLCN gece dinlenme,P20_2,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.6103838715446299,100.0
+DLCN gece dinlenme,P20_3,MMRPhys B'den ince ayar (7. tur) (son epoch),7.512395048391787,52.38095238095239
+DLCN gece dinlenme,P20_3,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,3.1807762129858865,71.42857142857143
+DLCN gece dinlenme,P20_4,MMRPhys B'den ince ayar (7. tur) (son epoch),2.689629824416463,90.47619047619048
+DLCN gece dinlenme,P20_4,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,1.123838222436839,100.0
+DLCN gece egzersiz,P20_5,MMRPhys B'den ince ayar (7. tur) (son epoch),1.1437324755749771,100.0
+DLCN gece egzersiz,P20_5,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,1.132523083346165,100.0
+DLCN gece egzersiz,P20_6,MMRPhys B'den ince ayar (7. tur) (son epoch),0.516402879756065,100.0
+DLCN gece egzersiz,P20_6,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.5276476237982342,100.0
+DLCN gece egzersiz,P20_7,MMRPhys B'den ince ayar (7. tur) (son epoch),0.7899492870690934,100.0
+DLCN gece egzersiz,P20_7,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.7461541014824185,100.0
+DLCN gece egzersiz,P20_8,MMRPhys B'den ince ayar (7. tur) (son epoch),10.871077392816805,61.904761904761905
+DLCN gece egzersiz,P20_8,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,1.9526361580099363,95.23809523809523
+DLCN gece dinlenme,P25_1,MMRPhys B'den ince ayar (7. tur) (son epoch),0.31131769826964795,100.0
+DLCN gece dinlenme,P25_1,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.31131769826964795,100.0
+DLCN gece dinlenme,P25_2,MMRPhys B'den ince ayar (7. tur) (son epoch),0.39580180176534374,100.0
+DLCN gece dinlenme,P25_2,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.39580180176534374,100.0
+DLCN gece dinlenme,P25_3,MMRPhys B'den ince ayar (7. tur) (son epoch),0.6513965844997811,100.0
+DLCN gece dinlenme,P25_3,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.6513965844997811,100.0
+DLCN gece dinlenme,P25_4,MMRPhys B'den ince ayar (7. tur) (son epoch),0.6820667886709589,100.0
+DLCN gece dinlenme,P25_4,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.6820667886709589,100.0
+DLCN gece egzersiz,P25_5,MMRPhys B'den ince ayar (7. tur) (son epoch),0.5161011786397675,100.0
+DLCN gece egzersiz,P25_5,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.5161011786397675,100.0
+DLCN gece egzersiz,P25_6,MMRPhys B'den ince ayar (7. tur) (son epoch),0.5398516217987511,100.0
+DLCN gece egzersiz,P25_6,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.5398516217987511,100.0
+DLCN gece egzersiz,P25_7,MMRPhys B'den ince ayar (7. tur) (son epoch),4.169338269954321,85.71428571428571
+DLCN gece egzersiz,P25_7,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.7853876109709047,100.0
+DLCN gece egzersiz,P25_8,MMRPhys B'den ince ayar (7. tur) (son epoch),7.4899000098340265,76.19047619047619
+DLCN gece egzersiz,P25_8,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,2.433813466081478,80.95238095238095
+DLCN gece dinlenme,P30_1,MMRPhys B'den ince ayar (7. tur) (son epoch),0.3912585720497909,100.0
+DLCN gece dinlenme,P30_1,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.3912585720497909,100.0
+DLCN gece dinlenme,P30_2,MMRPhys B'den ince ayar (7. tur) (son epoch),0.30462900815022714,100.0
+DLCN gece dinlenme,P30_2,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.30462900815022714,100.0
+DLCN gece dinlenme,P30_3,MMRPhys B'den ince ayar (7. tur) (son epoch),0.6384185776625195,100.0
+DLCN gece dinlenme,P30_3,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.6384185776625195,100.0
+DLCN gece dinlenme,P30_4,MMRPhys B'den ince ayar (7. tur) (son epoch),0.5839860875779563,100.0
+DLCN gece dinlenme,P30_4,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.5839860875779563,100.0
+DLCN gece egzersiz,P30_5,MMRPhys B'den ince ayar (7. tur) (son epoch),0.3592196762247573,100.0
+DLCN gece egzersiz,P30_5,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.3592196762247573,100.0
+DLCN gece egzersiz,P30_6,MMRPhys B'den ince ayar (7. tur) (son epoch),0.5729553269055375,100.0
+DLCN gece egzersiz,P30_6,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.5729553269055375,100.0
+DLCN gece egzersiz,P30_7,MMRPhys B'den ince ayar (7. tur) (son epoch),0.7073202301447507,100.0
+DLCN gece egzersiz,P30_7,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.7073202301447507,100.0
+DLCN gece egzersiz,P30_8,MMRPhys B'den ince ayar (7. tur) (son epoch),0.5456741190046633,100.0
+DLCN gece egzersiz,P30_8,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.5456741190046633,100.0
+DLCN gece dinlenme,P35_1,MMRPhys B'den ince ayar (7. tur) (son epoch),0.506838566019932,100.0
+DLCN gece dinlenme,P35_1,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.5264117916289133,100.0
+DLCN gece dinlenme,P35_2,MMRPhys B'den ince ayar (7. tur) (son epoch),0.4741222349810122,100.0
+DLCN gece dinlenme,P35_2,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.48134062573377484,100.0
+DLCN gece dinlenme,P35_3,MMRPhys B'den ince ayar (7. tur) (son epoch),0.691998168959265,100.0
+DLCN gece dinlenme,P35_3,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.691998168959265,100.0
+DLCN gece dinlenme,P35_4,MMRPhys B'den ince ayar (7. tur) (son epoch),12.334445083285651,57.14285714285714
+DLCN gece dinlenme,P35_4,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,1.2227666622941884,100.0
+DLCN gece egzersiz,P35_5,MMRPhys B'den ince ayar (7. tur) (son epoch),1.0345529180398467,95.23809523809523
+DLCN gece egzersiz,P35_5,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.5146128456543584,100.0
+DLCN gece egzersiz,P35_6,MMRPhys B'den ince ayar (7. tur) (son epoch),0.6892053647045338,100.0
+DLCN gece egzersiz,P35_6,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.6892053647045338,100.0
+DLCN gece egzersiz,P35_7,MMRPhys B'den ince ayar (7. tur) (son epoch),1.0174976085539398,100.0
+DLCN gece egzersiz,P35_7,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,1.0174976085539398,100.0
+DLCN gece egzersiz,P35_8,MMRPhys B'den ince ayar (7. tur) (son epoch),10.339868809013282,52.38095238095239
+DLCN gece egzersiz,P35_8,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,5.159426321040155,66.66666666666666
+DLCN gece dinlenme,P40_1,MMRPhys B'den ince ayar (7. tur) (son epoch),0.5161581807599047,100.0
+DLCN gece dinlenme,P40_1,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.5161581807599047,100.0
+DLCN gece dinlenme,P40_2,MMRPhys B'den ince ayar (7. tur) (son epoch),0.3088677636489296,100.0
+DLCN gece dinlenme,P40_2,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.3088677636489296,100.0
+DLCN gece dinlenme,P40_3,MMRPhys B'den ince ayar (7. tur) (son epoch),0.811437521909808,100.0
+DLCN gece dinlenme,P40_3,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.811437521909808,100.0
+DLCN gece dinlenme,P40_4,MMRPhys B'den ince ayar (7. tur) (son epoch),1.418203154894154,95.23809523809523
+DLCN gece dinlenme,P40_4,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.978842272825153,100.0
+DLCN gece egzersiz,P40_5,MMRPhys B'den ince ayar (7. tur) (son epoch),0.5520722156652381,100.0
+DLCN gece egzersiz,P40_5,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.5440055091296804,100.0
+DLCN gece egzersiz,P40_6,MMRPhys B'den ince ayar (7. tur) (son epoch),0.4394948928677409,100.0
+DLCN gece egzersiz,P40_6,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.4378473112647138,100.0
+DLCN gece egzersiz,P40_7,MMRPhys B'den ince ayar (7. tur) (son epoch),0.7179605136888275,100.0
+DLCN gece egzersiz,P40_7,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.6148373129486393,100.0
+DLCN gece egzersiz,P40_8,MMRPhys B'den ince ayar (7. tur) (son epoch),5.049510341069405,61.904761904761905
+DLCN gece egzersiz,P40_8,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,5.334763665728654,57.14285714285714
+DLCN gece dinlenme,P45_1,MMRPhys B'den ince ayar (7. tur) (son epoch),0.6749744871512408,100.0
+DLCN gece dinlenme,P45_1,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.6749744871512408,100.0
+DLCN gece dinlenme,P45_2,MMRPhys B'den ince ayar (7. tur) (son epoch),1.9832113268390477,95.23809523809523
+DLCN gece dinlenme,P45_2,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,1.3961157837415241,95.23809523809523
+DLCN gece dinlenme,P45_3,MMRPhys B'den ince ayar (7. tur) (son epoch),2.263827887239493,85.71428571428571
+DLCN gece dinlenme,P45_3,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,2.787394185080803,80.95238095238095
+DLCN gece dinlenme,P45_4,MMRPhys B'den ince ayar (7. tur) (son epoch),2.95016676966677,95.23809523809523
+DLCN gece dinlenme,P45_4,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.641156237802983,100.0
+DLCN gece egzersiz,P45_5,MMRPhys B'den ince ayar (7. tur) (son epoch),3.1586075250067065,80.95238095238095
+DLCN gece egzersiz,P45_5,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,3.9567392344953127,76.19047619047619
+DLCN gece egzersiz,P45_6,MMRPhys B'den ince ayar (7. tur) (son epoch),1.8195199407914007,95.23809523809523
+DLCN gece egzersiz,P45_6,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,2.9471754702474633,80.95238095238095
+DLCN gece egzersiz,P45_7,MMRPhys B'den ince ayar (7. tur) (son epoch),1.1624692565444839,95.23809523809523
+DLCN gece egzersiz,P45_7,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.5886252984611916,100.0
+DLCN gece egzersiz,P45_8,MMRPhys B'den ince ayar (7. tur) (son epoch),0.8907193296561001,100.0
+DLCN gece egzersiz,P45_8,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.8907193296561001,100.0
+DLCN gece dinlenme,P50_1,MMRPhys B'den ince ayar (7. tur) (son epoch),0.342247045574223,100.0
+DLCN gece dinlenme,P50_1,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.342247045574223,100.0
+DLCN gece dinlenme,P50_2,MMRPhys B'den ince ayar (7. tur) (son epoch),0.468189581374865,100.0
+DLCN gece dinlenme,P50_2,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.468189581374865,100.0
+DLCN gece dinlenme,P50_3,MMRPhys B'den ince ayar (7. tur) (son epoch),2.9355669623151317,85.71428571428571
+DLCN gece dinlenme,P50_3,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,1.0185385098542201,100.0
+DLCN gece dinlenme,P50_4,MMRPhys B'den ince ayar (7. tur) (son epoch),15.010317351067059,71.42857142857143
+DLCN gece dinlenme,P50_4,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,1.9515017258941592,95.23809523809523
+DLCN gece egzersiz,P50_5,MMRPhys B'den ince ayar (7. tur) (son epoch),0.8669013462881865,100.0
+DLCN gece egzersiz,P50_5,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.8572358670546075,100.0
+DLCN gece egzersiz,P50_6,MMRPhys B'den ince ayar (7. tur) (son epoch),0.8444101941419995,100.0
+DLCN gece egzersiz,P50_6,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.8444101941419995,100.0
+DLCN gece egzersiz,P50_7,MMRPhys B'den ince ayar (7. tur) (son epoch),3.0314401488800886,85.71428571428571
+DLCN gece egzersiz,P50_7,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.47109179473628704,100.0
+DLCN gece egzersiz,P50_8,MMRPhys B'den ince ayar (7. tur) (son epoch),9.746646170530804,71.42857142857143
+DLCN gece egzersiz,P50_8,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,2.833854380003378,80.95238095238095
+DLCN gece dinlenme,P55_1,MMRPhys B'den ince ayar (7. tur) (son epoch),0.21534366620770434,100.0
+DLCN gece dinlenme,P55_1,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.21534366620770434,100.0
+DLCN gece dinlenme,P55_2,MMRPhys B'den ince ayar (7. tur) (son epoch),0.21583611318034052,100.0
+DLCN gece dinlenme,P55_2,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.21583611318034052,100.0
+DLCN gece dinlenme,P55_3,MMRPhys B'den ince ayar (7. tur) (son epoch),0.32871986020412336,100.0
+DLCN gece dinlenme,P55_3,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.32871986020412336,100.0
+DLCN gece dinlenme,P55_4,MMRPhys B'den ince ayar (7. tur) (son epoch),0.39776447370361656,100.0
+DLCN gece dinlenme,P55_4,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.39776447370361656,100.0
+DLCN gece egzersiz,P55_5,MMRPhys B'den ince ayar (7. tur) (son epoch),0.4549526959281768,100.0
+DLCN gece egzersiz,P55_5,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.4549526959281768,100.0
+DLCN gece egzersiz,P55_6,MMRPhys B'den ince ayar (7. tur) (son epoch),0.2520423796487458,100.0
+DLCN gece egzersiz,P55_6,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.2520423796487458,100.0
+DLCN gece egzersiz,P55_7,MMRPhys B'den ince ayar (7. tur) (son epoch),0.528697607468017,100.0
+DLCN gece egzersiz,P55_7,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.528697607468017,100.0
+DLCN gece egzersiz,P55_8,MMRPhys B'den ince ayar (7. tur) (son epoch),0.31089515654083144,100.0
+DLCN gece egzersiz,P55_8,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.31089515654083144,100.0
+DLCN gece dinlenme,P5_1,MMRPhys B'den ince ayar (7. tur) (son epoch),0.4395898796158384,100.0
+DLCN gece dinlenme,P5_1,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.4395898796158384,100.0
+DLCN gece dinlenme,P5_2,MMRPhys B'den ince ayar (7. tur) (son epoch),0.3261904311752583,100.0
+DLCN gece dinlenme,P5_2,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.3261904311752583,100.0
+DLCN gece dinlenme,P5_3,MMRPhys B'den ince ayar (7. tur) (son epoch),0.7064769226108576,100.0
+DLCN gece dinlenme,P5_3,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.7006293149801669,100.0
+DLCN gece dinlenme,P5_4,MMRPhys B'den ince ayar (7. tur) (son epoch),0.3448882310855244,100.0
+DLCN gece dinlenme,P5_4,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.3448882310855244,100.0
+DLCN gece egzersiz,P5_5,MMRPhys B'den ince ayar (7. tur) (son epoch),0.5751493779931314,100.0
+DLCN gece egzersiz,P5_5,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.5742553025844418,100.0
+DLCN gece egzersiz,P5_6,MMRPhys B'den ince ayar (7. tur) (son epoch),0.5592408042045295,100.0
+DLCN gece egzersiz,P5_6,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.5592408042045295,100.0
+DLCN gece egzersiz,P5_7,MMRPhys B'den ince ayar (7. tur) (son epoch),1.0090996073529435,100.0
+DLCN gece egzersiz,P5_7,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,1.0090996073529435,100.0
+DLCN gece egzersiz,P5_8,MMRPhys B'den ince ayar (7. tur) (son epoch),0.4020362184784127,100.0
+DLCN gece egzersiz,P5_8,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.4020362184784127,100.0
+DLCN gece dinlenme,P60_1,MMRPhys B'den ince ayar (7. tur) (son epoch),0.3517109740443279,100.0
+DLCN gece dinlenme,P60_1,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.3517109740443279,100.0
+DLCN gece dinlenme,P60_2,MMRPhys B'den ince ayar (7. tur) (son epoch),0.3453727783546989,100.0
+DLCN gece dinlenme,P60_2,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.3453727783546989,100.0
+DLCN gece dinlenme,P60_3,MMRPhys B'den ince ayar (7. tur) (son epoch),4.2903991962949775,85.71428571428571
+DLCN gece dinlenme,P60_3,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.7518312122844909,100.0
+DLCN gece dinlenme,P60_4,MMRPhys B'den ince ayar (7. tur) (son epoch),0.786220465679834,100.0
+DLCN gece dinlenme,P60_4,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.786220465679834,100.0
+DLCN gece egzersiz,P60_5,MMRPhys B'den ince ayar (7. tur) (son epoch),0.2154523689553732,100.0
+DLCN gece egzersiz,P60_5,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.2154523689553732,100.0
+DLCN gece egzersiz,P60_6,MMRPhys B'den ince ayar (7. tur) (son epoch),0.35304543802362176,100.0
+DLCN gece egzersiz,P60_6,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.35304543802362176,100.0
+DLCN gece egzersiz,P60_7,MMRPhys B'den ince ayar (7. tur) (son epoch),6.356660418494084,76.19047619047619
+DLCN gece egzersiz,P60_7,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,5.299576819680776,71.42857142857143
+DLCN gece egzersiz,P60_8,MMRPhys B'den ince ayar (7. tur) (son epoch),0.9775562836650177,100.0
+DLCN gece egzersiz,P60_8,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.9890613212400574,100.0
+DLCN gece dinlenme,P65_1,MMRPhys B'den ince ayar (7. tur) (son epoch),0.364820523781948,100.0
+DLCN gece dinlenme,P65_1,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.364820523781948,100.0
+DLCN gece dinlenme,P65_2,MMRPhys B'den ince ayar (7. tur) (son epoch),1.40122835609219,90.47619047619048
+DLCN gece dinlenme,P65_2,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,1.8279494039951318,85.71428571428571
+DLCN gece dinlenme,P65_3,MMRPhys B'den ince ayar (7. tur) (son epoch),3.5378612122021527,80.95238095238095
+DLCN gece dinlenme,P65_3,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.8073789015679803,100.0
+DLCN gece dinlenme,P65_4,MMRPhys B'den ince ayar (7. tur) (son epoch),4.819197167361137,61.904761904761905
+DLCN gece dinlenme,P65_4,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.840914760088817,100.0
+DLCN gece egzersiz,P65_5,MMRPhys B'den ince ayar (7. tur) (son epoch),0.7147393328132449,100.0
+DLCN gece egzersiz,P65_5,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.7147393328132449,100.0
+DLCN gece egzersiz,P65_6,MMRPhys B'den ince ayar (7. tur) (son epoch),0.5477649005762233,100.0
+DLCN gece egzersiz,P65_6,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.5477649005762233,100.0
+DLCN gece egzersiz,P65_7,MMRPhys B'den ince ayar (7. tur) (son epoch),2.378542920971734,95.23809523809523
+DLCN gece egzersiz,P65_7,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.9715414821861753,100.0
+DLCN gece egzersiz,P65_8,MMRPhys B'den ince ayar (7. tur) (son epoch),13.334726407827542,66.66666666666666
+DLCN gece egzersiz,P65_8,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,1.0437526063293727,100.0
+DLCN gece dinlenme,P70_1,MMRPhys B'den ince ayar (7. tur) (son epoch),0.7414180246094466,100.0
+DLCN gece dinlenme,P70_1,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.7414180246094466,100.0
+DLCN gece dinlenme,P70_2,MMRPhys B'den ince ayar (7. tur) (son epoch),0.6679706645202185,100.0
+DLCN gece dinlenme,P70_2,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.6679706645202185,100.0
+DLCN gece dinlenme,P70_3,MMRPhys B'den ince ayar (7. tur) (son epoch),1.1649621579863223,100.0
+DLCN gece dinlenme,P70_3,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,1.1649621579863223,100.0
+DLCN gece dinlenme,P70_4,MMRPhys B'den ince ayar (7. tur) (son epoch),0.8168172511792496,100.0
+DLCN gece dinlenme,P70_4,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.8168172511792496,100.0
+DLCN gece egzersiz,P70_5,MMRPhys B'den ince ayar (7. tur) (son epoch),0.4979861478635191,100.0
+DLCN gece egzersiz,P70_5,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.4979861478635191,100.0
+DLCN gece egzersiz,P70_6,MMRPhys B'den ince ayar (7. tur) (son epoch),1.055013043753236,100.0
+DLCN gece egzersiz,P70_6,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,1.055013043753236,100.0
+DLCN gece egzersiz,P70_7,MMRPhys B'den ince ayar (7. tur) (son epoch),0.40739102175779507,100.0
+DLCN gece egzersiz,P70_7,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.40739102175779507,100.0
+DLCN gece egzersiz,P70_8,MMRPhys B'den ince ayar (7. tur) (son epoch),24.053998969809523,28.57142857142857
+DLCN gece egzersiz,P70_8,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,6.95037646458332,42.857142857142854
+DLCN gece dinlenme,P75_1,MMRPhys B'den ince ayar (7. tur) (son epoch),0.5286523157255949,100.0
+DLCN gece dinlenme,P75_1,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.5286523157255949,100.0
+DLCN gece dinlenme,P75_2,MMRPhys B'den ince ayar (7. tur) (son epoch),0.46749498103137976,100.0
+DLCN gece dinlenme,P75_2,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.46749498103137976,100.0
+DLCN gece dinlenme,P75_3,MMRPhys B'den ince ayar (7. tur) (son epoch),0.5599265232347803,100.0
+DLCN gece dinlenme,P75_3,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.5599265232347803,100.0
+DLCN gece dinlenme,P75_4,MMRPhys B'den ince ayar (7. tur) (son epoch),2.522526672401681,80.95238095238095
+DLCN gece dinlenme,P75_4,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,2.6042024977732368,80.95238095238095
+DLCN gece egzersiz,P75_5,MMRPhys B'den ince ayar (7. tur) (son epoch),0.5904062834875728,100.0
+DLCN gece egzersiz,P75_5,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.5904062834875728,100.0
+DLCN gece egzersiz,P75_6,MMRPhys B'den ince ayar (7. tur) (son epoch),0.5821453365950082,100.0
+DLCN gece egzersiz,P75_6,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.5821453365950082,100.0
+DLCN gece egzersiz,P75_7,MMRPhys B'den ince ayar (7. tur) (son epoch),0.6460416034507681,100.0
+DLCN gece egzersiz,P75_7,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.6460416034507681,100.0
+DLCN gece egzersiz,P75_8,MMRPhys B'den ince ayar (7. tur) (son epoch),4.455303800485196,80.95238095238095
+DLCN gece egzersiz,P75_8,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,4.132226248084229,80.95238095238095
+DLCN gece dinlenme,P80_1,MMRPhys B'den ince ayar (7. tur) (son epoch),0.5616719351567558,100.0
+DLCN gece dinlenme,P80_1,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.5616719351567558,100.0
+DLCN gece dinlenme,P80_2,MMRPhys B'den ince ayar (7. tur) (son epoch),0.5117861821268412,100.0
+DLCN gece dinlenme,P80_2,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.5117861821268412,100.0
+DLCN gece dinlenme,P80_3,MMRPhys B'den ince ayar (7. tur) (son epoch),1.3534446230667574,100.0
+DLCN gece dinlenme,P80_3,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,1.6053816571402848,95.23809523809523
+DLCN gece dinlenme,P80_4,MMRPhys B'den ince ayar (7. tur) (son epoch),1.318325227635167,100.0
+DLCN gece dinlenme,P80_4,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,1.3079036848369914,100.0
+DLCN gece egzersiz,P80_5,MMRPhys B'den ince ayar (7. tur) (son epoch),0.4852116417032962,100.0
+DLCN gece egzersiz,P80_5,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.4852116417032962,100.0
+DLCN gece egzersiz,P80_6,MMRPhys B'den ince ayar (7. tur) (son epoch),0.5048982381343775,100.0
+DLCN gece egzersiz,P80_6,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.5048982381343775,100.0
+DLCN gece egzersiz,P80_7,MMRPhys B'den ince ayar (7. tur) (son epoch),8.370274870997449,71.42857142857143
+DLCN gece egzersiz,P80_7,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,1.411083087861242,100.0
+DLCN gece egzersiz,P80_8,MMRPhys B'den ince ayar (7. tur) (son epoch),2.9740120262442686,80.95238095238095
+DLCN gece egzersiz,P80_8,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.9312968057804638,100.0
+DLCN gece dinlenme,P85_1,MMRPhys B'den ince ayar (7. tur) (son epoch),0.6677544564983415,100.0
+DLCN gece dinlenme,P85_1,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.6703598627918465,100.0
+DLCN gece dinlenme,P85_2,MMRPhys B'den ince ayar (7. tur) (son epoch),0.8881955275369878,100.0
+DLCN gece dinlenme,P85_2,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.8881955275369878,100.0
+DLCN gece dinlenme,P85_3,MMRPhys B'den ince ayar (7. tur) (son epoch),3.1238253928958035,90.47619047619048
+DLCN gece dinlenme,P85_3,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.6093584790730301,100.0
+DLCN gece dinlenme,P85_4,MMRPhys B'den ince ayar (7. tur) (son epoch),7.134726726838205,71.42857142857143
+DLCN gece dinlenme,P85_4,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,2.845860337793836,76.19047619047619
+DLCN gece egzersiz,P85_5,MMRPhys B'den ince ayar (7. tur) (son epoch),0.652673427415678,100.0
+DLCN gece egzersiz,P85_5,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.652673427415678,100.0
+DLCN gece egzersiz,P85_6,MMRPhys B'den ince ayar (7. tur) (son epoch),5.395919684526177,80.95238095238095
+DLCN gece egzersiz,P85_6,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.49843416820780684,100.0
+DLCN gece egzersiz,P85_7,MMRPhys B'den ince ayar (7. tur) (son epoch),6.13543822390581,85.71428571428571
+DLCN gece egzersiz,P85_7,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,1.0849181545910451,100.0
+DLCN gece egzersiz,P85_8,MMRPhys B'den ince ayar (7. tur) (son epoch),32.74455121028253,38.095238095238095
+DLCN gece egzersiz,P85_8,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,49.23515494668244,0.0
+DLCN gece dinlenme,P90_1,MMRPhys B'den ince ayar (7. tur) (son epoch),0.9822195931416042,100.0
+DLCN gece dinlenme,P90_1,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.9822195931416042,100.0
+DLCN gece dinlenme,P90_2,MMRPhys B'den ince ayar (7. tur) (son epoch),1.0132807003235458,95.23809523809523
+DLCN gece dinlenme,P90_2,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.9633974169606474,95.23809523809523
+DLCN gece dinlenme,P90_3,MMRPhys B'den ince ayar (7. tur) (son epoch),0.8312629160557722,100.0
+DLCN gece dinlenme,P90_3,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.8312629160557722,100.0
+DLCN gece dinlenme,P90_4,MMRPhys B'den ince ayar (7. tur) (son epoch),2.949130496128921,85.71428571428571
+DLCN gece dinlenme,P90_4,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,1.0203775218801754,100.0
+DLCN gece egzersiz,P90_5,MMRPhys B'den ince ayar (7. tur) (son epoch),0.7440854617579353,100.0
+DLCN gece egzersiz,P90_5,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.7440854617579353,100.0
+DLCN gece egzersiz,P90_6,MMRPhys B'den ince ayar (7. tur) (son epoch),0.8078774723768251,100.0
+DLCN gece egzersiz,P90_6,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.8226747425562938,100.0
+DLCN gece egzersiz,P90_7,MMRPhys B'den ince ayar (7. tur) (son epoch),0.44086288938617624,100.0
+DLCN gece egzersiz,P90_7,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.44086288938617624,100.0
+DLCN gece egzersiz,P90_8,MMRPhys B'den ince ayar (7. tur) (son epoch),0.722655572543234,100.0
+DLCN gece egzersiz,P90_8,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.722655572543234,100.0
+DLCN gece dinlenme,P95_1,MMRPhys B'den ince ayar (7. tur) (son epoch),2.6877087612569155,85.71428571428571
+DLCN gece dinlenme,P95_1,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,1.6901646840503919,90.47619047619048
+DLCN gece dinlenme,P95_2,MMRPhys B'den ince ayar (7. tur) (son epoch),0.5072280343668657,100.0
+DLCN gece dinlenme,P95_2,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.5072280343668657,100.0
+DLCN gece dinlenme,P95_3,MMRPhys B'den ince ayar (7. tur) (son epoch),1.7943135133560324,100.0
+DLCN gece dinlenme,P95_3,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,1.7847415770174624,100.0
+DLCN gece dinlenme,P95_4,MMRPhys B'den ince ayar (7. tur) (son epoch),1.6629701339260128,95.23809523809523
+DLCN gece dinlenme,P95_4,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,1.2874387457874223,100.0
+DLCN gece egzersiz,P95_5,MMRPhys B'den ince ayar (7. tur) (son epoch),1.0757136401458367,95.23809523809523
+DLCN gece egzersiz,P95_5,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.8743656576017564,95.23809523809523
+DLCN gece egzersiz,P95_6,MMRPhys B'den ince ayar (7. tur) (son epoch),0.8992738876975912,95.23809523809523
+DLCN gece egzersiz,P95_6,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.6298680286358114,100.0
+DLCN gece egzersiz,P95_7,MMRPhys B'den ince ayar (7. tur) (son epoch),0.8989863925998216,100.0
+DLCN gece egzersiz,P95_7,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,0.884509297718153,100.0
+DLCN gece egzersiz,P95_8,MMRPhys B'den ince ayar (7. tur) (son epoch),3.6926023989349313,85.71428571428571
+DLCN gece egzersiz,P95_8,MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi,1.2791527124547943,95.23809523809523
+DLCN gece dinlenme,P10_1,5. tur,0.9126742855864235,100.0
+DLCN gece dinlenme,P10_1,5. tur+Viterbi,0.9126742855864235,100.0
+DLCN gece dinlenme,P10_2,5. tur,2.4274569436347355,85.71428571428571
+DLCN gece dinlenme,P10_2,5. tur+Viterbi,0.6665943864925197,100.0
+DLCN gece dinlenme,P10_3,5. tur,2.683018241868817,90.47619047619048
+DLCN gece dinlenme,P10_3,5. tur+Viterbi,1.8883566861185084,90.47619047619048
+DLCN gece dinlenme,P10_4,5. tur,2.848738039883416,76.19047619047619
+DLCN gece dinlenme,P10_4,5. tur+Viterbi,2.8578797407594396,76.19047619047619
+DLCN gece egzersiz,P10_5,5. tur,3.9136037124133045,71.42857142857143
+DLCN gece egzersiz,P10_5,5. tur+Viterbi,3.51199477282338,76.19047619047619
+DLCN gece egzersiz,P10_6,5. tur,3.7357226224046642,76.19047619047619
+DLCN gece egzersiz,P10_6,5. tur+Viterbi,3.1965280963915594,76.19047619047619
+DLCN gece egzersiz,P10_7,5. tur,3.4300375649641643,95.23809523809523
+DLCN gece egzersiz,P10_7,5. tur+Viterbi,1.0923316413471622,100.0
+DLCN gece egzersiz,P10_8,5. tur,4.467626409677237,76.19047619047619
+DLCN gece egzersiz,P10_8,5. tur+Viterbi,3.5203142723990757,76.19047619047619
+DLCN gece dinlenme,P15_1,5. tur,0.981939663612124,100.0
+DLCN gece dinlenme,P15_1,5. tur+Viterbi,0.981939663612124,100.0
+DLCN gece dinlenme,P15_2,5. tur,0.9736882268656127,100.0
+DLCN gece dinlenme,P15_2,5. tur+Viterbi,0.9736882268656127,100.0
+DLCN gece dinlenme,P15_3,5. tur,18.93140352798443,38.095238095238095
+DLCN gece dinlenme,P15_3,5. tur+Viterbi,5.229611982126157,61.904761904761905
+DLCN gece dinlenme,P15_4,5. tur,12.56695513489789,52.38095238095239
+DLCN gece dinlenme,P15_4,5. tur+Viterbi,2.2271926697233044,85.71428571428571
+DLCN gece egzersiz,P15_5,5. tur,2.3728714065823717,80.95238095238095
+DLCN gece egzersiz,P15_5,5. tur+Viterbi,2.3728714065823717,80.95238095238095
+DLCN gece egzersiz,P15_6,5. tur,4.332308997946818,71.42857142857143
+DLCN gece egzersiz,P15_6,5. tur+Viterbi,4.69793271625523,66.66666666666666
+DLCN gece egzersiz,P15_7,5. tur,4.746214271195591,80.95238095238095
+DLCN gece egzersiz,P15_7,5. tur+Viterbi,5.380558074184349,80.95238095238095
+DLCN gece egzersiz,P15_8,5. tur,16.601258242029274,14.285714285714285
+DLCN gece egzersiz,P15_8,5. tur+Viterbi,13.33056032974023,33.33333333333333
+DLCN gece dinlenme,P20_1,5. tur,1.7602632036025463,100.0
+DLCN gece dinlenme,P20_1,5. tur+Viterbi,1.7602632036025463,100.0
+DLCN gece dinlenme,P20_2,5. tur,0.9917492533045821,100.0
+DLCN gece dinlenme,P20_2,5. tur+Viterbi,0.9917492533045821,100.0
+DLCN gece dinlenme,P20_3,5. tur,8.392960395612858,47.61904761904761
+DLCN gece dinlenme,P20_3,5. tur+Viterbi,9.051849489765752,33.33333333333333
+DLCN gece dinlenme,P20_4,5. tur,7.07636293861158,71.42857142857143
+DLCN gece dinlenme,P20_4,5. tur+Viterbi,0.9406840690171656,100.0
+DLCN gece egzersiz,P20_5,5. tur,4.67433370515337,85.71428571428571
+DLCN gece egzersiz,P20_5,5. tur+Viterbi,1.3108742493820988,100.0
+DLCN gece egzersiz,P20_6,5. tur,2.2004806539064132,85.71428571428571
+DLCN gece egzersiz,P20_6,5. tur+Viterbi,0.6689573200262874,100.0
+DLCN gece egzersiz,P20_7,5. tur,7.048823263484647,90.47619047619048
+DLCN gece egzersiz,P20_7,5. tur+Viterbi,0.9011258790173557,100.0
+DLCN gece egzersiz,P20_8,5. tur,23.678515169674835,23.809523809523807
+DLCN gece egzersiz,P20_8,5. tur+Viterbi,29.393072792747564,0.0
+DLCN gece dinlenme,P25_1,5. tur,2.498167580112452,85.71428571428571
+DLCN gece dinlenme,P25_1,5. tur+Viterbi,1.8753012144407595,85.71428571428571
+DLCN gece dinlenme,P25_2,5. tur,0.5890247703405564,100.0
+DLCN gece dinlenme,P25_2,5. tur+Viterbi,0.5890247703405564,100.0
+DLCN gece dinlenme,P25_3,5. tur,0.8439945726475694,100.0
+DLCN gece dinlenme,P25_3,5. tur+Viterbi,0.8439945726475694,100.0
+DLCN gece dinlenme,P25_4,5. tur,6.941514073600086,71.42857142857143
+DLCN gece dinlenme,P25_4,5. tur+Viterbi,0.7883166583152178,100.0
+DLCN gece egzersiz,P25_5,5. tur,8.65790124321689,61.904761904761905
+DLCN gece egzersiz,P25_5,5. tur+Viterbi,2.785842679732526,80.95238095238095
+DLCN gece egzersiz,P25_6,5. tur,0.53479212269488,100.0
+DLCN gece egzersiz,P25_6,5. tur+Viterbi,0.53479212269488,100.0
+DLCN gece egzersiz,P25_7,5. tur,5.488596066797688,85.71428571428571
+DLCN gece egzersiz,P25_7,5. tur+Viterbi,1.6154086346712675,100.0
+DLCN gece egzersiz,P25_8,5. tur,10.02322194896457,52.38095238095239
+DLCN gece egzersiz,P25_8,5. tur+Viterbi,3.347164776921371,71.42857142857143
+DLCN gece dinlenme,P30_1,5. tur,0.345487710626733,100.0
+DLCN gece dinlenme,P30_1,5. tur+Viterbi,0.345487710626733,100.0
+DLCN gece dinlenme,P30_2,5. tur,0.368397278131832,100.0
+DLCN gece dinlenme,P30_2,5. tur+Viterbi,0.368397278131832,100.0
+DLCN gece dinlenme,P30_3,5. tur,0.5855843413905453,100.0
+DLCN gece dinlenme,P30_3,5. tur+Viterbi,0.5855843413905453,100.0
+DLCN gece dinlenme,P30_4,5. tur,3.2394701282724387,85.71428571428571
+DLCN gece dinlenme,P30_4,5. tur+Viterbi,0.9538881713516225,100.0
+DLCN gece egzersiz,P30_5,5. tur,0.3807497378051662,100.0
+DLCN gece egzersiz,P30_5,5. tur+Viterbi,0.3807497378051662,100.0
+DLCN gece egzersiz,P30_6,5. tur,0.28972975053112293,100.0
+DLCN gece egzersiz,P30_6,5. tur+Viterbi,0.28972975053112293,100.0
+DLCN gece egzersiz,P30_7,5. tur,1.1507882505289575,100.0
+DLCN gece egzersiz,P30_7,5. tur+Viterbi,1.1114007828497996,100.0
+DLCN gece egzersiz,P30_8,5. tur,0.4904270189485739,100.0
+DLCN gece egzersiz,P30_8,5. tur+Viterbi,0.4904270189485739,100.0
+DLCN gece dinlenme,P35_1,5. tur,0.7797153779964228,100.0
+DLCN gece dinlenme,P35_1,5. tur+Viterbi,0.7922647604215036,100.0
+DLCN gece dinlenme,P35_2,5. tur,0.8661385292932684,100.0
+DLCN gece dinlenme,P35_2,5. tur+Viterbi,0.8600318056117422,100.0
+DLCN gece dinlenme,P35_3,5. tur,2.8927586633859828,80.95238095238095
+DLCN gece dinlenme,P35_3,5. tur+Viterbi,2.6936279376268835,80.95238095238095
+DLCN gece dinlenme,P35_4,5. tur,19.414296989549324,9.523809523809524
+DLCN gece dinlenme,P35_4,5. tur+Viterbi,17.621047263942195,14.285714285714285
+DLCN gece egzersiz,P35_5,5. tur,0.7289948935267833,100.0
+DLCN gece egzersiz,P35_5,5. tur+Viterbi,0.7289948935267833,100.0
+DLCN gece egzersiz,P35_6,5. tur,1.6983931228943074,100.0
+DLCN gece egzersiz,P35_6,5. tur+Viterbi,1.703221812786219,100.0
+DLCN gece egzersiz,P35_7,5. tur,8.66484275226268,66.66666666666666
+DLCN gece egzersiz,P35_7,5. tur+Viterbi,1.374652460014231,100.0
+DLCN gece egzersiz,P35_8,5. tur,25.49999689491085,42.857142857142854
+DLCN gece egzersiz,P35_8,5. tur+Viterbi,14.169552900380305,38.095238095238095
+DLCN gece dinlenme,P40_1,5. tur,0.38446115230753247,100.0
+DLCN gece dinlenme,P40_1,5. tur+Viterbi,0.38446115230753247,100.0
+DLCN gece dinlenme,P40_2,5. tur,0.5589835683230474,100.0
+DLCN gece dinlenme,P40_2,5. tur+Viterbi,0.5589835683230474,100.0
+DLCN gece dinlenme,P40_3,5. tur,0.8858515495422895,100.0
+DLCN gece dinlenme,P40_3,5. tur+Viterbi,0.8858515495422895,100.0
+DLCN gece dinlenme,P40_4,5. tur,5.0949850576531235,71.42857142857143
+DLCN gece dinlenme,P40_4,5. tur+Viterbi,1.4914784901198195,100.0
+DLCN gece egzersiz,P40_5,5. tur,0.5419175325233121,100.0
+DLCN gece egzersiz,P40_5,5. tur+Viterbi,0.5437939110835727,100.0
+DLCN gece egzersiz,P40_6,5. tur,0.7712483455219054,100.0
+DLCN gece egzersiz,P40_6,5. tur+Viterbi,0.7712483455219054,100.0
+DLCN gece egzersiz,P40_7,5. tur,2.46086119554998,85.71428571428571
+DLCN gece egzersiz,P40_7,5. tur+Viterbi,3.174955545316687,76.19047619047619
+DLCN gece egzersiz,P40_8,5. tur,10.56095891856173,52.38095238095239
+DLCN gece egzersiz,P40_8,5. tur+Viterbi,3.8485161053994537,71.42857142857143
+DLCN gece dinlenme,P45_1,5. tur,0.5976223260342692,100.0
+DLCN gece dinlenme,P45_1,5. tur+Viterbi,0.5992960992824753,100.0
+DLCN gece dinlenme,P45_2,5. tur,2.3415347011255974,90.47619047619048
+DLCN gece dinlenme,P45_2,5. tur+Viterbi,3.6324085640128265,80.95238095238095
+DLCN gece dinlenme,P45_3,5. tur,7.482175992916439,76.19047619047619
+DLCN gece dinlenme,P45_3,5. tur+Viterbi,3.0939378604213097,80.95238095238095
+DLCN gece dinlenme,P45_4,5. tur,8.48257388450048,61.904761904761905
+DLCN gece dinlenme,P45_4,5. tur+Viterbi,2.361914777502958,90.47619047619048
+DLCN gece egzersiz,P45_5,5. tur,2.0785027056993366,90.47619047619048
+DLCN gece egzersiz,P45_5,5. tur+Viterbi,3.664555047628794,76.19047619047619
+DLCN gece egzersiz,P45_6,5. tur,4.962373282435228,76.19047619047619
+DLCN gece egzersiz,P45_6,5. tur+Viterbi,5.9027300555465665,61.904761904761905
+DLCN gece egzersiz,P45_7,5. tur,8.065107062719733,76.19047619047619
+DLCN gece egzersiz,P45_7,5. tur+Viterbi,0.8371556141724719,100.0
+DLCN gece egzersiz,P45_8,5. tur,3.2286122437130444,90.47619047619048
+DLCN gece egzersiz,P45_8,5. tur+Viterbi,1.7848593527376713,100.0
+DLCN gece dinlenme,P50_1,5. tur,0.5381519604266688,100.0
+DLCN gece dinlenme,P50_1,5. tur+Viterbi,0.5561167114743915,100.0
+DLCN gece dinlenme,P50_2,5. tur,1.157215312715496,95.23809523809523
+DLCN gece dinlenme,P50_2,5. tur+Viterbi,0.5234357108407376,100.0
+DLCN gece dinlenme,P50_3,5. tur,1.089877089929756,100.0
+DLCN gece dinlenme,P50_3,5. tur+Viterbi,1.089877089929756,100.0
+DLCN gece dinlenme,P50_4,5. tur,5.864846444488851,71.42857142857143
+DLCN gece dinlenme,P50_4,5. tur+Viterbi,2.2889394920592347,80.95238095238095
+DLCN gece egzersiz,P50_5,5. tur,0.6770692749047885,100.0
+DLCN gece egzersiz,P50_5,5. tur+Viterbi,0.6770692749047885,100.0
+DLCN gece egzersiz,P50_6,5. tur,1.0983545874362963,100.0
+DLCN gece egzersiz,P50_6,5. tur+Viterbi,1.1053302105678142,100.0
+DLCN gece egzersiz,P50_7,5. tur,12.686704219611055,76.19047619047619
+DLCN gece egzersiz,P50_7,5. tur+Viterbi,1.9746401285958357,85.71428571428571
+DLCN gece egzersiz,P50_8,5. tur,15.738901321854613,47.61904761904761
+DLCN gece egzersiz,P50_8,5. tur+Viterbi,4.149373982578283,57.14285714285714
+DLCN gece dinlenme,P55_1,5. tur,0.2589206485958447,100.0
+DLCN gece dinlenme,P55_1,5. tur+Viterbi,0.2589206485958447,100.0
+DLCN gece dinlenme,P55_2,5. tur,0.2911836789959877,100.0
+DLCN gece dinlenme,P55_2,5. tur+Viterbi,0.2911836789959877,100.0
+DLCN gece dinlenme,P55_3,5. tur,0.47249659304953034,100.0
+DLCN gece dinlenme,P55_3,5. tur+Viterbi,0.47249659304953034,100.0
+DLCN gece dinlenme,P55_4,5. tur,2.258302199981941,85.71428571428571
+DLCN gece dinlenme,P55_4,5. tur+Viterbi,0.4418089415427263,100.0
+DLCN gece egzersiz,P55_5,5. tur,0.47674861988722955,100.0
+DLCN gece egzersiz,P55_5,5. tur+Viterbi,0.47674861988722955,100.0
+DLCN gece egzersiz,P55_6,5. tur,6.940452708164127,85.71428571428571
+DLCN gece egzersiz,P55_6,5. tur+Viterbi,0.39339208974179013,100.0
+DLCN gece egzersiz,P55_7,5. tur,0.6084684319279636,100.0
+DLCN gece egzersiz,P55_7,5. tur+Viterbi,0.6084684319279636,100.0
+DLCN gece egzersiz,P55_8,5. tur,0.5609795406817933,100.0
+DLCN gece egzersiz,P55_8,5. tur+Viterbi,0.5609795406817933,100.0
+DLCN gece dinlenme,P5_1,5. tur,0.46128934230285285,100.0
+DLCN gece dinlenme,P5_1,5. tur+Viterbi,0.46128934230285285,100.0
+DLCN gece dinlenme,P5_2,5. tur,0.6869563589651965,100.0
+DLCN gece dinlenme,P5_2,5. tur+Viterbi,0.6869563589651965,100.0
+DLCN gece dinlenme,P5_3,5. tur,1.7083839594704888,90.47619047619048
+DLCN gece dinlenme,P5_3,5. tur+Viterbi,0.9110083031686287,100.0
+DLCN gece dinlenme,P5_4,5. tur,0.5102373774015748,100.0
+DLCN gece dinlenme,P5_4,5. tur+Viterbi,0.5102373774015748,100.0
+DLCN gece egzersiz,P5_5,5. tur,0.6704132507281965,100.0
+DLCN gece egzersiz,P5_5,5. tur+Viterbi,0.6818291723029235,100.0
+DLCN gece egzersiz,P5_6,5. tur,0.4517597067049053,100.0
+DLCN gece egzersiz,P5_6,5. tur+Viterbi,0.4517597067049053,100.0
+DLCN gece egzersiz,P5_7,5. tur,1.1023819884331774,100.0
+DLCN gece egzersiz,P5_7,5. tur+Viterbi,1.1007974087381287,100.0
+DLCN gece egzersiz,P5_8,5. tur,0.656449282090066,100.0
+DLCN gece egzersiz,P5_8,5. tur+Viterbi,0.6660246179716222,100.0
+DLCN gece dinlenme,P60_1,5. tur,0.3423633914361334,100.0
+DLCN gece dinlenme,P60_1,5. tur+Viterbi,0.3423633914361334,100.0
+DLCN gece dinlenme,P60_2,5. tur,0.4761281127771556,100.0
+DLCN gece dinlenme,P60_2,5. tur+Viterbi,0.4761281127771556,100.0
+DLCN gece dinlenme,P60_3,5. tur,4.7789175226012395,76.19047619047619
+DLCN gece dinlenme,P60_3,5. tur+Viterbi,3.3598805097210995,76.19047619047619
+DLCN gece dinlenme,P60_4,5. tur,10.266578525961298,85.71428571428571
+DLCN gece dinlenme,P60_4,5. tur+Viterbi,1.268934107529385,100.0
+DLCN gece egzersiz,P60_5,5. tur,0.4202710465985643,100.0
+DLCN gece egzersiz,P60_5,5. tur+Viterbi,0.4202710465985643,100.0
+DLCN gece egzersiz,P60_6,5. tur,0.41329968922040566,100.0
+DLCN gece egzersiz,P60_6,5. tur+Viterbi,0.41329968922040566,100.0
+DLCN gece egzersiz,P60_7,5. tur,5.167279513768996,71.42857142857143
+DLCN gece egzersiz,P60_7,5. tur+Viterbi,6.267911795127537,66.66666666666666
+DLCN gece egzersiz,P60_8,5. tur,13.217823147367518,57.14285714285714
+DLCN gece egzersiz,P60_8,5. tur+Viterbi,1.9090865588470676,90.47619047619048
+DLCN gece dinlenme,P65_1,5. tur,3.557546453659512,85.71428571428571
+DLCN gece dinlenme,P65_1,5. tur+Viterbi,1.7770046685893053,85.71428571428571
+DLCN gece dinlenme,P65_2,5. tur,1.3200111436131803,95.23809523809523
+DLCN gece dinlenme,P65_2,5. tur+Viterbi,1.009638216523372,100.0
+DLCN gece dinlenme,P65_3,5. tur,9.946906257873742,80.95238095238095
+DLCN gece dinlenme,P65_3,5. tur+Viterbi,0.7010207947834358,100.0
+DLCN gece dinlenme,P65_4,5. tur,11.734792540486625,33.33333333333333
+DLCN gece dinlenme,P65_4,5. tur+Viterbi,5.68051262096583,52.38095238095239
+DLCN gece egzersiz,P65_5,5. tur,0.722998489384568,100.0
+DLCN gece egzersiz,P65_5,5. tur+Viterbi,0.722998489384568,100.0
+DLCN gece egzersiz,P65_6,5. tur,0.94635703051126,100.0
+DLCN gece egzersiz,P65_6,5. tur+Viterbi,0.94635703051126,100.0
+DLCN gece egzersiz,P65_7,5. tur,11.870755792334345,52.38095238095239
+DLCN gece egzersiz,P65_7,5. tur+Viterbi,2.82368327853277,80.95238095238095
+DLCN gece egzersiz,P65_8,5. tur,35.76377252298515,4.761904761904762
+DLCN gece egzersiz,P65_8,5. tur+Viterbi,30.013322689459557,0.0
+DLCN gece dinlenme,P70_1,5. tur,0.9323555499920646,100.0
+DLCN gece dinlenme,P70_1,5. tur+Viterbi,0.9323555499920646,100.0
+DLCN gece dinlenme,P70_2,5. tur,1.3708881376480513,100.0
+DLCN gece dinlenme,P70_2,5. tur+Viterbi,1.3367097509257408,100.0
+DLCN gece dinlenme,P70_3,5. tur,3.3818657453925636,90.47619047619048
+DLCN gece dinlenme,P70_3,5. tur+Viterbi,1.209869117483996,100.0
+DLCN gece dinlenme,P70_4,5. tur,7.183875285922005,76.19047619047619
+DLCN gece dinlenme,P70_4,5. tur+Viterbi,0.882510939581888,100.0
+DLCN gece egzersiz,P70_5,5. tur,2.411607364880627,85.71428571428571
+DLCN gece egzersiz,P70_5,5. tur+Viterbi,3.4998694953654654,76.19047619047619
+DLCN gece egzersiz,P70_6,5. tur,1.3831542829791745,100.0
+DLCN gece egzersiz,P70_6,5. tur+Viterbi,1.3831542829791745,100.0
+DLCN gece egzersiz,P70_7,5. tur,0.9216774713977368,100.0
+DLCN gece egzersiz,P70_7,5. tur+Viterbi,0.9216774713977368,100.0
+DLCN gece egzersiz,P70_8,5. tur,34.234548046643305,0.0
+DLCN gece egzersiz,P70_8,5. tur+Viterbi,10.056386352453629,38.095238095238095
+DLCN gece dinlenme,P75_1,5. tur,0.5234350416809589,100.0
+DLCN gece dinlenme,P75_1,5. tur+Viterbi,0.5234350416809589,100.0
+DLCN gece dinlenme,P75_2,5. tur,8.131196598193187,71.42857142857143
+DLCN gece dinlenme,P75_2,5. tur+Viterbi,1.4612670509735013,100.0
+DLCN gece dinlenme,P75_3,5. tur,0.7216961249585863,100.0
+DLCN gece dinlenme,P75_3,5. tur+Viterbi,0.7216961249585863,100.0
+DLCN gece dinlenme,P75_4,5. tur,0.8028034558163915,100.0
+DLCN gece dinlenme,P75_4,5. tur+Viterbi,0.8028034558163915,100.0
+DLCN gece egzersiz,P75_5,5. tur,0.8338133604594541,100.0
+DLCN gece egzersiz,P75_5,5. tur+Viterbi,0.8338133604594541,100.0
+DLCN gece egzersiz,P75_6,5. tur,0.7227593228863524,100.0
+DLCN gece egzersiz,P75_6,5. tur+Viterbi,0.7227593228863524,100.0
+DLCN gece egzersiz,P75_7,5. tur,0.8348970353581218,100.0
+DLCN gece egzersiz,P75_7,5. tur+Viterbi,0.8348970353581218,100.0
+DLCN gece egzersiz,P75_8,5. tur,7.364524245265962,61.904761904761905
+DLCN gece egzersiz,P75_8,5. tur+Viterbi,2.751959090858933,80.95238095238095
+DLCN gece dinlenme,P80_1,5. tur,0.7822544687819329,100.0
+DLCN gece dinlenme,P80_1,5. tur+Viterbi,0.7822544687819329,100.0
+DLCN gece dinlenme,P80_2,5. tur,2.100506877552802,90.47619047619048
+DLCN gece dinlenme,P80_2,5. tur+Viterbi,1.080272670371574,100.0
+DLCN gece dinlenme,P80_3,5. tur,1.5145768870836904,95.23809523809523
+DLCN gece dinlenme,P80_3,5. tur+Viterbi,1.5145768870836904,95.23809523809523
+DLCN gece dinlenme,P80_4,5. tur,14.4695732006399,38.095238095238095
+DLCN gece dinlenme,P80_4,5. tur+Viterbi,9.027909351088242,33.33333333333333
+DLCN gece egzersiz,P80_5,5. tur,0.8725943665871763,100.0
+DLCN gece egzersiz,P80_5,5. tur+Viterbi,0.861788023421106,100.0
+DLCN gece egzersiz,P80_6,5. tur,1.1996770826604792,100.0
+DLCN gece egzersiz,P80_6,5. tur+Viterbi,1.1996770826604792,100.0
+DLCN gece egzersiz,P80_7,5. tur,6.654589323959481,76.19047619047619
+DLCN gece egzersiz,P80_7,5. tur+Viterbi,4.030114684246432,80.95238095238095
+DLCN gece egzersiz,P80_8,5. tur,22.116085650726646,47.61904761904761
+DLCN gece egzersiz,P80_8,5. tur+Viterbi,6.030885433214321,52.38095238095239
+DLCN gece dinlenme,P85_1,5. tur,0.7079961515890939,100.0
+DLCN gece dinlenme,P85_1,5. tur+Viterbi,0.7079961515890939,100.0
+DLCN gece dinlenme,P85_2,5. tur,7.311700427153542,42.857142857142854
+DLCN gece dinlenme,P85_2,5. tur+Viterbi,5.431208852238386,52.38095238095239
+DLCN gece dinlenme,P85_3,5. tur,1.08096725814401,100.0
+DLCN gece dinlenme,P85_3,5. tur+Viterbi,1.0800397035792342,100.0
+DLCN gece dinlenme,P85_4,5. tur,11.625877144373485,19.047619047619047
+DLCN gece dinlenme,P85_4,5. tur+Viterbi,7.816490804349364,23.809523809523807
+DLCN gece egzersiz,P85_5,5. tur,1.6408902348608412,100.0
+DLCN gece egzersiz,P85_5,5. tur+Viterbi,1.6101583797182204,100.0
+DLCN gece egzersiz,P85_6,5. tur,18.36221467001281,33.33333333333333
+DLCN gece egzersiz,P85_6,5. tur+Viterbi,30.336963113182087,0.0
+DLCN gece egzersiz,P85_7,5. tur,11.19739347635306,76.19047619047619
+DLCN gece egzersiz,P85_7,5. tur+Viterbi,1.798224385718143,100.0
+DLCN gece egzersiz,P85_8,5. tur,28.47293729636135,9.523809523809524
+DLCN gece egzersiz,P85_8,5. tur+Viterbi,23.467264510616037,9.523809523809524
+DLCN gece dinlenme,P90_1,5. tur,3.91439663024662,80.95238095238095
+DLCN gece dinlenme,P90_1,5. tur+Viterbi,1.0266049431920963,100.0
+DLCN gece dinlenme,P90_2,5. tur,1.6512390496789007,90.47619047619048
+DLCN gece dinlenme,P90_2,5. tur+Viterbi,1.518787513777489,95.23809523809523
+DLCN gece dinlenme,P90_3,5. tur,10.531548694166215,76.19047619047619
+DLCN gece dinlenme,P90_3,5. tur+Viterbi,0.8657229441951009,100.0
+DLCN gece dinlenme,P90_4,5. tur,7.84325684369479,76.19047619047619
+DLCN gece dinlenme,P90_4,5. tur+Viterbi,1.165590767405943,100.0
+DLCN gece egzersiz,P90_5,5. tur,1.319232206332948,100.0
+DLCN gece egzersiz,P90_5,5. tur+Viterbi,1.3174327587683872,100.0
+DLCN gece egzersiz,P90_6,5. tur,1.710359295436814,90.47619047619048
+DLCN gece egzersiz,P90_6,5. tur+Viterbi,0.6704469837573719,100.0
+DLCN gece egzersiz,P90_7,5. tur,1.879817410818325,95.23809523809523
+DLCN gece egzersiz,P90_7,5. tur+Viterbi,1.16215957391276,100.0
+DLCN gece egzersiz,P90_8,5. tur,0.9054056150176489,100.0
+DLCN gece egzersiz,P90_8,5. tur+Viterbi,0.9054056150176489,100.0
+DLCN gece dinlenme,P95_1,5. tur,2.6524819969105535,85.71428571428571
+DLCN gece dinlenme,P95_1,5. tur+Viterbi,1.6918458543668993,90.47619047619048
+DLCN gece dinlenme,P95_2,5. tur,0.8343495707635823,100.0
+DLCN gece dinlenme,P95_2,5. tur+Viterbi,0.8343495707635823,100.0
+DLCN gece dinlenme,P95_3,5. tur,8.922346361586246,38.095238095238095
+DLCN gece dinlenme,P95_3,5. tur+Viterbi,5.941529052813348,61.904761904761905
+DLCN gece dinlenme,P95_4,5. tur,6.496522307086536,66.66666666666666
+DLCN gece dinlenme,P95_4,5. tur+Viterbi,5.508740834632558,71.42857142857143
+DLCN gece egzersiz,P95_5,5. tur,2.8649957460084203,85.71428571428571
+DLCN gece egzersiz,P95_5,5. tur+Viterbi,1.134237266608936,100.0
+DLCN gece egzersiz,P95_6,5. tur,7.915493015989411,66.66666666666666
+DLCN gece egzersiz,P95_6,5. tur+Viterbi,1.41273427216859,100.0
+DLCN gece egzersiz,P95_7,5. tur,4.852194059580801,80.95238095238095
+DLCN gece egzersiz,P95_7,5. tur+Viterbi,1.1476751976722135,100.0
+DLCN gece egzersiz,P95_8,5. tur,12.106190576252626,61.904761904761905
+DLCN gece egzersiz,P95_8,5. tur+Viterbi,10.445876878657653,47.61904761904761
+DLCN gece dinlenme,P10_1,3. tur (uygulamadaki),0.90050620122576,100.0
+DLCN gece dinlenme,P10_1,3. tur (uygulamadaki)+Viterbi,0.90050620122576,100.0
+DLCN gece dinlenme,P10_2,3. tur (uygulamadaki),3.4406610749663296,76.19047619047619
+DLCN gece dinlenme,P10_2,3. tur (uygulamadaki)+Viterbi,0.7035769421474816,100.0
+DLCN gece dinlenme,P10_3,3. tur (uygulamadaki),3.348435463264199,85.71428571428571
+DLCN gece dinlenme,P10_3,3. tur (uygulamadaki)+Viterbi,2.004970462805579,90.47619047619048
+DLCN gece dinlenme,P10_4,3. tur (uygulamadaki),2.9053995687552288,71.42857142857143
+DLCN gece dinlenme,P10_4,3. tur (uygulamadaki)+Viterbi,2.831293942640891,71.42857142857143
+DLCN gece egzersiz,P10_5,3. tur (uygulamadaki),3.923696000800569,71.42857142857143
+DLCN gece egzersiz,P10_5,3. tur (uygulamadaki)+Viterbi,3.5528965070800163,76.19047619047619
+DLCN gece egzersiz,P10_6,3. tur (uygulamadaki),3.2439770678113224,80.95238095238095
+DLCN gece egzersiz,P10_6,3. tur (uygulamadaki)+Viterbi,3.2728805074079386,71.42857142857143
+DLCN gece egzersiz,P10_7,3. tur (uygulamadaki),0.9620668429130002,100.0
+DLCN gece egzersiz,P10_7,3. tur (uygulamadaki)+Viterbi,0.9916241111742817,100.0
+DLCN gece egzersiz,P10_8,3. tur (uygulamadaki),4.57220667447438,76.19047619047619
+DLCN gece egzersiz,P10_8,3. tur (uygulamadaki)+Viterbi,3.512528821813768,76.19047619047619
+DLCN gece dinlenme,P15_1,3. tur (uygulamadaki),0.8416198622935905,100.0
+DLCN gece dinlenme,P15_1,3. tur (uygulamadaki)+Viterbi,0.8416198622935905,100.0
+DLCN gece dinlenme,P15_2,3. tur (uygulamadaki),0.9382695088082478,100.0
+DLCN gece dinlenme,P15_2,3. tur (uygulamadaki)+Viterbi,0.9382695088082478,100.0
+DLCN gece dinlenme,P15_3,3. tur (uygulamadaki),21.394351825745606,38.095238095238095
+DLCN gece dinlenme,P15_3,3. tur (uygulamadaki)+Viterbi,3.5709571519238827,76.19047619047619
+DLCN gece dinlenme,P15_4,3. tur (uygulamadaki),12.423731648892053,52.38095238095239
+DLCN gece dinlenme,P15_4,3. tur (uygulamadaki)+Viterbi,2.0675780641972006,95.23809523809523
+DLCN gece egzersiz,P15_5,3. tur (uygulamadaki),2.3249503820659707,80.95238095238095
+DLCN gece egzersiz,P15_5,3. tur (uygulamadaki)+Viterbi,2.3249503820659707,80.95238095238095
+DLCN gece egzersiz,P15_6,3. tur (uygulamadaki),4.300086730197672,71.42857142857143
+DLCN gece egzersiz,P15_6,3. tur (uygulamadaki)+Viterbi,4.700442009239022,66.66666666666666
+DLCN gece egzersiz,P15_7,3. tur (uygulamadaki),4.553887707796333,85.71428571428571
+DLCN gece egzersiz,P15_7,3. tur (uygulamadaki)+Viterbi,3.773941770653866,85.71428571428571
+DLCN gece egzersiz,P15_8,3. tur (uygulamadaki),16.69426288401913,14.285714285714285
+DLCN gece egzersiz,P15_8,3. tur (uygulamadaki)+Viterbi,13.306741646039695,33.33333333333333
+DLCN gece dinlenme,P20_1,3. tur (uygulamadaki),1.8672515099128881,100.0
+DLCN gece dinlenme,P20_1,3. tur (uygulamadaki)+Viterbi,1.8672515099128881,100.0
+DLCN gece dinlenme,P20_2,3. tur (uygulamadaki),0.969888944335568,100.0
+DLCN gece dinlenme,P20_2,3. tur (uygulamadaki)+Viterbi,0.969888944335568,100.0
+DLCN gece dinlenme,P20_3,3. tur (uygulamadaki),8.969962013966631,47.61904761904761
+DLCN gece dinlenme,P20_3,3. tur (uygulamadaki)+Viterbi,6.718916815985018,38.095238095238095
+DLCN gece dinlenme,P20_4,3. tur (uygulamadaki),7.718335306697081,71.42857142857143
+DLCN gece dinlenme,P20_4,3. tur (uygulamadaki)+Viterbi,1.069569944395895,100.0
+DLCN gece egzersiz,P20_5,3. tur (uygulamadaki),1.5761565239746609,100.0
+DLCN gece egzersiz,P20_5,3. tur (uygulamadaki)+Viterbi,1.3505566513521425,100.0
+DLCN gece egzersiz,P20_6,3. tur (uygulamadaki),2.199543297196991,85.71428571428571
+DLCN gece egzersiz,P20_6,3. tur (uygulamadaki)+Viterbi,0.6650800100661343,100.0
+DLCN gece egzersiz,P20_7,3. tur (uygulamadaki),9.910154297733422,85.71428571428571
+DLCN gece egzersiz,P20_7,3. tur (uygulamadaki)+Viterbi,1.013803518656144,100.0
+DLCN gece egzersiz,P20_8,3. tur (uygulamadaki),24.943697721652203,33.33333333333333
+DLCN gece egzersiz,P20_8,3. tur (uygulamadaki)+Viterbi,29.449464768934043,0.0
+DLCN gece dinlenme,P25_1,3. tur (uygulamadaki),2.370502984768808,85.71428571428571
+DLCN gece dinlenme,P25_1,3. tur (uygulamadaki)+Viterbi,1.7470611149420319,85.71428571428571
+DLCN gece dinlenme,P25_2,3. tur (uygulamadaki),0.5534020680880515,100.0
+DLCN gece dinlenme,P25_2,3. tur (uygulamadaki)+Viterbi,0.5534020680880515,100.0
+DLCN gece dinlenme,P25_3,3. tur (uygulamadaki),0.8656469385422296,100.0
+DLCN gece dinlenme,P25_3,3. tur (uygulamadaki)+Viterbi,0.8656469385422296,100.0
+DLCN gece dinlenme,P25_4,3. tur (uygulamadaki),7.364018025454442,66.66666666666666
+DLCN gece dinlenme,P25_4,3. tur (uygulamadaki)+Viterbi,0.7908755382201917,100.0
+DLCN gece egzersiz,P25_5,3. tur (uygulamadaki),10.644212197429779,52.38095238095239
+DLCN gece egzersiz,P25_5,3. tur (uygulamadaki)+Viterbi,2.899487571115379,76.19047619047619
+DLCN gece egzersiz,P25_6,3. tur (uygulamadaki),0.5570664736453752,100.0
+DLCN gece egzersiz,P25_6,3. tur (uygulamadaki)+Viterbi,0.5570664736453752,100.0
+DLCN gece egzersiz,P25_7,3. tur (uygulamadaki),5.5150978809210205,85.71428571428571
+DLCN gece egzersiz,P25_7,3. tur (uygulamadaki)+Viterbi,1.5897844286149376,100.0
+DLCN gece egzersiz,P25_8,3. tur (uygulamadaki),10.020011406339588,52.38095238095239
+DLCN gece egzersiz,P25_8,3. tur (uygulamadaki)+Viterbi,3.308530328883979,71.42857142857143
+DLCN gece dinlenme,P30_1,3. tur (uygulamadaki),0.3186059678099007,100.0
+DLCN gece dinlenme,P30_1,3. tur (uygulamadaki)+Viterbi,0.3186059678099007,100.0
+DLCN gece dinlenme,P30_2,3. tur (uygulamadaki),0.3527507440683045,100.0
+DLCN gece dinlenme,P30_2,3. tur (uygulamadaki)+Viterbi,0.3527507440683045,100.0
+DLCN gece dinlenme,P30_3,3. tur (uygulamadaki),0.6370494158982988,100.0
+DLCN gece dinlenme,P30_3,3. tur (uygulamadaki)+Viterbi,0.6370494158982988,100.0
+DLCN gece dinlenme,P30_4,3. tur (uygulamadaki),4.110910291507599,80.95238095238095
+DLCN gece dinlenme,P30_4,3. tur (uygulamadaki)+Viterbi,1.0221206756990344,100.0
+DLCN gece egzersiz,P30_5,3. tur (uygulamadaki),0.3816462059372454,100.0
+DLCN gece egzersiz,P30_5,3. tur (uygulamadaki)+Viterbi,0.3816462059372454,100.0
+DLCN gece egzersiz,P30_6,3. tur (uygulamadaki),0.3730641497231265,100.0
+DLCN gece egzersiz,P30_6,3. tur (uygulamadaki)+Viterbi,0.3730641497231265,100.0
+DLCN gece egzersiz,P30_7,3. tur (uygulamadaki),3.2511638547333646,90.47619047619048
+DLCN gece egzersiz,P30_7,3. tur (uygulamadaki)+Viterbi,1.0884975879240102,100.0
+DLCN gece egzersiz,P30_8,3. tur (uygulamadaki),0.48876386831065927,100.0
+DLCN gece egzersiz,P30_8,3. tur (uygulamadaki)+Viterbi,0.48876386831065927,100.0
+DLCN gece dinlenme,P35_1,3. tur (uygulamadaki),0.8290145895077061,100.0
+DLCN gece dinlenme,P35_1,3. tur (uygulamadaki)+Viterbi,0.8347080276257812,100.0
+DLCN gece dinlenme,P35_2,3. tur (uygulamadaki),0.9048417122174822,100.0
+DLCN gece dinlenme,P35_2,3. tur (uygulamadaki)+Viterbi,0.8950733743471346,100.0
+DLCN gece dinlenme,P35_3,3. tur (uygulamadaki),2.7270295121431136,80.95238095238095
+DLCN gece dinlenme,P35_3,3. tur (uygulamadaki)+Viterbi,2.6781252896464203,80.95238095238095
+DLCN gece dinlenme,P35_4,3. tur (uygulamadaki),19.514629047735998,9.523809523809524
+DLCN gece dinlenme,P35_4,3. tur (uygulamadaki)+Viterbi,14.560876067402917,23.809523809523807
+DLCN gece egzersiz,P35_5,3. tur (uygulamadaki),0.6284313716483109,100.0
+DLCN gece egzersiz,P35_5,3. tur (uygulamadaki)+Viterbi,0.6332286456323059,100.0
+DLCN gece egzersiz,P35_6,3. tur (uygulamadaki),1.5874798140981339,100.0
+DLCN gece egzersiz,P35_6,3. tur (uygulamadaki)+Viterbi,1.5874798140981339,100.0
+DLCN gece egzersiz,P35_7,3. tur (uygulamadaki),8.817271782151813,66.66666666666666
+DLCN gece egzersiz,P35_7,3. tur (uygulamadaki)+Viterbi,1.4437465671026954,100.0
+DLCN gece egzersiz,P35_8,3. tur (uygulamadaki),23.745102119132632,42.857142857142854
+DLCN gece egzersiz,P35_8,3. tur (uygulamadaki)+Viterbi,14.048700495253016,38.095238095238095
+DLCN gece dinlenme,P40_1,3. tur (uygulamadaki),0.33099340017191586,100.0
+DLCN gece dinlenme,P40_1,3. tur (uygulamadaki)+Viterbi,0.33099340017191586,100.0
+DLCN gece dinlenme,P40_2,3. tur (uygulamadaki),0.5383432027449341,100.0
+DLCN gece dinlenme,P40_2,3. tur (uygulamadaki)+Viterbi,0.5383432027449341,100.0
+DLCN gece dinlenme,P40_3,3. tur (uygulamadaki),0.8184610218404446,100.0
+DLCN gece dinlenme,P40_3,3. tur (uygulamadaki)+Viterbi,0.8291102047265604,100.0
+DLCN gece dinlenme,P40_4,3. tur (uygulamadaki),4.547305054129882,76.19047619047619
+DLCN gece dinlenme,P40_4,3. tur (uygulamadaki)+Viterbi,1.5144789969580525,100.0
+DLCN gece egzersiz,P40_5,3. tur (uygulamadaki),0.6234752565240713,100.0
+DLCN gece egzersiz,P40_5,3. tur (uygulamadaki)+Viterbi,0.6205202762503258,100.0
+DLCN gece egzersiz,P40_6,3. tur (uygulamadaki),0.8355104814403551,100.0
+DLCN gece egzersiz,P40_6,3. tur (uygulamadaki)+Viterbi,0.8355104814403551,100.0
+DLCN gece egzersiz,P40_7,3. tur (uygulamadaki),2.298666537672846,85.71428571428571
+DLCN gece egzersiz,P40_7,3. tur (uygulamadaki)+Viterbi,4.110782768009857,76.19047619047619
+DLCN gece egzersiz,P40_8,3. tur (uygulamadaki),7.696918128136444,61.904761904761905
+DLCN gece egzersiz,P40_8,3. tur (uygulamadaki)+Viterbi,3.908768480125631,71.42857142857143
+DLCN gece dinlenme,P45_1,3. tur (uygulamadaki),0.6488228686500042,100.0
+DLCN gece dinlenme,P45_1,3. tur (uygulamadaki)+Viterbi,0.6598543138949429,100.0
+DLCN gece dinlenme,P45_2,3. tur (uygulamadaki),2.4557509532855217,90.47619047619048
+DLCN gece dinlenme,P45_2,3. tur (uygulamadaki)+Viterbi,3.724402691156205,76.19047619047619
+DLCN gece dinlenme,P45_3,3. tur (uygulamadaki),7.381467303875653,76.19047619047619
+DLCN gece dinlenme,P45_3,3. tur (uygulamadaki)+Viterbi,3.042147227876485,80.95238095238095
+DLCN gece dinlenme,P45_4,3. tur (uygulamadaki),10.101923907670871,57.14285714285714
+DLCN gece dinlenme,P45_4,3. tur (uygulamadaki)+Viterbi,4.804424178171935,66.66666666666666
+DLCN gece egzersiz,P45_5,3. tur (uygulamadaki),1.9866076903293421,90.47619047619048
+DLCN gece egzersiz,P45_5,3. tur (uygulamadaki)+Viterbi,3.6193084171303243,76.19047619047619
+DLCN gece egzersiz,P45_6,3. tur (uygulamadaki),5.766846979741839,76.19047619047619
+DLCN gece egzersiz,P45_6,3. tur (uygulamadaki)+Viterbi,5.8871654744705175,61.904761904761905
+DLCN gece egzersiz,P45_7,3. tur (uygulamadaki),5.525003972960557,85.71428571428571
+DLCN gece egzersiz,P45_7,3. tur (uygulamadaki)+Viterbi,0.8671195713984657,100.0
+DLCN gece egzersiz,P45_8,3. tur (uygulamadaki),2.611179980804643,95.23809523809523
+DLCN gece egzersiz,P45_8,3. tur (uygulamadaki)+Viterbi,1.6839281626404705,100.0
+DLCN gece dinlenme,P50_1,3. tur (uygulamadaki),0.5469680432591796,100.0
+DLCN gece dinlenme,P50_1,3. tur (uygulamadaki)+Viterbi,0.5553636772074702,100.0
+DLCN gece dinlenme,P50_2,3. tur (uygulamadaki),1.120479791918778,95.23809523809523
+DLCN gece dinlenme,P50_2,3. tur (uygulamadaki)+Viterbi,0.45404000412914125,100.0
+DLCN gece dinlenme,P50_3,3. tur (uygulamadaki),1.1875274911933151,100.0
+DLCN gece dinlenme,P50_3,3. tur (uygulamadaki)+Viterbi,1.1875274911933151,100.0
+DLCN gece dinlenme,P50_4,3. tur (uygulamadaki),2.957643809553696,76.19047619047619
+DLCN gece dinlenme,P50_4,3. tur (uygulamadaki)+Viterbi,2.2026226993653717,90.47619047619048
+DLCN gece egzersiz,P50_5,3. tur (uygulamadaki),0.6181244697948662,100.0
+DLCN gece egzersiz,P50_5,3. tur (uygulamadaki)+Viterbi,0.6181244697948662,100.0
+DLCN gece egzersiz,P50_6,3. tur (uygulamadaki),0.9972590668342246,100.0
+DLCN gece egzersiz,P50_6,3. tur (uygulamadaki)+Viterbi,1.0086274273466935,100.0
+DLCN gece egzersiz,P50_7,3. tur (uygulamadaki),12.689555195543416,76.19047619047619
+DLCN gece egzersiz,P50_7,3. tur (uygulamadaki)+Viterbi,2.002145227037992,85.71428571428571
+DLCN gece egzersiz,P50_8,3. tur (uygulamadaki),16.71645649261785,47.61904761904761
+DLCN gece egzersiz,P50_8,3. tur (uygulamadaki)+Viterbi,4.2037732038199564,57.14285714285714
+DLCN gece dinlenme,P55_1,3. tur (uygulamadaki),0.24614608615269398,100.0
+DLCN gece dinlenme,P55_1,3. tur (uygulamadaki)+Viterbi,0.24614608615269398,100.0
+DLCN gece dinlenme,P55_2,3. tur (uygulamadaki),0.28444629245175335,100.0
+DLCN gece dinlenme,P55_2,3. tur (uygulamadaki)+Viterbi,0.28444629245175335,100.0
+DLCN gece dinlenme,P55_3,3. tur (uygulamadaki),0.48054601083850235,100.0
+DLCN gece dinlenme,P55_3,3. tur (uygulamadaki)+Viterbi,0.48054601083850235,100.0
+DLCN gece dinlenme,P55_4,3. tur (uygulamadaki),2.274715371309703,85.71428571428571
+DLCN gece dinlenme,P55_4,3. tur (uygulamadaki)+Viterbi,0.4578944419639888,100.0
+DLCN gece egzersiz,P55_5,3. tur (uygulamadaki),0.48547384362613616,100.0
+DLCN gece egzersiz,P55_5,3. tur (uygulamadaki)+Viterbi,0.48547384362613616,100.0
+DLCN gece egzersiz,P55_6,3. tur (uygulamadaki),6.973201477471315,85.71428571428571
+DLCN gece egzersiz,P55_6,3. tur (uygulamadaki)+Viterbi,0.438696155586666,100.0
+DLCN gece egzersiz,P55_7,3. tur (uygulamadaki),0.6283774374455802,100.0
+DLCN gece egzersiz,P55_7,3. tur (uygulamadaki)+Viterbi,0.6283774374455802,100.0
+DLCN gece egzersiz,P55_8,3. tur (uygulamadaki),0.5368836154463674,100.0
+DLCN gece egzersiz,P55_8,3. tur (uygulamadaki)+Viterbi,0.5368836154463674,100.0
+DLCN gece dinlenme,P5_1,3. tur (uygulamadaki),0.48841995413620237,100.0
+DLCN gece dinlenme,P5_1,3. tur (uygulamadaki)+Viterbi,0.48841995413620237,100.0
+DLCN gece dinlenme,P5_2,3. tur (uygulamadaki),0.6208288515492457,100.0
+DLCN gece dinlenme,P5_2,3. tur (uygulamadaki)+Viterbi,0.6208288515492457,100.0
+DLCN gece dinlenme,P5_3,3. tur (uygulamadaki),3.25027408524404,90.47619047619048
+DLCN gece dinlenme,P5_3,3. tur (uygulamadaki)+Viterbi,0.9189631913891985,100.0
+DLCN gece dinlenme,P5_4,3. tur (uygulamadaki),0.5864022690184207,100.0
+DLCN gece dinlenme,P5_4,3. tur (uygulamadaki)+Viterbi,0.5864022690184207,100.0
+DLCN gece egzersiz,P5_5,3. tur (uygulamadaki),0.6569849389179222,100.0
+DLCN gece egzersiz,P5_5,3. tur (uygulamadaki)+Viterbi,0.6437360708891604,100.0
+DLCN gece egzersiz,P5_6,3. tur (uygulamadaki),0.4374608423708713,100.0
+DLCN gece egzersiz,P5_6,3. tur (uygulamadaki)+Viterbi,0.4457531142258477,100.0
+DLCN gece egzersiz,P5_7,3. tur (uygulamadaki),1.0443836502526462,100.0
+DLCN gece egzersiz,P5_7,3. tur (uygulamadaki)+Viterbi,1.0481325716041399,100.0
+DLCN gece egzersiz,P5_8,3. tur (uygulamadaki),0.7645467466742654,100.0
+DLCN gece egzersiz,P5_8,3. tur (uygulamadaki)+Viterbi,0.7723177042697373,100.0
+DLCN gece dinlenme,P60_1,3. tur (uygulamadaki),0.3355161564587695,100.0
+DLCN gece dinlenme,P60_1,3. tur (uygulamadaki)+Viterbi,0.3355161564587695,100.0
+DLCN gece dinlenme,P60_2,3. tur (uygulamadaki),0.47430858579992846,100.0
+DLCN gece dinlenme,P60_2,3. tur (uygulamadaki)+Viterbi,0.47430858579992846,100.0
+DLCN gece dinlenme,P60_3,3. tur (uygulamadaki),3.5324933799681366,76.19047619047619
+DLCN gece dinlenme,P60_3,3. tur (uygulamadaki)+Viterbi,3.5547145222651517,76.19047619047619
+DLCN gece dinlenme,P60_4,3. tur (uygulamadaki),7.816755939656696,90.47619047619048
+DLCN gece dinlenme,P60_4,3. tur (uygulamadaki)+Viterbi,1.219315275429356,100.0
+DLCN gece egzersiz,P60_5,3. tur (uygulamadaki),0.5089103636058822,100.0
+DLCN gece egzersiz,P60_5,3. tur (uygulamadaki)+Viterbi,0.5089103636058822,100.0
+DLCN gece egzersiz,P60_6,3. tur (uygulamadaki),0.4625832456853069,100.0
+DLCN gece egzersiz,P60_6,3. tur (uygulamadaki)+Viterbi,0.4625832456853069,100.0
+DLCN gece egzersiz,P60_7,3. tur (uygulamadaki),7.318406573750359,71.42857142857143
+DLCN gece egzersiz,P60_7,3. tur (uygulamadaki)+Viterbi,9.160621703651996,57.14285714285714
+DLCN gece egzersiz,P60_8,3. tur (uygulamadaki),13.072079929060184,57.14285714285714
+DLCN gece egzersiz,P60_8,3. tur (uygulamadaki)+Viterbi,3.630889783528225,71.42857142857143
+DLCN gece dinlenme,P65_1,3. tur (uygulamadaki),2.1702728993240497,90.47619047619048
+DLCN gece dinlenme,P65_1,3. tur (uygulamadaki)+Viterbi,0.39941534944062507,100.0
+DLCN gece dinlenme,P65_2,3. tur (uygulamadaki),0.9002042199584314,100.0
+DLCN gece dinlenme,P65_2,3. tur (uygulamadaki)+Viterbi,0.9002042199584314,100.0
+DLCN gece dinlenme,P65_3,3. tur (uygulamadaki),10.04189048230331,80.95238095238095
+DLCN gece dinlenme,P65_3,3. tur (uygulamadaki)+Viterbi,0.7746891314294937,100.0
+DLCN gece dinlenme,P65_4,3. tur (uygulamadaki),10.502788209420961,33.33333333333333
+DLCN gece dinlenme,P65_4,3. tur (uygulamadaki)+Viterbi,8.001867767333177,33.33333333333333
+DLCN gece egzersiz,P65_5,3. tur (uygulamadaki),0.7132198296886434,100.0
+DLCN gece egzersiz,P65_5,3. tur (uygulamadaki)+Viterbi,0.7132198296886434,100.0
+DLCN gece egzersiz,P65_6,3. tur (uygulamadaki),0.8671257985810266,100.0
+DLCN gece egzersiz,P65_6,3. tur (uygulamadaki)+Viterbi,0.8783838506339778,100.0
+DLCN gece egzersiz,P65_7,3. tur (uygulamadaki),12.072323420710308,52.38095238095239
+DLCN gece egzersiz,P65_7,3. tur (uygulamadaki)+Viterbi,2.864683880102353,80.95238095238095
+DLCN gece egzersiz,P65_8,3. tur (uygulamadaki),38.56632989645014,9.523809523809524
+DLCN gece egzersiz,P65_8,3. tur (uygulamadaki)+Viterbi,30.15348709678586,0.0
+DLCN gece dinlenme,P70_1,3. tur (uygulamadaki),0.8473330914614562,100.0
+DLCN gece dinlenme,P70_1,3. tur (uygulamadaki)+Viterbi,0.8473330914614562,100.0
+DLCN gece dinlenme,P70_2,3. tur (uygulamadaki),1.261943001893043,100.0
+DLCN gece dinlenme,P70_2,3. tur (uygulamadaki)+Viterbi,1.2529850482327103,100.0
+DLCN gece dinlenme,P70_3,3. tur (uygulamadaki),6.99747114459469,76.19047619047619
+DLCN gece dinlenme,P70_3,3. tur (uygulamadaki)+Viterbi,1.303557619898667,100.0
+DLCN gece dinlenme,P70_4,3. tur (uygulamadaki),6.168579079752828,80.95238095238095
+DLCN gece dinlenme,P70_4,3. tur (uygulamadaki)+Viterbi,0.8523696754606207,100.0
+DLCN gece egzersiz,P70_5,3. tur (uygulamadaki),3.0653713077018687,80.95238095238095
+DLCN gece egzersiz,P70_5,3. tur (uygulamadaki)+Viterbi,3.4908539002737125,76.19047619047619
+DLCN gece egzersiz,P70_6,3. tur (uygulamadaki),1.397072708355421,100.0
+DLCN gece egzersiz,P70_6,3. tur (uygulamadaki)+Viterbi,1.397072708355421,100.0
+DLCN gece egzersiz,P70_7,3. tur (uygulamadaki),0.8931065028559133,100.0
+DLCN gece egzersiz,P70_7,3. tur (uygulamadaki)+Viterbi,0.8931065028559133,100.0
+DLCN gece egzersiz,P70_8,3. tur (uygulamadaki),35.57460169164585,0.0
+DLCN gece egzersiz,P70_8,3. tur (uygulamadaki)+Viterbi,52.745959744521706,0.0
+DLCN gece dinlenme,P75_1,3. tur (uygulamadaki),0.5298362823364768,100.0
+DLCN gece dinlenme,P75_1,3. tur (uygulamadaki)+Viterbi,0.5298362823364768,100.0
+DLCN gece dinlenme,P75_2,3. tur (uygulamadaki),8.037214662899041,71.42857142857143
+DLCN gece dinlenme,P75_2,3. tur (uygulamadaki)+Viterbi,1.397088289647309,100.0
+DLCN gece dinlenme,P75_3,3. tur (uygulamadaki),0.7490338904325129,100.0
+DLCN gece dinlenme,P75_3,3. tur (uygulamadaki)+Viterbi,0.7490338904325129,100.0
+DLCN gece dinlenme,P75_4,3. tur (uygulamadaki),3.011519509433707,95.23809523809523
+DLCN gece dinlenme,P75_4,3. tur (uygulamadaki)+Viterbi,0.7921191663802224,100.0
+DLCN gece egzersiz,P75_5,3. tur (uygulamadaki),0.8548616119705851,100.0
+DLCN gece egzersiz,P75_5,3. tur (uygulamadaki)+Viterbi,0.8548616119705851,100.0
+DLCN gece egzersiz,P75_6,3. tur (uygulamadaki),0.788667305188974,100.0
+DLCN gece egzersiz,P75_6,3. tur (uygulamadaki)+Viterbi,0.788667305188974,100.0
+DLCN gece egzersiz,P75_7,3. tur (uygulamadaki),7.497962996885628,90.47619047619048
+DLCN gece egzersiz,P75_7,3. tur (uygulamadaki)+Viterbi,0.793205330408559,100.0
+DLCN gece egzersiz,P75_8,3. tur (uygulamadaki),8.605813756128006,47.61904761904761
+DLCN gece egzersiz,P75_8,3. tur (uygulamadaki)+Viterbi,7.481700031844,47.61904761904761
+DLCN gece dinlenme,P80_1,3. tur (uygulamadaki),0.8320818378382726,100.0
+DLCN gece dinlenme,P80_1,3. tur (uygulamadaki)+Viterbi,0.8320818378382726,100.0
+DLCN gece dinlenme,P80_2,3. tur (uygulamadaki),2.0633156869795464,90.47619047619048
+DLCN gece dinlenme,P80_2,3. tur (uygulamadaki)+Viterbi,1.1005979491383064,100.0
+DLCN gece dinlenme,P80_3,3. tur (uygulamadaki),1.3808839896721985,95.23809523809523
+DLCN gece dinlenme,P80_3,3. tur (uygulamadaki)+Viterbi,1.3808839896721985,95.23809523809523
+DLCN gece dinlenme,P80_4,3. tur (uygulamadaki),13.853056158523348,42.857142857142854
+DLCN gece dinlenme,P80_4,3. tur (uygulamadaki)+Viterbi,8.996268677015072,42.857142857142854
+DLCN gece egzersiz,P80_5,3. tur (uygulamadaki),0.8208107086851293,100.0
+DLCN gece egzersiz,P80_5,3. tur (uygulamadaki)+Viterbi,0.8358738395258983,100.0
+DLCN gece egzersiz,P80_6,3. tur (uygulamadaki),1.2121042141616631,100.0
+DLCN gece egzersiz,P80_6,3. tur (uygulamadaki)+Viterbi,1.2121042141616631,100.0
+DLCN gece egzersiz,P80_7,3. tur (uygulamadaki),8.440706489220718,71.42857142857143
+DLCN gece egzersiz,P80_7,3. tur (uygulamadaki)+Viterbi,4.007281827412911,80.95238095238095
+DLCN gece egzersiz,P80_8,3. tur (uygulamadaki),20.59116712601262,47.61904761904761
+DLCN gece egzersiz,P80_8,3. tur (uygulamadaki)+Viterbi,5.952188072129807,47.61904761904761
+DLCN gece dinlenme,P85_1,3. tur (uygulamadaki),0.6524297710728719,100.0
+DLCN gece dinlenme,P85_1,3. tur (uygulamadaki)+Viterbi,0.662169996903816,100.0
+DLCN gece dinlenme,P85_2,3. tur (uygulamadaki),11.943862544177508,33.33333333333333
+DLCN gece dinlenme,P85_2,3. tur (uygulamadaki)+Viterbi,5.523391975005613,47.61904761904761
+DLCN gece dinlenme,P85_3,3. tur (uygulamadaki),5.317746288130322,90.47619047619048
+DLCN gece dinlenme,P85_3,3. tur (uygulamadaki)+Viterbi,1.1955291582496481,100.0
+DLCN gece dinlenme,P85_4,3. tur (uygulamadaki),15.750297231041353,14.285714285714285
+DLCN gece dinlenme,P85_4,3. tur (uygulamadaki)+Viterbi,6.062185440723046,42.857142857142854
+DLCN gece egzersiz,P85_5,3. tur (uygulamadaki),1.6760206189432065,100.0
+DLCN gece egzersiz,P85_5,3. tur (uygulamadaki)+Viterbi,1.6647099342102494,100.0
+DLCN gece egzersiz,P85_6,3. tur (uygulamadaki),15.470804171095452,42.857142857142854
+DLCN gece egzersiz,P85_6,3. tur (uygulamadaki)+Viterbi,29.351902930047522,0.0
+DLCN gece egzersiz,P85_7,3. tur (uygulamadaki),11.401446497474826,71.42857142857143
+DLCN gece egzersiz,P85_7,3. tur (uygulamadaki)+Viterbi,1.8270116357792507,100.0
+DLCN gece egzersiz,P85_8,3. tur (uygulamadaki),25.852766298711863,9.523809523809524
+DLCN gece egzersiz,P85_8,3. tur (uygulamadaki)+Viterbi,23.388084675203604,9.523809523809524
+DLCN gece dinlenme,P90_1,3. tur (uygulamadaki),2.0570990912221987,90.47619047619048
+DLCN gece dinlenme,P90_1,3. tur (uygulamadaki)+Viterbi,1.130600847457304,100.0
+DLCN gece dinlenme,P90_2,3. tur (uygulamadaki),1.6644108462919596,95.23809523809523
+DLCN gece dinlenme,P90_2,3. tur (uygulamadaki)+Viterbi,1.560913331083223,95.23809523809523
+DLCN gece dinlenme,P90_3,3. tur (uygulamadaki),10.530640957624083,76.19047619047619
+DLCN gece dinlenme,P90_3,3. tur (uygulamadaki)+Viterbi,0.8562190437332137,100.0
+DLCN gece dinlenme,P90_4,3. tur (uygulamadaki),7.856452125315921,76.19047619047619
+DLCN gece dinlenme,P90_4,3. tur (uygulamadaki)+Viterbi,1.4386857255884442,100.0
+DLCN gece egzersiz,P90_5,3. tur (uygulamadaki),1.3515559715390952,100.0
+DLCN gece egzersiz,P90_5,3. tur (uygulamadaki)+Viterbi,1.3290432882755716,100.0
+DLCN gece egzersiz,P90_6,3. tur (uygulamadaki),1.7079004036407557,90.47619047619048
+DLCN gece egzersiz,P90_6,3. tur (uygulamadaki)+Viterbi,0.6733186263634326,100.0
+DLCN gece egzersiz,P90_7,3. tur (uygulamadaki),1.0954864685777297,100.0
+DLCN gece egzersiz,P90_7,3. tur (uygulamadaki)+Viterbi,1.100584738342815,100.0
+DLCN gece egzersiz,P90_8,3. tur (uygulamadaki),1.0290421960865603,100.0
+DLCN gece egzersiz,P90_8,3. tur (uygulamadaki)+Viterbi,1.0290421960865603,100.0
+DLCN gece dinlenme,P95_1,3. tur (uygulamadaki),2.669545662288363,85.71428571428571
+DLCN gece dinlenme,P95_1,3. tur (uygulamadaki)+Viterbi,1.756341787138754,90.47619047619048
+DLCN gece dinlenme,P95_2,3. tur (uygulamadaki),0.8136015158329462,100.0
+DLCN gece dinlenme,P95_2,3. tur (uygulamadaki)+Viterbi,0.8136015158329462,100.0
+DLCN gece dinlenme,P95_3,3. tur (uygulamadaki),8.265148727908384,38.095238095238095
+DLCN gece dinlenme,P95_3,3. tur (uygulamadaki)+Viterbi,5.875234502843647,52.38095238095239
+DLCN gece dinlenme,P95_4,3. tur (uygulamadaki),6.641092537542298,66.66666666666666
+DLCN gece dinlenme,P95_4,3. tur (uygulamadaki)+Viterbi,5.6308382916687965,71.42857142857143
+DLCN gece egzersiz,P95_5,3. tur (uygulamadaki),2.7774272095014374,85.71428571428571
+DLCN gece egzersiz,P95_5,3. tur (uygulamadaki)+Viterbi,1.033851947006056,100.0
+DLCN gece egzersiz,P95_6,3. tur (uygulamadaki),10.860968740262033,57.14285714285714
+DLCN gece egzersiz,P95_6,3. tur (uygulamadaki)+Viterbi,9.208889375984123,66.66666666666666
+DLCN gece egzersiz,P95_7,3. tur (uygulamadaki),6.8678464480133945,80.95238095238095
+DLCN gece egzersiz,P95_7,3. tur (uygulamadaki)+Viterbi,1.2584044963784262,100.0
+DLCN gece egzersiz,P95_8,3. tur (uygulamadaki),11.066849011925793,66.66666666666666
+DLCN gece egzersiz,P95_8,3. tur (uygulamadaki)+Viterbi,1.7672739626781004,100.0
+DLCN gece dinlenme,P10_1,7. tur B (MMRPhys sıfırdan),0.634206274354416,100.0
+DLCN gece dinlenme,P10_1,7. tur B (MMRPhys sıfırdan)+Viterbi,0.628077559378004,100.0
+DLCN gece dinlenme,P10_2,7. tur B (MMRPhys sıfırdan),0.4584294999521346,100.0
+DLCN gece dinlenme,P10_2,7. tur B (MMRPhys sıfırdan)+Viterbi,0.4584294999521346,100.0
+DLCN gece dinlenme,P10_3,7. tur B (MMRPhys sıfırdan),1.5304448936138444,95.23809523809523
+DLCN gece dinlenme,P10_3,7. tur B (MMRPhys sıfırdan)+Viterbi,1.9189846411088476,90.47619047619048
+DLCN gece dinlenme,P10_4,7. tur B (MMRPhys sıfırdan),1.1333472273020222,100.0
+DLCN gece dinlenme,P10_4,7. tur B (MMRPhys sıfırdan)+Viterbi,1.1297371183069222,100.0
+DLCN gece egzersiz,P10_5,7. tur B (MMRPhys sıfırdan),1.5647386709016358,90.47619047619048
+DLCN gece egzersiz,P10_5,7. tur B (MMRPhys sıfırdan)+Viterbi,3.1474960242900467,76.19047619047619
+DLCN gece egzersiz,P10_6,7. tur B (MMRPhys sıfırdan),1.722691494384665,90.47619047619048
+DLCN gece egzersiz,P10_6,7. tur B (MMRPhys sıfırdan)+Viterbi,1.1114791295613762,95.23809523809523
+DLCN gece egzersiz,P10_7,7. tur B (MMRPhys sıfırdan),0.9050573638358927,100.0
+DLCN gece egzersiz,P10_7,7. tur B (MMRPhys sıfırdan)+Viterbi,0.9182125730439135,100.0
+DLCN gece egzersiz,P10_8,7. tur B (MMRPhys sıfırdan),0.43967329132768673,100.0
+DLCN gece egzersiz,P10_8,7. tur B (MMRPhys sıfırdan)+Viterbi,0.43967329132768673,100.0
+DLCN gece dinlenme,P15_1,7. tur B (MMRPhys sıfırdan),0.8450795454399812,100.0
+DLCN gece dinlenme,P15_1,7. tur B (MMRPhys sıfırdan)+Viterbi,0.8450795454399812,100.0
+DLCN gece dinlenme,P15_2,7. tur B (MMRPhys sıfırdan),0.819040845622738,100.0
+DLCN gece dinlenme,P15_2,7. tur B (MMRPhys sıfırdan)+Viterbi,0.819040845622738,100.0
+DLCN gece dinlenme,P15_3,7. tur B (MMRPhys sıfırdan),4.665259807871566,85.71428571428571
+DLCN gece dinlenme,P15_3,7. tur B (MMRPhys sıfırdan)+Viterbi,1.6811205523787314,100.0
+DLCN gece dinlenme,P15_4,7. tur B (MMRPhys sıfırdan),3.4005670711870306,76.19047619047619
+DLCN gece dinlenme,P15_4,7. tur B (MMRPhys sıfırdan)+Viterbi,1.675294160447835,95.23809523809523
+DLCN gece egzersiz,P15_5,7. tur B (MMRPhys sıfırdan),2.6268638163553426,80.95238095238095
+DLCN gece egzersiz,P15_5,7. tur B (MMRPhys sıfırdan)+Viterbi,2.6268638163553426,80.95238095238095
+DLCN gece egzersiz,P15_6,7. tur B (MMRPhys sıfırdan),1.8680762523923344,90.47619047619048
+DLCN gece egzersiz,P15_6,7. tur B (MMRPhys sıfırdan)+Viterbi,1.9114652556033178,90.47619047619048
+DLCN gece egzersiz,P15_7,7. tur B (MMRPhys sıfırdan),6.977083524991074,66.66666666666666
+DLCN gece egzersiz,P15_7,7. tur B (MMRPhys sıfırdan)+Viterbi,3.7699717904951573,71.42857142857143
+DLCN gece egzersiz,P15_8,7. tur B (MMRPhys sıfırdan),13.940659754376517,47.61904761904761
+DLCN gece egzersiz,P15_8,7. tur B (MMRPhys sıfırdan)+Viterbi,9.04582939903116,52.38095238095239
+DLCN gece dinlenme,P20_1,7. tur B (MMRPhys sıfırdan),1.7855994703270195,100.0
+DLCN gece dinlenme,P20_1,7. tur B (MMRPhys sıfırdan)+Viterbi,1.7855994703270195,100.0
+DLCN gece dinlenme,P20_2,7. tur B (MMRPhys sıfırdan),0.6893606838413061,100.0
+DLCN gece dinlenme,P20_2,7. tur B (MMRPhys sıfırdan)+Viterbi,0.6893606838413061,100.0
+DLCN gece dinlenme,P20_3,7. tur B (MMRPhys sıfırdan),10.633920194074376,47.61904761904761
+DLCN gece dinlenme,P20_3,7. tur B (MMRPhys sıfırdan)+Viterbi,6.777711183110266,42.857142857142854
+DLCN gece dinlenme,P20_4,7. tur B (MMRPhys sıfırdan),3.56820463004605,85.71428571428571
+DLCN gece dinlenme,P20_4,7. tur B (MMRPhys sıfırdan)+Viterbi,1.3131743230212571,100.0
+DLCN gece egzersiz,P20_5,7. tur B (MMRPhys sıfırdan),1.0666219334724683,100.0
+DLCN gece egzersiz,P20_5,7. tur B (MMRPhys sıfırdan)+Viterbi,1.0725665381742626,100.0
+DLCN gece egzersiz,P20_6,7. tur B (MMRPhys sıfırdan),0.4908490225271849,100.0
+DLCN gece egzersiz,P20_6,7. tur B (MMRPhys sıfırdan)+Viterbi,0.49085969060875745,100.0
+DLCN gece egzersiz,P20_7,7. tur B (MMRPhys sıfırdan),1.132775037954976,95.23809523809523
+DLCN gece egzersiz,P20_7,7. tur B (MMRPhys sıfırdan)+Viterbi,0.9471415930180388,100.0
+DLCN gece egzersiz,P20_8,7. tur B (MMRPhys sıfırdan),13.967403382356007,47.61904761904761
+DLCN gece egzersiz,P20_8,7. tur B (MMRPhys sıfırdan)+Viterbi,9.389687006596779,42.857142857142854
+DLCN gece dinlenme,P25_1,7. tur B (MMRPhys sıfırdan),1.3814898277461847,95.23809523809523
+DLCN gece dinlenme,P25_1,7. tur B (MMRPhys sıfırdan)+Viterbi,0.28208338885372425,100.0
+DLCN gece dinlenme,P25_2,7. tur B (MMRPhys sıfırdan),0.39502072117685133,100.0
+DLCN gece dinlenme,P25_2,7. tur B (MMRPhys sıfırdan)+Viterbi,0.39502072117685133,100.0
+DLCN gece dinlenme,P25_3,7. tur B (MMRPhys sıfırdan),0.5638379725777968,100.0
+DLCN gece dinlenme,P25_3,7. tur B (MMRPhys sıfırdan)+Viterbi,0.5638379725777968,100.0
+DLCN gece dinlenme,P25_4,7. tur B (MMRPhys sıfırdan),0.7089934856573402,100.0
+DLCN gece dinlenme,P25_4,7. tur B (MMRPhys sıfırdan)+Viterbi,0.7089934856573402,100.0
+DLCN gece egzersiz,P25_5,7. tur B (MMRPhys sıfırdan),0.5704863575012483,100.0
+DLCN gece egzersiz,P25_5,7. tur B (MMRPhys sıfırdan)+Viterbi,0.5704863575012483,100.0
+DLCN gece egzersiz,P25_6,7. tur B (MMRPhys sıfırdan),0.5911023658367828,100.0
+DLCN gece egzersiz,P25_6,7. tur B (MMRPhys sıfırdan)+Viterbi,0.5911023658367828,100.0
+DLCN gece egzersiz,P25_7,7. tur B (MMRPhys sıfırdan),5.6890399802768385,80.95238095238095
+DLCN gece egzersiz,P25_7,7. tur B (MMRPhys sıfırdan)+Viterbi,1.4160582154784063,100.0
+DLCN gece egzersiz,P25_8,7. tur B (MMRPhys sıfırdan),11.081997151381861,71.42857142857143
+DLCN gece egzersiz,P25_8,7. tur B (MMRPhys sıfırdan)+Viterbi,2.757171713885379,76.19047619047619
+DLCN gece dinlenme,P30_1,7. tur B (MMRPhys sıfırdan),0.4403007680706924,100.0
+DLCN gece dinlenme,P30_1,7. tur B (MMRPhys sıfırdan)+Viterbi,0.4403007680706924,100.0
+DLCN gece dinlenme,P30_2,7. tur B (MMRPhys sıfırdan),0.3627059333233831,100.0
+DLCN gece dinlenme,P30_2,7. tur B (MMRPhys sıfırdan)+Viterbi,0.3627059333233831,100.0
+DLCN gece dinlenme,P30_3,7. tur B (MMRPhys sıfırdan),0.729920395150274,100.0
+DLCN gece dinlenme,P30_3,7. tur B (MMRPhys sıfırdan)+Viterbi,0.729920395150274,100.0
+DLCN gece dinlenme,P30_4,7. tur B (MMRPhys sıfırdan),0.7916711769817165,100.0
+DLCN gece dinlenme,P30_4,7. tur B (MMRPhys sıfırdan)+Viterbi,0.7916711769817165,100.0
+DLCN gece egzersiz,P30_5,7. tur B (MMRPhys sıfırdan),0.36847493268229364,100.0
+DLCN gece egzersiz,P30_5,7. tur B (MMRPhys sıfırdan)+Viterbi,0.36847493268229364,100.0
+DLCN gece egzersiz,P30_6,7. tur B (MMRPhys sıfırdan),0.5371187871358197,100.0
+DLCN gece egzersiz,P30_6,7. tur B (MMRPhys sıfırdan)+Viterbi,0.5371187871358197,100.0
+DLCN gece egzersiz,P30_7,7. tur B (MMRPhys sıfırdan),0.75822850424818,100.0
+DLCN gece egzersiz,P30_7,7. tur B (MMRPhys sıfırdan)+Viterbi,0.75822850424818,100.0
+DLCN gece egzersiz,P30_8,7. tur B (MMRPhys sıfırdan),0.5792721935650293,100.0
+DLCN gece egzersiz,P30_8,7. tur B (MMRPhys sıfırdan)+Viterbi,0.5792721935650293,100.0
+DLCN gece dinlenme,P35_1,7. tur B (MMRPhys sıfırdan),0.6276310041713412,100.0
+DLCN gece dinlenme,P35_1,7. tur B (MMRPhys sıfırdan)+Viterbi,0.6477079463555377,100.0
+DLCN gece dinlenme,P35_2,7. tur B (MMRPhys sıfırdan),0.6405255722950417,100.0
+DLCN gece dinlenme,P35_2,7. tur B (MMRPhys sıfırdan)+Viterbi,0.6377035385021325,100.0
+DLCN gece dinlenme,P35_3,7. tur B (MMRPhys sıfırdan),0.6453030050658148,100.0
+DLCN gece dinlenme,P35_3,7. tur B (MMRPhys sıfırdan)+Viterbi,0.6453030050658148,100.0
+DLCN gece dinlenme,P35_4,7. tur B (MMRPhys sıfırdan),8.011042719977555,66.66666666666666
+DLCN gece dinlenme,P35_4,7. tur B (MMRPhys sıfırdan)+Viterbi,1.506287105908156,100.0
+DLCN gece egzersiz,P35_5,7. tur B (MMRPhys sıfırdan),0.9996213063138588,95.23809523809523
+DLCN gece egzersiz,P35_5,7. tur B (MMRPhys sıfırdan)+Viterbi,0.5455182831289827,100.0
+DLCN gece egzersiz,P35_6,7. tur B (MMRPhys sıfırdan),0.9669797654791313,100.0
+DLCN gece egzersiz,P35_6,7. tur B (MMRPhys sıfırdan)+Viterbi,0.9669797654791313,100.0
+DLCN gece egzersiz,P35_7,7. tur B (MMRPhys sıfırdan),4.335723459352225,85.71428571428571
+DLCN gece egzersiz,P35_7,7. tur B (MMRPhys sıfırdan)+Viterbi,0.8944972193856022,100.0
+DLCN gece egzersiz,P35_8,7. tur B (MMRPhys sıfırdan),11.252221844131466,52.38095238095239
+DLCN gece egzersiz,P35_8,7. tur B (MMRPhys sıfırdan)+Viterbi,5.087314981466738,71.42857142857143
+DLCN gece dinlenme,P40_1,7. tur B (MMRPhys sıfırdan),0.4746888698763382,100.0
+DLCN gece dinlenme,P40_1,7. tur B (MMRPhys sıfırdan)+Viterbi,0.4746888698763382,100.0
+DLCN gece dinlenme,P40_2,7. tur B (MMRPhys sıfırdan),0.3615572292014465,100.0
+DLCN gece dinlenme,P40_2,7. tur B (MMRPhys sıfırdan)+Viterbi,0.3615572292014465,100.0
+DLCN gece dinlenme,P40_3,7. tur B (MMRPhys sıfırdan),0.8243278509503398,100.0
+DLCN gece dinlenme,P40_3,7. tur B (MMRPhys sıfırdan)+Viterbi,0.8243278509503398,100.0
+DLCN gece dinlenme,P40_4,7. tur B (MMRPhys sıfırdan),1.7217166085882436,95.23809523809523
+DLCN gece dinlenme,P40_4,7. tur B (MMRPhys sıfırdan)+Viterbi,1.3087105426973253,100.0
+DLCN gece egzersiz,P40_5,7. tur B (MMRPhys sıfırdan),0.6029718358067542,100.0
+DLCN gece egzersiz,P40_5,7. tur B (MMRPhys sıfırdan)+Viterbi,0.5819296449132262,100.0
+DLCN gece egzersiz,P40_6,7. tur B (MMRPhys sıfırdan),0.514726892080106,100.0
+DLCN gece egzersiz,P40_6,7. tur B (MMRPhys sıfırdan)+Viterbi,0.514726892080106,100.0
+DLCN gece egzersiz,P40_7,7. tur B (MMRPhys sıfırdan),1.9288718640019733,85.71428571428571
+DLCN gece egzersiz,P40_7,7. tur B (MMRPhys sıfırdan)+Viterbi,2.8287107428864378,76.19047619047619
+DLCN gece egzersiz,P40_8,7. tur B (MMRPhys sıfırdan),5.536293648228399,57.14285714285714
+DLCN gece egzersiz,P40_8,7. tur B (MMRPhys sıfırdan)+Viterbi,5.521179998642673,57.14285714285714
+DLCN gece dinlenme,P45_1,7. tur B (MMRPhys sıfırdan),0.5208344218704035,100.0
+DLCN gece dinlenme,P45_1,7. tur B (MMRPhys sıfırdan)+Viterbi,0.5312487515982073,100.0
+DLCN gece dinlenme,P45_2,7. tur B (MMRPhys sıfırdan),1.970212327207427,95.23809523809523
+DLCN gece dinlenme,P45_2,7. tur B (MMRPhys sıfırdan)+Viterbi,1.3688302816298132,95.23809523809523
+DLCN gece dinlenme,P45_3,7. tur B (MMRPhys sıfırdan),2.8874854329362942,76.19047619047619
+DLCN gece dinlenme,P45_3,7. tur B (MMRPhys sıfırdan)+Viterbi,2.8874854329362942,76.19047619047619
+DLCN gece dinlenme,P45_4,7. tur B (MMRPhys sıfırdan),12.321771907239988,71.42857142857143
+DLCN gece dinlenme,P45_4,7. tur B (MMRPhys sıfırdan)+Viterbi,1.09456426894298,100.0
+DLCN gece egzersiz,P45_5,7. tur B (MMRPhys sıfırdan),3.1996727919803964,80.95238095238095
+DLCN gece egzersiz,P45_5,7. tur B (MMRPhys sıfırdan)+Viterbi,3.8898317583853244,76.19047619047619
+DLCN gece egzersiz,P45_6,7. tur B (MMRPhys sıfırdan),2.455638282656367,90.47619047619048
+DLCN gece egzersiz,P45_6,7. tur B (MMRPhys sıfırdan)+Viterbi,3.160294117095396,80.95238095238095
+DLCN gece egzersiz,P45_7,7. tur B (MMRPhys sıfırdan),1.199445070208053,95.23809523809523
+DLCN gece egzersiz,P45_7,7. tur B (MMRPhys sıfırdan)+Viterbi,0.6025798591830684,100.0
+DLCN gece egzersiz,P45_8,7. tur B (MMRPhys sıfırdan),1.132510831353047,100.0
+DLCN gece egzersiz,P45_8,7. tur B (MMRPhys sıfırdan)+Viterbi,1.132510831353047,100.0
+DLCN gece dinlenme,P50_1,7. tur B (MMRPhys sıfırdan),0.3654569708594564,100.0
+DLCN gece dinlenme,P50_1,7. tur B (MMRPhys sıfırdan)+Viterbi,0.3654569708594564,100.0
+DLCN gece dinlenme,P50_2,7. tur B (MMRPhys sıfırdan),0.5914482655933968,100.0
+DLCN gece dinlenme,P50_2,7. tur B (MMRPhys sıfırdan)+Viterbi,0.5914482655933968,100.0
+DLCN gece dinlenme,P50_3,7. tur B (MMRPhys sıfırdan),3.09715569689473,85.71428571428571
+DLCN gece dinlenme,P50_3,7. tur B (MMRPhys sıfırdan)+Viterbi,1.2096031942080998,100.0
+DLCN gece dinlenme,P50_4,7. tur B (MMRPhys sıfırdan),17.534652856549,61.904761904761905
+DLCN gece dinlenme,P50_4,7. tur B (MMRPhys sıfırdan)+Viterbi,2.180702896182441,85.71428571428571
+DLCN gece egzersiz,P50_5,7. tur B (MMRPhys sıfırdan),0.8886310196224324,100.0
+DLCN gece egzersiz,P50_5,7. tur B (MMRPhys sıfırdan)+Viterbi,0.8886310196224324,100.0
+DLCN gece egzersiz,P50_6,7. tur B (MMRPhys sıfırdan),0.8635071430528521,100.0
+DLCN gece egzersiz,P50_6,7. tur B (MMRPhys sıfırdan)+Viterbi,0.8635071430528521,100.0
+DLCN gece egzersiz,P50_7,7. tur B (MMRPhys sıfırdan),3.1126845402394347,85.71428571428571
+DLCN gece egzersiz,P50_7,7. tur B (MMRPhys sıfırdan)+Viterbi,0.6507620229863453,100.0
+DLCN gece egzersiz,P50_8,7. tur B (MMRPhys sıfırdan),12.619747281393487,52.38095238095239
+DLCN gece egzersiz,P50_8,7. tur B (MMRPhys sıfırdan)+Viterbi,3.15148061316311,71.42857142857143
+DLCN gece dinlenme,P55_1,7. tur B (MMRPhys sıfırdan),0.2882782063611801,100.0
+DLCN gece dinlenme,P55_1,7. tur B (MMRPhys sıfırdan)+Viterbi,0.2882782063611801,100.0
+DLCN gece dinlenme,P55_2,7. tur B (MMRPhys sıfırdan),0.10490834364567514,100.0
+DLCN gece dinlenme,P55_2,7. tur B (MMRPhys sıfırdan)+Viterbi,0.10490834364567514,100.0
+DLCN gece dinlenme,P55_3,7. tur B (MMRPhys sıfırdan),0.33992699666955284,100.0
+DLCN gece dinlenme,P55_3,7. tur B (MMRPhys sıfırdan)+Viterbi,0.33992699666955284,100.0
+DLCN gece dinlenme,P55_4,7. tur B (MMRPhys sıfırdan),0.3089714695479104,100.0
+DLCN gece dinlenme,P55_4,7. tur B (MMRPhys sıfırdan)+Viterbi,0.3089714695479104,100.0
+DLCN gece egzersiz,P55_5,7. tur B (MMRPhys sıfırdan),0.4623075254138251,100.0
+DLCN gece egzersiz,P55_5,7. tur B (MMRPhys sıfırdan)+Viterbi,0.4623075254138251,100.0
+DLCN gece egzersiz,P55_6,7. tur B (MMRPhys sıfırdan),0.3015914651430522,100.0
+DLCN gece egzersiz,P55_6,7. tur B (MMRPhys sıfırdan)+Viterbi,0.3015914651430522,100.0
+DLCN gece egzersiz,P55_7,7. tur B (MMRPhys sıfırdan),0.6270409422423746,100.0
+DLCN gece egzersiz,P55_7,7. tur B (MMRPhys sıfırdan)+Viterbi,0.6270409422423746,100.0
+DLCN gece egzersiz,P55_8,7. tur B (MMRPhys sıfırdan),0.3136491304527332,100.0
+DLCN gece egzersiz,P55_8,7. tur B (MMRPhys sıfırdan)+Viterbi,0.3136491304527332,100.0
+DLCN gece dinlenme,P5_1,7. tur B (MMRPhys sıfırdan),0.41658383346475536,100.0
+DLCN gece dinlenme,P5_1,7. tur B (MMRPhys sıfırdan)+Viterbi,0.41658383346475536,100.0
+DLCN gece dinlenme,P5_2,7. tur B (MMRPhys sıfırdan),0.3244416490250141,100.0
+DLCN gece dinlenme,P5_2,7. tur B (MMRPhys sıfırdan)+Viterbi,0.3244416490250141,100.0
+DLCN gece dinlenme,P5_3,7. tur B (MMRPhys sıfırdan),0.9575136220606486,100.0
+DLCN gece dinlenme,P5_3,7. tur B (MMRPhys sıfırdan)+Viterbi,0.9575136220606486,100.0
+DLCN gece dinlenme,P5_4,7. tur B (MMRPhys sıfırdan),0.3420601749297121,100.0
+DLCN gece dinlenme,P5_4,7. tur B (MMRPhys sıfırdan)+Viterbi,0.3420601749297121,100.0
+DLCN gece egzersiz,P5_5,7. tur B (MMRPhys sıfırdan),0.6299771568764789,100.0
+DLCN gece egzersiz,P5_5,7. tur B (MMRPhys sıfırdan)+Viterbi,0.6165099258973538,100.0
+DLCN gece egzersiz,P5_6,7. tur B (MMRPhys sıfırdan),0.700239115089291,100.0
+DLCN gece egzersiz,P5_6,7. tur B (MMRPhys sıfırdan)+Viterbi,0.700239115089291,100.0
+DLCN gece egzersiz,P5_7,7. tur B (MMRPhys sıfırdan),1.2134232352797159,100.0
+DLCN gece egzersiz,P5_7,7. tur B (MMRPhys sıfırdan)+Viterbi,1.2225452105132082,100.0
+DLCN gece egzersiz,P5_8,7. tur B (MMRPhys sıfırdan),0.4894725134754494,100.0
+DLCN gece egzersiz,P5_8,7. tur B (MMRPhys sıfırdan)+Viterbi,0.4894725134754494,100.0
+DLCN gece dinlenme,P60_1,7. tur B (MMRPhys sıfırdan),0.28246630863926636,100.0
+DLCN gece dinlenme,P60_1,7. tur B (MMRPhys sıfırdan)+Viterbi,0.28246630863926636,100.0
+DLCN gece dinlenme,P60_2,7. tur B (MMRPhys sıfırdan),0.4930972730493234,100.0
+DLCN gece dinlenme,P60_2,7. tur B (MMRPhys sıfırdan)+Viterbi,0.4930972730493234,100.0
+DLCN gece dinlenme,P60_3,7. tur B (MMRPhys sıfırdan),3.528280205107735,85.71428571428571
+DLCN gece dinlenme,P60_3,7. tur B (MMRPhys sıfırdan)+Viterbi,0.7915157138037918,100.0
+DLCN gece dinlenme,P60_4,7. tur B (MMRPhys sıfırdan),0.6207490056234526,100.0
+DLCN gece dinlenme,P60_4,7. tur B (MMRPhys sıfırdan)+Viterbi,0.6207490056234526,100.0
+DLCN gece egzersiz,P60_5,7. tur B (MMRPhys sıfırdan),0.2310119321239233,100.0
+DLCN gece egzersiz,P60_5,7. tur B (MMRPhys sıfırdan)+Viterbi,0.2310119321239233,100.0
+DLCN gece egzersiz,P60_6,7. tur B (MMRPhys sıfırdan),0.4246071081341841,100.0
+DLCN gece egzersiz,P60_6,7. tur B (MMRPhys sıfırdan)+Viterbi,0.4246071081341841,100.0
+DLCN gece egzersiz,P60_7,7. tur B (MMRPhys sıfırdan),5.422672103922131,80.95238095238095
+DLCN gece egzersiz,P60_7,7. tur B (MMRPhys sıfırdan)+Viterbi,5.326357908432511,71.42857142857143
+DLCN gece egzersiz,P60_8,7. tur B (MMRPhys sıfırdan),1.3174868917851499,100.0
+DLCN gece egzersiz,P60_8,7. tur B (MMRPhys sıfırdan)+Viterbi,1.327183762042473,100.0
+DLCN gece dinlenme,P65_1,7. tur B (MMRPhys sıfırdan),0.4474103248110236,100.0
+DLCN gece dinlenme,P65_1,7. tur B (MMRPhys sıfırdan)+Viterbi,0.4474103248110236,100.0
+DLCN gece dinlenme,P65_2,7. tur B (MMRPhys sıfırdan),3.8256110237273964,85.71428571428571
+DLCN gece dinlenme,P65_2,7. tur B (MMRPhys sıfırdan)+Viterbi,2.0169418815985884,85.71428571428571
+DLCN gece dinlenme,P65_3,7. tur B (MMRPhys sıfırdan),2.6242382664431188,85.71428571428571
+DLCN gece dinlenme,P65_3,7. tur B (MMRPhys sıfırdan)+Viterbi,0.9099966436515212,100.0
+DLCN gece dinlenme,P65_4,7. tur B (MMRPhys sıfırdan),7.29214836798312,61.904761904761905
+DLCN gece dinlenme,P65_4,7. tur B (MMRPhys sıfırdan)+Viterbi,2.8181344816996057,80.95238095238095
+DLCN gece egzersiz,P65_5,7. tur B (MMRPhys sıfırdan),1.2564240864127558,95.23809523809523
+DLCN gece egzersiz,P65_5,7. tur B (MMRPhys sıfırdan)+Viterbi,0.7963179431860031,100.0
+DLCN gece egzersiz,P65_6,7. tur B (MMRPhys sıfırdan),0.5557501388202913,100.0
+DLCN gece egzersiz,P65_6,7. tur B (MMRPhys sıfırdan)+Viterbi,0.5557501388202913,100.0
+DLCN gece egzersiz,P65_7,7. tur B (MMRPhys sıfırdan),3.597704072413925,90.47619047619048
+DLCN gece egzersiz,P65_7,7. tur B (MMRPhys sıfırdan)+Viterbi,0.8517604767169703,100.0
+DLCN gece egzersiz,P65_8,7. tur B (MMRPhys sıfırdan),11.954322321583676,66.66666666666666
+DLCN gece egzersiz,P65_8,7. tur B (MMRPhys sıfırdan)+Viterbi,2.892329472068989,85.71428571428571
+DLCN gece dinlenme,P70_1,7. tur B (MMRPhys sıfırdan),0.7994519066331081,100.0
+DLCN gece dinlenme,P70_1,7. tur B (MMRPhys sıfırdan)+Viterbi,0.7994519066331081,100.0
+DLCN gece dinlenme,P70_2,7. tur B (MMRPhys sıfırdan),0.8143667782448576,100.0
+DLCN gece dinlenme,P70_2,7. tur B (MMRPhys sıfırdan)+Viterbi,0.8143667782448576,100.0
+DLCN gece dinlenme,P70_3,7. tur B (MMRPhys sıfırdan),1.2529496688485586,100.0
+DLCN gece dinlenme,P70_3,7. tur B (MMRPhys sıfırdan)+Viterbi,1.2529496688485586,100.0
+DLCN gece dinlenme,P70_4,7. tur B (MMRPhys sıfırdan),0.9944006849962486,100.0
+DLCN gece dinlenme,P70_4,7. tur B (MMRPhys sıfırdan)+Viterbi,1.0103869753523829,100.0
+DLCN gece egzersiz,P70_5,7. tur B (MMRPhys sıfırdan),0.6498920459858991,100.0
+DLCN gece egzersiz,P70_5,7. tur B (MMRPhys sıfırdan)+Viterbi,0.6498920459858991,100.0
+DLCN gece egzersiz,P70_6,7. tur B (MMRPhys sıfırdan),1.1769029844077654,100.0
+DLCN gece egzersiz,P70_6,7. tur B (MMRPhys sıfırdan)+Viterbi,1.1769029844077654,100.0
+DLCN gece egzersiz,P70_7,7. tur B (MMRPhys sıfırdan),11.580900430470678,85.71428571428571
+DLCN gece egzersiz,P70_7,7. tur B (MMRPhys sıfırdan)+Viterbi,0.5659589156501872,100.0
+DLCN gece egzersiz,P70_8,7. tur B (MMRPhys sıfırdan),26.49611011597049,14.285714285714285
+DLCN gece egzersiz,P70_8,7. tur B (MMRPhys sıfırdan)+Viterbi,10.12954170541244,38.095238095238095
+DLCN gece dinlenme,P75_1,7. tur B (MMRPhys sıfırdan),0.6821639881900454,100.0
+DLCN gece dinlenme,P75_1,7. tur B (MMRPhys sıfırdan)+Viterbi,0.6821639881900454,100.0
+DLCN gece dinlenme,P75_2,7. tur B (MMRPhys sıfırdan),0.5129385056854978,100.0
+DLCN gece dinlenme,P75_2,7. tur B (MMRPhys sıfırdan)+Viterbi,0.5238396353327779,100.0
+DLCN gece dinlenme,P75_3,7. tur B (MMRPhys sıfırdan),0.80088599614258,100.0
+DLCN gece dinlenme,P75_3,7. tur B (MMRPhys sıfırdan)+Viterbi,0.8124842819553736,100.0
+DLCN gece dinlenme,P75_4,7. tur B (MMRPhys sıfırdan),4.119880316919653,85.71428571428571
+DLCN gece dinlenme,P75_4,7. tur B (MMRPhys sıfırdan)+Viterbi,0.770133603478404,100.0
+DLCN gece egzersiz,P75_5,7. tur B (MMRPhys sıfırdan),0.5299177432950078,100.0
+DLCN gece egzersiz,P75_5,7. tur B (MMRPhys sıfırdan)+Viterbi,0.5299177432950078,100.0
+DLCN gece egzersiz,P75_6,7. tur B (MMRPhys sıfırdan),0.7839138707505371,100.0
+DLCN gece egzersiz,P75_6,7. tur B (MMRPhys sıfırdan)+Viterbi,0.7839138707505371,100.0
+DLCN gece egzersiz,P75_7,7. tur B (MMRPhys sıfırdan),0.7569162354327884,100.0
+DLCN gece egzersiz,P75_7,7. tur B (MMRPhys sıfırdan)+Viterbi,0.7569162354327884,100.0
+DLCN gece egzersiz,P75_8,7. tur B (MMRPhys sıfırdan),5.980644750815096,76.19047619047619
+DLCN gece egzersiz,P75_8,7. tur B (MMRPhys sıfırdan)+Viterbi,4.225357389482743,80.95238095238095
+DLCN gece dinlenme,P80_1,7. tur B (MMRPhys sıfırdan),0.562976352330079,100.0
+DLCN gece dinlenme,P80_1,7. tur B (MMRPhys sıfırdan)+Viterbi,0.562976352330079,100.0
+DLCN gece dinlenme,P80_2,7. tur B (MMRPhys sıfırdan),0.6338299693977234,100.0
+DLCN gece dinlenme,P80_2,7. tur B (MMRPhys sıfırdan)+Viterbi,0.6210376532172527,100.0
+DLCN gece dinlenme,P80_3,7. tur B (MMRPhys sıfırdan),1.501334038364367,95.23809523809523
+DLCN gece dinlenme,P80_3,7. tur B (MMRPhys sıfırdan)+Viterbi,1.5078494606596498,95.23809523809523
+DLCN gece dinlenme,P80_4,7. tur B (MMRPhys sıfırdan),5.4268893831849745,85.71428571428571
+DLCN gece dinlenme,P80_4,7. tur B (MMRPhys sıfırdan)+Viterbi,1.295065153597879,100.0
+DLCN gece egzersiz,P80_5,7. tur B (MMRPhys sıfırdan),0.5414142957841018,100.0
+DLCN gece egzersiz,P80_5,7. tur B (MMRPhys sıfırdan)+Viterbi,0.5414142957841018,100.0
+DLCN gece egzersiz,P80_6,7. tur B (MMRPhys sıfırdan),0.5416538853218058,100.0
+DLCN gece egzersiz,P80_6,7. tur B (MMRPhys sıfırdan)+Viterbi,0.5416538853218058,100.0
+DLCN gece egzersiz,P80_7,7. tur B (MMRPhys sıfırdan),8.638532166174233,71.42857142857143
+DLCN gece egzersiz,P80_7,7. tur B (MMRPhys sıfırdan)+Viterbi,1.6982314098304332,100.0
+DLCN gece egzersiz,P80_8,7. tur B (MMRPhys sıfırdan),8.927533888959983,76.19047619047619
+DLCN gece egzersiz,P80_8,7. tur B (MMRPhys sıfırdan)+Viterbi,0.9041847703917336,100.0
+DLCN gece dinlenme,P85_1,7. tur B (MMRPhys sıfırdan),0.6467529046604752,100.0
+DLCN gece dinlenme,P85_1,7. tur B (MMRPhys sıfırdan)+Viterbi,0.6458133666965891,100.0
+DLCN gece dinlenme,P85_2,7. tur B (MMRPhys sıfırdan),1.031796302939576,100.0
+DLCN gece dinlenme,P85_2,7. tur B (MMRPhys sıfırdan)+Viterbi,1.0273904059378285,100.0
+DLCN gece dinlenme,P85_3,7. tur B (MMRPhys sıfırdan),0.7112252792883147,100.0
+DLCN gece dinlenme,P85_3,7. tur B (MMRPhys sıfırdan)+Viterbi,0.717904882989191,100.0
+DLCN gece dinlenme,P85_4,7. tur B (MMRPhys sıfırdan),11.909899512388781,28.57142857142857
+DLCN gece dinlenme,P85_4,7. tur B (MMRPhys sıfırdan)+Viterbi,4.766171037319901,47.61904761904761
+DLCN gece egzersiz,P85_5,7. tur B (MMRPhys sıfırdan),0.972143767691625,100.0
+DLCN gece egzersiz,P85_5,7. tur B (MMRPhys sıfırdan)+Viterbi,0.972143767691625,100.0
+DLCN gece egzersiz,P85_6,7. tur B (MMRPhys sıfırdan),5.351366353245769,76.19047619047619
+DLCN gece egzersiz,P85_6,7. tur B (MMRPhys sıfırdan)+Viterbi,4.558039443669647,76.19047619047619
+DLCN gece egzersiz,P85_7,7. tur B (MMRPhys sıfırdan),9.680621467991472,76.19047619047619
+DLCN gece egzersiz,P85_7,7. tur B (MMRPhys sıfırdan)+Viterbi,1.3358161101913324,100.0
+DLCN gece egzersiz,P85_8,7. tur B (MMRPhys sıfırdan),39.66386076923294,0.0
+DLCN gece egzersiz,P85_8,7. tur B (MMRPhys sıfırdan)+Viterbi,49.14862955177804,0.0
+DLCN gece dinlenme,P90_1,7. tur B (MMRPhys sıfırdan),0.9420960740758982,100.0
+DLCN gece dinlenme,P90_1,7. tur B (MMRPhys sıfırdan)+Viterbi,0.9420960740758982,100.0
+DLCN gece dinlenme,P90_2,7. tur B (MMRPhys sıfırdan),1.2715986765282532,90.47619047619048
+DLCN gece dinlenme,P90_2,7. tur B (MMRPhys sıfırdan)+Viterbi,1.059226908689941,95.23809523809523
+DLCN gece dinlenme,P90_3,7. tur B (MMRPhys sıfırdan),0.9674646264973306,100.0
+DLCN gece dinlenme,P90_3,7. tur B (MMRPhys sıfırdan)+Viterbi,0.9674646264973306,100.0
+DLCN gece dinlenme,P90_4,7. tur B (MMRPhys sıfırdan),2.9612931939483116,85.71428571428571
+DLCN gece dinlenme,P90_4,7. tur B (MMRPhys sıfırdan)+Viterbi,0.9092501560883971,100.0
+DLCN gece egzersiz,P90_5,7. tur B (MMRPhys sıfırdan),0.8810109534288225,100.0
+DLCN gece egzersiz,P90_5,7. tur B (MMRPhys sıfırdan)+Viterbi,0.8810109534288225,100.0
+DLCN gece egzersiz,P90_6,7. tur B (MMRPhys sıfırdan),0.8247859374472772,100.0
+DLCN gece egzersiz,P90_6,7. tur B (MMRPhys sıfırdan)+Viterbi,0.8182371808410225,100.0
+DLCN gece egzersiz,P90_7,7. tur B (MMRPhys sıfırdan),0.7030681832797561,100.0
+DLCN gece egzersiz,P90_7,7. tur B (MMRPhys sıfırdan)+Viterbi,0.7030681832797561,100.0
+DLCN gece egzersiz,P90_8,7. tur B (MMRPhys sıfırdan),0.8171295942688969,100.0
+DLCN gece egzersiz,P90_8,7. tur B (MMRPhys sıfırdan)+Viterbi,0.8171295942688969,100.0
+DLCN gece dinlenme,P95_1,7. tur B (MMRPhys sıfırdan),2.837593757783491,85.71428571428571
+DLCN gece dinlenme,P95_1,7. tur B (MMRPhys sıfırdan)+Viterbi,1.6470297177805528,90.47619047619048
+DLCN gece dinlenme,P95_2,7. tur B (MMRPhys sıfırdan),0.5045000036960131,100.0
+DLCN gece dinlenme,P95_2,7. tur B (MMRPhys sıfırdan)+Viterbi,0.5045000036960131,100.0
+DLCN gece dinlenme,P95_3,7. tur B (MMRPhys sıfırdan),2.9331776739430597,85.71428571428571
+DLCN gece dinlenme,P95_3,7. tur B (MMRPhys sıfırdan)+Viterbi,2.558058303345469,90.47619047619048
+DLCN gece dinlenme,P95_4,7. tur B (MMRPhys sıfırdan),1.4754679105968593,100.0
+DLCN gece dinlenme,P95_4,7. tur B (MMRPhys sıfırdan)+Viterbi,1.4795520355679046,100.0
+DLCN gece egzersiz,P95_5,7. tur B (MMRPhys sıfırdan),1.09694679209526,95.23809523809523
+DLCN gece egzersiz,P95_5,7. tur B (MMRPhys sıfırdan)+Viterbi,0.9661078053233244,95.23809523809523
+DLCN gece egzersiz,P95_6,7. tur B (MMRPhys sıfırdan),0.8293455524132176,95.23809523809523
+DLCN gece egzersiz,P95_6,7. tur B (MMRPhys sıfırdan)+Viterbi,0.5760180602732452,100.0
+DLCN gece egzersiz,P95_7,7. tur B (MMRPhys sıfırdan),1.021931251864127,100.0
+DLCN gece egzersiz,P95_7,7. tur B (MMRPhys sıfırdan)+Viterbi,1.0240341553533536,100.0
+DLCN gece egzersiz,P95_8,7. tur B (MMRPhys sıfırdan),4.676339827999466,80.95238095238095
+DLCN gece egzersiz,P95_8,7. tur B (MMRPhys sıfırdan)+Viterbi,1.7106852524815976,85.71428571428571

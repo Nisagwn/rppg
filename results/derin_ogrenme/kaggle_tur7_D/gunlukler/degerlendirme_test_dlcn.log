@@ -1,0 +1,37 @@
+test: 152 video
+grup                                                  DLCN gece dinlenme  DLCN gece egzersiz  Hepsi  ≤5 BPM %  Medyan
+yöntem                                                                                                               
+MMRPhys B'den ince ayar (7. tur)+Viterbi                            0.88                1.73   1.31     96.37    0.69
+MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi                0.89                1.85   1.37     96.40    0.69
+7. tur B (MMRPhys sıfırdan)+Viterbi                                 1.05                2.33   1.69     94.24    0.82
+MMRPhys B'den ince ayar (7. tur)                                    1.42                2.84   2.13     94.11    0.75
+MMRPhys B'den ince ayar (7. tur) (son epoch)                        1.65                2.89   2.27     93.42    0.75
+5. tur+Viterbi                                                      1.93                3.73   2.83     87.72    1.10
+7. tur B (MMRPhys sıfırdan)                                         2.06                3.70   2.88     90.95    0.92
+3. tur (uygulamadaki)+Viterbi                                       1.87                4.38   3.13     87.28    1.08
+FactorizePhys PURE (hazır)+Viterbi                                  2.58                6.59   4.58     82.86    1.31
+5. tur                                                              3.80                6.06   4.93     82.46    2.15
+3. tur (uygulamadaki)                                               3.98                6.18   5.08     82.36    2.24
+FactorizePhys PURE (hazır)                                          4.88                8.08   6.48     77.04    3.10
+POS (yüz kırpıntısı)+Viterbi                                        5.99               14.71  10.35     68.42    2.56
+POS (yüz kırpıntısı)                                                9.04               15.26  12.15     64.25    7.82
+
+referansı temiz 152 video:
+grup                                                  DLCN gece dinlenme  DLCN gece egzersiz  Hepsi  ≤5 BPM %  Medyan
+yöntem                                                                                                               
+MMRPhys B'den ince ayar (7. tur)+Viterbi                            0.88                1.73   1.31     96.37    0.69
+MMRPhys B'den ince ayar (7. tur) (son epoch)+Viterbi                0.89                1.85   1.37     96.40    0.69
+7. tur B (MMRPhys sıfırdan)+Viterbi                                 1.05                2.33   1.69     94.24    0.82
+MMRPhys B'den ince ayar (7. tur)                                    1.42                2.84   2.13     94.11    0.75
+MMRPhys B'den ince ayar (7. tur) (son epoch)                        1.65                2.89   2.27     93.42    0.75
+5. tur+Viterbi                                                      1.93                3.73   2.83     87.72    1.10
+7. tur B (MMRPhys sıfırdan)                                         2.06                3.70   2.88     90.95    0.92
+3. tur (uygulamadaki)+Viterbi                                       1.87                4.38   3.13     87.28    1.08
+FactorizePhys PURE (hazır)+Viterbi                                  2.58                6.59   4.58     82.86    1.31
+5. tur                                                              3.80                6.06   4.93     82.46    2.15
+3. tur (uygulamadaki)                                               3.98                6.18   5.08     82.36    2.24
+FactorizePhys PURE (hazır)                                          4.88                8.08   6.48     77.04    3.10
+POS (yüz kırpıntısı)+Viterbi                                        5.99               14.71  10.35     68.42    2.56
+POS (yüz kırpıntısı)                                                9.04               15.26  12.15     64.25    7.82
+rapor: /kaggle/working/cikti/test_dlcn/SONUCLAR.md
+

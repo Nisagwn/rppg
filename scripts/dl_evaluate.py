@@ -175,7 +175,10 @@ def write_report(a, t, info, w, t_clean=None, ref_q=None):
     import torch
     ck = torch.load(a.model, map_location="cpu")
     arch = ck.get("arch", "factorizephys") if isinstance(ck, dict) else "factorizephys"
-    if arch == "mmrphys":
+    init = ck.get("init") if isinstance(ck, dict) else None  # dl_train kaydeder; eski kontrol noktalarında yok
+    if arch == "mmrphys" and init:
+        what = f"MMRPhys (Joshi ve Cho 2025) `{init}` ağırlıklarından başlatılarak eğitildi"
+    elif arch == "mmrphys":
         what = ("MMRPhys (Joshi ve Cho 2025) **rastgele başlatılarak (sıfırdan)** eğitildi; hiçbir hazır ağırlık "
                 "kullanılmadı")
         loss = "SmoothL1 (standartlaştırılmış tahmin ve etiket; TSFM eğitimde etiketi kısıt olarak kullanır)"

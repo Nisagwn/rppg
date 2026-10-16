@@ -371,7 +371,7 @@ def main():
         print("  doğrulama: " + ", ".join(f"{k} {m:.2f} ({n})" for k, (m, n) in VAL_GROUPS.items()), flush=True)
         state["history"].append({"epoch": 0, "val_mae": mae0, "loss": None})
         state["best"] = {"epoch": 0, "val_mae": mae0}
-        torch.save({"model": model.state_dict(), "arch": a.arch}, os.path.join(a.out, "best.pth"))
+        torch.save({"model": model.state_dict(), "arch": a.arch, "init": init}, os.path.join(a.out, "best.pth"))
     state["val_set"] = sorted(v["npz"] for v in val)
 
     sampler = ChunkSampler(train)
@@ -425,8 +425,8 @@ def main():
         state["history"].append({"epoch": state["epoch"], "val_mae": mae, "loss": float(np.mean(losses))})
         if state["best"] is None or mae < state["best"]["val_mae"]:
             state["best"] = {"epoch": state["epoch"], "val_mae": mae}
-            torch.save({"model": model.state_dict(), "arch": a.arch}, os.path.join(a.out, "best.pth"))
-        torch.save({"model": model.state_dict(), "arch": a.arch, "opt": opt.state_dict(), "sched": sched.state_dict(),
+            torch.save({"model": model.state_dict(), "arch": a.arch, "init": init}, os.path.join(a.out, "best.pth"))
+        torch.save({"model": model.state_dict(), "arch": a.arch, "init": init, "opt": opt.state_dict(), "sched": sched.state_dict(),
                     "state": state}, last + ".part")
         os.replace(last + ".part", last)
         epoch_time = time.time() - t0
