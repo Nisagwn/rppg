@@ -120,10 +120,15 @@ def main():
             else:
                 app_mae = app_5 = float("nan")
 
-            tr = extract_traces(iter(frames), FPS, FaceTracker())
-            res = estimate(tr, PY_CFG)
-            pref = gt_window_hr(c["gt"], c["s0"] + res.centers, 10.0)
-            py_mae = float(np.mean(np.abs(res.hr - pref)))
+            try:
+                tr = extract_traces(iter(frames), FPS, FaceTracker())
+                res = estimate(tr, PY_CFG)
+                pref = gt_window_hr(c["gt"], c["s0"] + res.centers, 10.0)
+                py_mae = float(np.mean(np.abs(res.hr - pref)))
+            except RuntimeError as e:   # Haar yan açılı yüzü bulamazsa (MCD USB) kesit atlanmasın, Python sütunu boş kalsın
+                print(f"  ! {c['ad']}: Python hattı: {e}")
+                pref = gt_window_hr(c["gt"], c["s0"] + np.arange(5, dur - 4), 10.0)
+                py_mae = float("nan")
 
             row = {k: c[k] for k in ("kaynak", "ad", "kamera", "durum")}
             row.update({"pencere": int(m.sum()), "uygulama_MAE": app_mae, "uygulama_≤5BPM%": app_5,

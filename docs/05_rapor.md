@@ -1,5 +1,5 @@
 ---
-title: "Kamerayla Temassız Nabız ve Solunum Ölçümü: Klasik Görüntü İşleme ile Çoklu Bölge Füzyonu, Hareket Farkında Spektral Takip ve Zamanda Yumuşatılmış Cilt Maskesi"
+title: "Kamerayla Temassız Nabız Ölçümü: Klasik Görüntü İşlemeden Derin Öğrenmeye — Hareket Farkında Spektral Takip, Açık Veri Setlerinde Etiket Senkronu Düzeltmesi ve Telefonda Gerçek Zamanlı Uygulama"
 author: "Hayrunnisa Güven — Fırat Üniversitesi, Yazılım Mühendisliği"
 subtitle: "Sayısal Görüntü İşleme Dersi Dönem Projesi Raporu"
 lang: tr
@@ -7,7 +7,7 @@ lang: tr
 
 # Özet
 
-Bu çalışmada sıradan bir webcam videosundan nabız ve solunum hızını temassız olarak ölçen, tamamen klasik görüntü ve sinyal işleme tekniklerine dayanan bir sistem geliştirilmiştir. Sistemin aşamaları şunlardır:
+Bu çalışmada sıradan bir kameradan nabzı temassız olarak ölçen bir sistem iki aşamada geliştirilmiştir. Birinci aşama tamamen klasik görüntü ve sinyal işlemeye dayanır; ikinci aşama, klasik hattın yetersiz kaldığı telefon ve yan kamera koşulları için derin öğrenme ekler. Birinci aşamanın adımları şunlardır:
 
 - Viola-Jones yüz tespiti ve normalize çapraz korelasyonla takip
 - YCrCb uzayında morfolojik olarak temizlenmiş cilt segmentasyonu
