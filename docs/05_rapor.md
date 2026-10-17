@@ -24,7 +24,12 @@ Literatürdeki temel hatta dört iyileştirme önerilmiştir:
 3. **Zamanda yumuşatılmış ağırlıklı cilt maskesi.** Her karede yeniden hesaplanan ikili maskenin ışık titremesini nabız sanmasına yol açan doğrusal olmama sorununu giderir.
 4. **Kontrollü zorluk senaryolu sentetik benchmark.** Gürültü, ışık, renkli ekran ışığı, sıkıştırma, hareket, örtme ve yerel titreme etkilerini tek tek ayırarak ölçmeyi sağlar.
 
-Sonuçlar sentetik benchmark ve gerçek yüz fotoğrafından üretilmiş yarı-sentetik deney üzerinde sunulmuştur. UBFC-rPPG ve kendi toplanan veriler için değerlendirme betikleri hazırdır (bkz. Bölüm 6).
+Klasik katkılar sentetik benchmark, yarı-sentetik deney ve gerçek veride (UBFC-rPPG, MCD-rPPG) değerlendirilmiştir. Gerçek veride klasik hat önden webcam'de 1.5–8 BPM verirken telefon ve yan kamerada 12–26 BPM'e çıkmaktadır. Bu boşluk için ikinci aşamada derin öğrenme kullanılmıştır (Bölüm 6):
+
+- Açık veri setlerinde etiket–görüntü senkronunun sessizce bozuk olduğu bulunmuş (MCD-rPPG'de kamera başına sabit kayma ve ters işaret, VIPL-HR'de videodan videoya değişen kayma) ve **eğitilmiş modeli referans alan video başına hizalama yöntemi** geliştirilmiştir.
+- Telefon ve yan kamerada hata 15.6 BPM'den (POS) 1.6 BPM'e inmiştir.
+- 2025 tarihli MMRPhys mimarisi hiçbir hazır ağırlık kullanılmadan sıfırdan eğitilmiş ve ince ayarlı modelle ana testte istatistiksel olarak eşit sonuç vermiştir (1.13 / 1.10 BPM, p = 0.07).
+- Model telefonun tarayıcısında, internetsiz ve gerçek zamanlı çalışmaktadır.
 
 **Anahtar kelimeler:** uzaktan fotopletismografi, rPPG, renk uzayı, cilt segmentasyonu, morfoloji, frekans analizi, Viterbi, Eulerian video büyütme
 
@@ -50,6 +55,9 @@ Bu yüzden rPPG, bir görüntü işleme dersinin konularını tek bir uçtan uca
 4. **Zamanda yumuşatılmış ağırlıklı cilt maskesi.** İkili maskenin ışık titremesini nabız sanmasının deneysel gösterimi ve çözümü (Bölüm 3.3).
 5. **Kontrollü zorluk senaryolu sentetik benchmark**, 9 senaryo (Bölüm 4.1).
 6. Gerçek zamanlı canlı demo (nabız, solunum, ROI ağırlıkları, EVM) ve veri toplama protokolü.
+7. **Açık rPPG veri setlerinde etiket senkronu hatalarının tespiti** ve eğitilmiş modeli referans alan **video başına hizalama yöntemi** (Bölüm 6.3).
+8. Altı veri seti (~900 kişi) üzerinde derin modellerin eğitimi; güncel MMRPhys mimarisinin **hazır ağırlık olmadan** eğitilmesi ve altı test kümesinde anlamlılık testleriyle karşılaştırma (Bölüm 6.4).
+9. Eğitilmiş modelin telefonda tarayıcıda çalışan, internetsiz bir uygulamaya dönüştürülmesi (Bölüm 6.5).
 
 # 2. İlgili Çalışmalar
 
@@ -227,7 +235,7 @@ Pencere düzeyi metrikler 10 s pencere ve 1 s adım ile hesaplanır.
 
 # 5. Sonuçlar
 
-> **Önemli not:** Bu bölümdeki sayısal sonuçlar **sentetik** ve **yarı-sentetik** verilere aittir. Sentetik veri gerçek videolara göre iyimserdir: yüz rijittir, takip kusursuza yakındır, nabız dalga biçimi idealdir. Sonuçlar mutlak doğruluk olarak değil, **yöntemlerin hangi zorluğa nasıl tepki verdiğinin karşılaştırması** olarak okunmalıdır. Gerçek veri (UBFC-rPPG ve kendi kayıtlarımız) sonuçları Bölüm 6'daki betiklerle üretilip buraya eklenecektir.
+> **Önemli not:** Bu bölümdeki sayısal sonuçlar **sentetik** ve **yarı-sentetik** verilere aittir. Sentetik veri gerçek videolara göre iyimserdir: yüz rijittir, takip kusursuza yakındır, nabız dalga biçimi idealdir. Sonuçlar mutlak doğruluk olarak değil, **yöntemlerin hangi zorluğa nasıl tepki verdiğinin karşılaştırması** olarak okunmalıdır. Gerçek veri sonuçları (UBFC-rPPG, MCD-rPPG ve derin öğrenme aşaması) Bölüm 6'dadır.
 
 ## 5.1 Klasik Yöntemlerin Senaryolara Tepkisi
 
@@ -341,38 +349,105 @@ Sentetik veride solunum hızı tüm senaryolarda 0.02 nefes/dk'dan küçük hata
 
 Canlı demonun işleme hızı, 640×480 çözünürlükte bir video dosyası üzerinde (video çözme dahil, ekran çizimi hariç) 2 çekirdekli bir bulut sanal makinesinde, CPU başka bir deneyle paylaşılırken **32 kare/s** olarak ölçülmüştür; yani gerçek zamanlıdır. Ölçüm sunum bilgisayarında tekrarlanmalıdır. En pahalı adımlar şunlardır: yarım saniyede bir yapılan spektrum ve füzyon hesabı, her 10 karede bir yapılan Haar tespiti ve göğüs bölgesindeki optik akış.
 
-# 6. Gerçek Veri Üzerinde Değerlendirme (tamamlanacak)
+# 6. Gerçek Veri ve Derin Öğrenme
 
-Aşağıdaki deneyler için betikler hazır ve test edilmiştir (sahte UBFC klasör yapısıyla uçtan uca). Sonuçlar üretildikçe bu bölüm doldurulacaktır.
+Bu bölümde önce klasik hattın gerçek veride nasıl davrandığı, ardından klasik hattın yetersiz kaldığı koşullar için geliştirilen derin öğrenme aşaması anlatılmaktadır. Deneylerin tam kronolojisi, anlamlılık testleri ve olumsuz sonuçlar `docs/07_arastirma_gunlugu.md` dosyasındadır.
 
-## 6.1 UBFC-rPPG
+## 6.1 Klasik Hattın Gerçek Veride Değerlendirilmesi
 
-```
-python scripts/evaluate_ubfc.py --root data/UBFC --out results/ubfc
-```
+**UBFC-rPPG** (DATASET_2, 8 denek, parmak PPG referansı, 10 s pencere). Klasik yöntemler (POS, CHROM, ICA, LGI) 1.5–2.0 BPM MAE verir ve pencerelerin ~%96'sı ≤5 BPM'dir. En iyi konfigürasyon CHROM + alın/yanaklar + SNR füzyonudur (1.53 BPM). GREEN 7–18 BPM ile başarısızdır. Önerilen son işleme bu temiz veride **kazanç sağlamaz** (POS klasik 1.62, önerilen 1.91 BPM): nabız hızlı değiştiğinde Viterbi yumuşatması birkaç saniye geriden gelir.
 
-Beklenen çıktılar:
+**MCD-rPPG** (10 kişi, 58 video, üç kamera, dinlenme ve egzersiz sonrası). Tablo 5'te POS'un üç hattaki hatası görülmektedir.
 
-- 5 yöntem × 5 ROI kümesi × füzyon × takip için MAE, RMSE ve r tablosu
-- Bland-Altman grafiği
-- En zor denek grafiği
+Tablo 5: MCD-rPPG'de POS, MAE (BPM). "Klasik" = 4 bölge ortalaması + argmax.
 
-Literatürde UBFC-rPPG üzerinde klasik POS ve CHROM için bildirilen video düzeyi MAE değerleri tipik olarak birkaç BPM düzeyindedir (bkz. rPPG-Toolbox tabloları). Kendi uygulamamızın bu aralıkta olması, doğru çalıştığının bir kontrolüdür.
+| Kamera, durum | Klasik | Ortalama + Viterbi | Önerilen (SNR + Viterbi) |
+|---|---:|---:|---:|
+| Webcam (önden), dinlenme | 5.8 | **4.1** | 5.1 |
+| Webcam (önden), egzersiz sonrası | 7.9 | **7.6** | 9.2 |
+| Telefon (Iriun), dinlenme | 16.0 | **12.5** | 14.2 |
+| Telefon (Iriun), egzersiz sonrası | 18.8 | 19.2 | 22.0 |
+| USB (yan), dinlenme | 16.8 | **14.8** | 15.6 |
 
-## 6.2 Hibrit Karşılaştırma: Derin Öğrenme
+Üç sonuç öne çıkar:
 
-rPPG-Toolbox ile PURE'de eğitilmiş TS-CAN ve PhysNet modelleri UBFC üzerinde çalıştırılacak ve Tablo 4'e eklenecektir (bkz. `docs/03_veri_seti_indirme.md`).
+- **Kamera belirleyicidir.** Önden webcam 4–8 BPM verirken yüksek sıkıştırmalı telefon akışı ve yan açılı USB kamera 12–26 BPM verir. Yüzler küçüktür (~70 piksel); bu, sentetik "JPEG sıkıştırma" senaryosuyla uyumludur.
+- **Viterbi takibi gerçek veride de işe yarar** (dinlenmede %12–29 iyileşme).
+- **SNR ağırlıklı füzyon gerçek veride genellikle zararlıdır.** Sentetik veride en güçlü katkı olan füzyon, gerçek bölge gürültüsünde yanlış bölgeye ağırlık verebilmektedir. Bu, Bölüm 5.2'deki "SNR keskinliği ölçer, doğruluğu ölçmez" sınırlamasının gerçek verideki karşılığıdır.
 
-| Yöntem | Eğitim | MAE | RMSE | r |
-|---|---|---|---|---|
-| POS (klasik hat) | yok | | | |
-| POS (önerilen hat) | yok | | | |
-| TS-CAN | PURE | | | |
-| PhysNet | PURE | | | |
+Telefon ve yan kamerada 12–26 BPM, pratik bir sistem için kabul edilemez. Derin öğrenme aşaması bu boşluğu kapatmak için başlatılmıştır.
 
-## 6.3 Kendi Veri Setimiz
+## 6.2 Derin Öğrenme: Yöntem
 
-7 koşul × N katılımcı (bkz. `docs/02_veri_toplama_protokolu.md`). Koşul × yöntem ısı haritası buraya eklenecektir.
+**Mimariler.** İki güncel ve küçük mimari kullanılmıştır:
+
+- **FactorizePhys** (Joshi vd., 2024): matris ayrıştırmalı dikkat modülüyle 3B evrişimli ağ, 52 bin parametre.
+- **MMRPhys** (Joshi ve Cho, 2025): hedef sinyal kısıtlı ayrıştırma (TSFM) ile 3B evrişimli ağ, 37 bin parametre. TSFM eğitimde etiketi kısıt olarak kullanır; çıkarımda etiket gerekmez.
+
+İki modelin girdisi de 160 karelik 72×72 RGB yüz kırpıntısıdır; çıktı aynı uzunlukta nabız dalgasıdır. Nabız, klasik hattaki gibi spektrogram ve **Viterbi takibiyle** çıkarılır.
+
+**Ön işleme** rPPG-Toolbox (Liu vd., 2023) ile aynıdır: Haar yüz kutusu ×1.5, 30 karede bir yeniden tespit, 72×72 kırpıntı, 30 fps'e yeniden örnekleme.
+
+**Eğitim.** Kayıp FactorizePhys için negatif Pearson, MMRPhys için (makaledeki gibi) standartlaştırılmış SmoothL1'dir. AdamW ve kosinüs öğrenme oranı; artırma olarak yatay çevirme, hız 0.8–1.25× ve parlaklık ×0.8–1.2 kullanılmıştır. En iyi epoch, test dışı doğrulama kişilerinde pencere MAE'siyle seçilmiştir. Eğitimler Kaggle'ın T4 GPU'sunda yapılmıştır.
+
+**Veri.** Tablo 6'daki veri setleri kullanılmıştır. Test kişileri (UBFC ve MCD'de önceden sabit 28 video, diğerlerinde kişi numarası 5'e bölünenler) hiçbir eğitimde ve doğrulamada kullanılmamıştır.
+
+Tablo 6: Eğitim veri setleri.
+
+| Veri seti | Kişi | Kamera ve koşul |
+|---|---:|---|
+| MCD-rPPG | 600 | önden webcam, telefon (Iriun), yan USB; dinlenme + egzersiz sonrası |
+| VIPL-HR (Niu vd., 2018) | 107 | webcam (source1), Huawei P9 telefon (source3); 9 senaryo |
+| DLCN | 98 | gece, 10–100 lux değişen ışık; dinlenme + egzersiz |
+| COHFACE (Heusch vd., 2017) | 40 | yoğun sıkıştırılmış webcam |
+| UBFC-rPPG, PURE (Stricker vd., 2014) | 42 + 10 | laboratuvar; PURE'de hareket senaryoları |
+
+## 6.3 Etiket Senkronu: Açık Veri Setlerinde Gizli Hata
+
+Derin modeller etiketle dalga düzeyinde eğitildiği için etiketin görüntüyle zaman hizası kritiktir. Spektral nabız değerlendirmesi ise zaman kaymasına duyarsız olduğu için bu hatayı göstermez.
+
+**MCD-rPPG'de ters işaret ve sabit kayma.** MCD'nin parmak PPG'si UBFC/PURE'a göre ters işaretlidir (hazır modelin çıktısıyla korelasyon MCD'de ≈ −0.75, UBFC'de +0.86). Ayrıca aynı oturumun üç kamerası aynı sensörü paylaşmasına rağmen etiket–görüntü korelasyonunun tepesi önden kameraya göre telefonda 4, USB'de 8 kare (~270 ms) kayıktır. 270 ms yaklaşık yarım nabız periyodudur; yani USB videolarında etiket fiilen tersti. Etiketler kamera başına kaydırılarak düzeltilmiş ve telefon/USB testinde takipsiz hata %24 azalmıştır.
+
+**VIPL-HR'de videodan videoya değişen kayma.** Yeni veri setleri eklendiğinde eğitim kaybı 0.36'dan 0.52'ye çıkmış ve doğrulama iyileşmemiştir. POS ile yapılan ölçüm telefon videolarında ve düşük çözünürlükte güvenilir olmadığı için **eğitilmiş model referans olarak kullanılmıştır**: model dalgası etiketle ±45 kare kaydırılarak karşılaştırılır ve en iyi uyumun kayması bulunur. Yöntem, senkronu bilinen ana test videolarında tepeyi tam 0 karede bulmuştur (r = 0.82–0.84).
+
+- VIPL source1/3'te model–etiket nabız uyumu %81–83'tür (etiket doğru kişiye aittir), ama kayma videodan videoya −34 ile +11 kare arasında değişir ve senaryoya bağlıdır.
+- Etiketler video başına kaydırıldıktan sonra bütün videolarda tepe 0 karede, r = 0.65–0.96'dır. Hizalı korelasyonu 0.4'ün altında kalan videolar eğitimden çıkarılmıştır (VIPL'de %78–80, DLCN'de %92, COHFACE'te %97'si kalmıştır).
+- **VIPL source2 (RealSense) kullanılamaz:** model–etiket nabız uyumu %39'dur ve kaymalar rastgeledir.
+- **MMPD'nin (Tang vd., 2023) küçük sürümü (80×60)** bütün modellerde ~13 BPM hata vermiştir; işaret ve kayma doğrudur, sınırlayıcı olan çözünürlüktür. Bu nedenle yalnızca test olarak kullanılmıştır.
+
+Bu bulgu, açık rPPG veri setlerinde etiket senkronunun sessizce bozuk olabileceğini ve bunun derin model eğitimini doğrudan etkilediğini göstermektedir.
+
+## 6.4 Derin Öğrenme: Sonuçlar
+
+Altı test kümesi kullanılmıştır: ana test (UBFC 8 + MCD önden webcam 20 video), telefon/USB (aynı 10 MCD kişisinin telefon ve USB videoları, 28 video), VIPL (283), DLCN (152), COHFACE (32) ve MMPD (120). Anlamlılık, video başına eşleştirilmiş Wilcoxon testiyle ölçülmüştür.
+
+Tablo 7: Ortalama MAE (BPM), Viterbi takibiyle. Kalın: sütundaki en iyi.
+
+| Yöntem | Ana test | Telefon/USB | VIPL | DLCN | COHFACE | MMPD |
+|---|---:|---:|---:|---:|---:|---:|
+| POS (klasik) | 3.54 | 15.63 | 4.81 | – | – | 18.75 |
+| FactorizePhys, hazır ağırlık (PURE) | 2.57 | 7.47 | 4.53 | – | – | 13.71 |
+| FactorizePhys, ince ayar (5. tur) | **1.10** | **1.64** | 5.23 | 2.83 | **1.37** | **12.65** |
+| MMRPhys, **sıfırdan** (7. tur B) | 1.13 | 1.96 | **3.49** | 1.69 | 1.53 | 13.24 |
+| MMRPhys, B'den ince ayar + DLCN, COHFACE (7. tur D) | 1.29 | 2.36 | 4.06 | **1.31** | 1.57 | 13.17 |
+
+POS ve hazır model değerleri telefon/USB, VIPL ve MMPD testlerinde 72×72 yüz kırpıntısı üzerinde hesaplanmıştır. 5. tur VIPL, DLCN ve COHFACE'i; 7B ise DLCN ve COHFACE'i eğitimde görmemiştir.
+
+Bulgular:
+
+1. **Eğitim, hazır modelin hatasını telefon ve yan kamerada 4.6 kat düşürür** (7.47 → 1.64 BPM). Klasik POS bu testte 15.63 BPM ile başarısızdır.
+2. **Sıfırdan eğitilen MMRPhys, ince ayarlı FactorizePhys ile ana testte istatistiksel olarak eşittir** (1.13 / 1.10, p = 0.074). Hiçbir hazır ağırlık kullanılmamıştır. Telefon/USB testinde ise anlamlı ölçüde geridedir (1.96 / 1.64, p = 0.001).
+3. **İki modelin de eğitimde görmediği DLCN'de MMRPhys anlamlı ölçüde daha iyi genellemiştir** (1.69 / 2.83 BPM, p < 0.001; 152 videonun 46'sında daha iyi, 4'ünde daha kötü). COHFACE'teki fark anlamlı değildir (p = 0.077).
+4. **Yeni veri eklemek eski koşulları bozabilir.** D'de DLCN eklenince DLCN hatası anlamlı biçimde düşmüş (1.69 → 1.31, p < 0.001), telefon/USB hatası sınırda artmıştır (p = 0.048); ana test ve VIPL'deki farklar anlamlı değildir. Örnekleme kare sayısıyla orantılı olduğu için MCD'nin eğitimdeki payı %78'den %62'ye düşmüştür. Bu, veri seti paylarının açıkça ayarlanması gerektiğini göstermektedir.
+5. **Viterbi takibi derin model çıktısında da büyük kazanç sağlar.** MMRPhys telefon/USB testinde argmax ile 3.80, Viterbi ile 1.96 BPM verir (p < 0.001). Klasik aşamanın katkısı derin modelle birleşmektedir.
+
+## 6.5 Mobil Uygulama
+
+Eğitilmiş model ONNX'e çevrilmiş (FactorizePhys 250 KB, MMRPhys 163 KB) ve telefonun tarayıcısında ayrı bir iş parçacığında, internetsiz çalışan bir PWA'ya yerleştirilmiştir (https://nisagwn.github.io/rppg/). Yüz tespiti telefonda pico ile yapılır; görüntü cihazdan çıkmaz. Sinyal işleme kodunun Python karşılığıyla 1e-9 düzeyinde aynı sonucu verdiği testlerle doğrulanmıştır. Uygulamanın gerçek videolarla (Chrome'a sahte kamera olarak verilerek) doğrulaması `results/mobil_dogrulama_v12/` altındadır.
+
+## 6.6 Kendi Veri Setimiz
+
+7 koşul × N katılımcı (bkz. `docs/02_veri_toplama_protokolu.md`). Henüz toplanmadı; MCD-rPPG'nin üç kameralı kayıtları bu boşluğu kısmen doldurmaktadır.
 
 # 7. Tartışma
 
@@ -384,7 +459,10 @@ rPPG-Toolbox ile PURE'de eğitilmiş TS-CAN ve PhysNet modelleri UBFC üzerinde 
 
 # 8. Sınırlamalar
 
-- Sonuçlar şu an yalnızca sentetik ve yarı-sentetik veridedir.
+- Derin öğrenme deneylerinin her biri tek çalıştırmadır (tek tohum); ±0.1 BPM düzeyindeki farklar anlamlı değildir. Ana test 28 videodur.
+- Test kümeleri bu çalışmanın tanımıdır; literatürdeki standart çapraz veri seti protokolleriyle (ör. PURE → UBFC) doğrudan karşılaştırma henüz yapılmamıştır.
+- "Kazanç mimariden mi veriden mi" sorusu için gereken iki kontrol deneyi (FactorizePhys yeni veriyle; FactorizePhys sıfırdan) henüz yapılmamıştır.
+- Telefon/USB testindeki kişiler MCD-rPPG'nin 10 kişisidir; kendi veri setimiz toplanmamıştır.
 - Haar kaskadı profil yüzleri bulamaz; büyük baş dönüşlerinde takip kaybolabilir.
 - Cilt tonu çeşitliliği test edilmemiştir; literatür koyu tonlarda SNR'ın düştüğünü göstermektedir (Nowara vd., 2020).
 - Referans cihazların (oksimetre, akıllı saat) kendi hataları vardır.
@@ -402,14 +480,16 @@ Yalnızca klasik görüntü ve sinyal işleme teknikleriyle, gerçek zamanlı ç
 
 Bu katkılar, kontrollü deneylerde beş yöntemin hepsinin hatasını azaltmış ve ikili cilt maskesinin ışık titremesini nabız sanması şeklindeki, literatürde pek tartışılmayan bir hata kaynağını ortaya çıkarıp gidermiştir.
 
+Gerçek veride klasik hattın telefon ve yan kamerada yetersiz kalması üzerine derin öğrenme aşaması eklenmiştir. Açık veri setlerindeki etiket senkronu hataları bulunup model tabanlı hizalamayla düzeltilmiş, telefon/yan kamerada hata 15.6 BPM'den 1.6 BPM'e inmiş, güncel bir mimari hazır ağırlık olmadan ince ayarlı modelle eşit seviyeye eğitilmiş ve model telefonda çalışan bir uygulamaya dönüştürülmüştür. Klasik aşamanın Viterbi takibi, derin modelin çıktısında da hatayı yaklaşık yarıya indirmiştir.
+
 **Gelecek çalışmalar:**
 
-- UBFC ve kendi veri setinde doğrulama
+- Kontrol deneyleri (FactorizePhys yeni veriyle ve sıfırdan) ve birden fazla tohumla tekrar
+- Literatürdeki standart çapraz veri seti protokolleriyle karşılaştırma
+- Kendi veri setinin toplanması
 - Bölgeler arası tutarlılığı hesaba katan füzyon
-- Yüz işaret noktalarıyla ROI yerleşimi
 - Tepe tespitiyle kalp hızı değişkenliği (HRV)
-- İki dalga boyuyla SpO2 tahmini
-- Mobil uygulama
+- Solunum hızının derin modelle tahmini (MMRPhys ve COHFACE bunu destekliyor)
 
 # Kaynakça
 
@@ -429,6 +509,15 @@ Bu katkılar, kontrollü deneylerde beş yöntemin hepsinin hatasını azaltmı�
 14. X. Liu, G. Narayanswamy, A. Paruchuri, X. Zhang, J. Tang, Y. Zhang, R. Sengupta, S. Patel, Y. Wang, D. McDuff, "rPPG-Toolbox: Deep remote PPG toolbox," *NeurIPS Datasets and Benchmarks*, 2023.
 15. E. M. Nowara, D. McDuff, A. Veeraraghavan, "A meta-analysis of the impact of skin type and gender on non-contact photoplethysmography measurements," *CVPR Workshops*, 2020.
 16. J. M. Bland, D. G. Altman, "Statistical methods for assessing agreement between two methods of clinical measurement," *The Lancet*, 327(8476), 307–310, 1986.
+17. J. Joshi, S. S. Agaian, Y. Cho, "FactorizePhys: Matrix factorization for multidimensional attention in remote physiological sensing," *NeurIPS*, 2024.
+18. J. Joshi, Y. Cho, "Efficient and robust multidimensional attention in remote physiological sensing through target signal constrained factorization," arXiv:2505.07013, 2025.
+19. R. Stricker, S. Müller, H.-M. Gross, "Non-contact video-based pulse rate measurement on a mobile service robot," *IEEE RO-MAN*, 2014. (PURE)
+20. X. Niu, H. Han, S. Shan, X. Chen, "VIPL-HR: A multi-modal database for pulse estimation from less-constrained face video," *ACCV*, 2018.
+21. G. Heusch, A. Anjos, S. Marcel, "A reproducible study on remote heart rate measurement," arXiv:1709.00962, 2017. (COHFACE)
+22. J. Tang, K. Chen, Y. Wang, Y. Shi, S. Patel, D. McDuff, X. Liu, "MMPD: Multi-domain mobile video physiology dataset," *IEEE EMBC*, 2023.
+23. MCD-rPPG veri seti, https://huggingface.co/datasets/kyegorov/mcd_rppg (CC BY 4.0). *[Yazarlar ve yayın künyesi tamamlanacak.]*
+24. DLCN: rPPG veri seti, gece ve değişen ışık koşulları, arXiv:2507.04306, 2025; https://github.com/dalaoplan/DLCN (CC BY-NC-SA 4.0). *[Yazarlar tamamlanacak.]*
+25. F. Wilcoxon, "Individual comparisons by ranking methods," *Biometrics Bulletin*, 1(6), 80–83, 1945.
 
 # Ek A: Ders Konuları ile Proje Adımlarının Eşleşmesi
 
