@@ -1,194 +1,175 @@
-# Temassız Nabız ve Solunum Ölçümü (rPPG)
+# Kamerayla Temassız Nabız Ölçümü (rPPG)
 
-Sıradan bir webcam ile, yüze hiçbir şey takmadan **nabız (BPM)** ve **solunum hızı** ölçen, gerçek zamanlı çalışan bir sistem. Derin öğrenme kullanılmaz; her aşama klasik görüntü ve sinyal işlemeyle çözülür: Haar yüz tespiti, NCC takip, YCrCb cilt segmentasyonu, morfoloji, renk uzayı projeksiyonları, FFT, Butterworth filtre, Gauss piramidi, optik akış.
+**Sıradan bir kamera, yüze hiçbir şey takmadan, nabzı 1 BPM civarında hatayla ölçebilir mi?**
+
+Bu proje, yüz derisindeki gözle görülmeyen renk değişimlerinden nabzı ölçen uçtan uca bir sistem. Klasik görüntü ve
+sinyal işlemeyle başlayıp derin öğrenmeye uzanıyor; sonunda telefonun tarayıcısında, internetsiz, gerçek zamanlı
+çalışıyor.
+
+<img src="docs/mobil_qr.png" width="120" align="right" alt="Mobil uygulama QR kodu">
+
+📱 **Telefonda dene:** **https://nisagwn.github.io/rppg/** (kurulum yok, görüntü telefondan çıkmaz)
 
 ![Sistem akışı](docs/sistem_akisi.png)
 
-![Canlı demo](docs/canli_demo_arayuz.png)
-*Canlı demo arayüzü: yüz ve ROI kutuları (alın, sol/sağ yanak, tüm yüz), anlık nabız, SNR, solunum, hareket güveni, ROI ağırlıkları, son 5 s BVP sinyali ve 42–180 BPM spektrumu.*
+---
+
+## Öne çıkanlar
+
+|  | Klasik POS | Hazır derin model (PURE) | **Bu proje** (en iyi tur) |
+|---|---:|---:|---:|
+| Ana test (28 video, önden webcam) | 3.54 BPM | 2.57 BPM | **1.10 BPM** (5. tur) |
+| Telefon / yan USB kamera (28 video) | 15.63 BPM | 7.47 BPM | **1.64 BPM** (5. tur) |
+| VIPL-HR (283 video, webcam + telefon) | 4.81 BPM | 4.53 BPM | **3.49 BPM** (7. tur B) |
+| DLCN, gece ışığı (152 video) | – | – | **1.31 BPM** (7. tur D) |
+
+Ortalama pencere hatası (10 s pencere, parmak PPG referansı, Viterbi takibiyle). Test kişileri hiçbir eğitimde
+kullanılmadı. Her satırın en iyisi farklı bir eğitim turundan; tek bir modelin bütün testlerdeki sonucu ve
+anlamlılık testleri için: [`docs/07_arastirma_gunlugu.md`](docs/07_arastirma_gunlugu.md).
+
+- **Hazır ağırlık olmadan da aynı seviye.** 2025 tarihli MMRPhys mimarisi tamamen sıfırdan, yalnızca bizim
+  verimizle eğitildi. Ana testte ince ayarlı modelle istatistiksel olarak eşit (1.13 / 1.10 BPM, Wilcoxon p = 0.07).
+  Eğitimde hiç görmediği gece verisinde (DLCN) %40 daha iyi genelledi (1.69 / 2.83 BPM, p < 0.001).
+- **Açık veri setlerinde sessizce bozuk etiketler bulundu ve düzeltildi.**
+  - MCD-rPPG'nin yan kameralarında etiket ~270 ms kayık; bu, yarım nabız periyodu demek, yani etiket fiilen ters.
+  - VIPL-HR'de kayma videodan videoya −34 ile +11 kare arasında değişiyor.
+  - Eğitilmiş modeli referans alan **video başına hizalama yöntemi** geliştirildi. Hizalamadan sonra bütün
+    videolarda tepe tam 0 karede.
+- **Telefonda 7 kat daha iyi.** Klasik yöntemin çöktüğü yan açılı ve sıkıştırılmış telefon görüntüsünde
+  15.6 → 1.6 BPM.
+- **Klasik katkılar derin modelle birleşiyor.** Hareket farkında Viterbi nabız takibi, derin modelin çıktısında da
+  hatayı yarıya indiriyor (telefon/USB testinde 3.80 → 1.96 BPM, p < 0.001).
 
 ---
 
-## Hızlı Başlangıç (Windows)
+## Nasıl çalışıyor
 
-1. Python 3.9–3.12 kurulu olmalı. Kurulu değilse [python.org](https://www.python.org/downloads/) adresinden yükleyin ve "Add python.exe to PATH" kutusunu işaretleyin. Anaconda da olur.
-2. Klasörü açın ve **`KURULUM_WINDOWS.bat`** dosyasına çift tıklayın. Bu dosya:
-   - `.venv` sanal ortamını oluşturur,
-   - kütüphaneleri kurar,
-   - testleri çalıştırır,
-   - örnek sentetik videolar üretir.
-3. **`CALISTIR.bat`** dosyasına çift tıklayın ve menüden seçim yapın:
+1. **Yüz:** Haar kaskadı ile tespit, takip, 72×72 kırpıntı (telefonda pico).
+2. **Nabız dalgası:** iki yol var.
+   - **Klasik:** cilt bölgelerinden RGB izleri → POS / CHROM / ICA / LGI → detrend + Butterworth.
+   - **Derin öğrenme:** 160 karelik pencereden doğrudan dalga tahmini. Modeller: FactorizePhys (NeurIPS 2024),
+     MMRPhys (2025). İkisi de 40–50 bin parametre.
+3. **Nabız:** spektrogram → hareket farkında **Viterbi** takibi (projenin klasik aşamadaki katkısı).
+4. **Telefon:** model ONNX'e çevrilip tarayıcıda (onnxruntime-web, ayrı iş parçacığında) çalışıyor. Model 163–250 KB.
 
-```
-1) Canlı demo (webcam)
-2) Canlı demo - örnek sentetik video (kamera gerekmez)
-3) Örnek videoyu analiz et
-4) EVM videosu üret (nabzı görünür kıl)
-5) Kendi verini kaydet
-6) Sentetik benchmark (hızlı)
-7) Sentetik benchmark (tam)
-8) UBFC-rPPG değerlendirmesi
-9) Testleri çalıştır
-D) UBFC-rPPG veri setini indir
-G) MCD-rPPG indir + değerlendir
-```
+### Eğitim verisi
 
-Linux/macOS için: `bash kurulum.sh`, ardından `source .venv/bin/activate`.
+| Veri seti | Kişi | Özellik |
+|---|---:|---|
+| MCD-rPPG | 600 | 3 kamera (önden, telefon, yan USB), dinlenme + egzersiz |
+| VIPL-HR | 107 | webcam + Huawei P9 telefon, 9 senaryo (RealSense kaynağı etiket uyumsuz olduğu için çıkarıldı) |
+| DLCN | 98 | gece, 10–100 lux değişen ışık |
+| COHFACE | 40 | yoğun sıkıştırılmış video |
+| UBFC-rPPG, PURE | 42 + 10 | laboratuvar, hareket senaryoları |
 
-## Mobil Uygulama (telefonda çalışır)
+Her yeni veri setinde etiket kalitesi (SNR), işaret ve zaman kayması eğitimden önce ölçülüyor; etiketi videoyla
+örtüşmeyen videolar eğitime girmiyor.
 
-<img src="docs/mobil_qr.png" width="140" align="right" alt="Mobil uygulama QR kodu">
+---
 
-**https://nisagwn.github.io/rppg/** adresini telefonun tarayıcısında açın (ya da QR kodu okutun). Kurulum gerekmez; Android ve iPhone'da çalışır. "Ana ekrana ekle" ile uygulama gibi kullanılır, sonra internetsiz de açılır.
+## Mobil uygulama
 
-- **Yüz modu (ön kamera):** pico yüz tespiti (klasik, derin öğrenmesiz) → alın/yanak/tüm yüz ROI'leri + YCrCb cilt maskesi → POS → detrend + Butterworth → spektrum → hareket güvenli çevrimiçi Bayes takibi. ROI'ler ortalama füzyonla birleşir; gerçek veride en iyi sonucu bu hat verdi.
-- **Parmak modu (arka kamera + flaş):** temaslı PPG. Oksimetre yokken yüz ölçümünü doğrulamak için kullanılabilir.
-- Oturum **CSV** olarak indirilebilir (zaman, nabız, SNR, hareket güveni).
-- Görüntü telefondan çıkmaz; tüm hesaplama tarayıcıda yapılır.
+**https://nisagwn.github.io/rppg/** adresini telefonun tarayıcısında açın. Android ve iPhone'da çalışır;
+"Ana ekrana ekle" ile uygulama gibi kullanılır ve sonra internetsiz açılır.
 
-Sinyal işleme kodu ([`mobile/dsp.js`](mobile/dsp.js)) Python paketinin birebir karşılığıdır. Testler aynı girdide Python ile 1e-9 düzeyinde aynı sonucu verdiğini doğrular. Tarayıcıda uçtan uca test (Chrome'a video sahte kamera olarak verilir):
+- **Yüz modu (ön ya da arka kamera):** eğitilmiş model (3. tur FactorizePhys) + Viterbi takibi.
+- **Parmak modu (arka kamera + flaş):** temaslı PPG; yüz ölçümünü oksimetresiz doğrulamak için.
+- Oturum **CSV** olarak indirilebilir. Tüm hesaplama telefonda yapılır.
 
-| Test videosu | Beklenen | Uygulama |
-|---|---|---|
-| Sentetik yüz, sabit 84 BPM | 84 | 83.6–84.3 BPM, SNR 9.3 dB |
-| Sentetik parmak, 96 BPM | 96 | 95.9–96.0 BPM |
+Sinyal işleme kodu ([`mobile/dsp.js`](mobile/dsp.js)) Python paketinin birebir karşılığı; testler aynı girdide
+1e-9 düzeyinde aynı sonucu doğrular. Uygulamanın gerçek veride ölçülmüş son doğrulaması
+([`results/mobil_dogrulama/`](results/mobil_dogrulama/SONUCLAR.md)) klasik POS dönemine ait (UBFC 2.0 BPM);
+eğitilmiş modelli sürümün aynı doğrulaması henüz yeniden yapılmadı.
 
-**Gerçek veride doğrulama** ([`results/mobil_dogrulama/SONUCLAR.md`](results/mobil_dogrulama/SONUCLAR.md)): 28 gerçek kişi videosu (40 s) uygulamaya kamera gibi verildi, her saniyelik ölçüm parmak PPG referansıyla karşılaştırıldı.
+---
 
-| Veri | Kesit | Uygulama MAE | ≤5 BPM pencere | Python hattı MAE |
-|---|---:|---:|---:|---:|
-| UBFC-rPPG (önden webcam) | 8 | **2.0 BPM** | %91 | 2.5 BPM |
-| MCD-rPPG dinlenme (önden webcam) | 10 | 5.7 BPM | %66 | 8.0 BPM |
-| MCD-rPPG egzersiz sonrası | 10 | 11.9 BPM | %39 | 11.5 BPM |
+## Sonuçlar ve belgeler
 
-Kesitlerin 18/28'inde ortalama hata ≤5 BPM (medyan 3.6 BPM). Başarısız kesitler Python hattında da başarısız; sorun uygulamada değil, o videoların koşullarında (uzak ve küçük yüz, sıkıştırma, egzersiz sonrası 120+ BPM ve hızlı değişim).
-
-```bash
-node --test mobile/test/dsp.test.mjs                                   # Python eşdeğerlik testleri
-node mobile/test/e2e.mjs --video yuz.y4m --expect 84 --shot ekran.png  # tarayıcıda uçtan uca
-python scripts/validate_mobile.py                                     # gerçek veride doğrulama (UBFC + MCD)
-```
-
-## Komut Satırı
-
-```bash
-# Canlı demo (e: EVM, m: cilt maskesi, r: sıfırla, s: ekran görüntüsü, q: çıkış)
-python scripts/live_demo.py
-
-# Bir videoyu analiz et (grafikler + JSON)
-python scripts/run_video.py --video yuz_videosu.mp4
-python scripts/run_video.py --video vid.avi --gt ground_truth.txt      # UBFC, metriklerle
-
-# EVM: nabzı görünür kılan video
-python scripts/make_evm_video.py --video yuz_videosu.mp4 --alpha 100
-
-# Kendi veri setini topla (bkz. docs/02_veri_toplama_protokolu.md)
-python scripts/record_session.py --subject K01 --condition gunisigi_sabit
-python scripts/run_video.py --recording data/kayitlar/K01_gunisigi_sabit_<zaman>
-
-# Veri seti (UBFC-rPPG, resmi Google Drive klasöründen)
-python scripts/download_ubfc.py --subjects 5
-python scripts/evaluate_mcd.py --download 10     # MCD-rPPG: webcam/telefon x dinlenme/egzersiz
-
-# Deneyler
-python scripts/synthetic_benchmark.py --seeds 3 --duration 60
-python scripts/evaluate_ubfc.py --root data/UBFC
-python scripts/mask_experiment.py --image kendi_fotografin.jpg
-
-# Testler
-python -m pytest -q
-```
-
-## Proje Yapısı
-
-```
-rppg/                     çekirdek kütüphane
-  roi.py                  Haar tespiti, NCC takip, ROI'ler, YCrCb + morfoloji cilt maskesi
-  signals.py              ROI RGB izleri, yumuşak maske (katkı), hareket indeksi, göğüs optik akışı
-  methods.py              GREEN, ICA, CHROM, POS, LGI
-  filtering.py            Tarvainen detrend, Butterworth, yeniden örnekleme
-  hr.py                   spektrum, SNR, spektrogram, Viterbi (katkı), çevrimiçi Bayes takipçi
-  fusion.py               SNR ağırlıklı çoklu-ROI füzyon + hareket güveni (katkı)
-  pipeline.py             uçtan uca tahmin (Config -> Result)
-  respiration.py          solunum hızı
-  evm.py                  Eulerian Video Magnification (çevrimdışı + canlı)
-  synthetic.py            kontrollü zorluk senaryolu sentetik video üreteci (katkı)
-  metrics.py              MAE, RMSE, MAPE, Pearson, Bland-Altman
-  evaluation.py           ablasyon ızgarası
-  io_utils.py             video, UBFC ve kendi kayıt yükleyicileri
-  camera.py               webcam (oto pozlama/beyaz dengesi kilidi)
-  plotting.py             rapor şekilleri
-scripts/                  çalıştırılabilir betikler (yukarıda)
-mobile/                   telefon uygulaması (PWA): index.html, app.js, dsp.js, vendor/pico.js
-tests/                    pytest birim + uçtan uca testler
-docs/                     öneri, protokol, veri seti, iş planı, RAPOR, sunum
-results/                  deney çıktıları (tablolar + şekiller)
-```
-
-## Özgün Katkılar
-
-| # | Katkı | Nerede | Ne işe yarar |
-|---|---|---|---|
-| 1 | SNR ağırlıklı çoklu-ROI **spektral** füzyon | `fusion.py` | Saçla örtülü alın veya ışık vuran yanak gibi bozuk bölgeleri pencere pencere devre dışı bırakır |
-| 2 | Hareket farkında güvenle ölçeklenen **Viterbi** takibi (+ canlı ileri Bayes filtresi) | `hr.py`, `fusion.py` | Tek pencerelik sahte tepelere ve hareket anlarına dayanıklı HR serisi |
-| 3 | **Zamanda yumuşatılmış ağırlıklı cilt maskesi** | `signals.py` | İkili maskenin ışık titremesini nabız sanması hatasını giderir (deneyle gösterildi) |
-| 4 | **Kontrollü zorluk senaryolu sentetik benchmark** | `synthetic.py` | 9 zorluk tipini tek tek ayırarak yöntemleri karşılaştırır |
-
-### Öne çıkan sonuçlar — sentetik / yarı-sentetik
-
-- **POS + önerilen hat:** MAE **0.70 BPM**, r = 0.98, pencerelerin %100'ü ≤5 BPM (27 video, 9 zorluk senaryosu). Klasik POS hattı (tüm yüz + argmax): 1.87 BPM.
-- **"Hepsi birden" senaryosu:** klasik 11.6 BPM → önerilen 1.2 BPM (en büyük katkı Viterbi takibinden).
-- Önerilen son işleme **beş yöntemin hepsinde** hatayı düşürüyor (%26–87).
-- **Maske deneyi (gerçek yüz fotoğrafı):** ikili cilt maskesi %1'lik ışık titremesinde denemelerin **%100'ünde** titremeye kilitleniyor (~33 BPM hata). Yumuşak maske ile hata ≤0.24 BPM.
-- Canlı demo 640×480'de ~32 kare/s (CPU).
-
-### Öne çıkan sonuçlar — gerçek veri
-
-**UBFC-rPPG** (DATASET_2, 8 denek, parmak PPG referansı, 10 s pencere):
-
-- Klasik yöntemler (POS, CHROM, ICA, LGI) **1.5–2.0 BPM** MAE, pencerelerin ~%96'sı ≤5 BPM. En iyi: CHROM + alın/yanaklar + SNR füzyonu, **1.53 BPM**. GREEN 7–18 BPM.
-- Önerilen son işleme temiz gerçek veride **kazanç sağlamıyor**: POS klasik 1.62, önerilen 1.91 BPM. Nabız hızlı değiştiğinde Viterbi yumuşatması birkaç saniye geriden geliyor.
-
-**MCD-rPPG** (10 kişi, 58 video, 3 kamera × dinlenme / egzersiz sonrası):
-
-| POS MAE (BPM) | klasik | ortalama + Viterbi | önerilen (SNR + Viterbi) |
-|---|---:|---:|---:|
-| webcam (önden), dinlenme | 5.8 | **4.1** | 5.1 |
-| webcam (önden), egzersiz sonrası | 7.9 | **7.6** | 9.2 |
-| telefon (Iriun), dinlenme | 16.0 | **12.5** | 14.2 |
-| telefon (Iriun), egzersiz sonrası | 18.8 | 19.2 | 22.0 |
-| USB kamera (yan), dinlenme | 16.8 | **14.8** | 15.6 |
-
-(4 bölge; "klasik" = ortalama + argmax.)
-
-- **Kamera kalitesi belirleyici:** önden webcam 4–8 BPM, yüksek sıkıştırmalı telefon akışı ve yan açılı USB kamera 12–26 BPM. Yüzler küçük (~70 piksel), telefon videosu 3 dakikada 16 MB. Sentetik "JPEG sıkıştırma" senaryosuyla uyumlu.
-- **Viterbi takibi gerçek veride de işe yarıyor** (dinlenmede %12–29 iyileşme). **SNR ağırlıklı füzyon ise gerçek veride genellikle zararlı.** Sentetik veride en güçlü katkı olan füzyon, gerçek bölge gürültüsünde yanlış bölgeye ağırlık verebiliyor.
-- Egzersiz sonrasında (ortalama referans 88 BPM, dinlenmede 80 BPM) tüm hatlar kötüleşiyor.
-
-Sonuç dosyaları: [`results/ubfc/SONUCLAR.md`](results/ubfc/SONUCLAR.md), [`results/mcd/SONUCLAR.md`](results/mcd/SONUCLAR.md), [`results/synthetic/SONUCLAR.md`](results/synthetic/SONUCLAR.md), [`results/maske_deneyi/SONUCLAR.md`](results/maske_deneyi/SONUCLAR.md). Ayrıntılı tartışma: [`docs/05_rapor.md`](docs/05_rapor.md).
-
-## Dokümanlar
-
-| Dosya | İçerik |
+| Ne | Nerede |
 |---|---|
-| [`docs/01_proje_onerisi.md`](docs/01_proje_onerisi.md) | Hocaya sunulacak proje önerisi |
-| [`docs/02_veri_toplama_protokolu.md`](docs/02_veri_toplama_protokolu.md) | Kayıt koşulları, onam formu, KVKK |
-| [`docs/03_veri_seti_indirme.md`](docs/03_veri_seti_indirme.md) | UBFC-rPPG ve rPPG-Toolbox (derin öğrenme karşılaştırması) |
-| [`docs/04_is_plani.md`](docs/04_is_plani.md) | 12 haftalık plan ve kontrol listesi |
-| [`docs/05_rapor.md`](docs/05_rapor.md) / `.docx` | Dönem raporu (sentetik sonuçlarla dolu; UBFC ve kendi veri bölümleri doldurulacak) |
-| [`docs/06_sunum_taslagi.md`](docs/06_sunum_taslagi.md) | Slayt slayt sunum planı ve demo kontrol listesi |
+| **Araştırma günlüğü:** bütün deneyler, bulgular, anlamlılık testleri, olumsuz sonuçlar | [`docs/07_arastirma_gunlugu.md`](docs/07_arastirma_gunlugu.md) |
+| Eğitim turlarının ayrıntılı sonuçları | [`results/derin_ogrenme/`](results/derin_ogrenme/) (`kaggle_tur*/SONUCLAR.md`) |
+| Etiket kalitesi ve zaman kayması analizi | [`results/derin_ogrenme/VERI_KALITESI.md`](results/derin_ogrenme/VERI_KALITESI.md), [`senkron_model.csv`](results/derin_ogrenme/senkron_model.csv) |
+| Klasik yöntemler: sentetik, UBFC, MCD, maske deneyi | [`results/synthetic/`](results/synthetic/SONUCLAR.md), [`results/ubfc/`](results/ubfc/SONUCLAR.md), [`results/mcd/`](results/mcd/SONUCLAR.md), [`results/maske_deneyi/`](results/maske_deneyi/SONUCLAR.md) |
+| Dönem raporu | [`docs/05_rapor.md`](docs/05_rapor.md) |
+| İş planı | [`docs/04_is_plani.md`](docs/04_is_plani.md) |
+| Proje önerisi, veri toplama protokolü, sunum taslağı | [`docs/01`](docs/01_proje_onerisi.md), [`02`](docs/02_veri_toplama_protokolu.md), [`06`](docs/06_sunum_taslagi.md) |
 
-## Sorun Giderme
+---
+
+## Klasik aşamanın katkıları
+
+| # | Katkı | Kod | Sonuç |
+|---|---|---|---|
+| 1 | Hareket farkında, güvenle ölçeklenen **Viterbi** nabız takibi | `rppg/hr.py`, `fusion.py` | Gerçek veride %12–29, derin modelde ~%50 hata azalması |
+| 2 | SNR ağırlıklı çoklu-bölge spektral füzyon | `rppg/fusion.py` | Sentetikte güçlü; gerçek veride genellikle zararlı (dürüstçe raporlandı) |
+| 3 | Zamanda yumuşatılmış ağırlıklı cilt maskesi | `rppg/signals.py` | İkili maskenin ışık titremesine kilitlenmesini önler (%100 → ≤0.24 BPM hata) |
+| 4 | Kontrollü zorluk senaryolu sentetik benchmark | `rppg/synthetic.py` | 9 zorluk tipi tek tek ayrılarak ölçülür |
+
+Sentetik veride önerilen hat POS ile 0.70 BPM; "hepsi birden" senaryosunda klasik 11.6 → 1.2 BPM. UBFC-rPPG'de klasik
+yöntemler 1.5–2.0 BPM.
+
+---
+
+## Hızlı başlangıç
+
+**Windows:** `KURULUM_WINDOWS.bat` (sanal ortam, kütüphaneler, testler), ardından `CALISTIR.bat` menüsü: canlı demo,
+video analizi, EVM, kayıt, benchmark, veri seti indirme. **Linux/macOS:** `bash kurulum.sh`.
+
+```bash
+python scripts/live_demo.py                          # canlı demo (webcam)
+python scripts/run_video.py --video yuz.mp4           # bir videoyu analiz et
+python scripts/make_evm_video.py --video yuz.mp4      # nabzı görünür kılan EVM videosu
+python -m pytest -q                                   # testler
+```
+
+### Derin öğrenme hattı
+
+```bash
+python scripts/dl_prepare.py --mcd 60 --ubfc 10      # veri hazırlama (72x72 kırpıntı + etiket)
+python scripts/dl_quality.py --data data/dl           # etiket kalitesi (SNR, işaret, kayma)
+python scripts/dl_sync_check.py --write --data data/dl --subs vipl   # model tabanlı etiket hizalama
+python scripts/dl_train.py --arch mmrphys --epochs 150 --lr 1e-3     # MMRPhys sıfırdan
+python scripts/dl_evaluate.py --model results/.../best.pth --name "MMRPhys"
+python scripts/dl_compare.py results/.../test_sonuclari.csv "A+Viterbi" "B+Viterbi"   # anlamlılık
+python scripts/dl_export_onnx.py --model results/.../best.pth          # telefon için ONNX
+```
+
+Büyük eğitimler Kaggle GPU'sunda yapıldı: [`kaggle/rppg_hazirla.ipynb`](kaggle/rppg_hazirla.ipynb) veriyi hazırlayıp
+Hugging Face'e koyar; [`kaggle/rppg_egitim_7.ipynb`](kaggle/rppg_egitim_7.ipynb) eğitir, saatte iki kez yedekler ve
+oturum kesilirse kaldığı yerden devam eder (Colab'da da çalışır).
+
+---
+
+## Proje yapısı
+
+```
+rppg/          klasik çekirdek: yüz/ROI, cilt maskesi, POS/CHROM/ICA/LGI, filtreler, Viterbi, füzyon, EVM, sentetik
+scripts/       çalıştırılabilir betikler; dl_*.py derin öğrenme hattı
+mobile/        telefon uygulaması (PWA): dsp.js, dl_worker.js (ONNX), model/
+kaggle/        Kaggle/Colab defterleri (veri hazırlama, eğitim turları)
+results/       deney çıktıları; derin_ogrenme/ altında her eğitim turu
+docs/          öneri, plan, rapor, araştırma günlüğü, sunum
+tests/         pytest + mobil node testleri
+```
+
+---
+
+## Lisanslar ve kaynaklar
+
+- **Modeller:** FactorizePhys ve rPPG-Toolbox (Liu vd. 2023; Joshi ve Cho, NeurIPS 2024), MMRPhys (Joshi ve Cho 2025;
+  **yalnızca araştırma amaçlı RAIL lisansı**). Mimariler bu çalışmalardan; ağırlıklar bu projede eğitildi.
+- **Veri setleri:** UBFC-rPPG, PURE, MCD-rPPG, VIPL-HR, MMPD, COHFACE, DLCN (CC BY-NC-SA 4.0), UBFC-Phys. Her biri
+  kendi lisansı ve kullanım koşuluyla; çoğu yalnızca ticari olmayan araştırmaya izin verir. Veri setleri depoda yok.
+- **Temel yöntemler:** Verkruysse vd. 2008; Poh vd. 2010; de Haan ve Jeanne 2013 (CHROM); Wang vd. 2017 (POS);
+  Pilz vd. 2018 (LGI); Wu vd. 2012 (EVM). Tam kaynakça: [`docs/05_rapor.md`](docs/05_rapor.md).
+
+### Sorun giderme
 
 | Sorun | Çözüm |
 |---|---|
-| "Kamera açılamadı" | Başka bir uygulama (Teams, Zoom) kamerayı kullanıyor olabilir; kapatın. Farklı kamera için `--camera 1` deneyin. |
-| "YÜZ BULUNAMADI" | Yüzünüz önden ve iyi aydınlatılmış olmalı. Haar kaskadı profilden yüz bulmaz. |
-| Nabız saçma değerlerde geziniyor | 10 s bekleyin (ısınma). Hareketsiz durun. Arkadan gelen ışıktan (pencere arkada) kaçının. Floresan titremesi varsa masa lambası kullanın. |
-| Değer sürekli sabit ve yanlış | Kameranın otomatik pozlaması kilitlenmemiş olabilir; `--no-lock` ile ya da Windows Kamera ayarlarından deneyin. |
-| `pip install` hatası | Python 3.13/3.14 kullanıyorsanız bazı paketlerin hazır sürümleri olmayabilir; 3.11 veya 3.12 önerilir. Kurulum betiği önce bunları arar. |
-| `module 'cv2' has no attribute 'CascadeClassifier'` | OpenCV 5 kurulmuş; OpenCV 5 Haar kaskadını kaldırdı. `pip install "opencv-python>=4.8,<5"` (requirements.txt bunu zaten sabitler). |
-
-## Kaynaklar
-
-Tam kaynakça raporun sonundadır. Temel kaynaklar: Verkruysse vd. 2008; Poh vd. 2010; de Haan ve Jeanne 2013; Wang vd. 2017; Pilz vd. 2018; Wu vd. 2012; Bobbia vd. (UBFC-rPPG); Liu vd. 2023 (rPPG-Toolbox).
+| "Kamera açılamadı" | Kamerayı kullanan başka uygulamayı (Teams, Zoom) kapatın ya da `--camera 1` deneyin. |
+| "YÜZ BULUNAMADI" | Yüz önden ve iyi aydınlatılmış olmalı; Haar kaskadı profil yüz bulmaz. |
+| Nabız saçma değerlerde | 10 s ısınmayı bekleyin, hareketsiz durun, arkadan gelen ışıktan kaçının. |
+| `cv2 ... CascadeClassifier` hatası | OpenCV 5 kurulmuş: `pip install "opencv-python>=4.8,<5"`. |
+| `pip install` hatası | Python 3.11 ya da 3.12 önerilir. |

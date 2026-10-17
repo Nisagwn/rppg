@@ -1,0 +1,172 @@
+# Araştırma Günlüğü — Derin Öğrenme Aşaması
+
+Bu belge, proje bittikten sonra yazılacak makalenin ham malzemesidir. Hangi deneyin neden yapıldığı, ne çıktığı,
+hangi kararın alındığı ve neyin başarısız olduğu kronolojik olarak burada toplanır. Ayrıntılı tablolar ilgili
+klasörlerdeki `SONUCLAR.md` dosyalarındadır; burada yalnızca özet ve kaynak gösterilir.
+
+Son güncelleme: 17 Ekim 2026.
+
+---
+
+## 1. Ortak deney düzeni
+
+Bütün turlarda aynı kalanlar:
+
+- **Ön işleme** (rPPG-Toolbox ile aynı): Haar yüz kutusu ×1.5, 30 karede bir yeniden tespit, 72×72 kırpıntı,
+  ham RGB, 30 fps'e yeniden örnekleme. Model girdisi 160 kare (5.3 s).
+- **Nabız çıkarımı:** model dalgası → detrend + bant geçiren → 10 s pencere / 1 s adım → argmax ya da
+  **Viterbi takibi** (projenin klasik aşamadaki katkısı).
+- **Referans:** parmak PPG'sinden pencere başına spektral tepe.
+- **Test kişileri hiçbir eğitimde ve doğrulamada kullanılmaz.**
+
+| Test kümesi | İçerik | Video | Kimler gördü |
+|---|---|---:|---|
+| Ana test | UBFC 8 denek + MCD önden webcam (10 kişi) | 28 | – |
+| Telefon/USB | Aynı 10 MCD kişisinin telefon (Iriun) ve USB kamera videoları | 28 | – |
+| VIPL | VIPL-HR source1 (webcam) + source3 (Huawei P9), kişi no %5 = 0 | 283 | 7. tur B, D, E |
+| DLCN | Gece / değişen ışık (10–100 lux), dinlenme + egzersiz | 152 | 7. tur D, E |
+| COHFACE | Yoğun sıkıştırılmış webcam | 32 | 7. tur D, E |
+| MMPD | Samsung S22, 80×60 (mini sürüm) | 120 | hiçbiri |
+
+**Metrik:** pencere MAE (BPM), ≤5 BPM yüzdesi, medyan. Anlamlılık: video başına eşleştirilmiş Wilcoxon
+(`scripts/dl_compare.py`).
+
+---
+
+## 2. Kronoloji
+
+Değerler Viterbi ile ortalama MAE (BPM). "Ana" = ana test, "Tel" = telefon/USB testi.
+
+| Tur | Tarih | Model ve başlangıç | Eğitim verisi | Ne değişti | Ana | Tel | Kaynak |
+|---|---|---|---|---|---:|---:|---|
+| – | – | POS (klasik, tüm yüz) | – | taban çizgisi | 3.54 | 15.63* | `tum_sonuclar.csv` |
+| – | – | FactorizePhys, PURE hazır ağırlık | – | taban çizgisi | 2.57 | 7.47 | |
+| yerel | 28 Eyl | FactorizePhys ← PURE | MCD 160 kişi + UBFC 3 | ilk ince ayar (RTX 3050) | 1.19 | – | `egitim/` |
+| 1 | 2 Eki | FactorizePhys ← yerel e73 | MCD 590 + PURE, 200 epoch | büyük veri (Kaggle T4) | 1.17 | 1.95 | `kaggle/` |
+| 2 | 2 Eki | ← 1. tur | + UBFC-Phys | kayıp 100 epoch 0.41'de düz kaldı | 1.12 | 1.90 | `kaggle_tur2/` |
+| 3 | 3 Eki | ← 1. tur | aynı, **temiz etiket** | MCD yan kamera kayması düzeltildi (bulgu 3.1) | 1.13 | 1.71 | `kaggle_tur3/` |
+| 4 | 3 Eki | ← PURE (taze) | temiz + telefon benzeri bozulma | kamera bazında doğrulama | 1.10 | 2.27 | `kaggle_tur4/` |
+| 5 | 6 Eki | ← 3. tur | aynı (yeni veri girmedi) | – | 1.10 | 1.64 | `kaggle_tur5/` |
+| 6 | 11 Eki | ← 5. tur | + MMPD, VIPL, COHFACE, DLCN | 4.6 saatte durdu; kayıp 0.36 → 0.52 yükseldi | – | – | (bulgu 3.3) |
+| **7B** | 14 Eki | **MMRPhys, sıfırdan** | MCD 45 s, UBFC, PURE, VIPL (hizalı) | yeni mimari, hazır ağırlık yok, 150 epoch | **1.13** | 1.96 | `kaggle_tur7_B/` |
+| 7D | 16 Eki | MMRPhys ← 7B | + DLCN, COHFACE; MCD 30 s | ince ayar, lr 2e-4, 100 epoch | 1.29 | 2.36 | `kaggle_tur7_D/` |
+| 7E | sürüyor | MMRPhys ← 7B | D ile aynı | veri seti payları sabit, kamera başına doğrulama | | | |
+
+\* POS'un telefon/USB değeri yüz kırpıntısı üzerinde (`test_kamera/`).
+Tüm klasörler `results/derin_ogrenme/` altında. 5. tur değerleri son epoch (`last.pth`); karşılaştırmalarda bu
+model kullanıldı.
+
+**Yeni test kümelerinde (7. tur):**
+
+| Model | VIPL | DLCN | COHFACE | MMPD |
+|---|---:|---:|---:|---:|
+| POS (yüz kırpıntısı) | 4.81 | – | – | 18.75 |
+| FactorizePhys PURE hazır | 4.53 | – | – | 13.71 |
+| 5. tur | 5.23 | 2.83 | 1.37 | 12.65 |
+| 7B (MMRPhys sıfırdan) | **3.49** | 1.69 | 1.53 | 13.24 |
+| 7D (7B'den ince ayar) | 4.06 | **1.31** | 1.57 | 13.17 |
+
+---
+
+## 3. Bulgular (makale için katkı adayları)
+
+### 3.1 MCD-rPPG yan kameralarında sabit etiket kayması
+- Aynı oturumun üç kamerası aynı parmak sensörünü paylaşıyor; ama etiket–görüntü korelasyonunun tepesi
+  önden webcam'e göre telefonda (Iriun, Wi-Fi) 4 kare, USB'de 8 kare (~270 ms, ~yarım nabız periyodu) kayık.
+- USB videolarında etiket fiilen **ters işaretliydi**. 1–2. turlarda MCD verisinin ~%60'ı böyle eğitildi.
+- Düzeltme sonrası telefon/USB testi 1.95 → 1.71 BPM (takipsiz argmax'ta %24). Ana testte fark yok: kayma yalnızca
+  yan kameralardaydı.
+- Kaynak: `results/derin_ogrenme/VERI_KALITESI.md`, `scripts/dl_common.py: CAMERA_SHIFT`.
+
+### 3.2 MCD-rPPG parmak PPG'si UBFC/PURE'a göre ters işaretli
+- Hazır modelin çıktısıyla korelasyon MCD'de ≈ −0.75, UBFC'de +0.86. Spektral nabız işarete duyarsız olduğu için
+  klasik değerlendirmeler bunu göstermiyor; ama dalga düzeyinde kayıpla karışık eğitimde çelişkili hedef demek.
+
+### 3.3 VIPL-HR'de videodan videoya değişen etiket kayması; model tabanlı hizalama
+- 6. turda yeni veri geldikçe eğitim kaybı 0.36'dan 0.52'ye çıktı ve doğrulama iyileşmedi.
+- POS ile ölçüm: VIPL source1/3'te kayma medyanı −12/−13 kare (referans −2), dağılım geniş. MMPD'de POS çözünürlük
+  yüzünden güvenilmez.
+- **Yöntem:** eğitilmiş model (5. tur) referans olarak kullanıldı. Model dalgası ile etiket ±45 kare kaydırılarak
+  karşılaştırıldı (`scripts/dl_sync_check.py`). Senkronu bilinen ana test videolarında tepe tam 0 karede
+  (r 0.82–0.84).
+- VIPL source1/3: model–etiket nabız uyumu %81–83 (etiket doğru kişiye ait), ama kayma −27..+11 kare ve senaryoya
+  bağlı (ör. source1 v1 −21, v2 −2). Bazı videolarda −34 kare.
+- Etiket video başına kaydırıldıktan sonra tepe bütün videolarda 0 karede, r 0.65–0.96. Hizalı korelasyonu
+  < 0.4 olan videolar çıkarıldı: source1 %80, source3 %78, DLCN %92, COHFACE %97 kaldı.
+- **VIPL source2 (RealSense) kullanılamaz:** model–etiket uyumu %39, kaymalar rastgele.
+- Bu, MCD bulgusunun (3.1) genelleşmiş hali: açık rPPG veri setlerinde etiket senkronu sessizce bozuk olabilir ve
+  spektral değerlendirme bunu göstermez.
+
+### 3.4 Sıfırdan eğitilen MMRPhys, ince ayarlı FactorizePhys ile ana testte eşit
+- 7B: hiçbir hazır ağırlık yok; ana test 1.13 BPM, 5. tur 1.10 (**p = 0.074**, 28 videonun 24'ünde fark ≤ 0.5 BPM).
+- Telefon/USB'de 7B geride: 1.96 / 1.64 (**p = 0.001**, 7 videoda daha kötü, hiçbirinde daha iyi değil).
+  Olası sebep: 5. tur MCD yan kameralarını beş tur boyunca gördü; 7B'de MCD verisi eğitim sırasında geldi.
+- **Eğitimde görmediği veri setlerinde genelleme:** DLCN'de 7B 1.69 / 5. tur 2.83 (**p < 0.001**, 46'ya 4 video).
+  COHFACE'te 1.53 / 1.37 (p = 0.077, anlamlı değil). İki modelin de görmediği bir veri setinde MMRPhys anlamlı
+  ölçüde daha iyi; ama 7B'nin VIPL'i görmüş olması da katkı yapmış olabilir (A/C deneyleri ayırırdı).
+
+### 3.5 Veri dengesi: yeni veri eklemek eski koşulları bozabilir
+- 7D: DLCN ve COHFACE eklenince DLCN testi 1.69 → 1.31 (**p < 0.001**, 16'ya 2 video).
+- Telefon/USB 1.96 → 2.36 (p = 0.048, sınırda). Ana test (1.13 → 1.29, p = 0.70) ve VIPL (p = 0.61) farkları
+  **anlamlı değil**.
+- Sebep adayı: örnekleme kare sayısıyla orantılı; MCD 30 s'ye inip yeni veri gelince MCD'nin payı %78 → %62.
+  Ayrıca doğrulamada MCD'nin 3 kamerası 6 videoyla temsil ediliyordu.
+- 7E bunu test ediyor: payları sabitlemek (MCD %70) ve kamera başına doğrulama.
+
+### 3.6 Viterbi takibi derin öğrenme çıktısında da büyük kazanç sağlıyor
+- Klasik aşamanın katkısı derin modellerde de çalışıyor: 7B telefon/USB'de argmax 3.80 → Viterbi 1.96 BPM
+  (**p < 0.001**, 15'e 1 video). Bütün modellerde ve test kümelerinde benzer.
+
+### 3.7 Veri setlerine özgü notlar
+- **MMPD mini (80×60):** bütün modeller ~13 BPM. İşaret doğru, kayma ~−5 kare; sorun çözünürlük.
+- **COHFACE:** POS uyumu düşük (%45), ama 5. tur modeli 1.0 BPM. Sıkıştırma klasik yöntemi bozuyor, derin modeli
+  daha az.
+- **DLCN:** etiket iyi (SNR 8.4 dB, POS uyumu %73), 780 videonun 752'sinde işaret +.
+
+---
+
+## 4. Olumsuz sonuçlar ve mühendislik dersleri
+
+- **2. tur (UBFC-Phys):** bilek sensörünün senkronu kişiden kişiye değişiyor; video başına hizalama gerekti.
+- **6. tur ve 7B'nin ilk iki oturumu Kaggle'da iz bırakmadan durdu** ("Read-only file system", başarısız sürüm
+  çıktıyı saklamıyor). RAM sorunu değildi (izleme: 30/34 GB boş). Ortak nokta: 43 GB'lık DLCN Kaggle girdisinin
+  okunması + oturumun ~90–100 GB veri yazması. DLCN'siz ~92 GB'lık oturum bitti. Çözüm: büyük girdiler GPU'suz
+  hazırlama oturumunda işlenip Hugging Face'e konuyor; eğitim oturumu yalnızca hazır veriyi indiriyor.
+- **Doğrulama kümesi her epoch değişince** aynı model 1.4–4.3 BPM arasında ölçüldü; en iyi epoch seçimi gürültülü.
+  Çözüm: önceki seçim korunur.
+- **Hugging Face anahtarı "Refresh" edilince** eski değer anında geçersiz oluyor; Kaggle'daki secret eski kaldığı için
+  COHFACE "erişim yok" sanıldı. Ayrıca gated veri setlerinin dosya listesi anahtarsız istenince Kaggle'ın ortak
+  IP'lerinden boş dönebiliyor.
+- **Colab ücretsiz katmanı** uzun eğitimde sürekli koptu; eğitime hiç ulaşılamadı.
+- **Hazır MMRPhys ağırlıkları** yayımlanan kodla birebir uyuşmuyor (eksik/fazla katman); zaten sıfırdan eğitildi.
+
+---
+
+## 5. Makaleden önce yapılması gerekenler
+
+- [ ] **7E sonucu** ve ana modelin seçimi.
+- [ ] **A ve C deneyleri** (FactorizePhys yeni veriyle; FactorizePhys sıfırdan): "kazanç mimariden mi veriden mi"
+      ve "ön-eğitim gerekli mi" sorularını kesinleştirir. Şu an 3.4'teki genelleme iddiası bunlar olmadan zayıf.
+- [ ] **Tekrar (seed) sayısı:** her deney tek çalıştırma. En azından ana modeli 2–3 farklı tohumla eğitip ±
+      aralık vermek.
+- [ ] **Literatürle karşılaştırılabilir protokol:** standart çapraz veri seti tabloları (ör. PURE → UBFC,
+      UBFC → PURE) en azından ana model için. Şu anki test kümeleri bizim tanımımız.
+- [ ] **Bland-Altman** ve Pearson r tabloları (ana model, her test kümesi).
+- [ ] **Telefonda hız ölçümü** (MMRPhys ONNX 163 KB; masaüstü işlemcide 160 kare 0.13 s).
+- [ ] **Etiket senkronu bulgusu** (3.1 + 3.3) tek başına kısa bir makale/bildiri olabilir: açık veri setlerinde
+      kayma ölçümü, model tabanlı hizalama yöntemi ve eğitime etkisi.
+
+---
+
+## 6. Dosya haritası
+
+| Ne | Nerede |
+|---|---|
+| Tur sonuçları | `results/derin_ogrenme/<tur>/SONUCLAR.md`, `test_*/` alt klasörleri |
+| Etiket kalitesi (MCD, UBFC-Phys) | `results/derin_ogrenme/VERI_KALITESI.md` |
+| Model tabanlı senkron analizi | `results/derin_ogrenme/senkron_model.csv`, `scripts/dl_sync_check.py` |
+| Hizalama kuralları ve kaymalar | `scripts/dl_common.py` (`CAMERA_SHIFT`, `MODEL_SYNC`, `DROP_*`) |
+| Eğitim / değerlendirme | `scripts/dl_train.py`, `scripts/dl_evaluate.py`, `scripts/dl_compare.py` |
+| Kaggle defterleri | `kaggle/rppg_hazirla.ipynb` (veri), `kaggle/rppg_egitim_7.ipynb` (eğitim) |
+| İş planı | `docs/04_is_plani.md` |
+| Kronoloji (ayrıntı) | `git log` (her commit mesajı sonuçları içeriyor) |
