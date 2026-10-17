@@ -53,24 +53,39 @@ def clips(a):
                         "kamera": {"FullHDwebcam": "webcam (önden)", "IriunWebcam": "telefon",
                                    "USBVideo": "USB (yan)"}[r.camera],
                         "durum": {"before": "dinlenme", "after": "egzersiz sonrası"}[r.step],
-                        "video": it["video"], "gt": it["gt"], "s0": 30.0})
+                        "video": it["video"], "gt": it["gt"], "s0": 30.0, "ts": it["timestamps"]})
     return out[:a.max_clips] if a.max_clips else out
 
 
-def read_clip(path, s0, dur):
+def read_clip(path, s0, dur, ts=None):
+    """[s0, s0+dur] aralığını 30 fps ızgaraya en yakın kareyle taşır. MCD videolarının bir kısmı 24 fps
+    (çoğu Iriun, bazı önden webcam); kareler 30 fps sayılırsa zaman 1.25 kat hızlanır, HR o kadar şişer."""
     c = cv2.VideoCapture(path)
-    c.set(cv2.CAP_PROP_POS_MSEC, s0 * 1000)
-    frames = []
-    while len(frames) < dur * FPS:
+    vfps = c.get(cv2.CAP_PROP_FPS) or FPS
+    src_t, src_f, i = [], [], 0
+    while True:
         ok, f = c.read()
         if not ok:
+            break
+        t = ts[i] if ts is not None and i < len(ts) else i / vfps   # MCD: kare zaman damgası (etiketle aynı eksen)
+        i += 1
+        if t < s0 - 0.5:
+            continue
+        if t > s0 + dur + 0.5:
             break
         h, w = f.shape[:2]
         s = 640 / max(h, w)
         if s < 1:
             f = cv2.resize(f, (int(w * s) // 2 * 2, int(h * s) // 2 * 2), interpolation=cv2.INTER_AREA)
-        frames.append(f)
-    return frames
+        src_t.append(t)
+        src_f.append(f)
+    if not src_f:
+        return []
+    src_t = np.array(src_t)
+    grid = s0 + np.arange(int(min(dur, src_t[-1] - s0) * FPS)) / FPS
+    idx = np.clip(np.searchsorted(src_t, grid), 1, len(src_t) - 1)
+    idx -= (grid - src_t[idx - 1]) < (src_t[idx] - grid)
+    return [src_f[k] for k in idx]
 
 
 def write_y4m(path, frames):
@@ -96,7 +111,7 @@ def main():
     print(f"{len(items)} kesit doğrulanacak ({a.duration:.0f} s)")
     with tempfile.TemporaryDirectory(ignore_cleanup_errors=True) as tmp:
         for i, c in enumerate(items, 1):
-            frames = read_clip(c["video"], c["s0"], a.duration)
+            frames = read_clip(c["video"], c["s0"], a.duration, c.get("ts"))
             dur = len(frames) / FPS
             y4m, logf = os.path.join(tmp, "clip.y4m"), os.path.join(tmp, "log.json")
             write_y4m(y4m, frames)

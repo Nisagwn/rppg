@@ -77,9 +77,20 @@ Her yeni veri setinde etiket kalitesi (SNR), işaret ve zaman kayması eğitimde
 - Oturum **CSV** olarak indirilebilir. Tüm hesaplama telefonda yapılır.
 
 Sinyal işleme kodu ([`mobile/dsp.js`](mobile/dsp.js)) Python paketinin birebir karşılığı; testler aynı girdide
-1e-9 düzeyinde aynı sonucu doğrular. Uygulamanın gerçek veride ölçülmüş son doğrulaması
-([`results/mobil_dogrulama/`](results/mobil_dogrulama/SONUCLAR.md)) klasik POS dönemine ait (UBFC 2.0 BPM);
-eğitilmiş modelli sürümün aynı doğrulaması henüz yeniden yapılmadı.
+1e-9 düzeyinde aynı sonucu doğrular.
+
+**Gerçek veride doğrulama** ([`results/mobil_dogrulama_v12/`](results/mobil_dogrulama_v12/SONUCLAR.md)): MCD test
+kişilerinin 60 kesiti Chrome'a sahte kamera olarak verildi, uygulama gerçek zamanlı ölçtü. Uygulama sinyal zayıfken
+sonuç göstermez; hata, sonuç verdiği saniyelerde ölçülür.
+
+| Kamera | Uygulama MAE | Sonuç verdiği süre | Klasik Python hattı |
+|---|---:|---:|---:|
+| Önden webcam | 3.2 BPM | %81 | 6.4 BPM |
+| Telefon | 2.3 BPM | %48 | 10.3 BPM |
+| Yan açı USB | 4.4 BPM | %23 | 17.5 BPM |
+
+Eski POS tabanlı uygulamaya göre önden kamerada hata 9.0 → 2.5 BPM (p = 0.013). Zayıf nokta yüz bulma: yan açıda ve
+telefon görüntüsünde kesitlerin bir kısmında yüz bulunamıyor.
 
 ---
 

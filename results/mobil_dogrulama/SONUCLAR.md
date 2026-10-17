@@ -1,5 +1,7 @@
 # Mobil Uygulama — Gerçek Veri Doğrulaması
 
+> **Not (17 Eki 2026):** Bu doğrulama klasik POS dönemine aittir ve betik bütün videoları 30 fps sayıyordu. MCD'nin 24 fps olan kesitlerinde (1024 dinlenme, 1091 ikisi, 1097 dinlenme, 1113 ikisi, 1115 dinlenme; 7 kesit) değerler bu yüzden şişkindir; UBFC etkilenmemiştir. Güncel doğrulama: `../mobil_dogrulama_v12/`.
+
 Her kesit (40 s) Chrome'a sahte kamera olarak verildi; uygulama tarayıcıda gerçek zamanlı ölçtü. Referans: parmak PPG'sinden 10 s pencere başına spektral tepe. İlk 10 s (ısınma) hariç.
 
 ## Özet

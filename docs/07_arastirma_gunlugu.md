@@ -50,7 +50,7 @@ Değerler Viterbi ile ortalama MAE (BPM). "Ana" = ana test, "Tel" = telefon/USB 
 | 6 | 11 Eki | ← 5. tur | + MMPD, VIPL, COHFACE, DLCN | 4.6 saatte durdu; kayıp 0.36 → 0.52 yükseldi | – | – | (bulgu 3.3) |
 | **7B** | 14 Eki | **MMRPhys, sıfırdan** | MCD 45 s, UBFC, PURE, VIPL (hizalı) | yeni mimari, hazır ağırlık yok, 150 epoch | **1.13** | 1.96 | `kaggle_tur7_B/` |
 | 7D | 16 Eki | MMRPhys ← 7B | + DLCN, COHFACE; MCD 30 s | ince ayar, lr 2e-4, 100 epoch | 1.29 | 2.36 | `kaggle_tur7_D/` |
-| 7E | sürüyor | MMRPhys ← 7B | D ile aynı | veri seti payları sabit, kamera başına doğrulama | | | |
+| 7E | 17 Eki | MMRPhys ← 7B | D ile aynı | veri seti payları sabit (MCD %70), kamera başına doğrulama; son epoch | 1.13 | 2.04 | `kaggle_tur7_E/` |
 
 \* POS'un telefon/USB değeri yüz kırpıntısı üzerinde (`test_kamera/`).
 Tüm klasörler `results/derin_ogrenme/` altında. 5. tur değerleri son epoch (`last.pth`); karşılaştırmalarda bu
@@ -65,6 +65,7 @@ model kullanıldı.
 | 5. tur | 5.23 | 2.83 | 1.37 | 12.65 |
 | 7B (MMRPhys sıfırdan) | **3.49** | 1.69 | 1.53 | 13.24 |
 | 7D (7B'den ince ayar) | 4.06 | **1.31** | 1.57 | 13.17 |
+| 7E (D + sabit paylar, son epoch) | 3.57 | **1.31** | 1.50 | 13.84 |
 
 ---
 
@@ -111,7 +112,27 @@ model kullanıldı.
   **anlamlı değil**.
 - Sebep adayı: örnekleme kare sayısıyla orantılı; MCD 30 s'ye inip yeni veri gelince MCD'nin payı %78 → %62.
   Ayrıca doğrulamada MCD'nin 3 kamerası 6 videoyla temsil ediliyordu.
-- 7E bunu test ediyor: payları sabitlemek (MCD %70) ve kamera başına doğrulama.
+- **7E sonucu (hipotez doğrulandı):** paylar sabitlenince (gerçekleşen MCD %73) telefon/USB 2.36 → 2.04
+  (D'ye göre **p = 0.013**), ana test B ile aynı (1.13; p = 0.19), DLCN kazancı korundu (B'ye göre 1.69 → 1.31,
+  **p < 0.001**). Bedeli: VIPL B'ye göre 3.49 → 3.57 (**p = 0.026**). Telefon/USB'de 5. tur hâlâ en iyi (1.64,
+  p = 0.001). E, tek bir modelin bütün testlerde en dengeli sonucu.
+
+### 3.8 Küçük doğrulama kümesiyle en iyi epoch seçimi güvenilmez
+- 7E'de en iyi epoch 7 seçildi (doğrulama 1.32), sonraki 93 epoch geçemedi. Ama son epoch **bütün test kümelerinde**
+  daha iyi: ana test 1.27 → 1.13 (**p = 0.001**), telefon/USB 2.16 → 2.04, VIPL 3.76 → 3.57, DLCN 1.39 → 1.31.
+- Sebep: grup başına 6 video; MCD önden webcam grubu epoch'tan epoch'a 2.0–4.7 BPM oynuyor ve ortalamayı belirliyor.
+- Karar: E için son epoch kullanılıyor. Sonraki deneylerde son epoch ya da birkaç epoch ortalaması.
+
+### 3.9 Mobil uygulama gerçek veri doğrulaması (v12, 3. tur FactorizePhys)
+- MCD test kişilerinin 60 kesiti (10 kişi × 3 kamera × 2 durum, 40 s) Chrome'a sahte kamera olarak verildi
+  (`scripts/validate_mobile.py`, `results/mobil_dogrulama_v12/`).
+- Sonuç verilen pencerelerde MAE: önden 3.24 (kapsama %81, sonuçsuz kesit 0/20), telefon 2.31 (%48, 7/20),
+  USB yan 4.41 (%23, 13/20). Aynı kesitlerde Python POS hattı 6.39 / 10.34 / 17.53.
+- Uygulama vs Python hattı (ikisinin de sonuç verdiği 40 kesit): 3.14 / 9.37, **p = 0.011**.
+- Eski POS uygulaması vs yeni (iki doğrulamada da 30 fps olan 13 önden kesit): 8.99 → 2.45, **p = 0.013**; ama
+  kapsama %97 → %81.
+- Zayıf nokta: pico yüz bulucusu yan açıda ve telefon görüntüsünde yüzü kaçırıyor. Sonraki iş: yüz bulucu ve kalite
+  eşiği; uygulamaya 5. tur ya da 7E modeli.
 
 ### 3.6 Viterbi takibi derin öğrenme çıktısında da büyük kazanç sağlıyor
 - Klasik aşamanın katkısı derin modellerde de çalışıyor: 7B telefon/USB'de argmax 3.80 → Viterbi 1.96 BPM
@@ -138,13 +159,21 @@ model kullanıldı.
   COHFACE "erişim yok" sanıldı. Ayrıca gated veri setlerinin dosya listesi anahtarsız istenince Kaggle'ın ortak
   IP'lerinden boş dönebiliyor.
 - **Colab ücretsiz katmanı** uzun eğitimde sürekli koptu; eğitime hiç ulaşılamadı.
+- **Mobil doğrulama betiği bütün videoları 30 fps sayıyordu.** MCD'nin telefon videolarının çoğu ve önden webcam
+  videolarının bir kısmı 24 fps; zaman 1.25 kat hızlanınca HR şişti (telefonda MAE 17–26 BPM göründü). Kareler
+  artık zaman damgalarıyla 30 fps'e taşınıyor. Eski POS dönemi doğrulamasındaki (`results/mobil_dogrulama/`) 24 fps
+  MCD kesitleri de bu hatadan etkilenmişti; UBFC (30 fps) etkilenmedi. Eğitim verisi (`dl_prepare.py`) zaten zaman
+  damgasıyla yeniden örnekliyordu.
+- **Kaggle'da E'nin raporu yazılamadı:** başlangıç ağırlığı verilen MMRPhys için kayıp metni tanımsızdı
+  (`UnboundLocalError`); test sonuçları tamamdı, rapor elle yazıldı, betik düzeltildi.
 - **Hazır MMRPhys ağırlıkları** yayımlanan kodla birebir uyuşmuyor (eksik/fazla katman); zaten sıfırdan eğitildi.
 
 ---
 
 ## 5. Makaleden önce yapılması gerekenler
 
-- [ ] **7E sonucu** ve ana modelin seçimi.
+- [x] **7E sonucu** (3.5, 3.8). [ ] Ana modelin seçimi ve uygulamaya konması (5. tur telefonda en iyi; 7E en dengeli).
+- [ ] **Mobil kapsama:** yan açı ve telefon görüntüsünde yüz bulunamıyor (3.9).
 - [ ] **A ve C deneyleri** (FactorizePhys yeni veriyle; FactorizePhys sıfırdan): "kazanç mimariden mi veriden mi"
       ve "ön-eğitim gerekli mi" sorularını kesinleştirir. Şu an 3.4'teki genelleme iddiası bunlar olmadan zayıf.
 - [ ] **Tekrar (seed) sayısı:** her deney tek çalıştırma. En azından ana modeli 2–3 farklı tohumla eğitip ±

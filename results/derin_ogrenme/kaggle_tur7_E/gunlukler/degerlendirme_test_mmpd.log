@@ -1,0 +1,52 @@
+5 video yüz bulunma oranı <%50 olduğu için dışarıda
+test: 115 video
+grup                                                          MMPD (telefon)  Hepsi  ≤5 BPM %  Medyan
+yöntem                                                                                               
+5. tur+Viterbi                                                         12.65  12.65     56.77    6.74
+7. tur D (B'den ince ayar)+Viterbi                                     13.17  13.17     56.23    6.86
+3. tur (uygulamadaki)+Viterbi                                          13.23  13.23     56.66    6.88
+7. tur B (MMRPhys sıfırdan)+Viterbi                                    13.24  13.24     56.10    6.64
+FactorizePhys PURE (hazır)+Viterbi                                     13.71  13.71     55.18    6.56
+MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi                       13.82  13.82     55.90    6.44
+MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi           13.84  13.84     55.30    7.30
+7. tur D (B'den ince ayar)                                             15.10  15.10     52.64   12.22
+7. tur B (MMRPhys sıfırdan)                                            15.48  15.48     50.89   12.86
+MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)                   15.66  15.66     51.08   13.70
+MMRPhys B'den dengeli ince ayar (7. tur)                               15.74  15.74     51.06   13.90
+FactorizePhys PURE (hazır)                                             16.38  16.38     48.33   12.81
+5. tur                                                                 16.85  16.85     49.29   14.28
+3. tur (uygulamadaki)                                                  16.96  16.96     48.83   14.63
+POS (yüz kırpıntısı)+Viterbi                                           18.75  18.75     40.38   14.52
+POS (yüz kırpıntısı)                                                   20.66  20.66     36.21   17.75
+
+referansı temiz 110 video:
+grup                                                          MMPD (telefon)  Hepsi  ≤5 BPM %  Medyan
+yöntem                                                                                               
+5. tur+Viterbi                                                         11.48  11.48     59.07    6.23
+3. tur (uygulamadaki)+Viterbi                                          11.87  11.87     58.87    6.55
+7. tur D (B'den ince ayar)+Viterbi                                     12.08  12.08     58.20    6.29
+7. tur B (MMRPhys sıfırdan)+Viterbi                                    12.27  12.27     58.13    6.16
+MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi                       12.72  12.72     57.95    6.18
+MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi           12.75  12.75     57.15    6.76
+FactorizePhys PURE (hazır)+Viterbi                                     12.94  12.94     56.85    6.25
+7. tur D (B'den ince ayar)                                             14.12  14.12     54.65   11.75
+7. tur B (MMRPhys sıfırdan)                                            14.52  14.52     52.82   12.49
+MMRPhys B'den dengeli ince ayar (7. tur)                               14.69  14.69     53.11   13.36
+MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)                   14.69  14.69     52.95   12.68
+FactorizePhys PURE (hazır)                                             15.52  15.52     50.02   12.50
+5. tur                                                                 15.83  15.83     51.16   13.88
+3. tur (uygulamadaki)                                                  15.88  15.88     50.71   13.99
+POS (yüz kırpıntısı)+Viterbi                                           18.13  18.13     41.98   13.07
+POS (yüz kırpıntısı)                                                   20.06  20.06     37.44   17.73
+
+Traceback (most recent call last):
+  File "/kaggle/working/rppg/scripts/dl_evaluate.py", line 243, in <module>
+    main()
+    ~~~~^^
+  File "/kaggle/working/rppg/scripts/dl_evaluate.py", line 157, in main
+    write_report(a, t, info, w, t_clean, ref_q)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/kaggle/working/rppg/scripts/dl_evaluate.py", line 207, in write_report
+    f"- Kayıp: {loss}; AdamW, cosine öğrenme oranı; en iyi epoch doğrulama kişilerinde pencere MAE ile seçildi", ""]
+                ^^^^
+UnboundLocalError: cannot access local variable 'loss' where it is not associated with a value

@@ -430,6 +430,7 @@ Tablo 7: Ortalama MAE (BPM), Viterbi takibiyle. Kalın: sütundaki en iyi.
 | FactorizePhys, ince ayar (5. tur) | **1.10** | **1.64** | 5.23 | 2.83 | **1.37** | **12.65** |
 | MMRPhys, **sıfırdan** (7. tur B) | 1.13 | 1.96 | **3.49** | 1.69 | 1.53 | 13.24 |
 | MMRPhys, B'den ince ayar + DLCN, COHFACE (7. tur D) | 1.29 | 2.36 | 4.06 | **1.31** | 1.57 | 13.17 |
+| MMRPhys, D + sabit veri seti payları (7. tur E, son epoch) | 1.13 | 2.04 | 3.57 | **1.31** | 1.50 | 13.84 |
 
 POS ve hazır model değerleri telefon/USB, VIPL ve MMPD testlerinde 72×72 yüz kırpıntısı üzerinde hesaplanmıştır. 5. tur VIPL, DLCN ve COHFACE'i; 7B ise DLCN ve COHFACE'i eğitimde görmemiştir.
 
@@ -438,12 +439,25 @@ Bulgular:
 1. **Eğitim, hazır modelin hatasını telefon ve yan kamerada 4.6 kat düşürür** (7.47 → 1.64 BPM). Klasik POS bu testte 15.63 BPM ile başarısızdır.
 2. **Sıfırdan eğitilen MMRPhys, ince ayarlı FactorizePhys ile ana testte istatistiksel olarak eşittir** (1.13 / 1.10, p = 0.074). Hiçbir hazır ağırlık kullanılmamıştır. Telefon/USB testinde ise anlamlı ölçüde geridedir (1.96 / 1.64, p = 0.001).
 3. **İki modelin de eğitimde görmediği DLCN'de MMRPhys anlamlı ölçüde daha iyi genellemiştir** (1.69 / 2.83 BPM, p < 0.001; 152 videonun 46'sında daha iyi, 4'ünde daha kötü). COHFACE'teki fark anlamlı değildir (p = 0.077).
-4. **Yeni veri eklemek eski koşulları bozabilir.** D'de DLCN eklenince DLCN hatası anlamlı biçimde düşmüş (1.69 → 1.31, p < 0.001), telefon/USB hatası sınırda artmıştır (p = 0.048); ana test ve VIPL'deki farklar anlamlı değildir. Örnekleme kare sayısıyla orantılı olduğu için MCD'nin eğitimdeki payı %78'den %62'ye düşmüştür. Bu, veri seti paylarının açıkça ayarlanması gerektiğini göstermektedir.
+4. **Yeni veri eklemek eski koşulları bozabilir.** D'de DLCN eklenince DLCN hatası anlamlı biçimde düşmüş (1.69 → 1.31, p < 0.001), telefon/USB hatası sınırda artmıştır (p = 0.048); ana test ve VIPL'deki farklar anlamlı değildir. Örnekleme kare sayısıyla orantılı olduğu için MCD'nin eğitimdeki payı %78'den %62'ye düşmüştür. E deneyinde paylar sabitlenince (MCD %70) kayıp geri gelmiştir: telefon/USB 2.36 → 2.04 (D'ye göre p = 0.013), ana test B ile aynı (1.13), DLCN kazancı korunmuştur (B'ye göre 1.69 → 1.31, p < 0.001). Bedeli VIPL'de küçük bir gerilemedir (3.49 → 3.57, p = 0.026). Çok kaynaklı eğitimde veri seti payları açıkça ayarlanmalıdır.
 5. **Viterbi takibi derin model çıktısında da büyük kazanç sağlar.** MMRPhys telefon/USB testinde argmax ile 3.80, Viterbi ile 1.96 BPM verir (p < 0.001). Klasik aşamanın katkısı derin modelle birleşmektedir.
+6. **Küçük doğrulama kümesiyle en iyi epoch seçimi güvenilmezdir.** E'de grup başına 6 videoluk doğrulama 7. epoch'u seçmiş, son epoch ise bütün testlerde daha iyi çıkmıştır (ana test 1.27 / 1.13, p = 0.001). Tablodaki E değerleri son epoch'tur.
 
 ## 6.5 Mobil Uygulama
 
-Eğitilmiş model ONNX'e çevrilmiş (FactorizePhys 250 KB, MMRPhys 163 KB) ve telefonun tarayıcısında ayrı bir iş parçacığında, internetsiz çalışan bir PWA'ya yerleştirilmiştir (https://nisagwn.github.io/rppg/). Yüz tespiti telefonda pico ile yapılır; görüntü cihazdan çıkmaz. Sinyal işleme kodunun Python karşılığıyla 1e-9 düzeyinde aynı sonucu verdiği testlerle doğrulanmıştır. Uygulamanın gerçek videolarla (Chrome'a sahte kamera olarak verilerek) doğrulaması `results/mobil_dogrulama_v12/` altındadır.
+Eğitilmiş model ONNX'e çevrilmiş (FactorizePhys 250 KB, MMRPhys 163 KB) ve telefonun tarayıcısında ayrı bir iş parçacığında, internetsiz çalışan bir PWA'ya yerleştirilmiştir (https://nisagwn.github.io/rppg/). Yüz tespiti telefonda pico ile yapılır; görüntü cihazdan çıkmaz. Sinyal işleme kodunun Python karşılığıyla 1e-9 düzeyinde aynı sonucu verdiği testlerle doğrulanmıştır. 
+
+**Gerçek veri doğrulaması.** Uygulamadaki model (3. tur FactorizePhys), MCD-rPPG'nin test kişilerinin 60 kesitinde (10 kişi × 3 kamera × dinlenme/egzersiz, 40 s) Chrome'a sahte kamera olarak verilen videolarla, gerçek zamanlı olarak ölçülmüştür. Video kareleri kendi zaman damgalarıyla 30 fps'e taşınmıştır. Uygulama sinyal kalitesi yetersiz olduğunda sonuç göstermez; bu yüzden hata, "kapsama" (ısınmadan sonraki saniyelerin yüzde kaçında sonuç verildiği) ile birlikte verilmiştir (Tablo 8).
+
+Tablo 8: Mobil uygulamanın gerçek veri doğrulaması (MAE, BPM; sonuç verilen pencerelerde).
+
+| Kamera | Kesit | Hiç sonuç vermeyen | Kapsama | Uygulama MAE | Python POS hattı MAE |
+|---|---:|---:|---:|---:|---:|
+| Önden webcam | 20 | 0 | %81 | 3.24 | 6.39 |
+| Telefon (Iriun) | 20 | 7 | %48 | 2.31 | 10.34 |
+| Sol USB (yan açı) | 20 | 13 | %23 | 4.41 | 17.53 |
+
+Uygulamanın sonuç verdiği 40 kesitte hata, aynı kesitlerdeki klasik Python hattının üçte biridir (3.14 / 9.37 BPM, p = 0.011). Önceki POS tabanlı uygulamayla, iki doğrulamada da 30 fps olan 13 önden kesitte karşılaştırıldığında hata 8.99'dan 2.45 BPM'ye düşmüştür (p = 0.013). Ancak kapsama %97'den %81'e inmiştir. Zayıf yan, yüzün bulunamamasıdır: telefonda kullanılan pico yüz bulucusu yan açılı USB kesitlerinin 13'ünde ve telefon kesitlerinin 7'sinde yüzü yakalayamamıştır. Ayrıntı `results/mobil_dogrulama_v12/` altındadır.
 
 ## 6.6 Kendi Veri Setimiz
 

@@ -1,0 +1,1841 @@
+grup,video,yöntem,MAE,p5
+MMPD (telefon),p10_0,POS (yüz kırpıntısı),18.326690646836894,32.0
+MMPD (telefon),p10_0,POS (yüz kırpıntısı)+Viterbi,5.588451454513431,60.0
+MMPD (telefon),p10_1,POS (yüz kırpıntısı),21.418640313069517,20.0
+MMPD (telefon),p10_1,POS (yüz kırpıntısı)+Viterbi,22.819600127692233,0.0
+MMPD (telefon),p10_10,POS (yüz kırpıntısı),17.750464397309806,22.0
+MMPD (telefon),p10_10,POS (yüz kırpıntısı)+Viterbi,20.75705645130297,6.0
+MMPD (telefon),p10_11,POS (yüz kırpıntısı),21.177219268846756,16.0
+MMPD (telefon),p10_11,POS (yüz kırpıntısı)+Viterbi,36.568304544045404,0.0
+MMPD (telefon),p10_12,POS (yüz kırpıntısı),13.225986395093281,40.0
+MMPD (telefon),p10_12,POS (yüz kırpıntısı)+Viterbi,3.5236479788286323,76.0
+MMPD (telefon),p10_13,POS (yüz kırpıntısı),33.17234885302568,8.0
+MMPD (telefon),p10_13,POS (yüz kırpıntısı)+Viterbi,37.94235008962317,8.0
+MMPD (telefon),p10_14,POS (yüz kırpıntısı),13.65285831203381,48.0
+MMPD (telefon),p10_14,POS (yüz kırpıntısı)+Viterbi,10.321230761801228,48.0
+MMPD (telefon),p10_15,POS (yüz kırpıntısı),23.473629295524447,8.0
+MMPD (telefon),p10_15,POS (yüz kırpıntısı)+Viterbi,22.156351695319557,8.0
+MMPD (telefon),p10_16,POS (yüz kırpıntısı),31.072350285096913,0.0
+MMPD (telefon),p10_16,POS (yüz kırpıntısı)+Viterbi,27.80769234623426,4.0
+MMPD (telefon),p10_17,POS (yüz kırpıntısı),18.563433704800033,14.000000000000002
+MMPD (telefon),p10_17,POS (yüz kırpıntısı)+Viterbi,19.922467427310764,18.0
+MMPD (telefon),p10_18,POS (yüz kırpıntısı),15.625944800848906,24.0
+MMPD (telefon),p10_18,POS (yüz kırpıntısı)+Viterbi,17.32827691593078,10.0
+MMPD (telefon),p10_19,POS (yüz kırpıntısı),18.86210109577866,12.0
+MMPD (telefon),p10_19,POS (yüz kırpıntısı)+Viterbi,22.914185045259483,0.0
+MMPD (telefon),p10_2,POS (yüz kırpıntısı),14.712038588702796,34.0
+MMPD (telefon),p10_2,POS (yüz kırpıntısı)+Viterbi,6.797769540056593,56.00000000000001
+MMPD (telefon),p10_3,POS (yüz kırpıntısı),29.98350425655169,0.0
+MMPD (telefon),p10_3,POS (yüz kırpıntısı)+Viterbi,29.52220138800138,0.0
+MMPD (telefon),p10_4,POS (yüz kırpıntısı),12.364666926149114,48.0
+MMPD (telefon),p10_4,POS (yüz kırpıntısı)+Viterbi,10.260074524369728,52.0
+MMPD (telefon),p10_5,POS (yüz kırpıntısı),19.4362581452802,18.0
+MMPD (telefon),p10_5,POS (yüz kırpıntısı)+Viterbi,11.466402853560203,26.0
+MMPD (telefon),p10_6,POS (yüz kırpıntısı),16.970899253088746,22.0
+MMPD (telefon),p10_6,POS (yüz kırpıntısı)+Viterbi,11.897893232933274,38.0
+MMPD (telefon),p10_7,POS (yüz kırpıntısı),29.32262235404406,16.0
+MMPD (telefon),p10_7,POS (yüz kırpıntısı)+Viterbi,36.38908557869486,0.0
+MMPD (telefon),p10_8,POS (yüz kırpıntısı),8.27394233277674,60.0
+MMPD (telefon),p10_8,POS (yüz kırpıntısı)+Viterbi,7.019899932952541,62.0
+MMPD (telefon),p10_9,POS (yüz kırpıntısı),20.19505053486786,22.0
+MMPD (telefon),p10_9,POS (yüz kırpıntısı)+Viterbi,16.530489313207894,26.0
+MMPD (telefon),p15_0,POS (yüz kırpıntısı),25.306900007657323,16.0
+MMPD (telefon),p15_0,POS (yüz kırpıntısı)+Viterbi,26.871386741645633,0.0
+MMPD (telefon),p15_1,POS (yüz kırpıntısı),23.896878361913473,0.0
+MMPD (telefon),p15_1,POS (yüz kırpıntısı)+Viterbi,15.191970489720513,8.0
+MMPD (telefon),p15_10,POS (yüz kırpıntısı),27.04741418444961,8.0
+MMPD (telefon),p15_10,POS (yüz kırpıntısı)+Viterbi,32.78497129289268,0.0
+MMPD (telefon),p15_11,POS (yüz kırpıntısı),39.65018092881793,2.0
+MMPD (telefon),p15_11,POS (yüz kırpıntısı)+Viterbi,34.4084020862206,0.0
+MMPD (telefon),p15_12,POS (yüz kırpıntısı),30.20773121846909,8.0
+MMPD (telefon),p15_12,POS (yüz kırpıntısı)+Viterbi,44.301047846901135,0.0
+MMPD (telefon),p15_13,POS (yüz kırpıntısı),39.11883837829069,4.0
+MMPD (telefon),p15_13,POS (yüz kırpıntısı)+Viterbi,43.85513432162524,4.0
+MMPD (telefon),p15_14,POS (yüz kırpıntısı),35.770227652846515,4.0
+MMPD (telefon),p15_14,POS (yüz kırpıntısı)+Viterbi,49.73580251275059,0.0
+MMPD (telefon),p15_15,POS (yüz kırpıntısı),17.41503242901107,24.0
+MMPD (telefon),p15_15,POS (yüz kırpıntısı)+Viterbi,16.064827762624088,14.000000000000002
+MMPD (telefon),p15_16,POS (yüz kırpıntısı),24.21882321382419,8.0
+MMPD (telefon),p15_16,POS (yüz kırpıntısı)+Viterbi,24.605980071898717,0.0
+MMPD (telefon),p15_18,POS (yüz kırpıntısı),25.389572919686863,4.0
+MMPD (telefon),p15_18,POS (yüz kırpıntısı)+Viterbi,27.97731460171765,0.0
+MMPD (telefon),p15_19,POS (yüz kırpıntısı),32.13358313116213,14.000000000000002
+MMPD (telefon),p15_19,POS (yüz kırpıntısı)+Viterbi,20.500251429886138,20.0
+MMPD (telefon),p15_2,POS (yüz kırpıntısı),27.12302272780442,10.0
+MMPD (telefon),p15_2,POS (yüz kırpıntısı)+Viterbi,31.940592967131593,0.0
+MMPD (telefon),p15_3,POS (yüz kırpıntısı),85.34218505992584,4.0
+MMPD (telefon),p15_3,POS (yüz kırpıntısı)+Viterbi,98.68919190699833,0.0
+MMPD (telefon),p15_4,POS (yüz kırpıntısı),17.5477341068249,22.0
+MMPD (telefon),p15_4,POS (yüz kırpıntısı)+Viterbi,14.935938597845457,32.0
+MMPD (telefon),p15_5,POS (yüz kırpıntısı),18.566343580353678,0.0
+MMPD (telefon),p15_5,POS (yüz kırpıntısı)+Viterbi,16.929171270863577,4.0
+MMPD (telefon),p15_6,POS (yüz kırpıntısı),25.778296734765373,4.0
+MMPD (telefon),p15_6,POS (yüz kırpıntısı)+Viterbi,28.979215971153334,0.0
+MMPD (telefon),p15_7,POS (yüz kırpıntısı),56.64557214304656,6.0
+MMPD (telefon),p15_7,POS (yüz kırpıntısı)+Viterbi,62.82819836615159,2.0
+MMPD (telefon),p15_8,POS (yüz kırpıntısı),19.99877407725333,14.000000000000002
+MMPD (telefon),p15_8,POS (yüz kırpıntısı)+Viterbi,16.553166577266136,14.000000000000002
+MMPD (telefon),p15_9,POS (yüz kırpıntısı),20.18360197054709,6.0
+MMPD (telefon),p15_9,POS (yüz kırpıntısı)+Viterbi,15.18876748126756,0.0
+MMPD (telefon),p20_0,POS (yüz kırpıntısı),9.346242284360887,48.0
+MMPD (telefon),p20_0,POS (yüz kırpıntısı)+Viterbi,7.127877280357395,52.0
+MMPD (telefon),p20_1,POS (yüz kırpıntısı),11.208342221531872,38.0
+MMPD (telefon),p20_1,POS (yüz kırpıntısı)+Viterbi,10.592362799300536,32.0
+MMPD (telefon),p20_10,POS (yüz kırpıntısı),6.400608752472904,74.0
+MMPD (telefon),p20_10,POS (yüz kırpıntısı)+Viterbi,1.0767886884456168,100.0
+MMPD (telefon),p20_11,POS (yüz kırpıntısı),25.428578172356808,38.0
+MMPD (telefon),p20_11,POS (yüz kırpıntısı)+Viterbi,27.089443371425318,32.0
+MMPD (telefon),p20_12,POS (yüz kırpıntısı),22.199921813683495,46.0
+MMPD (telefon),p20_12,POS (yüz kırpıntısı)+Viterbi,26.464413966695403,38.0
+MMPD (telefon),p20_13,POS (yüz kırpıntısı),1.9740261239732388,94.0
+MMPD (telefon),p20_13,POS (yüz kırpıntısı)+Viterbi,0.9251487497452706,100.0
+MMPD (telefon),p20_14,POS (yüz kırpıntısı),19.96119286076773,64.0
+MMPD (telefon),p20_14,POS (yüz kırpıntısı)+Viterbi,4.3106603460547275,80.0
+MMPD (telefon),p20_15,POS (yüz kırpıntısı),34.11262030497065,36.0
+MMPD (telefon),p20_15,POS (yüz kırpıntısı)+Viterbi,50.813558646546674,0.0
+MMPD (telefon),p20_16,POS (yüz kırpıntısı),12.976654906788047,50.0
+MMPD (telefon),p20_16,POS (yüz kırpıntısı)+Viterbi,17.233592670560196,32.0
+MMPD (telefon),p20_17,POS (yüz kırpıntısı),16.16949993064775,22.0
+MMPD (telefon),p20_17,POS (yüz kırpıntısı)+Viterbi,20.67740241131453,10.0
+MMPD (telefon),p20_18,POS (yüz kırpıntısı),10.991526799800349,34.0
+MMPD (telefon),p20_18,POS (yüz kırpıntısı)+Viterbi,5.881887747998081,46.0
+MMPD (telefon),p20_19,POS (yüz kırpıntısı),45.802020082816206,38.0
+MMPD (telefon),p20_19,POS (yüz kırpıntısı)+Viterbi,36.60014965428659,40.0
+MMPD (telefon),p20_2,POS (yüz kırpıntısı),17.068686088057287,52.0
+MMPD (telefon),p20_2,POS (yüz kırpıntısı)+Viterbi,6.358252067784101,64.0
+MMPD (telefon),p20_3,POS (yüz kırpıntısı),8.248300248921444,66.0
+MMPD (telefon),p20_3,POS (yüz kırpıntısı)+Viterbi,2.0061702833198565,88.0
+MMPD (telefon),p20_4,POS (yüz kırpıntısı),1.096681180624417,100.0
+MMPD (telefon),p20_4,POS (yüz kırpıntısı)+Viterbi,1.096681180624417,100.0
+MMPD (telefon),p20_5,POS (yüz kırpıntısı),9.26301542728803,44.0
+MMPD (telefon),p20_5,POS (yüz kırpıntısı)+Viterbi,8.281266759176807,42.0
+MMPD (telefon),p20_6,POS (yüz kırpıntısı),9.543178463764244,56.00000000000001
+MMPD (telefon),p20_6,POS (yüz kırpıntısı)+Viterbi,4.849841348041062,78.0
+MMPD (telefon),p20_7,POS (yüz kırpıntısı),27.26469040548498,38.0
+MMPD (telefon),p20_7,POS (yüz kırpıntısı)+Viterbi,23.59846247425392,38.0
+MMPD (telefon),p20_8,POS (yüz kırpıntısı),6.538427738731181,62.0
+MMPD (telefon),p20_8,POS (yüz kırpıntısı)+Viterbi,4.210746768098495,74.0
+MMPD (telefon),p20_9,POS (yüz kırpıntısı),16.054645239537926,38.0
+MMPD (telefon),p20_9,POS (yüz kırpıntısı)+Viterbi,6.704478762359056,42.0
+MMPD (telefon),p25_0,POS (yüz kırpıntısı),11.18920392680326,48.0
+MMPD (telefon),p25_0,POS (yüz kırpıntısı)+Viterbi,12.133779006791364,44.0
+MMPD (telefon),p25_1,POS (yüz kırpıntısı),12.355197362362064,46.0
+MMPD (telefon),p25_1,POS (yüz kırpıntısı)+Viterbi,4.928766312641763,57.99999999999999
+MMPD (telefon),p25_10,POS (yüz kırpıntısı),8.914217417127384,68.0
+MMPD (telefon),p25_10,POS (yüz kırpıntısı)+Viterbi,1.1625355917078213,100.0
+MMPD (telefon),p25_11,POS (yüz kırpıntısı),46.552820798586794,26.0
+MMPD (telefon),p25_11,POS (yüz kırpıntısı)+Viterbi,46.20662846103644,12.0
+MMPD (telefon),p25_12,POS (yüz kırpıntısı),21.58024862793633,30.0
+MMPD (telefon),p25_12,POS (yüz kırpıntısı)+Viterbi,14.522138812768057,42.0
+MMPD (telefon),p25_13,POS (yüz kırpıntısı),1.5067551993498645,98.0
+MMPD (telefon),p25_13,POS (yüz kırpıntısı)+Viterbi,0.6959322888609892,100.0
+MMPD (telefon),p25_14,POS (yüz kırpıntısı),17.724371746646653,57.99999999999999
+MMPD (telefon),p25_14,POS (yüz kırpıntısı)+Viterbi,0.7946299461194869,100.0
+MMPD (telefon),p25_15,POS (yüz kırpıntısı),2.448543301750612,96.0
+MMPD (telefon),p25_15,POS (yüz kırpıntısı)+Viterbi,0.5740766440139499,100.0
+MMPD (telefon),p25_16,POS (yüz kırpıntısı),19.14188097915436,57.99999999999999
+MMPD (telefon),p25_16,POS (yüz kırpıntısı)+Viterbi,15.702258824946021,57.99999999999999
+MMPD (telefon),p25_17,POS (yüz kırpıntısı),33.65537601140187,12.0
+MMPD (telefon),p25_17,POS (yüz kırpıntısı)+Viterbi,43.25139923658461,0.0
+MMPD (telefon),p25_18,POS (yüz kırpıntısı),83.18367567008845,22.0
+MMPD (telefon),p25_18,POS (yüz kırpıntısı)+Viterbi,74.27282767374788,12.0
+MMPD (telefon),p25_19,POS (yüz kırpıntısı),116.8217437187614,0.0
+MMPD (telefon),p25_19,POS (yüz kırpıntısı)+Viterbi,107.36484123640705,0.0
+MMPD (telefon),p25_2,POS (yüz kırpıntısı),21.381601935477065,20.0
+MMPD (telefon),p25_2,POS (yüz kırpıntısı)+Viterbi,17.74994089788416,14.000000000000002
+MMPD (telefon),p25_3,POS (yüz kırpıntısı),15.449545417964906,36.0
+MMPD (telefon),p25_3,POS (yüz kırpıntısı)+Viterbi,11.314693831101222,42.0
+MMPD (telefon),p25_4,POS (yüz kırpıntısı),13.630500028022652,36.0
+MMPD (telefon),p25_4,POS (yüz kırpıntısı)+Viterbi,11.364763752153605,46.0
+MMPD (telefon),p25_5,POS (yüz kırpıntısı),5.621165838019738,72.0
+MMPD (telefon),p25_5,POS (yüz kırpıntısı)+Viterbi,1.6465193825836297,98.0
+MMPD (telefon),p25_6,POS (yüz kırpıntısı),5.173547108305945,68.0
+MMPD (telefon),p25_6,POS (yüz kırpıntısı)+Viterbi,3.2135196211926944,80.0
+MMPD (telefon),p25_7,POS (yüz kırpıntısı),18.828864479242316,26.0
+MMPD (telefon),p25_7,POS (yüz kırpıntısı)+Viterbi,25.594601635863242,0.0
+MMPD (telefon),p25_8,POS (yüz kırpıntısı),1.971987908567228,94.0
+MMPD (telefon),p25_8,POS (yüz kırpıntısı)+Viterbi,1.004902667301927,100.0
+MMPD (telefon),p25_9,POS (yüz kırpıntısı),9.167152815784117,57.99999999999999
+MMPD (telefon),p25_9,POS (yüz kırpıntısı)+Viterbi,4.9826829369188745,76.0
+MMPD (telefon),p30_0,POS (yüz kırpıntısı),13.61055217235892,30.0
+MMPD (telefon),p30_0,POS (yüz kırpıntısı)+Viterbi,12.789690804441694,34.0
+MMPD (telefon),p30_1,POS (yüz kırpıntısı),24.651855165528204,8.0
+MMPD (telefon),p30_1,POS (yüz kırpıntısı)+Viterbi,20.372602747812227,22.0
+MMPD (telefon),p30_10,POS (yüz kırpıntısı),10.420209229123968,48.0
+MMPD (telefon),p30_10,POS (yüz kırpıntısı)+Viterbi,3.9196140386746983,78.0
+MMPD (telefon),p30_12,POS (yüz kırpıntısı),29.055440960799885,2.0
+MMPD (telefon),p30_12,POS (yüz kırpıntısı)+Viterbi,22.319791661302993,14.000000000000002
+MMPD (telefon),p30_13,POS (yüz kırpıntısı),36.49771315990057,0.0
+MMPD (telefon),p30_13,POS (yüz kırpıntısı)+Viterbi,39.40794467496492,0.0
+MMPD (telefon),p30_14,POS (yüz kırpıntısı),44.1942412572096,4.0
+MMPD (telefon),p30_14,POS (yüz kırpıntısı)+Viterbi,38.57016438925796,0.0
+MMPD (telefon),p30_15,POS (yüz kırpıntısı),24.84265908140437,14.000000000000002
+MMPD (telefon),p30_15,POS (yüz kırpıntısı)+Viterbi,29.708753706576072,0.0
+MMPD (telefon),p30_16,POS (yüz kırpıntısı),20.636280052040675,28.000000000000004
+MMPD (telefon),p30_16,POS (yüz kırpıntısı)+Viterbi,29.671503840931123,0.0
+MMPD (telefon),p30_18,POS (yüz kırpıntısı),13.578532295377334,57.99999999999999
+MMPD (telefon),p30_18,POS (yüz kırpıntısı)+Viterbi,1.5561013796060237,100.0
+MMPD (telefon),p30_19,POS (yüz kırpıntısı),41.00826459050636,0.0
+MMPD (telefon),p30_19,POS (yüz kırpıntısı)+Viterbi,47.779002454629854,0.0
+MMPD (telefon),p30_2,POS (yüz kırpıntısı),21.17605683888621,8.0
+MMPD (telefon),p30_2,POS (yüz kırpıntısı)+Viterbi,26.8042920893866,0.0
+MMPD (telefon),p30_3,POS (yüz kırpıntısı),45.68316870255466,4.0
+MMPD (telefon),p30_3,POS (yüz kırpıntısı)+Viterbi,56.1299164455737,0.0
+MMPD (telefon),p30_4,POS (yüz kırpıntısı),13.653622112292265,28.000000000000004
+MMPD (telefon),p30_4,POS (yüz kırpıntısı)+Viterbi,9.601942433410763,34.0
+MMPD (telefon),p30_5,POS (yüz kırpıntısı),17.955208042092988,4.0
+MMPD (telefon),p30_5,POS (yüz kırpıntısı)+Viterbi,15.534371586222075,4.0
+MMPD (telefon),p30_6,POS (yüz kırpıntısı),17.730614796502824,38.0
+MMPD (telefon),p30_6,POS (yüz kırpıntısı)+Viterbi,13.627407920172645,34.0
+MMPD (telefon),p30_8,POS (yüz kırpıntısı),12.837862296687856,56.00000000000001
+MMPD (telefon),p30_8,POS (yüz kırpıntısı)+Viterbi,4.761576226108757,76.0
+MMPD (telefon),p5_0,POS (yüz kırpıntısı),10.29425221160686,60.0
+MMPD (telefon),p5_0,POS (yüz kırpıntısı)+Viterbi,2.199490843152844,92.0
+MMPD (telefon),p5_1,POS (yüz kırpıntısı),10.391355136216367,60.0
+MMPD (telefon),p5_1,POS (yüz kırpıntısı)+Viterbi,3.5911956057865577,68.0
+MMPD (telefon),p5_10,POS (yüz kırpıntısı),8.072244257528718,48.0
+MMPD (telefon),p5_10,POS (yüz kırpıntısı)+Viterbi,6.204214191877756,48.0
+MMPD (telefon),p5_11,POS (yüz kırpıntısı),34.99430785976035,28.000000000000004
+MMPD (telefon),p5_11,POS (yüz kırpıntısı)+Viterbi,32.904243667661405,24.0
+MMPD (telefon),p5_12,POS (yüz kırpıntısı),6.773435332972962,70.0
+MMPD (telefon),p5_12,POS (yüz kırpıntısı)+Viterbi,1.8056803149585807,92.0
+MMPD (telefon),p5_13,POS (yüz kırpıntısı),1.0786655202017192,100.0
+MMPD (telefon),p5_13,POS (yüz kırpıntısı)+Viterbi,1.0580261838133407,100.0
+MMPD (telefon),p5_14,POS (yüz kırpıntısı),4.916303029471436,78.0
+MMPD (telefon),p5_14,POS (yüz kırpıntısı)+Viterbi,1.4213379156226884,94.0
+MMPD (telefon),p5_15,POS (yüz kırpıntısı),8.748211459756016,64.0
+MMPD (telefon),p5_15,POS (yüz kırpıntısı)+Viterbi,4.544427563101401,74.0
+MMPD (telefon),p5_16,POS (yüz kırpıntısı),9.112765644221328,68.0
+MMPD (telefon),p5_16,POS (yüz kırpıntısı)+Viterbi,1.410633744314883,98.0
+MMPD (telefon),p5_17,POS (yüz kırpıntısı),9.334310248627958,68.0
+MMPD (telefon),p5_17,POS (yüz kırpıntısı)+Viterbi,1.1703602783484968,100.0
+MMPD (telefon),p5_18,POS (yüz kırpıntısı),16.93846805131977,66.0
+MMPD (telefon),p5_18,POS (yüz kırpıntısı)+Viterbi,2.0759440333795713,92.0
+MMPD (telefon),p5_19,POS (yüz kırpıntısı),23.977917249800168,14.000000000000002
+MMPD (telefon),p5_19,POS (yüz kırpıntısı)+Viterbi,20.795323007024628,6.0
+MMPD (telefon),p5_2,POS (yüz kırpıntısı),6.635499763697552,64.0
+MMPD (telefon),p5_2,POS (yüz kırpıntısı)+Viterbi,3.4977471587978393,80.0
+MMPD (telefon),p5_3,POS (yüz kırpıntısı),23.527682655394663,36.0
+MMPD (telefon),p5_3,POS (yüz kırpıntısı)+Viterbi,6.4586219735625265,92.0
+MMPD (telefon),p5_4,POS (yüz kırpıntısı),2.437877935569765,94.0
+MMPD (telefon),p5_4,POS (yüz kırpıntısı)+Viterbi,0.9722601118140295,100.0
+MMPD (telefon),p5_5,POS (yüz kırpıntısı),3.6017766256294816,82.0
+MMPD (telefon),p5_5,POS (yüz kırpıntısı)+Viterbi,3.2999922076528874,84.0
+MMPD (telefon),p5_6,POS (yüz kırpıntısı),8.303658577710442,64.0
+MMPD (telefon),p5_6,POS (yüz kırpıntısı)+Viterbi,4.4567506728772655,76.0
+MMPD (telefon),p5_7,POS (yüz kırpıntısı),20.101680594499886,6.0
+MMPD (telefon),p5_7,POS (yüz kırpıntısı)+Viterbi,13.352928337276948,16.0
+MMPD (telefon),p5_8,POS (yüz kırpıntısı),5.909447912886229,68.0
+MMPD (telefon),p5_8,POS (yüz kırpıntısı)+Viterbi,5.552581503250954,64.0
+MMPD (telefon),p5_9,POS (yüz kırpıntısı),6.170286009161652,64.0
+MMPD (telefon),p5_9,POS (yüz kırpıntısı)+Viterbi,3.043862928495658,82.0
+MMPD (telefon),p10_0,FactorizePhys PURE (hazır),8.153738771996313,82.0
+MMPD (telefon),p10_0,FactorizePhys PURE (hazır)+Viterbi,1.4849084958677965,100.0
+MMPD (telefon),p10_1,FactorizePhys PURE (hazır),12.811390302035898,50.0
+MMPD (telefon),p10_1,FactorizePhys PURE (hazır)+Viterbi,2.9709969036292874,86.0
+MMPD (telefon),p10_10,FactorizePhys PURE (hazır),21.274214045051593,6.0
+MMPD (telefon),p10_10,FactorizePhys PURE (hazır)+Viterbi,24.20897920806331,0.0
+MMPD (telefon),p10_11,FactorizePhys PURE (hazır),29.225397597498272,14.000000000000002
+MMPD (telefon),p10_11,FactorizePhys PURE (hazır)+Viterbi,34.696367173324894,4.0
+MMPD (telefon),p10_12,FactorizePhys PURE (hazır),8.128635381569914,52.0
+MMPD (telefon),p10_12,FactorizePhys PURE (hazır)+Viterbi,5.156143510733586,57.99999999999999
+MMPD (telefon),p10_13,FactorizePhys PURE (hazır),18.331019769960974,26.0
+MMPD (telefon),p10_13,FactorizePhys PURE (hazır)+Viterbi,12.889089944773584,28.000000000000004
+MMPD (telefon),p10_14,FactorizePhys PURE (hazır),7.929054752156311,72.0
+MMPD (telefon),p10_14,FactorizePhys PURE (hazır)+Viterbi,7.944358394832647,66.0
+MMPD (telefon),p10_15,FactorizePhys PURE (hazır),17.36799738210543,14.000000000000002
+MMPD (telefon),p10_15,FactorizePhys PURE (hazır)+Viterbi,13.217764393075313,26.0
+MMPD (telefon),p10_16,FactorizePhys PURE (hazır),39.24860539938749,4.0
+MMPD (telefon),p10_16,FactorizePhys PURE (hazır)+Viterbi,30.167163559636855,6.0
+MMPD (telefon),p10_17,FactorizePhys PURE (hazır),15.758801038616609,4.0
+MMPD (telefon),p10_17,FactorizePhys PURE (hazır)+Viterbi,8.80055542618368,28.000000000000004
+MMPD (telefon),p10_18,FactorizePhys PURE (hazır),17.463570693169473,24.0
+MMPD (telefon),p10_18,FactorizePhys PURE (hazır)+Viterbi,14.703549254836782,20.0
+MMPD (telefon),p10_19,FactorizePhys PURE (hazır),23.16051639702682,16.0
+MMPD (telefon),p10_19,FactorizePhys PURE (hazır)+Viterbi,31.16060520835998,0.0
+MMPD (telefon),p10_2,FactorizePhys PURE (hazır),15.610130466940532,40.0
+MMPD (telefon),p10_2,FactorizePhys PURE (hazır)+Viterbi,10.953095415210464,28.000000000000004
+MMPD (telefon),p10_3,FactorizePhys PURE (hazır),24.16886586869377,0.0
+MMPD (telefon),p10_3,FactorizePhys PURE (hazır)+Viterbi,23.202845775700297,4.0
+MMPD (telefon),p10_4,FactorizePhys PURE (hazır),7.759523096368929,72.0
+MMPD (telefon),p10_4,FactorizePhys PURE (hazır)+Viterbi,2.687301060353484,90.0
+MMPD (telefon),p10_5,FactorizePhys PURE (hazır),18.746435356703422,18.0
+MMPD (telefon),p10_5,FactorizePhys PURE (hazır)+Viterbi,4.7483952299885575,62.0
+MMPD (telefon),p10_6,FactorizePhys PURE (hazır),13.7450131588008,26.0
+MMPD (telefon),p10_6,FactorizePhys PURE (hazır)+Viterbi,9.003412450824683,38.0
+MMPD (telefon),p10_7,FactorizePhys PURE (hazır),31.14982711556154,10.0
+MMPD (telefon),p10_7,FactorizePhys PURE (hazır)+Viterbi,35.626125417584234,0.0
+MMPD (telefon),p10_8,FactorizePhys PURE (hazır),3.5674575266974142,78.0
+MMPD (telefon),p10_8,FactorizePhys PURE (hazır)+Viterbi,4.659855603014849,68.0
+MMPD (telefon),p10_9,FactorizePhys PURE (hazır),12.668119765680816,18.0
+MMPD (telefon),p10_9,FactorizePhys PURE (hazır)+Viterbi,8.495005431623587,36.0
+MMPD (telefon),p15_0,FactorizePhys PURE (hazır),18.3078927380691,28.000000000000004
+MMPD (telefon),p15_0,FactorizePhys PURE (hazır)+Viterbi,12.07514974792331,32.0
+MMPD (telefon),p15_1,FactorizePhys PURE (hazır),16.311158807994033,12.0
+MMPD (telefon),p15_1,FactorizePhys PURE (hazır)+Viterbi,10.987486747794819,24.0
+MMPD (telefon),p15_10,FactorizePhys PURE (hazır),13.281461779941653,36.0
+MMPD (telefon),p15_10,FactorizePhys PURE (hazır)+Viterbi,6.271735804682405,50.0
+MMPD (telefon),p15_11,FactorizePhys PURE (hazır),42.00168991399387,0.0
+MMPD (telefon),p15_11,FactorizePhys PURE (hazır)+Viterbi,36.952583994293356,6.0
+MMPD (telefon),p15_12,FactorizePhys PURE (hazır),19.669676817098,24.0
+MMPD (telefon),p15_12,FactorizePhys PURE (hazır)+Viterbi,14.12534293861948,20.0
+MMPD (telefon),p15_13,FactorizePhys PURE (hazır),22.322965628233877,20.0
+MMPD (telefon),p15_13,FactorizePhys PURE (hazır)+Viterbi,31.695952162288933,22.0
+MMPD (telefon),p15_14,FactorizePhys PURE (hazır),31.47489011580759,4.0
+MMPD (telefon),p15_14,FactorizePhys PURE (hazır)+Viterbi,30.589747943438944,10.0
+MMPD (telefon),p15_15,FactorizePhys PURE (hazır),15.730545297199633,36.0
+MMPD (telefon),p15_15,FactorizePhys PURE (hazır)+Viterbi,6.250793267152062,66.0
+MMPD (telefon),p15_16,FactorizePhys PURE (hazır),22.9316249032936,20.0
+MMPD (telefon),p15_16,FactorizePhys PURE (hazır)+Viterbi,35.14304299038231,0.0
+MMPD (telefon),p15_18,FactorizePhys PURE (hazır),23.67387816933706,16.0
+MMPD (telefon),p15_18,FactorizePhys PURE (hazır)+Viterbi,23.12321299303278,14.000000000000002
+MMPD (telefon),p15_19,FactorizePhys PURE (hazır),30.337671593416346,14.000000000000002
+MMPD (telefon),p15_19,FactorizePhys PURE (hazır)+Viterbi,33.375323795056936,10.0
+MMPD (telefon),p15_2,FactorizePhys PURE (hazır),19.272796764042088,28.000000000000004
+MMPD (telefon),p15_2,FactorizePhys PURE (hazır)+Viterbi,16.01087372270637,30.0
+MMPD (telefon),p15_3,FactorizePhys PURE (hazır),83.86945239744875,8.0
+MMPD (telefon),p15_3,FactorizePhys PURE (hazır)+Viterbi,77.00721810724067,10.0
+MMPD (telefon),p15_4,FactorizePhys PURE (hazır),23.630053512802277,12.0
+MMPD (telefon),p15_4,FactorizePhys PURE (hazır)+Viterbi,21.846678320412494,22.0
+MMPD (telefon),p15_5,FactorizePhys PURE (hazır),15.172198159780107,30.0
+MMPD (telefon),p15_5,FactorizePhys PURE (hazır)+Viterbi,6.160917912747801,48.0
+MMPD (telefon),p15_6,FactorizePhys PURE (hazır),17.1618288300674,28.000000000000004
+MMPD (telefon),p15_6,FactorizePhys PURE (hazır)+Viterbi,11.056904031564308,26.0
+MMPD (telefon),p15_7,FactorizePhys PURE (hazır),53.550678231422104,10.0
+MMPD (telefon),p15_7,FactorizePhys PURE (hazır)+Viterbi,62.63502647732948,2.0
+MMPD (telefon),p15_8,FactorizePhys PURE (hazır),13.515991268679448,48.0
+MMPD (telefon),p15_8,FactorizePhys PURE (hazır)+Viterbi,4.938571917416001,60.0
+MMPD (telefon),p15_9,FactorizePhys PURE (hazır),12.232049390313176,32.0
+MMPD (telefon),p15_9,FactorizePhys PURE (hazır)+Viterbi,6.236526164767261,50.0
+MMPD (telefon),p20_0,FactorizePhys PURE (hazır),1.8466265617637994,92.0
+MMPD (telefon),p20_0,FactorizePhys PURE (hazır)+Viterbi,1.4601538485324312,94.0
+MMPD (telefon),p20_1,FactorizePhys PURE (hazır),9.049382097588541,30.0
+MMPD (telefon),p20_1,FactorizePhys PURE (hazır)+Viterbi,8.196915271482464,34.0
+MMPD (telefon),p20_10,FactorizePhys PURE (hazır),1.2825960930738092,94.0
+MMPD (telefon),p20_10,FactorizePhys PURE (hazır)+Viterbi,0.7162494122773481,100.0
+MMPD (telefon),p20_11,FactorizePhys PURE (hazır),19.041180241917115,32.0
+MMPD (telefon),p20_11,FactorizePhys PURE (hazır)+Viterbi,14.157864882846233,50.0
+MMPD (telefon),p20_12,FactorizePhys PURE (hazır),5.084716134328142,88.0
+MMPD (telefon),p20_12,FactorizePhys PURE (hazır)+Viterbi,1.8350153416120092,94.0
+MMPD (telefon),p20_13,FactorizePhys PURE (hazır),0.745088827428543,100.0
+MMPD (telefon),p20_13,FactorizePhys PURE (hazır)+Viterbi,0.7467880603397251,100.0
+MMPD (telefon),p20_14,FactorizePhys PURE (hazır),0.6664955263316551,100.0
+MMPD (telefon),p20_14,FactorizePhys PURE (hazır)+Viterbi,0.6664955263316551,100.0
+MMPD (telefon),p20_15,FactorizePhys PURE (hazır),5.156486320711903,88.0
+MMPD (telefon),p20_15,FactorizePhys PURE (hazır)+Viterbi,0.7236452137530407,100.0
+MMPD (telefon),p20_16,FactorizePhys PURE (hazır),4.293026241992905,80.0
+MMPD (telefon),p20_16,FactorizePhys PURE (hazır)+Viterbi,1.5696712560346842,90.0
+MMPD (telefon),p20_17,FactorizePhys PURE (hazır),9.73309175859918,66.0
+MMPD (telefon),p20_17,FactorizePhys PURE (hazır)+Viterbi,7.08702736450919,68.0
+MMPD (telefon),p20_18,FactorizePhys PURE (hazır),3.7940693588445207,74.0
+MMPD (telefon),p20_18,FactorizePhys PURE (hazır)+Viterbi,3.540697011528226,76.0
+MMPD (telefon),p20_19,FactorizePhys PURE (hazır),41.244237337717934,34.0
+MMPD (telefon),p20_19,FactorizePhys PURE (hazır)+Viterbi,39.722286253682924,30.0
+MMPD (telefon),p20_2,FactorizePhys PURE (hazır),4.79058148250623,78.0
+MMPD (telefon),p20_2,FactorizePhys PURE (hazır)+Viterbi,2.6145245560180466,88.0
+MMPD (telefon),p20_3,FactorizePhys PURE (hazır),18.92403489011477,40.0
+MMPD (telefon),p20_3,FactorizePhys PURE (hazır)+Viterbi,6.561097700844762,44.0
+MMPD (telefon),p20_4,FactorizePhys PURE (hazır),2.172628205121521,94.0
+MMPD (telefon),p20_4,FactorizePhys PURE (hazır)+Viterbi,1.2333389494915599,98.0
+MMPD (telefon),p20_5,FactorizePhys PURE (hazır),15.382588837239684,6.0
+MMPD (telefon),p20_5,FactorizePhys PURE (hazır)+Viterbi,11.87096933688549,14.000000000000002
+MMPD (telefon),p20_6,FactorizePhys PURE (hazır),2.4462145983398935,90.0
+MMPD (telefon),p20_6,FactorizePhys PURE (hazır)+Viterbi,2.000049492214082,88.0
+MMPD (telefon),p20_7,FactorizePhys PURE (hazır),27.710959473387685,36.0
+MMPD (telefon),p20_7,FactorizePhys PURE (hazır)+Viterbi,23.498415449686814,46.0
+MMPD (telefon),p20_8,FactorizePhys PURE (hazır),2.869920248066053,86.0
+MMPD (telefon),p20_8,FactorizePhys PURE (hazır)+Viterbi,1.4967793596135524,90.0
+MMPD (telefon),p20_9,FactorizePhys PURE (hazır),9.311629022068436,50.0
+MMPD (telefon),p20_9,FactorizePhys PURE (hazır)+Viterbi,9.501193313854962,44.0
+MMPD (telefon),p25_0,FactorizePhys PURE (hazır),8.14553783197307,60.0
+MMPD (telefon),p25_0,FactorizePhys PURE (hazır)+Viterbi,2.8885077712374216,80.0
+MMPD (telefon),p25_1,FactorizePhys PURE (hazır),11.218151682478307,48.0
+MMPD (telefon),p25_1,FactorizePhys PURE (hazır)+Viterbi,6.033974595478629,64.0
+MMPD (telefon),p25_10,FactorizePhys PURE (hazır),0.5753502447316541,100.0
+MMPD (telefon),p25_10,FactorizePhys PURE (hazır)+Viterbi,0.5753502447316541,100.0
+MMPD (telefon),p25_11,FactorizePhys PURE (hazır),36.32156660072864,30.0
+MMPD (telefon),p25_11,FactorizePhys PURE (hazır)+Viterbi,27.441804076211056,44.0
+MMPD (telefon),p25_12,FactorizePhys PURE (hazır),3.2139199450859817,86.0
+MMPD (telefon),p25_12,FactorizePhys PURE (hazır)+Viterbi,1.1064243507274245,100.0
+MMPD (telefon),p25_13,FactorizePhys PURE (hazır),0.2516857703212662,100.0
+MMPD (telefon),p25_13,FactorizePhys PURE (hazır)+Viterbi,0.2516857703212662,100.0
+MMPD (telefon),p25_14,FactorizePhys PURE (hazır),0.7851636222543052,100.0
+MMPD (telefon),p25_14,FactorizePhys PURE (hazır)+Viterbi,0.7851636222543052,100.0
+MMPD (telefon),p25_15,FactorizePhys PURE (hazır),0.38502403423400666,100.0
+MMPD (telefon),p25_15,FactorizePhys PURE (hazır)+Viterbi,0.38502403423400666,100.0
+MMPD (telefon),p25_16,FactorizePhys PURE (hazır),13.389807210427877,70.0
+MMPD (telefon),p25_16,FactorizePhys PURE (hazır)+Viterbi,11.809417415252607,72.0
+MMPD (telefon),p25_17,FactorizePhys PURE (hazır),28.506810464099782,26.0
+MMPD (telefon),p25_17,FactorizePhys PURE (hazır)+Viterbi,28.40796525719434,20.0
+MMPD (telefon),p25_18,FactorizePhys PURE (hazır),71.52795001053087,26.0
+MMPD (telefon),p25_18,FactorizePhys PURE (hazır)+Viterbi,67.50029240403688,32.0
+MMPD (telefon),p25_19,FactorizePhys PURE (hazır),132.20485706264492,0.0
+MMPD (telefon),p25_19,FactorizePhys PURE (hazır)+Viterbi,139.45528697679293,0.0
+MMPD (telefon),p25_2,FactorizePhys PURE (hazır),12.33401507084084,42.0
+MMPD (telefon),p25_2,FactorizePhys PURE (hazır)+Viterbi,3.7326949758785464,70.0
+MMPD (telefon),p25_3,FactorizePhys PURE (hazır),13.45097996643025,38.0
+MMPD (telefon),p25_3,FactorizePhys PURE (hazır)+Viterbi,13.607310015679696,32.0
+MMPD (telefon),p25_4,FactorizePhys PURE (hazır),6.665051776843786,78.0
+MMPD (telefon),p25_4,FactorizePhys PURE (hazır)+Viterbi,1.6914746455559497,100.0
+MMPD (telefon),p25_5,FactorizePhys PURE (hazır),7.621800486290869,62.0
+MMPD (telefon),p25_5,FactorizePhys PURE (hazır)+Viterbi,3.880668816655028,76.0
+MMPD (telefon),p25_6,FactorizePhys PURE (hazır),7.455760503055036,66.0
+MMPD (telefon),p25_6,FactorizePhys PURE (hazır)+Viterbi,3.527617187102243,78.0
+MMPD (telefon),p25_7,FactorizePhys PURE (hazır),15.81409430260064,26.0
+MMPD (telefon),p25_7,FactorizePhys PURE (hazır)+Viterbi,8.770825916679877,42.0
+MMPD (telefon),p25_8,FactorizePhys PURE (hazır),0.73863407904111,100.0
+MMPD (telefon),p25_8,FactorizePhys PURE (hazır)+Viterbi,0.741942442198029,100.0
+MMPD (telefon),p25_9,FactorizePhys PURE (hazır),6.316795539028101,70.0
+MMPD (telefon),p25_9,FactorizePhys PURE (hazır)+Viterbi,1.9422124910969574,90.0
+MMPD (telefon),p30_0,FactorizePhys PURE (hazır),13.440598985203433,24.0
+MMPD (telefon),p30_0,FactorizePhys PURE (hazır)+Viterbi,12.281992236934455,24.0
+MMPD (telefon),p30_1,FactorizePhys PURE (hazır),28.50848771441164,8.0
+MMPD (telefon),p30_1,FactorizePhys PURE (hazır)+Viterbi,17.20868105346321,20.0
+MMPD (telefon),p30_10,FactorizePhys PURE (hazır),6.176899053365609,82.0
+MMPD (telefon),p30_10,FactorizePhys PURE (hazır)+Viterbi,1.995074715503433,88.0
+MMPD (telefon),p30_12,FactorizePhys PURE (hazır),16.32953302748206,30.0
+MMPD (telefon),p30_12,FactorizePhys PURE (hazır)+Viterbi,19.5061609062556,42.0
+MMPD (telefon),p30_13,FactorizePhys PURE (hazır),22.213516907885577,28.000000000000004
+MMPD (telefon),p30_13,FactorizePhys PURE (hazır)+Viterbi,26.40043185391688,36.0
+MMPD (telefon),p30_14,FactorizePhys PURE (hazır),30.922092152011665,14.000000000000002
+MMPD (telefon),p30_14,FactorizePhys PURE (hazır)+Viterbi,36.971207950566026,0.0
+MMPD (telefon),p30_15,FactorizePhys PURE (hazır),22.333369184972327,18.0
+MMPD (telefon),p30_15,FactorizePhys PURE (hazır)+Viterbi,9.047776896527338,50.0
+MMPD (telefon),p30_16,FactorizePhys PURE (hazır),12.711669467138565,56.00000000000001
+MMPD (telefon),p30_16,FactorizePhys PURE (hazır)+Viterbi,4.31799675830193,70.0
+MMPD (telefon),p30_18,FactorizePhys PURE (hazır),6.7408243807034784,80.0
+MMPD (telefon),p30_18,FactorizePhys PURE (hazır)+Viterbi,1.1523516865834298,100.0
+MMPD (telefon),p30_19,FactorizePhys PURE (hazır),48.77378074108972,0.0
+MMPD (telefon),p30_19,FactorizePhys PURE (hazır)+Viterbi,50.142597936725906,0.0
+MMPD (telefon),p30_2,FactorizePhys PURE (hazır),15.81721593308545,18.0
+MMPD (telefon),p30_2,FactorizePhys PURE (hazır)+Viterbi,8.932516719954226,26.0
+MMPD (telefon),p30_3,FactorizePhys PURE (hazır),54.272504934157816,0.0
+MMPD (telefon),p30_3,FactorizePhys PURE (hazır)+Viterbi,58.063031306064694,0.0
+MMPD (telefon),p30_4,FactorizePhys PURE (hazır),5.99217290413998,78.0
+MMPD (telefon),p30_4,FactorizePhys PURE (hazır)+Viterbi,2.0675154939748777,88.0
+MMPD (telefon),p30_5,FactorizePhys PURE (hazır),12.961495663719118,10.0
+MMPD (telefon),p30_5,FactorizePhys PURE (hazır)+Viterbi,11.24384592577248,16.0
+MMPD (telefon),p30_6,FactorizePhys PURE (hazır),11.299860449422301,50.0
+MMPD (telefon),p30_6,FactorizePhys PURE (hazır)+Viterbi,6.007131310957089,62.0
+MMPD (telefon),p30_8,FactorizePhys PURE (hazır),4.108158530769157,86.0
+MMPD (telefon),p30_8,FactorizePhys PURE (hazır)+Viterbi,2.423010447136527,90.0
+MMPD (telefon),p5_0,FactorizePhys PURE (hazır),8.86982782689278,64.0
+MMPD (telefon),p5_0,FactorizePhys PURE (hazır)+Viterbi,4.123822159421182,68.0
+MMPD (telefon),p5_1,FactorizePhys PURE (hazır),11.690987336095938,62.0
+MMPD (telefon),p5_1,FactorizePhys PURE (hazır)+Viterbi,6.64661843307394,72.0
+MMPD (telefon),p5_10,FactorizePhys PURE (hazır),3.3920873528718403,78.0
+MMPD (telefon),p5_10,FactorizePhys PURE (hazır)+Viterbi,3.012853770399795,80.0
+MMPD (telefon),p5_11,FactorizePhys PURE (hazır),34.47757991805983,0.0
+MMPD (telefon),p5_11,FactorizePhys PURE (hazır)+Viterbi,35.049945835446955,0.0
+MMPD (telefon),p5_12,FactorizePhys PURE (hazır),1.7701858885918242,94.0
+MMPD (telefon),p5_12,FactorizePhys PURE (hazır)+Viterbi,0.6760980133304426,100.0
+MMPD (telefon),p5_13,FactorizePhys PURE (hazır),0.6326182107483171,100.0
+MMPD (telefon),p5_13,FactorizePhys PURE (hazır)+Viterbi,0.634733509368381,100.0
+MMPD (telefon),p5_14,FactorizePhys PURE (hazır),4.155484437611659,74.0
+MMPD (telefon),p5_14,FactorizePhys PURE (hazır)+Viterbi,1.6779740505295084,94.0
+MMPD (telefon),p5_15,FactorizePhys PURE (hazır),1.7169165587763455,96.0
+MMPD (telefon),p5_15,FactorizePhys PURE (hazır)+Viterbi,0.7963547506558646,100.0
+MMPD (telefon),p5_16,FactorizePhys PURE (hazır),0.6357387583190421,100.0
+MMPD (telefon),p5_16,FactorizePhys PURE (hazır)+Viterbi,0.6357387583190421,100.0
+MMPD (telefon),p5_17,FactorizePhys PURE (hazır),5.993753138583072,80.0
+MMPD (telefon),p5_17,FactorizePhys PURE (hazır)+Viterbi,1.5153397635927337,100.0
+MMPD (telefon),p5_18,FactorizePhys PURE (hazır),6.610927253880897,80.0
+MMPD (telefon),p5_18,FactorizePhys PURE (hazır)+Viterbi,0.8661752239788774,100.0
+MMPD (telefon),p5_19,FactorizePhys PURE (hazır),25.17924848182929,6.0
+MMPD (telefon),p5_19,FactorizePhys PURE (hazır)+Viterbi,18.07732785015323,12.0
+MMPD (telefon),p5_2,FactorizePhys PURE (hazır),3.416060273389498,80.0
+MMPD (telefon),p5_2,FactorizePhys PURE (hazır)+Viterbi,2.071860397846892,90.0
+MMPD (telefon),p5_3,FactorizePhys PURE (hazır),14.31125412196403,54.0
+MMPD (telefon),p5_3,FactorizePhys PURE (hazır)+Viterbi,8.913574002562656,64.0
+MMPD (telefon),p5_4,FactorizePhys PURE (hazır),3.1162581553730355,88.0
+MMPD (telefon),p5_4,FactorizePhys PURE (hazır)+Viterbi,2.2021293299233298,90.0
+MMPD (telefon),p5_5,FactorizePhys PURE (hazır),5.66083107754184,82.0
+MMPD (telefon),p5_5,FactorizePhys PURE (hazır)+Viterbi,1.5585034893257674,98.0
+MMPD (telefon),p5_6,FactorizePhys PURE (hazır),4.212461809017977,76.0
+MMPD (telefon),p5_6,FactorizePhys PURE (hazır)+Viterbi,1.744082760621821,88.0
+MMPD (telefon),p5_7,FactorizePhys PURE (hazır),20.062363225756894,2.0
+MMPD (telefon),p5_7,FactorizePhys PURE (hazır)+Viterbi,18.626909814615043,0.0
+MMPD (telefon),p5_8,FactorizePhys PURE (hazır),3.885008930682088,80.0
+MMPD (telefon),p5_8,FactorizePhys PURE (hazır)+Viterbi,1.1849449974682056,96.0
+MMPD (telefon),p5_9,FactorizePhys PURE (hazır),7.684769104605052,62.0
+MMPD (telefon),p5_9,FactorizePhys PURE (hazır)+Viterbi,2.302405618357619,84.0
+MMPD (telefon),p10_0,MMRPhys B'den dengeli ince ayar (7. tur),4.893030133408813,84.0
+MMPD (telefon),p10_0,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,1.5777014501804099,98.0
+MMPD (telefon),p10_1,MMRPhys B'den dengeli ince ayar (7. tur),12.2906848193167,40.0
+MMPD (telefon),p10_1,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,5.217523804832492,57.99999999999999
+MMPD (telefon),p10_10,MMRPhys B'den dengeli ince ayar (7. tur),22.87199285811836,6.0
+MMPD (telefon),p10_10,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,18.93367929741938,4.0
+MMPD (telefon),p10_11,MMRPhys B'den dengeli ince ayar (7. tur),25.133861903854132,16.0
+MMPD (telefon),p10_11,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,35.50235315911567,4.0
+MMPD (telefon),p10_12,MMRPhys B'den dengeli ince ayar (7. tur),13.391157076739967,44.0
+MMPD (telefon),p10_12,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,6.722750405303673,52.0
+MMPD (telefon),p10_13,MMRPhys B'den dengeli ince ayar (7. tur),19.155631199933463,26.0
+MMPD (telefon),p10_13,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,27.955511001675873,6.0
+MMPD (telefon),p10_14,MMRPhys B'den dengeli ince ayar (7. tur),2.6519442261008987,78.0
+MMPD (telefon),p10_14,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,2.375189110377923,82.0
+MMPD (telefon),p10_15,MMRPhys B'den dengeli ince ayar (7. tur),12.543898052041655,22.0
+MMPD (telefon),p10_15,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,9.452551101912974,32.0
+MMPD (telefon),p10_16,MMRPhys B'den dengeli ince ayar (7. tur),42.343001637273694,0.0
+MMPD (telefon),p10_16,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,39.25301442328264,0.0
+MMPD (telefon),p10_17,MMRPhys B'den dengeli ince ayar (7. tur),17.541084431246762,4.0
+MMPD (telefon),p10_17,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,17.815247659807657,4.0
+MMPD (telefon),p10_18,MMRPhys B'den dengeli ince ayar (7. tur),16.68796572126072,40.0
+MMPD (telefon),p10_18,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,7.0600850210045225,66.0
+MMPD (telefon),p10_19,MMRPhys B'den dengeli ince ayar (7. tur),15.521550676863477,26.0
+MMPD (telefon),p10_19,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,16.09200759062669,28.000000000000004
+MMPD (telefon),p10_2,MMRPhys B'den dengeli ince ayar (7. tur),12.273942589989653,34.0
+MMPD (telefon),p10_2,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,7.932103590227349,54.0
+MMPD (telefon),p10_3,MMRPhys B'den dengeli ince ayar (7. tur),25.401958564635823,6.0
+MMPD (telefon),p10_3,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,20.792978572772622,8.0
+MMPD (telefon),p10_4,MMRPhys B'den dengeli ince ayar (7. tur),3.8683032218628353,84.0
+MMPD (telefon),p10_4,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,2.1485067453295765,92.0
+MMPD (telefon),p10_5,MMRPhys B'den dengeli ince ayar (7. tur),21.29068243358235,30.0
+MMPD (telefon),p10_5,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,6.1017513919568955,48.0
+MMPD (telefon),p10_6,MMRPhys B'den dengeli ince ayar (7. tur),24.604452967776048,10.0
+MMPD (telefon),p10_6,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,14.558460545851187,8.0
+MMPD (telefon),p10_7,MMRPhys B'den dengeli ince ayar (7. tur),26.49661597377471,6.0
+MMPD (telefon),p10_7,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,36.045508119396985,0.0
+MMPD (telefon),p10_8,MMRPhys B'den dengeli ince ayar (7. tur),9.64656400046809,50.0
+MMPD (telefon),p10_8,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,5.104916882128233,68.0
+MMPD (telefon),p10_9,MMRPhys B'den dengeli ince ayar (7. tur),14.187581696566749,16.0
+MMPD (telefon),p10_9,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,11.196111483487867,24.0
+MMPD (telefon),p15_0,MMRPhys B'den dengeli ince ayar (7. tur),18.340098046651423,26.0
+MMPD (telefon),p15_0,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,12.317882380662873,40.0
+MMPD (telefon),p15_1,MMRPhys B'den dengeli ince ayar (7. tur),15.610185105730645,20.0
+MMPD (telefon),p15_1,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,7.949458151575575,42.0
+MMPD (telefon),p15_10,MMRPhys B'den dengeli ince ayar (7. tur),13.985847387611003,40.0
+MMPD (telefon),p15_10,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,11.7003278338339,42.0
+MMPD (telefon),p15_11,MMRPhys B'den dengeli ince ayar (7. tur),44.61229203834282,0.0
+MMPD (telefon),p15_11,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,51.36671031753829,0.0
+MMPD (telefon),p15_12,MMRPhys B'den dengeli ince ayar (7. tur),16.23824525606191,36.0
+MMPD (telefon),p15_12,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,16.866335119958173,22.0
+MMPD (telefon),p15_13,MMRPhys B'den dengeli ince ayar (7. tur),17.14752413506999,30.0
+MMPD (telefon),p15_13,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,27.284580372051295,0.0
+MMPD (telefon),p15_14,MMRPhys B'den dengeli ince ayar (7. tur),25.311828661155847,28.000000000000004
+MMPD (telefon),p15_14,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,33.06294880634498,24.0
+MMPD (telefon),p15_15,MMRPhys B'den dengeli ince ayar (7. tur),21.736195473482425,24.0
+MMPD (telefon),p15_15,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,10.973182351110227,48.0
+MMPD (telefon),p15_16,MMRPhys B'den dengeli ince ayar (7. tur),24.195599080458738,26.0
+MMPD (telefon),p15_16,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,11.484550887734423,38.0
+MMPD (telefon),p15_18,MMRPhys B'den dengeli ince ayar (7. tur),14.434338027917233,44.0
+MMPD (telefon),p15_18,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,19.459741442257272,30.0
+MMPD (telefon),p15_19,MMRPhys B'den dengeli ince ayar (7. tur),23.316328965259004,8.0
+MMPD (telefon),p15_19,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,21.25518044597696,6.0
+MMPD (telefon),p15_2,MMRPhys B'den dengeli ince ayar (7. tur),19.304697517500987,32.0
+MMPD (telefon),p15_2,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,13.906077286149882,42.0
+MMPD (telefon),p15_3,MMRPhys B'den dengeli ince ayar (7. tur),80.05540174846413,10.0
+MMPD (telefon),p15_3,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,78.43910843791247,2.0
+MMPD (telefon),p15_4,MMRPhys B'den dengeli ince ayar (7. tur),17.60143880286095,22.0
+MMPD (telefon),p15_4,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,16.80299986309653,34.0
+MMPD (telefon),p15_5,MMRPhys B'den dengeli ince ayar (7. tur),15.67630970501747,16.0
+MMPD (telefon),p15_5,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,5.533333602888998,46.0
+MMPD (telefon),p15_6,MMRPhys B'den dengeli ince ayar (7. tur),20.482192603610006,12.0
+MMPD (telefon),p15_6,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,8.140602004668951,42.0
+MMPD (telefon),p15_7,MMRPhys B'den dengeli ince ayar (7. tur),52.25485079645987,2.0
+MMPD (telefon),p15_7,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,56.37833158532455,2.0
+MMPD (telefon),p15_8,MMRPhys B'den dengeli ince ayar (7. tur),9.612206371802268,44.0
+MMPD (telefon),p15_8,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,5.452718152667091,54.0
+MMPD (telefon),p15_9,MMRPhys B'den dengeli ince ayar (7. tur),20.88165635844426,20.0
+MMPD (telefon),p15_9,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,18.81518594378996,12.0
+MMPD (telefon),p20_0,MMRPhys B'den dengeli ince ayar (7. tur),1.1534260869107904,96.0
+MMPD (telefon),p20_0,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,1.1534260869107904,96.0
+MMPD (telefon),p20_1,MMRPhys B'den dengeli ince ayar (7. tur),14.507412026128884,30.0
+MMPD (telefon),p20_1,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,5.222418219242588,52.0
+MMPD (telefon),p20_10,MMRPhys B'den dengeli ince ayar (7. tur),4.421040955776345,90.0
+MMPD (telefon),p20_10,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,0.6415812237588915,100.0
+MMPD (telefon),p20_11,MMRPhys B'den dengeli ince ayar (7. tur),18.912896451659808,38.0
+MMPD (telefon),p20_11,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,21.52296075164112,24.0
+MMPD (telefon),p20_12,MMRPhys B'den dengeli ince ayar (7. tur),1.4763796848313016,96.0
+MMPD (telefon),p20_12,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,1.6745957186792042,94.0
+MMPD (telefon),p20_13,MMRPhys B'den dengeli ince ayar (7. tur),0.6230798957254003,100.0
+MMPD (telefon),p20_13,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,0.6140785534193108,100.0
+MMPD (telefon),p20_14,MMRPhys B'den dengeli ince ayar (7. tur),0.5538002626053276,100.0
+MMPD (telefon),p20_14,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,0.5538002626053276,100.0
+MMPD (telefon),p20_15,MMRPhys B'den dengeli ince ayar (7. tur),0.8383169835068776,100.0
+MMPD (telefon),p20_15,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,0.8383169835068776,100.0
+MMPD (telefon),p20_16,MMRPhys B'den dengeli ince ayar (7. tur),0.7653660618903936,100.0
+MMPD (telefon),p20_16,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,0.7653660618903936,100.0
+MMPD (telefon),p20_17,MMRPhys B'den dengeli ince ayar (7. tur),8.221823667768636,56.00000000000001
+MMPD (telefon),p20_17,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,5.128670195625344,68.0
+MMPD (telefon),p20_18,MMRPhys B'den dengeli ince ayar (7. tur),3.4297828271187605,86.0
+MMPD (telefon),p20_18,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,1.5448263903640884,98.0
+MMPD (telefon),p20_19,MMRPhys B'den dengeli ince ayar (7. tur),48.357108157770654,20.0
+MMPD (telefon),p20_19,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,51.66908185261166,0.0
+MMPD (telefon),p20_2,MMRPhys B'den dengeli ince ayar (7. tur),7.123125543545012,64.0
+MMPD (telefon),p20_2,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,6.248262852666628,62.0
+MMPD (telefon),p20_3,MMRPhys B'den dengeli ince ayar (7. tur),13.328162580594954,40.0
+MMPD (telefon),p20_3,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,6.944982861262381,54.0
+MMPD (telefon),p20_4,MMRPhys B'den dengeli ince ayar (7. tur),0.6409348590144321,100.0
+MMPD (telefon),p20_4,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,0.6409348590144321,100.0
+MMPD (telefon),p20_5,MMRPhys B'den dengeli ince ayar (7. tur),32.41578268682346,14.000000000000002
+MMPD (telefon),p20_5,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,45.99105187842543,0.0
+MMPD (telefon),p20_6,MMRPhys B'den dengeli ince ayar (7. tur),3.6351269124074417,82.0
+MMPD (telefon),p20_6,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,2.70789257673245,82.0
+MMPD (telefon),p20_7,MMRPhys B'den dengeli ince ayar (7. tur),23.20986341387259,34.0
+MMPD (telefon),p20_7,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,19.113014268462166,42.0
+MMPD (telefon),p20_8,MMRPhys B'den dengeli ince ayar (7. tur),1.1731648044524188,98.0
+MMPD (telefon),p20_8,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,0.9980801205623783,100.0
+MMPD (telefon),p20_9,MMRPhys B'den dengeli ince ayar (7. tur),17.658533937637102,18.0
+MMPD (telefon),p20_9,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,18.94721704882936,8.0
+MMPD (telefon),p25_0,MMRPhys B'den dengeli ince ayar (7. tur),0.7713673469416549,100.0
+MMPD (telefon),p25_0,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,0.7727084728584682,100.0
+MMPD (telefon),p25_1,MMRPhys B'den dengeli ince ayar (7. tur),5.476865091308837,74.0
+MMPD (telefon),p25_1,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,2.8769182731979663,82.0
+MMPD (telefon),p25_10,MMRPhys B'den dengeli ince ayar (7. tur),0.6896418580204423,100.0
+MMPD (telefon),p25_10,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,0.6896418580204423,100.0
+MMPD (telefon),p25_11,MMRPhys B'den dengeli ince ayar (7. tur),43.29548103868135,22.0
+MMPD (telefon),p25_11,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,36.38362283348487,28.000000000000004
+MMPD (telefon),p25_12,MMRPhys B'den dengeli ince ayar (7. tur),1.3340913194678832,96.0
+MMPD (telefon),p25_12,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,0.905571814287768,100.0
+MMPD (telefon),p25_13,MMRPhys B'den dengeli ince ayar (7. tur),0.35797012491792485,100.0
+MMPD (telefon),p25_13,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,0.35968363850196283,100.0
+MMPD (telefon),p25_14,MMRPhys B'den dengeli ince ayar (7. tur),0.530413893712269,100.0
+MMPD (telefon),p25_14,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,0.530413893712269,100.0
+MMPD (telefon),p25_15,MMRPhys B'den dengeli ince ayar (7. tur),0.35536048726176517,100.0
+MMPD (telefon),p25_15,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,0.35536048726176517,100.0
+MMPD (telefon),p25_16,MMRPhys B'den dengeli ince ayar (7. tur),13.417440916773685,80.0
+MMPD (telefon),p25_16,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,9.827453810636856,90.0
+MMPD (telefon),p25_17,MMRPhys B'den dengeli ince ayar (7. tur),23.231749752602454,30.0
+MMPD (telefon),p25_17,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,28.42854364222996,24.0
+MMPD (telefon),p25_18,MMRPhys B'den dengeli ince ayar (7. tur),70.34645336659018,26.0
+MMPD (telefon),p25_18,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,67.87988590274652,28.000000000000004
+MMPD (telefon),p25_19,MMRPhys B'den dengeli ince ayar (7. tur),121.34224053898375,0.0
+MMPD (telefon),p25_19,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,128.26839111792944,0.0
+MMPD (telefon),p25_2,MMRPhys B'den dengeli ince ayar (7. tur),5.427372794150919,78.0
+MMPD (telefon),p25_2,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,3.6361924051457577,86.0
+MMPD (telefon),p25_3,MMRPhys B'den dengeli ince ayar (7. tur),15.764965257815629,24.0
+MMPD (telefon),p25_3,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,18.508832074989922,0.0
+MMPD (telefon),p25_4,MMRPhys B'den dengeli ince ayar (7. tur),4.286267107167259,86.0
+MMPD (telefon),p25_4,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,0.9869745357545401,100.0
+MMPD (telefon),p25_5,MMRPhys B'den dengeli ince ayar (7. tur),10.828153406601157,56.00000000000001
+MMPD (telefon),p25_5,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,3.272826540638552,78.0
+MMPD (telefon),p25_6,MMRPhys B'den dengeli ince ayar (7. tur),2.37058813039843,90.0
+MMPD (telefon),p25_6,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,2.255525097936442,90.0
+MMPD (telefon),p25_7,MMRPhys B'den dengeli ince ayar (7. tur),17.501038586374932,26.0
+MMPD (telefon),p25_7,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,13.250684506297624,6.0
+MMPD (telefon),p25_8,MMRPhys B'den dengeli ince ayar (7. tur),0.8540665370486613,100.0
+MMPD (telefon),p25_8,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,0.8317334038635426,100.0
+MMPD (telefon),p25_9,MMRPhys B'den dengeli ince ayar (7. tur),10.8445536422716,54.0
+MMPD (telefon),p25_9,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,1.968302622083697,94.0
+MMPD (telefon),p30_0,MMRPhys B'den dengeli ince ayar (7. tur),14.14011891025267,28.000000000000004
+MMPD (telefon),p30_0,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,8.550800493139068,32.0
+MMPD (telefon),p30_1,MMRPhys B'den dengeli ince ayar (7. tur),20.333208241588288,0.0
+MMPD (telefon),p30_1,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,20.79502358908633,0.0
+MMPD (telefon),p30_10,MMRPhys B'den dengeli ince ayar (7. tur),5.027743191303123,86.0
+MMPD (telefon),p30_10,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,0.8915465314967921,100.0
+MMPD (telefon),p30_12,MMRPhys B'den dengeli ince ayar (7. tur),10.760096994409471,60.0
+MMPD (telefon),p30_12,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,2.4338612018917063,90.0
+MMPD (telefon),p30_13,MMRPhys B'den dengeli ince ayar (7. tur),17.00676358870061,44.0
+MMPD (telefon),p30_13,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,12.017129752705198,54.0
+MMPD (telefon),p30_14,MMRPhys B'den dengeli ince ayar (7. tur),37.985260980560184,14.000000000000002
+MMPD (telefon),p30_14,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,51.5182298985993,0.0
+MMPD (telefon),p30_15,MMRPhys B'den dengeli ince ayar (7. tur),17.756729454297066,36.0
+MMPD (telefon),p30_15,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,6.438774326032145,54.0
+MMPD (telefon),p30_16,MMRPhys B'den dengeli ince ayar (7. tur),6.539780380313642,70.0
+MMPD (telefon),p30_16,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,2.3605239678418544,90.0
+MMPD (telefon),p30_18,MMRPhys B'den dengeli ince ayar (7. tur),4.425526310702532,90.0
+MMPD (telefon),p30_18,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,1.0809944450525608,100.0
+MMPD (telefon),p30_19,MMRPhys B'den dengeli ince ayar (7. tur),31.250013207177293,4.0
+MMPD (telefon),p30_19,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,46.75001303349326,0.0
+MMPD (telefon),p30_2,MMRPhys B'den dengeli ince ayar (7. tur),17.017895721366365,26.0
+MMPD (telefon),p30_2,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,9.932520496425713,30.0
+MMPD (telefon),p30_3,MMRPhys B'den dengeli ince ayar (7. tur),43.90314931390445,0.0
+MMPD (telefon),p30_3,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,54.678008363826756,0.0
+MMPD (telefon),p30_4,MMRPhys B'den dengeli ince ayar (7. tur),4.398260839160573,80.0
+MMPD (telefon),p30_4,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,1.9522124418448297,92.0
+MMPD (telefon),p30_5,MMRPhys B'den dengeli ince ayar (7. tur),13.939717989872515,22.0
+MMPD (telefon),p30_5,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,7.597255841742777,32.0
+MMPD (telefon),p30_6,MMRPhys B'den dengeli ince ayar (7. tur),9.582918560427053,74.0
+MMPD (telefon),p30_6,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,1.7551192897324654,96.0
+MMPD (telefon),p30_8,MMRPhys B'den dengeli ince ayar (7. tur),4.369489026305905,88.0
+MMPD (telefon),p30_8,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,1.9271545360513371,90.0
+MMPD (telefon),p5_0,MMRPhys B'den dengeli ince ayar (7. tur),6.0102715209321875,82.0
+MMPD (telefon),p5_0,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,1.8775387574480271,90.0
+MMPD (telefon),p5_1,MMRPhys B'den dengeli ince ayar (7. tur),15.22323775801403,50.0
+MMPD (telefon),p5_1,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,6.9343307036255855,72.0
+MMPD (telefon),p5_10,MMRPhys B'den dengeli ince ayar (7. tur),2.5849413852742575,86.0
+MMPD (telefon),p5_10,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,1.9142709835168907,90.0
+MMPD (telefon),p5_11,MMRPhys B'den dengeli ince ayar (7. tur),37.83105690100718,0.0
+MMPD (telefon),p5_11,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,33.56243774068205,2.0
+MMPD (telefon),p5_12,MMRPhys B'den dengeli ince ayar (7. tur),0.8835595650513196,100.0
+MMPD (telefon),p5_12,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,0.8835595650513196,100.0
+MMPD (telefon),p5_13,MMRPhys B'den dengeli ince ayar (7. tur),0.6799813296118353,100.0
+MMPD (telefon),p5_13,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,0.6799813296118353,100.0
+MMPD (telefon),p5_14,MMRPhys B'den dengeli ince ayar (7. tur),1.7980575621457717,96.0
+MMPD (telefon),p5_14,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,0.7402952596909443,100.0
+MMPD (telefon),p5_15,MMRPhys B'den dengeli ince ayar (7. tur),0.915986157694237,100.0
+MMPD (telefon),p5_15,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,0.915986157694237,100.0
+MMPD (telefon),p5_16,MMRPhys B'den dengeli ince ayar (7. tur),0.8083238189059565,100.0
+MMPD (telefon),p5_16,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,0.8083238189059565,100.0
+MMPD (telefon),p5_17,MMRPhys B'den dengeli ince ayar (7. tur),14.9052041934628,56.00000000000001
+MMPD (telefon),p5_17,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,3.2620832024269704,76.0
+MMPD (telefon),p5_18,MMRPhys B'den dengeli ince ayar (7. tur),4.106110833630865,90.0
+MMPD (telefon),p5_18,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,0.7412776265702925,100.0
+MMPD (telefon),p5_19,MMRPhys B'den dengeli ince ayar (7. tur),33.18576126151698,4.0
+MMPD (telefon),p5_19,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,32.43061657021775,4.0
+MMPD (telefon),p5_2,MMRPhys B'den dengeli ince ayar (7. tur),1.398949156763357,96.0
+MMPD (telefon),p5_2,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,0.6190603636540124,100.0
+MMPD (telefon),p5_3,MMRPhys B'den dengeli ince ayar (7. tur),13.901695209633523,46.0
+MMPD (telefon),p5_3,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,9.936341361120196,48.0
+MMPD (telefon),p5_4,MMRPhys B'den dengeli ince ayar (7. tur),1.367667482014772,94.0
+MMPD (telefon),p5_4,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,0.6691596579339694,100.0
+MMPD (telefon),p5_5,MMRPhys B'den dengeli ince ayar (7. tur),15.641877335394254,54.0
+MMPD (telefon),p5_5,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,12.719341599093271,57.99999999999999
+MMPD (telefon),p5_6,MMRPhys B'den dengeli ince ayar (7. tur),6.398643868275736,68.0
+MMPD (telefon),p5_6,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,2.7523133738656984,84.0
+MMPD (telefon),p5_7,MMRPhys B'den dengeli ince ayar (7. tur),11.140564792011096,28.000000000000004
+MMPD (telefon),p5_7,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,6.422284155257741,40.0
+MMPD (telefon),p5_8,MMRPhys B'den dengeli ince ayar (7. tur),0.7337495106236434,100.0
+MMPD (telefon),p5_8,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,0.7383196204638172,100.0
+MMPD (telefon),p5_9,MMRPhys B'den dengeli ince ayar (7. tur),16.914301310694924,34.0
+MMPD (telefon),p5_9,MMRPhys B'den dengeli ince ayar (7. tur)+Viterbi,5.864419546059364,56.00000000000001
+MMPD (telefon),p10_0,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),4.60769739685346,86.0
+MMPD (telefon),p10_0,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,1.393477686879595,98.0
+MMPD (telefon),p10_1,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),17.021432631163172,38.0
+MMPD (telefon),p10_1,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,7.297880823148316,44.0
+MMPD (telefon),p10_10,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),22.42662408745549,4.0
+MMPD (telefon),p10_10,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,23.593497462022874,2.0
+MMPD (telefon),p10_11,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),29.208772166728103,12.0
+MMPD (telefon),p10_11,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,31.748265554116468,2.0
+MMPD (telefon),p10_12,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),13.701487380245686,42.0
+MMPD (telefon),p10_12,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,6.765475756785475,52.0
+MMPD (telefon),p10_13,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),20.50222218397693,18.0
+MMPD (telefon),p10_13,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,29.248018132218423,6.0
+MMPD (telefon),p10_14,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),3.7233794147810544,74.0
+MMPD (telefon),p10_14,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,2.96463834964688,74.0
+MMPD (telefon),p10_15,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),12.65772535474038,20.0
+MMPD (telefon),p10_15,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,10.461465548355786,26.0
+MMPD (telefon),p10_16,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),42.36564192774713,0.0
+MMPD (telefon),p10_16,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,41.31500958633182,0.0
+MMPD (telefon),p10_17,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),16.38644365530934,8.0
+MMPD (telefon),p10_17,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,17.630369834658204,6.0
+MMPD (telefon),p10_18,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),16.745219410787726,30.0
+MMPD (telefon),p10_18,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,19.950101612909755,22.0
+MMPD (telefon),p10_19,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),14.7699108585591,26.0
+MMPD (telefon),p10_19,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,15.675745559458084,14.000000000000002
+MMPD (telefon),p10_2,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),17.721800424175957,18.0
+MMPD (telefon),p10_2,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,11.504511203811962,34.0
+MMPD (telefon),p10_3,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),25.787541519374976,8.0
+MMPD (telefon),p10_3,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,21.933442232572148,10.0
+MMPD (telefon),p10_4,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),3.8313510135046713,84.0
+MMPD (telefon),p10_4,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,2.277862755534427,90.0
+MMPD (telefon),p10_5,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),20.240271040298296,24.0
+MMPD (telefon),p10_5,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,11.445275749677627,36.0
+MMPD (telefon),p10_6,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),22.074462501928082,12.0
+MMPD (telefon),p10_6,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,13.588526961511482,14.000000000000002
+MMPD (telefon),p10_7,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),25.60931355055126,14.000000000000002
+MMPD (telefon),p10_7,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,36.030284078380085,0.0
+MMPD (telefon),p10_8,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),8.535526716284473,62.0
+MMPD (telefon),p10_8,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,5.05845373702575,70.0
+MMPD (telefon),p10_9,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),11.602376260282648,30.0
+MMPD (telefon),p10_9,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,10.119912178008025,24.0
+MMPD (telefon),p15_0,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),18.609445089646634,26.0
+MMPD (telefon),p15_0,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,12.731009404201059,30.0
+MMPD (telefon),p15_1,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),17.079641245629006,22.0
+MMPD (telefon),p15_1,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,10.65759349844979,30.0
+MMPD (telefon),p15_10,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),13.140214205936866,40.0
+MMPD (telefon),p15_10,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,5.029195076821985,64.0
+MMPD (telefon),p15_11,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),42.444123385168474,0.0
+MMPD (telefon),p15_11,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,51.10508008390482,0.0
+MMPD (telefon),p15_12,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),17.6395665867517,38.0
+MMPD (telefon),p15_12,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,19.07676173842695,16.0
+MMPD (telefon),p15_13,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),16.51802684801797,32.0
+MMPD (telefon),p15_13,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,12.63197823617707,42.0
+MMPD (telefon),p15_14,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),23.70388775402176,34.0
+MMPD (telefon),p15_14,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,30.410711571020276,42.0
+MMPD (telefon),p15_15,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),14.448199087375006,44.0
+MMPD (telefon),p15_15,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,7.596990160051747,66.0
+MMPD (telefon),p15_16,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),18.64471053383409,34.0
+MMPD (telefon),p15_16,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,11.443408598335955,38.0
+MMPD (telefon),p15_18,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),12.711590085336438,52.0
+MMPD (telefon),p15_18,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,18.665759806607902,32.0
+MMPD (telefon),p15_19,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),24.92149473149916,8.0
+MMPD (telefon),p15_19,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,20.310577042374806,8.0
+MMPD (telefon),p15_2,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),20.062984828148792,30.0
+MMPD (telefon),p15_2,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,30.967473366085205,10.0
+MMPD (telefon),p15_3,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),80.4358053724359,10.0
+MMPD (telefon),p15_3,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,78.31174148809299,2.0
+MMPD (telefon),p15_4,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),18.925207942069488,20.0
+MMPD (telefon),p15_4,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,19.621730424171894,20.0
+MMPD (telefon),p15_5,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),16.109513829637233,18.0
+MMPD (telefon),p15_5,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,12.239009964963463,18.0
+MMPD (telefon),p15_6,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),20.10314446274509,10.0
+MMPD (telefon),p15_6,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,21.959825734858114,0.0
+MMPD (telefon),p15_7,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),53.72674166253516,2.0
+MMPD (telefon),p15_7,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,56.139245721815705,2.0
+MMPD (telefon),p15_8,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),9.106675532874396,44.0
+MMPD (telefon),p15_8,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,5.362015220433626,56.00000000000001
+MMPD (telefon),p15_9,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),19.264656519845293,20.0
+MMPD (telefon),p15_9,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,21.240741287702125,0.0
+MMPD (telefon),p20_0,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),0.9188379884155259,98.0
+MMPD (telefon),p20_0,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,1.1870034922467176,96.0
+MMPD (telefon),p20_1,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),14.602351695271407,30.0
+MMPD (telefon),p20_1,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,5.108291867007686,48.0
+MMPD (telefon),p20_10,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),3.814252329993845,88.0
+MMPD (telefon),p20_10,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,0.6079267781942252,100.0
+MMPD (telefon),p20_11,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),20.19981974865043,34.0
+MMPD (telefon),p20_11,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,12.23758945230792,56.00000000000001
+MMPD (telefon),p20_12,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),1.5148923757678079,96.0
+MMPD (telefon),p20_12,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,1.4320944716514439,94.0
+MMPD (telefon),p20_13,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),0.6701720628139478,100.0
+MMPD (telefon),p20_13,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,0.6598974768711853,100.0
+MMPD (telefon),p20_14,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),0.565393235188543,100.0
+MMPD (telefon),p20_14,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,0.565393235188543,100.0
+MMPD (telefon),p20_15,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),0.8523511569736261,100.0
+MMPD (telefon),p20_15,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,0.8523511569736261,100.0
+MMPD (telefon),p20_16,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),0.7230002686265132,100.0
+MMPD (telefon),p20_16,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,0.7230002686265132,100.0
+MMPD (telefon),p20_17,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),9.778938331498301,57.99999999999999
+MMPD (telefon),p20_17,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,5.263902429171671,70.0
+MMPD (telefon),p20_18,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),3.741057989396884,84.0
+MMPD (telefon),p20_18,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,1.8444168017220586,94.0
+MMPD (telefon),p20_19,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),47.672057192326356,22.0
+MMPD (telefon),p20_19,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,39.667742563089654,26.0
+MMPD (telefon),p20_2,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),9.42816659793853,57.99999999999999
+MMPD (telefon),p20_2,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,3.248785705688378,76.0
+MMPD (telefon),p20_3,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),10.869327717406877,48.0
+MMPD (telefon),p20_3,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,8.265410566672095,60.0
+MMPD (telefon),p20_4,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),0.643943390621098,100.0
+MMPD (telefon),p20_4,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,0.643943390621098,100.0
+MMPD (telefon),p20_5,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),26.786724694733266,14.000000000000002
+MMPD (telefon),p20_5,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,35.67041835904041,0.0
+MMPD (telefon),p20_6,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),4.45953903977039,84.0
+MMPD (telefon),p20_6,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,2.5939910176099925,82.0
+MMPD (telefon),p20_7,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),26.861435591794088,32.0
+MMPD (telefon),p20_7,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,22.571649178150146,26.0
+MMPD (telefon),p20_8,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),1.0093720207392216,100.0
+MMPD (telefon),p20_8,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,0.9982700870800177,100.0
+MMPD (telefon),p20_9,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),17.49637376257721,22.0
+MMPD (telefon),p20_9,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,8.296669496082373,40.0
+MMPD (telefon),p25_0,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),1.2106921098573846,96.0
+MMPD (telefon),p25_0,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,0.6970864074125206,100.0
+MMPD (telefon),p25_1,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),8.1270461320103,72.0
+MMPD (telefon),p25_1,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,2.8512776524814547,82.0
+MMPD (telefon),p25_10,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),0.5687714643569675,100.0
+MMPD (telefon),p25_10,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,0.5687714643569675,100.0
+MMPD (telefon),p25_11,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),40.85512548158093,28.000000000000004
+MMPD (telefon),p25_11,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,36.619247381797564,26.0
+MMPD (telefon),p25_12,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),2.7746817824973697,92.0
+MMPD (telefon),p25_12,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,0.9193972511829321,100.0
+MMPD (telefon),p25_13,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),0.3852470166445764,100.0
+MMPD (telefon),p25_13,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,0.3852470166445764,100.0
+MMPD (telefon),p25_14,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),0.5746958169787737,100.0
+MMPD (telefon),p25_14,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,0.5746958169787737,100.0
+MMPD (telefon),p25_15,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),0.3876483643096515,100.0
+MMPD (telefon),p25_15,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,0.3876483643096515,100.0
+MMPD (telefon),p25_16,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),12.401492119773666,80.0
+MMPD (telefon),p25_16,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,9.946739127168389,90.0
+MMPD (telefon),p25_17,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),21.926707785375353,40.0
+MMPD (telefon),p25_17,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,26.361064215621404,22.0
+MMPD (telefon),p25_18,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),71.7578951606461,24.0
+MMPD (telefon),p25_18,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,67.90343280420915,28.000000000000004
+MMPD (telefon),p25_19,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),121.05207162598506,0.0
+MMPD (telefon),p25_19,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,135.46333962229312,0.0
+MMPD (telefon),p25_2,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),6.2124915351466665,66.0
+MMPD (telefon),p25_2,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,2.319218101667027,86.0
+MMPD (telefon),p25_3,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),17.262986583610996,16.0
+MMPD (telefon),p25_3,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,19.69956559729097,0.0
+MMPD (telefon),p25_4,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),2.7533126034717452,86.0
+MMPD (telefon),p25_4,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,1.0217230794555903,100.0
+MMPD (telefon),p25_5,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),8.830069323944057,60.0
+MMPD (telefon),p25_5,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,1.4058001117140617,98.0
+MMPD (telefon),p25_6,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),2.3871137797425312,90.0
+MMPD (telefon),p25_6,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,2.284638597347569,90.0
+MMPD (telefon),p25_7,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),16.014914992202566,30.0
+MMPD (telefon),p25_7,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,12.228951041264986,16.0
+MMPD (telefon),p25_8,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),0.801700469810277,100.0
+MMPD (telefon),p25_8,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,0.7573181465991194,100.0
+MMPD (telefon),p25_9,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),8.810769075141526,57.99999999999999
+MMPD (telefon),p25_9,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,2.893377086206044,84.0
+MMPD (telefon),p30_0,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),11.774036804158245,32.0
+MMPD (telefon),p30_0,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,6.751413468456763,48.0
+MMPD (telefon),p30_1,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),20.824051483458724,0.0
+MMPD (telefon),p30_1,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,17.290196841918206,2.0
+MMPD (telefon),p30_10,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),3.918265527201464,90.0
+MMPD (telefon),p30_10,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,0.8142036501359908,100.0
+MMPD (telefon),p30_12,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),10.817468888159642,56.00000000000001
+MMPD (telefon),p30_12,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,3.5651459381004624,80.0
+MMPD (telefon),p30_13,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),20.155528374356702,36.0
+MMPD (telefon),p30_13,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,11.029938774079472,66.0
+MMPD (telefon),p30_14,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),36.60913642976585,10.0
+MMPD (telefon),p30_14,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,40.394827402160814,0.0
+MMPD (telefon),p30_15,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),16.758901540573323,28.000000000000004
+MMPD (telefon),p30_15,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,6.6137509864775685,52.0
+MMPD (telefon),p30_16,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),7.616612381704258,68.0
+MMPD (telefon),p30_16,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,2.473595927298652,90.0
+MMPD (telefon),p30_18,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),4.527181146729593,88.0
+MMPD (telefon),p30_18,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,1.0625635567999365,100.0
+MMPD (telefon),p30_19,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),35.93163576280463,0.0
+MMPD (telefon),p30_19,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,50.15183250768932,0.0
+MMPD (telefon),p30_2,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),14.408095017578011,24.0
+MMPD (telefon),p30_2,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,9.784222431089054,30.0
+MMPD (telefon),p30_3,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),44.19859218925216,0.0
+MMPD (telefon),p30_3,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,47.74310834819279,0.0
+MMPD (telefon),p30_4,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),1.854467439705119,92.0
+MMPD (telefon),p30_4,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,0.9972591835069383,100.0
+MMPD (telefon),p30_5,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),13.970070377766966,18.0
+MMPD (telefon),p30_5,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,15.683169379641106,18.0
+MMPD (telefon),p30_6,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),14.533616330112626,60.0
+MMPD (telefon),p30_6,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,2.2962498039049417,86.0
+MMPD (telefon),p30_8,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),1.9051412861922015,90.0
+MMPD (telefon),p30_8,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,1.8852527382933433,90.0
+MMPD (telefon),p5_0,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),6.235345096245477,80.0
+MMPD (telefon),p5_0,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,1.9176803635213497,90.0
+MMPD (telefon),p5_1,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),14.037298594633956,52.0
+MMPD (telefon),p5_1,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,6.987317327252067,72.0
+MMPD (telefon),p5_10,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),3.2343039997503196,80.0
+MMPD (telefon),p5_10,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,2.088913174903107,90.0
+MMPD (telefon),p5_11,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),36.3799924256102,0.0
+MMPD (telefon),p5_11,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,33.531687693938636,2.0
+MMPD (telefon),p5_12,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),0.8401643171657404,100.0
+MMPD (telefon),p5_12,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,0.8401643171657404,100.0
+MMPD (telefon),p5_13,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),0.6745449083047529,100.0
+MMPD (telefon),p5_13,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,0.6745449083047529,100.0
+MMPD (telefon),p5_14,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),2.1542896980503823,94.0
+MMPD (telefon),p5_14,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,0.7638362344392504,100.0
+MMPD (telefon),p5_15,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),0.9467492817338473,100.0
+MMPD (telefon),p5_15,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,0.9467492817338473,100.0
+MMPD (telefon),p5_16,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),0.7144947828604373,100.0
+MMPD (telefon),p5_16,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,0.7144947828604373,100.0
+MMPD (telefon),p5_17,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),16.324602958656374,68.0
+MMPD (telefon),p5_17,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,2.217037291468306,92.0
+MMPD (telefon),p5_18,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),4.188912317992663,90.0
+MMPD (telefon),p5_18,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,0.8062792917334614,100.0
+MMPD (telefon),p5_19,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),31.357194037725147,4.0
+MMPD (telefon),p5_19,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,32.2908896146199,6.0
+MMPD (telefon),p5_2,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),1.2903508923137557,96.0
+MMPD (telefon),p5_2,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,0.6273677666589268,100.0
+MMPD (telefon),p5_3,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),14.439731182022749,46.0
+MMPD (telefon),p5_3,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,13.123885564910164,40.0
+MMPD (telefon),p5_4,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),0.6210313289042412,100.0
+MMPD (telefon),p5_4,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,0.6210313289042412,100.0
+MMPD (telefon),p5_5,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),15.868723920698157,57.99999999999999
+MMPD (telefon),p5_5,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,12.909320338495863,57.99999999999999
+MMPD (telefon),p5_6,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),10.224894858760102,54.0
+MMPD (telefon),p5_6,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,2.807073885753391,84.0
+MMPD (telefon),p5_7,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),10.2532589003849,34.0
+MMPD (telefon),p5_7,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,7.538523870522443,36.0
+MMPD (telefon),p5_8,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),0.7353585564293553,100.0
+MMPD (telefon),p5_8,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,0.7390060010498257,100.0
+MMPD (telefon),p5_9,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch),15.453151966682434,26.0
+MMPD (telefon),p5_9,MMRPhys B'den dengeli ince ayar (7. tur) (son epoch)+Viterbi,7.557836659989004,38.0
+MMPD (telefon),p10_0,5. tur,5.527395054329671,80.0
+MMPD (telefon),p10_0,5. tur+Viterbi,1.5518729565016898,98.0
+MMPD (telefon),p10_1,5. tur,17.44457746425052,24.0
+MMPD (telefon),p10_1,5. tur+Viterbi,6.189905448510886,46.0
+MMPD (telefon),p10_10,5. tur,23.694776514977647,16.0
+MMPD (telefon),p10_10,5. tur+Viterbi,22.00132671536687,6.0
+MMPD (telefon),p10_11,5. tur,25.296206502106934,12.0
+MMPD (telefon),p10_11,5. tur+Viterbi,31.042794315451737,4.0
+MMPD (telefon),p10_12,5. tur,23.18523747303026,20.0
+MMPD (telefon),p10_12,5. tur+Viterbi,6.774874577635535,52.0
+MMPD (telefon),p10_13,5. tur,22.985795291416448,26.0
+MMPD (telefon),p10_13,5. tur+Viterbi,10.551144083532359,38.0
+MMPD (telefon),p10_14,5. tur,2.46908516379749,84.0
+MMPD (telefon),p10_14,5. tur+Viterbi,2.221811125283011,84.0
+MMPD (telefon),p10_15,5. tur,13.64824343748769,28.000000000000004
+MMPD (telefon),p10_15,5. tur+Viterbi,9.770597671166406,30.0
+MMPD (telefon),p10_16,5. tur,47.61587746904297,0.0
+MMPD (telefon),p10_16,5. tur+Viterbi,40.01262868992901,0.0
+MMPD (telefon),p10_17,5. tur,18.897318628087717,16.0
+MMPD (telefon),p10_17,5. tur+Viterbi,15.908232429864166,8.0
+MMPD (telefon),p10_18,5. tur,17.960499549982377,24.0
+MMPD (telefon),p10_18,5. tur+Viterbi,15.970372232856173,30.0
+MMPD (telefon),p10_19,5. tur,20.04848173335622,10.0
+MMPD (telefon),p10_19,5. tur+Viterbi,13.140223319058089,8.0
+MMPD (telefon),p10_2,5. tur,16.94490584092882,34.0
+MMPD (telefon),p10_2,5. tur+Viterbi,8.320073212607253,57.99999999999999
+MMPD (telefon),p10_3,5. tur,25.728649508105917,6.0
+MMPD (telefon),p10_3,5. tur+Viterbi,25.614610671933534,0.0
+MMPD (telefon),p10_4,5. tur,2.5373382396040274,90.0
+MMPD (telefon),p10_4,5. tur+Viterbi,2.385642287423063,90.0
+MMPD (telefon),p10_5,5. tur,23.59550400851841,32.0
+MMPD (telefon),p10_5,5. tur+Viterbi,40.96619040199411,0.0
+MMPD (telefon),p10_6,5. tur,24.144973639772285,10.0
+MMPD (telefon),p10_6,5. tur+Viterbi,26.10228810174106,4.0
+MMPD (telefon),p10_7,5. tur,29.30846299910602,8.0
+MMPD (telefon),p10_7,5. tur+Viterbi,35.20074225461403,0.0
+MMPD (telefon),p10_8,5. tur,12.975359328939888,48.0
+MMPD (telefon),p10_8,5. tur+Viterbi,6.5311264136333715,62.0
+MMPD (telefon),p10_9,5. tur,17.02780222681585,24.0
+MMPD (telefon),p10_9,5. tur+Viterbi,4.533761412995787,64.0
+MMPD (telefon),p15_0,5. tur,15.581078470759964,20.0
+MMPD (telefon),p15_0,5. tur+Viterbi,12.438357023403821,14.000000000000002
+MMPD (telefon),p15_1,5. tur,20.756250519968393,14.000000000000002
+MMPD (telefon),p15_1,5. tur+Viterbi,8.070183332391572,26.0
+MMPD (telefon),p15_10,5. tur,13.743904411683166,36.0
+MMPD (telefon),p15_10,5. tur+Viterbi,3.8195394565975396,70.0
+MMPD (telefon),p15_11,5. tur,46.765125047019566,0.0
+MMPD (telefon),p15_11,5. tur+Viterbi,49.050925967884695,0.0
+MMPD (telefon),p15_12,5. tur,21.096548521167524,32.0
+MMPD (telefon),p15_12,5. tur+Viterbi,18.53819938205416,14.000000000000002
+MMPD (telefon),p15_13,5. tur,17.40677595215801,34.0
+MMPD (telefon),p15_13,5. tur+Viterbi,9.61798427058619,54.0
+MMPD (telefon),p15_14,5. tur,22.57257221119734,28.000000000000004
+MMPD (telefon),p15_14,5. tur+Viterbi,6.7419387280208944,46.0
+MMPD (telefon),p15_15,5. tur,28.450359310434806,22.0
+MMPD (telefon),p15_15,5. tur+Viterbi,33.787264370751,14.000000000000002
+MMPD (telefon),p15_16,5. tur,24.379736449668982,32.0
+MMPD (telefon),p15_16,5. tur+Viterbi,3.4024284925295647,78.0
+MMPD (telefon),p15_18,5. tur,11.279669585760216,46.0
+MMPD (telefon),p15_18,5. tur+Viterbi,6.817507723320031,56.00000000000001
+MMPD (telefon),p15_19,5. tur,26.08910418505404,14.000000000000002
+MMPD (telefon),p15_19,5. tur+Viterbi,20.48623870997637,14.000000000000002
+MMPD (telefon),p15_2,5. tur,22.608455644727506,10.0
+MMPD (telefon),p15_2,5. tur+Viterbi,28.92250460488118,16.0
+MMPD (telefon),p15_3,5. tur,82.26138081200888,14.000000000000002
+MMPD (telefon),p15_3,5. tur+Viterbi,69.39540481193559,16.0
+MMPD (telefon),p15_4,5. tur,18.238085133601103,18.0
+MMPD (telefon),p15_4,5. tur+Viterbi,20.83224288581481,20.0
+MMPD (telefon),p15_5,5. tur,17.54204143765132,30.0
+MMPD (telefon),p15_5,5. tur+Viterbi,6.237223769272498,48.0
+MMPD (telefon),p15_6,5. tur,19.6609273033611,24.0
+MMPD (telefon),p15_6,5. tur+Viterbi,11.618721077713888,22.0
+MMPD (telefon),p15_7,5. tur,41.93764615687296,10.0
+MMPD (telefon),p15_7,5. tur+Viterbi,43.4952243439721,10.0
+MMPD (telefon),p15_8,5. tur,13.753016879854123,36.0
+MMPD (telefon),p15_8,5. tur+Viterbi,9.928453106501866,46.0
+MMPD (telefon),p15_9,5. tur,20.86258747992558,10.0
+MMPD (telefon),p15_9,5. tur+Viterbi,10.87976280333354,16.0
+MMPD (telefon),p20_0,5. tur,1.02244803033838,94.0
+MMPD (telefon),p20_0,5. tur+Viterbi,1.02244803033838,94.0
+MMPD (telefon),p20_1,5. tur,14.113442825439314,18.0
+MMPD (telefon),p20_1,5. tur+Viterbi,6.229865408074881,36.0
+MMPD (telefon),p20_10,5. tur,0.7229205647405559,100.0
+MMPD (telefon),p20_10,5. tur+Viterbi,0.7261492383579283,100.0
+MMPD (telefon),p20_11,5. tur,18.500593383838535,32.0
+MMPD (telefon),p20_11,5. tur+Viterbi,12.968579410060835,48.0
+MMPD (telefon),p20_12,5. tur,1.4978631180188118,96.0
+MMPD (telefon),p20_12,5. tur+Viterbi,1.3712415374464049,96.0
+MMPD (telefon),p20_13,5. tur,0.5358270451491421,100.0
+MMPD (telefon),p20_13,5. tur+Viterbi,0.5210962571036956,100.0
+MMPD (telefon),p20_14,5. tur,0.511098578965931,100.0
+MMPD (telefon),p20_14,5. tur+Viterbi,0.511098578965931,100.0
+MMPD (telefon),p20_15,5. tur,0.8030697893575021,100.0
+MMPD (telefon),p20_15,5. tur+Viterbi,0.8030697893575021,100.0
+MMPD (telefon),p20_16,5. tur,0.9163346815875099,100.0
+MMPD (telefon),p20_16,5. tur+Viterbi,0.9163346815875099,100.0
+MMPD (telefon),p20_17,5. tur,13.118710658521355,38.0
+MMPD (telefon),p20_17,5. tur+Viterbi,5.698097439604185,60.0
+MMPD (telefon),p20_18,5. tur,6.145343394962439,64.0
+MMPD (telefon),p20_18,5. tur+Viterbi,4.555951103282997,64.0
+MMPD (telefon),p20_19,5. tur,43.69816202000217,16.0
+MMPD (telefon),p20_19,5. tur+Viterbi,44.15689202628325,14.000000000000002
+MMPD (telefon),p20_2,5. tur,10.2138659159571,62.0
+MMPD (telefon),p20_2,5. tur+Viterbi,3.5701930142655725,74.0
+MMPD (telefon),p20_3,5. tur,14.007494844047189,26.0
+MMPD (telefon),p20_3,5. tur+Viterbi,7.310553065574441,38.0
+MMPD (telefon),p20_4,5. tur,1.0468269402819432,96.0
+MMPD (telefon),p20_4,5. tur+Viterbi,0.5514029939585621,100.0
+MMPD (telefon),p20_5,5. tur,14.537411042122482,30.0
+MMPD (telefon),p20_5,5. tur+Viterbi,11.771653128182308,36.0
+MMPD (telefon),p20_6,5. tur,4.258434558412047,80.0
+MMPD (telefon),p20_6,5. tur+Viterbi,2.916889236418011,80.0
+MMPD (telefon),p20_7,5. tur,33.2937102144266,24.0
+MMPD (telefon),p20_7,5. tur+Viterbi,30.306572182164576,28.000000000000004
+MMPD (telefon),p20_8,5. tur,1.6963189308730608,96.0
+MMPD (telefon),p20_8,5. tur+Viterbi,0.9722666591974044,100.0
+MMPD (telefon),p20_9,5. tur,16.150009243801893,32.0
+MMPD (telefon),p20_9,5. tur+Viterbi,11.001981400160455,36.0
+MMPD (telefon),p25_0,5. tur,0.5600068271196076,100.0
+MMPD (telefon),p25_0,5. tur+Viterbi,0.5600068271196076,100.0
+MMPD (telefon),p25_1,5. tur,10.218710968943025,62.0
+MMPD (telefon),p25_1,5. tur+Viterbi,2.0418137060079444,86.0
+MMPD (telefon),p25_10,5. tur,1.2842424038945435,98.0
+MMPD (telefon),p25_10,5. tur+Viterbi,0.5890543939477297,100.0
+MMPD (telefon),p25_11,5. tur,37.615575726703725,18.0
+MMPD (telefon),p25_11,5. tur+Viterbi,25.685704678017505,34.0
+MMPD (telefon),p25_12,5. tur,2.9922463058919275,90.0
+MMPD (telefon),p25_12,5. tur+Viterbi,1.0429799560699673,100.0
+MMPD (telefon),p25_13,5. tur,0.3117226730419989,100.0
+MMPD (telefon),p25_13,5. tur+Viterbi,0.3164948342809217,100.0
+MMPD (telefon),p25_14,5. tur,0.5888152889505759,100.0
+MMPD (telefon),p25_14,5. tur+Viterbi,0.5888152889505759,100.0
+MMPD (telefon),p25_15,5. tur,0.3945984564774358,100.0
+MMPD (telefon),p25_15,5. tur+Viterbi,0.3945984564774358,100.0
+MMPD (telefon),p25_16,5. tur,12.110223323962042,82.0
+MMPD (telefon),p25_16,5. tur+Viterbi,10.068843241134177,90.0
+MMPD (telefon),p25_17,5. tur,25.713536806280707,28.000000000000004
+MMPD (telefon),p25_17,5. tur+Viterbi,11.83060414542533,66.0
+MMPD (telefon),p25_18,5. tur,64.98657167179884,28.000000000000004
+MMPD (telefon),p25_18,5. tur+Viterbi,67.72025235895627,28.000000000000004
+MMPD (telefon),p25_19,5. tur,115.08304638585535,0.0
+MMPD (telefon),p25_19,5. tur+Viterbi,112.05354671161349,0.0
+MMPD (telefon),p25_2,5. tur,6.185458537349262,80.0
+MMPD (telefon),p25_2,5. tur+Viterbi,4.200104479249411,76.0
+MMPD (telefon),p25_3,5. tur,20.286885769406318,16.0
+MMPD (telefon),p25_3,5. tur+Viterbi,11.61923633545983,34.0
+MMPD (telefon),p25_4,5. tur,3.0170851085142463,94.0
+MMPD (telefon),p25_4,5. tur+Viterbi,1.7736838908580896,90.0
+MMPD (telefon),p25_5,5. tur,9.538437643125025,62.0
+MMPD (telefon),p25_5,5. tur+Viterbi,2.0565911457925914,96.0
+MMPD (telefon),p25_6,5. tur,4.1508466401957005,90.0
+MMPD (telefon),p25_6,5. tur+Viterbi,1.2481181999167514,100.0
+MMPD (telefon),p25_7,5. tur,22.618502499840144,6.0
+MMPD (telefon),p25_7,5. tur+Viterbi,21.090267691629865,4.0
+MMPD (telefon),p25_8,5. tur,0.9937266110423729,96.0
+MMPD (telefon),p25_8,5. tur+Viterbi,0.6805144267625366,100.0
+MMPD (telefon),p25_9,5. tur,13.50438424593565,44.0
+MMPD (telefon),p25_9,5. tur+Viterbi,4.588704583440518,74.0
+MMPD (telefon),p30_0,5. tur,12.121080446531359,32.0
+MMPD (telefon),p30_0,5. tur+Viterbi,10.5887317856636,32.0
+MMPD (telefon),p30_1,5. tur,28.7239989339025,2.0
+MMPD (telefon),p30_1,5. tur+Viterbi,12.126715351299863,12.0
+MMPD (telefon),p30_10,5. tur,6.139406782193938,84.0
+MMPD (telefon),p30_10,5. tur+Viterbi,0.7742574609321128,100.0
+MMPD (telefon),p30_12,5. tur,10.0793263335675,48.0
+MMPD (telefon),p30_12,5. tur+Viterbi,5.0504246251589615,60.0
+MMPD (telefon),p30_13,5. tur,16.587085711455078,46.0
+MMPD (telefon),p30_13,5. tur+Viterbi,12.025942780951878,56.00000000000001
+MMPD (telefon),p30_14,5. tur,36.55637950207,14.000000000000002
+MMPD (telefon),p30_14,5. tur+Viterbi,36.936507810700974,0.0
+MMPD (telefon),p30_15,5. tur,14.730746681702938,36.0
+MMPD (telefon),p30_15,5. tur+Viterbi,7.124004587558693,56.00000000000001
+MMPD (telefon),p30_16,5. tur,5.2697844371878615,76.0
+MMPD (telefon),p30_16,5. tur+Viterbi,2.2278467136042543,88.0
+MMPD (telefon),p30_18,5. tur,3.9157659535674556,92.0
+MMPD (telefon),p30_18,5. tur+Viterbi,1.2324159843100324,100.0
+MMPD (telefon),p30_19,5. tur,45.123078472974505,0.0
+MMPD (telefon),p30_19,5. tur+Viterbi,50.75099968896534,0.0
+MMPD (telefon),p30_2,5. tur,15.270752279494673,30.0
+MMPD (telefon),p30_2,5. tur+Viterbi,8.681638162817325,40.0
+MMPD (telefon),p30_3,5. tur,38.42831209770941,10.0
+MMPD (telefon),p30_3,5. tur+Viterbi,52.80857227079843,0.0
+MMPD (telefon),p30_4,5. tur,5.141198504667273,86.0
+MMPD (telefon),p30_4,5. tur+Viterbi,1.9856901848766029,90.0
+MMPD (telefon),p30_5,5. tur,9.971034982569364,26.0
+MMPD (telefon),p30_5,5. tur+Viterbi,7.109603267699449,28.000000000000004
+MMPD (telefon),p30_6,5. tur,13.414450344904195,68.0
+MMPD (telefon),p30_6,5. tur+Viterbi,1.404197317320864,100.0
+MMPD (telefon),p30_8,5. tur,5.595998579779231,88.0
+MMPD (telefon),p30_8,5. tur+Viterbi,1.896146134317047,90.0
+MMPD (telefon),p5_0,5. tur,6.669966378741213,78.0
+MMPD (telefon),p5_0,5. tur+Viterbi,1.0093138698128505,100.0
+MMPD (telefon),p5_1,5. tur,22.949541808928412,48.0
+MMPD (telefon),p5_1,5. tur+Viterbi,6.839391315149587,72.0
+MMPD (telefon),p5_10,5. tur,6.492177723569129,80.0
+MMPD (telefon),p5_10,5. tur+Viterbi,2.086271963383895,90.0
+MMPD (telefon),p5_11,5. tur,34.52375471581665,0.0
+MMPD (telefon),p5_11,5. tur+Viterbi,32.409575793191465,4.0
+MMPD (telefon),p5_12,5. tur,0.6685331099484424,100.0
+MMPD (telefon),p5_12,5. tur+Viterbi,0.6685331099484424,100.0
+MMPD (telefon),p5_13,5. tur,0.632725026808918,100.0
+MMPD (telefon),p5_13,5. tur+Viterbi,0.632725026808918,100.0
+MMPD (telefon),p5_14,5. tur,0.8277072305778367,100.0
+MMPD (telefon),p5_14,5. tur+Viterbi,0.8277072305778367,100.0
+MMPD (telefon),p5_15,5. tur,0.7707357895552585,100.0
+MMPD (telefon),p5_15,5. tur+Viterbi,0.7707357895552585,100.0
+MMPD (telefon),p5_16,5. tur,0.758072591331285,100.0
+MMPD (telefon),p5_16,5. tur+Viterbi,0.758072591331285,100.0
+MMPD (telefon),p5_17,5. tur,23.293206981317013,46.0
+MMPD (telefon),p5_17,5. tur+Viterbi,1.2996526051429529,100.0
+MMPD (telefon),p5_18,5. tur,14.2800714818838,68.0
+MMPD (telefon),p5_18,5. tur+Viterbi,3.182930541973131,88.0
+MMPD (telefon),p5_19,5. tur,31.420687112102303,8.0
+MMPD (telefon),p5_19,5. tur+Viterbi,25.722315641944384,6.0
+MMPD (telefon),p5_2,5. tur,2.070427299158965,92.0
+MMPD (telefon),p5_2,5. tur+Viterbi,0.8198727946559717,100.0
+MMPD (telefon),p5_3,5. tur,17.598921468547353,20.0
+MMPD (telefon),p5_3,5. tur+Viterbi,14.635950203268003,26.0
+MMPD (telefon),p5_4,5. tur,0.5611111704415785,100.0
+MMPD (telefon),p5_4,5. tur+Viterbi,0.5611111704415785,100.0
+MMPD (telefon),p5_5,5. tur,21.15389288053307,60.0
+MMPD (telefon),p5_5,5. tur+Viterbi,2.7079345749378003,82.0
+MMPD (telefon),p5_6,5. tur,5.395753123535363,78.0
+MMPD (telefon),p5_6,5. tur+Viterbi,1.9984767381666373,90.0
+MMPD (telefon),p5_7,5. tur,25.554623850899713,12.0
+MMPD (telefon),p5_7,5. tur+Viterbi,7.980080433637328,40.0
+MMPD (telefon),p5_8,5. tur,3.0011468873654383,94.0
+MMPD (telefon),p5_8,5. tur+Viterbi,0.9369185508213217,100.0
+MMPD (telefon),p5_9,5. tur,27.035507797852496,26.0
+MMPD (telefon),p5_9,5. tur+Viterbi,9.01506606289022,34.0
+MMPD (telefon),p10_0,3. tur (uygulamadaki),5.9589318965428415,80.0
+MMPD (telefon),p10_0,3. tur (uygulamadaki)+Viterbi,1.5569398168558488,100.0
+MMPD (telefon),p10_1,3. tur (uygulamadaki),16.367807009121947,30.0
+MMPD (telefon),p10_1,3. tur (uygulamadaki)+Viterbi,9.521818211878921,34.0
+MMPD (telefon),p10_10,3. tur (uygulamadaki),23.736423530972377,14.000000000000002
+MMPD (telefon),p10_10,3. tur (uygulamadaki)+Viterbi,22.453352918130204,6.0
+MMPD (telefon),p10_11,3. tur (uygulamadaki),22.164459345954057,10.0
+MMPD (telefon),p10_11,3. tur (uygulamadaki)+Viterbi,25.0141720763295,4.0
+MMPD (telefon),p10_12,3. tur (uygulamadaki),20.488621114223232,24.0
+MMPD (telefon),p10_12,3. tur (uygulamadaki)+Viterbi,4.610252021240743,60.0
+MMPD (telefon),p10_13,3. tur (uygulamadaki),20.366254047208795,28.000000000000004
+MMPD (telefon),p10_13,3. tur (uygulamadaki)+Viterbi,10.527880588123908,40.0
+MMPD (telefon),p10_14,3. tur (uygulamadaki),2.8736643277845975,84.0
+MMPD (telefon),p10_14,3. tur (uygulamadaki)+Viterbi,2.249207808162579,82.0
+MMPD (telefon),p10_15,3. tur (uygulamadaki),14.267348405714454,28.000000000000004
+MMPD (telefon),p10_15,3. tur (uygulamadaki)+Viterbi,9.825495301615158,30.0
+MMPD (telefon),p10_16,3. tur (uygulamadaki),49.12796399128394,0.0
+MMPD (telefon),p10_16,3. tur (uygulamadaki)+Viterbi,64.24604072414866,0.0
+MMPD (telefon),p10_17,3. tur (uygulamadaki),18.862646470899264,10.0
+MMPD (telefon),p10_17,3. tur (uygulamadaki)+Viterbi,16.121971480110066,8.0
+MMPD (telefon),p10_18,3. tur (uygulamadaki),16.500643091196675,28.000000000000004
+MMPD (telefon),p10_18,3. tur (uygulamadaki)+Viterbi,15.983972383816193,30.0
+MMPD (telefon),p10_19,3. tur (uygulamadaki),20.18987301299299,14.000000000000002
+MMPD (telefon),p10_19,3. tur (uygulamadaki)+Viterbi,13.158273952715666,10.0
+MMPD (telefon),p10_2,3. tur (uygulamadaki),21.316054104647314,30.0
+MMPD (telefon),p10_2,3. tur (uygulamadaki)+Viterbi,7.51853647367424,66.0
+MMPD (telefon),p10_3,3. tur (uygulamadaki),27.715126015231686,4.0
+MMPD (telefon),p10_3,3. tur (uygulamadaki)+Viterbi,25.530618015817367,0.0
+MMPD (telefon),p10_4,3. tur (uygulamadaki),2.7938637340117882,88.0
+MMPD (telefon),p10_4,3. tur (uygulamadaki)+Viterbi,2.356059632094352,90.0
+MMPD (telefon),p10_5,3. tur (uygulamadaki),25.929597794118244,30.0
+MMPD (telefon),p10_5,3. tur (uygulamadaki)+Viterbi,41.275569931738204,0.0
+MMPD (telefon),p10_6,3. tur (uygulamadaki),24.206949529082532,10.0
+MMPD (telefon),p10_6,3. tur (uygulamadaki)+Viterbi,26.130728568667834,4.0
+MMPD (telefon),p10_7,3. tur (uygulamadaki),28.20292833123415,8.0
+MMPD (telefon),p10_7,3. tur (uygulamadaki)+Viterbi,35.096834689167466,0.0
+MMPD (telefon),p10_8,3. tur (uygulamadaki),13.075241825377516,46.0
+MMPD (telefon),p10_8,3. tur (uygulamadaki)+Viterbi,5.440372093919795,72.0
+MMPD (telefon),p10_9,3. tur (uygulamadaki),12.252737601748207,30.0
+MMPD (telefon),p10_9,3. tur (uygulamadaki)+Viterbi,6.7667684730519895,40.0
+MMPD (telefon),p15_0,3. tur (uygulamadaki),18.115103297089636,22.0
+MMPD (telefon),p15_0,3. tur (uygulamadaki)+Viterbi,12.502035547157691,14.000000000000002
+MMPD (telefon),p15_1,3. tur (uygulamadaki),23.666466739991748,14.000000000000002
+MMPD (telefon),p15_1,3. tur (uygulamadaki)+Viterbi,8.190044346697006,26.0
+MMPD (telefon),p15_10,3. tur (uygulamadaki),15.392051985276657,28.000000000000004
+MMPD (telefon),p15_10,3. tur (uygulamadaki)+Viterbi,3.8204059056007815,70.0
+MMPD (telefon),p15_11,3. tur (uygulamadaki),46.21603013229279,0.0
+MMPD (telefon),p15_11,3. tur (uygulamadaki)+Viterbi,50.06743058626359,0.0
+MMPD (telefon),p15_12,3. tur (uygulamadaki),20.994186946172107,32.0
+MMPD (telefon),p15_12,3. tur (uygulamadaki)+Viterbi,18.455574677340383,14.000000000000002
+MMPD (telefon),p15_13,3. tur (uygulamadaki),17.678548105410247,34.0
+MMPD (telefon),p15_13,3. tur (uygulamadaki)+Viterbi,8.171516200563556,56.00000000000001
+MMPD (telefon),p15_14,3. tur (uygulamadaki),19.933019312524017,30.0
+MMPD (telefon),p15_14,3. tur (uygulamadaki)+Viterbi,6.965277321673012,46.0
+MMPD (telefon),p15_15,3. tur (uygulamadaki),29.769487034924673,18.0
+MMPD (telefon),p15_15,3. tur (uygulamadaki)+Viterbi,33.72272508679033,14.000000000000002
+MMPD (telefon),p15_16,3. tur (uygulamadaki),27.10391039059241,34.0
+MMPD (telefon),p15_16,3. tur (uygulamadaki)+Viterbi,3.3379105387144796,78.0
+MMPD (telefon),p15_18,3. tur (uygulamadaki),11.831080532801414,44.0
+MMPD (telefon),p15_18,3. tur (uygulamadaki)+Viterbi,6.801274265750128,56.00000000000001
+MMPD (telefon),p15_19,3. tur (uygulamadaki),30.198337285886705,8.0
+MMPD (telefon),p15_19,3. tur (uygulamadaki)+Viterbi,34.0522764913199,4.0
+MMPD (telefon),p15_2,3. tur (uygulamadaki),22.34470365767119,10.0
+MMPD (telefon),p15_2,3. tur (uygulamadaki)+Viterbi,28.90081460759271,16.0
+MMPD (telefon),p15_3,3. tur (uygulamadaki),82.59686591417204,8.0
+MMPD (telefon),p15_3,3. tur (uygulamadaki)+Viterbi,77.39486060603507,8.0
+MMPD (telefon),p15_4,3. tur (uygulamadaki),18.42833335238676,18.0
+MMPD (telefon),p15_4,3. tur (uygulamadaki)+Viterbi,20.687616874729823,10.0
+MMPD (telefon),p15_5,3. tur (uygulamadaki),16.578132404341474,32.0
+MMPD (telefon),p15_5,3. tur (uygulamadaki)+Viterbi,6.326138864487308,46.0
+MMPD (telefon),p15_6,3. tur (uygulamadaki),20.002180976319252,26.0
+MMPD (telefon),p15_6,3. tur (uygulamadaki)+Viterbi,11.685793454564092,22.0
+MMPD (telefon),p15_7,3. tur (uygulamadaki),44.85204059896316,10.0
+MMPD (telefon),p15_7,3. tur (uygulamadaki)+Viterbi,41.98652664713065,18.0
+MMPD (telefon),p15_8,3. tur (uygulamadaki),12.689487486406557,40.0
+MMPD (telefon),p15_8,3. tur (uygulamadaki)+Viterbi,9.881419957612787,46.0
+MMPD (telefon),p15_9,3. tur (uygulamadaki),19.000922280367,12.0
+MMPD (telefon),p15_9,3. tur (uygulamadaki)+Viterbi,10.809500217841833,14.000000000000002
+MMPD (telefon),p20_0,3. tur (uygulamadaki),0.7794536460640109,98.0
+MMPD (telefon),p20_0,3. tur (uygulamadaki)+Viterbi,1.0406491093997243,96.0
+MMPD (telefon),p20_1,3. tur (uygulamadaki),14.544170888229232,16.0
+MMPD (telefon),p20_1,3. tur (uygulamadaki)+Viterbi,7.244809615981676,28.000000000000004
+MMPD (telefon),p20_10,3. tur (uygulamadaki),0.7527751320775627,100.0
+MMPD (telefon),p20_10,3. tur (uygulamadaki)+Viterbi,0.756296086489094,100.0
+MMPD (telefon),p20_11,3. tur (uygulamadaki),19.68195438346499,28.000000000000004
+MMPD (telefon),p20_11,3. tur (uygulamadaki)+Viterbi,13.002416536046335,46.0
+MMPD (telefon),p20_12,3. tur (uygulamadaki),1.5359430948665094,96.0
+MMPD (telefon),p20_12,3. tur (uygulamadaki)+Viterbi,1.0466922656727313,96.0
+MMPD (telefon),p20_13,3. tur (uygulamadaki),0.4835809666757791,100.0
+MMPD (telefon),p20_13,3. tur (uygulamadaki)+Viterbi,0.4608496416223542,100.0
+MMPD (telefon),p20_14,3. tur (uygulamadaki),0.5563285627162722,100.0
+MMPD (telefon),p20_14,3. tur (uygulamadaki)+Viterbi,0.5563285627162722,100.0
+MMPD (telefon),p20_15,3. tur (uygulamadaki),0.7631659361077684,100.0
+MMPD (telefon),p20_15,3. tur (uygulamadaki)+Viterbi,0.7631659361077684,100.0
+MMPD (telefon),p20_16,3. tur (uygulamadaki),0.8678287110971675,100.0
+MMPD (telefon),p20_16,3. tur (uygulamadaki)+Viterbi,0.8678287110971675,100.0
+MMPD (telefon),p20_17,3. tur (uygulamadaki),13.71618716173701,36.0
+MMPD (telefon),p20_17,3. tur (uygulamadaki)+Viterbi,6.252232029857444,60.0
+MMPD (telefon),p20_18,3. tur (uygulamadaki),6.175099396471287,64.0
+MMPD (telefon),p20_18,3. tur (uygulamadaki)+Viterbi,2.80589503768328,84.0
+MMPD (telefon),p20_19,3. tur (uygulamadaki),42.21539702630331,16.0
+MMPD (telefon),p20_19,3. tur (uygulamadaki)+Viterbi,43.92933083709729,14.000000000000002
+MMPD (telefon),p20_2,3. tur (uygulamadaki),10.238356813362156,57.99999999999999
+MMPD (telefon),p20_2,3. tur (uygulamadaki)+Viterbi,7.795797914330397,62.0
+MMPD (telefon),p20_3,3. tur (uygulamadaki),12.737429546458651,30.0
+MMPD (telefon),p20_3,3. tur (uygulamadaki)+Viterbi,7.0763398788270315,48.0
+MMPD (telefon),p20_4,3. tur (uygulamadaki),1.1326986566959014,96.0
+MMPD (telefon),p20_4,3. tur (uygulamadaki)+Viterbi,0.6104993900348086,100.0
+MMPD (telefon),p20_5,3. tur (uygulamadaki),13.675662432863469,20.0
+MMPD (telefon),p20_5,3. tur (uygulamadaki)+Viterbi,8.10082923476023,36.0
+MMPD (telefon),p20_6,3. tur (uygulamadaki),4.91940335013961,78.0
+MMPD (telefon),p20_6,3. tur (uygulamadaki)+Viterbi,1.9708663536140554,90.0
+MMPD (telefon),p20_7,3. tur (uygulamadaki),34.042340096356995,24.0
+MMPD (telefon),p20_7,3. tur (uygulamadaki)+Viterbi,31.877241488397058,28.000000000000004
+MMPD (telefon),p20_8,3. tur (uygulamadaki),1.6932807535354741,96.0
+MMPD (telefon),p20_8,3. tur (uygulamadaki)+Viterbi,0.9697343741658674,100.0
+MMPD (telefon),p20_9,3. tur (uygulamadaki),15.963639753313245,34.0
+MMPD (telefon),p20_9,3. tur (uygulamadaki)+Viterbi,8.435654922594322,46.0
+MMPD (telefon),p25_0,3. tur (uygulamadaki),0.6106147939294795,100.0
+MMPD (telefon),p25_0,3. tur (uygulamadaki)+Viterbi,0.6106147939294795,100.0
+MMPD (telefon),p25_1,3. tur (uygulamadaki),7.618894297752725,68.0
+MMPD (telefon),p25_1,3. tur (uygulamadaki)+Viterbi,1.8992556658910333,88.0
+MMPD (telefon),p25_10,3. tur (uygulamadaki),1.2510584176587736,98.0
+MMPD (telefon),p25_10,3. tur (uygulamadaki)+Viterbi,0.562100522542041,100.0
+MMPD (telefon),p25_11,3. tur (uygulamadaki),37.99915909909218,14.000000000000002
+MMPD (telefon),p25_11,3. tur (uygulamadaki)+Viterbi,25.660541863360486,32.0
+MMPD (telefon),p25_12,3. tur (uygulamadaki),3.006618126395033,90.0
+MMPD (telefon),p25_12,3. tur (uygulamadaki)+Viterbi,1.0276432114410705,100.0
+MMPD (telefon),p25_13,3. tur (uygulamadaki),0.3161237505996127,100.0
+MMPD (telefon),p25_13,3. tur (uygulamadaki)+Viterbi,0.31573697570612697,100.0
+MMPD (telefon),p25_14,3. tur (uygulamadaki),0.5589928738446127,100.0
+MMPD (telefon),p25_14,3. tur (uygulamadaki)+Viterbi,0.5589928738446127,100.0
+MMPD (telefon),p25_15,3. tur (uygulamadaki),0.3825781240523105,100.0
+MMPD (telefon),p25_15,3. tur (uygulamadaki)+Viterbi,0.3825781240523105,100.0
+MMPD (telefon),p25_16,3. tur (uygulamadaki),12.076573415072282,82.0
+MMPD (telefon),p25_16,3. tur (uygulamadaki)+Viterbi,10.012528462569968,90.0
+MMPD (telefon),p25_17,3. tur (uygulamadaki),27.194817686485234,26.0
+MMPD (telefon),p25_17,3. tur (uygulamadaki)+Viterbi,27.864737727598666,30.0
+MMPD (telefon),p25_18,3. tur (uygulamadaki),66.54360158743337,28.000000000000004
+MMPD (telefon),p25_18,3. tur (uygulamadaki)+Viterbi,67.69348536321787,28.000000000000004
+MMPD (telefon),p25_19,3. tur (uygulamadaki),115.57268975427411,0.0
+MMPD (telefon),p25_19,3. tur (uygulamadaki)+Viterbi,112.02976427829812,0.0
+MMPD (telefon),p25_2,3. tur (uygulamadaki),6.764303642852991,74.0
+MMPD (telefon),p25_2,3. tur (uygulamadaki)+Viterbi,4.22315689647307,76.0
+MMPD (telefon),p25_3,3. tur (uygulamadaki),18.933893405735994,30.0
+MMPD (telefon),p25_3,3. tur (uygulamadaki)+Viterbi,4.398746982755214,70.0
+MMPD (telefon),p25_4,3. tur (uygulamadaki),3.6414270989081796,90.0
+MMPD (telefon),p25_4,3. tur (uygulamadaki)+Viterbi,0.9417518614181265,100.0
+MMPD (telefon),p25_5,3. tur (uygulamadaki),9.895717124648497,57.99999999999999
+MMPD (telefon),p25_5,3. tur (uygulamadaki)+Viterbi,1.968402235841039,94.0
+MMPD (telefon),p25_6,3. tur (uygulamadaki),4.1407509624279975,90.0
+MMPD (telefon),p25_6,3. tur (uygulamadaki)+Viterbi,1.2680126324396133,100.0
+MMPD (telefon),p25_7,3. tur (uygulamadaki),22.807843375868593,4.0
+MMPD (telefon),p25_7,3. tur (uygulamadaki)+Viterbi,27.760546515488873,0.0
+MMPD (telefon),p25_8,3. tur (uygulamadaki),1.0028984786934225,96.0
+MMPD (telefon),p25_8,3. tur (uygulamadaki)+Viterbi,0.6819406668927703,100.0
+MMPD (telefon),p25_9,3. tur (uygulamadaki),15.80197788714762,34.0
+MMPD (telefon),p25_9,3. tur (uygulamadaki)+Viterbi,4.659732900669142,74.0
+MMPD (telefon),p30_0,3. tur (uygulamadaki),11.955074045631203,32.0
+MMPD (telefon),p30_0,3. tur (uygulamadaki)+Viterbi,10.034911361522832,34.0
+MMPD (telefon),p30_1,3. tur (uygulamadaki),28.344454298511938,2.0
+MMPD (telefon),p30_1,3. tur (uygulamadaki)+Viterbi,30.924658143830353,0.0
+MMPD (telefon),p30_10,3. tur (uygulamadaki),8.597761556125338,86.0
+MMPD (telefon),p30_10,3. tur (uygulamadaki)+Viterbi,0.8582383410285536,100.0
+MMPD (telefon),p30_12,3. tur (uygulamadaki),10.091279251490464,52.0
+MMPD (telefon),p30_12,3. tur (uygulamadaki)+Viterbi,4.315638426355432,70.0
+MMPD (telefon),p30_13,3. tur (uygulamadaki),14.79045852090905,50.0
+MMPD (telefon),p30_13,3. tur (uygulamadaki)+Viterbi,11.971505384106672,56.00000000000001
+MMPD (telefon),p30_14,3. tur (uygulamadaki),35.06696561863592,14.000000000000002
+MMPD (telefon),p30_14,3. tur (uygulamadaki)+Viterbi,36.946658668086734,0.0
+MMPD (telefon),p30_15,3. tur (uygulamadaki),14.739532899923024,36.0
+MMPD (telefon),p30_15,3. tur (uygulamadaki)+Viterbi,7.028341683608312,57.99999999999999
+MMPD (telefon),p30_16,3. tur (uygulamadaki),6.36405361448304,72.0
+MMPD (telefon),p30_16,3. tur (uygulamadaki)+Viterbi,2.2783622909044743,88.0
+MMPD (telefon),p30_18,3. tur (uygulamadaki),3.9880242752485002,92.0
+MMPD (telefon),p30_18,3. tur (uygulamadaki)+Viterbi,1.2718589172337567,100.0
+MMPD (telefon),p30_19,3. tur (uygulamadaki),43.840852237322785,0.0
+MMPD (telefon),p30_19,3. tur (uygulamadaki)+Viterbi,50.73957719375852,0.0
+MMPD (telefon),p30_2,3. tur (uygulamadaki),16.25416738202587,32.0
+MMPD (telefon),p30_2,3. tur (uygulamadaki)+Viterbi,8.700586682677702,40.0
+MMPD (telefon),p30_3,3. tur (uygulamadaki),39.286583297985,8.0
+MMPD (telefon),p30_3,3. tur (uygulamadaki)+Viterbi,47.2898400886025,0.0
+MMPD (telefon),p30_4,3. tur (uygulamadaki),6.324003221301697,86.0
+MMPD (telefon),p30_4,3. tur (uygulamadaki)+Viterbi,1.0833977336357146,100.0
+MMPD (telefon),p30_5,3. tur (uygulamadaki),9.786307084548906,22.0
+MMPD (telefon),p30_5,3. tur (uygulamadaki)+Viterbi,7.41053174466878,24.0
+MMPD (telefon),p30_6,3. tur (uygulamadaki),14.631826673495693,70.0
+MMPD (telefon),p30_6,3. tur (uygulamadaki)+Viterbi,1.3804510133661378,100.0
+MMPD (telefon),p30_8,3. tur (uygulamadaki),5.704955983575198,86.0
+MMPD (telefon),p30_8,3. tur (uygulamadaki)+Viterbi,1.8897580691376827,90.0
+MMPD (telefon),p5_0,3. tur (uygulamadaki),7.346557177912696,76.0
+MMPD (telefon),p5_0,3. tur (uygulamadaki)+Viterbi,1.092619518563,100.0
+MMPD (telefon),p5_1,3. tur (uygulamadaki),24.55465064240836,40.0
+MMPD (telefon),p5_1,3. tur (uygulamadaki)+Viterbi,6.884126937911767,72.0
+MMPD (telefon),p5_10,3. tur (uygulamadaki),5.207723918566082,80.0
+MMPD (telefon),p5_10,3. tur (uygulamadaki)+Viterbi,2.1150194822532753,90.0
+MMPD (telefon),p5_11,3. tur (uygulamadaki),34.505590563209964,0.0
+MMPD (telefon),p5_11,3. tur (uygulamadaki)+Viterbi,31.057462146117796,4.0
+MMPD (telefon),p5_12,3. tur (uygulamadaki),0.7210203517991337,100.0
+MMPD (telefon),p5_12,3. tur (uygulamadaki)+Viterbi,0.7210203517991337,100.0
+MMPD (telefon),p5_13,3. tur (uygulamadaki),0.6609416725463163,100.0
+MMPD (telefon),p5_13,3. tur (uygulamadaki)+Viterbi,0.6609416725463163,100.0
+MMPD (telefon),p5_14,3. tur (uygulamadaki),0.7812972115684227,100.0
+MMPD (telefon),p5_14,3. tur (uygulamadaki)+Viterbi,0.7812972115684227,100.0
+MMPD (telefon),p5_15,3. tur (uygulamadaki),0.756040110692353,100.0
+MMPD (telefon),p5_15,3. tur (uygulamadaki)+Viterbi,0.756040110692353,100.0
+MMPD (telefon),p5_16,3. tur (uygulamadaki),0.7347473421342576,100.0
+MMPD (telefon),p5_16,3. tur (uygulamadaki)+Viterbi,0.7347473421342576,100.0
+MMPD (telefon),p5_17,3. tur (uygulamadaki),18.522691920527535,50.0
+MMPD (telefon),p5_17,3. tur (uygulamadaki)+Viterbi,1.444600924274946,98.0
+MMPD (telefon),p5_18,3. tur (uygulamadaki),12.811951113344925,70.0
+MMPD (telefon),p5_18,3. tur (uygulamadaki)+Viterbi,3.1313905866430174,88.0
+MMPD (telefon),p5_19,3. tur (uygulamadaki),34.19722566062887,10.0
+MMPD (telefon),p5_19,3. tur (uygulamadaki)+Viterbi,25.636052816595523,8.0
+MMPD (telefon),p5_2,3. tur (uygulamadaki),4.339325135025414,84.0
+MMPD (telefon),p5_2,3. tur (uygulamadaki)+Viterbi,0.8415558180065542,100.0
+MMPD (telefon),p5_3,3. tur (uygulamadaki),17.351175480037263,26.0
+MMPD (telefon),p5_3,3. tur (uygulamadaki)+Viterbi,14.589498819734512,26.0
+MMPD (telefon),p5_4,3. tur (uygulamadaki),1.0197505841567553,96.0
+MMPD (telefon),p5_4,3. tur (uygulamadaki)+Viterbi,0.6619647866710401,100.0
+MMPD (telefon),p5_5,3. tur (uygulamadaki),23.969084233384354,56.00000000000001
+MMPD (telefon),p5_5,3. tur (uygulamadaki)+Viterbi,2.570072123848157,86.0
+MMPD (telefon),p5_6,3. tur (uygulamadaki),6.40682399754952,72.0
+MMPD (telefon),p5_6,3. tur (uygulamadaki)+Viterbi,1.9894052597869358,90.0
+MMPD (telefon),p5_7,3. tur (uygulamadaki),23.28058757975423,10.0
+MMPD (telefon),p5_7,3. tur (uygulamadaki)+Viterbi,10.913670483034856,20.0
+MMPD (telefon),p5_8,3. tur (uygulamadaki),1.3877483236580586,96.0
+MMPD (telefon),p5_8,3. tur (uygulamadaki)+Viterbi,0.927827515879823,100.0
+MMPD (telefon),p5_9,3. tur (uygulamadaki),25.997289395367424,22.0
+MMPD (telefon),p5_9,3. tur (uygulamadaki)+Viterbi,10.982978694271731,24.0
+MMPD (telefon),p10_0,7. tur B (MMRPhys sıfırdan),6.082487637539531,80.0
+MMPD (telefon),p10_0,7. tur B (MMRPhys sıfırdan)+Viterbi,1.7798452249592935,94.0
+MMPD (telefon),p10_1,7. tur B (MMRPhys sıfırdan),13.795074970920671,34.0
+MMPD (telefon),p10_1,7. tur B (MMRPhys sıfırdan)+Viterbi,5.075707265648377,60.0
+MMPD (telefon),p10_10,7. tur B (MMRPhys sıfırdan),21.634600717694347,8.0
+MMPD (telefon),p10_10,7. tur B (MMRPhys sıfırdan)+Viterbi,22.357878902737767,4.0
+MMPD (telefon),p10_11,7. tur B (MMRPhys sıfırdan),27.91953500987496,10.0
+MMPD (telefon),p10_11,7. tur B (MMRPhys sıfırdan)+Viterbi,37.542818075421074,0.0
+MMPD (telefon),p10_12,7. tur B (MMRPhys sıfırdan),14.21729276995834,40.0
+MMPD (telefon),p10_12,7. tur B (MMRPhys sıfırdan)+Viterbi,5.887245308821519,54.0
+MMPD (telefon),p10_13,7. tur B (MMRPhys sıfırdan),19.58683885801224,26.0
+MMPD (telefon),p10_13,7. tur B (MMRPhys sıfırdan)+Viterbi,29.17252832506789,8.0
+MMPD (telefon),p10_14,7. tur B (MMRPhys sıfırdan),2.9275473811520887,76.0
+MMPD (telefon),p10_14,7. tur B (MMRPhys sıfırdan)+Viterbi,3.0412835438201737,74.0
+MMPD (telefon),p10_15,7. tur B (MMRPhys sıfırdan),11.489473772053064,28.000000000000004
+MMPD (telefon),p10_15,7. tur B (MMRPhys sıfırdan)+Viterbi,9.493012971697574,32.0
+MMPD (telefon),p10_16,7. tur B (MMRPhys sıfırdan),40.659922278924086,0.0
+MMPD (telefon),p10_16,7. tur B (MMRPhys sıfırdan)+Viterbi,40.334825533176705,0.0
+MMPD (telefon),p10_17,7. tur B (MMRPhys sıfırdan),14.01858577682418,6.0
+MMPD (telefon),p10_17,7. tur B (MMRPhys sıfırdan)+Viterbi,17.02915346353684,6.0
+MMPD (telefon),p10_18,7. tur B (MMRPhys sıfırdan),16.01438348649862,38.0
+MMPD (telefon),p10_18,7. tur B (MMRPhys sıfırdan)+Viterbi,12.074845192658481,46.0
+MMPD (telefon),p10_19,7. tur B (MMRPhys sıfırdan),15.036842224049062,26.0
+MMPD (telefon),p10_19,7. tur B (MMRPhys sıfırdan)+Viterbi,16.076000445062466,26.0
+MMPD (telefon),p10_2,7. tur B (MMRPhys sıfırdan),15.073237015155406,26.0
+MMPD (telefon),p10_2,7. tur B (MMRPhys sıfırdan)+Viterbi,12.12912456981001,28.000000000000004
+MMPD (telefon),p10_3,7. tur B (MMRPhys sıfırdan),25.213099048682544,8.0
+MMPD (telefon),p10_3,7. tur B (MMRPhys sıfırdan)+Viterbi,25.165862542792166,10.0
+MMPD (telefon),p10_4,7. tur B (MMRPhys sıfırdan),2.787126648869688,88.0
+MMPD (telefon),p10_4,7. tur B (MMRPhys sıfırdan)+Viterbi,2.1897580498142752,92.0
+MMPD (telefon),p10_5,7. tur B (MMRPhys sıfırdan),22.249923520266808,26.0
+MMPD (telefon),p10_5,7. tur B (MMRPhys sıfırdan)+Viterbi,5.410997655161015,57.99999999999999
+MMPD (telefon),p10_6,7. tur B (MMRPhys sıfırdan),19.282443441947304,22.0
+MMPD (telefon),p10_6,7. tur B (MMRPhys sıfırdan)+Viterbi,9.798705495724358,24.0
+MMPD (telefon),p10_7,7. tur B (MMRPhys sıfırdan),22.78282629236156,12.0
+MMPD (telefon),p10_7,7. tur B (MMRPhys sıfırdan)+Viterbi,34.993485520433275,0.0
+MMPD (telefon),p10_8,7. tur B (MMRPhys sıfırdan),10.201681280932327,54.0
+MMPD (telefon),p10_8,7. tur B (MMRPhys sıfırdan)+Viterbi,4.974036396011102,70.0
+MMPD (telefon),p10_9,7. tur B (MMRPhys sıfırdan),10.298717905504066,26.0
+MMPD (telefon),p10_9,7. tur B (MMRPhys sıfırdan)+Viterbi,10.090807488715697,26.0
+MMPD (telefon),p15_0,7. tur B (MMRPhys sıfırdan),20.353581545914082,20.0
+MMPD (telefon),p15_0,7. tur B (MMRPhys sıfırdan)+Viterbi,22.24639339678278,14.000000000000002
+MMPD (telefon),p15_1,7. tur B (MMRPhys sıfırdan),15.428162220221315,12.0
+MMPD (telefon),p15_1,7. tur B (MMRPhys sıfırdan)+Viterbi,11.282503613434473,22.0
+MMPD (telefon),p15_10,7. tur B (MMRPhys sıfırdan),14.247506235475848,34.0
+MMPD (telefon),p15_10,7. tur B (MMRPhys sıfırdan)+Viterbi,5.753125517896583,52.0
+MMPD (telefon),p15_11,7. tur B (MMRPhys sıfırdan),38.50340492095813,2.0
+MMPD (telefon),p15_11,7. tur B (MMRPhys sıfırdan)+Viterbi,37.077183299794285,0.0
+MMPD (telefon),p15_12,7. tur B (MMRPhys sıfırdan),18.301337579939272,30.0
+MMPD (telefon),p15_12,7. tur B (MMRPhys sıfırdan)+Viterbi,18.16200197249478,16.0
+MMPD (telefon),p15_13,7. tur B (MMRPhys sıfırdan),19.168290937819897,26.0
+MMPD (telefon),p15_13,7. tur B (MMRPhys sıfırdan)+Viterbi,11.787750029043014,42.0
+MMPD (telefon),p15_14,7. tur B (MMRPhys sıfırdan),21.197367483311623,34.0
+MMPD (telefon),p15_14,7. tur B (MMRPhys sıfırdan)+Viterbi,28.19111886849952,28.000000000000004
+MMPD (telefon),p15_15,7. tur B (MMRPhys sıfırdan),22.668546921073762,32.0
+MMPD (telefon),p15_15,7. tur B (MMRPhys sıfırdan)+Viterbi,9.835025174334366,52.0
+MMPD (telefon),p15_16,7. tur B (MMRPhys sıfırdan),19.195042855413487,32.0
+MMPD (telefon),p15_16,7. tur B (MMRPhys sıfırdan)+Viterbi,10.541738119695562,42.0
+MMPD (telefon),p15_18,7. tur B (MMRPhys sıfırdan),11.928761239925425,56.00000000000001
+MMPD (telefon),p15_18,7. tur B (MMRPhys sıfırdan)+Viterbi,18.330769237710758,34.0
+MMPD (telefon),p15_19,7. tur B (MMRPhys sıfırdan),30.093772320530334,4.0
+MMPD (telefon),p15_19,7. tur B (MMRPhys sıfırdan)+Viterbi,21.23299079231887,6.0
+MMPD (telefon),p15_2,7. tur B (MMRPhys sıfırdan),19.840759622688125,26.0
+MMPD (telefon),p15_2,7. tur B (MMRPhys sıfırdan)+Viterbi,13.33581660972518,44.0
+MMPD (telefon),p15_3,7. tur B (MMRPhys sıfırdan),81.45751835622484,10.0
+MMPD (telefon),p15_3,7. tur B (MMRPhys sıfırdan)+Viterbi,86.46758589628239,4.0
+MMPD (telefon),p15_4,7. tur B (MMRPhys sıfırdan),18.147944336704665,22.0
+MMPD (telefon),p15_4,7. tur B (MMRPhys sıfırdan)+Viterbi,19.515085292707113,22.0
+MMPD (telefon),p15_5,7. tur B (MMRPhys sıfırdan),19.452700117110552,10.0
+MMPD (telefon),p15_5,7. tur B (MMRPhys sıfırdan)+Viterbi,9.269745372024234,36.0
+MMPD (telefon),p15_6,7. tur B (MMRPhys sıfırdan),16.970466638884556,18.0
+MMPD (telefon),p15_6,7. tur B (MMRPhys sıfırdan)+Viterbi,23.03598768453847,0.0
+MMPD (telefon),p15_7,7. tur B (MMRPhys sıfırdan),51.708494129240705,2.0
+MMPD (telefon),p15_7,7. tur B (MMRPhys sıfırdan)+Viterbi,57.47118664244778,2.0
+MMPD (telefon),p15_8,7. tur B (MMRPhys sıfırdan),10.91217813945109,36.0
+MMPD (telefon),p15_8,7. tur B (MMRPhys sıfırdan)+Viterbi,5.434414978515281,54.0
+MMPD (telefon),p15_9,7. tur B (MMRPhys sıfırdan),19.114159797894942,14.000000000000002
+MMPD (telefon),p15_9,7. tur B (MMRPhys sıfırdan)+Viterbi,21.124147328188926,0.0
+MMPD (telefon),p20_0,7. tur B (MMRPhys sıfırdan),1.1710908677135023,96.0
+MMPD (telefon),p20_0,7. tur B (MMRPhys sıfırdan)+Viterbi,1.1710908677135023,96.0
+MMPD (telefon),p20_1,7. tur B (MMRPhys sıfırdan),12.684800597831694,34.0
+MMPD (telefon),p20_1,7. tur B (MMRPhys sıfırdan)+Viterbi,6.831013211088353,40.0
+MMPD (telefon),p20_10,7. tur B (MMRPhys sıfırdan),3.304860200825443,90.0
+MMPD (telefon),p20_10,7. tur B (MMRPhys sıfırdan)+Viterbi,0.5512387991721818,100.0
+MMPD (telefon),p20_11,7. tur B (MMRPhys sıfırdan),18.815196325418807,28.000000000000004
+MMPD (telefon),p20_11,7. tur B (MMRPhys sıfırdan)+Viterbi,14.297114435144945,38.0
+MMPD (telefon),p20_12,7. tur B (MMRPhys sıfırdan),1.5076745845409942,96.0
+MMPD (telefon),p20_12,7. tur B (MMRPhys sıfırdan)+Viterbi,1.695379436556667,94.0
+MMPD (telefon),p20_13,7. tur B (MMRPhys sıfırdan),0.6709039384282621,100.0
+MMPD (telefon),p20_13,7. tur B (MMRPhys sıfırdan)+Viterbi,0.6651559346335492,100.0
+MMPD (telefon),p20_14,7. tur B (MMRPhys sıfırdan),0.5884341509840831,100.0
+MMPD (telefon),p20_14,7. tur B (MMRPhys sıfırdan)+Viterbi,0.5884341509840831,100.0
+MMPD (telefon),p20_15,7. tur B (MMRPhys sıfırdan),0.7570942804400081,100.0
+MMPD (telefon),p20_15,7. tur B (MMRPhys sıfırdan)+Viterbi,0.7570942804400081,100.0
+MMPD (telefon),p20_16,7. tur B (MMRPhys sıfırdan),0.7582321972205986,100.0
+MMPD (telefon),p20_16,7. tur B (MMRPhys sıfırdan)+Viterbi,0.7582321972205986,100.0
+MMPD (telefon),p20_17,7. tur B (MMRPhys sıfırdan),8.848762792054352,56.00000000000001
+MMPD (telefon),p20_17,7. tur B (MMRPhys sıfırdan)+Viterbi,3.335553497571959,78.0
+MMPD (telefon),p20_18,7. tur B (MMRPhys sıfırdan),3.5348796510662295,86.0
+MMPD (telefon),p20_18,7. tur B (MMRPhys sıfırdan)+Viterbi,2.5405283252976103,88.0
+MMPD (telefon),p20_19,7. tur B (MMRPhys sıfırdan),50.913909164294886,14.000000000000002
+MMPD (telefon),p20_19,7. tur B (MMRPhys sıfırdan)+Viterbi,40.55314451745136,26.0
+MMPD (telefon),p20_2,7. tur B (MMRPhys sıfırdan),6.071601248307611,66.0
+MMPD (telefon),p20_2,7. tur B (MMRPhys sıfırdan)+Viterbi,3.1943236720783843,76.0
+MMPD (telefon),p20_3,7. tur B (MMRPhys sıfırdan),12.208095691354346,40.0
+MMPD (telefon),p20_3,7. tur B (MMRPhys sıfırdan)+Viterbi,8.566533716127925,54.0
+MMPD (telefon),p20_4,7. tur B (MMRPhys sıfırdan),0.6135158635647252,100.0
+MMPD (telefon),p20_4,7. tur B (MMRPhys sıfırdan)+Viterbi,0.6135158635647252,100.0
+MMPD (telefon),p20_5,7. tur B (MMRPhys sıfırdan),24.460055790812632,14.000000000000002
+MMPD (telefon),p20_5,7. tur B (MMRPhys sıfırdan)+Viterbi,9.070739433674936,30.0
+MMPD (telefon),p20_6,7. tur B (MMRPhys sıfırdan),4.620239859739972,84.0
+MMPD (telefon),p20_6,7. tur B (MMRPhys sıfırdan)+Viterbi,2.6641147255447235,82.0
+MMPD (telefon),p20_7,7. tur B (MMRPhys sıfırdan),26.708962077937066,36.0
+MMPD (telefon),p20_7,7. tur B (MMRPhys sıfırdan)+Viterbi,22.17888862748667,26.0
+MMPD (telefon),p20_8,7. tur B (MMRPhys sıfırdan),1.8108820467928908,96.0
+MMPD (telefon),p20_8,7. tur B (MMRPhys sıfırdan)+Viterbi,1.0007584421877953,100.0
+MMPD (telefon),p20_9,7. tur B (MMRPhys sıfırdan),16.23816478427575,20.0
+MMPD (telefon),p20_9,7. tur B (MMRPhys sıfırdan)+Viterbi,9.065762173594841,30.0
+MMPD (telefon),p25_0,7. tur B (MMRPhys sıfırdan),1.3040817683786503,96.0
+MMPD (telefon),p25_0,7. tur B (MMRPhys sıfırdan)+Viterbi,0.8060178032567825,100.0
+MMPD (telefon),p25_1,7. tur B (MMRPhys sıfırdan),8.34217580915314,68.0
+MMPD (telefon),p25_1,7. tur B (MMRPhys sıfırdan)+Viterbi,2.943836593908361,82.0
+MMPD (telefon),p25_10,7. tur B (MMRPhys sıfırdan),0.5965414202851597,100.0
+MMPD (telefon),p25_10,7. tur B (MMRPhys sıfırdan)+Viterbi,0.5965414202851597,100.0
+MMPD (telefon),p25_11,7. tur B (MMRPhys sıfırdan),39.930304210595644,22.0
+MMPD (telefon),p25_11,7. tur B (MMRPhys sıfırdan)+Viterbi,34.12183236583339,28.000000000000004
+MMPD (telefon),p25_12,7. tur B (MMRPhys sıfırdan),2.7598719678612134,92.0
+MMPD (telefon),p25_12,7. tur B (MMRPhys sıfırdan)+Viterbi,0.9373621604372073,100.0
+MMPD (telefon),p25_13,7. tur B (MMRPhys sıfırdan),0.3126342678481609,100.0
+MMPD (telefon),p25_13,7. tur B (MMRPhys sıfırdan)+Viterbi,0.3126342678481609,100.0
+MMPD (telefon),p25_14,7. tur B (MMRPhys sıfırdan),0.4956501538153128,100.0
+MMPD (telefon),p25_14,7. tur B (MMRPhys sıfırdan)+Viterbi,0.4956501538153128,100.0
+MMPD (telefon),p25_15,7. tur B (MMRPhys sıfırdan),0.3719200184450349,100.0
+MMPD (telefon),p25_15,7. tur B (MMRPhys sıfırdan)+Viterbi,0.3719200184450349,100.0
+MMPD (telefon),p25_16,7. tur B (MMRPhys sıfırdan),13.097767138817133,80.0
+MMPD (telefon),p25_16,7. tur B (MMRPhys sıfırdan)+Viterbi,9.907965756283657,90.0
+MMPD (telefon),p25_17,7. tur B (MMRPhys sıfırdan),21.578144525080088,42.0
+MMPD (telefon),p25_17,7. tur B (MMRPhys sıfırdan)+Viterbi,28.347634984346268,24.0
+MMPD (telefon),p25_18,7. tur B (MMRPhys sıfırdan),71.21719209508447,26.0
+MMPD (telefon),p25_18,7. tur B (MMRPhys sıfırdan)+Viterbi,67.81656003332886,28.000000000000004
+MMPD (telefon),p25_19,7. tur B (MMRPhys sıfırdan),123.23183400643046,0.0
+MMPD (telefon),p25_19,7. tur B (MMRPhys sıfırdan)+Viterbi,129.56021763499263,0.0
+MMPD (telefon),p25_2,7. tur B (MMRPhys sıfırdan),7.994454694785128,66.0
+MMPD (telefon),p25_2,7. tur B (MMRPhys sıfırdan)+Viterbi,6.6937573153893535,62.0
+MMPD (telefon),p25_3,7. tur B (MMRPhys sıfırdan),16.394251678131422,20.0
+MMPD (telefon),p25_3,7. tur B (MMRPhys sıfırdan)+Viterbi,15.932957667132964,18.0
+MMPD (telefon),p25_4,7. tur B (MMRPhys sıfırdan),4.090549274599816,84.0
+MMPD (telefon),p25_4,7. tur B (MMRPhys sıfırdan)+Viterbi,1.0613006314527647,100.0
+MMPD (telefon),p25_5,7. tur B (MMRPhys sıfırdan),9.461734034519242,56.00000000000001
+MMPD (telefon),p25_5,7. tur B (MMRPhys sıfırdan)+Viterbi,3.16638359076594,78.0
+MMPD (telefon),p25_6,7. tur B (MMRPhys sıfırdan),2.5280830221803168,90.0
+MMPD (telefon),p25_6,7. tur B (MMRPhys sıfırdan)+Viterbi,2.4132092168594754,90.0
+MMPD (telefon),p25_7,7. tur B (MMRPhys sıfırdan),14.622999519970495,38.0
+MMPD (telefon),p25_7,7. tur B (MMRPhys sıfırdan)+Viterbi,6.6362680999575385,48.0
+MMPD (telefon),p25_8,7. tur B (MMRPhys sıfırdan),0.8264734628047583,100.0
+MMPD (telefon),p25_8,7. tur B (MMRPhys sıfırdan)+Viterbi,0.7842862259450311,100.0
+MMPD (telefon),p25_9,7. tur B (MMRPhys sıfırdan),9.413211347408174,52.0
+MMPD (telefon),p25_9,7. tur B (MMRPhys sıfırdan)+Viterbi,2.9497064703006464,86.0
+MMPD (telefon),p30_0,7. tur B (MMRPhys sıfırdan),12.50574616787703,30.0
+MMPD (telefon),p30_0,7. tur B (MMRPhys sıfırdan)+Viterbi,9.655292910511648,34.0
+MMPD (telefon),p30_1,7. tur B (MMRPhys sıfırdan),21.961601431766475,0.0
+MMPD (telefon),p30_1,7. tur B (MMRPhys sıfırdan)+Viterbi,17.351896281367903,10.0
+MMPD (telefon),p30_10,7. tur B (MMRPhys sıfırdan),3.4813170459121694,92.0
+MMPD (telefon),p30_10,7. tur B (MMRPhys sıfırdan)+Viterbi,0.8756202404223004,100.0
+MMPD (telefon),p30_12,7. tur B (MMRPhys sıfırdan),10.48319921084727,56.00000000000001
+MMPD (telefon),p30_12,7. tur B (MMRPhys sıfırdan)+Viterbi,3.411073502635056,80.0
+MMPD (telefon),p30_13,7. tur B (MMRPhys sıfırdan),18.622854589741898,44.0
+MMPD (telefon),p30_13,7. tur B (MMRPhys sıfırdan)+Viterbi,11.979508786795847,54.0
+MMPD (telefon),p30_14,7. tur B (MMRPhys sıfırdan),35.84820726351806,12.0
+MMPD (telefon),p30_14,7. tur B (MMRPhys sıfırdan)+Viterbi,44.096390435263665,0.0
+MMPD (telefon),p30_15,7. tur B (MMRPhys sıfırdan),17.611866529192923,34.0
+MMPD (telefon),p30_15,7. tur B (MMRPhys sıfırdan)+Viterbi,6.436399933415539,56.00000000000001
+MMPD (telefon),p30_16,7. tur B (MMRPhys sıfırdan),7.172134521533614,70.0
+MMPD (telefon),p30_16,7. tur B (MMRPhys sıfırdan)+Viterbi,2.34530582634634,90.0
+MMPD (telefon),p30_18,7. tur B (MMRPhys sıfırdan),5.167710576708289,88.0
+MMPD (telefon),p30_18,7. tur B (MMRPhys sıfırdan)+Viterbi,1.1126489818980732,100.0
+MMPD (telefon),p30_19,7. tur B (MMRPhys sıfırdan),32.26086959790663,4.0
+MMPD (telefon),p30_19,7. tur B (MMRPhys sıfırdan)+Viterbi,50.17000941628317,0.0
+MMPD (telefon),p30_2,7. tur B (MMRPhys sıfırdan),17.566227764255025,26.0
+MMPD (telefon),p30_2,7. tur B (MMRPhys sıfırdan)+Viterbi,9.903711201014753,32.0
+MMPD (telefon),p30_3,7. tur B (MMRPhys sıfırdan),45.141954266135144,0.0
+MMPD (telefon),p30_3,7. tur B (MMRPhys sıfırdan)+Viterbi,47.75659413689855,0.0
+MMPD (telefon),p30_4,7. tur B (MMRPhys sıfırdan),3.012941381195626,84.0
+MMPD (telefon),p30_4,7. tur B (MMRPhys sıfırdan)+Viterbi,1.0492756296065402,100.0
+MMPD (telefon),p30_5,7. tur B (MMRPhys sıfırdan),16.25897248302228,10.0
+MMPD (telefon),p30_5,7. tur B (MMRPhys sıfırdan)+Viterbi,15.51297451346717,14.000000000000002
+MMPD (telefon),p30_6,7. tur B (MMRPhys sıfırdan),15.952024461044429,54.0
+MMPD (telefon),p30_6,7. tur B (MMRPhys sıfırdan)+Viterbi,3.248965186236902,74.0
+MMPD (telefon),p30_8,7. tur B (MMRPhys sıfırdan),1.9547179085226034,90.0
+MMPD (telefon),p30_8,7. tur B (MMRPhys sıfırdan)+Viterbi,1.8708456890342469,90.0
+MMPD (telefon),p5_0,7. tur B (MMRPhys sıfırdan),6.148304331676702,80.0
+MMPD (telefon),p5_0,7. tur B (MMRPhys sıfırdan)+Viterbi,1.9472714685621002,90.0
+MMPD (telefon),p5_1,7. tur B (MMRPhys sıfırdan),12.857150179678928,54.0
+MMPD (telefon),p5_1,7. tur B (MMRPhys sıfırdan)+Viterbi,7.19797675796324,72.0
+MMPD (telefon),p5_10,7. tur B (MMRPhys sıfırdan),3.3372379432060053,86.0
+MMPD (telefon),p5_10,7. tur B (MMRPhys sıfırdan)+Viterbi,2.1408590378843586,90.0
+MMPD (telefon),p5_11,7. tur B (MMRPhys sıfırdan),36.07709732317992,0.0
+MMPD (telefon),p5_11,7. tur B (MMRPhys sıfırdan)+Viterbi,36.55539574128478,0.0
+MMPD (telefon),p5_12,7. tur B (MMRPhys sıfırdan),0.8764990288936128,100.0
+MMPD (telefon),p5_12,7. tur B (MMRPhys sıfırdan)+Viterbi,0.8764990288936128,100.0
+MMPD (telefon),p5_13,7. tur B (MMRPhys sıfırdan),0.6817938452548833,100.0
+MMPD (telefon),p5_13,7. tur B (MMRPhys sıfırdan)+Viterbi,0.6817938452548833,100.0
+MMPD (telefon),p5_14,7. tur B (MMRPhys sıfırdan),1.3750119999319559,98.0
+MMPD (telefon),p5_14,7. tur B (MMRPhys sıfırdan)+Viterbi,0.8345932467866775,100.0
+MMPD (telefon),p5_15,7. tur B (MMRPhys sıfırdan),0.9876402090324583,100.0
+MMPD (telefon),p5_15,7. tur B (MMRPhys sıfırdan)+Viterbi,0.9876402090324583,100.0
+MMPD (telefon),p5_16,7. tur B (MMRPhys sıfırdan),0.738601477867019,100.0
+MMPD (telefon),p5_16,7. tur B (MMRPhys sıfırdan)+Viterbi,0.738601477867019,100.0
+MMPD (telefon),p5_17,7. tur B (MMRPhys sıfırdan),15.133640936772922,56.00000000000001
+MMPD (telefon),p5_17,7. tur B (MMRPhys sıfırdan)+Viterbi,2.4952142262096255,90.0
+MMPD (telefon),p5_18,7. tur B (MMRPhys sıfırdan),3.8035158678274184,92.0
+MMPD (telefon),p5_18,7. tur B (MMRPhys sıfırdan)+Viterbi,0.7384398252930847,100.0
+MMPD (telefon),p5_19,7. tur B (MMRPhys sıfırdan),30.10480974377886,6.0
+MMPD (telefon),p5_19,7. tur B (MMRPhys sıfırdan)+Viterbi,28.426499169356283,4.0
+MMPD (telefon),p5_2,7. tur B (MMRPhys sıfırdan),1.8531866058253064,92.0
+MMPD (telefon),p5_2,7. tur B (MMRPhys sıfırdan)+Viterbi,0.7610867905866407,100.0
+MMPD (telefon),p5_3,7. tur B (MMRPhys sıfırdan),13.213348223022262,44.0
+MMPD (telefon),p5_3,7. tur B (MMRPhys sıfırdan)+Viterbi,9.85183702523103,48.0
+MMPD (telefon),p5_4,7. tur B (MMRPhys sıfırdan),0.9599656777991855,98.0
+MMPD (telefon),p5_4,7. tur B (MMRPhys sıfırdan)+Viterbi,0.7109754025871579,100.0
+MMPD (telefon),p5_5,7. tur B (MMRPhys sıfırdan),8.390145405131397,76.0
+MMPD (telefon),p5_5,7. tur B (MMRPhys sıfırdan)+Viterbi,2.5714335854450803,86.0
+MMPD (telefon),p5_6,7. tur B (MMRPhys sıfırdan),5.511826703894347,72.0
+MMPD (telefon),p5_6,7. tur B (MMRPhys sıfırdan)+Viterbi,4.031134337942143,76.0
+MMPD (telefon),p5_7,7. tur B (MMRPhys sıfırdan),12.480243887376682,28.000000000000004
+MMPD (telefon),p5_7,7. tur B (MMRPhys sıfırdan)+Viterbi,6.7661311250657175,44.0
+MMPD (telefon),p5_8,7. tur B (MMRPhys sıfırdan),0.7324618885838396,100.0
+MMPD (telefon),p5_8,7. tur B (MMRPhys sıfırdan)+Viterbi,0.7367030346397538,100.0
+MMPD (telefon),p5_9,7. tur B (MMRPhys sıfırdan),15.417658936792336,34.0
+MMPD (telefon),p5_9,7. tur B (MMRPhys sıfırdan)+Viterbi,6.539704248507542,44.0
+MMPD (telefon),p10_0,7. tur D (B'den ince ayar),6.125840803881834,84.0
+MMPD (telefon),p10_0,7. tur D (B'den ince ayar)+Viterbi,1.4059324852129942,100.0
+MMPD (telefon),p10_1,7. tur D (B'den ince ayar),13.789807544732373,38.0
+MMPD (telefon),p10_1,7. tur D (B'den ince ayar)+Viterbi,9.508914946115455,30.0
+MMPD (telefon),p10_10,7. tur D (B'den ince ayar),19.22555251324057,14.000000000000002
+MMPD (telefon),p10_10,7. tur D (B'den ince ayar)+Viterbi,18.824308399402668,4.0
+MMPD (telefon),p10_11,7. tur D (B'den ince ayar),27.4215289831168,16.0
+MMPD (telefon),p10_11,7. tur D (B'den ince ayar)+Viterbi,36.53262772304406,0.0
+MMPD (telefon),p10_12,7. tur D (B'den ince ayar),13.205098595723145,44.0
+MMPD (telefon),p10_12,7. tur D (B'den ince ayar)+Viterbi,5.791627773749342,56.00000000000001
+MMPD (telefon),p10_13,7. tur D (B'den ince ayar),20.111639099225762,24.0
+MMPD (telefon),p10_13,7. tur D (B'den ince ayar)+Viterbi,29.276986056974337,8.0
+MMPD (telefon),p10_14,7. tur D (B'den ince ayar),3.3388551738222882,74.0
+MMPD (telefon),p10_14,7. tur D (B'den ince ayar)+Viterbi,2.9494960319006975,72.0
+MMPD (telefon),p10_15,7. tur D (B'den ince ayar),12.184526045289335,24.0
+MMPD (telefon),p10_15,7. tur D (B'den ince ayar)+Viterbi,9.626715665405115,32.0
+MMPD (telefon),p10_16,7. tur D (B'den ince ayar),42.30050847048629,0.0
+MMPD (telefon),p10_16,7. tur D (B'den ince ayar)+Viterbi,41.23999251830628,0.0
+MMPD (telefon),p10_17,7. tur D (B'den ince ayar),16.419022878041616,8.0
+MMPD (telefon),p10_17,7. tur D (B'den ince ayar)+Viterbi,17.298949335531663,4.0
+MMPD (telefon),p10_18,7. tur D (B'den ince ayar),18.045401742979728,32.0
+MMPD (telefon),p10_18,7. tur D (B'den ince ayar)+Viterbi,11.373864362758944,50.0
+MMPD (telefon),p10_19,7. tur D (B'den ince ayar),16.214154842819717,24.0
+MMPD (telefon),p10_19,7. tur D (B'den ince ayar)+Viterbi,15.953369921366185,26.0
+MMPD (telefon),p10_2,7. tur D (B'den ince ayar),13.825895037386081,42.0
+MMPD (telefon),p10_2,7. tur D (B'den ince ayar)+Viterbi,8.488417956856301,54.0
+MMPD (telefon),p10_3,7. tur D (B'den ince ayar),26.049042058610056,4.0
+MMPD (telefon),p10_3,7. tur D (B'den ince ayar)+Viterbi,22.177473158144494,4.0
+MMPD (telefon),p10_4,7. tur D (B'den ince ayar),3.5777611030755234,86.0
+MMPD (telefon),p10_4,7. tur D (B'den ince ayar)+Viterbi,2.3136079663658498,92.0
+MMPD (telefon),p10_5,7. tur D (B'den ince ayar),17.42995193156354,32.0
+MMPD (telefon),p10_5,7. tur D (B'den ince ayar)+Viterbi,5.92057987690451,48.0
+MMPD (telefon),p10_6,7. tur D (B'den ince ayar),22.679855481678633,16.0
+MMPD (telefon),p10_6,7. tur D (B'den ince ayar)+Viterbi,15.461318127765725,8.0
+MMPD (telefon),p10_7,7. tur D (B'den ince ayar),24.423993857301284,14.000000000000002
+MMPD (telefon),p10_7,7. tur D (B'den ince ayar)+Viterbi,35.94300548572203,0.0
+MMPD (telefon),p10_8,7. tur D (B'den ince ayar),10.836145522608971,54.0
+MMPD (telefon),p10_8,7. tur D (B'den ince ayar)+Viterbi,6.023381700042924,70.0
+MMPD (telefon),p10_9,7. tur D (B'den ince ayar),10.01385648010628,34.0
+MMPD (telefon),p10_9,7. tur D (B'den ince ayar)+Viterbi,10.033521231453241,26.0
+MMPD (telefon),p15_0,7. tur D (B'den ince ayar),18.07593900881296,26.0
+MMPD (telefon),p15_0,7. tur D (B'den ince ayar)+Viterbi,9.007998049669812,46.0
+MMPD (telefon),p15_1,7. tur D (B'den ince ayar),21.365349915009496,14.000000000000002
+MMPD (telefon),p15_1,7. tur D (B'den ince ayar)+Viterbi,8.971916472198348,20.0
+MMPD (telefon),p15_10,7. tur D (B'den ince ayar),16.192648226629515,28.000000000000004
+MMPD (telefon),p15_10,7. tur D (B'den ince ayar)+Viterbi,7.354727193078102,44.0
+MMPD (telefon),p15_11,7. tur D (B'den ince ayar),39.2157148320851,2.0
+MMPD (telefon),p15_11,7. tur D (B'den ince ayar)+Viterbi,50.20462623926005,0.0
+MMPD (telefon),p15_12,7. tur D (B'den ince ayar),19.51296932710123,28.000000000000004
+MMPD (telefon),p15_12,7. tur D (B'den ince ayar)+Viterbi,21.518826743070118,16.0
+MMPD (telefon),p15_13,7. tur D (B'den ince ayar),19.849852051156855,26.0
+MMPD (telefon),p15_13,7. tur D (B'den ince ayar)+Viterbi,12.663161672271777,42.0
+MMPD (telefon),p15_14,7. tur D (B'den ince ayar),21.556718544988303,32.0
+MMPD (telefon),p15_14,7. tur D (B'den ince ayar)+Viterbi,30.05778691121333,36.0
+MMPD (telefon),p15_15,7. tur D (B'den ince ayar),19.26046944661008,34.0
+MMPD (telefon),p15_15,7. tur D (B'den ince ayar)+Viterbi,9.093900276474875,57.99999999999999
+MMPD (telefon),p15_16,7. tur D (B'den ince ayar),19.03663897231173,30.0
+MMPD (telefon),p15_16,7. tur D (B'den ince ayar)+Viterbi,11.348686700930998,38.0
+MMPD (telefon),p15_18,7. tur D (B'den ince ayar),13.541906166588424,48.0
+MMPD (telefon),p15_18,7. tur D (B'den ince ayar)+Viterbi,18.375547367232404,34.0
+MMPD (telefon),p15_19,7. tur D (B'den ince ayar),21.24749406947988,24.0
+MMPD (telefon),p15_19,7. tur D (B'den ince ayar)+Viterbi,20.078372222783152,10.0
+MMPD (telefon),p15_2,7. tur D (B'den ince ayar),21.515582223149018,26.0
+MMPD (telefon),p15_2,7. tur D (B'den ince ayar)+Viterbi,31.015641243798697,10.0
+MMPD (telefon),p15_3,7. tur D (B'den ince ayar),80.58010831415876,14.000000000000002
+MMPD (telefon),p15_3,7. tur D (B'den ince ayar)+Viterbi,74.09950032063654,16.0
+MMPD (telefon),p15_4,7. tur D (B'den ince ayar),18.548064834600765,22.0
+MMPD (telefon),p15_4,7. tur D (B'den ince ayar)+Viterbi,19.61547912178152,20.0
+MMPD (telefon),p15_5,7. tur D (B'den ince ayar),12.609083758540612,30.0
+MMPD (telefon),p15_5,7. tur D (B'den ince ayar)+Viterbi,5.242253943721903,50.0
+MMPD (telefon),p15_6,7. tur D (B'den ince ayar),16.9881038441793,20.0
+MMPD (telefon),p15_6,7. tur D (B'den ince ayar)+Viterbi,22.871445943258603,0.0
+MMPD (telefon),p15_7,7. tur D (B'den ince ayar),51.31389818255313,2.0
+MMPD (telefon),p15_7,7. tur D (B'den ince ayar)+Viterbi,56.258878159457474,2.0
+MMPD (telefon),p15_8,7. tur D (B'den ince ayar),8.682860367915062,40.0
+MMPD (telefon),p15_8,7. tur D (B'den ince ayar)+Viterbi,5.4443764900652445,54.0
+MMPD (telefon),p15_9,7. tur D (B'den ince ayar),18.60055954191334,18.0
+MMPD (telefon),p15_9,7. tur D (B'den ince ayar)+Viterbi,21.2246885915627,0.0
+MMPD (telefon),p20_0,7. tur D (B'den ince ayar),1.2270304816379067,96.0
+MMPD (telefon),p20_0,7. tur D (B'den ince ayar)+Viterbi,1.2270304816379067,96.0
+MMPD (telefon),p20_1,7. tur D (B'den ince ayar),12.968073458012132,30.0
+MMPD (telefon),p20_1,7. tur D (B'den ince ayar)+Viterbi,6.575375003408815,38.0
+MMPD (telefon),p20_10,7. tur D (B'den ince ayar),2.6244667183086596,92.0
+MMPD (telefon),p20_10,7. tur D (B'den ince ayar)+Viterbi,0.4797847076228595,100.0
+MMPD (telefon),p20_11,7. tur D (B'den ince ayar),14.726012573158409,50.0
+MMPD (telefon),p20_11,7. tur D (B'den ince ayar)+Viterbi,12.145045464415773,54.0
+MMPD (telefon),p20_12,7. tur D (B'den ince ayar),1.451470356176366,96.0
+MMPD (telefon),p20_12,7. tur D (B'den ince ayar)+Viterbi,1.6882409342608142,94.0
+MMPD (telefon),p20_13,7. tur D (B'den ince ayar),0.657474850783687,100.0
+MMPD (telefon),p20_13,7. tur D (B'den ince ayar)+Viterbi,0.660389059771228,100.0
+MMPD (telefon),p20_14,7. tur D (B'den ince ayar),0.5523073750354126,100.0
+MMPD (telefon),p20_14,7. tur D (B'den ince ayar)+Viterbi,0.5523073750354126,100.0
+MMPD (telefon),p20_15,7. tur D (B'den ince ayar),0.80497760810562,100.0
+MMPD (telefon),p20_15,7. tur D (B'den ince ayar)+Viterbi,0.80497760810562,100.0
+MMPD (telefon),p20_16,7. tur D (B'den ince ayar),0.7828246052218129,100.0
+MMPD (telefon),p20_16,7. tur D (B'den ince ayar)+Viterbi,0.7828246052218129,100.0
+MMPD (telefon),p20_17,7. tur D (B'den ince ayar),7.988193669449849,57.99999999999999
+MMPD (telefon),p20_17,7. tur D (B'den ince ayar)+Viterbi,4.959714594108916,68.0
+MMPD (telefon),p20_18,7. tur D (B'den ince ayar),2.8958288133432823,84.0
+MMPD (telefon),p20_18,7. tur D (B'den ince ayar)+Viterbi,2.6597007474233667,86.0
+MMPD (telefon),p20_19,7. tur D (B'den ince ayar),43.71515549061161,22.0
+MMPD (telefon),p20_19,7. tur D (B'den ince ayar)+Viterbi,41.16147867233439,16.0
+MMPD (telefon),p20_2,7. tur D (B'den ince ayar),5.832791660549504,66.0
+MMPD (telefon),p20_2,7. tur D (B'den ince ayar)+Viterbi,3.1078068102674217,76.0
+MMPD (telefon),p20_3,7. tur D (B'den ince ayar),9.942953863560223,52.0
+MMPD (telefon),p20_3,7. tur D (B'den ince ayar)+Viterbi,4.444872676710521,70.0
+MMPD (telefon),p20_4,7. tur D (B'den ince ayar),0.6202704765164612,100.0
+MMPD (telefon),p20_4,7. tur D (B'den ince ayar)+Viterbi,0.6202704765164612,100.0
+MMPD (telefon),p20_5,7. tur D (B'den ince ayar),21.24534899028177,16.0
+MMPD (telefon),p20_5,7. tur D (B'den ince ayar)+Viterbi,21.00528572339691,22.0
+MMPD (telefon),p20_6,7. tur D (B'den ince ayar),3.5021717867253166,88.0
+MMPD (telefon),p20_6,7. tur D (B'den ince ayar)+Viterbi,1.8508517467920151,90.0
+MMPD (telefon),p20_7,7. tur D (B'den ince ayar),24.114310632702008,48.0
+MMPD (telefon),p20_7,7. tur D (B'den ince ayar)+Viterbi,18.596320433686603,46.0
+MMPD (telefon),p20_8,7. tur D (B'den ince ayar),1.9605444665341019,96.0
+MMPD (telefon),p20_8,7. tur D (B'den ince ayar)+Viterbi,0.9725433271762384,100.0
+MMPD (telefon),p20_9,7. tur D (B'den ince ayar),19.034181501107156,12.0
+MMPD (telefon),p20_9,7. tur D (B'den ince ayar)+Viterbi,9.69692275253856,28.000000000000004
+MMPD (telefon),p25_0,7. tur D (B'den ince ayar),1.7733992046997136,90.0
+MMPD (telefon),p25_0,7. tur D (B'den ince ayar)+Viterbi,0.7575477932313336,100.0
+MMPD (telefon),p25_1,7. tur D (B'den ince ayar),10.981012345859485,64.0
+MMPD (telefon),p25_1,7. tur D (B'den ince ayar)+Viterbi,2.800388030633276,84.0
+MMPD (telefon),p25_10,7. tur D (B'den ince ayar),0.632448055339373,100.0
+MMPD (telefon),p25_10,7. tur D (B'den ince ayar)+Viterbi,0.632448055339373,100.0
+MMPD (telefon),p25_11,7. tur D (B'den ince ayar),40.314091621959676,30.0
+MMPD (telefon),p25_11,7. tur D (B'den ince ayar)+Viterbi,34.34791950126048,28.000000000000004
+MMPD (telefon),p25_12,7. tur D (B'den ince ayar),1.3612313860698861,96.0
+MMPD (telefon),p25_12,7. tur D (B'den ince ayar)+Viterbi,0.9019263368525882,100.0
+MMPD (telefon),p25_13,7. tur D (B'den ince ayar),0.3526990683037931,100.0
+MMPD (telefon),p25_13,7. tur D (B'den ince ayar)+Viterbi,0.3526990683037931,100.0
+MMPD (telefon),p25_14,7. tur D (B'den ince ayar),0.5233019457636019,100.0
+MMPD (telefon),p25_14,7. tur D (B'den ince ayar)+Viterbi,0.5233019457636019,100.0
+MMPD (telefon),p25_15,7. tur D (B'den ince ayar),0.3226409325994652,100.0
+MMPD (telefon),p25_15,7. tur D (B'den ince ayar)+Viterbi,0.3226409325994652,100.0
+MMPD (telefon),p25_16,7. tur D (B'den ince ayar),12.221917032070792,82.0
+MMPD (telefon),p25_16,7. tur D (B'den ince ayar)+Viterbi,9.881294400169619,90.0
+MMPD (telefon),p25_17,7. tur D (B'den ince ayar),26.741142936935002,30.0
+MMPD (telefon),p25_17,7. tur D (B'den ince ayar)+Viterbi,28.415933792168243,24.0
+MMPD (telefon),p25_18,7. tur D (B'den ince ayar),72.45423499754324,24.0
+MMPD (telefon),p25_18,7. tur D (B'den ince ayar)+Viterbi,67.74347119012066,28.000000000000004
+MMPD (telefon),p25_19,7. tur D (B'den ince ayar),119.21345565572592,0.0
+MMPD (telefon),p25_19,7. tur D (B'den ince ayar)+Viterbi,106.61476710885641,0.0
+MMPD (telefon),p25_2,7. tur D (B'den ince ayar),8.575468493235377,62.0
+MMPD (telefon),p25_2,7. tur D (B'den ince ayar)+Viterbi,6.5569795511236,64.0
+MMPD (telefon),p25_3,7. tur D (B'den ince ayar),16.733856095958455,16.0
+MMPD (telefon),p25_3,7. tur D (B'den ince ayar)+Viterbi,18.37450807849264,0.0
+MMPD (telefon),p25_4,7. tur D (B'den ince ayar),1.9614838332626396,90.0
+MMPD (telefon),p25_4,7. tur D (B'den ince ayar)+Viterbi,1.8179824382569845,92.0
+MMPD (telefon),p25_5,7. tur D (B'den ince ayar),7.546464725539959,68.0
+MMPD (telefon),p25_5,7. tur D (B'den ince ayar)+Viterbi,2.0397805865157337,90.0
+MMPD (telefon),p25_6,7. tur D (B'den ince ayar),3.032170624392253,88.0
+MMPD (telefon),p25_6,7. tur D (B'den ince ayar)+Viterbi,2.171724243520906,90.0
+MMPD (telefon),p25_7,7. tur D (B'den ince ayar),15.230046818490683,38.0
+MMPD (telefon),p25_7,7. tur D (B'den ince ayar)+Viterbi,7.2468359091423675,38.0
+MMPD (telefon),p25_8,7. tur D (B'den ince ayar),0.7780331215248808,100.0
+MMPD (telefon),p25_8,7. tur D (B'den ince ayar)+Viterbi,0.778559642595292,100.0
+MMPD (telefon),p25_9,7. tur D (B'den ince ayar),5.079529389834372,76.0
+MMPD (telefon),p25_9,7. tur D (B'den ince ayar)+Viterbi,2.959617892724716,82.0
+MMPD (telefon),p30_0,7. tur D (B'den ince ayar),13.247236035151877,26.0
+MMPD (telefon),p30_0,7. tur D (B'den ince ayar)+Viterbi,7.897290319840085,40.0
+MMPD (telefon),p30_1,7. tur D (B'den ince ayar),25.45415255614377,0.0
+MMPD (telefon),p30_1,7. tur D (B'den ince ayar)+Viterbi,17.183489127200602,10.0
+MMPD (telefon),p30_10,7. tur D (B'den ince ayar),4.365582710498023,90.0
+MMPD (telefon),p30_10,7. tur D (B'den ince ayar)+Viterbi,1.0366611776333192,100.0
+MMPD (telefon),p30_12,7. tur D (B'den ince ayar),10.566374440306447,56.00000000000001
+MMPD (telefon),p30_12,7. tur D (B'den ince ayar)+Viterbi,4.1897121075972725,70.0
+MMPD (telefon),p30_13,7. tur D (B'den ince ayar),16.466781267494376,44.0
+MMPD (telefon),p30_13,7. tur D (B'den ince ayar)+Viterbi,11.070771434322928,66.0
+MMPD (telefon),p30_14,7. tur D (B'den ince ayar),34.830812008749035,18.0
+MMPD (telefon),p30_14,7. tur D (B'den ince ayar)+Viterbi,39.91818760925254,0.0
+MMPD (telefon),p30_15,7. tur D (B'den ince ayar),16.3588641329516,30.0
+MMPD (telefon),p30_15,7. tur D (B'den ince ayar)+Viterbi,7.397026483998219,42.0
+MMPD (telefon),p30_16,7. tur D (B'den ince ayar),7.396885322325674,68.0
+MMPD (telefon),p30_16,7. tur D (B'den ince ayar)+Viterbi,2.406946579547369,90.0
+MMPD (telefon),p30_18,7. tur D (B'den ince ayar),5.464458392898689,84.0
+MMPD (telefon),p30_18,7. tur D (B'den ince ayar)+Viterbi,1.1179034185305536,100.0
+MMPD (telefon),p30_19,7. tur D (B'den ince ayar),27.954537634345996,6.0
+MMPD (telefon),p30_19,7. tur D (B'den ince ayar)+Viterbi,43.33785062695754,0.0
+MMPD (telefon),p30_2,7. tur D (B'den ince ayar),15.514729403075526,30.0
+MMPD (telefon),p30_2,7. tur D (B'den ince ayar)+Viterbi,9.834110338211008,28.000000000000004
+MMPD (telefon),p30_3,7. tur D (B'den ince ayar),47.414638168655095,0.0
+MMPD (telefon),p30_3,7. tur D (B'den ince ayar)+Viterbi,54.81005799715731,0.0
+MMPD (telefon),p30_4,7. tur D (B'den ince ayar),4.088281997446083,82.0
+MMPD (telefon),p30_4,7. tur D (B'den ince ayar)+Viterbi,1.9698397637245901,92.0
+MMPD (telefon),p30_5,7. tur D (B'den ince ayar),16.952606874517635,8.0
+MMPD (telefon),p30_5,7. tur D (B'den ince ayar)+Viterbi,21.621731208207763,0.0
+MMPD (telefon),p30_6,7. tur D (B'den ince ayar),14.092337600938274,66.0
+MMPD (telefon),p30_6,7. tur D (B'den ince ayar)+Viterbi,2.3072733536200873,90.0
+MMPD (telefon),p30_8,7. tur D (B'den ince ayar),1.8248499850650606,92.0
+MMPD (telefon),p30_8,7. tur D (B'den ince ayar)+Viterbi,1.9111181524349725,90.0
+MMPD (telefon),p5_0,7. tur D (B'den ince ayar),6.55181327480096,78.0
+MMPD (telefon),p5_0,7. tur D (B'den ince ayar)+Viterbi,1.8687147627887193,90.0
+MMPD (telefon),p5_1,7. tur D (B'den ince ayar),12.448175594529408,64.0
+MMPD (telefon),p5_1,7. tur D (B'den ince ayar)+Viterbi,6.858702471876755,72.0
+MMPD (telefon),p5_10,7. tur D (B'den ince ayar),2.8803600039373536,84.0
+MMPD (telefon),p5_10,7. tur D (B'den ince ayar)+Viterbi,2.1145822786120174,88.0
+MMPD (telefon),p5_11,7. tur D (B'den ince ayar),35.876057975307305,0.0
+MMPD (telefon),p5_11,7. tur D (B'den ince ayar)+Viterbi,33.45619649674845,2.0
+MMPD (telefon),p5_12,7. tur D (B'den ince ayar),0.7660915768140026,100.0
+MMPD (telefon),p5_12,7. tur D (B'den ince ayar)+Viterbi,0.7684167280195737,100.0
+MMPD (telefon),p5_13,7. tur D (B'den ince ayar),0.6262160484175496,100.0
+MMPD (telefon),p5_13,7. tur D (B'den ince ayar)+Viterbi,0.6262160484175496,100.0
+MMPD (telefon),p5_14,7. tur D (B'den ince ayar),1.9904694075576261,94.0
+MMPD (telefon),p5_14,7. tur D (B'den ince ayar)+Viterbi,0.8499867375369976,100.0
+MMPD (telefon),p5_15,7. tur D (B'den ince ayar),0.9242520910211328,100.0
+MMPD (telefon),p5_15,7. tur D (B'den ince ayar)+Viterbi,0.9242520910211328,100.0
+MMPD (telefon),p5_16,7. tur D (B'den ince ayar),0.7022031498118136,100.0
+MMPD (telefon),p5_16,7. tur D (B'den ince ayar)+Viterbi,0.7022031498118136,100.0
+MMPD (telefon),p5_17,7. tur D (B'den ince ayar),5.769220325254148,86.0
+MMPD (telefon),p5_17,7. tur D (B'den ince ayar)+Viterbi,1.4788164636400236,100.0
+MMPD (telefon),p5_18,7. tur D (B'den ince ayar),3.8476420887654923,92.0
+MMPD (telefon),p5_18,7. tur D (B'den ince ayar)+Viterbi,0.7980553842993962,100.0
+MMPD (telefon),p5_19,7. tur D (B'den ince ayar),30.967604811913994,4.0
+MMPD (telefon),p5_19,7. tur D (B'den ince ayar)+Viterbi,28.777004081932866,4.0
+MMPD (telefon),p5_2,7. tur D (B'den ince ayar),2.0654002219676886,90.0
+MMPD (telefon),p5_2,7. tur D (B'den ince ayar)+Viterbi,0.770083710015096,100.0
+MMPD (telefon),p5_3,7. tur D (B'den ince ayar),12.081945180063336,50.0
+MMPD (telefon),p5_3,7. tur D (B'den ince ayar)+Viterbi,8.182134105093356,72.0
+MMPD (telefon),p5_4,7. tur D (B'den ince ayar),0.6748231129091056,100.0
+MMPD (telefon),p5_4,7. tur D (B'den ince ayar)+Viterbi,0.6748231129091056,100.0
+MMPD (telefon),p5_5,7. tur D (B'den ince ayar),10.60651264610386,68.0
+MMPD (telefon),p5_5,7. tur D (B'den ince ayar)+Viterbi,12.809288563319333,57.99999999999999
+MMPD (telefon),p5_6,7. tur D (B'den ince ayar),5.1082684667779175,72.0
+MMPD (telefon),p5_6,7. tur D (B'den ince ayar)+Viterbi,1.9007059573207217,88.0
+MMPD (telefon),p5_7,7. tur D (B'den ince ayar),10.814221369671039,34.0
+MMPD (telefon),p5_7,7. tur D (B'den ince ayar)+Viterbi,7.554116777759763,36.0
+MMPD (telefon),p5_8,7. tur D (B'den ince ayar),0.76609972498628,100.0
+MMPD (telefon),p5_8,7. tur D (B'den ince ayar)+Viterbi,0.768285755204158,100.0
+MMPD (telefon),p5_9,7. tur D (B'den ince ayar),11.40833138665064,50.0
+MMPD (telefon),p5_9,7. tur D (B'den ince ayar)+Viterbi,5.049246614886975,64.0

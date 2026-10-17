@@ -1,0 +1,870 @@
+eğitim 1430 video (178 kişi), doğrulama 47 video, cihaz cuda
+mimari mmrphys (37480 parametre), başlangıç ağırlıkları: results/derin_ogrenme/kaggle_tur7_B/best.pth, kayıp smooth_l1
+başlangıç modeli doğrulama MAE: 1.72 BPM
+  doğrulama: cohface/COHFACE 1.28 (8), dlcn/C922 2.02 (13), vipl/source1 1.45 (13), vipl/source3 1.97 (13)
+  örnekleme payı: vipl %58, dlcn %31, cohface %12
+  örnekleme payı: mcd %73, vipl %16, dlcn %8, cohface %3
+  eğitim kümesi: 1435 video (180 kişi)
+  epoch 1 adım 100/500 kayıp 0.4181
+  epoch 1 adım 200/500 kayıp 0.3954
+  epoch 1 adım 300/500 kayıp 0.3916
+  epoch 1 adım 400/500 kayıp 0.3765
+  epoch 1 adım 500/500 kayıp 0.3715
+epoch 1: kayıp 0.3906, doğrulama MAE 1.84 BPM, en iyi 1.72 (epoch 0), 173 s [10:36:17]
+  doğrulama: cohface/COHFACE 1.51 (8), dlcn/C922 2.05 (13), vipl/source1 1.51 (13), vipl/source3 2.15 (13)
+  örnekleme payı: mcd %73, vipl %16, dlcn %8, cohface %3
+  eğitim kümesi: 1473 video (186 kişi)
+  doğrulama kümesi değişti (34 video); en iyi (epoch 0) yeniden ölçüldü: 1.53 BPM
+  epoch 2 adım 100/500 kayıp 0.3347
+  epoch 2 adım 200/500 kayıp 0.3207
+  epoch 2 adım 300/500 kayıp 0.3303
+  epoch 2 adım 400/500 kayıp 0.3217
+  epoch 2 adım 500/500 kayıp 0.3209
+epoch 2: kayıp 0.3257, doğrulama MAE 1.50 BPM, en iyi 1.50 (epoch 2), 155 s [10:38:52]
+  doğrulama: cohface/COHFACE 1.52 (7), dlcn/C922 2.53 (7), mcd/FullHDwebcam 0.55 (2), mcd/IriunWebcam 0.59 (2), mcd/USBVideo 0.98 (2), vipl/source1 1.21 (7), vipl/source3 1.44 (7)
+  örnekleme payı: mcd %73, vipl %16, dlcn %8, cohface %3
+  eğitim kümesi: 1498 video (191 kişi)
+  doğrulama kümesi değişti (46 video); en iyi (epoch 2) yeniden ölçüldü: 1.69 BPM
+  epoch 3 adım 100/500 kayıp 0.3622
+  epoch 3 adım 200/500 kayıp 0.3501
+  epoch 3 adım 300/500 kayıp 0.3604
+  epoch 3 adım 400/500 kayıp 0.3625
+  epoch 3 adım 500/500 kayıp 0.3577
+epoch 3: kayıp 0.3586, doğrulama MAE 1.96 BPM, en iyi 1.69 (epoch 2), 156 s [10:41:28]
+  doğrulama: cohface/COHFACE 1.50 (7), dlcn/C922 2.65 (7), mcd/FullHDwebcam 3.97 (6), mcd/IriunWebcam 1.63 (6), mcd/USBVideo 1.12 (6), vipl/source1 1.21 (7), vipl/source3 1.75 (7)
+  örnekleme payı: mcd %73, vipl %16, dlcn %8, cohface %3
+  eğitim kümesi: 1526 video (198 kişi)
+  epoch 4 adım 100/500 kayıp 0.3414
+  epoch 4 adım 200/500 kayıp 0.3373
+  epoch 4 adım 300/500 kayıp 0.3343
+  epoch 4 adım 400/500 kayıp 0.3447
+  epoch 4 adım 500/500 kayıp 0.3294
+epoch 4: kayıp 0.3374, doğrulama MAE 1.85 BPM, en iyi 1.69 (epoch 2), 148 s [10:43:56]
+  doğrulama: cohface/COHFACE 1.38 (7), dlcn/C922 2.49 (7), mcd/FullHDwebcam 3.71 (6), mcd/IriunWebcam 1.67 (6), mcd/USBVideo 0.88 (6), vipl/source1 1.22 (7), vipl/source3 1.72 (7)
+  örnekleme payı: mcd %73, vipl %16, dlcn %8, cohface %3
+  eğitim kümesi: 1558 video (204 kişi)
+  doğrulama kümesi değişti (48 video); en iyi (epoch 2) yeniden ölçüldü: 1.69 BPM
+  epoch 5 adım 100/500 kayıp 0.3386
+  epoch 5 adım 200/500 kayıp 0.3460
+  epoch 5 adım 300/500 kayıp 0.3406
+  epoch 5 adım 400/500 kayıp 0.3433
+  epoch 5 adım 500/500 kayıp 0.3334
+epoch 5: kayıp 0.3404, doğrulama MAE 1.68 BPM, en iyi 1.68 (epoch 5), 154 s [10:46:30]
+  doğrulama: cohface/COHFACE 1.36 (7), dlcn/C922 2.04 (7), mcd/FullHDwebcam 2.65 (7), mcd/IriunWebcam 1.79 (7), mcd/USBVideo 0.84 (6), vipl/source1 1.23 (7), vipl/source3 1.70 (7)
+  örnekleme payı: mcd %73, vipl %16, dlcn %8, cohface %3
+  eğitim kümesi: 1590 video (210 kişi)
+  epoch 6 adım 100/500 kayıp 0.3402
+  epoch 6 adım 200/500 kayıp 0.3423
+  epoch 6 adım 300/500 kayıp 0.3355
+  epoch 6 adım 400/500 kayıp 0.3345
+  epoch 6 adım 500/500 kayıp 0.3475
+epoch 6: kayıp 0.3400, doğrulama MAE 1.64 BPM, en iyi 1.64 (epoch 6), 150 s [10:49:00]
+  doğrulama: cohface/COHFACE 1.48 (7), dlcn/C922 2.02 (7), mcd/FullHDwebcam 2.51 (7), mcd/IriunWebcam 1.78 (7), mcd/USBVideo 1.01 (6), vipl/source1 1.21 (7), vipl/source3 1.39 (7)
+  örnekleme payı: mcd %73, vipl %16, dlcn %8, cohface %3
+  eğitim kümesi: 1622 video (217 kişi)
+  epoch 7 adım 100/500 kayıp 0.3366
+  epoch 7 adım 200/500 kayıp 0.3423
+  epoch 7 adım 300/500 kayıp 0.3397
+  epoch 7 adım 400/500 kayıp 0.3331
+  epoch 7 adım 500/500 kayıp 0.3432
+epoch 7: kayıp 0.3390, doğrulama MAE 1.59 BPM, en iyi 1.59 (epoch 7), 149 s [10:51:29]
+  doğrulama: cohface/COHFACE 1.48 (7), dlcn/C922 2.04 (7), mcd/FullHDwebcam 2.03 (7), mcd/IriunWebcam 1.72 (7), mcd/USBVideo 1.00 (6), vipl/source1 1.24 (7), vipl/source3 1.58 (7)
+  örnekleme payı: mcd %73, vipl %16, dlcn %8, cohface %3
+  eğitim kümesi: 1649 video (222 kişi)
+  epoch 8 adım 100/500 kayıp 0.3422
+  epoch 8 adım 200/500 kayıp 0.3367
+  epoch 8 adım 300/500 kayıp 0.3398
+  epoch 8 adım 400/500 kayıp 0.3278
+  epoch 8 adım 500/500 kayıp 0.3342
+epoch 8: kayıp 0.3361, doğrulama MAE 1.64 BPM, en iyi 1.59 (epoch 7), 149 s [10:53:57]
+  doğrulama: cohface/COHFACE 1.47 (7), dlcn/C922 2.10 (7), mcd/FullHDwebcam 2.51 (7), mcd/IriunWebcam 1.78 (7), mcd/USBVideo 1.01 (6), vipl/source1 1.20 (7), vipl/source3 1.35 (7)
+  örnekleme payı: mcd %73, vipl %16, dlcn %8, cohface %3
+  eğitim kümesi: 1677 video (228 kişi)
+  epoch 9 adım 100/500 kayıp 0.3416
+  epoch 9 adım 200/500 kayıp 0.3267
+  epoch 9 adım 300/500 kayıp 0.3331
+  epoch 9 adım 400/500 kayıp 0.3268
+  epoch 9 adım 500/500 kayıp 0.3347
+epoch 9: kayıp 0.3326, doğrulama MAE 1.72 BPM, en iyi 1.59 (epoch 7), 149 s [10:56:27]
+  doğrulama: cohface/COHFACE 1.47 (7), dlcn/C922 1.62 (7), mcd/FullHDwebcam 3.24 (7), mcd/IriunWebcam 1.82 (7), mcd/USBVideo 1.05 (6), vipl/source1 1.22 (7), vipl/source3 1.52 (7)
+  örnekleme payı: mcd %73, vipl %16, dlcn %8, cohface %3
+  eğitim kümesi: 1710 video (234 kişi)
+  doğrulama kümesi değişti (49 video); en iyi (epoch 7) yeniden ölçüldü: 1.57 BPM
+  epoch 10 adım 100/500 kayıp 0.3379
+  epoch 10 adım 200/500 kayıp 0.3449
+  epoch 10 adım 300/500 kayıp 0.3317
+  epoch 10 adım 400/500 kayıp 0.3345
+  epoch 10 adım 500/500 kayıp 0.3378
+epoch 10: kayıp 0.3374, doğrulama MAE 1.76 BPM, en iyi 1.57 (epoch 7), 154 s [10:59:01]
+  doğrulama: cohface/COHFACE 1.41 (7), dlcn/C922 2.18 (7), mcd/FullHDwebcam 2.86 (7), mcd/IriunWebcam 1.75 (7), mcd/USBVideo 1.00 (7), vipl/source1 1.23 (7), vipl/source3 1.91 (7)
+  örnekleme payı: mcd %73, vipl %16, dlcn %8, cohface %3
+  eğitim kümesi: 1740 video (240 kişi)
+  epoch 11 adım 100/500 kayıp 0.3330
+  epoch 11 adım 200/500 kayıp 0.3431
+  epoch 11 adım 300/500 kayıp 0.3461
+  epoch 11 adım 400/500 kayıp 0.3436
+  epoch 11 adım 500/500 kayıp 0.3461
+epoch 11: kayıp 0.3424, doğrulama MAE 1.91 BPM, en iyi 1.57 (epoch 7), 148 s [11:01:29]
+  doğrulama: cohface/COHFACE 1.46 (7), dlcn/C922 2.73 (7), mcd/FullHDwebcam 3.51 (7), mcd/IriunWebcam 1.83 (7), mcd/USBVideo 0.98 (7), vipl/source1 1.23 (7), vipl/source3 1.65 (7)
+  örnekleme payı: mcd %73, vipl %16, dlcn %8, cohface %3
+  eğitim kümesi: 1765 video (246 kişi)
+  epoch 12 adım 100/500 kayıp 0.3422
+  epoch 12 adım 200/500 kayıp 0.3448
+  epoch 12 adım 300/500 kayıp 0.3449
+  epoch 12 adım 400/500 kayıp 0.3477
+  epoch 12 adım 500/500 kayıp 0.3333
+epoch 12: kayıp 0.3426, doğrulama MAE 1.83 BPM, en iyi 1.57 (epoch 7), 147 s [11:03:57]
+  doğrulama: cohface/COHFACE 1.46 (7), dlcn/C922 2.67 (7), mcd/FullHDwebcam 2.89 (7), mcd/IriunWebcam 1.96 (7), mcd/USBVideo 1.08 (7), vipl/source1 1.22 (7), vipl/source3 1.55 (7)
+  örnekleme payı: mcd %71, vipl %15, dlcn %8, cohface %3, ubfc %2
+  eğitim kümesi: 1803 video (255 kişi)
+  doğrulama kümesi değişti (43 video); en iyi (epoch 7) yeniden ölçüldü: 1.47 BPM
+  epoch 13 adım 100/500 kayıp 0.3419
+  epoch 13 adım 200/500 kayıp 0.3441
+  epoch 13 adım 300/500 kayıp 0.3468
+  epoch 13 adım 400/500 kayıp 0.3426
+  epoch 13 adım 500/500 kayıp 0.3499
+epoch 13: kayıp 0.3450, doğrulama MAE 2.04 BPM, en iyi 1.47 (epoch 7), 162 s [11:06:39]
+  doğrulama: cohface/COHFACE 1.54 (6), dlcn/C922 2.28 (6), mcd/FullHDwebcam 4.24 (6), mcd/IriunWebcam 1.94 (6), mcd/USBVideo 1.21 (6), ubfc/C920 0.43 (1), vipl/source1 1.01 (6), vipl/source3 2.32 (6)
+  örnekleme payı: mcd %71, vipl %15, dlcn %8, cohface %3, ubfc %2
+  eğitim kümesi: 1838 video (265 kişi)
+  epoch 14 adım 100/500 kayıp 0.3464
+  epoch 14 adım 200/500 kayıp 0.3450
+  epoch 14 adım 300/500 kayıp 0.3395
+  epoch 14 adım 400/500 kayıp 0.3383
+  epoch 14 adım 500/500 kayıp 0.3374
+epoch 14: kayıp 0.3413, doğrulama MAE 1.59 BPM, en iyi 1.47 (epoch 7), 159 s [11:09:19]
+  doğrulama: cohface/COHFACE 1.48 (6), dlcn/C922 1.47 (6), mcd/FullHDwebcam 2.46 (6), mcd/IriunWebcam 2.14 (6), mcd/USBVideo 0.90 (6), ubfc/C920 0.41 (1), vipl/source1 0.99 (6), vipl/source3 1.89 (6)
+  örnekleme payı: mcd %71, vipl %15, dlcn %8, cohface %3, ubfc %2
+  eğitim kümesi: 1887 video (277 kişi)
+  epoch 15 adım 100/500 kayıp 0.3468
+  epoch 15 adım 200/500 kayıp 0.3474
+  epoch 15 adım 300/500 kayıp 0.3416
+  epoch 15 adım 400/500 kayıp 0.3343
+  epoch 15 adım 500/500 kayıp 0.3427
+epoch 15: kayıp 0.3426, doğrulama MAE 1.71 BPM, en iyi 1.47 (epoch 7), 154 s [11:11:53]
+  doğrulama: cohface/COHFACE 1.50 (6), dlcn/C922 1.58 (6), mcd/FullHDwebcam 3.12 (6), mcd/IriunWebcam 2.09 (6), mcd/USBVideo 1.21 (6), ubfc/C920 0.42 (1), vipl/source1 1.01 (6), vipl/source3 1.70 (6)
+  örnekleme payı: mcd %71, vipl %15, dlcn %8, cohface %3, ubfc %2
+  eğitim kümesi: 1930 video (288 kişi)
+  doğrulama kümesi değişti (44 video); en iyi (epoch 7) yeniden ölçüldü: 1.46 BPM
+  epoch 16 adım 100/500 kayıp 0.3400
+  epoch 16 adım 200/500 kayıp 0.3418
+  epoch 16 adım 300/500 kayıp 0.3454
+  epoch 16 adım 400/500 kayıp 0.3412
+  epoch 16 adım 500/500 kayıp 0.3358
+epoch 16: kayıp 0.3409, doğrulama MAE 1.86 BPM, en iyi 1.46 (epoch 7), 159 s [11:14:32]
+  doğrulama: cohface/COHFACE 1.48 (6), dlcn/C922 1.28 (6), mcd/FullHDwebcam 4.16 (6), mcd/IriunWebcam 2.02 (6), mcd/USBVideo 1.06 (6), ubfc/C920 1.25 (2), vipl/source1 1.04 (6), vipl/source3 2.20 (6)
+  örnekleme payı: mcd %71, vipl %15, dlcn %8, cohface %3, ubfc %2
+  eğitim kümesi: 1974 video (299 kişi)
+  epoch 17 adım 100/500 kayıp 0.3335
+  epoch 17 adım 200/500 kayıp 0.3490
+  epoch 17 adım 300/500 kayıp 0.3363
+  epoch 17 adım 400/500 kayıp 0.3346
+  epoch 17 adım 500/500 kayıp 0.3394
+epoch 17: kayıp 0.3386, doğrulama MAE 2.08 BPM, en iyi 1.46 (epoch 7), 171 s [11:17:22]
+  doğrulama: cohface/COHFACE 1.67 (6), dlcn/C922 2.48 (6), mcd/FullHDwebcam 4.71 (6), mcd/IriunWebcam 1.92 (6), mcd/USBVideo 1.32 (6), ubfc/C920 1.28 (2), vipl/source1 1.06 (6), vipl/source3 1.69 (6)
+  örnekleme payı: mcd %71, vipl %15, dlcn %8, cohface %3, ubfc %2
+  eğitim kümesi: 2010 video (308 kişi)
+  doğrulama kümesi değişti (45 video); en iyi (epoch 7) yeniden ölçüldü: 1.45 BPM
+  epoch 18 adım 100/500 kayıp 0.3403
+  epoch 18 adım 200/500 kayıp 0.3285
+  epoch 18 adım 300/500 kayıp 0.3398
+  epoch 18 adım 400/500 kayıp 0.3398
+  epoch 18 adım 500/500 kayıp 0.3482
+epoch 18: kayıp 0.3393, doğrulama MAE 1.80 BPM, en iyi 1.45 (epoch 7), 168 s [11:20:10]
+  doğrulama: cohface/COHFACE 1.52 (6), dlcn/C922 1.17 (6), mcd/FullHDwebcam 4.32 (6), mcd/IriunWebcam 2.01 (6), mcd/USBVideo 1.07 (6), ubfc/C920 0.91 (3), vipl/source1 1.07 (6), vipl/source3 1.88 (6)
+  örnekleme payı: mcd %71, vipl %15, dlcn %8, cohface %3, ubfc %2
+  eğitim kümesi: 2056 video (320 kişi)
+  epoch 19 adım 100/500 kayıp 0.3414
+  epoch 19 adım 200/500 kayıp 0.3403
+  epoch 19 adım 300/500 kayıp 0.3400
+  epoch 19 adım 400/500 kayıp 0.3417
+  epoch 19 adım 500/500 kayıp 0.3360
+epoch 19: kayıp 0.3399, doğrulama MAE 1.68 BPM, en iyi 1.45 (epoch 7), 167 s [11:22:57]
+  doğrulama: cohface/COHFACE 1.45 (6), dlcn/C922 1.67 (6), mcd/FullHDwebcam 3.00 (6), mcd/IriunWebcam 2.04 (6), mcd/USBVideo 1.23 (6), ubfc/C920 1.17 (3), vipl/source1 1.04 (6), vipl/source3 1.57 (6)
+  örnekleme payı: mcd %71, vipl %15, dlcn %8, cohface %3, ubfc %2
+  eğitim kümesi: 2100 video (331 kişi)
+  epoch 20 adım 100/500 kayıp 0.3389
+  epoch 20 adım 200/500 kayıp 0.3412
+  epoch 20 adım 300/500 kayıp 0.3350
+  epoch 20 adım 400/500 kayıp 0.3421
+  epoch 20 adım 500/500 kayıp 0.3436
+epoch 20: kayıp 0.3402, doğrulama MAE 1.68 BPM, en iyi 1.45 (epoch 7), 157 s [11:25:33]
+  doğrulama: cohface/COHFACE 1.53 (6), dlcn/C922 2.12 (6), mcd/FullHDwebcam 2.70 (6), mcd/IriunWebcam 1.82 (6), mcd/USBVideo 1.15 (6), ubfc/C920 1.03 (3), vipl/source1 1.09 (6), vipl/source3 1.68 (6)
+  örnekleme payı: mcd %71, vipl %15, dlcn %8, cohface %3, ubfc %2
+  eğitim kümesi: 2134 video (339 kişi)
+  doğrulama kümesi değişti (47 video); en iyi (epoch 7) yeniden ölçüldü: 1.41 BPM
+  epoch 21 adım 100/500 kayıp 0.3379
+  epoch 21 adım 200/500 kayıp 0.3444
+  epoch 21 adım 300/500 kayıp 0.3276
+  epoch 21 adım 400/500 kayıp 0.3328
+  epoch 21 adım 500/500 kayıp 0.3403
+epoch 21: kayıp 0.3366, doğrulama MAE 1.80 BPM, en iyi 1.41 (epoch 7), 156 s [11:28:10]
+  doğrulama: cohface/COHFACE 1.63 (6), dlcn/C922 1.73 (6), mcd/FullHDwebcam 3.85 (6), mcd/IriunWebcam 2.01 (6), mcd/USBVideo 1.23 (6), ubfc/C920 0.78 (5), vipl/source1 1.25 (6), vipl/source3 1.73 (6)
+  örnekleme payı: mcd %71, vipl %15, dlcn %8, cohface %3, ubfc %2
+  eğitim kümesi: 2174 video (349 kişi)
+  epoch 22 adım 100/500 kayıp 0.3460
+  epoch 22 adım 200/500 kayıp 0.3366
+  epoch 22 adım 300/500 kayıp 0.3323
+  epoch 22 adım 400/500 kayıp 0.3383
+  epoch 22 adım 500/500 kayıp 0.3375
+epoch 22: kayıp 0.3381, doğrulama MAE 1.89 BPM, en iyi 1.41 (epoch 7), 154 s [11:30:44]
+  doğrulama: cohface/COHFACE 1.70 (6), dlcn/C922 2.17 (6), mcd/FullHDwebcam 4.05 (6), mcd/IriunWebcam 1.80 (6), mcd/USBVideo 1.36 (6), ubfc/C920 0.82 (5), vipl/source1 1.01 (6), vipl/source3 2.06 (6)
+  örnekleme payı: mcd %70, vipl %15, dlcn %8, cohface %3, pure %2, ubfc %2
+  eğitim kümesi: 2211 video (358 kişi)
+  epoch 23 adım 100/500 kayıp 0.3428
+  epoch 23 adım 200/500 kayıp 0.3379
+  epoch 23 adım 300/500 kayıp 0.3279
+  epoch 23 adım 400/500 kayıp 0.3370
+  epoch 23 adım 500/500 kayıp 0.3387
+epoch 23: kayıp 0.3369, doğrulama MAE 1.66 BPM, en iyi 1.41 (epoch 7), 155 s [11:33:19]
+  doğrulama: cohface/COHFACE 1.60 (6), dlcn/C922 1.92 (6), mcd/FullHDwebcam 2.52 (6), mcd/IriunWebcam 2.05 (6), mcd/USBVideo 1.00 (6), ubfc/C920 0.80 (5), vipl/source1 1.05 (6), vipl/source3 2.21 (6)
+  örnekleme payı: mcd %70, vipl %15, dlcn %8, cohface %3, pure %2, ubfc %2
+  eğitim kümesi: 2250 video (364 kişi)
+  epoch 24 adım 100/500 kayıp 0.3384
+  epoch 24 adım 200/500 kayıp 0.3388
+  epoch 24 adım 300/500 kayıp 0.3443
+  epoch 24 adım 400/500 kayıp 0.3419
+  epoch 24 adım 500/500 kayıp 0.3405
+epoch 24: kayıp 0.3408, doğrulama MAE 1.84 BPM, en iyi 1.41 (epoch 7), 153 s [11:35:52]
+  doğrulama: cohface/COHFACE 1.56 (6), dlcn/C922 2.30 (6), mcd/FullHDwebcam 4.12 (6), mcd/IriunWebcam 1.59 (6), mcd/USBVideo 0.92 (6), ubfc/C920 0.84 (5), vipl/source1 1.00 (6), vipl/source3 2.23 (6)
+  örnekleme payı: mcd %70, vipl %15, dlcn %8, cohface %3, pure %2, ubfc %2
+  eğitim kümesi: 2290 video (373 kişi)
+  epoch 25 adım 100/500 kayıp 0.3377
+  epoch 25 adım 200/500 kayıp 0.3417
+  epoch 25 adım 300/500 kayıp 0.3333
+  epoch 25 adım 400/500 kayıp 0.3440
+  epoch 25 adım 500/500 kayıp 0.3346
+epoch 25: kayıp 0.3382, doğrulama MAE 1.75 BPM, en iyi 1.41 (epoch 7), 152 s [11:38:25]
+  doğrulama: cohface/COHFACE 1.60 (6), dlcn/C922 2.29 (6), mcd/FullHDwebcam 3.81 (6), mcd/IriunWebcam 1.71 (6), mcd/USBVideo 1.17 (6), ubfc/C920 0.82 (5), vipl/source1 1.01 (6), vipl/source3 1.42 (6)
+  örnekleme payı: mcd %70, vipl %15, dlcn %8, cohface %3, pure %2, ubfc %2
+  eğitim kümesi: 2336 video (382 kişi)
+  epoch 26 adım 100/500 kayıp 0.3374
+  epoch 26 adım 200/500 kayıp 0.3347
+  epoch 26 adım 300/500 kayıp 0.3424
+  epoch 26 adım 400/500 kayıp 0.3419
+  epoch 26 adım 500/500 kayıp 0.3362
+epoch 26: kayıp 0.3385, doğrulama MAE 1.75 BPM, en iyi 1.41 (epoch 7), 150 s [11:40:55]
+  doğrulama: cohface/COHFACE 1.49 (6), dlcn/C922 2.12 (6), mcd/FullHDwebcam 3.80 (6), mcd/IriunWebcam 1.74 (6), mcd/USBVideo 1.29 (6), ubfc/C920 0.82 (5), vipl/source1 1.00 (6), vipl/source3 1.55 (6)
+  örnekleme payı: mcd %70, vipl %15, dlcn %8, cohface %3, pure %2, ubfc %2
+  eğitim kümesi: 2380 video (390 kişi)
+  epoch 27 adım 100/500 kayıp 0.3319
+  epoch 27 adım 200/500 kayıp 0.3382
+  epoch 27 adım 300/500 kayıp 0.3329
+  epoch 27 adım 400/500 kayıp 0.3358
+  epoch 27 adım 500/500 kayıp 0.3323
+epoch 27: kayıp 0.3342, doğrulama MAE 1.52 BPM, en iyi 1.41 (epoch 7), 154 s [11:43:28]
+  doğrulama: cohface/COHFACE 1.52 (6), dlcn/C922 1.60 (6), mcd/FullHDwebcam 2.92 (6), mcd/IriunWebcam 1.58 (6), mcd/USBVideo 0.97 (6), ubfc/C920 0.85 (5), vipl/source1 1.02 (6), vipl/source3 1.59 (6)
+  örnekleme payı: mcd %70, vipl %15, dlcn %8, cohface %3, pure %2, ubfc %2
+  eğitim kümesi: 2420 video (398 kişi)
+  epoch 28 adım 100/500 kayıp 0.3419
+  epoch 28 adım 200/500 kayıp 0.3411
+  epoch 28 adım 300/500 kayıp 0.3314
+  epoch 28 adım 400/500 kayıp 0.3313
+  epoch 28 adım 500/500 kayıp 0.3240
+epoch 28: kayıp 0.3339, doğrulama MAE 1.46 BPM, en iyi 1.41 (epoch 7), 154 s [11:46:02]
+  doğrulama: cohface/COHFACE 1.56 (6), dlcn/C922 1.61 (6), mcd/FullHDwebcam 2.54 (6), mcd/IriunWebcam 1.72 (6), mcd/USBVideo 0.92 (6), ubfc/C920 0.82 (5), vipl/source1 1.02 (6), vipl/source3 1.41 (6)
+  örnekleme payı: mcd %70, vipl %15, dlcn %8, cohface %3, pure %2, ubfc %2
+  eğitim kümesi: 2462 video (406 kişi)
+  epoch 29 adım 100/500 kayıp 0.3364
+  epoch 29 adım 200/500 kayıp 0.3319
+  epoch 29 adım 300/500 kayıp 0.3344
+  epoch 29 adım 400/500 kayıp 0.3278
+  epoch 29 adım 500/500 kayıp 0.3346
+epoch 29: kayıp 0.3330, doğrulama MAE 1.69 BPM, en iyi 1.41 (epoch 7), 154 s [11:48:37]
+  doğrulama: cohface/COHFACE 1.56 (6), dlcn/C922 3.43 (6), mcd/FullHDwebcam 2.33 (6), mcd/IriunWebcam 1.71 (6), mcd/USBVideo 1.07 (6), ubfc/C920 0.85 (5), vipl/source1 1.03 (6), vipl/source3 1.43 (6)
+  örnekleme payı: mcd %70, vipl %15, dlcn %8, cohface %3, pure %2, ubfc %2
+  eğitim kümesi: 2498 video (414 kişi)
+  epoch 30 adım 100/500 kayıp 0.3368
+  epoch 30 adım 200/500 kayıp 0.3304
+  epoch 30 adım 300/500 kayıp 0.3348
+  epoch 30 adım 400/500 kayıp 0.3344
+  epoch 30 adım 500/500 kayıp 0.3286
+epoch 30: kayıp 0.3330, doğrulama MAE 1.64 BPM, en iyi 1.41 (epoch 7), 150 s [11:51:07]
+  doğrulama: cohface/COHFACE 1.55 (6), dlcn/C922 2.10 (6), mcd/FullHDwebcam 3.36 (6), mcd/IriunWebcam 1.74 (6), mcd/USBVideo 0.89 (6), ubfc/C920 0.88 (5), vipl/source1 1.01 (6), vipl/source3 1.42 (6)
+  örnekleme payı: mcd %70, vipl %15, dlcn %8, cohface %3, pure %2, ubfc %2
+  eğitim kümesi: 2535 video (420 kişi)
+  doğrulama kümesi değişti (48 video); en iyi (epoch 7) yeniden ölçüldü: 1.39 BPM
+  epoch 31 adım 100/500 kayıp 0.3348
+  epoch 31 adım 200/500 kayıp 0.3419
+  epoch 31 adım 300/500 kayıp 0.3266
+  epoch 31 adım 400/500 kayıp 0.3350
+  epoch 31 adım 500/500 kayıp 0.3384
+epoch 31: kayıp 0.3354, doğrulama MAE 1.69 BPM, en iyi 1.39 (epoch 7), 157 s [11:53:44]
+  doğrulama: cohface/COHFACE 1.63 (6), dlcn/C922 2.86 (6), mcd/FullHDwebcam 3.10 (6), mcd/IriunWebcam 1.83 (6), mcd/USBVideo 0.96 (6), pure/PURE 0.25 (1), ubfc/C920 0.81 (5), vipl/source1 1.03 (6), vipl/source3 1.41 (6)
+  örnekleme payı: mcd %70, vipl %15, dlcn %8, cohface %3, pure %2, ubfc %2
+  eğitim kümesi: 2571 video (427 kişi)
+  doğrulama kümesi değişti (52 video); en iyi (epoch 7) yeniden ölçüldü: 1.32 BPM
+  epoch 32 adım 100/500 kayıp 0.3330
+  epoch 32 adım 200/500 kayıp 0.3369
+  epoch 32 adım 300/500 kayıp 0.3332
+  epoch 32 adım 400/500 kayıp 0.3326
+  epoch 32 adım 500/500 kayıp 0.3322
+epoch 32: kayıp 0.3336, doğrulama MAE 1.62 BPM, en iyi 1.32 (epoch 7), 159 s [11:56:23]
+  doğrulama: cohface/COHFACE 1.56 (6), dlcn/C922 2.05 (6), mcd/FullHDwebcam 4.15 (6), mcd/IriunWebcam 1.82 (6), mcd/USBVideo 1.02 (6), pure/PURE 0.41 (5), ubfc/C920 0.84 (5), vipl/source1 1.01 (6), vipl/source3 1.43 (6)
+  örnekleme payı: mcd %70, vipl %15, dlcn %8, cohface %3, pure %2, ubfc %2
+  eğitim kümesi: 2613 video (436 kişi)
+  epoch 33 adım 100/500 kayıp 0.3326
+  epoch 33 adım 200/500 kayıp 0.3410
+  epoch 33 adım 300/500 kayıp 0.3270
+  epoch 33 adım 400/500 kayıp 0.3357
+  epoch 33 adım 500/500 kayıp 0.3350
+epoch 33: kayıp 0.3342, doğrulama MAE 1.61 BPM, en iyi 1.32 (epoch 7), 155 s [11:58:58]
+  doğrulama: cohface/COHFACE 1.54 (6), dlcn/C922 1.84 (6), mcd/FullHDwebcam 4.01 (6), mcd/IriunWebcam 1.72 (6), mcd/USBVideo 0.86 (6), pure/PURE 0.40 (5), ubfc/C920 0.80 (5), vipl/source1 1.07 (6), vipl/source3 1.87 (6)
+  örnekleme payı: mcd %70, vipl %15, dlcn %8, cohface %3, pure %2, ubfc %2
+  eğitim kümesi: 2652 video (444 kişi)
+  epoch 34 adım 100/500 kayıp 0.3414
+  epoch 34 adım 200/500 kayıp 0.3335
+  epoch 34 adım 300/500 kayıp 0.3335
+  epoch 34 adım 400/500 kayıp 0.3338
+  epoch 34 adım 500/500 kayıp 0.3385
+epoch 34: kayıp 0.3362, doğrulama MAE 1.72 BPM, en iyi 1.32 (epoch 7), 154 s [12:01:31]
+  doğrulama: cohface/COHFACE 1.54 (6), dlcn/C922 3.16 (6), mcd/FullHDwebcam 3.78 (6), mcd/IriunWebcam 1.80 (6), mcd/USBVideo 1.01 (6), pure/PURE 0.39 (5), ubfc/C920 0.84 (5), vipl/source1 1.03 (6), vipl/source3 1.57 (6)
+  örnekleme payı: mcd %70, vipl %15, dlcn %8, cohface %3, pure %2, ubfc %2
+  eğitim kümesi: 2674 video (449 kişi)
+  epoch 35 adım 100/500 kayıp 0.3268
+  epoch 35 adım 200/500 kayıp 0.3445
+  epoch 35 adım 300/500 kayıp 0.3332
+  epoch 35 adım 400/500 kayıp 0.3404
+  epoch 35 adım 500/500 kayıp 0.3296
+epoch 35: kayıp 0.3349, doğrulama MAE 1.56 BPM, en iyi 1.32 (epoch 7), 155 s [12:04:06]
+  doğrulama: cohface/COHFACE 1.55 (6), dlcn/C922 1.85 (6), mcd/FullHDwebcam 3.88 (6), mcd/IriunWebcam 1.70 (6), mcd/USBVideo 0.99 (6), pure/PURE 0.37 (5), ubfc/C920 0.84 (5), vipl/source1 1.04 (6), vipl/source3 1.54 (6)
+  örnekleme payı: mcd %70, vipl %15, dlcn %8, cohface %3, pure %2, ubfc %2
+  eğitim kümesi: 2708 video (457 kişi)
+  epoch 36 adım 100/500 kayıp 0.3398
+  epoch 36 adım 200/500 kayıp 0.3351
+  epoch 36 adım 300/500 kayıp 0.3289
+  epoch 36 adım 400/500 kayıp 0.3282
+  epoch 36 adım 500/500 kayıp 0.3337
+epoch 36: kayıp 0.3331, doğrulama MAE 1.58 BPM, en iyi 1.32 (epoch 7), 160 s [12:06:46]
+  doğrulama: cohface/COHFACE 1.52 (6), dlcn/C922 1.56 (6), mcd/FullHDwebcam 4.44 (6), mcd/IriunWebcam 1.72 (6), mcd/USBVideo 0.94 (6), pure/PURE 0.40 (5), ubfc/C920 0.84 (5), vipl/source1 1.09 (6), vipl/source3 1.39 (6)
+  örnekleme payı: mcd %70, vipl %15, dlcn %8, cohface %3, pure %2, ubfc %2
+  eğitim kümesi: 2750 video (464 kişi)
+  epoch 37 adım 100/500 kayıp 0.3386
+  epoch 37 adım 200/500 kayıp 0.3302
+  epoch 37 adım 300/500 kayıp 0.3454
+  epoch 37 adım 400/500 kayıp 0.3423
+  epoch 37 adım 500/500 kayıp 0.3490
+epoch 37: kayıp 0.3411, doğrulama MAE 1.56 BPM, en iyi 1.32 (epoch 7), 159 s [12:09:25]
+  doğrulama: cohface/COHFACE 1.57 (6), dlcn/C922 1.86 (6), mcd/FullHDwebcam 3.98 (6), mcd/IriunWebcam 1.81 (6), mcd/USBVideo 0.87 (6), pure/PURE 0.40 (5), ubfc/C920 0.82 (5), vipl/source1 1.05 (6), vipl/source3 1.40 (6)
+  örnekleme payı: mcd %70, vipl %15, dlcn %8, cohface %3, pure %2, ubfc %2
+  eğitim kümesi: 2789 video (472 kişi)
+  epoch 38 adım 100/500 kayıp 0.3323
+  epoch 38 adım 200/500 kayıp 0.3311
+  epoch 38 adım 300/500 kayıp 0.3379
+  epoch 38 adım 400/500 kayıp 0.3301
+  epoch 38 adım 500/500 kayıp 0.3525
+epoch 38: kayıp 0.3368, doğrulama MAE 1.63 BPM, en iyi 1.32 (epoch 7), 158 s [12:12:04]
+  doğrulama: cohface/COHFACE 1.63 (6), dlcn/C922 2.49 (6), mcd/FullHDwebcam 3.60 (6), mcd/IriunWebcam 1.81 (6), mcd/USBVideo 1.01 (6), pure/PURE 0.40 (5), ubfc/C920 0.82 (5), vipl/source1 1.04 (6), vipl/source3 1.55 (6)
+  örnekleme payı: mcd %70, vipl %15, dlcn %8, cohface %3, pure %2, ubfc %2
+  eğitim kümesi: 2822 video (479 kişi)
+  epoch 39 adım 100/500 kayıp 0.3332
+  epoch 39 adım 200/500 kayıp 0.3343
+  epoch 39 adım 300/500 kayıp 0.3349
+  epoch 39 adım 400/500 kayıp 0.3331
+  epoch 39 adım 500/500 kayıp 0.3387
+epoch 39: kayıp 0.3349, doğrulama MAE 1.59 BPM, en iyi 1.32 (epoch 7), 153 s [12:14:36]
+  doğrulama: cohface/COHFACE 1.55 (6), dlcn/C922 2.45 (6), mcd/FullHDwebcam 3.84 (6), mcd/IriunWebcam 1.68 (6), mcd/USBVideo 0.98 (6), pure/PURE 0.41 (5), ubfc/C920 0.81 (5), vipl/source1 1.01 (6), vipl/source3 1.25 (6)
+  örnekleme payı: mcd %70, vipl %15, dlcn %8, cohface %3, pure %2, ubfc %2
+  eğitim kümesi: 2860 video (486 kişi)
+  epoch 40 adım 100/500 kayıp 0.3340
+  epoch 40 adım 200/500 kayıp 0.3368
+  epoch 40 adım 300/500 kayıp 0.3265
+  epoch 40 adım 400/500 kayıp 0.3385
+  epoch 40 adım 500/500 kayıp 0.3339
+epoch 40: kayıp 0.3340, doğrulama MAE 1.55 BPM, en iyi 1.32 (epoch 7), 148 s [12:17:04]
+  doğrulama: cohface/COHFACE 1.46 (6), dlcn/C922 1.55 (6), mcd/FullHDwebcam 4.06 (6), mcd/IriunWebcam 2.13 (6), mcd/USBVideo 0.91 (6), pure/PURE 0.41 (5), ubfc/C920 0.84 (5), vipl/source1 1.05 (6), vipl/source3 1.26 (6)
+  örnekleme payı: mcd %70, vipl %15, dlcn %8, cohface %3, pure %2, ubfc %2
+  eğitim kümesi: 2897 video (495 kişi)
+  epoch 41 adım 100/500 kayıp 0.3354
+  epoch 41 adım 200/500 kayıp 0.3277
+  epoch 41 adım 300/500 kayıp 0.3339
+  epoch 41 adım 400/500 kayıp 0.3346
+  epoch 41 adım 500/500 kayıp 0.3461
+epoch 41: kayıp 0.3356, doğrulama MAE 1.53 BPM, en iyi 1.32 (epoch 7), 152 s [12:19:36]
+  doğrulama: cohface/COHFACE 1.48 (6), dlcn/C922 2.26 (6), mcd/FullHDwebcam 3.23 (6), mcd/IriunWebcam 1.69 (6), mcd/USBVideo 0.92 (6), pure/PURE 0.41 (5), ubfc/C920 0.86 (5), vipl/source1 1.05 (6), vipl/source3 1.55 (6)
+  örnekleme payı: mcd %70, vipl %15, dlcn %8, cohface %3, pure %2, ubfc %2
+  eğitim kümesi: 2932 video (501 kişi)
+  epoch 42 adım 100/500 kayıp 0.3275
+  epoch 42 adım 200/500 kayıp 0.3262
+  epoch 42 adım 300/500 kayıp 0.3343
+  epoch 42 adım 400/500 kayıp 0.3325
+  epoch 42 adım 500/500 kayıp 0.3385
+epoch 42: kayıp 0.3318, doğrulama MAE 1.67 BPM, en iyi 1.32 (epoch 7), 152 s [12:22:07]
+  doğrulama: cohface/COHFACE 1.59 (6), dlcn/C922 3.03 (6), mcd/FullHDwebcam 3.74 (6), mcd/IriunWebcam 1.76 (6), mcd/USBVideo 0.93 (6), pure/PURE 0.42 (5), ubfc/C920 0.81 (5), vipl/source1 1.12 (6), vipl/source3 1.26 (6)
+  örnekleme payı: mcd %70, vipl %15, dlcn %8, cohface %3, pure %2, ubfc %2
+  eğitim kümesi: 2975 video (509 kişi)
+  epoch 43 adım 100/500 kayıp 0.3327
+  epoch 43 adım 200/500 kayıp 0.3385
+  epoch 43 adım 300/500 kayıp 0.3352
+  epoch 43 adım 400/500 kayıp 0.3283
+  epoch 43 adım 500/500 kayıp 0.3287
+epoch 43: kayıp 0.3327, doğrulama MAE 1.48 BPM, en iyi 1.32 (epoch 7), 150 s [12:24:37]
+  doğrulama: cohface/COHFACE 1.46 (6), dlcn/C922 2.19 (6), mcd/FullHDwebcam 2.76 (6), mcd/IriunWebcam 1.90 (6), mcd/USBVideo 0.85 (6), pure/PURE 0.41 (5), ubfc/C920 0.85 (5), vipl/source1 1.07 (6), vipl/source3 1.54 (6)
+  örnekleme payı: mcd %70, vipl %15, dlcn %8, cohface %3, pure %2, ubfc %2
+  eğitim kümesi: 3011 video (517 kişi)
+  epoch 44 adım 100/500 kayıp 0.3344
+  epoch 44 adım 200/500 kayıp 0.3392
+  epoch 44 adım 300/500 kayıp 0.3264
+  epoch 44 adım 400/500 kayıp 0.3397
+  epoch 44 adım 500/500 kayıp 0.3324
+epoch 44: kayıp 0.3344, doğrulama MAE 1.70 BPM, en iyi 1.32 (epoch 7), 149 s [12:27:07]
+  doğrulama: cohface/COHFACE 1.59 (6), dlcn/C922 2.35 (6), mcd/FullHDwebcam 4.10 (6), mcd/IriunWebcam 2.12 (6), mcd/USBVideo 0.87 (6), pure/PURE 0.39 (5), ubfc/C920 0.84 (5), vipl/source1 1.09 (6), vipl/source3 1.58 (6)
+  örnekleme payı: mcd %70, vipl %15, dlcn %8, cohface %3, pure %2, ubfc %2
+  eğitim kümesi: 3044 video (524 kişi)
+  epoch 45 adım 100/500 kayıp 0.3307
+  epoch 45 adım 200/500 kayıp 0.3420
+  epoch 45 adım 300/500 kayıp 0.3279
+  epoch 45 adım 400/500 kayıp 0.3293
+  epoch 45 adım 500/500 kayıp 0.3330
+epoch 45: kayıp 0.3326, doğrulama MAE 1.60 BPM, en iyi 1.32 (epoch 7), 147 s [12:29:34]
+  doğrulama: cohface/COHFACE 1.64 (6), dlcn/C922 3.20 (6), mcd/FullHDwebcam 2.83 (6), mcd/IriunWebcam 1.80 (6), mcd/USBVideo 0.86 (6), pure/PURE 0.40 (5), ubfc/C920 0.81 (5), vipl/source1 1.08 (6), vipl/source3 1.45 (6)
+  örnekleme payı: mcd %70, vipl %15, dlcn %8, cohface %3, pure %2, ubfc %2
+  eğitim kümesi: 3087 video (533 kişi)
+  epoch 46 adım 100/500 kayıp 0.3389
+  epoch 46 adım 200/500 kayıp 0.3329
+  epoch 46 adım 300/500 kayıp 0.3329
+  epoch 46 adım 400/500 kayıp 0.3384
+  epoch 46 adım 500/500 kayıp 0.3359
+epoch 46: kayıp 0.3358, doğrulama MAE 1.64 BPM, en iyi 1.32 (epoch 7), 149 s [12:32:03]
+  doğrulama: cohface/COHFACE 1.58 (6), dlcn/C922 1.87 (6), mcd/FullHDwebcam 4.12 (6), mcd/IriunWebcam 2.12 (6), mcd/USBVideo 0.85 (6), pure/PURE 0.40 (5), ubfc/C920 0.81 (5), vipl/source1 1.06 (6), vipl/source3 1.61 (6)
+  örnekleme payı: mcd %70, vipl %15, dlcn %8, cohface %3, pure %2, ubfc %2
+  eğitim kümesi: 3131 video (541 kişi)
+  epoch 47 adım 100/500 kayıp 0.3317
+  epoch 47 adım 200/500 kayıp 0.3381
+  epoch 47 adım 300/500 kayıp 0.3292
+  epoch 47 adım 400/500 kayıp 0.3308
+  epoch 47 adım 500/500 kayıp 0.3426
+epoch 47: kayıp 0.3345, doğrulama MAE 1.44 BPM, en iyi 1.32 (epoch 7), 148 s [12:34:31]
+  doğrulama: cohface/COHFACE 1.65 (6), dlcn/C922 1.84 (6), mcd/FullHDwebcam 2.64 (6), mcd/IriunWebcam 1.94 (6), mcd/USBVideo 0.99 (6), pure/PURE 0.40 (5), ubfc/C920 0.82 (5), vipl/source1 1.10 (6), vipl/source3 1.27 (6)
+  örnekleme payı: mcd %70, vipl %15, dlcn %8, cohface %3, pure %2, ubfc %2
+  eğitim kümesi: 3164 video (549 kişi)
+  epoch 48 adım 100/500 kayıp 0.3323
+  epoch 48 adım 200/500 kayıp 0.3345
+  epoch 48 adım 300/500 kayıp 0.3324
+  epoch 48 adım 400/500 kayıp 0.3276
+  epoch 48 adım 500/500 kayıp 0.3351
+epoch 48: kayıp 0.3324, doğrulama MAE 1.52 BPM, en iyi 1.32 (epoch 7), 148 s [12:37:00]
+  doğrulama: cohface/COHFACE 1.59 (6), dlcn/C922 2.42 (6), mcd/FullHDwebcam 2.99 (6), mcd/IriunWebcam 1.68 (6), mcd/USBVideo 0.99 (6), pure/PURE 0.38 (5), ubfc/C920 0.84 (5), vipl/source1 1.05 (6), vipl/source3 1.44 (6)
+  örnekleme payı: mcd %70, vipl %15, dlcn %8, cohface %3, pure %2, ubfc %2
+  eğitim kümesi: 3207 video (556 kişi)
+  epoch 49 adım 100/500 kayıp 0.3302
+  epoch 49 adım 200/500 kayıp 0.3383
+  epoch 49 adım 300/500 kayıp 0.3257
+  epoch 49 adım 400/500 kayıp 0.3393
+  epoch 49 adım 500/500 kayıp 0.3385
+epoch 49: kayıp 0.3344, doğrulama MAE 1.67 BPM, en iyi 1.32 (epoch 7), 151 s [12:39:31]
+  doğrulama: cohface/COHFACE 1.60 (6), dlcn/C922 2.26 (6), mcd/FullHDwebcam 4.09 (6), mcd/IriunWebcam 1.91 (6), mcd/USBVideo 0.91 (6), pure/PURE 0.41 (5), ubfc/C920 0.85 (5), vipl/source1 1.06 (6), vipl/source3 1.56 (6)
+  örnekleme payı: mcd %70, vipl %15, dlcn %8, cohface %3, pure %2, ubfc %2
+  eğitim kümesi: 3235 video (563 kişi)
+  epoch 50 adım 100/500 kayıp 0.3327
+  epoch 50 adım 200/500 kayıp 0.3393
+  epoch 50 adım 300/500 kayıp 0.3314
+  epoch 50 adım 400/500 kayıp 0.3340
+  epoch 50 adım 500/500 kayıp 0.3354
+epoch 50: kayıp 0.3345, doğrulama MAE 1.62 BPM, en iyi 1.32 (epoch 7), 149 s [12:42:00]
+  doğrulama: cohface/COHFACE 1.61 (6), dlcn/C922 1.99 (6), mcd/FullHDwebcam 3.92 (6), mcd/IriunWebcam 2.14 (6), mcd/USBVideo 0.92 (6), pure/PURE 0.39 (5), ubfc/C920 0.78 (5), vipl/source1 1.06 (6), vipl/source3 1.41 (6)
+  örnekleme payı: mcd %70, vipl %15, dlcn %8, cohface %3, pure %2, ubfc %2
+  eğitim kümesi: 3274 video (570 kişi)
+  epoch 51 adım 100/500 kayıp 0.3303
+  epoch 51 adım 200/500 kayıp 0.3287
+  epoch 51 adım 300/500 kayıp 0.3198
+  epoch 51 adım 400/500 kayıp 0.3293
+  epoch 51 adım 500/500 kayıp 0.3391
+epoch 51: kayıp 0.3294, doğrulama MAE 1.45 BPM, en iyi 1.32 (epoch 7), 149 s [12:44:29]
+  doğrulama: cohface/COHFACE 1.62 (6), dlcn/C922 2.37 (6), mcd/FullHDwebcam 2.58 (6), mcd/IriunWebcam 1.73 (6), mcd/USBVideo 0.94 (6), pure/PURE 0.41 (5), ubfc/C920 0.74 (5), vipl/source1 1.06 (6), vipl/source3 1.27 (6)
+  örnekleme payı: mcd %70, vipl %15, dlcn %8, cohface %3, pure %2, ubfc %2
+  eğitim kümesi: 3310 video (578 kişi)
+  epoch 52 adım 100/500 kayıp 0.3314
+  epoch 52 adım 200/500 kayıp 0.3364
+  epoch 52 adım 300/500 kayıp 0.3358
+  epoch 52 adım 400/500 kayıp 0.3288
+  epoch 52 adım 500/500 kayıp 0.3320
+epoch 52: kayıp 0.3329, doğrulama MAE 1.37 BPM, en iyi 1.32 (epoch 7), 150 s [12:47:00]
+  doğrulama: cohface/COHFACE 1.60 (6), dlcn/C922 1.77 (6), mcd/FullHDwebcam 2.60 (6), mcd/IriunWebcam 1.71 (6), mcd/USBVideo 0.87 (6), pure/PURE 0.42 (5), ubfc/C920 0.81 (5), vipl/source1 1.05 (6), vipl/source3 1.25 (6)
+  örnekleme payı: mcd %70, vipl %15, dlcn %8, cohface %3, pure %2, ubfc %2
+  eğitim kümesi: 3338 video (584 kişi)
+  epoch 53 adım 100/500 kayıp 0.3323
+  epoch 53 adım 200/500 kayıp 0.3270
+  epoch 53 adım 300/500 kayıp 0.3258
+  epoch 53 adım 400/500 kayıp 0.3305
+  epoch 53 adım 500/500 kayıp 0.3447
+epoch 53: kayıp 0.3321, doğrulama MAE 1.41 BPM, en iyi 1.32 (epoch 7), 153 s [12:49:32]
+  doğrulama: cohface/COHFACE 1.62 (6), dlcn/C922 2.14 (6), mcd/FullHDwebcam 2.26 (6), mcd/IriunWebcam 1.72 (6), mcd/USBVideo 0.93 (6), pure/PURE 0.42 (5), ubfc/C920 0.82 (5), vipl/source1 1.09 (6), vipl/source3 1.42 (6)
+  örnekleme payı: mcd %70, vipl %15, dlcn %8, cohface %3, pure %2, ubfc %2
+  eğitim kümesi: 3374 video (591 kişi)
+  epoch 54 adım 100/500 kayıp 0.3308
+  epoch 54 adım 200/500 kayıp 0.3356
+  epoch 54 adım 300/500 kayıp 0.3325
+  epoch 54 adım 400/500 kayıp 0.3382
+  epoch 54 adım 500/500 kayıp 0.3418
+epoch 54: kayıp 0.3358, doğrulama MAE 1.49 BPM, en iyi 1.32 (epoch 7), 151 s [12:52:03]
+  doğrulama: cohface/COHFACE 1.63 (6), dlcn/C922 2.39 (6), mcd/FullHDwebcam 2.73 (6), mcd/IriunWebcam 1.71 (6), mcd/USBVideo 0.93 (6), pure/PURE 0.41 (5), ubfc/C920 0.80 (5), vipl/source1 1.07 (6), vipl/source3 1.43 (6)
+  örnekleme payı: mcd %70, vipl %15, dlcn %8, cohface %3, pure %2, ubfc %2
+  eğitim kümesi: 3407 video (597 kişi)
+  epoch 55 adım 100/500 kayıp 0.3271
+  epoch 55 adım 200/500 kayıp 0.3333
+  epoch 55 adım 300/500 kayıp 0.3344
+  epoch 55 adım 400/500 kayıp 0.3369
+  epoch 55 adım 500/500 kayıp 0.3306
+epoch 55: kayıp 0.3325, doğrulama MAE 1.41 BPM, en iyi 1.32 (epoch 7), 148 s [12:54:31]
+  doğrulama: cohface/COHFACE 1.62 (6), dlcn/C922 2.29 (6), mcd/FullHDwebcam 2.08 (6), mcd/IriunWebcam 1.72 (6), mcd/USBVideo 1.01 (6), pure/PURE 0.40 (5), ubfc/C920 0.84 (5), vipl/source1 1.08 (6), vipl/source3 1.42 (6)
+  örnekleme payı: mcd %70, vipl %15, dlcn %8, cohface %3, pure %2, ubfc %2
+  eğitim kümesi: 3439 video (604 kişi)
+  epoch 56 adım 100/500 kayıp 0.3260
+  epoch 56 adım 200/500 kayıp 0.3232
+  epoch 56 adım 300/500 kayıp 0.3410
+  epoch 56 adım 400/500 kayıp 0.3266
+  epoch 56 adım 500/500 kayıp 0.3339
+epoch 56: kayıp 0.3301, doğrulama MAE 1.42 BPM, en iyi 1.32 (epoch 7), 151 s [12:57:02]
+  doğrulama: cohface/COHFACE 1.57 (6), dlcn/C922 1.89 (6), mcd/FullHDwebcam 2.87 (6), mcd/IriunWebcam 1.71 (6), mcd/USBVideo 0.89 (6), pure/PURE 0.41 (5), ubfc/C920 0.84 (5), vipl/source1 1.07 (6), vipl/source3 1.30 (6)
+  örnekleme payı: mcd %70, vipl %15, dlcn %8, cohface %3, pure %2, ubfc %2
+  eğitim kümesi: 3471 video (610 kişi)
+  epoch 57 adım 100/500 kayıp 0.3281
+  epoch 57 adım 200/500 kayıp 0.3236
+  epoch 57 adım 300/500 kayıp 0.3369
+  epoch 57 adım 400/500 kayıp 0.3401
+  epoch 57 adım 500/500 kayıp 0.3337
+epoch 57: kayıp 0.3325, doğrulama MAE 1.55 BPM, en iyi 1.32 (epoch 7), 152 s [12:59:33]
+  doğrulama: cohface/COHFACE 1.67 (6), dlcn/C922 2.91 (6), mcd/FullHDwebcam 2.74 (6), mcd/IriunWebcam 1.71 (6), mcd/USBVideo 0.99 (6), pure/PURE 0.41 (5), ubfc/C920 0.84 (5), vipl/source1 1.07 (6), vipl/source3 1.28 (6)
+  örnekleme payı: mcd %70, vipl %15, dlcn %8, cohface %3, pure %2, ubfc %2
+  eğitim kümesi: 3510 video (618 kişi)
+  epoch 58 adım 100/500 kayıp 0.3350
+  epoch 58 adım 200/500 kayıp 0.3359
+  epoch 58 adım 300/500 kayıp 0.3332
+  epoch 58 adım 400/500 kayıp 0.3292
+  epoch 58 adım 500/500 kayıp 0.3371
+epoch 58: kayıp 0.3341, doğrulama MAE 1.41 BPM, en iyi 1.32 (epoch 7), 151 s [13:02:04]
+  doğrulama: cohface/COHFACE 1.59 (6), dlcn/C922 2.37 (6), mcd/FullHDwebcam 2.42 (6), mcd/IriunWebcam 1.49 (6), mcd/USBVideo 1.01 (6), pure/PURE 0.42 (5), ubfc/C920 0.63 (5), vipl/source1 1.05 (6), vipl/source3 1.42 (6)
+  örnekleme payı: mcd %70, vipl %15, dlcn %8, cohface %3, pure %2, ubfc %2
+  eğitim kümesi: 3544 video (625 kişi)
+  epoch 59 adım 100/500 kayıp 0.3334
+  epoch 59 adım 200/500 kayıp 0.3274
+  epoch 59 adım 300/500 kayıp 0.3276
+  epoch 59 adım 400/500 kayıp 0.3344
+  epoch 59 adım 500/500 kayıp 0.3317
+epoch 59: kayıp 0.3309, doğrulama MAE 1.46 BPM, en iyi 1.32 (epoch 7), 148 s [13:04:32]
+  doğrulama: cohface/COHFACE 1.65 (6), dlcn/C922 2.26 (6), mcd/FullHDwebcam 2.61 (6), mcd/IriunWebcam 1.70 (6), mcd/USBVideo 1.03 (6), pure/PURE 0.39 (5), ubfc/C920 0.66 (5), vipl/source1 1.06 (6), vipl/source3 1.43 (6)
+  örnekleme payı: mcd %70, vipl %15, dlcn %8, cohface %3, pure %2, ubfc %2
+  eğitim kümesi: 3581 video (633 kişi)
+  epoch 60 adım 100/500 kayıp 0.3320
+  epoch 60 adım 200/500 kayıp 0.3325
+  epoch 60 adım 300/500 kayıp 0.3302
+  epoch 60 adım 400/500 kayıp 0.3396
+  epoch 60 adım 500/500 kayıp 0.3249
+epoch 60: kayıp 0.3318, doğrulama MAE 1.45 BPM, en iyi 1.32 (epoch 7), 151 s [13:07:02]
+  doğrulama: cohface/COHFACE 1.55 (6), dlcn/C922 2.17 (6), mcd/FullHDwebcam 2.67 (6), mcd/IriunWebcam 1.71 (6), mcd/USBVideo 0.96 (6), pure/PURE 0.40 (5), ubfc/C920 0.84 (5), vipl/source1 1.07 (6), vipl/source3 1.43 (6)
+  örnekleme payı: mcd %70, vipl %15, dlcn %8, cohface %3, pure %2, ubfc %2
+  eğitim kümesi: 3614 video (639 kişi)
+  epoch 61 adım 100/500 kayıp 0.3392
+  epoch 61 adım 200/500 kayıp 0.3303
+  epoch 61 adım 300/500 kayıp 0.3373
+  epoch 61 adım 400/500 kayıp 0.3352
+  epoch 61 adım 500/500 kayıp 0.3305
+epoch 61: kayıp 0.3345, doğrulama MAE 1.44 BPM, en iyi 1.32 (epoch 7), 151 s [13:09:33]
+  doğrulama: cohface/COHFACE 1.58 (6), dlcn/C922 2.00 (6), mcd/FullHDwebcam 2.64 (6), mcd/IriunWebcam 1.71 (6), mcd/USBVideo 1.03 (6), pure/PURE 0.39 (5), ubfc/C920 0.83 (5), vipl/source1 1.06 (6), vipl/source3 1.45 (6)
+  örnekleme payı: mcd %70, vipl %15, dlcn %8, cohface %3, pure %2, ubfc %2
+  eğitim kümesi: 3643 video (645 kişi)
+  epoch 62 adım 100/500 kayıp 0.3345
+  epoch 62 adım 200/500 kayıp 0.3345
+  epoch 62 adım 300/500 kayıp 0.3395
+  epoch 62 adım 400/500 kayıp 0.3306
+  epoch 62 adım 500/500 kayıp 0.3225
+epoch 62: kayıp 0.3323, doğrulama MAE 1.53 BPM, en iyi 1.32 (epoch 7), 151 s [13:12:05]
+  doğrulama: cohface/COHFACE 1.53 (6), dlcn/C922 2.36 (6), mcd/FullHDwebcam 2.80 (6), mcd/IriunWebcam 1.93 (6), mcd/USBVideo 1.05 (6), pure/PURE 0.40 (5), ubfc/C920 0.81 (5), vipl/source1 1.09 (6), vipl/source3 1.46 (6)
+  örnekleme payı: mcd %70, vipl %15, dlcn %8, cohface %3, pure %2, ubfc %2
+  eğitim kümesi: 3680 video (653 kişi)
+  epoch 63 adım 100/500 kayıp 0.3311
+  epoch 63 adım 200/500 kayıp 0.3268
+  epoch 63 adım 300/500 kayıp 0.3336
+  epoch 63 adım 400/500 kayıp 0.3471
+  epoch 63 adım 500/500 kayıp 0.3365
+epoch 63: kayıp 0.3350, doğrulama MAE 1.54 BPM, en iyi 1.32 (epoch 7), 149 s [13:14:33]
+  doğrulama: cohface/COHFACE 1.57 (6), dlcn/C922 2.75 (6), mcd/FullHDwebcam 2.47 (6), mcd/IriunWebcam 1.81 (6), mcd/USBVideo 1.03 (6), pure/PURE 0.39 (5), ubfc/C920 0.83 (5), vipl/source1 1.07 (6), vipl/source3 1.61 (6)
+  örnekleme payı: mcd %70, vipl %15, dlcn %8, cohface %3, pure %2, ubfc %2
+  eğitim kümesi: 3711 video (660 kişi)
+  epoch 64 adım 100/500 kayıp 0.3365
+  epoch 64 adım 200/500 kayıp 0.3270
+  epoch 64 adım 300/500 kayıp 0.3283
+  epoch 64 adım 400/500 kayıp 0.3331
+  epoch 64 adım 500/500 kayıp 0.3343
+epoch 64: kayıp 0.3318, doğrulama MAE 1.47 BPM, en iyi 1.32 (epoch 7), 152 s [13:17:05]
+  doğrulama: cohface/COHFACE 1.57 (6), dlcn/C922 2.12 (6), mcd/FullHDwebcam 2.56 (6), mcd/IriunWebcam 1.72 (6), mcd/USBVideo 1.02 (6), pure/PURE 0.39 (5), ubfc/C920 0.84 (5), vipl/source1 1.08 (6), vipl/source3 1.61 (6)
+  örnekleme payı: mcd %70, vipl %15, dlcn %8, cohface %3, pure %2, ubfc %2
+  eğitim kümesi: 3749 video (667 kişi)
+  epoch 65 adım 100/500 kayıp 0.3319
+  epoch 65 adım 200/500 kayıp 0.3357
+  epoch 65 adım 300/500 kayıp 0.3346
+  epoch 65 adım 400/500 kayıp 0.3336
+  epoch 65 adım 500/500 kayıp 0.3312
+epoch 65: kayıp 0.3334, doğrulama MAE 1.44 BPM, en iyi 1.32 (epoch 7), 152 s [13:19:37]
+  doğrulama: cohface/COHFACE 1.58 (6), dlcn/C922 2.16 (6), mcd/FullHDwebcam 2.44 (6), mcd/IriunWebcam 1.72 (6), mcd/USBVideo 1.03 (6), pure/PURE 0.41 (5), ubfc/C920 0.84 (5), vipl/source1 1.07 (6), vipl/source3 1.43 (6)
+  örnekleme payı: mcd %70, vipl %15, dlcn %8, cohface %3, pure %2, ubfc %2
+  eğitim kümesi: 3784 video (674 kişi)
+  epoch 66 adım 100/500 kayıp 0.3355
+  epoch 66 adım 200/500 kayıp 0.3365
+  epoch 66 adım 300/500 kayıp 0.3260
+  epoch 66 adım 400/500 kayıp 0.3406
+  epoch 66 adım 500/500 kayıp 0.3313
+epoch 66: kayıp 0.3340, doğrulama MAE 1.49 BPM, en iyi 1.32 (epoch 7), 151 s [13:22:08]
+  doğrulama: cohface/COHFACE 1.59 (6), dlcn/C922 2.24 (6), mcd/FullHDwebcam 3.08 (6), mcd/IriunWebcam 1.49 (6), mcd/USBVideo 0.93 (6), pure/PURE 0.39 (5), ubfc/C920 0.76 (5), vipl/source1 1.05 (6), vipl/source3 1.60 (6)
+  örnekleme payı: mcd %70, vipl %15, dlcn %8, cohface %3, pure %2, ubfc %2
+  eğitim kümesi: 3817 video (681 kişi)
+  epoch 67 adım 100/500 kayıp 0.3217
+  epoch 67 adım 200/500 kayıp 0.3463
+  epoch 67 adım 300/500 kayıp 0.3331
+  epoch 67 adım 400/500 kayıp 0.3375
+  epoch 67 adım 500/500 kayıp 0.3356
+epoch 67: kayıp 0.3349, doğrulama MAE 1.59 BPM, en iyi 1.32 (epoch 7), 149 s [13:24:37]
+  doğrulama: cohface/COHFACE 1.59 (6), dlcn/C922 2.57 (6), mcd/FullHDwebcam 3.37 (6), mcd/IriunWebcam 1.72 (6), mcd/USBVideo 0.92 (6), pure/PURE 0.40 (5), ubfc/C920 0.77 (5), vipl/source1 1.07 (6), vipl/source3 1.60 (6)
+  örnekleme payı: mcd %70, vipl %15, dlcn %8, cohface %3, pure %2, ubfc %2
+  eğitim kümesi: 3847 video (687 kişi)
+  epoch 68 adım 100/500 kayıp 0.3361
+  epoch 68 adım 200/500 kayıp 0.3302
+  epoch 68 adım 300/500 kayıp 0.3279
+  epoch 68 adım 400/500 kayıp 0.3343
+  epoch 68 adım 500/500 kayıp 0.3427
+epoch 68: kayıp 0.3342, doğrulama MAE 1.59 BPM, en iyi 1.32 (epoch 7), 151 s [13:27:08]
+  doğrulama: cohface/COHFACE 1.54 (6), dlcn/C922 2.14 (6), mcd/FullHDwebcam 3.46 (6), mcd/IriunWebcam 1.91 (6), mcd/USBVideo 1.02 (6), pure/PURE 0.39 (5), ubfc/C920 0.84 (5), vipl/source1 1.05 (6), vipl/source3 1.59 (6)
+  örnekleme payı: mcd %70, vipl %15, dlcn %8, cohface %3, pure %2, ubfc %2
+  eğitim kümesi: 3884 video (695 kişi)
+  epoch 69 adım 100/500 kayıp 0.3362
+  epoch 69 adım 200/500 kayıp 0.3405
+  epoch 69 adım 300/500 kayıp 0.3313
+  epoch 69 adım 400/500 kayıp 0.3272
+  epoch 69 adım 500/500 kayıp 0.3272
+epoch 69: kayıp 0.3325, doğrulama MAE 1.75 BPM, en iyi 1.32 (epoch 7), 151 s [13:29:39]
+  doğrulama: cohface/COHFACE 1.57 (6), dlcn/C922 3.30 (6), mcd/FullHDwebcam 3.75 (6), mcd/IriunWebcam 1.92 (6), mcd/USBVideo 1.02 (6), pure/PURE 0.39 (5), ubfc/C920 0.87 (5), vipl/source1 1.08 (6), vipl/source3 1.47 (6)
+  örnekleme payı: mcd %70, vipl %15, dlcn %8, cohface %3, pure %2, ubfc %2
+  eğitim kümesi: 3912 video (701 kişi)
+  epoch 70 adım 100/500 kayıp 0.3394
+  epoch 70 adım 200/500 kayıp 0.3322
+  epoch 70 adım 300/500 kayıp 0.3311
+  epoch 70 adım 400/500 kayıp 0.3365
+  epoch 70 adım 500/500 kayıp 0.3325
+epoch 70: kayıp 0.3343, doğrulama MAE 1.68 BPM, en iyi 1.32 (epoch 7), 150 s [13:32:09]
+  doğrulama: cohface/COHFACE 1.57 (6), dlcn/C922 2.46 (6), mcd/FullHDwebcam 3.98 (6), mcd/IriunWebcam 1.82 (6), mcd/USBVideo 1.02 (6), pure/PURE 0.40 (5), ubfc/C920 0.87 (5), vipl/source1 1.05 (6), vipl/source3 1.61 (6)
+  örnekleme payı: mcd %70, vipl %15, dlcn %8, cohface %3, pure %2, ubfc %2
+  eğitim kümesi: 3949 video (708 kişi)
+  epoch 71 adım 100/500 kayıp 0.3331
+  epoch 71 adım 200/500 kayıp 0.3376
+  epoch 71 adım 300/500 kayıp 0.3283
+  epoch 71 adım 400/500 kayıp 0.3332
+  epoch 71 adım 500/500 kayıp 0.3190
+epoch 71: kayıp 0.3302, doğrulama MAE 1.56 BPM, en iyi 1.32 (epoch 7), 149 s [13:34:37]
+  doğrulama: cohface/COHFACE 1.54 (6), dlcn/C922 2.68 (6), mcd/FullHDwebcam 2.91 (6), mcd/IriunWebcam 1.62 (6), mcd/USBVideo 1.01 (6), pure/PURE 0.39 (5), ubfc/C920 0.87 (5), vipl/source1 1.07 (6), vipl/source3 1.61 (6)
+  örnekleme payı: mcd %70, vipl %15, dlcn %8, cohface %3, pure %2, ubfc %2
+  eğitim kümesi: 3981 video (714 kişi)
+  epoch 72 adım 100/500 kayıp 0.3442
+  epoch 72 adım 200/500 kayıp 0.3377
+  epoch 72 adım 300/500 kayıp 0.3275
+  epoch 72 adım 400/500 kayıp 0.3290
+  epoch 72 adım 500/500 kayıp 0.3348
+epoch 72: kayıp 0.3346, doğrulama MAE 1.56 BPM, en iyi 1.32 (epoch 7), 151 s [13:37:08]
+  doğrulama: cohface/COHFACE 1.57 (6), dlcn/C922 2.52 (6), mcd/FullHDwebcam 2.96 (6), mcd/IriunWebcam 1.74 (6), mcd/USBVideo 0.99 (6), pure/PURE 0.40 (5), ubfc/C920 0.85 (5), vipl/source1 1.07 (6), vipl/source3 1.61 (6)
+  örnekleme payı: mcd %70, vipl %15, dlcn %8, cohface %3, pure %2, ubfc %2
+  eğitim kümesi: 4001 video (719 kişi)
+  epoch 73 adım 100/500 kayıp 0.3281
+  epoch 73 adım 200/500 kayıp 0.3382
+  epoch 73 adım 300/500 kayıp 0.3335
+  epoch 73 adım 400/500 kayıp 0.3250
+  epoch 73 adım 500/500 kayıp 0.3357
+epoch 73: kayıp 0.3321, doğrulama MAE 1.54 BPM, en iyi 1.32 (epoch 7), 149 s [13:39:37]
+  doğrulama: cohface/COHFACE 1.56 (6), dlcn/C922 2.69 (6), mcd/FullHDwebcam 3.03 (6), mcd/IriunWebcam 1.53 (6), mcd/USBVideo 0.98 (6), pure/PURE 0.40 (5), ubfc/C920 0.84 (5), vipl/source1 1.05 (6), vipl/source3 1.46 (6)
+  örnekleme payı: mcd %70, vipl %15, dlcn %8, cohface %3, pure %2, ubfc %2
+  eğitim kümesi: 4027 video (724 kişi)
+  epoch 74 adım 100/500 kayıp 0.3294
+  epoch 74 adım 200/500 kayıp 0.3296
+  epoch 74 adım 300/500 kayıp 0.3266
+  epoch 74 adım 400/500 kayıp 0.3309
+  epoch 74 adım 500/500 kayıp 0.3333
+epoch 74: kayıp 0.3300, doğrulama MAE 1.68 BPM, en iyi 1.32 (epoch 7), 149 s [13:42:06]
+  doğrulama: cohface/COHFACE 1.57 (6), dlcn/C922 2.72 (6), mcd/FullHDwebcam 3.98 (6), mcd/IriunWebcam 1.69 (6), mcd/USBVideo 1.00 (6), pure/PURE 0.40 (5), ubfc/C920 0.84 (5), vipl/source1 1.06 (6), vipl/source3 1.46 (6)
+  örnekleme payı: mcd %70, vipl %15, dlcn %8, cohface %3, pure %2, ubfc %2
+  eğitim kümesi: 4058 video (730 kişi)
+  epoch 75 adım 100/500 kayıp 0.3363
+  epoch 75 adım 200/500 kayıp 0.3297
+  epoch 75 adım 300/500 kayıp 0.3455
+  epoch 75 adım 400/500 kayıp 0.3309
+  epoch 75 adım 500/500 kayıp 0.3399
+epoch 75: kayıp 0.3365, doğrulama MAE 1.67 BPM, en iyi 1.32 (epoch 7), 148 s [13:44:34]
+  doğrulama: cohface/COHFACE 1.56 (6), dlcn/C922 2.97 (6), mcd/FullHDwebcam 3.69 (6), mcd/IriunWebcam 1.69 (6), mcd/USBVideo 1.00 (6), pure/PURE 0.40 (5), ubfc/C920 0.83 (5), vipl/source1 1.07 (6), vipl/source3 1.46 (6)
+  örnekleme payı: mcd %70, vipl %15, dlcn %8, cohface %3, pure %2, ubfc %2
+  eğitim kümesi: 4096 video (736 kişi)
+  epoch 76 adım 100/500 kayıp 0.3364
+  epoch 76 adım 200/500 kayıp 0.3304
+  epoch 76 adım 300/500 kayıp 0.3297
+  epoch 76 adım 400/500 kayıp 0.3324
+  epoch 76 adım 500/500 kayıp 0.3368
+epoch 76: kayıp 0.3331, doğrulama MAE 1.59 BPM, en iyi 1.32 (epoch 7), 146 s [13:47:00]
+  doğrulama: cohface/COHFACE 1.56 (6), dlcn/C922 2.19 (6), mcd/FullHDwebcam 3.73 (6), mcd/IriunWebcam 1.82 (6), mcd/USBVideo 0.90 (6), pure/PURE 0.40 (5), ubfc/C920 0.84 (5), vipl/source1 1.05 (6), vipl/source3 1.47 (6)
+  örnekleme payı: mcd %70, vipl %15, dlcn %8, cohface %3, pure %2, ubfc %2
+  eğitim kümesi: 4105 video (738 kişi)
+  epoch 77 adım 100/500 kayıp 0.3298
+  epoch 77 adım 200/500 kayıp 0.3350
+  epoch 77 adım 300/500 kayıp 0.3405
+  epoch 77 adım 400/500 kayıp 0.3315
+  epoch 77 adım 500/500 kayıp 0.3379
+epoch 77: kayıp 0.3350, doğrulama MAE 1.45 BPM, en iyi 1.32 (epoch 7), 145 s [13:49:25]
+  doğrulama: cohface/COHFACE 1.58 (6), dlcn/C922 2.39 (6), mcd/FullHDwebcam 2.41 (6), mcd/IriunWebcam 1.70 (6), mcd/USBVideo 0.90 (6), pure/PURE 0.40 (5), ubfc/C920 0.84 (5), vipl/source1 1.05 (6), vipl/source3 1.46 (6)
+  epoch 78 adım 100/500 kayıp 0.3262
+  epoch 78 adım 200/500 kayıp 0.3316
+  epoch 78 adım 300/500 kayıp 0.3371
+  epoch 78 adım 400/500 kayıp 0.3304
+  epoch 78 adım 500/500 kayıp 0.3337
+epoch 78: kayıp 0.3318, doğrulama MAE 1.43 BPM, en iyi 1.32 (epoch 7), 141 s [13:51:45]
+  doğrulama: cohface/COHFACE 1.57 (6), dlcn/C922 2.19 (6), mcd/FullHDwebcam 2.31 (6), mcd/IriunWebcam 1.70 (6), mcd/USBVideo 0.88 (6), pure/PURE 0.40 (5), ubfc/C920 0.87 (5), vipl/source1 1.06 (6), vipl/source3 1.62 (6)
+  epoch 79 adım 100/500 kayıp 0.3249
+  epoch 79 adım 200/500 kayıp 0.3226
+  epoch 79 adım 300/500 kayıp 0.3377
+  epoch 79 adım 400/500 kayıp 0.3360
+  epoch 79 adım 500/500 kayıp 0.3261
+epoch 79: kayıp 0.3295, doğrulama MAE 1.42 BPM, en iyi 1.32 (epoch 7), 144 s [13:54:10]
+  doğrulama: cohface/COHFACE 1.57 (6), dlcn/C922 2.36 (6), mcd/FullHDwebcam 2.27 (6), mcd/IriunWebcam 1.70 (6), mcd/USBVideo 0.89 (6), pure/PURE 0.40 (5), ubfc/C920 0.85 (5), vipl/source1 1.06 (6), vipl/source3 1.46 (6)
+  epoch 80 adım 100/500 kayıp 0.3285
+  epoch 80 adım 200/500 kayıp 0.3294
+  epoch 80 adım 300/500 kayıp 0.3296
+  epoch 80 adım 400/500 kayıp 0.3296
+  epoch 80 adım 500/500 kayıp 0.3389
+epoch 80: kayıp 0.3312, doğrulama MAE 1.47 BPM, en iyi 1.32 (epoch 7), 144 s [13:56:33]
+  doğrulama: cohface/COHFACE 1.56 (6), dlcn/C922 2.36 (6), mcd/FullHDwebcam 2.61 (6), mcd/IriunWebcam 1.70 (6), mcd/USBVideo 0.96 (6), pure/PURE 0.40 (5), ubfc/C920 0.85 (5), vipl/source1 1.07 (6), vipl/source3 1.46 (6)
+  epoch 81 adım 100/500 kayıp 0.3361
+  epoch 81 adım 200/500 kayıp 0.3302
+  epoch 81 adım 300/500 kayıp 0.3291
+  epoch 81 adım 400/500 kayıp 0.3367
+  epoch 81 adım 500/500 kayıp 0.3419
+epoch 81: kayıp 0.3348, doğrulama MAE 1.52 BPM, en iyi 1.32 (epoch 7), 143 s [13:58:57]
+  doğrulama: cohface/COHFACE 1.56 (6), dlcn/C922 2.18 (6), mcd/FullHDwebcam 3.24 (6), mcd/IriunWebcam 1.70 (6), mcd/USBVideo 0.96 (6), pure/PURE 0.40 (5), ubfc/C920 0.76 (5), vipl/source1 1.06 (6), vipl/source3 1.46 (6)
+  epoch 82 adım 100/500 kayıp 0.3283
+  epoch 82 adım 200/500 kayıp 0.3361
+  epoch 82 adım 300/500 kayıp 0.3284
+  epoch 82 adım 400/500 kayıp 0.3399
+  epoch 82 adım 500/500 kayıp 0.3382
+epoch 82: kayıp 0.3342, doğrulama MAE 1.54 BPM, en iyi 1.32 (epoch 7), 145 s [14:01:22]
+  doğrulama: cohface/COHFACE 1.56 (6), dlcn/C922 2.18 (6), mcd/FullHDwebcam 3.43 (6), mcd/IriunWebcam 1.70 (6), mcd/USBVideo 0.96 (6), pure/PURE 0.40 (5), ubfc/C920 0.78 (5), vipl/source1 1.06 (6), vipl/source3 1.46 (6)
+  epoch 83 adım 100/500 kayıp 0.3367
+  epoch 83 adım 200/500 kayıp 0.3284
+  epoch 83 adım 300/500 kayıp 0.3355
+  epoch 83 adım 400/500 kayıp 0.3358
+  epoch 83 adım 500/500 kayıp 0.3298
+epoch 83: kayıp 0.3332, doğrulama MAE 1.53 BPM, en iyi 1.32 (epoch 7), 140 s [14:03:42]
+  doğrulama: cohface/COHFACE 1.56 (6), dlcn/C922 2.18 (6), mcd/FullHDwebcam 3.27 (6), mcd/IriunWebcam 1.70 (6), mcd/USBVideo 0.99 (6), pure/PURE 0.40 (5), ubfc/C920 0.85 (5), vipl/source1 1.06 (6), vipl/source3 1.46 (6)
+  epoch 84 adım 100/500 kayıp 0.3360
+  epoch 84 adım 200/500 kayıp 0.3293
+  epoch 84 adım 300/500 kayıp 0.3294
+  epoch 84 adım 400/500 kayıp 0.3336
+  epoch 84 adım 500/500 kayıp 0.3344
+epoch 84: kayıp 0.3325, doğrulama MAE 1.52 BPM, en iyi 1.32 (epoch 7), 144 s [14:06:05]
+  doğrulama: cohface/COHFACE 1.56 (6), dlcn/C922 2.19 (6), mcd/FullHDwebcam 3.03 (6), mcd/IriunWebcam 1.71 (6), mcd/USBVideo 0.98 (6), pure/PURE 0.40 (5), ubfc/C920 0.85 (5), vipl/source1 1.06 (6), vipl/source3 1.61 (6)
+  epoch 85 adım 100/500 kayıp 0.3330
+  epoch 85 adım 200/500 kayıp 0.3293
+  epoch 85 adım 300/500 kayıp 0.3291
+  epoch 85 adım 400/500 kayıp 0.3307
+  epoch 85 adım 500/500 kayıp 0.3285
+epoch 85: kayıp 0.3301, doğrulama MAE 1.51 BPM, en iyi 1.32 (epoch 7), 145 s [14:08:30]
+  doğrulama: cohface/COHFACE 1.57 (6), dlcn/C922 2.38 (6), mcd/FullHDwebcam 2.87 (6), mcd/IriunWebcam 1.71 (6), mcd/USBVideo 0.98 (6), pure/PURE 0.40 (5), ubfc/C920 0.85 (5), vipl/source1 1.06 (6), vipl/source3 1.47 (6)
+  epoch 86 adım 100/500 kayıp 0.3512
+  epoch 86 adım 200/500 kayıp 0.3268
+  epoch 86 adım 300/500 kayıp 0.3317
+  epoch 86 adım 400/500 kayıp 0.3372
+  epoch 86 adım 500/500 kayıp 0.3335
+epoch 86: kayıp 0.3361, doğrulama MAE 1.60 BPM, en iyi 1.32 (epoch 7), 140 s [14:10:51]
+  doğrulama: cohface/COHFACE 1.56 (6), dlcn/C922 2.39 (6), mcd/FullHDwebcam 3.48 (6), mcd/IriunWebcam 1.93 (6), mcd/USBVideo 0.98 (6), pure/PURE 0.40 (5), ubfc/C920 0.85 (5), vipl/source1 1.06 (6), vipl/source3 1.47 (6)
+  epoch 87 adım 100/500 kayıp 0.3385
+  epoch 87 adım 200/500 kayıp 0.3380
+  epoch 87 adım 300/500 kayıp 0.3270
+  epoch 87 adım 400/500 kayıp 0.3330
+  epoch 87 adım 500/500 kayıp 0.3298
+epoch 87: kayıp 0.3333, doğrulama MAE 1.54 BPM, en iyi 1.32 (epoch 7), 141 s [14:13:12]
+  doğrulama: cohface/COHFACE 1.56 (6), dlcn/C922 2.20 (6), mcd/FullHDwebcam 3.10 (6), mcd/IriunWebcam 1.92 (6), mcd/USBVideo 0.98 (6), pure/PURE 0.40 (5), ubfc/C920 0.85 (5), vipl/source1 1.06 (6), vipl/source3 1.47 (6)
+  epoch 88 adım 100/500 kayıp 0.3400
+  epoch 88 adım 200/500 kayıp 0.3379
+  epoch 88 adım 300/500 kayıp 0.3312
+  epoch 88 adım 400/500 kayıp 0.3302
+  epoch 88 adım 500/500 kayıp 0.3318
+epoch 88: kayıp 0.3342, doğrulama MAE 1.46 BPM, en iyi 1.32 (epoch 7), 141 s [14:15:32]
+  doğrulama: cohface/COHFACE 1.56 (6), dlcn/C922 2.01 (6), mcd/FullHDwebcam 2.50 (6), mcd/IriunWebcam 1.92 (6), mcd/USBVideo 0.96 (6), pure/PURE 0.40 (5), ubfc/C920 0.85 (5), vipl/source1 1.06 (6), vipl/source3 1.63 (6)
+  epoch 89 adım 100/500 kayıp 0.3280
+  epoch 89 adım 200/500 kayıp 0.3275
+  epoch 89 adım 300/500 kayıp 0.3377
+  epoch 89 adım 400/500 kayıp 0.3329
+  epoch 89 adım 500/500 kayıp 0.3309
+epoch 89: kayıp 0.3314, doğrulama MAE 1.48 BPM, en iyi 1.32 (epoch 7), 144 s [14:17:56]
+  doğrulama: cohface/COHFACE 1.56 (6), dlcn/C922 2.00 (6), mcd/FullHDwebcam 2.66 (6), mcd/IriunWebcam 1.93 (6), mcd/USBVideo 0.98 (6), pure/PURE 0.40 (5), ubfc/C920 0.85 (5), vipl/source1 1.06 (6), vipl/source3 1.62 (6)
+  epoch 90 adım 100/500 kayıp 0.3286
+  epoch 90 adım 200/500 kayıp 0.3411
+  epoch 90 adım 300/500 kayıp 0.3348
+  epoch 90 adım 400/500 kayıp 0.3325
+  epoch 90 adım 500/500 kayıp 0.3331
+epoch 90: kayıp 0.3340, doğrulama MAE 1.45 BPM, en iyi 1.32 (epoch 7), 146 s [14:20:22]
+  doğrulama: cohface/COHFACE 1.56 (6), dlcn/C922 1.99 (6), mcd/FullHDwebcam 2.51 (6), mcd/IriunWebcam 1.93 (6), mcd/USBVideo 0.98 (6), pure/PURE 0.40 (5), ubfc/C920 0.85 (5), vipl/source1 1.06 (6), vipl/source3 1.47 (6)
+  epoch 91 adım 100/500 kayıp 0.3320
+  epoch 91 adım 200/500 kayıp 0.3249
+  epoch 91 adım 300/500 kayıp 0.3337
+  epoch 91 adım 400/500 kayıp 0.3323
+  epoch 91 adım 500/500 kayıp 0.3393
+epoch 91: kayıp 0.3324, doğrulama MAE 1.47 BPM, en iyi 1.32 (epoch 7), 145 s [14:22:47]
+  doğrulama: cohface/COHFACE 1.56 (6), dlcn/C922 2.18 (6), mcd/FullHDwebcam 2.51 (6), mcd/IriunWebcam 1.93 (6), mcd/USBVideo 0.96 (6), pure/PURE 0.40 (5), ubfc/C920 0.85 (5), vipl/source1 1.05 (6), vipl/source3 1.47 (6)
+  epoch 92 adım 100/500 kayıp 0.3279
+  epoch 92 adım 200/500 kayıp 0.3342
+  epoch 92 adım 300/500 kayıp 0.3207
+  epoch 92 adım 400/500 kayıp 0.3255
+  epoch 92 adım 500/500 kayıp 0.3476
+epoch 92: kayıp 0.3312, doğrulama MAE 1.48 BPM, en iyi 1.32 (epoch 7), 141 s [14:25:09]
+  doğrulama: cohface/COHFACE 1.56 (6), dlcn/C922 2.39 (6), mcd/FullHDwebcam 2.51 (6), mcd/IriunWebcam 1.84 (6), mcd/USBVideo 0.98 (6), pure/PURE 0.40 (5), ubfc/C920 0.85 (5), vipl/source1 1.06 (6), vipl/source3 1.47 (6)
+  epoch 93 adım 100/500 kayıp 0.3333
+  epoch 93 adım 200/500 kayıp 0.3307
+  epoch 93 adım 300/500 kayıp 0.3290
+  epoch 93 adım 400/500 kayıp 0.3314
+  epoch 93 adım 500/500 kayıp 0.3410
+epoch 93: kayıp 0.3331, doğrulama MAE 1.48 BPM, en iyi 1.32 (epoch 7), 141 s [14:27:30]
+  doğrulama: cohface/COHFACE 1.56 (6), dlcn/C922 2.39 (6), mcd/FullHDwebcam 2.51 (6), mcd/IriunWebcam 1.84 (6), mcd/USBVideo 0.96 (6), pure/PURE 0.40 (5), ubfc/C920 0.85 (5), vipl/source1 1.06 (6), vipl/source3 1.47 (6)
+  epoch 94 adım 100/500 kayıp 0.3383
+  epoch 94 adım 200/500 kayıp 0.3300
+  epoch 94 adım 300/500 kayıp 0.3370
+  epoch 94 adım 400/500 kayıp 0.3292
+  epoch 94 adım 500/500 kayıp 0.3288
+epoch 94: kayıp 0.3327, doğrulama MAE 1.50 BPM, en iyi 1.32 (epoch 7), 143 s [14:29:53]
+  doğrulama: cohface/COHFACE 1.56 (6), dlcn/C922 2.59 (6), mcd/FullHDwebcam 2.50 (6), mcd/IriunWebcam 1.84 (6), mcd/USBVideo 0.98 (6), pure/PURE 0.40 (5), ubfc/C920 0.85 (5), vipl/source1 1.06 (6), vipl/source3 1.47 (6)
+  epoch 95 adım 100/500 kayıp 0.3353
+  epoch 95 adım 200/500 kayıp 0.3316
+  epoch 95 adım 300/500 kayıp 0.3223
+  epoch 95 adım 400/500 kayıp 0.3214
+  epoch 95 adım 500/500 kayıp 0.3308
+epoch 95: kayıp 0.3283, doğrulama MAE 1.46 BPM, en iyi 1.32 (epoch 7), 145 s [14:32:18]
+  doğrulama: cohface/COHFACE 1.56 (6), dlcn/C922 2.19 (6), mcd/FullHDwebcam 2.50 (6), mcd/IriunWebcam 1.84 (6), mcd/USBVideo 0.98 (6), pure/PURE 0.40 (5), ubfc/C920 0.85 (5), vipl/source1 1.05 (6), vipl/source3 1.47 (6)
+  epoch 96 adım 100/500 kayıp 0.3415
+  epoch 96 adım 200/500 kayıp 0.3261
+  epoch 96 adım 300/500 kayıp 0.3309
+  epoch 96 adım 400/500 kayıp 0.3370
+  epoch 96 adım 500/500 kayıp 0.3174
+epoch 96: kayıp 0.3306, doğrulama MAE 1.49 BPM, en iyi 1.32 (epoch 7), 145 s [14:34:43]
+  doğrulama: cohface/COHFACE 1.56 (6), dlcn/C922 2.38 (6), mcd/FullHDwebcam 2.50 (6), mcd/IriunWebcam 1.93 (6), mcd/USBVideo 0.99 (6), pure/PURE 0.40 (5), ubfc/C920 0.85 (5), vipl/source1 1.05 (6), vipl/source3 1.47 (6)
+  epoch 97 adım 100/500 kayıp 0.3384
+  epoch 97 adım 200/500 kayıp 0.3372
+  epoch 97 adım 300/500 kayıp 0.3427
+  epoch 97 adım 400/500 kayıp 0.3373
+  epoch 97 adım 500/500 kayıp 0.3409
+epoch 97: kayıp 0.3393, doğrulama MAE 1.52 BPM, en iyi 1.32 (epoch 7), 141 s [14:37:04]
+  doğrulama: cohface/COHFACE 1.56 (6), dlcn/C922 2.39 (6), mcd/FullHDwebcam 2.75 (6), mcd/IriunWebcam 1.93 (6), mcd/USBVideo 0.99 (6), pure/PURE 0.40 (5), ubfc/C920 0.85 (5), vipl/source1 1.05 (6), vipl/source3 1.47 (6)
+  epoch 98 adım 100/500 kayıp 0.3307
+  epoch 98 adım 200/500 kayıp 0.3287
+  epoch 98 adım 300/500 kayıp 0.3275
+  epoch 98 adım 400/500 kayıp 0.3296
+  epoch 98 adım 500/500 kayıp 0.3270
+epoch 98: kayıp 0.3287, doğrulama MAE 1.50 BPM, en iyi 1.32 (epoch 7), 141 s [14:39:24]
+  doğrulama: cohface/COHFACE 1.56 (6), dlcn/C922 2.18 (6), mcd/FullHDwebcam 2.77 (6), mcd/IriunWebcam 1.93 (6), mcd/USBVideo 0.99 (6), pure/PURE 0.40 (5), ubfc/C920 0.85 (5), vipl/source1 1.05 (6), vipl/source3 1.47 (6)
+  epoch 99 adım 100/500 kayıp 0.3425
+  epoch 99 adım 200/500 kayıp 0.3379
+  epoch 99 adım 300/500 kayıp 0.3269
+  epoch 99 adım 400/500 kayıp 0.3363
+  epoch 99 adım 500/500 kayıp 0.3351
+epoch 99: kayıp 0.3357, doğrulama MAE 1.50 BPM, en iyi 1.32 (epoch 7), 143 s [14:41:48]
+  doğrulama: cohface/COHFACE 1.56 (6), dlcn/C922 2.18 (6), mcd/FullHDwebcam 2.76 (6), mcd/IriunWebcam 1.93 (6), mcd/USBVideo 0.99 (6), pure/PURE 0.40 (5), ubfc/C920 0.85 (5), vipl/source1 1.05 (6), vipl/source3 1.47 (6)
+  epoch 100 adım 100/500 kayıp 0.3458
+  epoch 100 adım 200/500 kayıp 0.3374
+  epoch 100 adım 300/500 kayıp 0.3325
+  epoch 100 adım 400/500 kayıp 0.3346
+  epoch 100 adım 500/500 kayıp 0.3321
+epoch 100: kayıp 0.3365, doğrulama MAE 1.52 BPM, en iyi 1.32 (epoch 7), 145 s [14:44:13]
+  doğrulama: cohface/COHFACE 1.56 (6), dlcn/C922 2.35 (6), mcd/FullHDwebcam 2.78 (6), mcd/IriunWebcam 1.93 (6), mcd/USBVideo 0.99 (6), pure/PURE 0.40 (5), ubfc/C920 0.85 (5), vipl/source1 1.05 (6), vipl/source3 1.47 (6)
+bitti
