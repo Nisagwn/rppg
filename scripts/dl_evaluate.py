@@ -38,6 +38,8 @@ def group_of(meta):
         return "COHFACE"
     if src == "dlcn":
         return "DLCN gece " + str(meta["step"]).split("_")[0]
+    if src == "ubfcphys":  # T1 dinlenme, T2 konuşma, T3 aritmetik (bilek sensörü)
+        return "UBFC-Phys " + {"T1": "dinlenme", "T2": "konuşma", "T3": "aritmetik"}.get(str(meta["step"]), str(meta["step"]))
     g = "MCD dinlenme" if str(meta["step"]) == "before" else "MCD egzersiz"
     cam = CAMERA_NAMES.get(str(meta["camera"]))
     return f"{g} ({cam})" if cam else g
@@ -166,7 +168,7 @@ def write_report(a, t, info, w, t_clean=None, ref_q=None):
     hist_path = a.history or os.path.join(os.path.dirname(a.model), "gecmis.json")
     hist = json.load(open(hist_path)) if os.path.exists(hist_path) else None
     data = a.data
-    subs = ("mcd", "ubfc", "pure", "vipl", "dlcn", "cohface")
+    subs = ("mcd", "ubfc", "pure", "vipl", "dlcn", "cohface", "ubfcphys")
     metas = [np.load(p) for sub in subs for p in glob.glob(os.path.join(data, sub, "*.npz"))]
     used = [m for m in metas if float(m["face_rate"]) >= 0.5]
     people = {str(m["person"]) for m in used}
@@ -197,7 +199,8 @@ def write_report(a, t, info, w, t_clean=None, ref_q=None):
          f"- PURE: {sum(str(m['source']) == 'pure' for m in used)} oturum (10 kişi × 6 hareket senaryosu; HF kopyası)",
          *[f"- {name}: {sum(str(m['source']) == src for m in used)} video (etiket model tabanlı video başına hizalandı; "
            "hizalı korelasyonu zayıf olanlar eğitimde çıkarıldı)"
-           for src, name in (("vipl", "VIPL-HR (source1/3)"), ("dlcn", "DLCN"), ("cohface", "COHFACE"))
+           for src, name in (("vipl", "VIPL-HR (source1/3)"), ("dlcn", "DLCN"), ("cohface", "COHFACE"),
+                             ("ubfcphys", "UBFC-Phys (bilek sensörü)"))
            if any(str(m['source']) == src for m in used)],
          "- Ön işleme toolbox ile aynı (Haar ×1.5, 30 karede bir tespit, 72×72, ham kare); hepsi 30 fps'e yeniden örneklendi",
          "- MCD parmak PPG'si UBFC/PURE'a göre ters işaretli (ön-eğitimli model çıktısıyla korelasyon ≈ −0.75, "

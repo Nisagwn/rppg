@@ -181,13 +181,15 @@ SNR_MIN = 0.0  # dB
 # ters) kayık. Bu kaydırmalar etiketi önden webcam hizasına getirir (bkz. shift_label).
 REF_LAG = -2
 CAMERA_SHIFT = {("mcd", "IriunWebcam"): 4, ("mcd", "USBVideo"): 8}
-PER_VIDEO_SYNC = {"ubfcphys"}  # bilek sensörü; senkron kişiden kişiye değişiyor -> video başına hizalama
+# POS tabanlı video başına hizalama (2. tur UBFC-Phys için). 18 Ekim: UBFC-Phys model tabanlıya (MODEL_SYNC) geçti;
+# bilek sensöründe kayma kişiden kişiye değişiyor ve POS konuşma/aritmetik görevlerinde nabzı bulamıyor (|r| ~0.1).
+PER_VIDEO_SYNC = set()
 # Model tabanlı video başına hizalama (dl_sync_check.py --write -> <ad>.snk). 2026-10-12 denetimi (5. tur modeli,
 # kamera başına 60 video; senkronu bilinen ana test videolarında tepe 0 kare, r 0.82-0.84): VIPL source1/3 nabız
 # uyumu %81-83 ama kayma videodan videoya -27..+11 kare (medyan -13/-15); POS bu kaynaklarda güvenilmez.
 # .snk'si olmayan video eğitime girmez; hizalı korelasyonu SYNC_R_MIN altındaki video çıkarılır.
 # COHFACE (13 Ekim, 164 video): model nabız hatası medyan 1.0 BPM, kayma medyan +1 kare ama birkaç videoda -20..-25.
-MODEL_SYNC = {"vipl", "dlcn", "cohface"}
+MODEL_SYNC = {"vipl", "dlcn", "cohface", "ubfcphys"}
 SYNC_R_MIN = 0.4
 DROP_CAMERAS = {("vipl", "source2")}  # RealSense: model-etiket nabız uyumu %39, kaymalar rastgele (etiket uyumsuz)
 # Eğitime girmeyen kaynaklar (test klasörleri yine değerlendirilir). MMPD mini 80x60: modelin nabız hatası medyan

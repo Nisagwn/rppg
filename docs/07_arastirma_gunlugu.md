@@ -51,6 +51,7 @@ Değerler Viterbi ile ortalama MAE (BPM). "Ana" = ana test, "Tel" = telefon/USB 
 | **7B** | 14 Eki | **MMRPhys, sıfırdan** | MCD 45 s, UBFC, PURE, VIPL (hizalı) | yeni mimari, hazır ağırlık yok, 150 epoch | **1.13** | 1.96 | `kaggle_tur7_B/` |
 | 7D | 16 Eki | MMRPhys ← 7B | + DLCN, COHFACE; MCD 30 s | ince ayar, lr 2e-4, 100 epoch | 1.29 | 2.36 | `kaggle_tur7_D/` |
 | 7E | 17 Eki | MMRPhys ← 7B | D ile aynı | veri seti payları sabit (MCD %70), kamera başına doğrulama; son epoch | 1.13 | 2.04 | `kaggle_tur7_E/` |
+| 8F | (sürüyor) | MMRPhys ← 7E son epoch | E + UBFC-Phys (model tabanlı hizalı, 45 kişi; 11 kişi test_ubfcphys) | UBFC-Phys %7 pay; değerlendirme last.pth | – | – | `kaggle_tur8_F/` |
 
 \* POS'un telefon/USB değeri yüz kırpıntısı üzerinde (`test_kamera/`).
 Tüm klasörler `results/derin_ogrenme/` altında. 5. tur değerleri son epoch (`last.pth`); karşılaştırmalarda bu
@@ -148,7 +149,10 @@ model kullanıldı.
 
 ## 4. Olumsuz sonuçlar ve mühendislik dersleri
 
-- **2. tur (UBFC-Phys):** bilek sensörünün senkronu kişiden kişiye değişiyor; video başına hizalama gerekti.
+- **2. tur (UBFC-Phys):** bilek sensörünün senkronu kişiden kişiye değişiyor; video başına hizalama gerekti. 8. turda POS
+  yerine 5. tur modeliyle hizalanıyor (konuşma/aritmetikte POS |r| ~0.1, hizalamaya yetmiyordu).
+- **Yeni veri seti taraması (18 Eki):** açık ve eğitime hazır yeni gerçek veri bulunamadı. PhysDrive (HF WeiQian98,
+  elle onay), RLAP ve iBVP (imzalı sözleşme) erişim bekliyor; SCAMPS açık ama sentetik (600 GB); 4TU açık ama ECG.
 - **6. tur ve 7B'nin ilk iki oturumu Kaggle'da iz bırakmadan durdu** ("Read-only file system", başarısız sürüm
   çıktıyı saklamıyor). RAM sorunu değildi (izleme: 30/34 GB boş). Ortak nokta: 43 GB'lık DLCN Kaggle girdisinin
   okunması + oturumun ~90–100 GB veri yazması. DLCN'siz ~92 GB'lık oturum bitti. Çözüm: büyük girdiler GPU'suz

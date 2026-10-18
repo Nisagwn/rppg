@@ -296,13 +296,17 @@ def job_ubfcphys(zipname, raw_root, out_root, keep_raw, max_sec):
     done_mark = os.path.join(out_root, "ubfcphys", f".{zipname}.done")
     if os.path.exists(done_mark):
         return zipname, "var"
+    sm = re.match(r"s(\d+)\.zip$", zipname)  # tek kişilik zip: görevleri depodan geldiyse (--pull) 15 GB inmesin
+    if sm and all(os.path.exists(_new_dst(out_root, "ubfcphys", sm.group(1), f"s{sm.group(1)}_T{t}"))
+                  for t in (1, 2, 3)):
+        return zipname, "var"
     fetch(UBFCPHYS_HF + zipname, zp)
     msgs = []
     with zipfile.ZipFile(zp) as z:
         names = z.namelist()
         for vid in sorted(n for n in names if re.search(r"vid_(s\d+_T\d)\.avi$", n)):
             key = re.search(r"vid_(s\d+_T\d)\.avi$", vid).group(1)
-            dst = os.path.join(out_root, "ubfcphys", f"ubfcphys_{key}.npz")
+            dst = _new_dst(out_root, "ubfcphys", key.split("_")[0][1:], key)  # kişi no % 5 == 0 -> test_ubfcphys
             if os.path.exists(dst):
                 continue
             bvp = next((n for n in names if n.endswith(f"bvp_{key}.csv")), None)
