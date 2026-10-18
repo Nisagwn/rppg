@@ -46,7 +46,9 @@ const server = createServer((req, res) => {
   res.end(readFileSync(p));
 });
 await new Promise((r) => server.listen(0, "127.0.0.1", r));
-const port = server.address().port, debugPort = 9300 + Math.floor(Math.random() * 500);
+// Hata ayıklama portu işletim sisteminden boş port olarak alınır (eşzamanlı testlerde rastgele port çakışabiliyordu)
+const freePort = () => new Promise((r) => { const s = createServer().listen(0, "127.0.0.1", () => { const p = s.address().port; s.close(() => r(p)); }); });
+const port = server.address().port, debugPort = await freePort();
 
 const proc = spawn(chrome, [
   "--headless=new", `--remote-debugging-port=${debugPort}`, `--user-data-dir=${mkdtempSync(join(tmpdir(), "rppg-"))}`,

@@ -173,7 +173,8 @@ def main():
                         "yuz_kare%": yuz * 100, "tespit%": tespit * 100,
                         **{f"sn_{g}": n for g, n in kapi.items()}})
             rows.append(row)
-            json.dump(row, open(rowf, "w", encoding="utf-8"), ensure_ascii=False)
+            if diag:   # tarayıcı hiç kayıt vermediyse (açılamadı / bağlantı koptu) sonraki koşuda yeniden denenir
+                json.dump(row, open(rowf, "w", encoding="utf-8"), ensure_ascii=False)
             print(f"  [{i}/{len(items)}] {c['kaynak']} {c['ad']:28s} uygulama {app_mae:5.2f}  python {py_mae:5.2f}  "
                   f"(ref {row['referans_ort']:.0f} BPM, {row['pencere']} pencere, yüz %{yuz * 100:.0f}, "
                   f"tespit %{tespit * 100:.0f}, duraklar {kapi})")
