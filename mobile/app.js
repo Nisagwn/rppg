@@ -11,6 +11,7 @@ import {
   BPM_GRID, OnlineHRTracker, analyzeWindow, motionConfidence, preprocessBvp, spectrumBpm, windowSnr,
 } from "./dsp.js";
 import { packWindow, planWindow } from "./dl_pack.js";
+import { yunetToBox } from "./face_decode.js";
 
 const ROI_DEFS = {               // rppg/roi.py ROI_DEFS ile aynı (yüz kutusuna göre kesirler)
   forehead: [0.30, 0.08, 0.40, 0.17],
@@ -33,13 +34,15 @@ const els = {
   plotBvp: $("plot-bvp"), plotSpec: $("plot-spec"), plotHist: $("plot-hist"),
 };
 const params = new URLSearchParams(location.search);
-const VERSION = "v12";
+const VERSION = "v13";
 document.getElementById("version").textContent = VERSION;
 
 const state = {
   mode: "face", running: false, stream: null, track: null, torch: false, camLock: "", lumaHist: [], maskProb: {}, raw: [], wakeLock: null,
   samples: [], tracker: new OnlineHRTracker(), motionHist: [],
   bbox: null, lastDet: 0, frameNo: 0, prevGray: null, frameTimes: [], log: [], t0: 0, timer: null, lastBvp: null,
+  // teşhis: saniyelik kayıt (kare sayısı, yüz kutusu olan kare, tespit denemesi/başarısı, analizin durduğu yer)
+  diag: [], dc: { frames: 0, face: 0, tries: 0, hits: 0, qmax: 0 },
 };
 window.__rppg = state; // tarayıcı testleri ve hata ayıklama için
 
@@ -65,9 +68,66 @@ function setStatus(text, level = "") {
   els.status.querySelector("span").textContent = text;
 }
 
+// Yüz dedektörü: YuNet (face_worker.js, ayrı iş parçacığı) ana dedektördür. pico yalnızca önden yüzleri bulur:
+// MCD-rPPG'de yan (USB) kameranın 20 kesitinden 13'ünde, telefonun 7'sinde hiç ölçüm çıkmamasının nedeni buydu
+// (bkz. results/mobil_yuz_tespiti). YuNet yüklenene kadar ve açılamazsa pico kullanılır; ?yuz=pico ile zorlanır.
+const FACE_IN = 320, FACE_THR = 0.6;   // YuNet girdisi (uzun kenar, px) ve yüz puanı eşiği
+const fd = { worker: null, ready: false, failed: "", busy: false, id: 0, ms: 0, canvas: null, req: null };
+window.__rppgFace = fd; // tarayıcı testleri için
+state.detector = params.get("yuz") === "pico" ? "pico" : "yunet";
+
+function faceInit() {
+  if (fd.worker || fd.failed || state.detector !== "yunet") return;
+  try {
+    fd.worker = new Worker("face_worker.js", { type: "module" });
+  } catch {
+    fd.failed = "yüz modeli açılamadı";
+    return;
+  }
+  fd.worker.onmessage = (e) => {
+    const m = e.data;
+    if (m.type === "ready") fd.ready = true;
+    else if (m.type === "error") { fd.failed = m.message; fd.busy = false; }
+    else if (m.type === "faces") {
+      fd.busy = false;
+      fd.ms = m.ms;
+      const req = fd.req;
+      if (!req || req.id !== m.id || !state.running || state.mode !== "face") return;
+      const f = m.faces.find((x) => x.s >= FACE_THR);
+      if (!f) return;
+      for (const k of ["x", "y", "w", "h"]) f[k] *= req.sc;
+      applyDetection(yunetToBox(f), req.t);
+    }
+  };
+  fd.worker.onerror = (e) => { fd.failed = e.message || "yüz modeli yüklenemedi"; fd.busy = false; };
+  fd.worker.postMessage({ type: "load" });
+}
+
+// Çalışma karesinden (W x H) küçültülmüş kopya gönderilir; sonuç birkaç on ms sonra gelir ve kutuya işlenir.
+function faceRequest(tSec) {
+  if (fd.busy) return;
+  const W = els.work.width, H = els.work.height, sc = Math.max(W, H) / FACE_IN;
+  const w = Math.round(W / sc), h = Math.round(H / sc);
+  if (!fd.canvas) fd.canvas = document.createElement("canvas");
+  if (fd.canvas.width !== w || fd.canvas.height !== h) { fd.canvas.width = w; fd.canvas.height = h; }
+  const ctx = fd.canvas.getContext("2d", { willReadFrequently: true });
+  ctx.drawImage(els.work, 0, 0, w, h);
+  const img = ctx.getImageData(0, 0, w, h);
+  fd.req = { id: ++fd.id, t: tSec, sc: W / w };
+  fd.busy = true;
+  fd.worker.postMessage({ type: "detect", id: fd.id, rgba: img.data.buffer, w, h, thr: 0.5 }, [img.data.buffer]);
+}
+
+function applyDetection(f, tSec) {
+  state.dc.hits++;
+  state.bbox = smoothBox(state.bbox, f, state.bbox ? 0.3 : 1);
+  state.lastDet = Math.max(state.lastDet, tSec);
+}
+
 // pico yüz dedektörü: kaskad bir kez yüklenir, son 5 karenin tespitleri birleştirilir.
 let classifyRegion = null, detMemory = null;
 async function loadFaceDetector() {
+  faceInit();
   if (classifyRegion) return;
   const bytes = new Int8Array(await (await fetch("vendor/facefinder")).arrayBuffer());
   classifyRegion = pico.unpack_cascade(bytes);
@@ -93,6 +153,7 @@ function detectFace(d, W, H, track) {
   dets = pico.cluster_detections(detMemory(dets), 0.2);
   let best = null;
   for (const [r, c, sz, q] of dets) if (q > 50 && (!best || q > best.q)) best = { r, c, sz, q };
+  for (const det of dets) state.dc.qmax = Math.max(state.dc.qmax, det[3]);
   return best && { x: best.c - best.sz / 2, y: best.r - best.sz / 2, w: best.sz, h: best.sz };
 }
 
@@ -182,10 +243,11 @@ function processFrame(tSec) {
   const roiRaw = {};
   if (state.mode === "face") {
     if (state.frameNo++ % DETECT_EVERY === 0) {
-      const f = detectFace(d, W, H, state.bbox);
-      if (f) {
-        state.bbox = smoothBox(state.bbox, f, state.bbox ? 0.3 : 1);
-        state.lastDet = tSec;
+      state.dc.tries++;
+      if (state.detector === "yunet" && fd.ready && !fd.failed) faceRequest(tSec);
+      else {
+        const f = detectFace(d, W, H, state.bbox);
+        if (f) applyDetection(f, tSec);
       }
     }
     if (state.bbox && tSec - state.lastDet > 1.5) { state.bbox = null; state.maskProb = {}; }   // yüz 1.5 s görünmedi
@@ -217,6 +279,8 @@ function processFrame(tSec) {
     rgb = covered ? m : null;
     rois = { finger: r };
   }
+  state.dc.frames++;
+  if (state.mode === "face" && state.bbox) state.dc.face++;
   state.samples.push({ t: tSec, rgb, motion });
   if (state.raw.length < RAW_MAX) {            // teşhis için ham veri ("Ham veri indir")
     state.raw.push({ t: tSec, mode: state.mode, cam: camName(), rgb, motion, luma: state.lumaHist[state.lumaHist.length - 1],
@@ -249,8 +313,19 @@ function drawOverlay(rois) {
 
 // ------------------------------------------------------------------ analiz (saniyede bir)
 function analyze() {
+  const reason = analyzeStep();
+  const dc = state.dc;
+  state.diag.push({ t: state.t0 === null || !state.samples.length ? 0 : state.samples[state.samples.length - 1].t - state.t0,
+    frames: dc.frames, face: dc.face, tries: dc.tries, hits: dc.hits, qmax: Math.round(dc.qmax), gate: reason || "olcum",
+    det: state.detector === "yunet" && fd.ready && !fd.failed ? "yunet" : "pico", det_ms: Math.round(fd.ms) });
+  if (state.diag.length > 3600) state.diag.shift();
+  state.dc = { frames: 0, face: 0, tries: 0, hits: 0, qmax: 0 };
+}
+
+// Dönüş: ölçüm yapılmadıysa nedeni ("kare_az", "yuz_yok", "isinma", "model_isinma"), yapıldıysa undefined
+function analyzeStep() {
   const S = state.samples;
-  if (S.length < 10) return;
+  if (S.length < 10) return "kare_az";
   const tEnd = S[S.length - 1].t;
   const win = S.filter((s) => s.t >= tEnd - WIN_SEC);
   const valid = win.filter((s) => s.rgb);
@@ -260,7 +335,7 @@ function analyze() {
   const lostMsg = state.mode === "face" ? "Yüz bulunamadı — çerçeveye girin, ışığı artırın" : "Parmağınızı kamera ve flaşın üzerine koyun";
   if (valid.length < win.length * 0.7) {
     setStatus(lostMsg, "bad");
-    return;
+    return "yuz_yok";
   }
   const span = valid.length ? valid[valid.length - 1].t - valid[0].t : 0;
   if (span < MIN_SEC) {
@@ -269,7 +344,7 @@ function analyze() {
     const lock = !state.camLock ? "" : state.camLock === "yok"
       ? " · kamera ayarı kilitlenemedi, ışığı sabit tutun" : ` · kilitli: ${state.camLock}`;
     setStatus(`Ölçülüyor… ${Math.ceil(MIN_SEC - span)} s${lock}`, "fair");
-    return;
+    return "isinma";
   }
   els.progressWrap.hidden = true;
 
@@ -281,7 +356,7 @@ function analyze() {
       els.progressWrap.hidden = false;
       els.progress.style.width = `${Math.min(100, (100 * dspan) / MIN_SEC)}%`;
       setStatus(dl.ready ? "Model ölçüyor…" : "Model yükleniyor…", "fair");
-      return;
+      return "model_isinma";
     }
     const bvp = preprocessBvp(ser.x);
     res = { bvp, spec: spectrumBpm(bvp) };
