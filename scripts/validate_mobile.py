@@ -112,12 +112,17 @@ def main():
     ap.add_argument("--out", default="results/mobil_dogrulama")
     a = ap.parse_args()
     os.makedirs(os.path.join(a.out, "teshis"), exist_ok=True)
+    os.makedirs(os.path.join(a.out, "satirlar"), exist_ok=True)
 
     rows = []
     items = clips(a)
     print(f"{len(items)} kesit doğrulanacak ({a.duration:.0f} s)")
     with tempfile.TemporaryDirectory(ignore_cleanup_errors=True) as tmp:
         for i, c in enumerate(items, 1):
+            rowf = os.path.join(a.out, "satirlar", c["ad"] + ".json")
+            if os.path.exists(rowf):   # kaldığı yerden devam: biten kesit yeniden ölçülmez
+                rows.append(json.load(open(rowf, encoding="utf-8")))
+                continue
             frames = read_clip(c["video"], c["s0"], a.duration, c.get("ts"))
             dur = len(frames) / FPS
             y4m, logf = os.path.join(tmp, "clip.y4m"), os.path.join(tmp, "log.json")
@@ -168,6 +173,7 @@ def main():
                         "yuz_kare%": yuz * 100, "tespit%": tespit * 100,
                         **{f"sn_{g}": n for g, n in kapi.items()}})
             rows.append(row)
+            json.dump(row, open(rowf, "w", encoding="utf-8"), ensure_ascii=False)
             print(f"  [{i}/{len(items)}] {c['kaynak']} {c['ad']:28s} uygulama {app_mae:5.2f}  python {py_mae:5.2f}  "
                   f"(ref {row['referans_ort']:.0f} BPM, {row['pencere']} pencere, yüz %{yuz * 100:.0f}, "
                   f"tespit %{tespit * 100:.0f}, duraklar {kapi})")
