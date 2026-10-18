@@ -7,6 +7,7 @@
 //                            [--yontem ai|klasik]                      # yüz modunda yöntem (varsayılan: ai)
 //                            [--crop kirpinti.json]                    # modelin gördüğü son kırpıntı
 //                            [--frames kareler.json]                   # modelin girdisi: bellekteki tüm kırpıntılar
+//                            [--model aday.onnx]                       # uygulamanın modeli yerine bu ONNX sunulur
 //
 // Chrome yolu: CHROME ortam değişkeni ya da Windows/Linux/macOS varsayılanları.
 import { spawn, spawnSync } from "node:child_process";
@@ -38,7 +39,12 @@ const types = { ".html": "text/html", ".js": "text/javascript", ".mjs": "text/ja
   ".png": "image/png", ".wasm": "application/wasm", ".onnx": "application/octet-stream",
   ".svg": "image/svg+xml", ".webmanifest": "application/manifest+json", ".json": "application/json" };
 const server = createServer((req, res) => {
-  const p = join(root, decodeURIComponent(new URL(req.url, "http://x").pathname).replace(/\/$/, "/index.html"));
+  const path = decodeURIComponent(new URL(req.url, "http://x").pathname);
+  if (args.model && /^\/model\/[^/]+\.onnx$/.test(path)) {   // aday model karşılaştırması: dosyayı değiştirmeden
+    res.writeHead(200, { "content-type": types[".onnx"] });
+    return res.end(readFileSync(resolve(args.model)));
+  }
+  const p = join(root, path.replace(/\/$/, "/index.html"));
   if (!p.startsWith(root) || !existsSync(p)) { res.writeHead(404); return res.end(); }
   res.writeHead(200, { "content-type": types[extname(p)] || "application/octet-stream" });
   res.end(readFileSync(p));
