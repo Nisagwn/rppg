@@ -51,7 +51,7 @@ const freePort = () => new Promise((r) => { const s = createServer().listen(0, "
 const port = server.address().port, debugPort = await freePort();
 
 const proc = spawn(chrome, [
-  "--headless=new", `--remote-debugging-port=${debugPort}`, `--user-data-dir=${mkdtempSync(join(tmpdir(), "rppg-"))}`,
+  "--headless=new", "--disable-gpu", `--remote-debugging-port=${debugPort}`, `--user-data-dir=${mkdtempSync(join(tmpdir(), "rppg-"))}`,
   "--use-fake-ui-for-media-stream", "--use-fake-device-for-media-stream", `--use-file-for-fake-video-capture=${video}`,
   "--autoplay-policy=no-user-gesture-required", "--window-size=412,915", "--no-first-run", "--no-default-browser-check",
   `${args.url || `http://127.0.0.1:${port}/index.html`}?autotest=${mode}${args.kamera ? `&kamera=${args.kamera}` : ""}${args.yontem ? `&yontem=${args.yontem}` : ""}${args.params ? `&${args.params}` : ""}`,
