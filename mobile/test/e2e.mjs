@@ -9,6 +9,7 @@
 //                            [--frames kareler.json]                   # modelin girdisi: bellekteki tüm kırpıntılar
 //                            [--params a=1&b=2]                        # uygulamaya ek URL parametreleri
 //                            [--diag teshis.json]                     # saniyelik teşhis: yüz bulundu mu, ölçüm nerede durdu
+//                            [--model aday.onnx]                       # uygulamanın modeli yerine bu ONNX sunulur
 //
 // Chrome yolu: CHROME ortam değişkeni ya da Windows/Linux/macOS varsayılanları.
 import { spawn, spawnSync } from "node:child_process";
@@ -40,7 +41,12 @@ const types = { ".html": "text/html", ".js": "text/javascript", ".mjs": "text/ja
   ".png": "image/png", ".wasm": "application/wasm", ".onnx": "application/octet-stream",
   ".svg": "image/svg+xml", ".webmanifest": "application/manifest+json", ".json": "application/json" };
 const server = createServer((req, res) => {
-  const p = join(root, decodeURIComponent(new URL(req.url, "http://x").pathname).replace(/\/$/, "/index.html"));
+  const path = decodeURIComponent(new URL(req.url, "http://x").pathname);
+  if (args.model && /^\/model\/[^/]+\.onnx$/.test(path)) {   // aday model karşılaştırması: dosyayı değiştirmeden
+    res.writeHead(200, { "content-type": types[".onnx"] });
+    return res.end(readFileSync(resolve(args.model)));
+  }
+  const p = join(root, path.replace(/\/$/, "/index.html"));
   if (!p.startsWith(root) || !existsSync(p)) { res.writeHead(404); return res.end(); }
   res.writeHead(200, { "content-type": types[extname(p)] || "application/octet-stream" });
   res.end(readFileSync(p));
@@ -51,7 +57,8 @@ const freePort = () => new Promise((r) => { const s = createServer().listen(0, "
 const port = server.address().port, debugPort = await freePort();
 
 const proc = spawn(chrome, [
-  "--headless=new", "--disable-gpu", `--remote-debugging-port=${debugPort}`, `--user-data-dir=${mkdtempSync(join(tmpdir(), "rppg-"))}`,
+  "--headless=new", "--disable-gpu",   // GPU kullanılmaz: model zaten WebAssembly (wasm) arka ucunda çalışır
+  `--remote-debugging-port=${debugPort}`, `--user-data-dir=${mkdtempSync(join(tmpdir(), "rppg-"))}`,
   "--use-fake-ui-for-media-stream", "--use-fake-device-for-media-stream", `--use-file-for-fake-video-capture=${video}`,
   "--autoplay-policy=no-user-gesture-required", "--window-size=412,915", "--no-first-run", "--no-default-browser-check",
   `${args.url || `http://127.0.0.1:${port}/index.html`}?autotest=${mode}${args.kamera ? `&kamera=${args.kamera}` : ""}${args.yontem ? `&yontem=${args.yontem}` : ""}${args.params ? `&${args.params}` : ""}`,

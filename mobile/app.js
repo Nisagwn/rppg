@@ -5,7 +5,7 @@
 //             -> hareket güvenli çevrimiçi Bayes takibi (Viterbi'nin çevrimiçi eşi).
 //             ROI'ler ortalama füzyonla birleşir: gerçek veride (UBFC, MCD-rPPG) en iyi sonucu veren hat.
 //             Eğitilmiş model (FactorizePhys): yüz kutusu x1.5 -> 72x72 RGB -> 30 fps ızgara -> FactorizePhys
-//             (ince ayarlı, ONNX, Web Worker'da) -> örtüşen parçaların birleşimi -> aynı spektrum + takip.
+//             (5. tur ince ayarlı, ONNX, Web Worker'da) -> örtüşen parçaların birleşimi -> aynı spektrum + takip.
 // Parmak modu: arka kamera + flaş, merkez bölgenin G/R kanalı (temaslı PPG).
 import {
   BPM_GRID, OnlineHRTracker, analyzeWindow, motionConfidence, preprocessBvp, spectrumBpm, windowSnr,
@@ -34,7 +34,7 @@ const els = {
   plotBvp: $("plot-bvp"), plotSpec: $("plot-spec"), plotHist: $("plot-hist"),
 };
 const params = new URLSearchParams(location.search);
-const VERSION = "v13";
+const VERSION = "v14";
 document.getElementById("version").textContent = VERSION;
 
 const state = {

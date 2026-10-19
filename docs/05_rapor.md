@@ -461,6 +461,10 @@ Tablo 8: Mobil uygulamanın gerçek veri doğrulaması (MAE, BPM; sonuç verilen
 
 Uygulamanın sonuç verdiği 40 kesitte hata, aynı kesitlerdeki klasik Python hattının üçte biridir (3.14 / 9.37 BPM, p = 0.011). Önceki POS tabanlı uygulamayla, iki doğrulamada da 30 fps olan 13 önden kesitte karşılaştırıldığında hata 8.99'dan 2.45 BPM'ye düşmüştür (p = 0.013). Ancak kapsama %97'den %81'e inmiştir. Zayıf yan, yüzün bulunamamasıdır: telefonda kullanılan pico yüz bulucusu yan açılı USB kesitlerinin 13'ünde ve telefon kesitlerinin 7'sinde yüzü yakalayamamıştır. Ayrıntı `results/mobil_dogrulama_v12/` altındadır.
 
+**Karma yüz bulucu (v13).** Saniyelik teşhis kaydı, sonuçsuz saniyelerin %81'inin yüz bulunamamasından kaynaklandığını göstermiştir. pico'nun eşik, tarama ve döndürme ayarları yan açıyı kurtaramamıştır. Uygulamaya ikinci bir yüz bulucu, YuNet (Wu vd., 2023 [26]; 230 KB, MIT lisansı) eklenmiştir: önce pico çalışır, bulamazsa YuNet devreye girer. YuNet kutusu, ikisinin birlikte bulduğu karelerde öğrenilen doğrusal eşlemeyle pico kutusuna çevrilir; böylece ilgi bölgeleri ve model kırpması değişmez. Sonuç verilen süre önden/telefon/USB için %81/%48/%23'ten %93/%95/%94'e çıkmış, hiç sonuç vermeyen kesit 20'den 0'a inmiştir. İki koşuda da ölçülen 40 kesitte hata değişmemiştir (3.14 / 2.85 BPM, p = 0.17).
+
+**Uygulamadaki modelin seçimi.** 3. tur, 5. tur ve 7E aynı 60 kesitte uygulamanın içinde ölçülmüş, aralarında anlamlı fark bulunmamıştır (Friedman p = 0.56). Gerçek zamanlı ölçümün tekrar gürültüsü, modeller arasındaki 0.1–0.4 BPM'lik farklardan büyüktür. Uygulamaya, çevrimdışı telefon/USB testinde anlamlı ölçüde en iyi olan 5. tur FactorizePhys konmuştur (v14). Ayrıntı `results/mobil_dogrulama_yuz/` ve `results/mobil_dogrulama_modeller/` altındadır.
+
 ## 6.6 Kendi Veri Setimiz
 
 7 koşul × N katılımcı (bkz. `docs/02_veri_toplama_protokolu.md`). Henüz toplanmadı; MCD-rPPG'nin üç kameralı kayıtları bu boşluğu kısmen doldurmaktadır.
@@ -534,6 +538,7 @@ Gerçek veride klasik hattın telefon ve yan kamerada yetersiz kalması üzerine
 23. MCD-rPPG veri seti, https://huggingface.co/datasets/kyegorov/mcd_rppg (CC BY 4.0). *[Yazarlar ve yayın künyesi tamamlanacak.]*
 24. DLCN: rPPG veri seti, gece ve değişen ışık koşulları, arXiv:2507.04306, 2025; https://github.com/dalaoplan/DLCN (CC BY-NC-SA 4.0). *[Yazarlar tamamlanacak.]*
 25. F. Wilcoxon, "Individual comparisons by ranking methods," *Biometrics Bulletin*, 1(6), 80–83, 1945.
+26. W. Wu, H. Peng, S. Yu, "YuNet: A Tiny Millisecond-level Face Detector," *Machine Intelligence Research*, 20(5), 656–665, 2023.
 
 # Ek A: Ders Konuları ile Proje Adımlarının Eşleşmesi
 

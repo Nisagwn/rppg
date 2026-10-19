@@ -1,9 +1,10 @@
 #!/usr/bin/env python
 """
-Eğitilmiş FactorizePhys modelini mobil uygulama için ONNX'e çevirir ve PyTorch çıktısıyla karşılaştırır.
+Eğitilmiş modeli (FactorizePhys ya da MMRPhys; mimari kontrol noktasının "arch" alanından okunur) mobil uygulama
+için ONNX'e çevirir ve PyTorch çıktısıyla karşılaştırır.
 
-    python scripts/dl_export_onnx.py                                   # Kaggle modeli -> mobile/model/factorizephys.onnx
-    python scripts/dl_export_onnx.py --model results/derin_ogrenme/egitim/best.pth
+    python scripts/dl_export_onnx.py                                   # 5. tur (uygulamadaki) -> mobile/model/factorizephys.onnx
+    python scripts/dl_export_onnx.py --model results/derin_ogrenme/kaggle_tur7_E/last.pth --out aday.onnx
 
 Girdi [1, 3, 161, 72, 72] float32 (0–255 ham RGB, 30 fps, son kare tekrarlı), çıktı [1, 160] nabız dalgası.
 ONNX'in TorchScript dışa aktarıcısı aten::diff'i desteklemediği için dışa aktarma sırasında torch.diff
@@ -35,7 +36,7 @@ class BvpOnly(torch.nn.Module):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--model", default=os.path.join(ROOT, "results/derin_ogrenme/kaggle/cikti/best.pth"))
+    ap.add_argument("--model", default=os.path.join(ROOT, "results/derin_ogrenme/kaggle_tur5/last.pth"))
     ap.add_argument("--out", default=os.path.join(ROOT, "mobile/model/factorizephys.onnx"))
     a = ap.parse_args()
 

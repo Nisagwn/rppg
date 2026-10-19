@@ -146,7 +146,7 @@ model kullanıldı.
 - Zayıf nokta: pico yüz bulucusu yan açıda ve telefon görüntüsünde yüzü kaçırıyor. Sonraki iş: yüz bulucu ve kalite
   eşiği; uygulamaya 5. tur ya da 7E modeli.
 
-### 3.10 Mobil yüz dedektörü: pico → karma pico + YuNet (v13)
+### 3.11 Mobil yüz dedektörü: pico → karma pico + YuNet (v13)
 - Teşhis (saniyelik `window.__rppg.diag`): v12'de sonuçsuz 20 kesitte ölçümsüz saniyelerin %81'i yüz bulunamadığı
   için; SNR kapısı yok, kalan kayıp model penceresinin kare boşluğuyla bölünmesi (o da aralıklı yüz kaybından).
 - pico parametreleri (eşik, ince tarama, döndürme, bellek) telefonu %57 → %99'a çıkarabiliyor ama USB yan açıda
@@ -156,6 +156,22 @@ model kullanıldı.
 - 60 kesit (`results/mobil_dogrulama_yuz/`): kapsama önden/telefon/USB 81/48/23 → 93/95/94 %, sonuçsuz kesit
   20 → 0; iki koşuda da ölçülen 40 kesitte MAE 3.14 → 2.85 (**p = 0.17**, fark yok); pencere sayısı telefon
   **p = 0.001**, USB **p = 0.0001**. Yeni kesitlerde MAE USB 3.28, telefon 6.64.
+
+### 3.12 Uygulama içinde model karşılaştırması: 3. tur / 5. tur / 7E (v13)
+- Aynı 60 kesit, her kesit üç modelle art arda (sıra döndürülerek) ölçüldü (`validate_mobile.py --models`,
+  `results/mobil_dogrulama_modeller/KARSILASTIRMA.md`). Makine yüklüydü; ilk 14 kesit GPU açık, kalanı kapalı.
+- MAE (kesit ortalaması) / kapsama: tur3 4.17 / %53, tur5 4.35 / %52, 7E 3.98 / %52; medyan 2.24 / 2.42 / 2.09.
+  Üçünün de ölçtüğü 36 kesitte Friedman **p = 0.56**; ikili Wilcoxon'ların hiçbiri anlamlı değil (en küçük: önden
+  webcam tur5 vs 7E, p = 0.081). Aynı 3. tur modelinin v12 koşusuyla farkı da anlamlı değil (p = 0.69).
+- **Olumsuz sonuç:** gerçek zamanlı tarayıcı doğrulaması ±0.3 BPM'lik model farklarını ayıramıyor; tekrar gürültüsü
+  (aynı kesit ve modelde 1.3 / 2.4 BPM, ara sıra takibin yanlış tepeye kilitlenmesi) model farkından büyük.
+- Tarayıcıda çıkarım medyanı: 509 / 584 / 409 ms (tur3 ve tur5 aynı mimari: aradaki fark yük gürültüsü).
+- Ajanın önerisi 7E idi (çevrimdışı DLCN/VIPL çok daha iyi, dosya 163 KB, çıkarım daha hızlı). **Karar (19 Eki):
+  uygulamaya 5. tur FactorizePhys** (v14): uygulama içinde fark yok; çevrimdışı telefon/USB testinde 5. tur anlamlı
+  ölçüde iyi (1.64 / 2.04, p = 0.001) ve telefon kamerası uygulamanın asıl kullanımı; MMRPhys lisansı yalnızca
+  araştırma amaçlı kullanıma izin verdiği için herkese açık uygulamada FactorizePhys daha güvenli.
+- Bu koşu pico'lu (v12/v13 öncesi) yüz dedektörüyle yapıldı; kapsama ~%52. Karma dedektörle (3.11) yeniden
+  ölçülmedi.
 
 ### 3.6 Viterbi takibi derin öğrenme çıktısında da büyük kazanç sağlıyor
 - Klasik aşamanın katkısı derin modellerde de çalışıyor: 7B telefon/USB'de argmax 3.80 → Viterbi 1.96 BPM
@@ -199,7 +215,7 @@ model kullanıldı.
 
 ## 5. Makaleden önce yapılması gerekenler
 
-- [x] **7E sonucu** (3.5, 3.8). [ ] Ana modelin seçimi ve uygulamaya konması (5. tur telefonda en iyi; 7E en dengeli).
+- [x] **7E sonucu** (3.5, 3.8). [x] Uygulamadaki model: 5. tur (3.12).
 - [x] **Mobil kapsama:** yan açı ve telefon görüntüsünde yüz bulunamıyordu (3.9); karma pico + YuNet ile çözüldü (3.10).
 - [ ] **A ve C deneyleri** (FactorizePhys yeni veriyle; FactorizePhys sıfırdan): "kazanç mimariden mi veriden mi"
       ve "ön-eğitim gerekli mi" sorularını kesinleştirir. Şu an 3.4'teki genelleme iddiası bunlar olmadan zayıf.

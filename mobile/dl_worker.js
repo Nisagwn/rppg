@@ -1,5 +1,6 @@
 // Derin öğrenme çıkarımı (ayrı iş parçacığı, arayüzü dondurmaz).
-// Model: FactorizePhys (rPPG-Toolbox, NeurIPS 2024), MCD-rPPG + UBFC + PURE ile ince ayarlı, ONNX'e çevrilmiş.
+// Model: FactorizePhys (rPPG-Toolbox, NeurIPS 2024), 5. tur: MCD-rPPG + UBFC + PURE ile ince ayarlı (son epoch), ONNX'e çevrilmiş.
+// Uygulama içi doğrulamada 3. tur ve 7E (MMRPhys) ile anlamlı fark yok; çevrimdışı telefon/USB testinde en iyisi (1.64 BPM).
 // Girdi:  [1, 3, 161, 72, 72] float32, 0–255 ham RGB yüz kırpıntıları (30 fps; son kare tekrarlı, model içinde fark alınır)
 // Çıktı:  [1, 160] nabız dalgası (BVP)
 import * as ort from "./vendor/ort/ort.wasm.bundle.min.mjs";

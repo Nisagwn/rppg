@@ -72,25 +72,30 @@ Her yeni veri setinde etiket kalitesi (SNR), işaret ve zaman kayması eğitimde
 **https://nisagwn.github.io/rppg/** adresini telefonun tarayıcısında açın. Android ve iPhone'da çalışır;
 "Ana ekrana ekle" ile uygulama gibi kullanılır ve sonra internetsiz açılır.
 
-- **Yüz modu (ön ya da arka kamera):** eğitilmiş model (3. tur FactorizePhys) + Viterbi takibi.
+- **Yüz modu (ön ya da arka kamera):** eğitilmiş model (5. tur FactorizePhys) + Viterbi takibi. Yüz bulma: pico, bulamazsa YuNet.
 - **Parmak modu (arka kamera + flaş):** temaslı PPG; yüz ölçümünü oksimetresiz doğrulamak için.
 - Oturum **CSV** olarak indirilebilir. Tüm hesaplama telefonda yapılır.
 
 Sinyal işleme kodu ([`mobile/dsp.js`](mobile/dsp.js)) Python paketinin birebir karşılığı; testler aynı girdide
 1e-9 düzeyinde aynı sonucu doğrular.
 
-**Gerçek veride doğrulama** ([`results/mobil_dogrulama_v12/`](results/mobil_dogrulama_v12/SONUCLAR.md)): MCD test
-kişilerinin 60 kesiti Chrome'a sahte kamera olarak verildi, uygulama gerçek zamanlı ölçtü. Uygulama sinyal zayıfken
+**Gerçek veride doğrulama** ([`results/mobil_dogrulama_yuz/`](results/mobil_dogrulama_yuz/SONUCLAR.md)): MCD test
+kişilerinin 60 kesiti Chrome'a sahte kamera olarak verildi, uygulama gerçek zamanlı ölçtü. Uygulama yüz bulamazsa
 sonuç göstermez; hata, sonuç verdiği saniyelerde ölçülür.
 
-| Kamera | Uygulama MAE | Sonuç verdiği süre | Klasik Python hattı |
+| Kamera | Uygulama MAE | Sonuç verdiği süre (yalnız pico → pico + YuNet) | Klasik Python hattı |
 |---|---:|---:|---:|
-| Önden webcam | 3.2 BPM | %81 | 6.4 BPM |
-| Telefon | 2.3 BPM | %48 | 10.3 BPM |
-| Yan açı USB | 4.4 BPM | %23 | 17.5 BPM |
+| Önden webcam | 3.6 BPM | %81 → %93 | 6.4 BPM |
+| Telefon | 3.7 BPM | %48 → %95 | 10.3 BPM |
+| Yan açı USB | 2.9 BPM | %23 → %94 | 17.5 BPM |
 
-Eski POS tabanlı uygulamaya göre önden kamerada hata 9.0 → 2.5 BPM (p = 0.013). Zayıf nokta yüz bulma: yan açıda ve
-telefon görüntüsünde kesitlerin bir kısmında yüz bulunamıyor.
+- İkinci yüz bulucu (YuNet) ile hiç sonuç vermeyen kesit 20'den 0'a indi; önceden de ölçülen kesitlerde hata
+  değişmedi (p = 0.17). Telefonda ortalamanın artması yeni ölçülen zor kesitlerden.
+- Bu ölçüm 3. tur modelle yapıldı. 3. tur, 5. tur ve 7E uygulamanın içinde karşılaştırıldı, fark bulunmadı
+  ([`results/mobil_dogrulama_modeller/`](results/mobil_dogrulama_modeller/KARSILASTIRMA.md)). Uygulamaya çevrimdışı
+  telefon/USB testinde en iyi olan 5. tur kondu.
+- Eski POS tabanlı uygulamaya göre önden kamerada hata 9.0 → 2.5 BPM (p = 0.013). Gerçek telefonda hız henüz
+  ölçülmedi.
 
 ---
 
