@@ -10,10 +10,10 @@ Her kesit (40 s) Chrome'a sahte kamera olarak verildi; uygulama tarayıcıda ger
 | MCD      | USB (yan)      | egzersiz sonrası |      10 |           1.71 |             93.33 |          nan |
 | MCD      | telefon        | dinlenme         |      10 |           2.78 |             79.36 |          nan |
 | MCD      | telefon        | egzersiz sonrası |      10 |           4.87 |             85.09 |          nan |
-| MCD      | webcam (önden) | dinlenme         |      10 |           8.85 |             65.69 |          nan |
-| MCD      | webcam (önden) | egzersiz sonrası |      10 |           2.17 |             94.13 |          nan |
+| MCD      | webcam (önden) | dinlenme         |      10 |           8.14 |             69.12 |          nan |
+| MCD      | webcam (önden) | egzersiz sonrası |      10 |           3.26 |             84.72 |          nan |
 
-**Genel:** uygulama MAE 4.33 BPM, pencerelerin %83'i ≤5 BPM; aynı kesitlerde Python hattı MAE nan BPM (60 kesit).
+**Genel:** uygulama MAE 4.48 BPM, pencerelerin %82'i ≤5 BPM; aynı kesitlerde Python hattı MAE nan BPM (60 kesit).
 
 ## Kesitler
 
@@ -28,7 +28,7 @@ Her kesit (40 s) Chrome'a sahte kamera olarak verildi; uygulama tarayıcıda ger
 | MCD      | 1024_FullHDwebcam_after  | webcam (önden) | egzersiz sonrası |        18 |           2.3  |            100    |          nan |          69.16 |      100    |    100    |            0 |           0 |                 8 |         18 |
 | MCD      | 1024_USBVideo_after      | USB (yan)      | egzersiz sonrası |         0 |         nan    |            nan    |          nan |          69.16 |        0    |      0    |           22 |           0 |                 0 |          0 |
 | MCD      | 1024_IriunWebcam_after   | telefon        | egzersiz sonrası |         7 |          20.58 |             71.43 |          nan |          69.16 |      100    |    100    |            0 |           1 |                15 |          7 |
-| MCD      | 1024_FullHDwebcam_before | webcam (önden) | dinlenme         |         0 |         nan    |            nan    |          nan |          74.74 |      nan    |    nan    |            0 |           0 |                 0 |          0 |
+| MCD      | 1024_FullHDwebcam_before | webcam (önden) | dinlenme         |        21 |           1.69 |            100    |          nan |          74.74 |      100    |    100    |            0 |           0 |                 5 |         21 |
 | MCD      | 1024_USBVideo_before     | USB (yan)      | dinlenme         |         0 |         nan    |            nan    |          nan |          74.75 |        0    |      0    |           25 |           0 |                 0 |          0 |
 | MCD      | 1024_IriunWebcam_before  | telefon        | dinlenme         |         4 |           1.86 |            100    |          nan |          74.75 |      100    |    100    |            0 |           0 |                17 |          4 |
 | MCD      | 1035_FullHDwebcam_after  | webcam (önden) | egzersiz sonrası |         7 |           3.56 |            100    |          nan |          74.39 |      100    |    100    |            0 |           0 |                15 |          7 |
@@ -37,7 +37,7 @@ Her kesit (40 s) Chrome'a sahte kamera olarak verildi; uygulama tarayıcıda ger
 | MCD      | 1035_FullHDwebcam_before | webcam (önden) | dinlenme         |         3 |           1.71 |            100    |          nan |          68.91 |      100    |    100    |            0 |           0 |                23 |          3 |
 | MCD      | 1035_USBVideo_before     | USB (yan)      | dinlenme         |         0 |         nan    |            nan    |          nan |          68.9  |        0    |      0    |           25 |           0 |                 0 |          0 |
 | MCD      | 1035_IriunWebcam_before  | telefon        | dinlenme         |        11 |           1.1  |            100    |          nan |          68.91 |      100    |    100    |            0 |           0 |                10 |         11 |
-| MCD      | 1091_FullHDwebcam_after  | webcam (önden) | egzersiz sonrası |         0 |         nan    |            nan    |          nan |         102.47 |      nan    |    nan    |            0 |           0 |                 0 |          0 |
+| MCD      | 1091_FullHDwebcam_after  | webcam (önden) | egzersiz sonrası |        17 |          13.09 |              0    |          nan |         102.47 |      100    |    100    |            0 |           0 |                 4 |         17 |
 | MCD      | 1091_USBVideo_after      | USB (yan)      | egzersiz sonrası |         0 |         nan    |            nan    |          nan |         102.49 |      100    |    100    |            0 |           0 |                25 |          0 |
 | MCD      | 1091_IriunWebcam_after   | telefon        | egzersiz sonrası |         7 |           1.07 |            100    |          nan |         102.49 |       99.68 |    100    |            0 |           0 |                19 |          7 |
 | MCD      | 1091_FullHDwebcam_before | webcam (önden) | dinlenme         |        16 |           1.19 |            100    |          nan |          85.76 |       99.33 |    100    |            0 |           1 |                 3 |         16 |

@@ -8,7 +8,7 @@ MCD,1020_IriunWebcam_before,telefon,dinlenme,2,8.465323250679553,0.0,,75.3712043
 MCD,1024_FullHDwebcam_after,webcam (önden),egzersiz sonrası,18,2.298548484036866,100.0,,69.15510974749488,100.0,100.0,0,0,8,18
 MCD,1024_USBVideo_after,USB (yan),egzersiz sonrası,0,,,,69.15672757541667,0.0,0.0,22,0,0,0
 MCD,1024_IriunWebcam_after,telefon,egzersiz sonrası,7,20.579619791538523,71.42857142857143,,69.16348213779142,100.0,100.0,0,1,15,7
-MCD,1024_FullHDwebcam_before,webcam (önden),dinlenme,0,,,,74.74219040720402,,,0,0,0,0
+MCD,1024_FullHDwebcam_before,webcam (önden),dinlenme,21,1.6928299381958973,100.0,,74.74219040720402,100.0,100.0,0,0,5,21
 MCD,1024_USBVideo_before,USB (yan),dinlenme,0,,,,74.75087759752078,0.0,0.0,25,0,0,0
 MCD,1024_IriunWebcam_before,telefon,dinlenme,4,1.8556270504390042,100.0,,74.7502920001507,100.0,100.0,0,0,17,4
 MCD,1035_FullHDwebcam_after,webcam (önden),egzersiz sonrası,7,3.562018445728287,100.0,,74.38962391526154,100.0,100.0,0,0,15,7
@@ -17,7 +17,7 @@ MCD,1035_IriunWebcam_after,telefon,egzersiz sonrası,18,3.0334088898794898,83.33
 MCD,1035_FullHDwebcam_before,webcam (önden),dinlenme,3,1.7107212742699005,100.0,,68.90690925193935,100.0,100.0,0,0,23,3
 MCD,1035_USBVideo_before,USB (yan),dinlenme,0,,,,68.9010907553756,0.0,0.0,25,0,0,0
 MCD,1035_IriunWebcam_before,telefon,dinlenme,11,1.0975768730266318,100.0,,68.91176249463112,100.0,100.0,0,0,10,11
-MCD,1091_FullHDwebcam_after,webcam (önden),egzersiz sonrası,0,,,,102.47003669410091,,,0,0,0,0
+MCD,1091_FullHDwebcam_after,webcam (önden),egzersiz sonrası,17,13.08724616090581,0.0,,102.47003669410091,100.0,100.0,0,0,4,17
 MCD,1091_USBVideo_after,USB (yan),egzersiz sonrası,0,,,,102.4877718087674,100.0,100.0,0,0,25,0
 MCD,1091_IriunWebcam_after,telefon,egzersiz sonrası,7,1.0692963851813175,100.0,,102.48803932822585,99.68,100.0,0,0,19,7
 MCD,1091_FullHDwebcam_before,webcam (önden),dinlenme,16,1.1911075617940021,100.0,,85.756789939743,99.33184855233853,100.0,0,1,3,16
