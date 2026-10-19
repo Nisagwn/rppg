@@ -42,7 +42,7 @@ const state = {
   samples: [], tracker: new OnlineHRTracker(), motionHist: [],
   bbox: null, lastDet: 0, frameNo: 0, prevGray: null, frameTimes: [], log: [], t0: 0, timer: null, lastBvp: null,
   // teşhis: saniyelik kayıt (kare sayısı, yüz kutusu olan kare, tespit denemesi/başarısı, analizin durduğu yer)
-  diag: [], dc: { frames: 0, face: 0, tries: 0, hits: 0, qmax: 0 },
+  diag: [], dc: { frames: 0, face: 0, tries: 0, hits: 0, qmax: 0, pico: 0, yunet: 0 },
 };
 window.__rppg = state; // tarayıcı testleri ve hata ayıklama için
 
@@ -68,16 +68,21 @@ function setStatus(text, level = "") {
   els.status.querySelector("span").textContent = text;
 }
 
-// Yüz dedektörü: YuNet (face_worker.js, ayrı iş parçacığı) ana dedektördür. pico yalnızca önden yüzleri bulur:
-// MCD-rPPG'de yan (USB) kameranın 20 kesitinden 13'ünde, telefonun 7'sinde hiç ölçüm çıkmamasının nedeni buydu
-// (bkz. results/mobil_yuz_tespiti). YuNet yüklenene kadar ve açılamazsa pico kullanılır; ?yuz=pico ile zorlanır.
-const FACE_IN = 320, FACE_THR = 0.6;   // YuNet girdisi (uzun kenar, px) ve yüz puanı eşiği
+// Yüz dedektörü: önce pico (ucuz, önden yüzlerde güvenilir), pico bulamazsa YuNet (face_worker.js, ayrı iş parçacığı).
+// pico yalnızca önden yüzleri bulur: MCD-rPPG'de yan (USB) kameranın 20 kesitinden 13'ünde, telefonun 7'sinde hiç
+// ölçüm çıkmamasının nedeni buydu (bkz. results/mobil_dogrulama_yuz). pico art arda PICO_MISS_MAX kez bulamazsa
+// PICO_SKIP_SEC boyunca hiç denenmez (boşa tam tarama yapılmaz), yalnızca YuNet çalışır. Önden yüzde YuNet hiç
+// devreye girmez, yani önden sonuçlar değişmez. ?yuz=pico yalnızca pico, ?yuz=yunet yalnızca YuNet.
+const FACE_IN = 256, FACE_THR = 0.6;   // YuNet girdisi (uzun kenar, px; 256x192 32'nin katı) ve yüz puanı eşiği
+const PICO_MISS_MAX = 3, PICO_SKIP_SEC = 3;
 const fd = { worker: null, ready: false, failed: "", busy: false, id: 0, ms: 0, canvas: null, req: null };
 window.__rppgFace = fd; // tarayıcı testleri için
-state.detector = params.get("yuz") === "pico" ? "pico" : "yunet";
+state.detector = ["pico", "yunet"].includes(params.get("yuz")) ? params.get("yuz") : "karma";
+state.picoMiss = 0;
+state.picoSkipUntil = -Infinity;
 
 function faceInit() {
-  if (fd.worker || fd.failed || state.detector !== "yunet") return;
+  if (fd.worker || fd.failed || state.detector === "pico") return;
   try {
     fd.worker = new Worker("face_worker.js", { type: "module" });
   } catch {
@@ -97,6 +102,7 @@ function faceInit() {
       if (!f) return;
       for (const k of ["x", "y", "w", "h"]) f[k] *= req.sc;
       applyDetection(yunetToBox(f), req.t);
+      state.dc.yunet++;
     }
   };
   fd.worker.onerror = (e) => { fd.failed = e.message || "yüz modeli yüklenemedi"; fd.busy = false; };
@@ -244,11 +250,14 @@ function processFrame(tSec) {
   if (state.mode === "face") {
     if (state.frameNo++ % DETECT_EVERY === 0) {
       state.dc.tries++;
-      if (state.detector === "yunet" && fd.ready && !fd.failed) faceRequest(tSec);
-      else {
-        const f = detectFace(d, W, H, state.bbox);
-        if (f) applyDetection(f, tSec);
+      const yn = state.detector !== "pico" && fd.ready && !fd.failed;
+      let f = null;
+      if (!yn || (state.detector === "karma" && tSec >= state.picoSkipUntil)) {
+        f = detectFace(d, W, H, state.bbox);
+        if (f) { applyDetection(f, tSec); state.picoMiss = 0; state.dc.pico++; }
+        else if (++state.picoMiss >= PICO_MISS_MAX) state.picoSkipUntil = tSec + PICO_SKIP_SEC;
       }
+      if (!f && yn) faceRequest(tSec);
     }
     if (state.bbox && tSec - state.lastDet > 1.5) { state.bbox = null; state.maskProb = {}; }   // yüz 1.5 s görünmedi
     if (state.bbox) {
@@ -317,9 +326,9 @@ function analyze() {
   const dc = state.dc;
   state.diag.push({ t: state.t0 === null || !state.samples.length ? 0 : state.samples[state.samples.length - 1].t - state.t0,
     frames: dc.frames, face: dc.face, tries: dc.tries, hits: dc.hits, qmax: Math.round(dc.qmax), gate: reason || "olcum",
-    det: state.detector === "yunet" && fd.ready && !fd.failed ? "yunet" : "pico", det_ms: Math.round(fd.ms) });
+    det: state.detector, pico: dc.pico, yunet: dc.yunet, det_ms: Math.round(fd.ms) });
   if (state.diag.length > 3600) state.diag.shift();
-  state.dc = { frames: 0, face: 0, tries: 0, hits: 0, qmax: 0 };
+  state.dc = { frames: 0, face: 0, tries: 0, hits: 0, qmax: 0, pico: 0, yunet: 0 };
 }
 
 // Dönüş: ölçüm yapılmadıysa nedeni ("kare_az", "yuz_yok", "isinma", "model_isinma"), yapıldıysa undefined
