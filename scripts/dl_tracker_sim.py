@@ -23,7 +23,7 @@ sys.path.insert(0, os.path.dirname(__file__))
 from rppg.filtering import preprocess_bvp  # noqa: E402
 from rppg.hr import BPM_GRID, OnlineHRTracker, spectrogram, viterbi_track  # noqa: E402
 from dl_common import reference_hr  # noqa: E402
-from dl_evaluate import group_of, test_videos  # noqa: E402
+from dl_evaluate import group_of, test_videos, video_name  # noqa: E402
 
 FS, WIN, STEP, WARM = 30.0, 10.0, 1.0, 10
 
@@ -52,7 +52,7 @@ def main():
         x = preprocess_bvp(np.load(f), FS)
         c, S = spectrogram(x, FS, WIN, STEP)
         ref = reference_hr(meta["bvp"], c)
-        base = {"grup": group_of(meta), "video": v.split("_", 1)[1]}
+        base = {"grup": group_of(meta), "video": video_name(p)}
         for j in jumps:
             e = np.abs(online(S, j) - ref)[WARM:]
             rows.append({**base, "yöntem": f"çevrimiçi jump={j:g}", "MAE": float(e.mean()),

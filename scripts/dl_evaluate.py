@@ -60,6 +60,13 @@ def test_videos(test_dir):
     return [p for p in sorted(glob.glob(os.path.join(test_dir, "*.npz"))) if float(np.load(p)["face_rate"]) >= MIN_FACE]
 
 
+def video_name(p):
+    """Test kümelerinde dosya adı <kaynak>_<video> (mcd_1020_..., ubfc_subject1); eğitim klasörlerinde önek yok
+    (ubfc/subject10). Standart protokol testi eğitim klasörünü de kullandığı için ikisi de desteklenir."""
+    s = os.path.basename(p)[:-4]
+    return s.split("_", 1)[1] if "_" in s else s
+
+
 def evaluate(model, device, test_dir, label, **predict_kw):
     """model: FactorizePhys ya da "POS" (pos_crop). predict_kw: predict_video'ya (hop, flip)."""
     rows = []
@@ -69,7 +76,7 @@ def evaluate(model, device, test_dir, label, **predict_kw):
         pred = pos_crop(frames) if model == "POS" else predict_video(model, np.asarray(frames), device, **predict_kw)
         c, hr_a, hr_v = hr_from_bvp(pred)
         ref = reference_hr(meta["bvp"], c)
-        name = os.path.basename(p)[:-4].split("_", 1)[1]
+        name = video_name(p)
         for suffix, hr in (("", hr_a), ("+Viterbi", hr_v)):
             err = np.abs(hr - ref)
             rows.append({"grup": group_of(meta), "video": name, "yöntem": label + suffix,
@@ -146,7 +153,7 @@ def main():
     for p in test_videos(a.test):
         q = quality(p)
         if q:
-            ref_q[os.path.basename(p)[:-4].split("_", 1)[1]] = q
+            ref_q[video_name(p)] = q
     clean = [v for v, q in ref_q.items() if q["ok_frac"] >= 0.8]
     t_clean = table(df[df.video.isin(clean)]) if clean else None
     if t_clean is not None:

@@ -118,3 +118,10 @@ def test_box_jitter_keeps_shape_and_constant_image():
     z = box_jitter(g, 0.1)
     assert torch.allclose(z[0], z[-1])               # kayma parça boyunca sabit (zamanla titremez)
     assert (z - g).abs().max() <= 0.1 * 72 * 2 + 1   # en fazla ±J ölçek + ±J kayma
+
+
+def test_video_name_with_and_without_source_prefix():
+    from dl_evaluate import video_name
+    assert video_name("/x/test/mcd_1020_FullHDwebcam_after.npz") == "1020_FullHDwebcam_after"
+    assert video_name("/x/test/ubfc_subject1.npz") == "subject1"
+    assert video_name("/x/ubfc/subject10.npz") == "subject10"     # eğitim klasörü: önek yok (9. tur S1 çöktü)

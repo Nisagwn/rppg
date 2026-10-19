@@ -22,7 +22,7 @@ import pandas as pd
 
 sys.path.insert(0, os.path.dirname(__file__))
 from dl_common import CHUNK, build_model, hr_from_bvp, predict_video, reference_hr  # noqa: E402
-from dl_evaluate import group_of, table, test_videos  # noqa: E402
+from dl_evaluate import group_of, table, test_videos, video_name  # noqa: E402
 
 
 def znorm(x):
@@ -61,7 +61,7 @@ def score(vids, wave_of, label):
         ref = reference_hr(meta["bvp"], c)
         for suffix, hr in (("", hr_a), ("+Viterbi", hr_v)):
             err = np.abs(hr - ref)
-            rows.append({"grup": group_of(meta), "video": v.split("_", 1)[1], "yöntem": label + suffix,
+            rows.append({"grup": group_of(meta), "video": video_name(p), "yöntem": label + suffix,
                          "MAE": float(err.mean()), "p5": float(100 * np.mean(err <= 5))})
     return rows
 
