@@ -25,7 +25,7 @@ jobs:
         with:
           node-version: 22
       - name: Sinyal işleme (Python ile eşdeğerlik) ve model girdisi testleri
-        run: node --test mobile/test/dsp.test.mjs mobile/test/dl_pack.test.mjs
+        run: node --test mobile/test/dsp.test.mjs mobile/test/dl_pack.test.mjs mobile/test/face_decode.test.mjs
 
   deploy:
     needs: test
@@ -39,8 +39,12 @@ jobs:
         run: |
           mkdir _site
           cp -r mobile/index.html mobile/style.css mobile/app.js mobile/dsp.js mobile/sw.js \
-                mobile/dl_worker.js mobile/dl_pack.js mobile/model \
+                mobile/dl_worker.js mobile/dl_pack.js mobile/face_worker.js mobile/face_decode.js mobile/model \
                 mobile/manifest.webmanifest mobile/icons mobile/vendor _site/
+          # sw.js'in önbellek listesindeki her dosya yayında olmalı (v14'te face_*.js kopyalanmamış, uygulama açılmamıştı)
+          for f in $(sed -n '/FILES = \[/,/\];/p' _site/sw.js | grep -o '"[^"]*"' | tr -d '"'); do
+            [ "$f" = "./" ] || [ -e "_site/$f" ] || { echo "yayında eksik: $f"; exit 1; }
+          done
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

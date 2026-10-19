@@ -34,7 +34,7 @@ const els = {
   plotBvp: $("plot-bvp"), plotSpec: $("plot-spec"), plotHist: $("plot-hist"),
 };
 const params = new URLSearchParams(location.search);
-const VERSION = "v14";
+const VERSION = "v15";
 document.getElementById("version").textContent = VERSION;
 
 const state = {
