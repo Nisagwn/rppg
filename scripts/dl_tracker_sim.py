@@ -12,7 +12,6 @@ spektrumu takipçiye verilir (uygulamadaki gibi; hareket güveni 1). Hata ölç�
     python scripts/dl_tracker_sim.py --test data/dl/test --cache <dalgalar_test> --model "5._tur"
 """
 import argparse
-import glob
 import os
 import sys
 
