@@ -17,7 +17,7 @@ import os
 import numpy as np
 import pandas as pd
 
-from dl_common import PRETRAINED, ROOT, build_model, hr_from_bvp, predict_video, reference_hr
+from dl_common import CHUNK, PRETRAINED, ROOT, build_model, hr_from_bvp, predict_video, reference_hr
 
 
 CAMERA_NAMES = {"IriunWebcam": "telefon", "USBVideo": "USB"}
@@ -60,13 +60,13 @@ def test_videos(test_dir):
     return [p for p in sorted(glob.glob(os.path.join(test_dir, "*.npz"))) if float(np.load(p)["face_rate"]) >= MIN_FACE]
 
 
-def evaluate(model, device, test_dir, label):
-    """model: FactorizePhys ya da "POS" (pos_crop)."""
+def evaluate(model, device, test_dir, label, **predict_kw):
+    """model: FactorizePhys ya da "POS" (pos_crop). predict_kw: predict_video'ya (hop, flip)."""
     rows = []
     for p in test_videos(test_dir):
         meta = np.load(p)
         frames = np.load(p[:-4] + ".npy", mmap_mode="r")
-        pred = pos_crop(frames) if model == "POS" else predict_video(model, np.asarray(frames), device)
+        pred = pos_crop(frames) if model == "POS" else predict_video(model, np.asarray(frames), device, **predict_kw)
         c, hr_a, hr_v = hr_from_bvp(pred)
         ref = reference_hr(meta["bvp"], c)
         name = os.path.basename(p)[:-4].split("_", 1)[1]
@@ -99,6 +99,9 @@ def main():
     ap.add_argument("--name", default="FactorizePhys ince ayarlı", help="eğitilen modelin tablodaki adı")
     ap.add_argument("--compare", nargs="*", default=[], metavar="AD=YOL",
                     help="aynı test videolarında ayrıca ölçülecek modeller (ör. önceki tur)")
+    ap.add_argument("--tta", action="store_true",
+                    help="ince ayarlı modeli ayrıca örtüşmeli parçalarla (%%50, mobil uygulamadaki gibi) ve yatay çevirmeyle de ölç "
+                         "(yeniden eğitim gerektirmeyen çıkarım iyileştirmesi; ek satırlar)")
     a = ap.parse_args()
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     n_all = len(glob.glob(os.path.join(a.test, "*.npz")))
@@ -111,7 +114,12 @@ def main():
 
     rows = evaluate("POS", device, a.test, "POS (yüz kırpıntısı)")
     rows += evaluate(build_model(device, PRETRAINED), device, a.test, "FactorizePhys PURE (hazır)")
-    rows += evaluate(build_model(device, a.model), device, a.test, a.name)
+    tuned = build_model(device, a.model)
+    rows += evaluate(tuned, device, a.test, a.name)
+    if a.tta:
+        rows += evaluate(tuned, device, a.test, a.name + " (örtüşmeli)", hop=CHUNK // 2)
+        rows += evaluate(tuned, device, a.test, a.name + " (örtüşmeli+çevirme)", hop=CHUNK // 2, flip=True)
+    del tuned
     last = os.path.join(os.path.dirname(a.model), "last.pth")
     if os.path.exists(last) and os.path.abspath(last) != os.path.abspath(a.model):
         rows += evaluate(build_model(device, last), device, a.test, f"{a.name} (son epoch)")
@@ -163,6 +171,30 @@ def md_header(t):
     return ["| Yöntem | " + " | ".join(t.columns) + " |", "|---|" + "---:|" * len(t.columns)]
 
 
+def training_lines(cfg, loss_name="negatif Pearson"):
+    """Rapordaki artırma/kayıp/seçim satırları; gecmis.json'daki eğitim ayarlarından (eski turlarda yok: varsayılanlar).
+    loss_name: mimariye göre varsayılan kayıp (write_report); ayarlarda --loss verilmişse o yazılır."""
+    cfg = cfg or {}
+    lo, hi = cfg.get("speed", [0.8, 1.25])
+    aug = f"- Artırma: yatay çevirme, hız {lo:g}–{hi:g}× (HR aralığını genişletir), parlaklık ×0.8–1.2"
+    if cfg.get("phone_aug"):
+        aug += "; telefon bozulmaları (el titremesi, düşük çözünürlük, renk sıcaklığı, loş ışık + gürültü)"
+    if cfg.get("hr_balance", 0) > 1:
+        aug += f"; nabız dengeli örnekleme (seyrek nabız aralıkları en fazla {cfg['hr_balance']:g}×)"
+    names = {"pearson": "negatif Pearson", "smoothl1": "SmoothL1 (standartlaştırılmış tahmin ve etiket)"}
+    loss = f"- Kayıp: {names.get(cfg.get('loss') or '', loss_name)}"
+    if cfg.get("spec_loss", 0) > 0:
+        loss += f" + {cfg['spec_loss']:g} × spektral KL (nabız bandı)"
+    loss += "; AdamW, cosine öğrenme oranı"
+    if cfg.get("amp"):
+        loss += ", karışık hassasiyet (float16)"
+    sel = "Viterbi" if cfg.get("val_viterbi") else "argmax"
+    sel = f"- Seçim: en iyi epoch doğrulama kişilerinde pencere MAE ({sel}) ile"
+    if cfg.get("ema", 0) > 0:
+        sel += f"; ağırlıkların EMA'sı ({cfg['ema']:g}) doğrulandı ve kaydedildi"
+    return [aug, loss, sel]
+
+
 def write_report(a, t, info, w, t_clean=None, ref_q=None):
     """results/derin_ogrenme/egitim/SONUCLAR.md"""
     hist_path = a.history or os.path.join(os.path.dirname(a.model), "gecmis.json")
@@ -205,8 +237,7 @@ def write_report(a, t, info, w, t_clean=None, ref_q=None):
          "- Ön işleme toolbox ile aynı (Haar ×1.5, 30 karede bir tespit, 72×72, ham kare); hepsi 30 fps'e yeniden örneklendi",
          "- MCD parmak PPG'si UBFC/PURE'a göre ters işaretli (ön-eğitimli model çıktısıyla korelasyon ≈ −0.75, "
          "gecikme ≈ 0); eğitimde ters çevrildi",
-         "- Artırma: yatay çevirme, hız 0.8–1.25× (HR aralığını genişletir), parlaklık ×0.8–1.2",
-         f"- Kayıp: {loss}; AdamW, cosine öğrenme oranı; en iyi epoch doğrulama kişilerinde pencere MAE ile seçildi", ""]
+         *training_lines(hist.get("ayarlar") if hist else None, loss), ""]
     if hist:
         h = [x for x in hist["history"] if x.get("val_mae") is not None]
         L += [f"Eğitim: {hist['epoch']} epoch (500 adım × 8 parça). Doğrulama MAE: başlangıç "

@@ -16,6 +16,14 @@ MCD-rPPG (3 kamera, dinlenme + egzersiz) ve UBFC-rPPG'nin test DIŞI kişileriyl
 
     python scripts/dl_train.py --epochs 30 --steps 600 --deadline "2026-09-28 04:15"
     python scripts/dl_train.py --arch mmrphys --epochs 200 --lr 1e-3
+
+İsteğe bağlı iyileştirmeler (hepsi varsayılan olarak kapalı; kapalıyken davranış öncekiyle aynı):
+  --spec-loss 0.2     frekans alanı kaybı (spectral_kl): yanlış frekansa/harmoniğe kilitlenmeyi cezalandırır
+  --ema 0.999         ağırlık ortalaması; doğrulama ve best.pth bununla (tek şanslı epoch'a bağlı seçimi azaltır)
+  --val-viterbi       en iyi epoch'u raporlanan yöntemle (Viterbi) seç
+  --amp               float16 karışık hassasiyet (CUDA), T4'te daha hızlı
+  --speed 0.7 1.5     daha geniş hız artırması (yüksek nabız örnekleri)
+  --hr-balance 3      seyrek nabız aralıklarındaki videoları en fazla 3 kat sık örnekle
 """
 import argparse
 import glob
@@ -50,6 +58,7 @@ def _video_entry(p, min_face):
         return None
     return {"npz": p, "npy": p[:-4] + ".npy", "n": int(m["n"]), "person": str(m["person"]),
             "source": source, "camera": camera, "q": q, "snk": snk,
+            "hr": video_hr(b, p[:-4] + ".kal"),
             "vote": float(m["polarity"]) * float(m["polarity_corr"]) if "polarity" in m.files else 0.0}
 
 
@@ -57,6 +66,31 @@ def load_sync(npz):
     """dl_sync_check.py --write çıktısı (model tabanlı hizalama); yoksa None."""
     p = npz[:-4] + ".snk"
     return {k: v.item() for k, v in np.load(p).items()} if os.path.exists(p) else None
+
+
+def video_hr(bvp, kal=None, fs=30.0):
+    """Videonun tipik nabzı (BPM): etiket kalitesi dosyası (.kal, dl_quality) varsa iyi pencerelerin medyanı, yoksa
+    tüm etiketin spektral tepesi. --hr-balance örneklemesinde ve günlükteki nabız dağılımında kullanılır."""
+    if kal and os.path.exists(kal):
+        with np.load(kal) as k:
+            if "win_ok" in k.files and k["win_ok"].any():
+                return float(np.median(k["hr_l"][k["win_ok"]]))
+    from rppg.filtering import preprocess_bvp
+    from rppg.hr import hr_fft
+    return float(hr_fft(preprocess_bvp(np.asarray(bvp, dtype=float), fs), fs))
+
+
+HR_BIN = 10.0  # BPM
+
+
+def hr_balance_weights(hrs, max_boost=4.0):
+    """Video başına çarpan: nabız histogramında (10 BPM kutular) seyrek kutudaki videolar daha sık örneklenir.
+    Çarpan = (en kalabalık kutu / kendi kutusu), max_boost ile sınırlı; aşırı seyrek (tek videoluk) kutuların
+    birkaç videoyu ezberletmesini önler."""
+    hrs = np.asarray(hrs, dtype=float)
+    bins = np.floor(hrs / HR_BIN).astype(int)
+    _, inv, cnt = np.unique(bins, return_inverse=True, return_counts=True)
+    return np.minimum(cnt.max() / cnt[inv], max_boost)
 
 
 TRAIN_SOURCES = ("mcd", "ubfc", "pure", "ubfcphys", "mpu", "mmpd", "vipl", "cohface", "dlcn")  # test_* klasörleri hiç okunmaz
@@ -90,7 +124,8 @@ def list_videos(root, min_face=0.5):
     return vids
 
 
-MAX_SPAN = int(np.ceil(CHUNK * 1.25)) + 1  # en hızlı artırmada gereken kare sayısı
+SPEED = (0.8, 1.25)  # hız artırma aralığı (--speed); >1 nabzı hızlandırır
+MAX_SPAN = int(np.ceil(CHUNK * SPEED[1])) + 1  # en hızlı artırmada gereken kare sayısı
 
 
 def is_val(person):
@@ -134,6 +169,9 @@ def source_shares(vids, weights):
     return {s: r / tot for s, r in raw.items()}, frames
 
 
+HR_BALANCE = 0.0  # --hr-balance: en fazla kaç kat (0: kapalı, örnekleme yalnızca uzunlukla orantılı)
+
+
 class ChunkSampler:
     def __init__(self, vids):
         self.vids = vids
@@ -141,6 +179,8 @@ class ChunkSampler:
         # veri seti içinde kare sayısıyla orantılı; veri setleri arasında shares (7. tur D: MCD 30 s'ye inip DLCN ve
         # COHFACE eklenince MCD'nin kare payı ~%78'den ~%62'ye düştü, MCD tabanlı testler kötüleşti)
         w = np.array([shares[v["source"]] * v["n"] / frames[v["source"]] for v in vids], dtype=float)
+        if HR_BALANCE > 1:
+            w = w * hr_balance_weights([v["hr"] for v in vids], HR_BALANCE)
         self.p = w / w.sum()
         self.cache = {}
         print("  örnekleme payı: " + ", ".join(f"{s} %{100 * x:.0f}" for s, x in sorted(shares.items(), key=lambda t: -t[1])),
@@ -172,7 +212,7 @@ class ChunkSampler:
         """CPU'da yalnızca ham uint8 kareler kopyalanır; hız/çevirme/parlaklık GPU'da (gpu_augment) uygulanır."""
         v = self.vids[rng.choice(len(self.vids), p=self.p)]
         frames, bvp, ok = self._frames(v)
-        speed = rng.uniform(0.8, 1.25) if rng.random() < 0.5 else 1.0
+        speed = rng.uniform(*SPEED) if rng.random() < 0.5 else 1.0
         span = min(int(np.ceil(CHUNK * speed)) + 1, len(frames))
         s = rng.integers(0, len(frames) - MAX_SPAN + 1) if len(frames) >= MAX_SPAN else 0
         s = min(s, len(frames) - span)
@@ -281,6 +321,25 @@ def neg_pearson(pred, lab):
     return (1 - r).mean()
 
 
+def spectral_kl(pred, lab, fs=30.0, band=(0.7, 3.5), nfft=1024):
+    """Frekans alanı kaybı: nabız bandındaki normalize güç spektrumları arasında KL(etiket || tahmin).
+    Pearson dalga şeklini eşler ama yanlış frekanstaki (ör. harmonik) güçlü bileşeni yeterince cezalandırmaz;
+    bu terim doğrudan nabız frekansını hedefler. nfft=1024 sıfır dolgu: 160 karede ~1.8 BPM ızgara."""
+    import torch
+    win = torch.hann_window(pred.shape[1], device=pred.device, dtype=torch.float32)
+
+    def psd(x):
+        x = (x.float() - x.float().mean(1, keepdim=True)) * win
+        return torch.fft.rfft(x, n=nfft).abs() ** 2
+
+    f = torch.fft.rfftfreq(nfft, d=1.0 / fs).to(pred.device)
+    m = (f >= band[0]) & (f <= band[1])
+    p, q = psd(pred)[:, m], psd(lab)[:, m]
+    p = p / (p.sum(1, keepdim=True) + 1e-8)
+    q = q / (q.sum(1, keepdim=True) + 1e-8)
+    return (q * (torch.log(q + 1e-8) - torch.log(p + 1e-8))).sum(1).mean()
+
+
 def smooth_l1(pred, lab):
     import torch
     p = (pred - pred.mean(dim=1, keepdim=True)) / (pred.std(dim=1, keepdim=True) + 1e-8)
@@ -293,8 +352,34 @@ LOSSES = {"pearson": neg_pearson, "smoothl1": smooth_l1}
 VAL_GROUPS = {}  # son doğrulamanın kaynak/kamera bazında MAE'si (günlüğe yazılır)
 
 
+VAL_VITERBI = False  # --val-viterbi: seçim, raporlanan yöntemle (Viterbi) aynı ölçütle yapılır
+
+
+class EMA:
+    """Ağırlıkların üstel hareketli ortalaması (--ema). module: aynı mimaride ayrı bir model (eğitilen modelin kopyası);
+    parametreler ve kayan nokta tamponları ortalanır, tam sayı tamponları (ör. sayaçlar) kopyalanır."""
+
+    def __init__(self, module, decay):
+        self.module, self.decay = module, decay
+
+    def update_parameters(self, model):
+        import torch
+        with torch.no_grad():
+            for e, m in zip(self.module.state_dict().values(), model.state_dict().values()):
+                if e.dtype.is_floating_point:
+                    e.mul_(self.decay).add_(m.detach(), alpha=1 - self.decay)
+                else:
+                    e.copy_(m)
+
+    def state_dict(self):
+        return self.module.state_dict()
+
+    def load_state_dict(self, sd):
+        self.module.load_state_dict(sd)
+
+
 def validate(model, vids, device, max_frames=1800):
-    """Doğrulama videolarının ilk 60 s'sinde pencere MAE (argmax)."""
+    """Doğrulama videolarının ilk 60 s'sinde pencere MAE (argmax; --val-viterbi ile Viterbi)."""
     errs, groups = [], {}
     for v in vids:
         frames = np.load(v["npy"], mmap_mode="r")[:max_frames]
@@ -302,8 +387,8 @@ def validate(model, vids, device, max_frames=1800):
         pred = predict_video(model, np.asarray(frames), device)
         if pred is None:
             continue
-        c, hr_a, _ = hr_from_bvp(pred)
-        errs.append(np.mean(np.abs(hr_a - reference_hr(bvp, c))))
+        c, hr_a, hr_v = hr_from_bvp(pred)
+        errs.append(np.mean(np.abs((hr_v if VAL_VITERBI else hr_a) - reference_hr(bvp, c))))
         groups.setdefault(f"{v['source']}/{v['camera']}", []).append(errs[-1])
     VAL_GROUPS.clear()
     VAL_GROUPS.update({k: (float(np.mean(e)), len(e)) for k, e in sorted(groups.items())})
@@ -331,11 +416,28 @@ def main():
                     help="veri setlerinin eğitimdeki payı (varsayılan: kare sayısıyla orantılı)")
     ap.add_argument("--loss", choices=tuple(LOSSES), default="", help="varsayılan: factorizephys pearson, "
                                                                         "mmrphys smoothl1 (makaledeki gibi)")
+    ap.add_argument("--spec-loss", type=float, default=0.0, metavar="W",
+                    help="kayıp = negatif Pearson + W * spektral KL (ör. 0.2; harmonik hatasında KL ~14 olabilir); 0: kapalı (eski davranış)")
+    ap.add_argument("--ema", type=float, default=0.0, metavar="D",
+                    help="ağırlıkların üstel hareketli ortalaması (ör. 0.999); doğrulama ve best.pth EMA ağırlıklarıyla. "
+                         "0: kapalı")
+    ap.add_argument("--val-viterbi", action="store_true", help="en iyi epoch'u Viterbi MAE ile seç (varsayılan argmax)")
+    ap.add_argument("--amp", action="store_true",
+                    help="karışık hassasiyet (float16, yalnızca CUDA): T4'te ~2x hız. Kayıp NaN olursa kapatın")
+    ap.add_argument("--speed", type=float, nargs=2, default=[0.8, 1.25], metavar=("MIN", "MAX"),
+                    help="hız artırma aralığı (ör. 0.7 1.5: yüksek nabız örneklerini çoğaltır)")
+    ap.add_argument("--hr-balance", type=float, default=0.0, metavar="K",
+                    help="nabız aralığına göre dengeli örnekleme: seyrek nabızlı (ör. egzersiz sonrası 120+) videolar "
+                         "en fazla K kat sık seçilir (ör. 3); 0: kapalı")
     a = ap.parse_args()
-    global CLEAN, PHONE_AUG, SOURCE_WEIGHTS
+    global CLEAN, PHONE_AUG, SOURCE_WEIGHTS, VAL_VITERBI, SPEED, MAX_SPAN, HR_BALANCE
     CLEAN = not a.no_clean
     PHONE_AUG = a.phone_aug
     SOURCE_WEIGHTS = {k: float(x) for k, x in (kv.split("=") for kv in a.source_weights.split(",") if kv)}
+    VAL_VITERBI = a.val_viterbi
+    SPEED = (a.speed[0], a.speed[1])
+    MAX_SPAN = int(np.ceil(CHUNK * SPEED[1])) + 1
+    HR_BALANCE = a.hr_balance
     deadline = datetime.strptime(a.deadline, "%Y-%m-%d %H:%M").timestamp() if a.deadline else float("inf")
 
     os.makedirs(a.out, exist_ok=True)
@@ -345,6 +447,11 @@ def main():
     val = pick_val(vids, a.val_max)
     print(f"eğitim {len(train)} video ({len({v['person'] for v in train})} kişi), "
           f"doğrulama {len(val)} video, cihaz {device}", flush=True)
+    if train:
+        h = np.array([v["hr"] for v in train])
+        edges = [40, 70, 90, 110, 130, 250]
+        print("  eğitim nabız dağılımı: " + ", ".join(
+            f"{lo}-{hi}: {int(((h >= lo) & (h < hi)).sum())}" for lo, hi in zip(edges, edges[1:])), flush=True)
     if not train:
         raise SystemExit("Eğitim verisi yok: önce scripts/dl_prepare.py --mcd N")
 
@@ -357,6 +464,16 @@ def main():
           f"{'rastgele başlatma' if scratch else 'başlangıç ağırlıkları: ' + init}, kayıp {loss_fn.__name__}",
           flush=True)
     opt = torch.optim.AdamW(model.parameters(), lr=a.lr, weight_decay=1e-4)
+    use_amp = a.amp and device.type == "cuda"
+    scaler = torch.amp.GradScaler("cuda", enabled=use_amp)
+    ema = None
+    if a.ema > 0:  # AveragedModel modeli deepcopy ile kopyalar; MMRPhys'te kopyalanamayan tensör özellikleri var
+        twin = build_model(device, init, arch=a.arch)
+        twin.load_state_dict(model.state_dict())
+        ema = EMA(twin, a.ema)
+
+    def eval_model():  # doğrulanan ve best.pth'e yazılan model
+        return ema.module if ema is not None else model
     sched = torch.optim.lr_scheduler.CosineAnnealingLR(opt, T_max=a.epochs * a.steps, eta_min=a.lr / 50)
     state = {"epoch": 0, "best": None, "history": []}
     last = os.path.join(a.out, "last.pth")
@@ -378,6 +495,11 @@ def main():
     if os.path.exists(last):
         ck = torch.load(last, map_location=device)
         model.load_state_dict(ck["model"], strict=False)
+        if ema is not None:
+            if "ema" in ck:
+                ema.load_state_dict(ck["ema"])
+            else:  # EMA'sız kontrol noktasından devam: ortalama güncel ağırlıklardan başlar
+                ema.module.load_state_dict(model.state_dict())
         sched.load_state_dict(ck["sched"])
         try:
             opt.load_state_dict(ck["opt"])
@@ -390,13 +512,14 @@ def main():
         val = pick_val(vids, a.val_max, state.get("val_set", ()))  # önceki oturumun doğrulama videoları korunur
         remeasure_best(state, val)
     elif val:
-        mae0 = validate(model, val, device)
+        mae0 = validate(eval_model(), val, device)
         print(f"başlangıç modeli doğrulama MAE: {mae0:.2f} BPM", flush=True)
         print("  doğrulama: " + ", ".join(f"{k} {m:.2f} ({n})" for k, (m, n) in VAL_GROUPS.items()), flush=True)
         state["history"].append({"epoch": 0, "val_mae": mae0, "loss": None})
         state["best"] = {"epoch": 0, "val_mae": mae0}
-        torch.save({"model": model.state_dict(), "arch": a.arch, "init": init}, os.path.join(a.out, "best.pth"))
+        torch.save({"model": eval_model().state_dict(), "arch": a.arch, "init": init}, os.path.join(a.out, "best.pth"))
     state["val_set"] = sorted(v["npz"] for v in val)
+    state["ayarlar"] = {k: v for k, v in vars(a).items() if k not in ("data", "out", "deadline")}  # rapor için
 
     sampler = ChunkSampler(train)
     epoch_time = None
@@ -420,18 +543,27 @@ def main():
             x, y, prm = pf.next()
             x = gpu_augment(x, prm, device)
             y = torch.as_tensor(y, device=device)
-            pred = model(x, label_bvp=y)[0] if with_label else model(x)[0]
+            with torch.autocast("cuda", dtype=torch.float16, enabled=use_amp):
+                pred = model(x, label_bvp=y)[0] if with_label else model(x)[0]
+            pred = pred.float()  # kayıplar float32'de (Pearson/FFT float16'da kararsız)
             loss = loss_fn(pred, y)
+            if a.spec_loss > 0:
+                loss = loss + a.spec_loss * spectral_kl(pred, y)
             if not torch.isfinite(loss):
                 continue
             opt.zero_grad(set_to_none=True)
-            loss.backward()
+            scaler.scale(loss).backward()
+            scaler.unscale_(opt)
             gnorm = torch.nn.utils.clip_grad_norm_(model.parameters(), 5.0)
             if not torch.isfinite(gnorm):  # sayısal patlama: bu adımı atla
                 opt.zero_grad(set_to_none=True)
+                scaler.update()
                 continue
-            opt.step()
+            scaler.step(opt)
+            scaler.update()
             sched.step()
+            if ema is not None:
+                ema.update_parameters(model)
             losses.append(loss.item())
             if (step + 1) % 100 == 0:
                 print(f"  epoch {state['epoch'] + 1} adım {step + 1}/{a.steps} kayıp {np.mean(losses[-100:]):.4f}",
@@ -443,15 +575,20 @@ def main():
             model.load_state_dict(torch.load(os.path.join(a.out, "best.pth"), map_location=device)["model"])
             opt = torch.optim.AdamW(model.parameters(), lr=sched.get_last_lr()[0], weight_decay=1e-4)
             sched.optimizer = opt
+            if ema is not None:
+                ema.module.load_state_dict(model.state_dict())
             continue
         state["epoch"] += 1
-        mae = validate(model, val, device) if val else float("nan")
+        mae = validate(eval_model(), val, device) if val else float("nan")
         state["history"].append({"epoch": state["epoch"], "val_mae": mae, "loss": float(np.mean(losses))})
         if state["best"] is None or mae < state["best"]["val_mae"]:
             state["best"] = {"epoch": state["epoch"], "val_mae": mae}
-            torch.save({"model": model.state_dict(), "arch": a.arch, "init": init}, os.path.join(a.out, "best.pth"))
-        torch.save({"model": model.state_dict(), "arch": a.arch, "init": init, "opt": opt.state_dict(), "sched": sched.state_dict(),
-                    "state": state}, last + ".part")
+            torch.save({"model": eval_model().state_dict(), "arch": a.arch, "init": init}, os.path.join(a.out, "best.pth"))
+        ck = {"model": model.state_dict(), "arch": a.arch, "init": init, "opt": opt.state_dict(),
+              "sched": sched.state_dict(), "state": state}
+        if ema is not None:
+            ck["ema"] = ema.state_dict()
+        torch.save(ck, last + ".part")
         os.replace(last + ".part", last)
         epoch_time = time.time() - t0
         print(f"epoch {state['epoch']}: kayıp {np.mean(losses):.4f}, doğrulama MAE {mae:.2f} BPM, "
