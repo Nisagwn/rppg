@@ -134,6 +134,19 @@ model kullanıldı.
 - Zayıf nokta: pico yüz bulucusu yan açıda ve telefon görüntüsünde yüzü kaçırıyor. Sonraki iş: yüz bulucu ve kalite
   eşiği; uygulamaya 5. tur ya da 7E modeli.
 
+### 3.10 Uygulama içinde model karşılaştırması: 3. tur / 5. tur / 7E (v13)
+- Aynı 60 kesit, her kesit üç modelle art arda (sıra döndürülerek) ölçüldü (`validate_mobile.py --models`,
+  `results/mobil_dogrulama_modeller/KARSILASTIRMA.md`). Makine yüklüydü; ilk 14 kesit GPU açık, kalanı kapalı.
+- MAE (kesit ortalaması) / kapsama: tur3 4.17 / %53, tur5 4.35 / %52, 7E 3.98 / %52; medyan 2.24 / 2.42 / 2.09.
+  Üçünün de ölçtüğü 36 kesitte Friedman **p = 0.56**; ikili Wilcoxon'ların hiçbiri anlamlı değil (en küçük: önden
+  webcam tur5 vs 7E, p = 0.081). Aynı 3. tur modelinin v12 koşusuyla farkı da anlamlı değil (p = 0.69).
+- **Olumsuz sonuç:** gerçek zamanlı tarayıcı doğrulaması ±0.3 BPM'lik model farklarını ayıramıyor; tekrar gürültüsü
+  (aynı kesit ve modelde 1.3 / 2.4 BPM, ara sıra takibin yanlış tepeye kilitlenmesi) model farkından büyük.
+- Tarayıcıda çıkarım medyanı: 509 / 584 / 409 ms (tur3 ve tur5 aynı mimari: aradaki fark yük gürültüsü).
+- Karar: uygulamaya **7E (MMRPhys)** — çevrimdışı ana test eşit, DLCN/VIPL çok daha iyi, dosya 163 KB (246 yerine),
+  çıkarım daha hızlı. Bedeli: çevrimdışı telefon/USB'de 5. tur daha iyi (1.64 / 2.04, p = 0.001). MMRPhys lisansı
+  yalnızca araştırma amaçlı kullanıma izin veriyor.
+
 ### 3.6 Viterbi takibi derin öğrenme çıktısında da büyük kazanç sağlıyor
 - Klasik aşamanın katkısı derin modellerde de çalışıyor: 7B telefon/USB'de argmax 3.80 → Viterbi 1.96 BPM
   (**p < 0.001**, 15'e 1 video). Bütün modellerde ve test kümelerinde benzer.

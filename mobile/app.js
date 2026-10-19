@@ -4,8 +4,8 @@
 //             -> cilt piksellerinin RGB ortalaması -> POS -> detrend + bant geçiren -> spektrum
 //             -> hareket güvenli çevrimiçi Bayes takibi (Viterbi'nin çevrimiçi eşi).
 //             ROI'ler ortalama füzyonla birleşir: gerçek veride (UBFC, MCD-rPPG) en iyi sonucu veren hat.
-//             Eğitilmiş model (FactorizePhys): yüz kutusu x1.5 -> 72x72 RGB -> 30 fps ızgara -> FactorizePhys
-//             (ince ayarlı, ONNX, Web Worker'da) -> örtüşen parçaların birleşimi -> aynı spektrum + takip.
+//             Eğitilmiş model (MMRPhys): yüz kutusu x1.5 -> 72x72 RGB -> 30 fps ızgara -> MMRPhys
+//             (bu projede sıfırdan eğitilmiş, 7. tur E; ONNX, Web Worker'da) -> örtüşen parçaların birleşimi -> aynı spektrum + takip.
 // Parmak modu: arka kamera + flaş, merkez bölgenin G/R kanalı (temaslı PPG).
 import {
   BPM_GRID, OnlineHRTracker, analyzeWindow, motionConfidence, preprocessBvp, spectrumBpm, windowSnr,

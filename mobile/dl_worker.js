@@ -1,5 +1,7 @@
 // Derin öğrenme çıkarımı (ayrı iş parçacığı, arayüzü dondurmaz).
-// Model: FactorizePhys (rPPG-Toolbox, NeurIPS 2024), MCD-rPPG + UBFC + PURE ile ince ayarlı, ONNX'e çevrilmiş.
+// Model: MMRPhys (Joshi ve Cho 2025, LEF, yalnızca nabız görevi; lisansı yalnızca araştırma amaçlı kullanıma izin
+// verir), bu projede hazır ağırlık olmadan sıfırdan eğitilmiş (7. tur E, son epoch), ONNX'e çevrilmiş.
+// Gerçek veri doğrulamasında 3. ve 5. tur FactorizePhys ile anlamlı fark yok; çıkarımı daha hızlı, dosyası daha küçük.
 // Girdi:  [1, 3, 161, 72, 72] float32, 0–255 ham RGB yüz kırpıntıları (30 fps; son kare tekrarlı, model içinde fark alınır)
 // Çıktı:  [1, 160] nabız dalgası (BVP)
 import * as ort from "./vendor/ort/ort.wasm.bundle.min.mjs";
@@ -12,7 +14,7 @@ let session = null;
 
 async function load() {
   const t0 = performance.now();
-  session = await ort.InferenceSession.create(new URL("./model/factorizephys.onnx", import.meta.url).href,
+  session = await ort.InferenceSession.create(new URL("./model/mmrphys.onnx", import.meta.url).href,
     { executionProviders: ["wasm"], graphOptimizationLevel: "all" });
   return performance.now() - t0;
 }
