@@ -179,6 +179,8 @@ def training_lines(cfg, loss_name="negatif Pearson"):
     aug = f"- Artırma: yatay çevirme, hız {lo:g}–{hi:g}× (HR aralığını genişletir), parlaklık ×0.8–1.2"
     if cfg.get("phone_aug"):
         aug += "; telefon bozulmaları (el titremesi, düşük çözünürlük, renk sıcaklığı, loş ışık + gürültü)"
+    if cfg.get("box_jitter", 0) > 0:
+        aug += f"; yüz kutusu kayması ±%{100 * cfg['box_jitter']:.0f}"
     if cfg.get("hr_balance", 0) > 1:
         aug += f"; nabız dengeli örnekleme (seyrek nabız aralıkları en fazla {cfg['hr_balance']:g}×)"
     names = {"pearson": "negatif Pearson", "smoothl1": "SmoothL1 (standartlaştırılmış tahmin ve etiket)"}

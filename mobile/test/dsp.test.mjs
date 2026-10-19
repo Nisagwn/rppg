@@ -73,3 +73,18 @@ test("düzensiz zaman damgalarını 30 Hz'e yeniden örnekler", () => {
   const hr = peakBpm(BPM_GRID, spectrumBpm(u));
   assert.ok(Math.abs(hr - 72) < 1, `${hr}`);
 });
+
+test("sıçrama payıyla takipçi kalıcı yanlış tepeden kurtulur, payı 0 iken kurtulamaz", () => {
+  // Yanlış tepe kaybolmuyor, yalnızca zayıflıyor (ör. ışık titremesi, hareket); gerçek nabız 2 kat güçlü.
+  const g = (bpm) => BPM_GRID.map((x) => Math.exp(-0.5 * ((x - bpm) / 2) ** 2));
+  const both = (a120, a75) => g(120).map((v, i) => a120 * v + a75 * g(75)[i] + 0.02);
+  const run = (jump) => {
+    const trk = new OnlineHRTracker(BPM_GRID, 4, jump);
+    for (let i = 0; i < 10; i++) trk.update(both(1, 0), 1, 1);       // başta yalnızca yanlış tepe
+    let h = 0;
+    for (let i = 0; i < 20; i++) h = trk.update(both(0.5, 1), 1, 1); // 20 s boyunca gerçek nabız baskın
+    return h;
+  };
+  assert.ok(Math.abs(run(0.05) - 75) < 3, `kurtulamadı: ${run(0.05)}`);
+  assert.ok(Math.abs(run(0) - 120) < 3, `payı 0 iken de kurtuldu: ${run(0)}`);
+});

@@ -125,13 +125,16 @@ def viterbi_track(S: np.ndarray, grid: np.ndarray = BPM_GRID, step_sec: float = 
 class OnlineHRTracker:
     """
     Canlı demo için ileri (forward) Bayes filtresi — Viterbi'nin çevrimiçi eşi.
-      tahmin:     inanç ⊛ Gauss(σ = rate·dt)
+      tahmin:     (1 − jump) · (inanç ⊛ Gauss(σ = rate·dt)) + jump / F
       güncelleme: inanç · p^conf
+    jump: saniye başına sıçrama olasılığı. 0'da yanlış tepeye kilitlenen inanç geri dönemez (doğru tepedeki öncül
+    ~1e-9); küçük bir pay, doğru tepe birkaç pencere üst üste baskın olunca geçişe izin verir.
     """
 
-    def __init__(self, grid: np.ndarray = BPM_GRID, max_rate_bpm_s: float = 4.0):
+    def __init__(self, grid: np.ndarray = BPM_GRID, max_rate_bpm_s: float = 4.0, jump: float = 0.0):
         self.grid = grid
         self.rate = max_rate_bpm_s
+        self.jump = jump
         self.belief = np.full(len(grid), 1.0 / len(grid))
 
     def reset(self):
@@ -146,7 +149,8 @@ class OnlineHRTracker:
         # "same" kip, çekirdek ızgaradan uzunsa (dt > ~5 s) daha uzun dizi döndürür;
         # tam evrişimin ortasını kırpmak her dt için ızgara boyunu korur (dsp.js ile aynı).
         F = len(self.belief)
-        pred = np.convolve(self.belief, kern, mode="full")[k:k + F] + 1e-9
+        pred = np.convolve(self.belief, kern, mode="full")[k:k + F]
+        pred = (1 - self.jump * dt) * pred + self.jump * dt / F + 1e-9
         like = (p / (p.max() + 1e-15) + 1e-6) ** conf
         post = pred * like
         self.belief = post / post.sum()

@@ -203,9 +203,10 @@ export function windowSnr(grid, p, hr) {
 
 // rppg.hr.OnlineHRTracker — Viterbi'nin çevrimiçi (ileri Bayes) eşi
 export class OnlineHRTracker {
-  constructor(grid = BPM_GRID, maxRateBpmS = 4) {
+  constructor(grid = BPM_GRID, maxRateBpmS = 4, jump = 0) {
     this.grid = grid;
     this.rate = maxRateBpmS;
+    this.jump = jump; // saniye başına sıçrama olasılığı (rppg.hr.OnlineHRTracker ile aynı)
     this.reset();
   }
   reset() {
@@ -228,7 +229,7 @@ export class OnlineHRTracker {
         const q = i - j;
         if (q >= 0 && q < F) pred += this.belief[q] * kern[j + k];
       }
-      pred = pred / ks + 1e-9;
+      pred = (1 - this.jump * dt) * (pred / ks) + (this.jump * dt) / F + 1e-9;
       post[i] = pred * Math.pow(p[i] / pmax + 1e-6, conf);
       tot += post[i];
     }

@@ -104,3 +104,17 @@ def test_video_hr_prefers_good_windows_from_kal(tmp_path):
     with open(kal, "wb") as f:
         np.savez(f, hr_l=np.array([70.0, 72.0, 160.0, 71.0]), win_ok=np.array([True, True, False, True]))
     assert video_hr(np.zeros(900), str(kal)) == 71.0
+
+
+def test_box_jitter_keeps_shape_and_constant_image():
+    import torch
+    from dl_train import box_jitter
+    torch.manual_seed(0)
+    c = torch.full((8, 72, 72, 3), 120.0)
+    y = box_jitter(c, 0.1)
+    assert y.shape == c.shape
+    assert torch.allclose(y, c, atol=1e-3)          # düz görüntü kaymayla değişmez (kenar en yakın pikselle dolar)
+    g = torch.arange(72.0)[None, :, None, None].expand(8, 72, 72, 3).contiguous()
+    z = box_jitter(g, 0.1)
+    assert torch.allclose(z[0], z[-1])               # kayma parça boyunca sabit (zamanla titremez)
+    assert (z - g).abs().max() <= 0.1 * 72 * 2 + 1   # en fazla ±J ölçek + ±J kayma

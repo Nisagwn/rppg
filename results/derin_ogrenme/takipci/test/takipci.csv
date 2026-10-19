@@ -1,0 +1,281 @@
+grup,video,yöntem,MAE,p5
+MCD egzersiz,1020_FullHDwebcam_after,çevrimiçi jump=0,0.7707033051246922,98.75
+MCD egzersiz,1020_FullHDwebcam_after,çevrimiçi jump=0.005,0.7704666380836963,98.75
+MCD egzersiz,1020_FullHDwebcam_after,çevrimiçi jump=0.01,0.7702275932329183,98.75
+MCD egzersiz,1020_FullHDwebcam_after,çevrimiçi jump=0.02,0.7697422358277566,98.75
+MCD egzersiz,1020_FullHDwebcam_after,çevrimiçi jump=0.05,0.7682260259527883,98.75
+MCD egzersiz,1020_FullHDwebcam_after,Viterbi (bütün video),0.4853633315567457,100.0
+MCD egzersiz,1020_FullHDwebcam_after,tek seferlik 20 s,0.7559218445671008,100.0
+MCD egzersiz,1020_FullHDwebcam_after,çevrimiçi son değer 20 s,2.2500808960593144,93.33333333333333
+MCD egzersiz,1020_FullHDwebcam_after,tek seferlik 30 s,0.6470739930523646,100.0
+MCD egzersiz,1020_FullHDwebcam_after,çevrimiçi son değer 30 s,1.3184719604838087,100.0
+MCD dinlenme,1020_FullHDwebcam_before,çevrimiçi jump=0,0.5511768323794608,100.0
+MCD dinlenme,1020_FullHDwebcam_before,çevrimiçi jump=0.005,0.5510086472432285,100.0
+MCD dinlenme,1020_FullHDwebcam_before,çevrimiçi jump=0.01,0.5508388468630081,100.0
+MCD dinlenme,1020_FullHDwebcam_before,çevrimiçi jump=0.02,0.5504943070761825,100.0
+MCD dinlenme,1020_FullHDwebcam_before,çevrimiçi jump=0.05,0.5494194135622417,100.0
+MCD dinlenme,1020_FullHDwebcam_before,Viterbi (bütün video),0.38785291284866735,100.0
+MCD dinlenme,1020_FullHDwebcam_before,tek seferlik 20 s,0.5426302726336748,100.0
+MCD dinlenme,1020_FullHDwebcam_before,çevrimiçi son değer 20 s,1.7652467093145268,93.33333333333333
+MCD dinlenme,1020_FullHDwebcam_before,tek seferlik 30 s,0.5483169402762851,100.0
+MCD dinlenme,1020_FullHDwebcam_before,çevrimiçi son değer 30 s,1.613827297843386,100.0
+MCD egzersiz,1024_FullHDwebcam_after,çevrimiçi jump=0,0.4850397668902483,100.0
+MCD egzersiz,1024_FullHDwebcam_after,çevrimiçi jump=0.005,0.48496210802296974,100.0
+MCD egzersiz,1024_FullHDwebcam_after,çevrimiçi jump=0.01,0.4848836883635584,100.0
+MCD egzersiz,1024_FullHDwebcam_after,çevrimiçi jump=0.02,0.48472452175220776,100.0
+MCD egzersiz,1024_FullHDwebcam_after,çevrimiçi jump=0.05,0.4842275543318224,100.0
+MCD egzersiz,1024_FullHDwebcam_after,Viterbi (bütün video),0.39866850447988317,100.0
+MCD egzersiz,1024_FullHDwebcam_after,tek seferlik 20 s,0.4149032702653083,100.0
+MCD egzersiz,1024_FullHDwebcam_after,çevrimiçi son değer 20 s,1.2924373947034364,100.0
+MCD egzersiz,1024_FullHDwebcam_after,tek seferlik 30 s,0.27782621951319264,100.0
+MCD egzersiz,1024_FullHDwebcam_after,çevrimiçi son değer 30 s,1.5571249559129559,100.0
+MCD dinlenme,1024_FullHDwebcam_before,çevrimiçi jump=0,0.40907507901737705,100.0
+MCD dinlenme,1024_FullHDwebcam_before,çevrimiçi jump=0.005,0.40902523291058707,100.0
+MCD dinlenme,1024_FullHDwebcam_before,çevrimiçi jump=0.01,0.40897487915948383,100.0
+MCD dinlenme,1024_FullHDwebcam_before,çevrimiçi jump=0.02,0.40887261767562677,100.0
+MCD dinlenme,1024_FullHDwebcam_before,çevrimiçi jump=0.05,0.4085528133768363,100.0
+MCD dinlenme,1024_FullHDwebcam_before,Viterbi (bütün video),0.3637291693751678,100.0
+MCD dinlenme,1024_FullHDwebcam_before,tek seferlik 20 s,0.33647972270744714,100.0
+MCD dinlenme,1024_FullHDwebcam_before,çevrimiçi son değer 20 s,1.4738981567224614,100.0
+MCD dinlenme,1024_FullHDwebcam_before,tek seferlik 30 s,0.2942708982988762,100.0
+MCD dinlenme,1024_FullHDwebcam_before,çevrimiçi son değer 30 s,1.0716740556291509,100.0
+MCD egzersiz,1035_FullHDwebcam_after,çevrimiçi jump=0,0.5164357456047004,100.0
+MCD egzersiz,1035_FullHDwebcam_after,çevrimiçi jump=0.005,0.5163469612398146,100.0
+MCD egzersiz,1035_FullHDwebcam_after,çevrimiçi jump=0.01,0.5162573054671572,100.0
+MCD egzersiz,1035_FullHDwebcam_after,çevrimiçi jump=0.02,0.5160753283747707,100.0
+MCD egzersiz,1035_FullHDwebcam_after,çevrimiçi jump=0.05,0.5155071026640495,100.0
+MCD egzersiz,1035_FullHDwebcam_after,Viterbi (bütün video),0.47596305020969565,100.0
+MCD egzersiz,1035_FullHDwebcam_after,tek seferlik 20 s,0.5963229961126236,100.0
+MCD egzersiz,1035_FullHDwebcam_after,çevrimiçi son değer 20 s,1.5242186609712756,100.0
+MCD egzersiz,1035_FullHDwebcam_after,tek seferlik 30 s,0.24191035008963624,100.0
+MCD egzersiz,1035_FullHDwebcam_after,çevrimiçi son değer 30 s,2.6766604935451603,75.0
+MCD dinlenme,1035_FullHDwebcam_before,çevrimiçi jump=0,0.597362138882026,100.0
+MCD dinlenme,1035_FullHDwebcam_before,çevrimiçi jump=0.005,0.5972036430439832,100.0
+MCD dinlenme,1035_FullHDwebcam_before,çevrimiçi jump=0.01,0.5970436471337741,100.0
+MCD dinlenme,1035_FullHDwebcam_before,çevrimiçi jump=0.02,0.5967190684117706,100.0
+MCD dinlenme,1035_FullHDwebcam_before,çevrimiçi jump=0.05,0.5957069989437829,100.0
+MCD dinlenme,1035_FullHDwebcam_before,Viterbi (bütün video),0.41960514345255134,100.0
+MCD dinlenme,1035_FullHDwebcam_before,tek seferlik 20 s,0.5466556011513101,100.0
+MCD dinlenme,1035_FullHDwebcam_before,çevrimiçi son değer 20 s,2.4412236849397906,80.0
+MCD dinlenme,1035_FullHDwebcam_before,tek seferlik 30 s,0.4165542274158902,100.0
+MCD dinlenme,1035_FullHDwebcam_before,çevrimiçi son değer 30 s,1.8388313820851003,87.5
+MCD egzersiz,1091_FullHDwebcam_after,çevrimiçi jump=0,0.3432697626959721,100.0
+MCD egzersiz,1091_FullHDwebcam_after,çevrimiçi jump=0.005,0.343187019041467,100.0
+MCD egzersiz,1091_FullHDwebcam_after,çevrimiçi jump=0.01,0.3431035159143067,100.0
+MCD egzersiz,1091_FullHDwebcam_after,çevrimiçi jump=0.02,0.34293418905795736,100.0
+MCD egzersiz,1091_FullHDwebcam_after,çevrimiçi jump=0.05,0.34240684823623957,100.0
+MCD egzersiz,1091_FullHDwebcam_after,Viterbi (bütün video),0.25211362917786057,100.0
+MCD egzersiz,1091_FullHDwebcam_after,tek seferlik 20 s,0.37887280999715167,100.0
+MCD egzersiz,1091_FullHDwebcam_after,çevrimiçi son değer 20 s,1.0734880775457867,100.0
+MCD egzersiz,1091_FullHDwebcam_after,tek seferlik 30 s,0.2597730540593428,100.0
+MCD egzersiz,1091_FullHDwebcam_after,çevrimiçi son değer 30 s,2.478360052591732,87.5
+MCD dinlenme,1091_FullHDwebcam_before,çevrimiçi jump=0,0.4323231713926397,100.0
+MCD dinlenme,1091_FullHDwebcam_before,çevrimiçi jump=0.005,0.4322371458466249,100.0
+MCD dinlenme,1091_FullHDwebcam_before,çevrimiçi jump=0.01,0.4321502882556875,100.0
+MCD dinlenme,1091_FullHDwebcam_before,çevrimiçi jump=0.02,0.43197404841760473,100.0
+MCD dinlenme,1091_FullHDwebcam_before,çevrimiçi jump=0.05,0.431432869181112,100.0
+MCD dinlenme,1091_FullHDwebcam_before,Viterbi (bütün video),0.3685292704776941,100.0
+MCD dinlenme,1091_FullHDwebcam_before,tek seferlik 20 s,0.34342698551944106,100.0
+MCD dinlenme,1091_FullHDwebcam_before,çevrimiçi son değer 20 s,1.3642911863355824,100.0
+MCD dinlenme,1091_FullHDwebcam_before,tek seferlik 30 s,0.4306428042645347,100.0
+MCD dinlenme,1091_FullHDwebcam_before,çevrimiçi son değer 30 s,1.5806982390071553,100.0
+MCD egzersiz,1097_FullHDwebcam_after,çevrimiçi jump=0,4.128832850923095,79.375
+MCD egzersiz,1097_FullHDwebcam_after,çevrimiçi jump=0.005,4.12907134925359,79.375
+MCD egzersiz,1097_FullHDwebcam_after,çevrimiçi jump=0.01,4.129334118705641,79.375
+MCD egzersiz,1097_FullHDwebcam_after,çevrimiçi jump=0.02,4.80130677993139,77.5
+MCD egzersiz,1097_FullHDwebcam_after,çevrimiçi jump=0.05,5.5121289251700585,75.625
+MCD egzersiz,1097_FullHDwebcam_after,Viterbi (bütün video),4.14162358674852,78.23529411764706
+MCD egzersiz,1097_FullHDwebcam_after,tek seferlik 20 s,5.296855765993863,80.0
+MCD egzersiz,1097_FullHDwebcam_after,çevrimiçi son değer 20 s,7.71799314387859,66.66666666666666
+MCD egzersiz,1097_FullHDwebcam_after,tek seferlik 30 s,7.622850532782218,75.0
+MCD egzersiz,1097_FullHDwebcam_after,çevrimiçi son değer 30 s,7.568192657795413,75.0
+MCD dinlenme,1097_FullHDwebcam_before,çevrimiçi jump=0,4.540796293201567,73.58490566037736
+MCD dinlenme,1097_FullHDwebcam_before,çevrimiçi jump=0.005,4.257874294385966,74.21383647798741
+MCD dinlenme,1097_FullHDwebcam_before,çevrimiçi jump=0.01,4.257952750068539,74.21383647798741
+MCD dinlenme,1097_FullHDwebcam_before,çevrimiçi jump=0.02,4.258129776072243,74.21383647798741
+MCD dinlenme,1097_FullHDwebcam_before,çevrimiçi jump=0.05,4.144029981677556,74.84276729559748
+MCD dinlenme,1097_FullHDwebcam_before,Viterbi (bütün video),2.9004720228872,82.84023668639054
+MCD dinlenme,1097_FullHDwebcam_before,tek seferlik 20 s,5.691389590648546,73.33333333333333
+MCD dinlenme,1097_FullHDwebcam_before,çevrimiçi son değer 20 s,7.037322132981174,66.66666666666666
+MCD dinlenme,1097_FullHDwebcam_before,tek seferlik 30 s,2.6247087222401877,100.0
+MCD dinlenme,1097_FullHDwebcam_before,çevrimiçi son değer 30 s,3.7368400212280033,75.0
+MCD egzersiz,1099_FullHDwebcam_after,çevrimiçi jump=0,0.7489141051127236,98.75
+MCD egzersiz,1099_FullHDwebcam_after,çevrimiçi jump=0.005,0.7488767179558586,98.75
+MCD egzersiz,1099_FullHDwebcam_after,çevrimiçi jump=0.01,0.7488387604117674,98.75
+MCD egzersiz,1099_FullHDwebcam_after,çevrimiçi jump=0.02,0.7487610921660309,98.75
+MCD egzersiz,1099_FullHDwebcam_after,çevrimiçi jump=0.05,0.7485127910712704,98.75
+MCD egzersiz,1099_FullHDwebcam_after,Viterbi (bütün video),0.5925990658173459,100.0
+MCD egzersiz,1099_FullHDwebcam_after,tek seferlik 20 s,0.5297884014451208,100.0
+MCD egzersiz,1099_FullHDwebcam_after,çevrimiçi son değer 20 s,1.1242396081204646,100.0
+MCD egzersiz,1099_FullHDwebcam_after,tek seferlik 30 s,0.5375965954248603,100.0
+MCD egzersiz,1099_FullHDwebcam_after,çevrimiçi son değer 30 s,2.9316354311683774,75.0
+MCD dinlenme,1099_FullHDwebcam_before,çevrimiçi jump=0,0.7592112638160516,99.375
+MCD dinlenme,1099_FullHDwebcam_before,çevrimiçi jump=0.005,0.758954474352722,99.375
+MCD dinlenme,1099_FullHDwebcam_before,çevrimiçi jump=0.01,0.7586952222030905,99.375
+MCD dinlenme,1099_FullHDwebcam_before,çevrimiçi jump=0.02,0.7581692481180865,99.375
+MCD dinlenme,1099_FullHDwebcam_before,çevrimiçi jump=0.05,0.7565541463613638,99.375
+MCD dinlenme,1099_FullHDwebcam_before,Viterbi (bütün video),0.6648608452826686,100.0
+MCD dinlenme,1099_FullHDwebcam_before,tek seferlik 20 s,0.9370009925131559,100.0
+MCD dinlenme,1099_FullHDwebcam_before,çevrimiçi son değer 20 s,2.777212764150836,86.66666666666667
+MCD dinlenme,1099_FullHDwebcam_before,tek seferlik 30 s,0.9013904152226182,100.0
+MCD dinlenme,1099_FullHDwebcam_before,çevrimiçi son değer 30 s,3.1304286452806362,87.5
+MCD egzersiz,1107_FullHDwebcam_after,çevrimiçi jump=0,0.6026212785264314,100.0
+MCD egzersiz,1107_FullHDwebcam_after,çevrimiçi jump=0.005,0.6026371479494559,100.0
+MCD egzersiz,1107_FullHDwebcam_after,çevrimiçi jump=0.01,0.6026531338178199,100.0
+MCD egzersiz,1107_FullHDwebcam_after,çevrimiçi jump=0.02,0.6026854735264543,100.0
+MCD egzersiz,1107_FullHDwebcam_after,çevrimiçi jump=0.05,0.6027855177340584,100.0
+MCD egzersiz,1107_FullHDwebcam_after,Viterbi (bütün video),0.6405828001086883,100.0
+MCD egzersiz,1107_FullHDwebcam_after,tek seferlik 20 s,0.39092570580242714,100.0
+MCD egzersiz,1107_FullHDwebcam_after,çevrimiçi son değer 20 s,1.3324815633183107,100.0
+MCD egzersiz,1107_FullHDwebcam_after,tek seferlik 30 s,0.5067654393822068,100.0
+MCD egzersiz,1107_FullHDwebcam_after,çevrimiçi son değer 30 s,2.286353913001374,100.0
+MCD dinlenme,1107_FullHDwebcam_before,çevrimiçi jump=0,0.7313657157668861,99.375
+MCD dinlenme,1107_FullHDwebcam_before,çevrimiçi jump=0.005,0.7311392719664599,99.375
+MCD dinlenme,1107_FullHDwebcam_before,çevrimiçi jump=0.01,0.7309107020397622,99.375
+MCD dinlenme,1107_FullHDwebcam_before,çevrimiçi jump=0.02,0.7304491908154995,99.375
+MCD dinlenme,1107_FullHDwebcam_before,çevrimiçi jump=0.05,0.7290140424448766,99.375
+MCD dinlenme,1107_FullHDwebcam_before,Viterbi (bütün video),0.5481107979509173,100.0
+MCD dinlenme,1107_FullHDwebcam_before,tek seferlik 20 s,0.6644823051487132,100.0
+MCD dinlenme,1107_FullHDwebcam_before,çevrimiçi son değer 20 s,3.40158746861262,80.0
+MCD dinlenme,1107_FullHDwebcam_before,tek seferlik 30 s,1.0226542359393616,100.0
+MCD dinlenme,1107_FullHDwebcam_before,çevrimiçi son değer 30 s,3.3206930560536136,87.5
+MCD egzersiz,1113_FullHDwebcam_after,çevrimiçi jump=0,1.5964754453371608,94.375
+MCD egzersiz,1113_FullHDwebcam_after,çevrimiçi jump=0.005,1.5960878835493209,94.375
+MCD egzersiz,1113_FullHDwebcam_after,çevrimiçi jump=0.01,1.5956973544832391,94.375
+MCD egzersiz,1113_FullHDwebcam_after,çevrimiçi jump=0.02,1.594907769398,94.375
+MCD egzersiz,1113_FullHDwebcam_after,çevrimiçi jump=0.05,1.5924696302992967,94.375
+MCD egzersiz,1113_FullHDwebcam_after,Viterbi (bütün video),1.4538302124680316,92.3529411764706
+MCD egzersiz,1113_FullHDwebcam_after,tek seferlik 20 s,1.164141505626956,93.33333333333333
+MCD egzersiz,1113_FullHDwebcam_after,çevrimiçi son değer 20 s,2.9942561966867447,80.0
+MCD egzersiz,1113_FullHDwebcam_after,tek seferlik 30 s,1.3055602263260297,100.0
+MCD egzersiz,1113_FullHDwebcam_after,çevrimiçi son değer 30 s,3.7034285686110877,62.5
+MCD dinlenme,1113_FullHDwebcam_before,çevrimiçi jump=0,2.0169310738402135,91.19496855345912
+MCD dinlenme,1113_FullHDwebcam_before,çevrimiçi jump=0.005,2.0153421384605696,91.19496855345912
+MCD dinlenme,1113_FullHDwebcam_before,çevrimiçi jump=0.01,2.0137612988851727,91.19496855345912
+MCD dinlenme,1113_FullHDwebcam_before,çevrimiçi jump=0.02,2.010699549185619,91.19496855345912
+MCD dinlenme,1113_FullHDwebcam_before,çevrimiçi jump=0.05,2.002200010353542,91.82389937106919
+MCD dinlenme,1113_FullHDwebcam_before,Viterbi (bütün video),1.306181875595885,94.0828402366864
+MCD dinlenme,1113_FullHDwebcam_before,tek seferlik 20 s,1.3402722124185564,93.33333333333333
+MCD dinlenme,1113_FullHDwebcam_before,çevrimiçi son değer 20 s,3.0141399588377897,80.0
+MCD dinlenme,1113_FullHDwebcam_before,tek seferlik 30 s,1.0966562953675503,100.0
+MCD dinlenme,1113_FullHDwebcam_before,çevrimiçi son değer 30 s,4.221704344973597,50.0
+MCD egzersiz,1115_FullHDwebcam_after,çevrimiçi jump=0,0.6240349662823645,100.0
+MCD egzersiz,1115_FullHDwebcam_after,çevrimiçi jump=0.005,0.6238671502093948,100.0
+MCD egzersiz,1115_FullHDwebcam_after,çevrimiçi jump=0.01,0.6236977493252023,100.0
+MCD egzersiz,1115_FullHDwebcam_after,çevrimiçi jump=0.02,0.6233541027426087,100.0
+MCD egzersiz,1115_FullHDwebcam_after,çevrimiçi jump=0.05,0.622282737056823,100.0
+MCD egzersiz,1115_FullHDwebcam_after,Viterbi (bütün video),0.3857991636932641,100.0
+MCD egzersiz,1115_FullHDwebcam_after,tek seferlik 20 s,0.4402893026782882,100.0
+MCD egzersiz,1115_FullHDwebcam_after,çevrimiçi son değer 20 s,1.622760118766818,93.33333333333333
+MCD egzersiz,1115_FullHDwebcam_after,tek seferlik 30 s,0.5705478228720935,100.0
+MCD egzersiz,1115_FullHDwebcam_after,çevrimiçi son değer 30 s,1.8427888334115163,100.0
+MCD dinlenme,1115_FullHDwebcam_before,çevrimiçi jump=0,1.217380474684125,96.85534591194968
+MCD dinlenme,1115_FullHDwebcam_before,çevrimiçi jump=0.005,1.2158420287284528,96.85534591194968
+MCD dinlenme,1115_FullHDwebcam_before,çevrimiçi jump=0.01,1.2147111343936434,96.85534591194968
+MCD dinlenme,1115_FullHDwebcam_before,çevrimiçi jump=0.02,1.2130366300902975,96.85534591194968
+MCD dinlenme,1115_FullHDwebcam_before,çevrimiçi jump=0.05,1.0946290873157156,97.48427672955975
+MCD dinlenme,1115_FullHDwebcam_before,Viterbi (bütün video),0.7453741416705835,97.63313609467455
+MCD dinlenme,1115_FullHDwebcam_before,tek seferlik 20 s,0.9712063293764411,93.33333333333333
+MCD dinlenme,1115_FullHDwebcam_before,çevrimiçi son değer 20 s,2.0721676778754774,93.33333333333333
+MCD dinlenme,1115_FullHDwebcam_before,tek seferlik 30 s,1.0406841770442394,100.0
+MCD dinlenme,1115_FullHDwebcam_before,çevrimiçi son değer 30 s,2.589091519328214,87.5
+MCD egzersiz,1149_FullHDwebcam_after,çevrimiçi jump=0,0.3169938042738202,100.0
+MCD egzersiz,1149_FullHDwebcam_after,çevrimiçi jump=0.005,0.3169781279675633,100.0
+MCD egzersiz,1149_FullHDwebcam_after,çevrimiçi jump=0.01,0.3169622962131654,100.0
+MCD egzersiz,1149_FullHDwebcam_after,çevrimiçi jump=0.02,0.3169301569769617,100.0
+MCD egzersiz,1149_FullHDwebcam_after,çevrimiçi jump=0.05,0.31682975576220285,100.0
+MCD egzersiz,1149_FullHDwebcam_after,Viterbi (bütün video),0.34656729035421285,100.0
+MCD egzersiz,1149_FullHDwebcam_after,tek seferlik 20 s,0.23481626105281161,100.0
+MCD egzersiz,1149_FullHDwebcam_after,çevrimiçi son değer 20 s,0.901330855380606,100.0
+MCD egzersiz,1149_FullHDwebcam_after,tek seferlik 30 s,0.3323686301460409,100.0
+MCD egzersiz,1149_FullHDwebcam_after,çevrimiçi son değer 30 s,1.5484589018744277,100.0
+MCD dinlenme,1149_FullHDwebcam_before,çevrimiçi jump=0,0.2942141491222989,100.0
+MCD dinlenme,1149_FullHDwebcam_before,çevrimiçi jump=0.005,0.2942076665024979,100.0
+MCD dinlenme,1149_FullHDwebcam_before,çevrimiçi jump=0.01,0.2942011151608502,100.0
+MCD dinlenme,1149_FullHDwebcam_before,çevrimiçi jump=0.02,0.29418780191358956,100.0
+MCD dinlenme,1149_FullHDwebcam_before,çevrimiçi jump=0.05,0.29414609412495657,100.0
+MCD dinlenme,1149_FullHDwebcam_before,Viterbi (bütün video),0.28455074142256565,100.0
+MCD dinlenme,1149_FullHDwebcam_before,tek seferlik 20 s,0.2078340706514666,100.0
+MCD dinlenme,1149_FullHDwebcam_before,çevrimiçi son değer 20 s,0.6111298376903345,100.0
+MCD dinlenme,1149_FullHDwebcam_before,tek seferlik 30 s,0.19918615375467041,100.0
+MCD dinlenme,1149_FullHDwebcam_before,çevrimiçi son değer 30 s,1.251802920447533,100.0
+UBFC,subject1,çevrimiçi jump=0,1.6888361663298164,96.875
+UBFC,subject1,çevrimiçi jump=0.005,1.6884380021533856,96.875
+UBFC,subject1,çevrimiçi jump=0.01,1.6880354605525563,96.875
+UBFC,subject1,çevrimiçi jump=0.02,1.6872169743673555,96.875
+UBFC,subject1,çevrimiçi jump=0.05,1.684648969327276,96.875
+UBFC,subject1,Viterbi (bütün video),1.1493783292767152,100.0
+UBFC,subject1,tek seferlik 20 s,2.2698956037833162,66.66666666666666
+UBFC,subject1,çevrimiçi son değer 20 s,3.311108801860281,66.66666666666666
+UBFC,subject1,tek seferlik 30 s,0.6707387159677438,100.0
+UBFC,subject1,çevrimiçi son değer 30 s,1.4741413856515209,100.0
+UBFC,subject10,çevrimiçi jump=0,0.6580922509050188,100.0
+UBFC,subject10,çevrimiçi jump=0.005,0.6579022887035144,100.0
+UBFC,subject10,çevrimiçi jump=0.01,0.6577106167725141,100.0
+UBFC,subject10,çevrimiçi jump=0.02,0.657322050342478,100.0
+UBFC,subject10,çevrimiçi jump=0.05,0.6561128108615986,100.0
+UBFC,subject10,Viterbi (bütün video),0.46932387780355406,100.0
+UBFC,subject10,tek seferlik 20 s,0.7798646109884544,100.0
+UBFC,subject10,çevrimiçi son değer 20 s,3.0340088741311773,60.0
+UBFC,subject10,tek seferlik 30 s,0.5938932470037486,100.0
+UBFC,subject10,çevrimiçi son değer 30 s,6.539625261255004,50.0
+UBFC,subject11,çevrimiçi jump=0,0.8031670155833049,100.0
+UBFC,subject11,çevrimiçi jump=0.005,0.803056428318761,100.0
+UBFC,subject11,çevrimiçi jump=0.01,0.8029447500802599,100.0
+UBFC,subject11,çevrimiçi jump=0.02,0.8027180556829338,100.0
+UBFC,subject11,çevrimiçi jump=0.05,0.802010039542688,100.0
+UBFC,subject11,Viterbi (bütün video),0.660747688997196,100.0
+UBFC,subject11,tek seferlik 20 s,0.6448522110632127,100.0
+UBFC,subject11,çevrimiçi son değer 20 s,2.1253144513239848,100.0
+UBFC,subject11,tek seferlik 30 s,0.18108818520621384,100.0
+UBFC,subject11,çevrimiçi son değer 30 s,4.386345207427297,50.0
+UBFC,subject3,çevrimiçi jump=0,2.495723990648794,87.8048780487805
+UBFC,subject3,çevrimiçi jump=0.005,2.4938967031994044,87.8048780487805
+UBFC,subject3,çevrimiçi jump=0.01,2.492069600839228,87.8048780487805
+UBFC,subject3,çevrimiçi jump=0.02,2.488415447956155,87.8048780487805
+UBFC,subject3,çevrimiçi jump=0.05,2.477387057152974,87.8048780487805
+UBFC,subject3,Viterbi (bütün video),3.8809611024140076,76.47058823529412
+UBFC,subject3,tek seferlik 20 s,4.287404221340701,75.0
+UBFC,subject3,çevrimiçi son değer 20 s,6.00734097477137,25.0
+UBFC,subject3,tek seferlik 30 s,5.826855059155712,50.0
+UBFC,subject3,çevrimiçi son değer 30 s,5.574159017269338,50.0
+UBFC,subject4,çevrimiçi jump=0,4.613066953538546,80.76923076923077
+UBFC,subject4,çevrimiçi jump=0.005,4.613623650479384,80.76923076923077
+UBFC,subject4,çevrimiçi jump=0.01,4.614164425373374,80.76923076923077
+UBFC,subject4,çevrimiçi jump=0.02,4.615197629241331,80.76923076923077
+UBFC,subject4,çevrimiçi jump=0.05,4.617902822929144,80.76923076923077
+UBFC,subject4,Viterbi (bütün video),4.896178396828357,72.22222222222221
+UBFC,subject4,tek seferlik 20 s,5.197870633437058,66.66666666666666
+UBFC,subject4,çevrimiçi son değer 20 s,2.4873683357433927,100.0
+UBFC,subject4,tek seferlik 30 s,3.0870290445809587,100.0
+UBFC,subject4,çevrimiçi son değer 30 s,0.38064988412442347,100.0
+UBFC,subject5,çevrimiçi jump=0,0.5368283490889927,100.0
+UBFC,subject5,çevrimiçi jump=0.005,0.5367589008526683,100.0
+UBFC,subject5,çevrimiçi jump=0.01,0.5366887857795883,100.0
+UBFC,subject5,çevrimiçi jump=0.02,0.5365465169353207,100.0
+UBFC,subject5,çevrimiçi jump=0.05,0.5361026415495949,100.0
+UBFC,subject5,Viterbi (bütün video),0.48719333250974795,100.0
+UBFC,subject5,tek seferlik 20 s,0.22753422554796998,100.0
+UBFC,subject5,çevrimiçi son değer 20 s,1.1947730626111337,100.0
+UBFC,subject5,tek seferlik 30 s,0.6407041930223727,100.0
+UBFC,subject5,çevrimiçi son değer 30 s,2.8627245588791155,100.0
+UBFC,subject8,çevrimiçi jump=0,1.1236042907248482,93.75
+UBFC,subject8,çevrimiçi jump=0.005,1.123033341756111,93.75
+UBFC,subject8,çevrimiçi jump=0.01,1.1224629143889684,93.75
+UBFC,subject8,çevrimiçi jump=0.02,1.1213236802843671,93.75
+UBFC,subject8,çevrimiçi jump=0.05,0.8793526298441497,95.83333333333334
+UBFC,subject8,Viterbi (bütün video),0.9831481149963742,94.82758620689656
+UBFC,subject8,tek seferlik 20 s,0.6350592480124874,100.0
+UBFC,subject8,çevrimiçi son değer 20 s,1.4399940047961621,100.0
+UBFC,subject8,tek seferlik 30 s,1.3086954969519056,100.0
+UBFC,subject8,çevrimiçi son değer 30 s,2.274108716552327,100.0
+UBFC,subject9,çevrimiçi jump=0,1.2688566883746395,93.75
+UBFC,subject9,çevrimiçi jump=0.005,1.268544753682585,93.75
+UBFC,subject9,çevrimiçi jump=0.01,1.2682296050156452,93.75
+UBFC,subject9,çevrimiçi jump=0.02,1.2675966420528741,93.75
+UBFC,subject9,çevrimiçi jump=0.05,1.26753232117263,93.75
+UBFC,subject9,Viterbi (bütün video),1.0658697100951495,94.82758620689656
+UBFC,subject9,tek seferlik 20 s,0.814912387296124,100.0
+UBFC,subject9,çevrimiçi son değer 20 s,2.5187064190631476,80.0
+UBFC,subject9,tek seferlik 30 s,3.142127024085987,100.0
+UBFC,subject9,çevrimiçi son değer 30 s,5.219776404884151,50.0

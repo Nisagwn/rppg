@@ -250,6 +250,8 @@ def gpu_augment(clips_u8, prm, device):
         if prm[i, 2] > 0.5:
             c = torch.flip(c, dims=[2])
         c = torch.clamp(c * prm[i, 3], 0, 255)
+        if BOX_JITTER > 0:
+            c = box_jitter(c, BOX_JITTER)
         if PHONE_AUG and torch.rand(()) < 0.6:
             c = phone_degrade(c)
         out.append(c)
@@ -258,6 +260,25 @@ def gpu_augment(clips_u8, prm, device):
 
 
 PHONE_AUG = False  # --phone-aug
+BOX_JITTER = 0.0  # --box-jitter
+
+
+def box_jitter(c, j):
+    """Yüz kutusu farkı (parça boyunca sabit): kırpıntı ±j oranında ölçeklenir ve kaydırılır, [T,72,72,3] 0-255.
+    Eğitim kırpıntıları Haar kutusundan, uygulamanınki pico/YuNet kutusundan (YuNet -> pico eşlemesinde bile merkez
+    ~%3, boyut %94-107); model belirli bir kutu yerleşimine alışmasın. Dışarı taşan kenar en yakın pikselle dolar."""
+    import torch
+    import torch.nn.functional as F
+    dev = c.device
+    x = c.permute(0, 3, 1, 2)
+    k = 1 + (torch.rand((), device=dev) * 2 - 1) * j       # >1: kutu büyük (yüz küçük görünür)
+    d = (torch.rand(2, device=dev) * 2 - 1) * j            # kutu boyutunun oranı olarak kayma
+    theta = torch.zeros(x.shape[0], 2, 3, device=dev)
+    theta[:, 0, 0] = theta[:, 1, 1] = k
+    theta[:, :, 2] = d * 2
+    grid = F.affine_grid(theta, list(x.shape), align_corners=False)
+    x = F.grid_sample(x, grid, mode="bilinear", padding_mode="border", align_corners=False)
+    return x.permute(0, 2, 3, 1)
 
 
 def phone_degrade(c):
@@ -426,11 +447,13 @@ def main():
                     help="karışık hassasiyet (float16, yalnızca CUDA): T4'te ~2x hız. Kayıp NaN olursa kapatın")
     ap.add_argument("--speed", type=float, nargs=2, default=[0.8, 1.25], metavar=("MIN", "MAX"),
                     help="hız artırma aralığı (ör. 0.7 1.5: yüksek nabız örneklerini çoğaltır)")
+    ap.add_argument("--box-jitter", type=float, default=0.0, metavar="J",
+                    help="yüz kutusu kayması artırması: kırpıntı ±J ölçek ve kayma (ör. 0.1); 0: kapalı")
     ap.add_argument("--hr-balance", type=float, default=0.0, metavar="K",
                     help="nabız aralığına göre dengeli örnekleme: seyrek nabızlı (ör. egzersiz sonrası 120+) videolar "
                          "en fazla K kat sık seçilir (ör. 3); 0: kapalı")
     a = ap.parse_args()
-    global CLEAN, PHONE_AUG, SOURCE_WEIGHTS, VAL_VITERBI, SPEED, MAX_SPAN, HR_BALANCE
+    global CLEAN, PHONE_AUG, SOURCE_WEIGHTS, VAL_VITERBI, SPEED, MAX_SPAN, HR_BALANCE, BOX_JITTER
     CLEAN = not a.no_clean
     PHONE_AUG = a.phone_aug
     SOURCE_WEIGHTS = {k: float(x) for k, x in (kv.split("=") for kv in a.source_weights.split(",") if kv)}
@@ -438,6 +461,7 @@ def main():
     SPEED = (a.speed[0], a.speed[1])
     MAX_SPAN = int(np.ceil(CHUNK * SPEED[1])) + 1
     HR_BALANCE = a.hr_balance
+    BOX_JITTER = a.box_jitter
     deadline = datetime.strptime(a.deadline, "%Y-%m-%d %H:%M").timestamp() if a.deadline else float("inf")
 
     os.makedirs(a.out, exist_ok=True)
