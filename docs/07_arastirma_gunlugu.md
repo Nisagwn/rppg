@@ -146,6 +146,17 @@ model kullanıldı.
 - Zayıf nokta: pico yüz bulucusu yan açıda ve telefon görüntüsünde yüzü kaçırıyor. Sonraki iş: yüz bulucu ve kalite
   eşiği; uygulamaya 5. tur ya da 7E modeli.
 
+### 3.10 Mobil yüz dedektörü: pico → karma pico + YuNet (v13)
+- Teşhis (saniyelik `window.__rppg.diag`): v12'de sonuçsuz 20 kesitte ölçümsüz saniyelerin %81'i yüz bulunamadığı
+  için; SNR kapısı yok, kalan kayıp model penceresinin kare boşluğuyla bölünmesi (o da aralıklı yüz kaybından).
+- pico parametreleri (eşik, ince tarama, döndürme, bellek) telefonu %57 → %99'a çıkarabiliyor ama USB yan açıda
+  en iyi %61 (çevrimdışı, 29 kesit); yetmedi.
+- YuNet (230 KB ONNX, MIT, wasm Worker) karelerin ≥ %99'unda yüz buluyor; kutusu önden karelerde öğrenilen eşlemeyle
+  pico kutusuna çevriliyor. Karma: önce pico, bulamazsa YuNet (önden kamerada YuNet hiç çağrılmıyor).
+- 60 kesit (`results/mobil_dogrulama_yuz/`): kapsama önden/telefon/USB 81/48/23 → 93/95/94 %, sonuçsuz kesit
+  20 → 0; iki koşuda da ölçülen 40 kesitte MAE 3.14 → 2.85 (**p = 0.17**, fark yok); pencere sayısı telefon
+  **p = 0.001**, USB **p = 0.0001**. Yeni kesitlerde MAE USB 3.28, telefon 6.64.
+
 ### 3.6 Viterbi takibi derin öğrenme çıktısında da büyük kazanç sağlıyor
 - Klasik aşamanın katkısı derin modellerde de çalışıyor: 7B telefon/USB'de argmax 3.80 → Viterbi 1.96 BPM
   (**p < 0.001**, 15'e 1 video). Bütün modellerde ve test kümelerinde benzer.
@@ -189,7 +200,7 @@ model kullanıldı.
 ## 5. Makaleden önce yapılması gerekenler
 
 - [x] **7E sonucu** (3.5, 3.8). [ ] Ana modelin seçimi ve uygulamaya konması (5. tur telefonda en iyi; 7E en dengeli).
-- [ ] **Mobil kapsama:** yan açı ve telefon görüntüsünde yüz bulunamıyor (3.9).
+- [x] **Mobil kapsama:** yan açı ve telefon görüntüsünde yüz bulunamıyordu (3.9); karma pico + YuNet ile çözüldü (3.10).
 - [ ] **A ve C deneyleri** (FactorizePhys yeni veriyle; FactorizePhys sıfırdan): "kazanç mimariden mi veriden mi"
       ve "ön-eğitim gerekli mi" sorularını kesinleştirir. Şu an 3.4'teki genelleme iddiası bunlar olmadan zayıf.
 - [ ] **Tekrar (seed) sayısı:** her deney tek çalıştırma. En azından ana modeli 2–3 farklı tohumla eğitip ±

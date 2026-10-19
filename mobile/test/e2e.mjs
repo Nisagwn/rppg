@@ -7,6 +7,8 @@
 //                            [--yontem ai|klasik]                      # yüz modunda yöntem (varsayılan: ai)
 //                            [--crop kirpinti.json]                    # modelin gördüğü son kırpıntı
 //                            [--frames kareler.json]                   # modelin girdisi: bellekteki tüm kırpıntılar
+//                            [--params a=1&b=2]                        # uygulamaya ek URL parametreleri
+//                            [--diag teshis.json]                     # saniyelik teşhis: yüz bulundu mu, ölçüm nerede durdu
 //
 // Chrome yolu: CHROME ortam değişkeni ya da Windows/Linux/macOS varsayılanları.
 import { spawn, spawnSync } from "node:child_process";
@@ -44,13 +46,15 @@ const server = createServer((req, res) => {
   res.end(readFileSync(p));
 });
 await new Promise((r) => server.listen(0, "127.0.0.1", r));
-const port = server.address().port, debugPort = 9300 + Math.floor(Math.random() * 500);
+// Hata ayıklama portu işletim sisteminden boş port olarak alınır (eşzamanlı testlerde rastgele port çakışabiliyordu)
+const freePort = () => new Promise((r) => { const s = createServer().listen(0, "127.0.0.1", () => { const p = s.address().port; s.close(() => r(p)); }); });
+const port = server.address().port, debugPort = await freePort();
 
 const proc = spawn(chrome, [
-  "--headless=new", `--remote-debugging-port=${debugPort}`, `--user-data-dir=${mkdtempSync(join(tmpdir(), "rppg-"))}`,
+  "--headless=new", "--disable-gpu", `--remote-debugging-port=${debugPort}`, `--user-data-dir=${mkdtempSync(join(tmpdir(), "rppg-"))}`,
   "--use-fake-ui-for-media-stream", "--use-fake-device-for-media-stream", `--use-file-for-fake-video-capture=${video}`,
   "--autoplay-policy=no-user-gesture-required", "--window-size=412,915", "--no-first-run", "--no-default-browser-check",
-  `${args.url || `http://127.0.0.1:${port}/index.html`}?autotest=${mode}${args.kamera ? `&kamera=${args.kamera}` : ""}${args.yontem ? `&yontem=${args.yontem}` : ""}`,
+  `${args.url || `http://127.0.0.1:${port}/index.html`}?autotest=${mode}${args.kamera ? `&kamera=${args.kamera}` : ""}${args.yontem ? `&yontem=${args.yontem}` : ""}${args.params ? `&${args.params}` : ""}`,
 ], { stdio: "ignore" });
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
@@ -77,6 +81,7 @@ const evaluate = async (expr) => (await cdp("Runtime.evaluate", { expression: ex
 
 await sleep(seconds * 1000);
 const log = await evaluate("window.__rppg.log");
+if (args.diag) writeFileSync(args.diag, JSON.stringify(await evaluate("window.__rppg.diag || []")));
 const cam = await evaluate("({ facing: window.__rppg.facing, mirror: document.getElementById('stage').classList.contains('mirror'), " +
   "label: document.getElementById('flip-label').textContent, csvCam: window.__rppg.log.at(-1)?.cam, " +
   "method: window.__rppg.log.at(-1)?.method, dl: { ready: window.__rppgDl.ready, failed: window.__rppgDl.failed, " +

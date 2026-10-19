@@ -9,6 +9,7 @@ ve aynı kesitte Python hattının (POS, 4 bölge, ortalama füzyon, Viterbi) so
     python scripts/validate_mobile.py                      # tüm UBFC + MCD önden webcam kesitleri
     python scripts/validate_mobile.py --max-clips 4        # hızlı deneme
     python scripts/validate_mobile.py --mcd-cameras FullHDwebcam,IriunWebcam
+    python scripts/validate_mobile.py --mcd-cameras USBVideo --clips 1024_USBVideo_after,1035_USBVideo_before
 
 Gerekenler: Node.js 22+, Chrome/Edge (CHROME ortam değişkeni ile de verilebilir).
 """
@@ -54,6 +55,9 @@ def clips(a):
                                    "USBVideo": "USB (yan)"}[r.camera],
                         "durum": {"before": "dinlenme", "after": "egzersiz sonrası"}[r.step],
                         "video": it["video"], "gt": it["gt"], "s0": 30.0, "ts": it["timestamps"]})
+    if a.clips:   # yalnızca adı verilen kesitler (başarısız kesitlerde hızlı deneme için)
+        want = set(a.clips.split(","))
+        out = [c for c in out if c["ad"] in want]
     return out[:a.max_clips] if a.max_clips else out
 
 
@@ -101,28 +105,45 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--duration", type=float, default=40.0, help="kesit süresi (s)")
     ap.add_argument("--max-clips", type=int)
+    ap.add_argument("--clips", help="virgülle ayrılmış kesit adları (ör. 1024_USBVideo_after)")
+    ap.add_argument("--no-python", action="store_true", help="Python hattını çalıştırma (hızlı deneme)")
+    ap.add_argument("--app-args", default="", help="uygulamaya ek URL parametreleri (ör. yuz=eski)")
     ap.add_argument("--mcd-cameras", default="FullHDwebcam")
     ap.add_argument("--out", default="results/mobil_dogrulama")
     a = ap.parse_args()
-    os.makedirs(a.out, exist_ok=True)
+    os.makedirs(os.path.join(a.out, "teshis"), exist_ok=True)
+    os.makedirs(os.path.join(a.out, "satirlar"), exist_ok=True)
 
     rows = []
     items = clips(a)
     print(f"{len(items)} kesit doğrulanacak ({a.duration:.0f} s)")
     with tempfile.TemporaryDirectory(ignore_cleanup_errors=True) as tmp:
         for i, c in enumerate(items, 1):
+            rowf = os.path.join(a.out, "satirlar", c["ad"] + ".json")
+            if os.path.exists(rowf):   # kaldığı yerden devam: biten kesit yeniden ölçülmez
+                rows.append(json.load(open(rowf, encoding="utf-8")))
+                continue
             frames = read_clip(c["video"], c["s0"], a.duration, c.get("ts"))
             dur = len(frames) / FPS
             y4m, logf = os.path.join(tmp, "clip.y4m"), os.path.join(tmp, "log.json")
+            diagf = os.path.join(a.out, "teshis", c["ad"] + ".json")
             write_y4m(y4m, frames)
             if os.path.exists(logf):
                 os.remove(logf)
             try:
-                subprocess.run(["node", E2E, "--video", y4m, "--expect", "0", "--seconds", str(dur - 1), "--log", logf],
+                subprocess.run(["node", E2E, "--video", y4m, "--expect", "0", "--seconds", str(dur - 1), "--log", logf,
+                                "--diag", diagf] + (["--params", a.app_args] if a.app_args else []),
                                stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, timeout=dur + 60)
             except subprocess.TimeoutExpired:
                 print(f"  ! {c['ad']}: tarayıcı zaman aşımı")
             log = json.load(open(logf)) if os.path.exists(logf) else []
+            # teşhis: ısınmadan sonra (t >= 10) yüz kutusu olan karelerin oranı ve ölçümün durduğu saniyeler
+            diag = [r for r in (json.load(open(diagf)) if os.path.exists(diagf) else []) if r["t"] >= 10]
+            nfr = sum(r["frames"] for r in diag)
+            yuz = sum(r["face"] for r in diag) / nfr if nfr else float("nan")
+            tries = sum(r["tries"] for r in diag)
+            tespit = sum(r["hits"] for r in diag) / tries if tries else float("nan")
+            kapi = {g: sum(r["gate"] == g for r in diag) for g in ("yuz_yok", "isinma", "model_isinma", "olcum")}
 
             # uygulama: t anındaki ölçüm son 10 s'yi kapsar -> pencere merkezi t - 5
             t = np.array([r["t"] for r in log]) if log else np.zeros(0)
@@ -135,22 +156,28 @@ def main():
             else:
                 app_mae = app_5 = float("nan")
 
-            try:
-                tr = extract_traces(iter(frames), FPS, FaceTracker())
-                res = estimate(tr, PY_CFG)
-                pref = gt_window_hr(c["gt"], c["s0"] + res.centers, 10.0)
-                py_mae = float(np.mean(np.abs(res.hr - pref)))
-            except RuntimeError as e:   # Haar yan açılı yüzü bulamazsa (MCD USB) kesit atlanmasın, Python sütunu boş kalsın
-                print(f"  ! {c['ad']}: Python hattı: {e}")
-                pref = gt_window_hr(c["gt"], c["s0"] + np.arange(5, dur - 4), 10.0)
-                py_mae = float("nan")
+            pref = gt_window_hr(c["gt"], c["s0"] + np.arange(5, dur - 4), 10.0)
+            py_mae = float("nan")
+            if not a.no_python:
+                try:
+                    tr = extract_traces(iter(frames), FPS, FaceTracker())
+                    res = estimate(tr, PY_CFG)
+                    pref = gt_window_hr(c["gt"], c["s0"] + res.centers, 10.0)
+                    py_mae = float(np.mean(np.abs(res.hr - pref)))
+                except RuntimeError as e:   # Haar yan açılı yüzü bulamazsa (MCD USB) kesit atlanmasın, Python sütunu boş kalsın
+                    print(f"  ! {c['ad']}: Python hattı: {e}")
 
             row = {k: c[k] for k in ("kaynak", "ad", "kamera", "durum")}
             row.update({"pencere": int(m.sum()), "uygulama_MAE": app_mae, "uygulama_≤5BPM%": app_5,
-                        "python_MAE": py_mae, "referans_ort": float(np.mean(pref))})
+                        "python_MAE": py_mae, "referans_ort": float(np.mean(pref)),
+                        "yuz_kare%": yuz * 100, "tespit%": tespit * 100,
+                        **{f"sn_{g}": n for g, n in kapi.items()}})
             rows.append(row)
+            if diag:   # tarayıcı hiç kayıt vermediyse (açılamadı / bağlantı koptu) sonraki koşuda yeniden denenir
+                json.dump(row, open(rowf, "w", encoding="utf-8"), ensure_ascii=False)
             print(f"  [{i}/{len(items)}] {c['kaynak']} {c['ad']:28s} uygulama {app_mae:5.2f}  python {py_mae:5.2f}  "
-                  f"(ref {row['referans_ort']:.0f} BPM, {row['pencere']} pencere)")
+                  f"(ref {row['referans_ort']:.0f} BPM, {row['pencere']} pencere, yüz %{yuz * 100:.0f}, "
+                  f"tespit %{tespit * 100:.0f}, duraklar {kapi})")
 
     df = pd.DataFrame(rows)
     df.to_csv(os.path.join(a.out, "kesitler.csv"), index=False)

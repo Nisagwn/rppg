@@ -1,0 +1,1 @@
+{"kaynak": "MCD", "ad": "1149_FullHDwebcam_after", "kamera": "webcam (önden)", "durum": "egzersiz sonrası", "pencere": 25, "uygulama_MAE": 0.6624464021059646, "uygulama_≤5BPM%": 100.0, "python_MAE": 0.39721948792424655, "referans_ort": 67.29704808959484, "yuz_kare%": 100.0, "tespit%": 100.0, "sn_yuz_yok": 0, "sn_isinma": 0, "sn_model_isinma": 3, "sn_olcum": 25}
