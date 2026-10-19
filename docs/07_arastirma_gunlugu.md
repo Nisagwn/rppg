@@ -183,6 +183,22 @@ model kullanıldı.
   daha az.
 - **DLCN:** etiket iyi (SNR 8.4 dB, POS uyumu %73), 780 videonun 752'sinde işaret +.
 
+### 3.13 Test zamanı artırma ve model birleşimi yeniden eğitimsiz kazanç vermedi (uygulama için)
+- `scripts/dl_ensemble.py`, CPU'da, ana test (28) ve telefon/USB (28); `results/derin_ogrenme/birlesim/`.
+  TTA: %50 örtüşmeli parçalar + yatay çevirme ortalaması. Birleşim: modellerin standartlaştırılmış dalgalarının ortalaması.
+- 5. tur TTA: ana test 1.10 → 1.03 (**p < 0.001**, ama yalnızca 2 videoda > 0.5 BPM fark); telefon/USB 1.64 → 1.67
+  (p = 0.10). 7E'de TTA ana testi kötüleştirdi (1.13 → 1.20, p = 0.010). 8F'de telefon/USB 2.45 → 2.10.
+- Birleşimler 5. turu hiçbir testte geçmedi; 5. tur + 7E telefon/USB'de kötü (1.82 / 1.64, **p = 0.003**).
+- Karar: uygulamaya eklenmez (telefon/USB'de kazanç yok, çıkarım süresi ~2 kat). TTA ana testte "küçük ama tutarlı"
+  bir kazanç olarak raporlanabilir.
+
+### 3.14 Uygulamadaki hata takipçiden gelmiyor
+- `scripts/dl_tracker_sim.py`: uygulamanın çevrimiçi takipçisi 5. tur dalgasında (ana test) 1.25 BPM, bütün videoda
+  Viterbi 1.10. Takipçiye sıçrama payı (0.005–0.05) fark yaratmadı (1.23–1.27); varsayılan 0 kaldı.
+- 20/30 s'lik "tek seferlik ölçüm" (klip başına Viterbi medyanı) ~1.3 BPM: algoritma kazancı yok.
+- Uygulamadaki 3–4 BPM ile çevrimdışı 1.1–1.6 arasındaki fark model girdisinden (kırpma farkı, kare kaybı) gelmeli:
+  9. tur G'deki yüz kutusu kayması artırması bunu hedefliyor.
+
 ---
 
 ## 4. Olumsuz sonuçlar ve mühendislik dersleri
