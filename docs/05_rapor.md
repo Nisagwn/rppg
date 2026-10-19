@@ -427,10 +427,11 @@ Tablo 7: Ortalama MAE (BPM), Viterbi takibiyle. Kalın: sütundaki en iyi.
 |---|---:|---:|---:|---:|---:|---:|
 | POS (klasik) | 3.54 | 15.63 | 4.81 | – | – | 18.75 |
 | FactorizePhys, hazır ağırlık (PURE) | 2.57 | 7.47 | 4.53 | – | – | 13.71 |
-| FactorizePhys, ince ayar (5. tur) | **1.10** | **1.64** | 5.23 | 2.83 | **1.37** | **12.65** |
+| FactorizePhys, ince ayar (5. tur) | 1.10 | **1.64** | 5.23 | 2.83 | **1.37** | **12.65** |
 | MMRPhys, **sıfırdan** (7. tur B) | 1.13 | 1.96 | **3.49** | 1.69 | 1.53 | 13.24 |
 | MMRPhys, B'den ince ayar + DLCN, COHFACE (7. tur D) | 1.29 | 2.36 | 4.06 | **1.31** | 1.57 | 13.17 |
 | MMRPhys, D + sabit veri seti payları (7. tur E, son epoch) | 1.13 | 2.04 | 3.57 | **1.31** | 1.50 | 13.84 |
+| MMRPhys, E + UBFC-Phys (8. tur F, son epoch) | **1.05** | 2.45 | 3.64 | 1.60 | 1.39 | 13.53 |
 
 POS ve hazır model değerleri telefon/USB, VIPL ve MMPD testlerinde 72×72 yüz kırpıntısı üzerinde hesaplanmıştır. 5. tur VIPL, DLCN ve COHFACE'i; 7B ise DLCN ve COHFACE'i eğitimde görmemiştir.
 
@@ -442,6 +443,7 @@ Bulgular:
 4. **Yeni veri eklemek eski koşulları bozabilir.** D'de DLCN eklenince DLCN hatası anlamlı biçimde düşmüş (1.69 → 1.31, p < 0.001), telefon/USB hatası sınırda artmıştır (p = 0.048); ana test ve VIPL'deki farklar anlamlı değildir. Örnekleme kare sayısıyla orantılı olduğu için MCD'nin eğitimdeki payı %78'den %62'ye düşmüştür. E deneyinde paylar sabitlenince (MCD %70) kayıp geri gelmiştir: telefon/USB 2.36 → 2.04 (D'ye göre p = 0.013), ana test B ile aynı (1.13), DLCN kazancı korunmuştur (B'ye göre 1.69 → 1.31, p < 0.001). Bedeli VIPL'de küçük bir gerilemedir (3.49 → 3.57, p = 0.026). Çok kaynaklı eğitimde veri seti payları açıkça ayarlanmalıdır.
 5. **Viterbi takibi derin model çıktısında da büyük kazanç sağlar.** MMRPhys telefon/USB testinde argmax ile 3.80, Viterbi ile 1.96 BPM verir (p < 0.001). Klasik aşamanın katkısı derin modelle birleşmektedir.
 6. **Küçük doğrulama kümesiyle en iyi epoch seçimi güvenilmezdir.** E'de grup başına 6 videoluk doğrulama 7. epoch'u seçmiş, son epoch ise bütün testlerde daha iyi çıkmıştır (ana test 1.27 / 1.13, p = 0.001). Tablodaki E değerleri son epoch'tur.
+7. **F'deki farklar anlamlı değildir.** UBFC-Phys eklenen F'nin ana testteki 1.05 BPM'i E'den (p = 0.095) ve 5. turdan (p = 0.27) anlamlı ölçüde farklı değildir; diğer testlerdeki farklar da anlamsızdır. UBFC-Phys'in kendi test kümesinde konuşma ve aritmetik görevlerinde bilek sensörü referansı bozuk olduğundan (bütün yöntemler ~20 BPM) bu küme değerlendirmeye alınmamıştır.
 
 ## 6.5 Mobil Uygulama
 

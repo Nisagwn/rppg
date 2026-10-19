@@ -1,0 +1,41 @@
+test: 32 video
+grup                                         COHFACE  Hepsi  ≤5 BPM %  Medyan
+yöntem                                                                       
+5. tur+Viterbi                                  1.37   1.37     94.64    0.80
+3. tur (uygulamadaki)+Viterbi                   1.37   1.37     94.64    0.87
+MMRPhys 7E'den + UBFC-Phys (8. tur)+Viterbi     1.39   1.39     94.49    0.80
+8. tur F en iyi epoch+Viterbi                   1.45   1.45     93.30    0.83
+7. tur E son epoch (başlangıç)+Viterbi          1.50   1.50     93.60    0.82
+7. tur B (MMRPhys sıfırdan)+Viterbi             1.53   1.53     92.11    0.85
+5. tur                                          1.53   1.53     93.90    0.84
+3. tur (uygulamadaki)                           1.69   1.69     93.01    0.93
+MMRPhys 7E'den + UBFC-Phys (8. tur)             1.78   1.78     93.45    0.80
+7. tur E son epoch (başlangıç)                  1.85   1.85     92.56    0.82
+8. tur F en iyi epoch                           1.90   1.90     92.71    0.97
+7. tur B (MMRPhys sıfırdan)                     2.00   2.00     91.52    0.85
+FactorizePhys PURE (hazır)+Viterbi              9.29   9.29     49.55    7.65
+POS (yüz kırpıntısı)+Viterbi                   12.12  12.12     33.33   10.92
+FactorizePhys PURE (hazır)                     12.67  12.67     43.75   11.60
+POS (yüz kırpıntısı)                           13.78  13.78     36.90   14.16
+
+referansı temiz 32 video:
+grup                                         COHFACE  Hepsi  ≤5 BPM %  Medyan
+yöntem                                                                       
+5. tur+Viterbi                                  1.37   1.37     94.64    0.80
+3. tur (uygulamadaki)+Viterbi                   1.37   1.37     94.64    0.87
+MMRPhys 7E'den + UBFC-Phys (8. tur)+Viterbi     1.39   1.39     94.49    0.80
+8. tur F en iyi epoch+Viterbi                   1.45   1.45     93.30    0.83
+7. tur E son epoch (başlangıç)+Viterbi          1.50   1.50     93.60    0.82
+7. tur B (MMRPhys sıfırdan)+Viterbi             1.53   1.53     92.11    0.85
+5. tur                                          1.53   1.53     93.90    0.84
+3. tur (uygulamadaki)                           1.69   1.69     93.01    0.93
+MMRPhys 7E'den + UBFC-Phys (8. tur)             1.78   1.78     93.45    0.80
+7. tur E son epoch (başlangıç)                  1.85   1.85     92.56    0.82
+8. tur F en iyi epoch                           1.90   1.90     92.71    0.97
+7. tur B (MMRPhys sıfırdan)                     2.00   2.00     91.52    0.85
+FactorizePhys PURE (hazır)+Viterbi              9.29   9.29     49.55    7.65
+POS (yüz kırpıntısı)+Viterbi                   12.12  12.12     33.33   10.92
+FactorizePhys PURE (hazır)                     12.67  12.67     43.75   11.60
+POS (yüz kırpıntısı)                           13.78  13.78     36.90   14.16
+rapor: /kaggle/working/cikti/test_cohface/SONUCLAR.md
+

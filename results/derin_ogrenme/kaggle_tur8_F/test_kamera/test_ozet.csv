@@ -1,0 +1,17 @@
+yöntem,MCD dinlenme (USB),MCD dinlenme (telefon),MCD egzersiz (USB),MCD egzersiz (telefon),Hepsi,≤5 BPM %,Medyan
+5. tur+Viterbi,2.3,2.16,1.09,1.07,1.64,92.84,0.97
+3. tur (uygulamadaki)+Viterbi,2.62,2.23,1.07,1.03,1.71,92.59,0.94
+7. tur B (MMRPhys sıfırdan)+Viterbi,2.44,2.76,1.34,1.26,1.96,91.47,1.25
+7. tur E son epoch (başlangıç)+Viterbi,2.58,2.96,1.2,1.27,2.04,91.0,1.1
+MMRPhys 7E'den + UBFC-Phys (8. tur)+Viterbi,4.45,3.07,1.21,1.37,2.45,90.39,1.33
+8. tur F en iyi epoch+Viterbi,3.38,4.03,1.36,1.52,2.64,88.81,1.4
+5. tur,3.71,3.89,1.69,1.64,2.74,89.59,1.05
+3. tur (uygulamadaki),3.75,3.84,1.78,1.84,2.82,89.07,1.11
+MMRPhys 7E'den + UBFC-Phys (8. tur),4.69,4.83,2.75,2.44,3.65,86.71,1.99
+7. tur E son epoch (başlangıç),4.66,4.91,2.83,2.58,3.74,86.33,1.82
+8. tur F en iyi epoch,4.22,5.13,2.83,2.75,3.79,85.88,1.54
+7. tur B (MMRPhys sıfırdan),4.96,4.82,2.71,2.72,3.8,86.33,2.01
+FactorizePhys PURE (hazır)+Viterbi,6.37,8.43,9.07,6.83,7.58,59.21,5.43
+FactorizePhys PURE (hazır),9.8,13.27,14.16,11.43,12.12,49.59,11.12
+POS (yüz kırpıntısı)+Viterbi,12.29,14.25,15.67,18.53,15.63,33.05,13.66
+POS (yüz kırpıntısı),16.01,16.31,20.23,18.43,17.58,31.97,16.41

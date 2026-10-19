@@ -1,0 +1,17 @@
+yöntem,VIPL (source1),VIPL (source3),Hepsi,≤5 BPM %,Medyan
+7. tur B (MMRPhys sıfırdan)+Viterbi,3.86,3.16,3.49,82.99,1.23
+7. tur E son epoch (başlangıç)+Viterbi,3.86,3.31,3.57,82.54,1.26
+MMRPhys 7E'den + UBFC-Phys (8. tur)+Viterbi,3.88,3.42,3.64,82.39,1.27
+8. tur F en iyi epoch+Viterbi,3.92,3.7,3.8,82.65,1.2
+FactorizePhys PURE (hazır)+Viterbi,4.24,4.8,4.53,77.47,1.47
+POS (yüz kırpıntısı)+Viterbi,5.61,4.1,4.81,76.07,1.57
+7. tur B (MMRPhys sıfırdan),5.26,5.14,5.19,79.46,1.77
+5. tur+Viterbi,5.34,5.13,5.23,75.57,1.76
+MMRPhys 7E'den + UBFC-Phys (8. tur),5.34,5.18,5.25,78.67,1.84
+7. tur E son epoch (başlangıç),5.32,5.29,5.3,78.6,1.79
+3. tur (uygulamadaki)+Viterbi,5.6,5.25,5.41,75.14,1.8
+8. tur F en iyi epoch,5.76,5.63,5.69,77.88,1.89
+FactorizePhys PURE (hazır),6.13,6.41,6.28,73.53,3.18
+POS (yüz kırpıntısı),8.29,7.16,7.69,70.04,4.6
+5. tur,8.09,8.46,8.28,69.98,4.68
+3. tur (uygulamadaki),8.5,8.32,8.41,69.67,5.13

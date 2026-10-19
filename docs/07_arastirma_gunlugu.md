@@ -51,7 +51,7 @@ Değerler Viterbi ile ortalama MAE (BPM). "Ana" = ana test, "Tel" = telefon/USB 
 | **7B** | 14 Eki | **MMRPhys, sıfırdan** | MCD 45 s, UBFC, PURE, VIPL (hizalı) | yeni mimari, hazır ağırlık yok, 150 epoch | **1.13** | 1.96 | `kaggle_tur7_B/` |
 | 7D | 16 Eki | MMRPhys ← 7B | + DLCN, COHFACE; MCD 30 s | ince ayar, lr 2e-4, 100 epoch | 1.29 | 2.36 | `kaggle_tur7_D/` |
 | 7E | 17 Eki | MMRPhys ← 7B | D ile aynı | veri seti payları sabit (MCD %70), kamera başına doğrulama; son epoch | 1.13 | 2.04 | `kaggle_tur7_E/` |
-| 8F | (sürüyor) | MMRPhys ← 7E son epoch | E + UBFC-Phys (model tabanlı hizalı; s17-s56: 32 kişi eğitim, 8 kişi test_ubfcphys; part1-8 zip'leri okunamadı) | UBFC-Phys %4 pay; değerlendirme last.pth | – | – | `kaggle_tur8_F/` |
+| 8F | 19 Eki | MMRPhys ← 7E son epoch | E + UBFC-Phys (model tabanlı hizalı; s17-s56: 32 kişi eğitim, 8 kişi test_ubfcphys; part1-8 zip'leri okunamadı) | UBFC-Phys %4 pay; değerlendirme last.pth | 1.05 | 2.45 | `kaggle_tur8_F/` |
 
 \* POS'un telefon/USB değeri yüz kırpıntısı üzerinde (`test_kamera/`).
 Tüm klasörler `results/derin_ogrenme/` altında. 5. tur değerleri son epoch (`last.pth`); karşılaştırmalarda bu
@@ -67,6 +67,7 @@ model kullanıldı.
 | 7B (MMRPhys sıfırdan) | **3.49** | 1.69 | 1.53 | 13.24 |
 | 7D (7B'den ince ayar) | 4.06 | **1.31** | 1.57 | 13.17 |
 | 7E (D + sabit paylar, son epoch) | 3.57 | **1.31** | 1.50 | 13.84 |
+| 8F (7E + UBFC-Phys, son epoch) | 3.64 | 1.60 | 1.39 | 13.53 |
 
 ---
 
@@ -123,6 +124,16 @@ model kullanıldı.
   daha iyi: ana test 1.27 → 1.13 (**p = 0.001**), telefon/USB 2.16 → 2.04, VIPL 3.76 → 3.57, DLCN 1.39 → 1.31.
 - Sebep: grup başına 6 video; MCD önden webcam grubu epoch'tan epoch'a 2.0–4.7 BPM oynuyor ve ortalamayı belirliyor.
 - Karar: E için son epoch kullanılıyor. Sonraki deneylerde son epoch ya da birkaç epoch ortalaması.
+
+### 3.10 8F: UBFC-Phys eklemek ölçülebilir bir fark yaratmadı
+- 7E son epoch'tan, UBFC-Phys (%4 pay, model tabanlı hizalı, 95 video) eklenerek 100 epoch.
+- Ortalama MAE (son epoch): ana 1.05 (şimdiye kadarki en düşük), telefon/USB 2.45, VIPL 3.64, DLCN 1.60, COHFACE 1.39.
+- **Hiçbir fark anlamlı değil:** F vs E ana p = 0.095, telefon/USB p = 0.61, VIPL p = 0.49, DLCN p = 0.98, COHFACE
+  p = 0.08, MMPD p = 0.15. Ortalamadaki oynamalar birkaç videodan geliyor (ör. DLCN'de 5'e 1 video).
+  F vs 5. tur ana p = 0.27; telefon/USB'de 5. tur hâlâ anlamlı ölçüde iyi (1.64, p < 0.001).
+- **UBFC-Phys testi kullanılamaz:** bütün yöntemler ~20 BPM (POS dahil); konuşma ve aritmetik görevlerinde bilek
+  sensörü referansı bozuk. Bu test kümesi sonuç tablolarına alınmamalı; yalnızca dinlenme görevi (~8 BPM) bakılabilir.
+- En iyi epoch yine erken (6) ve son epoch'tan kötü (ana 1.19 / 1.05): 3.8'deki bulgu tekrarlandı.
 
 ### 3.9 Mobil uygulama gerçek veri doğrulaması (v12, 3. tur FactorizePhys)
 - MCD test kişilerinin 60 kesiti (10 kişi × 3 kamera × 2 durum, 40 s) Chrome'a sahte kamera olarak verildi
