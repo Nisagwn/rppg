@@ -6,7 +6,10 @@
 import * as ort from "./vendor/ort/ort.wasm.bundle.min.mjs";
 import { packWindow } from "./dl_pack.js";
 
-ort.env.wasm.numThreads = 1;              // GitHub Pages çapraz köken yalıtımı sunmuyor: tek iş parçacığı
+// Çok iş parçacığı SharedArrayBuffer ister; sayfa service worker'ın eklediği COOP/COEP başlıklarıyla yalıtılmışsa
+// açılır (bkz. sw.js), değilse tek iş parçacığı. Yüz bulucu ve kamera için bir çekirdek boş bırakılır.
+const THREADS = self.crossOriginIsolated ? Math.max(1, Math.min(4, (navigator.hardwareConcurrency || 2) - 1)) : 1;
+ort.env.wasm.numThreads = THREADS;
 ort.env.wasm.wasmPaths = new URL("./vendor/ort/", import.meta.url).href;
 
 let session = null;
@@ -23,7 +26,7 @@ self.onmessage = async (e) => {
   try {
     if (msg.type === "load") {
       const ms = await load();
-      self.postMessage({ type: "ready", ms, proto: 2 });   // proto 2: kırpıntı + plan alır (v11+)
+      self.postMessage({ type: "ready", ms, proto: 2, threads: THREADS });   // proto 2: kırpıntı + plan alır (v11+)
     } else if (msg.type === "run") {
       // Ana iş parçacığı yalnızca kırpıntıları ve enterpolasyon planını gönderir; tensör burada doldurulur.
       // Sürüm geçişinde (service worker yeni worker'ı eski sayfaya verir) eski sayfa hazır tensör gönderir.

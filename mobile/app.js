@@ -29,12 +29,12 @@ const els = {
   placeholder: $("placeholder"), placeholderText: $("placeholder-text"),
   hr: $("hr"), snr: $("snr"), conf: $("conf"), fps: $("fps"), status: $("status"),
   progressWrap: $("progress-wrap"), progress: $("progress"),
-  start: $("start"), csv: $("csv"), raw: $("raw"), reset: $("reset"),
+  start: $("start"), quick: $("quick"), csv: $("csv"), raw: $("raw"), reset: $("reset"),
   modeFace: $("mode-face"), modeFinger: $("mode-finger"), flip: $("flip"), flipLabel: $("flip-label"),
   plotBvp: $("plot-bvp"), plotSpec: $("plot-spec"), plotHist: $("plot-hist"),
 };
 const params = new URLSearchParams(location.search);
-const VERSION = "v15";
+const VERSION = "v16";
 document.getElementById("version").textContent = VERSION;
 
 const state = {
@@ -276,7 +276,7 @@ function processFrame(tSec) {
       state.prevGray = g;
       if (state.method === "ai" && !dl.failed) {
         dlCapture(tSec);
-        dlSchedule();
+        if (!quick.on) dlSchedule();
       }
     } else {
       state.prevGray = null;
@@ -322,7 +322,7 @@ function drawOverlay(rois) {
 
 // ------------------------------------------------------------------ analiz (saniyede bir)
 function analyze() {
-  const reason = analyzeStep();
+  const reason = quick.on ? quickStep() : analyzeStep();
   const dc = state.dc;
   state.diag.push({ t: state.t0 === null || !state.samples.length ? 0 : state.samples[state.samples.length - 1].t - state.t0,
     frames: dc.frames, face: dc.face, tries: dc.tries, hits: dc.hits, qmax: Math.round(dc.qmax), gate: reason || "olcum",
@@ -339,7 +339,7 @@ function analyzeStep() {
   const win = S.filter((s) => s.t >= tEnd - WIN_SEC);
   const valid = win.filter((s) => s.rgb);
   const fps = (state.frameTimes.length - 1) / (state.frameTimes[state.frameTimes.length - 1] - state.frameTimes[0] || 1);
-  els.fps.textContent = state.mode === "face" && state.method === "ai" && dl.ms ? `${fps.toFixed(0)} fps · model ${dl.ms.toFixed(0)} ms` : `${fps.toFixed(0)} fps`;
+  els.fps.textContent = state.mode === "face" && state.method === "ai" && dl.ms ? `${fps.toFixed(0)} fps · model ${dl.ms.toFixed(0)} ms × ${dl.threads || 1}` : `${fps.toFixed(0)} fps`;
 
   const lostMsg = state.mode === "face" ? "Yüz bulunamadı — çerçeveye girin, ışığı artırın" : "Parmağınızı kamera ve flaşın üzerine koyun";
   if (valid.length < win.length * 0.7) {
@@ -465,6 +465,11 @@ const DL_SIZE = 72, DL_T = 160, DL_HOP = 80, DL_FS = 30, DL_BOX = 1.5, DL_KEEP_S
 // Kırpma kutusu eğitimdeki gibi (rPPG-Toolbox: 30 karede bir yüz bulma, arada sabit) ~1 s sabit tutulur. Her karede
 // kayan kutu, modelin görmediği yapay bir hareket ekler. Yüz kutunun %20'sinden fazla kayarsa beklemeden güncellenir.
 const DL_BOX_SEC = 1.0, DL_BOX_MOVE = 0.2;
+// Hızlı ölçüm: kayıt sırasında yalnızca kırpıntı toplanır (model çalışmaz, yavaş telefonda kare düşmez); kayıt
+// bitince bütün klip örtüşen pencerelerle bir kez modelden geçer, nabız kayan 10 s pencerelerdeki takibin medyanı.
+const QUICK_SEC = 20, QUICK_KEEP_SEC = 60;
+const quick = { on: false, phase: "", queue: [], t0: null, total: 0 };
+window.__rppgQuick = quick; // tarayıcı testleri için
 const dl = { worker: null, ready: false, failed: "", busy: false, gen: 0, frames: [], t0: null, nextK: null,
   acc: new Map(), ms: 0, canvas: null, box: null, boxT: 0, boxUpdates: 0 };
 window.__rppgDl = dl; // tarayıcı testleri için
@@ -479,13 +484,14 @@ function dlInit() {
   }
   dl.worker.onmessage = (e) => {
     const m = e.data;
-    if (m.type === "ready") { dl.ready = true; dl.proto = m.proto || 1; }
+    if (m.type === "ready") { dl.ready = true; dl.proto = m.proto || 1; dl.threads = m.threads || 1; }
     else if (m.type === "error") { dl.failed = m.message; dl.busy = false; }
     else if (m.type === "bvp") {
       dl.busy = false;
       dl.ms = m.ms;
-      if (m.gen === dl.gen) dlAddBvp(m.k0, m.bvp);
-      dlSchedule();
+      if (m.gen === dl.gen) dlAddBvp(m.k0, m.bvp, quick.on);
+      if (quick.on) { if (quick.phase === "hesap") quickNext(); }
+      else dlSchedule();
     }
   };
   dl.worker.onerror = (e) => { dl.failed = e.message || "model yüklenemedi"; dl.busy = false; };
@@ -527,7 +533,8 @@ function dlCapture(tSec) {                     // yüz kutusundan 72x72 RGB kır
   for (let i = 0, j = 0; j < px.length; i += 4, j += 3) { px[j] = d[i]; px[j + 1] = d[i + 1]; px[j + 2] = d[i + 2]; }
   dl.frames.push({ t: tSec, px });
   if (dl.t0 === null) dl.t0 = tSec;
-  while (dl.frames.length && tSec - dl.frames[0].t > DL_KEEP_SEC) dl.frames.shift();
+  const keep = quick.on ? QUICK_KEEP_SEC : DL_KEEP_SEC;
+  while (dl.frames.length && tSec - dl.frames[0].t > keep) dl.frames.shift();
 }
 
 function dlSchedule() {
@@ -554,7 +561,7 @@ function dlSchedule() {
   dl.worker.postMessage({ type: "run", px, ia: plan.ia, w: plan.w, T, k0, gen: dl.gen }, [plan.ia.buffer, plan.w.buffer]);
 }
 
-function dlAddBvp(k0, bvp) {
+function dlAddBvp(k0, bvp, keepAll = false) {
   let m = 0, s = 0;
   for (const v of bvp) m += v;
   m /= bvp.length;
@@ -566,6 +573,7 @@ function dlAddBvp(k0, bvp) {
     e[1] += w;
     dl.acc.set(k, e);
   }
+  if (keepAll) return;
   const kMin = k0 + bvp.length - 20 * DL_FS;
   for (const k of dl.acc.keys()) if (k < kMin) dl.acc.delete(k);
 }
@@ -582,6 +590,109 @@ function dlSeries(winSec) {                    // son winSec saniyenin birleşik
     x.push(v / w);
   }
   return x.length ? { t, x } : null;
+}
+
+// ------------------------------------------------------------------ hızlı ölçüm
+function quickStart() {
+  if (state.running || state.mode !== "face") return;
+  quick.on = true;
+  quick.phase = "kayit";
+  quick.t0 = null;
+  els.quick.disabled = true;
+  start();
+}
+
+// Kayıt sırasında saniyede bir: ilerleme ve yüz durumu. Süre kamera kilitlenip ölçüm sıfırlandıktan sonra sayılır.
+function quickStep() {
+  if (quick.phase !== "kayit") return "hizli_hesap";
+  const F = dl.frames;
+  if (dl.failed) { quickFail(`Model açılamadı (${dl.failed}); canlı ölçümü deneyin`); return "hizli_hata"; }
+  if (!F.length || !state.camLock) {
+    setStatus(state.camLock ? "Yüz aranıyor…" : "Kamera ayarlanıyor…", "fair");
+    return "hizli_kayit";
+  }
+  if (quick.t0 === null) quick.t0 = F[0].t;
+  const span = F[F.length - 1].t - quick.t0;
+  els.progressWrap.hidden = false;
+  els.progress.style.width = `${Math.min(100, (100 * span) / QUICK_SEC)}%`;
+  if (state.bbox) setStatus(`Kayıt: ${Math.ceil(Math.max(0, QUICK_SEC - span))} s — kıpırdamayın, konuşmayın`, "fair");
+  else setStatus("Yüz bulunamadı — çerçeveye girin, ışığı artırın", "bad");
+  if (span >= QUICK_SEC) quickCompute();
+  return "hizli_kayit";
+}
+
+function quickCompute() {
+  quick.phase = "hesap";
+  const F = dl.frames.slice();
+  stop(true);                                   // kamera kapanır; kırpıntılar ve model kalır
+  dl.frames = F;
+  dl.acc.clear();
+  dl.gen++;
+  const kLast = Math.floor((F[F.length - 1].t - dl.t0) * DL_FS), kFirst = Math.ceil((F[0].t - dl.t0) * DL_FS);
+  quick.queue = [];
+  for (let k0 = kFirst; k0 + DL_T <= kLast; k0 += DL_HOP) quick.queue.push(k0);
+  quick.total = quick.queue.length;
+  if (!quick.total) { quickFail("Kayıt çok kısa; tekrar deneyin"); return; }
+  els.progressWrap.hidden = false;
+  els.progress.style.width = "0%";
+  setStatus("Hesaplanıyor…", "fair");
+  const go = () => (dl.ready ? (dl.busy ? setTimeout(go, 100) : quickNext())
+    : dl.failed ? quickFail(`Model açılamadı (${dl.failed})`) : setTimeout(go, 200));
+  go();
+}
+
+function quickNext() {
+  const F = dl.frames, T = DL_T + 1;
+  while (quick.queue.length) {
+    const k0 = quick.queue.shift();
+    els.progress.style.width = `${(100 * (quick.total - quick.queue.length)) / quick.total}%`;
+    const plan = planWindow(F, dl.t0, k0, T, DL_FS, DL_MAX_GAP);
+    if (!plan) continue;                        // yüzün kaybolduğu bölüm: bu pencere atlanır
+    const px = F.slice(plan.lo, plan.hi + 1).map((f) => f.px);
+    dl.busy = true;
+    dl.worker.postMessage({ type: "run", px, ia: plan.ia, w: plan.w, T, k0, gen: dl.gen }, [plan.ia.buffer, plan.w.buffer]);
+    return;
+  }
+  quickFinish();
+}
+
+function quickFinish() {
+  const ser = dlSeries(QUICK_KEEP_SEC);
+  const span = ser ? ser.t[ser.t.length - 1] - ser.t[0] : 0;
+  if (span < WIN_SEC) { quickFail("Yüz kaydın çoğunda bulunamadı; ışığı artırıp tekrar deneyin"); return; }
+  const bvp = preprocessBvp(ser.x), n = Math.round(WIN_SEC * DL_FS);
+  const trk = new OnlineHRTracker(), hrs = [];
+  for (let s = 0; s + n <= bvp.length; s += DL_FS) hrs.push(trk.update(spectrumBpm(bvp.slice(s, s + n)), 1, 1));
+  const tail = hrs.slice(Math.min(3, hrs.length - 1)).sort((a, b) => a - b);   // takipçinin ilk saniyeleri hariç
+  const hr = tail[Math.floor(tail.length / 2)];
+  const whole = spectrumBpm(bvp), snr = windowSnr(BPM_GRID, whole, hr);
+  const level = snr > 3 ? "good" : snr > -1 ? "fair" : "bad";
+  els.hr.textContent = hr.toFixed(0);
+  els.snr.textContent = `${snr.toFixed(1)} dB`;
+  els.progressWrap.hidden = true;
+  setStatus({ good: "Sonuç güvenilir", fair: "Sonuç orta güvenilir — tekrar ölçmek iyi olur",
+    bad: "Sinyal zayıf — ışığı artırıp tekrar ölçün" }[level] + ` · ${span.toFixed(0)} s`, level);
+  state.log.push({ t: span, hr, snr, conf: 1, mode: "face", method: "model (hızlı)", cam: camName(), lock: state.camLock || "-" });
+  state.lastBvp = bvp;
+  els.csv.disabled = els.reset.disabled = false;
+  drawLine(els.plotBvp, bvp.slice(-150), { color: "#60a5fa" });
+  drawSpectrum(els.plotSpec, whole, hr);
+  drawLine(els.plotHist, hrs, { color: "#ef4444", range: [40, 180], labels: true });
+  quickEnd();
+}
+
+function quickFail(msg) {
+  if (state.running) stop(true);
+  setStatus(msg, "bad");
+  els.progressWrap.hidden = true;
+  quickEnd();
+}
+
+function quickEnd() {
+  quick.on = false;
+  quick.phase = "";
+  quick.queue = [];
+  els.quick.disabled = state.mode !== "face";
 }
 
 // ------------------------------------------------------------------ kamera
@@ -703,7 +814,7 @@ async function start() {
   state.timer = setInterval(analyze, 1000);
 }
 
-function stop() {
+function stop(keepStatus = false) {
   state.running = false;
   state.wakeLock?.release().catch(() => {});
   state.wakeLock = null;
@@ -714,11 +825,12 @@ function stop() {
   els.video.srcObject = null;
   els.placeholder.hidden = false;
   els.stage.classList.remove("running");
-  els.start.textContent = "Ölçümü başlat";
+  els.start.textContent = "Canlı ölçüm";
   els.start.classList.remove("stop");
   els.progressWrap.hidden = true;
   drawOverlay(null);
-  setStatus(state.log.length ? `Durduruldu — ortalama ${avgHr().toFixed(0)} BPM` : "Hazır");
+  if (quick.on && !keepStatus) quickEnd();           // kullanıcı kaydı yarıda durdurdu
+  if (!keepStatus) setStatus(state.log.length ? `Durduruldu — ortalama ${avgHr().toFixed(0)} BPM` : "Hazır");
 }
 
 function resetMeasurement() {
@@ -748,6 +860,7 @@ function setMode(mode) {
   state.mode = mode;
   els.modeFace.classList.toggle("on", mode === "face");
   els.modeFinger.classList.toggle("on", mode === "finger");
+  els.quick.disabled = mode !== "face";
   els.modeFace.setAttribute("aria-selected", mode === "face");
   els.modeFinger.setAttribute("aria-selected", mode === "finger");
   applyFacing();
@@ -807,6 +920,7 @@ function downloadCsv() {
 
 // ------------------------------------------------------------------ olaylar
 els.start.addEventListener("click", () => (state.running ? stop() : start()));
+els.quick.addEventListener("click", quickStart);
 els.modeFace.addEventListener("click", () => setMode("face"));
 els.modeFinger.addEventListener("click", () => setMode("finger"));
 els.flip.addEventListener("click", flipCamera);
@@ -824,6 +938,14 @@ applyFacing();
 
 if ("serviceWorker" in navigator && !params.has("autotest")) {
   navigator.serviceWorker.register("sw.js").catch(() => {});
+  // İlk açılışta sayfa service worker'dan önce yüklenir, yalıtım (çok iş parçacığı) yoktur: worker devreye girince bir
+  // kez yenile. sessionStorage döngüyü önler (tarayıcı yalıtımı desteklemiyorsa bir kez dener, sonra tek iş parçacığı).
+  navigator.serviceWorker.ready.then(() => {
+    let tried = false;
+    try { tried = sessionStorage.getItem("rppg.coi") === "1"; sessionStorage.setItem("rppg.coi", "1"); } catch { tried = true; }
+    if (!window.crossOriginIsolated && !tried && !state.running) location.reload();
+  });
 }
 if (params.get("autotest") === "finger") setMode("finger");
-if (params.has("autotest")) start();
+if (params.get("autotest") === "hizli") quickStart();
+else if (params.has("autotest")) start();

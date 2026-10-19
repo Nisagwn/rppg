@@ -48,7 +48,9 @@ const server = createServer((req, res) => {
   }
   const p = join(root, path.replace(/\/$/, "/index.html"));
   if (!p.startsWith(root) || !existsSync(p)) { res.writeHead(404); return res.end(); }
-  res.writeHead(200, { "content-type": types[extname(p)] || "application/octet-stream" });
+  // --coi: yayındaki service worker'ın eklediği yalıtım başlıkları (çok iş parçacıklı model); testte SW kayıtlı değil
+  const coi = args.coi ? { "cross-origin-opener-policy": "same-origin", "cross-origin-embedder-policy": "require-corp" } : {};
+  res.writeHead(200, { "content-type": types[extname(p)] || "application/octet-stream", ...coi });
   res.end(readFileSync(p));
 });
 await new Promise((r) => server.listen(0, "127.0.0.1", r));
@@ -92,7 +94,7 @@ if (args.diag) writeFileSync(args.diag, JSON.stringify(await evaluate("window.__
 const cam = await evaluate("({ facing: window.__rppg.facing, mirror: document.getElementById('stage').classList.contains('mirror'), " +
   "label: document.getElementById('flip-label').textContent, csvCam: window.__rppg.log.at(-1)?.cam, " +
   "method: window.__rppg.log.at(-1)?.method, dl: { ready: window.__rppgDl.ready, failed: window.__rppgDl.failed, " +
-  "ms: Math.round(window.__rppgDl.ms), samples: window.__rppgDl.acc.size } })");
+  "ms: Math.round(window.__rppgDl.ms), threads: window.__rppgDl.threads, coi: window.crossOriginIsolated, samples: window.__rppgDl.acc.size } })");
 const status = await evaluate("document.querySelector('#status span').textContent");
 if (args.crop) {   // modelin gördüğü son 72x72 kırpıntı (eğitim kırpıntısıyla karşılaştırmak için)
   writeFileSync(args.crop, JSON.stringify(await evaluate("({ px: Array.from(window.__rppgDl.frames.at(-1)?.px || []), " +
@@ -122,6 +124,6 @@ console.log(JSON.stringify({ mode, expect, windows: log.length, median_last15: m
 if (args.log) writeFileSync(args.log, JSON.stringify(log));
 const dlBroken = mode === "face" && args.yontem !== "klasik" && cam?.dl?.failed;   // klasiğe sessizce düşmesin
 if (dlBroken) console.log("model çalışmadı:", cam.dl.failed);
-const ok = !dlBroken && log.length >= 10 && Math.abs(median - expect) < 3;
+const ok = !dlBroken && log.length >= (mode === "hizli" ? 1 : 10) && Math.abs(median - expect) < 3;   // hızlı: tek sonuç
 console.log(ok ? "BAŞARILI" : "BAŞARISIZ");
 process.exit(ok ? 0 : 1);

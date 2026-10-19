@@ -112,6 +112,9 @@ button { font: inherit; }
   background: var(--accent); color: #fff; font-weight: 600; font-size: 16px; cursor: pointer;
 }
 .primary.stop { background: var(--line); }
+.starts { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.primary.quick { background: #0f766e; }
+.primary:disabled { opacity: .45; cursor: default; }
 
 .plots { display: grid; gap: 10px; margin-top: 14px; }
 figure { margin: 0; background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 8px 10px; }
