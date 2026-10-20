@@ -17,7 +17,7 @@ import os
 import numpy as np
 import pandas as pd
 
-from dl_common import CHUNK, PRETRAINED, ROOT, build_model, hr_from_bvp, predict_video, reference_hr
+from dl_common import CHUNK, PRETRAINED, ROOT, build_model, hr_from_bvp, predict_video, reference_hr, video_hr
 
 
 CAMERA_NAMES = {"IriunWebcam": "telefon", "USBVideo": "USB"}
@@ -77,10 +77,11 @@ def evaluate(model, device, test_dir, label, **predict_kw):
         c, hr_a, hr_v = hr_from_bvp(pred)
         ref = reference_hr(meta["bvp"], c)
         name = video_name(p)
+        verr = abs(video_hr(pred) - video_hr(meta["bvp"]))   # video düzeyi (literatürle karşılaştırma için)
         for suffix, hr in (("", hr_a), ("+Viterbi", hr_v)):
             err = np.abs(hr - ref)
             rows.append({"grup": group_of(meta), "video": name, "yöntem": label + suffix,
-                         "MAE": float(err.mean()), "p5": float(100 * np.mean(err <= 5))})
+                         "MAE": float(err.mean()), "p5": float(100 * np.mean(err <= 5)), "video_hata": verr})
     return rows
 
 
@@ -144,6 +145,12 @@ def main():
     df.to_csv(os.path.join(a.out, "test_sonuclari.csv"), index=False)
     t = table(df)
     t.round(2).to_csv(os.path.join(a.out, "test_ozet.csv"))
+    if "video_hata" in df:   # video düzeyi MAE/RMSE (bütün videonun spektral tepesi; literatür tablolarıyla aynı tür)
+        v = df[~df["yöntem"].str.endswith("+Viterbi")].groupby("yöntem")["video_hata"]
+        tv = pd.DataFrame({"video_MAE": v.mean(), "video_RMSE": v.apply(lambda e: float(np.sqrt(np.mean(e ** 2)))),
+                           "n": v.count()}).sort_values("video_MAE")
+        tv.round(2).to_csv(os.path.join(a.out, "test_ozet_video.csv"))
+        print("\nvideo düzeyi:\n" + tv.round(2).to_string())
     print(t.round(2).to_string())
 
     # Referans etiketi temiz test videoları (dl_quality: etiketin ≥%80'i iyi). Ana tablo değişmez; bu ek bilgi:

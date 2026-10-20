@@ -1,0 +1,1 @@
+19:46 | {'mcd': 0, 'ubfc': 34, 'pure': 7, 'dlcn': 0, 'vipl': 0, 'cohface': 0, 'ubfcphys': 0} | test {'test': 28, 'test_kamera': 0, 'test_vipl': 0, 'test_mmpd': 0, 'test_dlcn': 0, 'test_cohface': 0, 'test_ubfcphys': 0} | veri 4/97 GB, boş 20 GB | RAM boş 32.2/34 GB, eğitim 0.0 GB, test_ubfc_pure 0.4 | GPU kullanılan yok | ilk epoch sürüyor

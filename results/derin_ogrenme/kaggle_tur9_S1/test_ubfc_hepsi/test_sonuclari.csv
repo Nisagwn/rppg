@@ -1,0 +1,337 @@
+grup,video,yöntem,MAE,p5
+UBFC,subject12,POS (yüz kırpıntısı),0.5870584921993975,100.0
+UBFC,subject12,POS (yüz kırpıntısı)+Viterbi,0.5870584921993975,100.0
+UBFC,subject13,POS (yüz kırpıntısı),0.7923540905276385,100.0
+UBFC,subject13,POS (yüz kırpıntısı)+Viterbi,0.7736183872917374,100.0
+UBFC,subject14,POS (yüz kırpıntısı),2.76188058188228,80.7017543859649
+UBFC,subject14,POS (yüz kırpıntısı)+Viterbi,2.411401523011644,82.45614035087719
+UBFC,subject15,POS (yüz kırpıntısı),1.9456439403285068,93.10344827586206
+UBFC,subject15,POS (yüz kırpıntısı)+Viterbi,0.8687200917660178,98.27586206896551
+UBFC,subject16,POS (yüz kırpıntısı),2.0586509821215393,96.61016949152543
+UBFC,subject16,POS (yüz kırpıntısı)+Viterbi,0.6632250603251794,100.0
+UBFC,subject17,POS (yüz kırpıntısı),0.5528419327717216,100.0
+UBFC,subject17,POS (yüz kırpıntısı)+Viterbi,0.5422910593597126,100.0
+UBFC,subject18,POS (yüz kırpıntısı),5.945077854552229,93.10344827586206
+UBFC,subject18,POS (yüz kırpıntısı)+Viterbi,0.4724812961072081,100.0
+UBFC,subject20,POS (yüz kırpıntısı),0.7523603836829791,98.27586206896551
+UBFC,subject20,POS (yüz kırpıntısı)+Viterbi,1.1255545768249446,94.82758620689656
+UBFC,subject22,POS (yüz kırpıntısı),3.469901284520429,86.20689655172413
+UBFC,subject22,POS (yüz kırpıntısı)+Viterbi,0.6730769152171119,100.0
+UBFC,subject23,POS (yüz kırpıntısı),0.4869111677986147,100.0
+UBFC,subject23,POS (yüz kırpıntısı)+Viterbi,0.4962304373525265,100.0
+UBFC,subject24,POS (yüz kırpıntısı),0.9102408083748285,98.24561403508771
+UBFC,subject24,POS (yüz kırpıntısı)+Viterbi,0.585426181583042,100.0
+UBFC,subject25,POS (yüz kırpıntısı),0.582805344588943,100.0
+UBFC,subject25,POS (yüz kırpıntısı)+Viterbi,0.582805344588943,100.0
+UBFC,subject26,POS (yüz kırpıntısı),0.5549019880808832,100.0
+UBFC,subject26,POS (yüz kırpıntısı)+Viterbi,0.5549019880808832,100.0
+UBFC,subject27,POS (yüz kırpıntısı),5.551779473162915,73.68421052631578
+UBFC,subject27,POS (yüz kırpıntısı)+Viterbi,2.3358172628883724,92.10526315789474
+UBFC,subject30,POS (yüz kırpıntısı),1.5100363837001363,94.82758620689656
+UBFC,subject30,POS (yüz kırpıntısı)+Viterbi,1.6505625989474664,93.10344827586206
+UBFC,subject31,POS (yüz kırpıntısı),0.5749249721040698,100.0
+UBFC,subject31,POS (yüz kırpıntısı)+Viterbi,0.5749249721040698,100.0
+UBFC,subject32,POS (yüz kırpıntısı),11.398423547713547,56.896551724137936
+UBFC,subject32,POS (yüz kırpıntısı)+Viterbi,2.1025975950375217,87.93103448275862
+UBFC,subject33,POS (yüz kırpıntısı),1.060345599217623,96.49122807017544
+UBFC,subject33,POS (yüz kırpıntısı)+Viterbi,1.065115851311021,96.49122807017544
+UBFC,subject34,POS (yüz kırpıntısı),0.41458743116717217,100.0
+UBFC,subject34,POS (yüz kırpıntısı)+Viterbi,0.41458743116717217,100.0
+UBFC,subject35,POS (yüz kırpıntısı),0.49089144888038416,100.0
+UBFC,subject35,POS (yüz kırpıntısı)+Viterbi,0.4682517971288701,100.0
+UBFC,subject36,POS (yüz kırpıntısı),0.4989673768863034,100.0
+UBFC,subject36,POS (yüz kırpıntısı)+Viterbi,0.5051915636237497,100.0
+UBFC,subject37,POS (yüz kırpıntısı),0.7793024603131562,100.0
+UBFC,subject37,POS (yüz kırpıntısı)+Viterbi,0.7743268853469571,100.0
+UBFC,subject38,POS (yüz kırpıntısı),7.444120464903015,86.4406779661017
+UBFC,subject38,POS (yüz kırpıntısı)+Viterbi,0.49350353956878756,100.0
+UBFC,subject39,POS (yüz kırpıntısı),0.7186539180994747,100.0
+UBFC,subject39,POS (yüz kırpıntısı)+Viterbi,0.720965894252538,100.0
+UBFC,subject40,POS (yüz kırpıntısı),0.5223560813162942,100.0
+UBFC,subject40,POS (yüz kırpıntısı)+Viterbi,0.5246113188172942,100.0
+UBFC,subject41,POS (yüz kırpıntısı),27.8393744218553,24.137931034482758
+UBFC,subject41,POS (yüz kırpıntısı)+Viterbi,34.76988390292497,0.0
+UBFC,subject42,POS (yüz kırpıntısı),0.3393037475976433,100.0
+UBFC,subject42,POS (yüz kırpıntısı)+Viterbi,0.33851534736267636,100.0
+UBFC,subject43,POS (yüz kırpıntısı),0.6015908514524386,100.0
+UBFC,subject43,POS (yüz kırpıntısı)+Viterbi,0.6015908514524386,100.0
+UBFC,subject44,POS (yüz kırpıntısı),0.8481586768289929,100.0
+UBFC,subject44,POS (yüz kırpıntısı)+Viterbi,0.8443322138113838,100.0
+UBFC,subject45,POS (yüz kırpıntısı),2.9728731824478998,91.37931034482759
+UBFC,subject45,POS (yüz kırpıntısı)+Viterbi,0.8123613190878803,98.27586206896551
+UBFC,subject46,POS (yüz kırpıntısı),2.208160765977873,91.22807017543859
+UBFC,subject46,POS (yüz kırpıntısı)+Viterbi,2.211370618846008,91.22807017543859
+UBFC,subject47,POS (yüz kırpıntısı),1.5098085933403633,96.55172413793103
+UBFC,subject47,POS (yüz kırpıntısı)+Viterbi,1.0184450306993913,96.55172413793103
+UBFC,subject48,POS (yüz kırpıntısı),0.727940958660865,100.0
+UBFC,subject48,POS (yüz kırpıntısı)+Viterbi,0.727940958660865,100.0
+UBFC,subject49,POS (yüz kırpıntısı),0.840534052147845,100.0
+UBFC,subject49,POS (yüz kırpıntısı)+Viterbi,0.8317873723478463,100.0
+UBFC,subject1,POS (yüz kırpıntısı),4.628877236067869,92.85714285714286
+UBFC,subject1,POS (yüz kırpıntısı)+Viterbi,1.0367631203828076,100.0
+UBFC,subject10,POS (yüz kırpıntısı),0.6337081222384695,100.0
+UBFC,subject10,POS (yüz kırpıntısı)+Viterbi,0.6337081222384695,100.0
+UBFC,subject11,POS (yüz kırpıntısı),0.5978256157861521,100.0
+UBFC,subject11,POS (yüz kırpıntısı)+Viterbi,0.5938891640212105,100.0
+UBFC,subject3,POS (yüz kırpıntısı),1.738942165741954,94.11764705882352
+UBFC,subject3,POS (yüz kırpıntısı)+Viterbi,4.823829064178386,74.50980392156863
+UBFC,subject4,POS (yüz kırpıntısı),3.3016647874942042,86.11111111111111
+UBFC,subject4,POS (yüz kırpıntısı)+Viterbi,4.2282671606018,75.0
+UBFC,subject5,POS (yüz kırpıntısı),2.871452424163158,83.33333333333334
+UBFC,subject5,POS (yüz kırpıntısı)+Viterbi,0.967293965745961,100.0
+UBFC,subject8,POS (yüz kırpıntısı),1.286516862530522,94.82758620689656
+UBFC,subject8,POS (yüz kırpıntısı)+Viterbi,0.5366361879887015,100.0
+UBFC,subject9,POS (yüz kırpıntısı),5.230841871755092,84.48275862068965
+UBFC,subject9,POS (yüz kırpıntısı)+Viterbi,1.1120051239053932,94.82758620689656
+UBFC,subject12,FactorizePhys PURE (hazır),0.34358372786231123,100.0
+UBFC,subject12,FactorizePhys PURE (hazır)+Viterbi,0.34358372786231123,100.0
+UBFC,subject13,FactorizePhys PURE (hazır),0.3734687005047509,100.0
+UBFC,subject13,FactorizePhys PURE (hazır)+Viterbi,0.37439476736534344,100.0
+UBFC,subject14,FactorizePhys PURE (hazır),2.3011672793275584,89.47368421052632
+UBFC,subject14,FactorizePhys PURE (hazır)+Viterbi,3.9562874011980576,77.19298245614034
+UBFC,subject15,FactorizePhys PURE (hazır),0.4395680780645951,100.0
+UBFC,subject15,FactorizePhys PURE (hazır)+Viterbi,0.8589409331079966,96.55172413793103
+UBFC,subject16,FactorizePhys PURE (hazır),0.33502650010980467,100.0
+UBFC,subject16,FactorizePhys PURE (hazır)+Viterbi,0.33502650010980467,100.0
+UBFC,subject17,FactorizePhys PURE (hazır),0.4598543413914267,100.0
+UBFC,subject17,FactorizePhys PURE (hazır)+Viterbi,0.4656522890660101,100.0
+UBFC,subject18,FactorizePhys PURE (hazır),0.389823061646642,100.0
+UBFC,subject18,FactorizePhys PURE (hazır)+Viterbi,0.389823061646642,100.0
+UBFC,subject20,FactorizePhys PURE (hazır),1.1667317644446,94.82758620689656
+UBFC,subject20,FactorizePhys PURE (hazır)+Viterbi,1.458131909520986,91.37931034482759
+UBFC,subject22,FactorizePhys PURE (hazır),0.27751215944403834,100.0
+UBFC,subject22,FactorizePhys PURE (hazır)+Viterbi,0.28094770173225214,100.0
+UBFC,subject23,FactorizePhys PURE (hazır),0.40113901765457854,100.0
+UBFC,subject23,FactorizePhys PURE (hazır)+Viterbi,0.4055881498054083,100.0
+UBFC,subject24,FactorizePhys PURE (hazır),0.3566841045159171,100.0
+UBFC,subject24,FactorizePhys PURE (hazır)+Viterbi,0.39338412271164896,100.0
+UBFC,subject25,FactorizePhys PURE (hazır),0.311135628150902,100.0
+UBFC,subject25,FactorizePhys PURE (hazır)+Viterbi,0.311135628150902,100.0
+UBFC,subject26,FactorizePhys PURE (hazır),0.3728511546896168,100.0
+UBFC,subject26,FactorizePhys PURE (hazır)+Viterbi,0.3728511546896168,100.0
+UBFC,subject27,FactorizePhys PURE (hazır),1.532157661904371,94.73684210526315
+UBFC,subject27,FactorizePhys PURE (hazır)+Viterbi,2.251364627762497,92.10526315789474
+UBFC,subject30,FactorizePhys PURE (hazır),0.6357424707513644,100.0
+UBFC,subject30,FactorizePhys PURE (hazır)+Viterbi,0.6397725417694415,100.0
+UBFC,subject31,FactorizePhys PURE (hazır),0.3083486941619383,100.0
+UBFC,subject31,FactorizePhys PURE (hazır)+Viterbi,0.3083486941619383,100.0
+UBFC,subject32,FactorizePhys PURE (hazır),1.1035060710613638,98.27586206896551
+UBFC,subject32,FactorizePhys PURE (hazır)+Viterbi,0.8408629580806233,100.0
+UBFC,subject33,FactorizePhys PURE (hazır),1.0793550373545289,96.49122807017544
+UBFC,subject33,FactorizePhys PURE (hazır)+Viterbi,1.082080515299049,96.49122807017544
+UBFC,subject34,FactorizePhys PURE (hazır),0.30418058352849753,100.0
+UBFC,subject34,FactorizePhys PURE (hazır)+Viterbi,0.30418058352849753,100.0
+UBFC,subject35,FactorizePhys PURE (hazır),0.47430585085398663,100.0
+UBFC,subject35,FactorizePhys PURE (hazır)+Viterbi,0.4765406993878846,100.0
+UBFC,subject36,FactorizePhys PURE (hazır),0.4074762664746757,100.0
+UBFC,subject36,FactorizePhys PURE (hazır)+Viterbi,0.40171675686094027,100.0
+UBFC,subject37,FactorizePhys PURE (hazır),0.47163003574240026,100.0
+UBFC,subject37,FactorizePhys PURE (hazır)+Viterbi,0.47073427921608807,100.0
+UBFC,subject38,FactorizePhys PURE (hazır),0.2698314602254728,100.0
+UBFC,subject38,FactorizePhys PURE (hazır)+Viterbi,0.2698314602254728,100.0
+UBFC,subject39,FactorizePhys PURE (hazır),0.43612973868506555,100.0
+UBFC,subject39,FactorizePhys PURE (hazır)+Viterbi,0.43612973868506555,100.0
+UBFC,subject40,FactorizePhys PURE (hazır),0.32369735840384534,100.0
+UBFC,subject40,FactorizePhys PURE (hazır)+Viterbi,0.32369735840384534,100.0
+UBFC,subject41,FactorizePhys PURE (hazır),1.8967575010371434,93.10344827586206
+UBFC,subject41,FactorizePhys PURE (hazır)+Viterbi,1.047418152218893,96.55172413793103
+UBFC,subject42,FactorizePhys PURE (hazır),0.3179640229528052,100.0
+UBFC,subject42,FactorizePhys PURE (hazır)+Viterbi,0.3179640229528052,100.0
+UBFC,subject43,FactorizePhys PURE (hazır),0.4399644396608618,100.0
+UBFC,subject43,FactorizePhys PURE (hazır)+Viterbi,0.4421802258822536,100.0
+UBFC,subject44,FactorizePhys PURE (hazır),0.5082197521191294,100.0
+UBFC,subject44,FactorizePhys PURE (hazır)+Viterbi,0.5188048621586042,100.0
+UBFC,subject45,FactorizePhys PURE (hazır),0.47716721096533915,100.0
+UBFC,subject45,FactorizePhys PURE (hazır)+Viterbi,0.6082572392406608,98.27586206896551
+UBFC,subject46,FactorizePhys PURE (hazır),0.49969645147115915,100.0
+UBFC,subject46,FactorizePhys PURE (hazır)+Viterbi,0.5014144113173111,100.0
+UBFC,subject47,FactorizePhys PURE (hazır),0.3223478155039858,100.0
+UBFC,subject47,FactorizePhys PURE (hazır)+Viterbi,0.5580104851094073,98.27586206896551
+UBFC,subject48,FactorizePhys PURE (hazır),0.6051667009785563,100.0
+UBFC,subject48,FactorizePhys PURE (hazır)+Viterbi,0.6051667009785563,100.0
+UBFC,subject49,FactorizePhys PURE (hazır),0.5526158642563008,100.0
+UBFC,subject49,FactorizePhys PURE (hazır)+Viterbi,0.5526158642563008,100.0
+UBFC,subject1,FactorizePhys PURE (hazır),2.0395859288867735,92.85714285714286
+UBFC,subject1,FactorizePhys PURE (hazır)+Viterbi,1.1127414581040476,100.0
+UBFC,subject10,FactorizePhys PURE (hazır),0.4676217679396487,100.0
+UBFC,subject10,FactorizePhys PURE (hazır)+Viterbi,0.4755616596594263,100.0
+UBFC,subject11,FactorizePhys PURE (hazır),0.5363161936735718,100.0
+UBFC,subject11,FactorizePhys PURE (hazır)+Viterbi,0.543184819477976,100.0
+UBFC,subject3,FactorizePhys PURE (hazır),1.5238661752648561,96.07843137254902
+UBFC,subject3,FactorizePhys PURE (hazır)+Viterbi,2.8057368042009707,84.31372549019608
+UBFC,subject4,FactorizePhys PURE (hazır),2.0584694583409,91.66666666666666
+UBFC,subject4,FactorizePhys PURE (hazır)+Viterbi,3.8628913510513416,83.33333333333334
+UBFC,subject5,FactorizePhys PURE (hazır),0.40164605983026935,100.0
+UBFC,subject5,FactorizePhys PURE (hazır)+Viterbi,0.40164605983026935,100.0
+UBFC,subject8,FactorizePhys PURE (hazır),0.4045116793434953,98.27586206896551
+UBFC,subject8,FactorizePhys PURE (hazır)+Viterbi,1.0294648541311326,94.82758620689656
+UBFC,subject9,FactorizePhys PURE (hazır),0.5563712943928538,100.0
+UBFC,subject9,FactorizePhys PURE (hazır)+Viterbi,1.1138248567531945,94.82758620689656
+UBFC,subject12,"MMRPhys sıfırdan, yalnızca PURE (standart protokol)",0.4083949226037937,100.0
+UBFC,subject12,"MMRPhys sıfırdan, yalnızca PURE (standart protokol)+Viterbi",0.4083949226037937,100.0
+UBFC,subject13,"MMRPhys sıfırdan, yalnızca PURE (standart protokol)",0.45796958986162895,100.0
+UBFC,subject13,"MMRPhys sıfırdan, yalnızca PURE (standart protokol)+Viterbi",0.4607339531283744,100.0
+UBFC,subject14,"MMRPhys sıfırdan, yalnızca PURE (standart protokol)",1.5831802789627565,94.73684210526315
+UBFC,subject14,"MMRPhys sıfırdan, yalnızca PURE (standart protokol)+Viterbi",1.3081357590981078,92.98245614035088
+UBFC,subject15,"MMRPhys sıfırdan, yalnızca PURE (standart protokol)",0.6027850577562617,98.27586206896551
+UBFC,subject15,"MMRPhys sıfırdan, yalnızca PURE (standart protokol)+Viterbi",0.8070473061038367,96.55172413793103
+UBFC,subject16,"MMRPhys sıfırdan, yalnızca PURE (standart protokol)",0.36283740279987636,100.0
+UBFC,subject16,"MMRPhys sıfırdan, yalnızca PURE (standart protokol)+Viterbi",0.36283740279987636,100.0
+UBFC,subject17,"MMRPhys sıfırdan, yalnızca PURE (standart protokol)",0.3729303333969668,100.0
+UBFC,subject17,"MMRPhys sıfırdan, yalnızca PURE (standart protokol)+Viterbi",0.3693915366585179,100.0
+UBFC,subject18,"MMRPhys sıfırdan, yalnızca PURE (standart protokol)",0.39703412473567495,100.0
+UBFC,subject18,"MMRPhys sıfırdan, yalnızca PURE (standart protokol)+Viterbi",0.39703412473567495,100.0
+UBFC,subject20,"MMRPhys sıfırdan, yalnızca PURE (standart protokol)",1.413079308622552,93.10344827586206
+UBFC,subject20,"MMRPhys sıfırdan, yalnızca PURE (standart protokol)+Viterbi",1.4842465771598152,91.37931034482759
+UBFC,subject22,"MMRPhys sıfırdan, yalnızca PURE (standart protokol)",0.386374692032526,100.0
+UBFC,subject22,"MMRPhys sıfırdan, yalnızca PURE (standart protokol)+Viterbi",0.386374692032526,100.0
+UBFC,subject23,"MMRPhys sıfırdan, yalnızca PURE (standart protokol)",0.36816788769022285,100.0
+UBFC,subject23,"MMRPhys sıfırdan, yalnızca PURE (standart protokol)+Viterbi",0.36816788769022285,100.0
+UBFC,subject24,"MMRPhys sıfırdan, yalnızca PURE (standart protokol)",0.40954754065179605,100.0
+UBFC,subject24,"MMRPhys sıfırdan, yalnızca PURE (standart protokol)+Viterbi",0.44259104497618595,100.0
+UBFC,subject25,"MMRPhys sıfırdan, yalnızca PURE (standart protokol)",0.33736989945931256,100.0
+UBFC,subject25,"MMRPhys sıfırdan, yalnızca PURE (standart protokol)+Viterbi",0.3407448437368929,100.0
+UBFC,subject26,"MMRPhys sıfırdan, yalnızca PURE (standart protokol)",0.4005117593505094,100.0
+UBFC,subject26,"MMRPhys sıfırdan, yalnızca PURE (standart protokol)+Viterbi",0.4062514354212752,100.0
+UBFC,subject27,"MMRPhys sıfırdan, yalnızca PURE (standart protokol)",1.4755925677787425,94.73684210526315
+UBFC,subject27,"MMRPhys sıfırdan, yalnızca PURE (standart protokol)+Viterbi",2.1610596385795806,92.10526315789474
+UBFC,subject30,"MMRPhys sıfırdan, yalnızca PURE (standart protokol)",0.6086299741720016,100.0
+UBFC,subject30,"MMRPhys sıfırdan, yalnızca PURE (standart protokol)+Viterbi",0.6086299741720016,100.0
+UBFC,subject31,"MMRPhys sıfırdan, yalnızca PURE (standart protokol)",0.3196808882034706,100.0
+UBFC,subject31,"MMRPhys sıfırdan, yalnızca PURE (standart protokol)+Viterbi",0.3196808882034706,100.0
+UBFC,subject32,"MMRPhys sıfırdan, yalnızca PURE (standart protokol)",1.8123820850493895,91.37931034482759
+UBFC,subject32,"MMRPhys sıfırdan, yalnızca PURE (standart protokol)+Viterbi",1.668412452833049,93.10344827586206
+UBFC,subject33,"MMRPhys sıfırdan, yalnızca PURE (standart protokol)",1.118365374535363,96.49122807017544
+UBFC,subject33,"MMRPhys sıfırdan, yalnızca PURE (standart protokol)+Viterbi",1.123756166757322,96.49122807017544
+UBFC,subject34,"MMRPhys sıfırdan, yalnızca PURE (standart protokol)",0.34831398984005263,100.0
+UBFC,subject34,"MMRPhys sıfırdan, yalnızca PURE (standart protokol)+Viterbi",0.34831398984005263,100.0
+UBFC,subject35,"MMRPhys sıfırdan, yalnızca PURE (standart protokol)",0.515743821927266,100.0
+UBFC,subject35,"MMRPhys sıfırdan, yalnızca PURE (standart protokol)+Viterbi",0.5121244348058257,100.0
+UBFC,subject36,"MMRPhys sıfırdan, yalnızca PURE (standart protokol)",0.3378846222264771,100.0
+UBFC,subject36,"MMRPhys sıfırdan, yalnızca PURE (standart protokol)+Viterbi",0.34024136540005556,100.0
+UBFC,subject37,"MMRPhys sıfırdan, yalnızca PURE (standart protokol)",1.4280334679055378,98.27586206896551
+UBFC,subject37,"MMRPhys sıfırdan, yalnızca PURE (standart protokol)+Viterbi",0.6239946089879713,100.0
+UBFC,subject38,"MMRPhys sıfırdan, yalnızca PURE (standart protokol)",0.22109800808218993,100.0
+UBFC,subject38,"MMRPhys sıfırdan, yalnızca PURE (standart protokol)+Viterbi",0.22109800808218993,100.0
+UBFC,subject39,"MMRPhys sıfırdan, yalnızca PURE (standart protokol)",0.409870036929431,100.0
+UBFC,subject39,"MMRPhys sıfırdan, yalnızca PURE (standart protokol)+Viterbi",0.409870036929431,100.0
+UBFC,subject40,"MMRPhys sıfırdan, yalnızca PURE (standart protokol)",0.3623363768280259,100.0
+UBFC,subject40,"MMRPhys sıfırdan, yalnızca PURE (standart protokol)+Viterbi",0.3623363768280259,100.0
+UBFC,subject41,"MMRPhys sıfırdan, yalnızca PURE (standart protokol)",1.3813815985800693,94.82758620689656
+UBFC,subject41,"MMRPhys sıfırdan, yalnızca PURE (standart protokol)+Viterbi",1.2414078634709276,96.55172413793103
+UBFC,subject42,"MMRPhys sıfırdan, yalnızca PURE (standart protokol)",0.37072027062729457,100.0
+UBFC,subject42,"MMRPhys sıfırdan, yalnızca PURE (standart protokol)+Viterbi",0.37072027062729457,100.0
+UBFC,subject43,"MMRPhys sıfırdan, yalnızca PURE (standart protokol)",0.5900046112665557,100.0
+UBFC,subject43,"MMRPhys sıfırdan, yalnızca PURE (standart protokol)+Viterbi",0.5900046112665557,100.0
+UBFC,subject44,"MMRPhys sıfırdan, yalnızca PURE (standart protokol)",0.5964689449572743,100.0
+UBFC,subject44,"MMRPhys sıfırdan, yalnızca PURE (standart protokol)+Viterbi",0.596014850262454,100.0
+UBFC,subject45,"MMRPhys sıfırdan, yalnızca PURE (standart protokol)",0.6071566434837452,100.0
+UBFC,subject45,"MMRPhys sıfırdan, yalnızca PURE (standart protokol)+Viterbi",0.6742481483011908,98.27586206896551
+UBFC,subject46,"MMRPhys sıfırdan, yalnızca PURE (standart protokol)",0.6283751156533041,100.0
+UBFC,subject46,"MMRPhys sıfırdan, yalnızca PURE (standart protokol)+Viterbi",0.6418058325548734,100.0
+UBFC,subject47,"MMRPhys sıfırdan, yalnızca PURE (standart protokol)",0.3036789145870281,100.0
+UBFC,subject47,"MMRPhys sıfırdan, yalnızca PURE (standart protokol)+Viterbi",0.5732502262064011,98.27586206896551
+UBFC,subject48,"MMRPhys sıfırdan, yalnızca PURE (standart protokol)",0.786118801341166,100.0
+UBFC,subject48,"MMRPhys sıfırdan, yalnızca PURE (standart protokol)+Viterbi",0.786118801341166,100.0
+UBFC,subject49,"MMRPhys sıfırdan, yalnızca PURE (standart protokol)",0.5671930337599714,100.0
+UBFC,subject49,"MMRPhys sıfırdan, yalnızca PURE (standart protokol)+Viterbi",0.5684883836446525,100.0
+UBFC,subject1,"MMRPhys sıfırdan, yalnızca PURE (standart protokol)",1.53070881783934,95.23809523809523
+UBFC,subject1,"MMRPhys sıfırdan, yalnızca PURE (standart protokol)+Viterbi",0.9952200994583209,100.0
+UBFC,subject10,"MMRPhys sıfırdan, yalnızca PURE (standart protokol)",0.4188555263888921,100.0
+UBFC,subject10,"MMRPhys sıfırdan, yalnızca PURE (standart protokol)+Viterbi",0.41980870513528246,100.0
+UBFC,subject11,"MMRPhys sıfırdan, yalnızca PURE (standart protokol)",0.5970316159195342,100.0
+UBFC,subject11,"MMRPhys sıfırdan, yalnızca PURE (standart protokol)+Viterbi",0.6103609410668737,100.0
+UBFC,subject3,"MMRPhys sıfırdan, yalnızca PURE (standart protokol)",1.6245493858067153,96.07843137254902
+UBFC,subject3,"MMRPhys sıfırdan, yalnızca PURE (standart protokol)+Viterbi",2.798596954108455,88.23529411764706
+UBFC,subject4,"MMRPhys sıfırdan, yalnızca PURE (standart protokol)",2.4559466854286045,88.88888888888889
+UBFC,subject4,"MMRPhys sıfırdan, yalnızca PURE (standart protokol)+Viterbi",4.940022324202181,72.22222222222221
+UBFC,subject5,"MMRPhys sıfırdan, yalnızca PURE (standart protokol)",0.48110009388803154,100.0
+UBFC,subject5,"MMRPhys sıfırdan, yalnızca PURE (standart protokol)+Viterbi",0.48110009388803154,100.0
+UBFC,subject8,"MMRPhys sıfırdan, yalnızca PURE (standart protokol)",0.6229839892889966,98.27586206896551
+UBFC,subject8,"MMRPhys sıfırdan, yalnızca PURE (standart protokol)+Viterbi",1.0888110502879982,94.82758620689656
+UBFC,subject9,"MMRPhys sıfırdan, yalnızca PURE (standart protokol)",1.213625312704839,94.82758620689656
+UBFC,subject9,"MMRPhys sıfırdan, yalnızca PURE (standart protokol)+Viterbi",1.213625312704839,94.82758620689656
+UBFC,subject12,9. tur S1 en iyi epoch,0.3717575182586507,100.0
+UBFC,subject12,9. tur S1 en iyi epoch+Viterbi,0.3717575182586507,100.0
+UBFC,subject13,9. tur S1 en iyi epoch,0.42683842824384166,100.0
+UBFC,subject13,9. tur S1 en iyi epoch+Viterbi,0.42741831618324083,100.0
+UBFC,subject14,9. tur S1 en iyi epoch,2.934504027759213,92.98245614035088
+UBFC,subject14,9. tur S1 en iyi epoch+Viterbi,2.262372474560042,85.96491228070175
+UBFC,subject15,9. tur S1 en iyi epoch,0.7194540156132712,98.27586206896551
+UBFC,subject15,9. tur S1 en iyi epoch+Viterbi,0.8987370944578327,96.55172413793103
+UBFC,subject16,9. tur S1 en iyi epoch,0.4264342783344912,100.0
+UBFC,subject16,9. tur S1 en iyi epoch+Viterbi,0.4264342783344912,100.0
+UBFC,subject17,9. tur S1 en iyi epoch,0.45784500285365337,100.0
+UBFC,subject17,9. tur S1 en iyi epoch+Viterbi,0.4529204149890518,100.0
+UBFC,subject18,9. tur S1 en iyi epoch,0.4461127598009476,100.0
+UBFC,subject18,9. tur S1 en iyi epoch+Viterbi,0.4461127598009476,100.0
+UBFC,subject20,9. tur S1 en iyi epoch,1.2097518950951767,94.82758620689656
+UBFC,subject20,9. tur S1 en iyi epoch+Viterbi,1.5101439890883592,91.37931034482759
+UBFC,subject22,9. tur S1 en iyi epoch,0.28549888359646025,100.0
+UBFC,subject22,9. tur S1 en iyi epoch+Viterbi,0.29063676576323383,100.0
+UBFC,subject23,9. tur S1 en iyi epoch,0.4134918382550227,100.0
+UBFC,subject23,9. tur S1 en iyi epoch+Viterbi,0.4134918382550227,100.0
+UBFC,subject24,9. tur S1 en iyi epoch,0.3426354186099236,100.0
+UBFC,subject24,9. tur S1 en iyi epoch+Viterbi,0.35426399902200806,100.0
+UBFC,subject25,9. tur S1 en iyi epoch,0.30679353146639843,100.0
+UBFC,subject25,9. tur S1 en iyi epoch+Viterbi,0.30679353146639843,100.0
+UBFC,subject26,9. tur S1 en iyi epoch,0.4566290333825872,100.0
+UBFC,subject26,9. tur S1 en iyi epoch+Viterbi,0.4566290333825872,100.0
+UBFC,subject27,9. tur S1 en iyi epoch,1.3132398457640135,97.36842105263158
+UBFC,subject27,9. tur S1 en iyi epoch+Viterbi,2.1828022014641246,92.10526315789474
+UBFC,subject30,9. tur S1 en iyi epoch,0.7162890555460865,100.0
+UBFC,subject30,9. tur S1 en iyi epoch+Viterbi,0.7164011862939302,100.0
+UBFC,subject31,9. tur S1 en iyi epoch,0.33297181244703905,100.0
+UBFC,subject31,9. tur S1 en iyi epoch+Viterbi,0.33297181244703905,100.0
+UBFC,subject32,9. tur S1 en iyi epoch,1.3930558556920365,94.82758620689656
+UBFC,subject32,9. tur S1 en iyi epoch+Viterbi,1.4741278824637438,94.82758620689656
+UBFC,subject33,9. tur S1 en iyi epoch,1.1103083768062636,96.49122807017544
+UBFC,subject33,9. tur S1 en iyi epoch+Viterbi,1.1121756777421457,96.49122807017544
+UBFC,subject34,9. tur S1 en iyi epoch,0.33060396022635136,100.0
+UBFC,subject34,9. tur S1 en iyi epoch+Viterbi,0.33060396022635136,100.0
+UBFC,subject35,9. tur S1 en iyi epoch,0.48560643448878404,100.0
+UBFC,subject35,9. tur S1 en iyi epoch+Viterbi,0.47752606037689765,100.0
+UBFC,subject36,9. tur S1 en iyi epoch,0.4338999315913347,100.0
+UBFC,subject36,9. tur S1 en iyi epoch+Viterbi,0.4333785878337986,100.0
+UBFC,subject37,9. tur S1 en iyi epoch,1.3605179640949667,98.27586206896551
+UBFC,subject37,9. tur S1 en iyi epoch+Viterbi,0.517817695390543,100.0
+UBFC,subject38,9. tur S1 en iyi epoch,0.21536705182139293,100.0
+UBFC,subject38,9. tur S1 en iyi epoch+Viterbi,0.21536705182139293,100.0
+UBFC,subject39,9. tur S1 en iyi epoch,0.4500715278791429,100.0
+UBFC,subject39,9. tur S1 en iyi epoch+Viterbi,0.45341168986843516,100.0
+UBFC,subject40,9. tur S1 en iyi epoch,0.3048710811858682,100.0
+UBFC,subject40,9. tur S1 en iyi epoch+Viterbi,0.3048710811858682,100.0
+UBFC,subject41,9. tur S1 en iyi epoch,1.6335294700754228,93.10344827586206
+UBFC,subject41,9. tur S1 en iyi epoch+Viterbi,1.3045230808519674,96.55172413793103
+UBFC,subject42,9. tur S1 en iyi epoch,0.32691083562312956,100.0
+UBFC,subject42,9. tur S1 en iyi epoch+Viterbi,0.32691083562312956,100.0
+UBFC,subject43,9. tur S1 en iyi epoch,0.503430699461475,100.0
+UBFC,subject43,9. tur S1 en iyi epoch+Viterbi,0.49512773002911226,100.0
+UBFC,subject44,9. tur S1 en iyi epoch,0.6500457967637696,100.0
+UBFC,subject44,9. tur S1 en iyi epoch+Viterbi,0.6459490708179418,100.0
+UBFC,subject45,9. tur S1 en iyi epoch,0.5193719179892816,100.0
+UBFC,subject45,9. tur S1 en iyi epoch+Viterbi,0.6211137137306019,98.27586206896551
+UBFC,subject46,9. tur S1 en iyi epoch,0.5847780207849764,100.0
+UBFC,subject46,9. tur S1 en iyi epoch+Viterbi,0.597642264078499,100.0
+UBFC,subject47,9. tur S1 en iyi epoch,0.3326345583337437,100.0
+UBFC,subject47,9. tur S1 en iyi epoch+Viterbi,0.6110546666161314,98.27586206896551
+UBFC,subject48,9. tur S1 en iyi epoch,0.728491387235614,100.0
+UBFC,subject48,9. tur S1 en iyi epoch+Viterbi,0.728491387235614,100.0
+UBFC,subject49,9. tur S1 en iyi epoch,0.618888786904055,100.0
+UBFC,subject49,9. tur S1 en iyi epoch+Viterbi,0.624104054686889,100.0
+UBFC,subject1,9. tur S1 en iyi epoch,1.6177185899285143,92.85714285714286
+UBFC,subject1,9. tur S1 en iyi epoch+Viterbi,0.9642678790082732,100.0
+UBFC,subject10,9. tur S1 en iyi epoch,0.47346057681089276,100.0
+UBFC,subject10,9. tur S1 en iyi epoch+Viterbi,0.4773949863291189,100.0
+UBFC,subject11,9. tur S1 en iyi epoch,0.5789589270573736,100.0
+UBFC,subject11,9. tur S1 en iyi epoch+Viterbi,0.5829107667481085,100.0
+UBFC,subject3,9. tur S1 en iyi epoch,1.5741994844865672,96.07843137254902
+UBFC,subject3,9. tur S1 en iyi epoch+Viterbi,3.851829152457107,78.43137254901961
+UBFC,subject4,9. tur S1 en iyi epoch,3.1636361512315077,86.11111111111111
+UBFC,subject4,9. tur S1 en iyi epoch+Viterbi,4.953963643824515,72.22222222222221
+UBFC,subject5,9. tur S1 en iyi epoch,0.42248916829108685,100.0
+UBFC,subject5,9. tur S1 en iyi epoch+Viterbi,0.42248916829108685,100.0
+UBFC,subject8,9. tur S1 en iyi epoch,0.45050683155639504,98.27586206896551
+UBFC,subject8,9. tur S1 en iyi epoch+Viterbi,1.0842446429195696,94.82758620689656
+UBFC,subject9,9. tur S1 en iyi epoch,0.7070211529213215,100.0
+UBFC,subject9,9. tur S1 en iyi epoch+Viterbi,1.2977898898162958,94.82758620689656

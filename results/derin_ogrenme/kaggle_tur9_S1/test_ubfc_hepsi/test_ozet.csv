@@ -1,0 +1,9 @@
+yöntem,UBFC,Hepsi,≤5 BPM %,Medyan
+FactorizePhys PURE (hazır),0.68,0.68,98.71,0.45
+"MMRPhys sıfırdan, yalnızca PURE (standart protokol)",0.74,0.74,98.46,0.54
+9. tur S1 en iyi epoch,0.77,0.77,98.56,0.48
+FactorizePhys PURE (hazır)+Viterbi,0.82,0.82,97.72,0.48
+"MMRPhys sıfırdan, yalnızca PURE (standart protokol)+Viterbi",0.83,0.83,97.76,0.57
+9. tur S1 en iyi epoch+Viterbi,0.88,0.88,97.4,0.51
+POS (yüz kırpıntısı)+Viterbi,1.86,1.86,94.66,0.72
+POS (yüz kırpıntısı),2.63,2.63,92.71,0.88

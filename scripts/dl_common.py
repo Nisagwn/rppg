@@ -144,6 +144,14 @@ def hr_from_bvp(bvp, fs=30.0, win=10.0, step=1.0):
     return centers, argmax_track(S, BPM_GRID), viterbi_track(S, BPM_GRID, step)
 
 
+def video_hr(bvp, fs=30.0):
+    """Video düzeyi nabız: bütün videonun ön işlenmiş dalgasının spektral tepesi (rPPG-Toolbox'un FFT
+    değerlendirmesiyle aynı tür; literatür tablolarındaki MAE çoğunlukla budur)."""
+    from rppg.hr import peak_bpm, spectrum_bpm
+    x = preprocess_bvp(np.asarray(bvp, dtype=float), fs)
+    return float(peak_bpm(BPM_GRID, spectrum_bpm(x, fs)))
+
+
 def reference_hr(label, centers, fs=30.0, win=10.0):
     t = np.arange(len(label)) / fs
     return gt_window_hr({"bvp": label, "t": t}, centers, win, fs)

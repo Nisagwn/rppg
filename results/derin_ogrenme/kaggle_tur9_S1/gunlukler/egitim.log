@@ -1,0 +1,8 @@
+eğitim 36 video (31 kişi), doğrulama 5 video, cihaz cpu
+  eğitim nabız dağılımı: 40-70: 5, 70-90: 10, 90-110: 10, 110-130: 10, 130-250: 1
+mimari mmrphys (37481 parametre), rastgele başlatma, kayıp smooth_l1
+  optimizer durumu yok/uyumsuz: taze optimizer
+devam: epoch 30
+  doğrulama kümesi değişti (5 video); en iyi (epoch 6) yeniden ölçüldü: 0.75 BPM
+  örnekleme payı: pure %100, ubfc %0
+bitti

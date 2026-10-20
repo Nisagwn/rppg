@@ -1,0 +1,8 @@
+50 video
+
+veri       video  tutulan iyi kare %  SNR dB POS uyumu %   r(0) |gecikme|>4
+pure          16       16       98.4     8.4       100.0  +0.81           0
+ubfc          34       34       97.3     7.0       100.0  +0.73           3
+
+süre 1 s -> /tmp/dl/kalite.csv
+

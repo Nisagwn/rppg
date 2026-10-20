@@ -199,6 +199,25 @@ model kullanıldı.
 - Uygulamadaki 3–4 BPM ile çevrimdışı 1.1–1.6 arasındaki fark model girdisinden (kırpma farkı, kare kaybı) gelmeli:
   9. tur G'deki yüz kutusu kayması artırması bunu hedefliyor.
 
+### 3.15 Standart protokol (PURE → UBFC-rPPG): sıfırdan MMRPhys hazır FactorizePhys'e çok yakın
+- 9. tur S1: MMRPhys **sıfırdan**, yalnızca PURE ile 30 epoch; UBFC-rPPG'nin **42 kişisinin hepsinde** test
+  (`results/derin_ogrenme/kaggle_tur9_S1/`).
+- 10 s pencere MAE: **0.74 BPM** (Viterbi 0.83), ≤5 BPM %98.5. rPPG-Toolbox'un PURE'da eğitilmiş resmî FactorizePhys
+  ağırlıkları aynı ölçümde 0.68 (Viterbi 0.82). Fark küçük ama anlamlı (0.74 / 0.68, **p = 0.007**; 42 videonun
+  3'ünde biri, 3'ünde öbürü > 0.5 BPM iyi). POS 1.86 (p < 0.001).
+- Referansı temiz 40 videoda: MMRPhys 0.68, FactorizePhys hazır 0.62.
+- Yorum: hiç hazır ağırlık kullanmadan, aynı protokolde yayımlanmış modelin resmî ağırlıklarına 0.06 BPM yaklaşıldı.
+  Literatürdeki tablolar çoğunlukla video düzeyinde (bütün videonun spektrumu) MAE verir; bizim metrik 10 s pencere,
+  daha zor. Doğrudan rakam karşılaştırması için aynı metrik gerekir (bkz. 5).
+- Bu protokolde Viterbi kazanç vermedi (UBFC temiz, hareketsiz; takip ancak hatalı pencerelerde işe yarıyor).
+- **Ama genelleme zayıf:** aynı S1 modeli ana testte (UBFC 8 + MCD önden 20) 12.1 BPM (Viterbi), hazır FactorizePhys
+  2.57; MCD dinlenme 10.7, egzersiz 22.0. Yalnızca PURE'un ~1 saatlik verisiyle sıfırdan eğitilen MMRPhys UBFC'ye
+  (PURE'a benzer, laboratuvar, sabit ışık) iyi aktarılıyor, MCD'ye aktarılamıyor; hazır FactorizePhys aynı veriyle
+  eğitildiği hâlde daha sağlam. Bizim asıl modellerimizin (7B/7E) iyi sonucu büyük ölçüde çok kaynaklı veriden geliyor.
+  Makalede iki tablo birlikte verilmeli: standart protokol (karşılaştırma) + çapraz veri seti (genelleme).
+- Video düzeyi MAE artık `dl_evaluate.py`'de (`test_ozet_video.csv`); S1'in UBFC-42 için video düzeyi değeri bir
+  sonraki değerlendirmede çıkacak.
+
 ---
 
 ## 4. Olumsuz sonuçlar ve mühendislik dersleri
@@ -237,7 +256,7 @@ model kullanıldı.
       ve "ön-eğitim gerekli mi" sorularını kesinleştirir. Şu an 3.4'teki genelleme iddiası bunlar olmadan zayıf.
 - [ ] **Tekrar (seed) sayısı:** her deney tek çalıştırma. En azından ana modeli 2–3 farklı tohumla eğitip ±
       aralık vermek.
-- [ ] **Literatürle karşılaştırılabilir protokol:** standart çapraz veri seti tabloları (ör. PURE → UBFC,
+- [~] **Literatürle karşılaştırılabilir protokol:** PURE → UBFC yapıldı (3.15); video düzeyi MAE ve UBFC → PURE (S2) kaldı. standart çapraz veri seti tabloları (ör. PURE → UBFC,
       UBFC → PURE) en azından ana model için. Şu anki test kümeleri bizim tanımımız.
 - [ ] **Bland-Altman** ve Pearson r tabloları (ana model, her test kümesi).
 - [ ] **Telefonda hız ölçümü** (MMRPhys ONNX 163 KB; masaüstü işlemcide 160 kare 0.13 s).
