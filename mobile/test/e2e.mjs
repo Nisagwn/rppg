@@ -96,6 +96,12 @@ const cam = await evaluate("({ facing: window.__rppg.facing, mirror: document.ge
   "method: window.__rppg.log.at(-1)?.method, dl: { ready: window.__rppgDl.ready, failed: window.__rppgDl.failed, " +
   "ms: Math.round(window.__rppgDl.ms), threads: window.__rppgDl.threads, coi: window.crossOriginIsolated, samples: window.__rppgDl.acc.size } })");
 const status = await evaluate("document.querySelector('#status span').textContent");
+if (args.ref) {   // oksimetre kutusu: değeri gir, Kaydet'e bas, özet satırını oku
+  const r = await evaluate(`(() => { const box = document.getElementById("ref-box"); const i = document.getElementById("ref-in");
+    i.value = "${Number(args.ref)}"; document.getElementById("ref-save").click();
+    return { gorunur: !box.hidden, ozet: document.getElementById("ref-stats").textContent, kayit: window.__rppg.refs.length }; })()`);
+  console.log("referans:", JSON.stringify(r));
+}
 if (args.crop) {   // modelin gördüğü son 72x72 kırpıntı (eğitim kırpıntısıyla karşılaştırmak için)
   writeFileSync(args.crop, JSON.stringify(await evaluate("({ px: Array.from(window.__rppgDl.frames.at(-1)?.px || []), " +
     "box: window.__rppgDl.box, updates: window.__rppgDl.boxUpdates, w: document.getElementById('video').videoWidth, " +

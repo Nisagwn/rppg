@@ -29,12 +29,13 @@ const els = {
   placeholder: $("placeholder"), placeholderText: $("placeholder-text"),
   hr: $("hr"), snr: $("snr"), conf: $("conf"), fps: $("fps"), status: $("status"),
   progressWrap: $("progress-wrap"), progress: $("progress"),
-  start: $("start"), quick: $("quick"), csv: $("csv"), raw: $("raw"), reset: $("reset"),
+  start: $("start"), quick: $("quick"), csv: $("csv"), diag: $("diag"),
+  refBox: $("ref-box"), refIn: $("ref-in"), refSave: $("ref-save"), refStats: $("ref-stats"), raw: $("raw"), reset: $("reset"),
   modeFace: $("mode-face"), modeFinger: $("mode-finger"), flip: $("flip"), flipLabel: $("flip-label"),
   plotBvp: $("plot-bvp"), plotSpec: $("plot-spec"), plotHist: $("plot-hist"),
 };
 const params = new URLSearchParams(location.search);
-const VERSION = "v16";
+const VERSION = "v17";
 document.getElementById("version").textContent = VERSION;
 
 const state = {
@@ -42,7 +43,7 @@ const state = {
   samples: [], tracker: new OnlineHRTracker(), motionHist: [],
   bbox: null, lastDet: 0, frameNo: 0, prevGray: null, frameTimes: [], log: [], t0: 0, timer: null, lastBvp: null,
   // teşhis: saniyelik kayıt (kare sayısı, yüz kutusu olan kare, tespit denemesi/başarısı, analizin durduğu yer)
-  diag: [], dc: { frames: 0, face: 0, tries: 0, hits: 0, qmax: 0, pico: 0, yunet: 0 },
+  diag: [], dc: { frames: 0, face: 0, tries: 0, hits: 0, qmax: 0, pico: 0, yunet: 0 }, refs: [],
 };
 window.__rppg = state; // tarayıcı testleri ve hata ayıklama için
 
@@ -467,7 +468,7 @@ const DL_SIZE = 72, DL_T = 160, DL_HOP = 80, DL_FS = 30, DL_BOX = 1.5, DL_KEEP_S
 const DL_BOX_SEC = 1.0, DL_BOX_MOVE = 0.2;
 // Hızlı ölçüm: kayıt sırasında yalnızca kırpıntı toplanır (model çalışmaz, yavaş telefonda kare düşmez); kayıt
 // bitince bütün klip örtüşen pencerelerle bir kez modelden geçer, nabız kayan 10 s pencerelerdeki takibin medyanı.
-const QUICK_SEC = 20, QUICK_KEEP_SEC = 60;
+const QUICK_SEC = 20, QUICK_KEEP_SEC = 60, QUICK_MIN_LUMA = 45, QUICK_MAX_LUMA = 235, QUICK_MIN_SNR = -1;
 const quick = { on: false, phase: "", queue: [], t0: null, total: 0 };
 window.__rppgQuick = quick; // tarayıcı testleri için
 const dl = { worker: null, ready: false, failed: "", busy: false, gen: 0, frames: [], t0: null, nextK: null,
@@ -611,7 +612,14 @@ function quickStep() {
     setStatus(state.camLock ? "Yüz aranıyor…" : "Kamera ayarlanıyor…", "fair");
     return "hizli_kayit";
   }
-  if (quick.t0 === null) quick.t0 = F[0].t;
+  if (quick.t0 === null) {                     // ön koşul: yüz bulunmuş ve ışık yeterli olmadan sayım başlamaz
+    const luma = meanLuma();
+    if (!state.bbox) { setStatus("Yüzünüzü çerçeveye alın", "fair"); return "hizli_kayit"; }
+    if (luma < QUICK_MIN_LUMA) { setStatus("Işık yetersiz — yüzünüze önden ışık gelsin", "bad"); return "hizli_kayit"; }
+    if (luma > QUICK_MAX_LUMA) { setStatus("Görüntü çok parlak — doğrudan güneşten uzaklaşın", "bad"); return "hizli_kayit"; }
+    quick.t0 = F[F.length - 1].t;
+    dl.frames = F.slice(-1);                    // sayım bu kareden başlar; öncesi (yüz aranırken) atılır
+  }
   const span = F[F.length - 1].t - quick.t0;
   els.progressWrap.hidden = false;
   els.progress.style.width = `${Math.min(100, (100 * span) / QUICK_SEC)}%`;
@@ -666,13 +674,16 @@ function quickFinish() {
   const tail = hrs.slice(Math.min(3, hrs.length - 1)).sort((a, b) => a - b);   // takipçinin ilk saniyeleri hariç
   const hr = tail[Math.floor(tail.length / 2)];
   const whole = spectrumBpm(bvp), snr = windowSnr(BPM_GRID, whole, hr);
-  const level = snr > 3 ? "good" : snr > -1 ? "fair" : "bad";
-  els.hr.textContent = hr.toFixed(0);
+  const level = snr > 3 ? "good" : snr > QUICK_MIN_SNR ? "fair" : "bad";
+  const reliable = level !== "bad";
+  els.hr.textContent = reliable ? hr.toFixed(0) : "--";
   els.snr.textContent = `${snr.toFixed(1)} dB`;
   els.progressWrap.hidden = true;
   setStatus({ good: "Sonuç güvenilir", fair: "Sonuç orta güvenilir — tekrar ölçmek iyi olur",
-    bad: "Sinyal zayıf — ışığı artırıp tekrar ölçün" }[level] + ` · ${span.toFixed(0)} s`, level);
-  state.log.push({ t: span, hr, snr, conf: 1, mode: "face", method: "model (hızlı)", cam: camName(), lock: state.camLock || "-" });
+    bad: `Sinyal zayıf, sonuç güvenilmez (${hr.toFixed(0)}) — ışığı artırıp tekrar ölçün` }[level] + ` · ${span.toFixed(0)} s`, level);
+  state.log.push({ t: span, hr, snr, conf: 1, mode: "face", method: "model (hızlı)", cam: camName(), lock: state.camLock || "-",
+    reliable, at: new Date().toISOString() });
+  showRef();
   state.lastBvp = bvp;
   els.csv.disabled = els.reset.disabled = false;
   drawLine(els.plotBvp, bvp.slice(-150), { color: "#60a5fa" });
@@ -831,6 +842,38 @@ function stop(keepStatus = false) {
   drawOverlay(null);
   if (quick.on && !keepStatus) quickEnd();           // kullanıcı kaydı yarıda durdurdu
   if (!keepStatus) setStatus(state.log.length ? `Durduruldu — ortalama ${avgHr().toFixed(0)} BPM` : "Hazır");
+  if (!keepStatus && state.log.length) showRef();
+}
+
+// ------------------------------------------------------------------ referans cihazla karşılaştırma (oksimetre / saat)
+// Her ölçümden sonra cihazın gösterdiği nabız girilir; son ölçüme (canlıda son 20 s ortalamasına) eklenir, CSV'ye yazılır.
+function showRef() {
+  els.refBox.hidden = false;
+  els.refIn.value = "";
+  refStats();
+}
+
+function saveRef() {
+  const v = Number(els.refIn.value);
+  if (!(v >= 30 && v <= 220) || !state.log.length) return;
+  const last = state.log[state.log.length - 1];
+  const isQuick = last.method === "model (hızlı)";
+  const app = isQuick ? last.hr : avgHr();
+  state.refs.push({ at: new Date().toISOString(), ref: v, app, kind: isQuick ? "hızlı" : "canlı", cam: last.cam,
+    reliable: last.reliable !== false, snr: last.snr });
+  last.ref = v;
+  els.refIn.value = "";
+  els.refIn.blur();
+  refStats();
+}
+
+function refStats() {
+  const R = state.refs;
+  if (!R.length) { els.refStats.textContent = "Ölçüm bitince cihazdaki değeri yazıp Kaydet'e basın."; return; }
+  const e = R.map((r) => Math.abs(r.app - r.ref)), last = R[R.length - 1];
+  const mae = e.reduce((a, b) => a + b, 0) / e.length, p5 = (100 * e.filter((x) => x <= 5).length) / e.length;
+  els.refStats.textContent = `Son: uygulama ${last.app.toFixed(0)} / cihaz ${last.ref} (fark ${(last.app - last.ref).toFixed(1)}) · ` +
+    `${R.length} ölçüm, ortalama fark ${mae.toFixed(1)} BPM, %${p5.toFixed(0)}'i ±5 içinde`;
 }
 
 function resetMeasurement() {
@@ -907,10 +950,24 @@ function downloadRaw() {
   saveFile(`rppg_ham_${stamp()}.json`, JSON.stringify({ meta, frames: state.raw }), "application/json");
 }
 
+// Telefonda neyin yavaş/bozuk olduğunu görmek için tek dosya: cihaz, yalıtım, model süresi, saniyelik teşhis, ölçümler
+function downloadDiag() {
+  const info = { version: VERSION, at: new Date().toISOString(), ua: navigator.userAgent, cores: navigator.hardwareConcurrency,
+    memory_gb: navigator.deviceMemory, coi: self.crossOriginIsolated, threads: dl.threads, model_ms: dl.ms, model_ready: dl.ready,
+    model_error: dl.failed, face: { detector: state.detector, yunet_ready: fd.ready, yunet_error: fd.failed, yunet_ms: fd.ms },
+    camera: state.track?.getSettings?.() || {}, lock: state.camLock, work: [els.work.width, els.work.height] };
+  saveFile(`rppg_teshis_${stamp()}.json`, JSON.stringify({ info, diag: state.diag, log: state.log, refs: state.refs }), "application/json");
+}
+
 function downloadCsv() {
-  const rows = ["zaman_s,nabiz_bpm,snr_db,hareket_guveni,mod,yontem,kamera,kamera_kilidi",
+  const rows = ["zaman_s,nabiz_bpm,snr_db,hareket_guveni,mod,yontem,kamera,kamera_kilidi,guvenilir,oksimetre_bpm",
     ...state.log.map((r) => [r.t.toFixed(1), r.hr.toFixed(2), r.snr.toFixed(2), r.conf.toFixed(2), r.mode,
-      `"${r.method || ""}"`, r.cam || "", `"${r.lock}"`].join(","))];
+      `"${r.method || ""}"`, r.cam || "", `"${r.lock}"`, r.reliable === false ? 0 : 1, r.ref ?? ""].join(","))];
+  if (state.refs.length) {                      // cihazla karşılaştırma tablosu (her Kaydet bir satır)
+    rows.push("", "zaman,tur,kamera,uygulama_bpm,cihaz_bpm,fark,guvenilir,snr_db",
+      ...state.refs.map((r) => [r.at, r.kind, r.cam, r.app.toFixed(1), r.ref, (r.app - r.ref).toFixed(1), r.reliable ? 1 : 0,
+        r.snr.toFixed(1)].join(",")));
+  }
   const a = document.createElement("a");
   a.href = URL.createObjectURL(new Blob([rows.join("\n")], { type: "text/csv" }));
   a.download = `rppg_oturum_${new Date().toISOString().slice(0, 19).replace(/[:T]/g, "-")}.csv`;
@@ -921,6 +978,9 @@ function downloadCsv() {
 // ------------------------------------------------------------------ olaylar
 els.start.addEventListener("click", () => (state.running ? stop() : start()));
 els.quick.addEventListener("click", quickStart);
+els.diag.addEventListener("click", downloadDiag);
+els.refSave.addEventListener("click", saveRef);
+els.refIn.addEventListener("keydown", (e) => { if (e.key === "Enter") saveRef(); });
 els.modeFace.addEventListener("click", () => setMode("face"));
 els.modeFinger.addEventListener("click", () => setMode("finger"));
 els.flip.addEventListener("click", flipCamera);

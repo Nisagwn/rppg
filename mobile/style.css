@@ -113,6 +113,13 @@ button { font: inherit; }
 }
 .primary.stop { background: var(--line); }
 .starts { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.ref { margin-top: 12px; background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 10px 12px; }
+.ref label { color: var(--muted); font-size: 13px; }
+.ref-row { display: grid; grid-template-columns: 1fr auto; gap: 8px; margin-top: 6px; }
+.ref-row input { font: inherit; font-size: 18px; padding: 8px 10px; border-radius: 10px; border: 1px solid var(--line);
+  background: transparent; color: inherit; min-width: 0; }
+.ref-row button { font: inherit; padding: 8px 14px; border-radius: 10px; border: 0; background: var(--accent); color: #fff; }
+.ref-stats { margin: 8px 0 0; font-size: 13px; color: var(--muted); }
 .primary.quick { background: #0f766e; }
 .primary:disabled { opacity: .45; cursor: default; }
 

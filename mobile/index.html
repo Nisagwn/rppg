@@ -70,10 +70,20 @@
       </figure>
     </section>
 
+    <section class="ref" id="ref-box" hidden>
+      <label for="ref-in">Oksimetre / saat (BPM)</label>
+      <div class="ref-row">
+        <input id="ref-in" type="number" inputmode="numeric" min="30" max="220" placeholder="ör. 72">
+        <button id="ref-save" type="button">Kaydet</button>
+      </div>
+      <p id="ref-stats" class="ref-stats"></p>
+    </section>
+
     <section class="actions">
       <button id="csv" disabled>Oturumu CSV indir</button>
       <button id="raw" disabled>Ham veri indir</button>
       <button id="reset" disabled>Sıfırla</button>
+      <button id="diag">Teşhis indir</button>
     </section>
 
     <details class="help">
