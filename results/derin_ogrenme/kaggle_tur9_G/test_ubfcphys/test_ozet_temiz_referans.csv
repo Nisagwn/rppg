@@ -1,0 +1,17 @@
+yöntem,UBFC-Phys dinlenme,UBFC-Phys konuşma,Hepsi,≤5 BPM %,Medyan
+3. tur (uygulamadaki)+Viterbi,5.91,13.72,8.14,49.02,10.75
+7. tur B (MMRPhys sıfırdan)+Viterbi,5.99,14.81,8.51,46.78,10.81
+9. tur G en iyi epoch+Viterbi,5.86,16.13,8.8,47.06,10.81
+7. tur E son epoch (başlangıç)+Viterbi,6.07,15.89,8.88,47.06,10.81
+MMRPhys 7E'den + yeni teknikler (9. tur)+Viterbi,6.37,15.37,8.94,45.94,10.8
+MMRPhys 7E'den + yeni teknikler (9. tur),6.24,16.35,9.13,47.06,10.77
+FactorizePhys PURE (hazır)+Viterbi,6.2,16.98,9.28,46.78,10.74
+7. tur B (MMRPhys sıfırdan),6.18,18.35,9.66,47.06,10.76
+5. tur+Viterbi,6.05,19.25,9.82,45.38,10.76
+7. tur E son epoch (başlangıç),6.71,18.14,9.98,45.94,10.76
+3. tur (uygulamadaki),6.74,18.5,10.1,47.62,10.73
+FactorizePhys PURE (hazır),6.49,20.0,10.35,46.78,10.73
+5. tur,6.94,19.03,10.4,45.94,10.74
+POS (yüz kırpıntısı),6.49,20.58,10.52,46.5,10.5
+9. tur G en iyi epoch,7.2,18.82,10.52,45.38,10.77
+POS (yüz kırpıntısı)+Viterbi,5.07,24.5,10.63,48.18,6.83

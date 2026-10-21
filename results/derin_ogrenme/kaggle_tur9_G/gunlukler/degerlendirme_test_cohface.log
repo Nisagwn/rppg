@@ -1,0 +1,53 @@
+test: 32 video
+
+video düzeyi:
+                                          video_MAE  video_RMSE   n
+yöntem                                                             
+7. tur B (MMRPhys sıfırdan)                    0.59        1.19  32
+7. tur E son epoch (başlangıç)                 0.74        1.40  32
+5. tur                                         0.76        1.40  32
+9. tur G en iyi epoch                          0.76        1.43  32
+3. tur (uygulamadaki)                          0.76        1.40  32
+MMRPhys 7E'den + yeni teknikler (9. tur)       0.84        1.61  32
+FactorizePhys PURE (hazır)                     9.75       15.52  32
+POS (yüz kırpıntısı)                          11.81       16.13  32
+grup                                              COHFACE  Hepsi  ≤5 BPM %  Medyan
+yöntem                                                                            
+5. tur+Viterbi                                       1.37   1.37     94.64    0.80
+3. tur (uygulamadaki)+Viterbi                        1.37   1.37     94.64    0.87
+7. tur E son epoch (başlangıç)+Viterbi               1.50   1.50     93.60    0.82
+9. tur G en iyi epoch+Viterbi                        1.52   1.52     92.26    0.86
+7. tur B (MMRPhys sıfırdan)+Viterbi                  1.53   1.53     92.11    0.85
+5. tur                                               1.53   1.53     93.90    0.84
+MMRPhys 7E'den + yeni teknikler (9. tur)+Viterbi     1.54   1.54     91.37    0.82
+3. tur (uygulamadaki)                                1.69   1.69     93.01    0.93
+7. tur E son epoch (başlangıç)                       1.85   1.85     92.56    0.82
+9. tur G en iyi epoch                                1.99   1.99     92.11    0.89
+7. tur B (MMRPhys sıfırdan)                          2.00   2.00     91.52    0.85
+MMRPhys 7E'den + yeni teknikler (9. tur)             2.15   2.15     90.92    0.82
+FactorizePhys PURE (hazır)+Viterbi                   9.29   9.29     49.55    7.65
+POS (yüz kırpıntısı)+Viterbi                        12.12  12.12     33.33   10.92
+FactorizePhys PURE (hazır)                          12.67  12.67     43.75   11.60
+POS (yüz kırpıntısı)                                13.78  13.78     36.90   14.16
+
+referansı temiz 32 video:
+grup                                              COHFACE  Hepsi  ≤5 BPM %  Medyan
+yöntem                                                                            
+5. tur+Viterbi                                       1.37   1.37     94.64    0.80
+3. tur (uygulamadaki)+Viterbi                        1.37   1.37     94.64    0.87
+7. tur E son epoch (başlangıç)+Viterbi               1.50   1.50     93.60    0.82
+9. tur G en iyi epoch+Viterbi                        1.52   1.52     92.26    0.86
+7. tur B (MMRPhys sıfırdan)+Viterbi                  1.53   1.53     92.11    0.85
+5. tur                                               1.53   1.53     93.90    0.84
+MMRPhys 7E'den + yeni teknikler (9. tur)+Viterbi     1.54   1.54     91.37    0.82
+3. tur (uygulamadaki)                                1.69   1.69     93.01    0.93
+7. tur E son epoch (başlangıç)                       1.85   1.85     92.56    0.82
+9. tur G en iyi epoch                                1.99   1.99     92.11    0.89
+7. tur B (MMRPhys sıfırdan)                          2.00   2.00     91.52    0.85
+MMRPhys 7E'den + yeni teknikler (9. tur)             2.15   2.15     90.92    0.82
+FactorizePhys PURE (hazır)+Viterbi                   9.29   9.29     49.55    7.65
+POS (yüz kırpıntısı)+Viterbi                        12.12  12.12     33.33   10.92
+FactorizePhys PURE (hazır)                          12.67  12.67     43.75   11.60
+POS (yüz kırpıntısı)                                13.78  13.78     36.90   14.16
+rapor: /kaggle/working/cikti/test_cohface/SONUCLAR.md
+

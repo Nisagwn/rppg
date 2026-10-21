@@ -1,0 +1,53 @@
+test: 152 video
+
+video düzeyi:
+                                          video_MAE  video_RMSE    n
+yöntem                                                              
+9. tur G en iyi epoch                          1.57        4.49  152
+MMRPhys 7E'den + yeni teknikler (9. tur)       1.64        5.90  152
+7. tur E son epoch (başlangıç)                 1.74        6.30  152
+7. tur B (MMRPhys sıfırdan)                    2.05        6.90  152
+5. tur                                         2.62        6.28  152
+3. tur (uygulamadaki)                          2.62        6.43  152
+FactorizePhys PURE (hazır)                     4.69       12.38  152
+POS (yüz kırpıntısı)                           9.57       19.03  152
+grup                                              DLCN gece dinlenme  DLCN gece egzersiz  Hepsi  ≤5 BPM %  Medyan
+yöntem                                                                                                           
+7. tur E son epoch (başlangıç)+Viterbi                          1.08                1.54   1.31     95.39    0.75
+MMRPhys 7E'den + yeni teknikler (9. tur)+Viterbi                0.96                1.95   1.45     94.99    0.73
+9. tur G en iyi epoch+Viterbi                                   1.21                1.79   1.50     94.74    0.74
+7. tur B (MMRPhys sıfırdan)+Viterbi                             1.05                2.33   1.69     94.24    0.82
+MMRPhys 7E'den + yeni teknikler (9. tur)                        1.64                3.36   2.50     92.61    0.80
+7. tur E son epoch (başlangıç)                                  1.66                3.34   2.50     92.29    0.80
+9. tur G en iyi epoch                                           2.00                3.30   2.65     91.73    0.83
+5. tur+Viterbi                                                  1.93                3.73   2.83     87.72    1.10
+7. tur B (MMRPhys sıfırdan)                                     2.06                3.70   2.88     90.95    0.92
+3. tur (uygulamadaki)+Viterbi                                   1.87                4.38   3.13     87.28    1.08
+FactorizePhys PURE (hazır)+Viterbi                              2.58                6.59   4.58     82.86    1.31
+5. tur                                                          3.80                6.06   4.93     82.46    2.15
+3. tur (uygulamadaki)                                           3.98                6.18   5.08     82.36    2.24
+FactorizePhys PURE (hazır)                                      4.88                8.08   6.48     77.04    3.10
+POS (yüz kırpıntısı)+Viterbi                                    5.99               14.71  10.35     68.42    2.56
+POS (yüz kırpıntısı)                                            9.04               15.26  12.15     64.25    7.82
+
+referansı temiz 152 video:
+grup                                              DLCN gece dinlenme  DLCN gece egzersiz  Hepsi  ≤5 BPM %  Medyan
+yöntem                                                                                                           
+7. tur E son epoch (başlangıç)+Viterbi                          1.08                1.54   1.31     95.39    0.75
+MMRPhys 7E'den + yeni teknikler (9. tur)+Viterbi                0.96                1.95   1.45     94.99    0.73
+9. tur G en iyi epoch+Viterbi                                   1.21                1.79   1.50     94.74    0.74
+7. tur B (MMRPhys sıfırdan)+Viterbi                             1.05                2.33   1.69     94.24    0.82
+MMRPhys 7E'den + yeni teknikler (9. tur)                        1.64                3.36   2.50     92.61    0.80
+7. tur E son epoch (başlangıç)                                  1.66                3.34   2.50     92.29    0.80
+9. tur G en iyi epoch                                           2.00                3.30   2.65     91.73    0.83
+5. tur+Viterbi                                                  1.93                3.73   2.83     87.72    1.10
+7. tur B (MMRPhys sıfırdan)                                     2.06                3.70   2.88     90.95    0.92
+3. tur (uygulamadaki)+Viterbi                                   1.87                4.38   3.13     87.28    1.08
+FactorizePhys PURE (hazır)+Viterbi                              2.58                6.59   4.58     82.86    1.31
+5. tur                                                          3.80                6.06   4.93     82.46    2.15
+3. tur (uygulamadaki)                                           3.98                6.18   5.08     82.36    2.24
+FactorizePhys PURE (hazır)                                      4.88                8.08   6.48     77.04    3.10
+POS (yüz kırpıntısı)+Viterbi                                    5.99               14.71  10.35     68.42    2.56
+POS (yüz kırpıntısı)                                            9.04               15.26  12.15     64.25    7.82
+rapor: /kaggle/working/cikti/test_dlcn/SONUCLAR.md
+

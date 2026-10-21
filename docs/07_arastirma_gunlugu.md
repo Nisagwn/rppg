@@ -218,6 +218,21 @@ model kullanıldı.
 - Video düzeyi MAE artık `dl_evaluate.py`'de (`test_ozet_video.csv`); S1'in UBFC-42 için video düzeyi değeri bir
   sonraki değerlendirmede çıkacak.
 
+### 3.16 9. tur G: yeni eğitim teknikleri birlikte kazanç vermedi (olumsuz sonuç)
+- 7E son epoch'tan 100 epoch; spektral kayıp 0.2, EMA 0.999, nabız dengeli örnekleme 3×, hız 0.7–1.5×, yüz kutusu
+  kayması ±%10 (`results/derin_ogrenme/kaggle_tur9_G/`).
+- Pencere MAE (Viterbi), G / 7E: ana 1.29 / 1.13 (p = 0.074), telefon/USB 2.27 / 2.04 (p = 0.78), VIPL 3.84 / 3.57
+  (p = 0.37), DLCN 1.45 / 1.31 (p = 0.82), COHFACE 1.54 / 1.50, MMPD 12.77 / 13.84 (p = 0.24). **Hiçbiri anlamlı değil**;
+  telefon/USB'de 5. tur hâlâ anlamlı ölçüde iyi (1.64, p < 0.001).
+- Video düzeyi MAE (yeni ölçüm), G / 7E / 5. tur: ana 0.50 / 0.67 / 0.62, telefon/USB 0.75 / 1.21 / 0.71, VIPL 3.47 / 3.00 /
+  6.12 (G-7E p = 0.021, G kötü), DLCN 1.64 / 1.74 / 2.62. Ana ve telefon/USB farkları anlamlı değil (p > 0.4).
+- Yorum: eğitim tarafındaki iyileştirmeler doygunlukta; mevcut veriyle pencere hatası ~1.1 (ana) ve ~1.6–2.0 BPM
+  (telefon/USB) civarında kalıyor. Kutu kaymasının uygulama içi etkisi bu testlerde görülemez (çevrimdışı kırpıntılar
+  Haar kutusundan); uygulama içi ölçüm ±0.3 BPM'yi ayıramıyordu (3.12). Kalan en büyük kaldıraç gerçek telefon verisi
+  (`docs/08_veri_toplama_yol_haritasi.md`).
+- **Video düzeyi rakamlar literatür tablolarıyla aynı tür:** ana test 0.50–0.67, telefon/USB 0.71–0.75, DLCN 1.64, VIPL
+  3.0 BPM (bizim modeller); hazır FactorizePhys (PURE) aynı testlerde 1.39 / 7.34 / 4.69 / 4.12.
+
 ---
 
 ## 4. Olumsuz sonuçlar ve mühendislik dersleri

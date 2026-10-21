@@ -1,0 +1,276 @@
+Test kümesi (indir): 28 video
+  [1/28] subject10: 2024 kare, yüz %100  (39 s)
+  [2/28] subject1: 1546 kare, yüz %100  (40 s)
+  [3/28] subject3: 1800 kare, yüz %100  (72 s)
+  [4/28] subject11: 2031 kare, yüz %100  (72 s)
+  [5/28] subject4: 1368 kare, yüz %100  (97 s)
+  [6/28] subject5: 1549 kare, yüz %100  (99 s)
+  [7/28] subject8: 2021 kare, yüz %100  (136 s)
+  [8/28] subject9: 2016 kare, yüz %100  (140 s)
+[mpeg4 @ 0x9339b40] Error at MB: 190
+  [9/28] 1020_FullHDwebcam_after: 5384 kare, yüz %100  (194 s)
+[mpeg4 @ 0x7a41500] 2. marker bit missing in 3. esc
+[mpeg4 @ 0x7a41500] Error at MB: 960
+  [10/28] 1020_FullHDwebcam_before: 5383 kare, yüz %100  (198 s)
+[mpeg4 @ 0xa862c80] ac-tex damaged at 10 10
+[mpeg4 @ 0xa862c80] Error at MB: 420
+  [11/28] 1024_FullHDwebcam_after: 5376 kare, yüz %100  (244 s)
+[mpeg4 @ 0xaf8e400] ac-tex damaged at 31 13
+[mpeg4 @ 0xaf8e400] Error at MB: 564
+  [12/28] 1024_FullHDwebcam_before: 5366 kare, yüz %100  (263 s)
+[mpeg4 @ 0x7b2a0c0] ac-tex damaged at 8 12
+[mpeg4 @ 0x7b2a0c0] Error at MB: 500
+  [13/28] 1035_FullHDwebcam_after: 5399 kare, yüz %100  (291 s)
+[mpeg4 @ 0x7bc90c0] Error at MB: 277
+  [14/28] 1035_FullHDwebcam_before: 5362 kare, yüz %100  (310 s)
+[mpeg4 @ 0x9358000] ac-tex damaged at 31 27
+[mpeg4 @ 0x9358000] Error at MB: 1138
+  [15/28] 1091_FullHDwebcam_after: 5385 kare, yüz %100  (343 s)
+[mpeg4 @ 0x7c33280] mcbpc damaged at 10 4
+[mpeg4 @ 0x7c33280] Error at MB: 174
+  [16/28] 1091_FullHDwebcam_before: 5386 kare, yüz %100  (361 s)
+[mpeg4 @ 0xa82d300] ac-tex damaged at 29 1
+[mpeg4 @ 0xa82d300] Error at MB: 70
+  [17/28] 1097_FullHDwebcam_after: 5374 kare, yüz %100  (389 s)
+[mpeg4 @ 0xaf8adc0] mcbpc damaged at 34 27
+[mpeg4 @ 0xaf8adc0] Error at MB: 1141
+  [18/28] 1097_FullHDwebcam_before: 5361 kare, yüz %100  (428 s)
+[mpeg4 @ 0x7a51500] ac-tex damaged at 37 9
+[mpeg4 @ 0x7a51500] Error at MB: 406
+  [19/28] 1099_FullHDwebcam_after: 5399 kare, yüz %100  (434 s)
+[mpeg4 @ 0xafb8d40] ac-tex damaged at 7 3
+[mpeg4 @ 0xafb8d40] Error at MB: 130
+  [20/28] 1099_FullHDwebcam_before: 5388 kare, yüz %100  (481 s)
+[mpeg4 @ 0x7b2a0c0] ac-tex damaged at 25 2
+[mpeg4 @ 0x7b2a0c0] Error at MB: 107
+  [21/28] 1107_FullHDwebcam_after: 5396 kare, yüz %100  (493 s)
+[mpeg4 @ 0x7a41500] ac-tex damaged at 26 1
+[mpeg4 @ 0x7a41500] Error at MB: 67
+  [22/28] 1107_FullHDwebcam_before: 5382 kare, yüz %100  (544 s)
+[mpeg4 @ 0xa881180] ac-tex damaged at 24 2
+[mpeg4 @ 0xa881180] Error at MB: 106
+  [23/28] 1113_FullHDwebcam_after: 5392 kare, yüz %100  (576 s)
+[mpeg4 @ 0x7a41500] ac-tex damaged at 1 2
+[mpeg4 @ 0x7a41500] Error at MB: 83
+  [24/28] 1113_FullHDwebcam_before: 5366 kare, yüz %100  (621 s)
+[mpeg4 @ 0xa84ad00] mcbpc damaged at 0 17
+[mpeg4 @ 0xa84ad00] Error at MB: 697
+  [25/28] 1115_FullHDwebcam_after: 5377 kare, yüz %100  (623 s)
+[mpeg4 @ 0xa88be00] ac-tex damaged at 18 23
+[mpeg4 @ 0xa88be00] Error at MB: 961
+  [26/28] 1149_FullHDwebcam_after: 5385 kare, yüz %98  (676 s)
+[mpeg4 @ 0x7eb2a40] illegal dc vlc
+[mpeg4 @ 0x7eb2a40] Error at MB: 959
+  [27/28] 1115_FullHDwebcam_before: 5354 kare, yüz %100  (683 s)
+[mpeg4 @ 0x7a51500] ac-tex damaged at 13 2
+[mpeg4 @ 0x7a51500] Error at MB: 95
+  [28/28] 1149_FullHDwebcam_before: 5386 kare, yüz %99  (722 s)
+Test kümesi (indir): 40 video
+[mpeg4 @ 0x184867c0] illegal dc vlc
+[mpeg4 @ 0x184867c0] Error at MB: 219
+  [1/40] 1020_IriunWebcam_after: 5362 kare, yüz %100  (45 s)
+[mpeg4 @ 0x18488bc0] illegal dc vlc
+[mpeg4 @ 0x18488bc0] Error at MB: 611
+  [2/40] 1020_USBVideo_after: 5376 kare, yüz %100  (54 s)
+[mpeg4 @ 0x183dae00] ac-tex damaged at 29 10
+[mpeg4 @ 0x183dae00] Error at MB: 439
+[mpeg4 @ 0x18415380] ac-tex damaged at 26 2
+[mpeg4 @ 0x18415380] Error at MB: 108
+  [3/40] 1020_USBVideo_before: 5377 kare, yüz %100  (97 s)
+  [4/40] 1020_IriunWebcam_before: 5387 kare, yüz %100  (97 s)
+[mpeg4 @ 0x183017c0] ac-tex damaged at 2 2
+[mpeg4 @ 0x183017c0] Error at MB: 84
+  [5/40] 1024_IriunWebcam_after: 5397 kare, yüz %100  (141 s)
+[mpeg4 @ 0x183eb9c0] ac-tex damaged at 8 7
+[mpeg4 @ 0x183eb9c0] Error at MB: 295
+  [6/40] 1024_USBVideo_after: 5369 kare, yüz %6  (154 s)
+[mpeg4 @ 0x182ada00] ac-tex damaged at 34 7
+[mpeg4 @ 0x182ada00] Error at MB: 321
+  [7/40] 1024_IriunWebcam_before: 5355 kare, yüz %100  (211 s)
+[mpeg4 @ 0x18580c80] ac-tex damaged at 24 11
+[mpeg4 @ 0x18580c80] Error at MB: 475
+  [8/40] 1024_USBVideo_before: 5375 kare, yüz %19  (226 s)
+[mpeg4 @ 0x183008c0] illegal dc vlc
+[mpeg4 @ 0x183008c0] Error at MB: 825
+  [9/40] 1035_USBVideo_after: 5376 kare, yüz %45  (261 s)
+[mpeg4 @ 0x18415380] Error at MB: 105
+  [10/40] 1035_IriunWebcam_after: 5349 kare, yüz %100  (264 s)
+[mpeg4 @ 0x18415380] ac-tex damaged at 27 2
+[mpeg4 @ 0x18415380] Error at MB: 109
+  [11/40] 1035_IriunWebcam_before: 5400 kare, yüz %100  (300 s)
+[mpeg4 @ 0x183990c0] ac-tex damaged at 27 2
+[mpeg4 @ 0x183990c0] Error at MB: 109
+  [12/40] 1035_USBVideo_before: 5387 kare, yüz %4  (306 s)
+[mpeg4 @ 0x182ada00] ac-tex damaged at 6 24
+[mpeg4 @ 0x182ada00] Error at MB: 990
+  [13/40] 1091_IriunWebcam_after: 5395 kare, yüz %100  (353 s)
+[mpeg4 @ 0x18415380] ac-tex damaged at 11 25
+[mpeg4 @ 0x18415380] Error at MB: 1036
+  [14/40] 1091_USBVideo_after: 5364 kare, yüz %100  (357 s)
+[mpeg4 @ 0x18335700] ac-tex damaged at 14 14
+[mpeg4 @ 0x18335700] Error at MB: 588
+  [15/40] 1091_IriunWebcam_before: 5393 kare, yüz %100  (404 s)
+[mpeg4 @ 0x1834dd00] ac-tex damaged at 24 11
+[mpeg4 @ 0x1834dd00] Error at MB: 475
+  [16/40] 1091_USBVideo_before: 5391 kare, yüz %100  (413 s)
+[mpeg4 @ 0x184e1040] ac-tex damaged at 7 14
+[mpeg4 @ 0x184e1040] Error at MB: 581
+  [17/40] 1097_USBVideo_after: 5385 kare, yüz %47  (450 s)
+[mpeg4 @ 0x18557100] ac-tex damaged at 30 2
+[mpeg4 @ 0x18557100] Error at MB: 112
+  [18/40] 1097_IriunWebcam_after: 5391 kare, yüz %98  (452 s)
+[mpeg4 @ 0x183efd00] ac-tex damaged at 30 3
+[mpeg4 @ 0x183efd00] Error at MB: 153
+  [19/40] 1097_IriunWebcam_before: 5343 kare, yüz %99  (507 s)
+[mpeg4 @ 0x18d3b880] 2. marker bit missing in 3. esc
+[mpeg4 @ 0x18d3b880] Error at MB: 111
+  [20/40] 1097_USBVideo_before: 5379 kare, yüz %2  (535 s)
+[mpeg4 @ 0x1835f580] ac-tex damaged at 3 2
+[mpeg4 @ 0x1835f580] Error at MB: 85
+  [21/40] 1099_USBVideo_after: 5365 kare, yüz %100  (551 s)
+[mpeg4 @ 0x18333580] ac-tex damaged at 29 2
+[mpeg4 @ 0x18333580] Error at MB: 111
+  [22/40] 1099_IriunWebcam_after: 5352 kare, yüz %100  (574 s)
+[mpeg4 @ 0x1835f580] Error at MB: 708
+  [23/40] 1099_USBVideo_before: 5351 kare, yüz %100  (596 s)
+[mpeg4 @ 0x182fc740] mcbpc damaged at 32 5
+[mpeg4 @ 0x182fc740] Error at MB: 237
+  [24/40] 1099_IriunWebcam_before: 5334 kare, yüz %100  (619 s)
+[mpeg4 @ 0x1835f580] illegal dc vlc
+[mpeg4 @ 0x1835f580] Error at MB: 407
+  [25/40] 1107_USBVideo_after: 5381 kare, yüz %47  (652 s)
+[mpeg4 @ 0x186c9a40] 2. marker bit missing in 3. esc
+[mpeg4 @ 0x186c9a40] Error at MB: 150
+  [26/40] 1107_IriunWebcam_after: 5398 kare, yüz %100  (671 s)
+  [27/40] 1107_USBVideo_before: 5399 kare, yüz %90  (711 s)
+[mpeg4 @ 0x183d9600] ac-tex damaged at 25 1
+[mpeg4 @ 0x183d9600] Error at MB: 66
+  [28/40] 1107_IriunWebcam_before: 5385 kare, yüz %100  (720 s)
+  [29/40] 1113_IriunWebcam_after: 5383 kare, yüz %100  (784 s)
+  [30/40] 1113_USBVideo_after: 5387 kare, yüz %0  (809 s)
+[mpeg4 @ 0x183d9600] ac-tex damaged at 31 7
+[mpeg4 @ 0x183d9600] Error at MB: 318
+  [31/40] 1113_USBVideo_before: 5389 kare, yüz %6  (867 s)
+[mpeg4 @ 0x1857d440] ac-tex damaged at 30 15
+[mpeg4 @ 0x1857d440] Error at MB: 645
+  [32/40] 1113_IriunWebcam_before: 5340 kare, yüz %100  (869 s)
+[mpeg4 @ 0x188c9200] ac-tex damaged at 2 29
+[mpeg4 @ 0x188c9200] Error at MB: 1191
+  [33/40] 1115_IriunWebcam_after: 5387 kare, yüz %99  (904 s)
+[mpeg4 @ 0x1835f580] ac-tex damaged at 23 2
+[mpeg4 @ 0x1835f580] Error at MB: 105
+  [34/40] 1115_USBVideo_after: 5389 kare, yüz %30  (912 s)
+[mpeg4 @ 0x183b4440] Error at MB: 528
+  [35/40] 1115_IriunWebcam_before: 5334 kare, yüz %44  (963 s)
+[mpeg4 @ 0x1832a640] ac-tex damaged at 30 3
+[mpeg4 @ 0x1832a640] Error at MB: 153
+  [36/40] 1115_USBVideo_before: 5380 kare, yüz %3  (980 s)
+[mpeg4 @ 0x18333580] ac-tex damaged at 24 2
+[mpeg4 @ 0x18333580] Error at MB: 106
+  [37/40] 1149_USBVideo_after: 5363 kare, yüz %91  (1010 s)
+[mpeg4 @ 0x182fc740] ac-tex damaged at 18 27
+[mpeg4 @ 0x182fc740] Error at MB: 1125
+  [38/40] 1149_IriunWebcam_after: 5311 kare, yüz %96  (1020 s)
+[mpeg4 @ 0x183017c0] ac-tex damaged at 24 2
+[mpeg4 @ 0x183017c0] Error at MB: 106
+  [39/40] 1149_USBVideo_before: 5398 kare, yüz %97  (1058 s)
+[mpeg4 @ 0x182ada00] ac-tex damaged at 15 16
+[mpeg4 @ 0x182ada00] Error at MB: 671
+  [40/40] 1149_IriunWebcam_before: 5367 kare, yüz %92  (1060 s)
+UBFC: 34 denek (test dışı)
+  [1/34] subject12: 1988 kare, yüz %100  (32 s)
+  [2/34] subject13: 2017 kare, yüz %100  (65 s)
+  [3/34] subject14: 1993 kare, yüz %97  (96 s)
+  [4/34] subject15: 2019 kare, yüz %100  (129 s)
+  [5/34] subject16: 2049 kare, yüz %100  (160 s)
+  [6/34] subject17: 2046 kare, yüz %100  (190 s)
+  [7/34] subject18: 2033 kare, yüz %100  (222 s)
+  [8/34] subject20: 2016 kare, yüz %100  (254 s)
+  [9/34] subject22: 2031 kare, yüz %100  (283 s)
+  [10/34] subject23: 1957 kare, yüz %100  (314 s)
+  [11/34] subject24: 2009 kare, yüz %100  (350 s)
+  [12/34] subject25: 1447 kare, yüz %100  (374 s)
+  [13/34] subject26: 1484 kare, yüz %100  (401 s)
+  [14/34] subject27: 1430 kare, yüz %100  (425 s)
+  [15/34] subject30: 2027 kare, yüz %100  (454 s)
+  [16/34] subject31: 2026 kare, yüz %100  (484 s)
+  [17/34] subject32: 2032 kare, yüz %100  (524 s)
+  [18/34] subject33: 1998 kare, yüz %100  (563 s)
+  [19/34] subject34: 2034 kare, yüz %100  (594 s)
+  [20/34] subject35: 2050 kare, yüz %100  (628 s)
+  [21/34] subject36: 2051 kare, yüz %100  (654 s)
+  [22/34] subject37: 2031 kare, yüz %100  (682 s)
+  [23/34] subject38: 2049 kare, yüz %100  (718 s)
+  [24/34] subject39: 2036 kare, yüz %100  (747 s)
+  [25/34] subject40: 2027 kare, yüz %100  (777 s)
+  [26/34] subject41: 2036 kare, yüz %100  (807 s)
+  [27/34] subject42: 2041 kare, yüz %100  (839 s)
+  [28/34] subject43: 2009 kare, yüz %100  (871 s)
+  [29/34] subject44: 2016 kare, yüz %100  (899 s)
+  [30/34] subject45: 2031 kare, yüz %100  (943 s)
+  [31/34] subject46: 1990 kare, yüz %99  (970 s)
+  [32/34] subject47: 2023 kare, yüz %100  (1000 s)
+  [33/34] subject48: 1956 kare, yüz %100  (1027 s)
+  [34/34] subject49: 2033 kare, yüz %100  (1057 s)
+PURE: 60 oturum
+  [1/60] 01-01: 2032 kare, yüz %100  (42 s)
+  [2/60] 01-02: 2029 kare, yüz %100  (82 s)
+  [3/60] 01-03: 2482 kare, yüz %100  (133 s)
+  [4/60] 01-04: 2492 kare, yüz %100  (182 s)
+  [5/60] 01-05: 2028 kare, yüz %100  (224 s)
+  [6/60] 01-06: 2040 kare, yüz %100  (270 s)
+  [7/60] 02-01: 2039 kare, yüz %100  (310 s)
+  [8/60] 02-02: 1974 kare, yüz %100  (350 s)
+  [9/60] 02-03: 2187 kare, yüz %100  (396 s)
+  [10/60] 02-04: 2224 kare, yüz %100  (440 s)
+  [11/60] 02-05: 1920 kare, yüz %100  (479 s)
+  [12/60] 02-06: 1943 kare, yüz %100  (518 s)
+  [13/60] 03-01: 1974 kare, yüz %100  (556 s)
+  [14/60] 03-02: 2019 kare, yüz %100  (596 s)
+  [15/60] 03-03: 2208 kare, yüz %100  (642 s)
+  [16/60] 03-04: 2251 kare, yüz %100  (684 s)
+  [17/60] 03-05: 1938 kare, yüz %100  (721 s)
+  [18/60] 03-06: 1953 kare, yüz %100  (763 s)
+  [19/60] 04-01: 1968 kare, yüz %100  (802 s)
+  [20/60] 04-02: 2026 kare, yüz %100  (846 s)
+  [21/60] 04-03: 2269 kare, yüz %100  (893 s)
+  [22/60] 04-04: 2281 kare, yüz %100  (939 s)
+  [23/60] 04-05: 1950 kare, yüz %100  (980 s)
+  [24/60] 04-06: 1968 kare, yüz %100  (1021 s)
+  [25/60] 05-01: 1986 kare, yüz %100  (1059 s)
+  [26/60] 05-02: 2006 kare, yüz %100  (1097 s)
+  [27/60] 05-03: 2281 kare, yüz %74  (1140 s)
+  [28/60] 05-04: 2315 kare, yüz %44  (1181 s)
+  [29/60] 05-05: 1964 kare, yüz %100  (1216 s)
+  [30/60] 05-06: 1971 kare, yüz %83  (1252 s)
+  [31/60] 06-01: 1976 kare, yüz %100  (1290 s)
+  [32/60] 06-03: 2269 kare, yüz %100  (1332 s)
+  [33/60] 06-04: 2278 kare, yüz %100  (1374 s)
+  [34/60] 06-05: 1959 kare, yüz %100  (1412 s)
+  [35/60] 06-06: 1969 kare, yüz %100  (1450 s)
+  [36/60] 07-01: 1962 kare, yüz %100  (1489 s)
+  [37/60] 07-02: 2108 kare, yüz %100  (1531 s)
+  [38/60] 07-03: 2257 kare, yüz %100  (1574 s)
+  [39/60] 07-04: 2280 kare, yüz %100  (1617 s)
+  [40/60] 07-05: 1942 kare, yüz %100  (1657 s)
+  [41/60] 07-06: 1960 kare, yüz %100  (1696 s)
+  [42/60] 08-01: 1963 kare, yüz %100  (1733 s)
+  [43/60] 08-02: 1980 kare, yüz %100  (1772 s)
+  [44/60] 08-03: 2265 kare, yüz %100  (1814 s)
+  [45/60] 08-04: 2297 kare, yüz %100  (1858 s)
+  [46/60] 08-05: 1953 kare, yüz %100  (1897 s)
+  [47/60] 08-06: 1964 kare, yüz %100  (1936 s)
+  [48/60] 09-01: 1964 kare, yüz %100  (1973 s)
+  [49/60] 09-02: 2017 kare, yüz %100  (2011 s)
+  [50/60] 09-03: 2285 kare, yüz %100  (2052 s)
+  [51/60] 09-04: 2579 kare, yüz %100  (2101 s)
+  [52/60] 09-05: 1962 kare, yüz %100  (2140 s)
+  [53/60] 09-06: 1983 kare, yüz %100  (2177 s)
+  [54/60] 10-01: 1956 kare, yüz %100  (2218 s)
+  [55/60] 10-02: 1993 kare, yüz %100  (2260 s)
+  [56/60] 10-03: 2303 kare, yüz %100  (2308 s)
+  [57/60] 10-04: 2338 kare, yüz %100  (2353 s)
+  [58/60] 10-05: 1959 kare, yüz %100  (2394 s)
+  [59/60] 10-06: 1951 kare, yüz %100  (2438 s)
+  [60/60] HATA: StopIteration()
+1 video başarısız; tekrar çalıştırın (tamamlananlar atlanır)

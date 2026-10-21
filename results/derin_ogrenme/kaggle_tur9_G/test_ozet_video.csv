@@ -1,0 +1,10 @@
+yöntem,video_MAE,video_RMSE,n
+MMRPhys 7E'den + yeni teknikler (9. tur),0.5,1.46,28
+3. tur (uygulamadaki),0.62,1.62,28
+5. tur,0.62,1.62,28
+7. tur B (MMRPhys sıfırdan),0.67,1.75,28
+7. tur E son epoch (başlangıç),0.67,1.75,28
+9. tur G en iyi epoch,0.67,1.75,28
+FactorizePhys PURE (hazır),1.39,3.6,28
+POS (yüz kırpıntısı),4.94,12.23,28
+POS klasik (ortalama+argmax),,,0

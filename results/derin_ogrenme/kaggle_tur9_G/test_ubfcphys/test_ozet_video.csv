@@ -1,0 +1,9 @@
+yöntem,video_MAE,video_RMSE,n
+FactorizePhys PURE (hazır),13.1,19.21,23
+POS (yüz kırpıntısı),13.26,19.82,23
+7. tur E son epoch (başlangıç),13.93,23.56,23
+5. tur,16.08,28.5,23
+3. tur (uygulamadaki),16.14,28.47,23
+MMRPhys 7E'den + yeni teknikler (9. tur),16.29,28.22,23
+9. tur G en iyi epoch,16.58,28.2,23
+7. tur B (MMRPhys sıfırdan),16.61,28.54,23
