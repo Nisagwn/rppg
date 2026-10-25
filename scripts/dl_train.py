@@ -48,6 +48,8 @@ def _video_entry(p, min_face):
     m = np.load(p)
     if float(m["face_rate"]) < min_face or int(m["n"]) < CHUNK * 2:
         return None
+    if "label" in m.files and str(m["label"]) == "sabit_nabiz":   # import_own.py: dalga zamanlaması yok, yalnızca test
+        return None
     b = m["bvp"]  # bozuk referans: NaN ya da düz (sensör kayıt almamış, ör. MCD 4952) -> kayıp patlar
     if not np.all(np.isfinite(b)) or (np.lib.stride_tricks.sliding_window_view(b, CHUNK)[::40].std(1) < 1e-6).mean() > 0.2:
         return None
@@ -439,6 +441,9 @@ def main():
                                                                         "mmrphys smoothl1 (makaledeki gibi)")
     ap.add_argument("--spec-loss", type=float, default=0.0, metavar="W",
                     help="kayıp = negatif Pearson + W * spektral KL (ör. 0.2; harmonik hatasında KL ~14 olabilir); 0: kapalı (eski davranış)")
+    ap.add_argument("--seed", type=int, default=0,
+                    help="tekrar (makale için 3 tohum): 0 = önceki turlar gibi (sabitlenmemiş başlangıç); >0: torch tohumu ve "
+                         "parça sırası buna göre")
     ap.add_argument("--ema", type=float, default=0.0, metavar="D",
                     help="ağırlıkların üstel hareketli ortalaması (ör. 0.999); doğrulama ve best.pth EMA ağırlıklarıyla. "
                          "0: kapalı")
@@ -453,6 +458,9 @@ def main():
                     help="nabız aralığına göre dengeli örnekleme: seyrek nabızlı (ör. egzersiz sonrası 120+) videolar "
                          "en fazla K kat sık seçilir (ör. 3); 0: kapalı")
     a = ap.parse_args()
+    if a.seed:
+        torch.manual_seed(a.seed)
+        np.random.seed(a.seed)
     global CLEAN, PHONE_AUG, SOURCE_WEIGHTS, VAL_VITERBI, SPEED, MAX_SPAN, HR_BALANCE, BOX_JITTER
     CLEAN = not a.no_clean
     PHONE_AUG = a.phone_aug
@@ -562,7 +570,7 @@ def main():
         remeasure_best(state, val)
         model.train()
         losses = []
-        pf = Prefetcher(sampler, a.bs, seed=100000 * state["epoch"] + 1234)
+        pf = Prefetcher(sampler, a.bs, seed=100000 * state["epoch"] + 1234 + 10 ** 8 * a.seed)
         for step in range(a.steps):
             x, y, prm = pf.next()
             x = gpu_augment(x, prm, device)

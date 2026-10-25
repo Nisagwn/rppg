@@ -1,0 +1,13 @@
+yöntem,küme,n,haar,app,p,haar_video,app_video,p_video
+5. tur+Viterbi,hepsi,48,1.315,1.471,0.673,0.681,0.897,0.351
+5. tur+Viterbi,FullHDwebcam,20,0.858,0.991,0.231,0.648,0.64,0.09
+5. tur+Viterbi,IriunWebcam,19,1.585,2.144,0.182,0.865,1.466,0.984
+5. tur+Viterbi,USBVideo,9,1.76,1.117,0.203,0.367,0.264,0.82
+FactorizePhys PURE (hazır)+Viterbi,hepsi,48,5.623,4.371,0.012,5.077,3.598,0.33
+FactorizePhys PURE (hazır)+Viterbi,FullHDwebcam,20,3.035,1.907,0.133,1.908,1.005,0.475
+FactorizePhys PURE (hazır)+Viterbi,IriunWebcam,19,7.589,5.779,0.123,5.881,4.238,0.623
+FactorizePhys PURE (hazır)+Viterbi,USBVideo,9,7.224,6.875,0.496,10.424,8.009,0.734
+POS (yüz kırpıntısı)+Viterbi,hepsi,48,11.587,10.046,0.006,15.445,12.247,0.255
+POS (yüz kırpıntısı)+Viterbi,FullHDwebcam,20,5.926,3.737,0.024,6.87,4.237,0.349
+POS (yüz kırpıntısı)+Viterbi,IriunWebcam,19,16.502,14.233,0.009,20.295,12.607,0.066
+POS (yüz kırpıntısı)+Viterbi,USBVideo,9,13.791,15.227,0.652,24.262,29.286,0.164

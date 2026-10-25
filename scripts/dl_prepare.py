@@ -37,6 +37,7 @@ SIZE = 72
 DET_FREQ = 30
 BOX_COEF = 1.5
 HAAR = os.path.join(cv2.data.haarcascades, "haarcascade_frontalface_default.xml")
+YUNET = os.path.join(os.path.dirname(__file__), "..", "mobile", "vendor", "yunet", "face_detection_yunet_2026may.onnx")
 MCD_HF = "https://huggingface.co/datasets/akramic/mcd_rppg/resolve/main/"
 UBFC_HF = "https://huggingface.co/datasets/thachha901/UBFC/resolve/main/UBFC/"
 UBFC_TEST = {"subject1", "subject3", "subject4", "subject5", "subject8", "subject9", "subject10", "subject11"}
@@ -95,9 +96,85 @@ def crop_video(path, max_frames=None, det_scale=1, decoder="cv2"):
     return crop_frames(frames, max_frames, det_scale, path)
 
 
+class AppCropper:
+    """Telefon uygulamasının (mobile/app.js) model kırpıntısının Python eşi: eğitim verisini uygulamanın göreceği
+    kutuyla hazırlamak için (--detector app). Kare 480 px'e (WORK_MAX), YuNet girdisi 256 px'e küçültülür; 4 karede
+    bir tespit, YuNet kutusu pico'ya eşdeğer kareye çevrilir (face_decode.js YUNET_TO_PICO), 0.3 ile yumuşatılır;
+    model kutusu = yüz kutusu x1.5 (merkezli kare), ~1 s sabit tutulur, yüz %20'den çok kayarsa hemen güncellenir.
+    Uygulamada önden yüzlerde pico çalışır; eşleme pico'ya göre öğrenildiği için kutular eşdeğerdir."""
+    WORK, FACE_IN, EVERY, THR, LOST, HOLD, MOVE = 480, 256, 4, 0.6, 1.5, 1.0, 0.2
+    MAP = (-0.024, -0.051, 1.114)
+
+    def __init__(self):
+        self.det, self.bbox, self.last, self.box, self.box_t, self.i = None, None, -1e9, None, -1e9, 0
+
+    def detect(self, rgb):
+        H0, W0 = rgb.shape[:2]
+        s = self.WORK / max(W0, H0)
+        W, H = round(W0 * s), round(H0 * s)
+        sc = max(W, H) / self.FACE_IN
+        w, h = round(W / sc), round(H / sc)
+        small = cv2.resize(cv2.resize(rgb, (W, H), interpolation=cv2.INTER_AREA), (w, h), interpolation=cv2.INTER_AREA)
+        if self.det is None:
+            self.det = cv2.FaceDetectorYN.create(YUNET, "", (w, h), 0.5, 0.3, 5000)
+        self.det.setInputSize((w, h))
+        _, faces = self.det.detect(cv2.cvtColor(small, cv2.COLOR_RGB2BGR))
+        if faces is None or not len(faces) or faces[:, -1].max() < self.THR:
+            return None
+        x, y, fw, fh = faces[np.argmax(faces[:, -1]), :4] * (W0 / w)      # tam çözünürlüğe
+        dx, dy, k = self.MAP
+        size = k * np.sqrt(fw * fh)
+        return {"cx": x + fw / 2 + dx * fw, "cy": y + fh / 2 + dy * fh, "s": size}
+
+    def __call__(self, rgb, t):
+        """Kare (RGB) ve zamanı (s) -> (x0, y0, x1, y1) model kutusu ya da None (yüz yok); tespit yapıldıysa ikinci değer."""
+        tried = found = False
+        if self.i % self.EVERY == 0:
+            tried, f = True, self.detect(rgb)
+            if f is not None:
+                found = True
+                a = 0.3 if self.bbox else 1.0
+                self.bbox = f if self.bbox is None else {k: self.bbox[k] + a * (f[k] - self.bbox[k]) for k in f}
+                self.last = t
+        self.i += 1
+        if self.bbox is not None and t - self.last > self.LOST:
+            self.bbox = None
+        if self.bbox is None:
+            return None, (tried, found)
+        cur = {"s": self.bbox["s"] * BOX_COEF, "cx": self.bbox["cx"], "cy": self.bbox["cy"]}
+        B = self.box
+        if (B is None or t - self.box_t >= self.HOLD or np.hypot(cur["cx"] - B["cx"], cur["cy"] - B["cy"]) > self.MOVE * B["s"]
+                or abs(cur["s"] / B["s"] - 1) > self.MOVE):
+            self.box, self.box_t = cur, t
+        s, cx, cy = self.box["s"], self.box["cx"], self.box["cy"]
+        H0, W0 = rgb.shape[:2]
+        return (max(0, int(round(cx - s / 2))), max(0, int(round(cy - s / 2))),
+                min(W0, int(round(cx + s / 2))), min(H0, int(round(cy + s / 2)))), (tried, found)
+
+
+def crop_frames_app(frames_bgr, max_frames=None, name=""):
+    """crop_frames'in uygulama kutusuyla olanı. Yüz kaybolunca (uygulamada o kareler atlanır) son kutu kullanılır."""
+    app, out, last, n_det, n_found = AppCropper(), [], None, 0, 0
+    for i, bgr in enumerate(frames_bgr):
+        if max_frames and i >= max_frames:
+            break
+        rgb = cv2.cvtColor(bgr, cv2.COLOR_BGR2RGB)
+        box, (tried, found) = app(rgb, i / FS)
+        n_det, n_found = n_det + tried, n_found + found
+        box = box or last
+        last = box
+        crop = rgb if box is None or box[2] - box[0] < 8 or box[3] - box[1] < 8 else rgb[box[1]:box[3], box[0]:box[2]]
+        out.append(cv2.resize(crop, (SIZE, SIZE), interpolation=cv2.INTER_AREA))
+    if not out:
+        raise RuntimeError(f"video okunamadı: {name}")
+    return np.stack(out), n_found / max(n_det, 1)
+
+
 def crop_frames(frames_bgr, max_frames=None, det_scale=1, name=""):
     """Kareler (BGR) -> 72x72 RGB yüz kırpıntısı (uint8) ve yüz bulunma oranı.
     Toolbox'tan tek fark: yüz bulunamazsa tüm kare yerine son bulunan kutu kullanılır."""
+    if os.environ.get("RPPG_DETECTOR") == "app":   # --detector app (alt süreçlere ortam değişkeniyle geçer)
+        return crop_frames_app(frames_bgr, max_frames, name)
     det = cv2.CascadeClassifier(HAAR)
     out, box, n_det, n_found, i = [], None, 0, 0, 0
     for bgr in frames_bgr:
@@ -405,18 +482,18 @@ def job_pure(session, raw_root, out_root, keep_raw):
     return session, f"{n} kare, yüz %{100 * rate:.0f}"
 
 
-def job_test(kind, args, out_root):
+def job_test(kind, args, out_root, sub="test"):
     if kind == "ubfc":
         sdir = args
         name = os.path.basename(sdir)
-        dst = os.path.join(out_root, "test", f"ubfc_{name}.npz")
+        dst = os.path.join(out_root, sub, f"ubfc_{name}.npz")
         if os.path.exists(dst):
             return name, "var"
         n, rate = process_ubfc(sdir, dst, person=name, camera="C920", step="ubfc", source="ubfc")
     else:
         row, root = args
         name = os.path.splitext(os.path.basename(row["video"]))[0]
-        dst = os.path.join(out_root, "test", f"mcd_{name}.npz")
+        dst = os.path.join(out_root, sub, f"mcd_{name}.npz")
         if os.path.exists(dst):
             return name, "var"
         n, rate = process_mcd(os.path.join(root, row["video"]), os.path.join(root, row["meta"]),
@@ -814,16 +891,19 @@ def main():
     ap.add_argument("--workers", type=int, default=4)
     ap.add_argument("--keep-raw", action="store_true")
     ap.add_argument("--max-sec", type=float, default=120, help="eğitim videosundan saklanacak süre (disk için)")
+    ap.add_argument("--detector", choices=["haar", "app"], default="haar",
+                    help="yüz kutusu: haar (rPPG-Toolbox, şimdiye kadarki bütün eğitimler) ya da app (telefon uygulamasının YuNet/pico kutusu, bkz. AppCropper)")
     a = ap.parse_args()
+    os.environ["RPPG_DETECTOR"] = a.detector   # alt süreçler (spawn) ortamı devralır
     failed = 0
 
     if a.test:
         from rppg.io_utils import find_ubfc_subjects
-        jobs = [(job_test, ("ubfc", s, a.out)) for s in find_ubfc_subjects("data/UBFC")
+        jobs = [(job_test, ("ubfc", s, a.out, a.test_sub)) for s in find_ubfc_subjects("data/UBFC")
                 if os.path.basename(s) in UBFC_TEST]
         db = pd.read_csv("data/MCD/db.csv")
-        db = db[db.patient_id.isin(MCD_TEST) & (db.camera == "FullHDwebcam")]
-        jobs += [(job_test, ("mcd", (r._asdict(), "data/MCD"), a.out)) for r in db.itertuples()
+        db = db[db.patient_id.isin(MCD_TEST) & db.camera.isin(a.test_cameras.split(","))]
+        jobs += [(job_test, ("mcd", (r._asdict(), "data/MCD"), a.out, a.test_sub)) for r in db.itertuples()
                  if os.path.exists(os.path.join("data/MCD", r.video))]
         print(f"Test kümesi: {len(jobs)} video")
         failed = run(jobs, a.workers)

@@ -1,0 +1,4 @@
+kamera,kare,dx_medyan,dy_medyan,boyut_medyan,boyut_p10,boyut_p90,iou_medyan,iou_p10
+FullHDwebcam,1798,-0.002,-0.012,1.014,0.931,1.165,0.891,0.692
+IriunWebcam,1384,-0.078,-0.009,1.058,0.954,1.193,0.778,0.643
+USBVideo,988,0.037,-0.017,1.068,0.826,1.457,0.802,0.214

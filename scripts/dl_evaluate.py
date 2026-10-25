@@ -38,6 +38,8 @@ def group_of(meta):
         return "COHFACE"
     if src == "dlcn":
         return "DLCN gece " + str(meta["step"]).split("_")[0]
+    if src == "own":  # uygulamanın veri kaydı (scripts/import_own.py)
+        return "Kendi kayıt (" + {"telefon_on": "ön kamera", "telefon_arka": "arka kamera"}.get(str(meta["camera"]), "telefon") + ")"
     if src == "ubfcphys":  # T1 dinlenme, T2 konuşma, T3 aritmetik (bilek sensörü)
         return "UBFC-Phys " + {"T1": "dinlenme", "T2": "konuşma", "T3": "aritmetik"}.get(str(meta["step"]), str(meta["step"]))
     g = "MCD dinlenme" if str(meta["step"]) == "before" else "MCD egzersiz"

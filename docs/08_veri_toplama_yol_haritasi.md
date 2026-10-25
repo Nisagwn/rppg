@@ -88,7 +88,7 @@ A türü (uygulama) için 1, 2, 4 ve 8 numaralı koşullar yeterlidir (~8 dakika
 | Araç | Ne yapar |
 |---|---|
 | `scripts/oximeter_record.py` | Oksimetreden USB ile 60 Hz dalga + nabız + SpO2 okur, bilgisayar saatiyle kaydeder; senkron için ekranı yakıp söndürür |
-| `scripts/import_own.py` | Telefon videosu + oksimetre kaydını senkron işaretinden hizalar, `dl_prepare` biçimine (72×72 kırpıntı `.npy` + etiket `.npz`) çevirir; `kendi/` ve `test_kendi/` |
+| `scripts/import_own.py` (**yazıldı**) | Uygulamanın "Veri kaydı (60 s)" dosyasını (`.rppgrec`: modelin gördüğü 72×72 kırpıntılar, kutular, zaman damgaları, oksimetre değeri) `dl_prepare` biçimine çevirir. Oksimetre dalga kaydı (`--ppg`) verilirse eğitimde kullanılır; yalnızca tek değer girildiyse etiket o nabızda sinüs olur ve dosya yalnızca **test** içindir (`dl_train` bunları atlar) |
 | `scripts/eval_app_csv.py` | Uygulamanın CSV'sini oksimetre kaydıyla karşılaştırır: MAE, ≤5 BPM %, ortalama yüzde hata (tüketici standardı %10), Bland–Altman |
 | Uygulamaya "çalışma modu" | Katılımcı kodu ve koşul seçilir; CSV'ye eklenir (video kaydetmez) |
 

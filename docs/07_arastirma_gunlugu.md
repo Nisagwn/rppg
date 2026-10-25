@@ -235,6 +235,80 @@ model kullanıldı.
 
 ---
 
+### 3.17 Solunum hızı model dalgasından tahmin edilemedi (olumsuz sonuç, uygulamaya eklenmedi)
+
+`scripts/resp_experiment.py`, `results/solunum/`. MCD-rPPG'nin klinik solunum sayımı (`db.csv` "respiratory",
+kayıt başına tek değer, 16–22 nefes/dk) 48 test videosunda (10 kişi × önden/telefon/USB × dinlenme/egzersiz) 5. tur
+model dalgasından üç klasik modülasyonla (Karlen vd. 2013) ve kırpıntının yeşil kanalından tahmin edildi:
+
+| Yöntem | MAE (nefes/dk) | ±3 içinde | r |
+|---|---|---|---|
+| RIIV (taban çizgisi) | 5.43 | %38 | 0.07 |
+| RIAV (genlik) | 7.00 | %15 | −0.06 |
+| RIFV (atım aralığı) | 8.04 | %17 | −0.10 |
+| füzyon (medyan) | 6.56 | %19 | 0.04 |
+| yeşil kanal (kırpıntı) | 9.13 | %6 | 0.13 |
+| **herkese sabit 18** | **0.88** | **%96** | — |
+
+Hiçbir yöntem sabit tahmini geçemedi, korelasyonlar sıfıra yakın. **Yorum:** (1) model nabız dalgasını üretmeye
+eğitildiği için (Pearson kaybı, 0.7–3 Hz) solunum bileşenleri büyük ölçüde bastırılmış olabilir; (2) referans
+kayıt sırasında senkron bir solunum sinyali değil, tek bir klinik sayım ve aralığı çok dar (sabit tahmin bu yüzden
+güçlü). Doğrulanamayan bir sayı kullanıcıya gösterilmemeli: solunum uygulamaya eklenmedi. Kesin hüküm için senkron
+solunum sinyali gerekir: COHFACE'in HDF5 dosyalarında göğüs kemeri solunum sinyali var (zaten eğitim verisinde
+kullanılan veri seti); bir sonraki adım bu sinyalle hem bu yöntemleri hem MMRPhys'in solunum çıkışını denemek.
+
+### 3.18 Uygulamanın yüz kutusu (YuNet/pico) modelin hatasını anlamlı artırmıyor
+
+Soru: uygulamadaki hatanın (3.9, 3.12) kaynağı, modelin eğitimde gördüğü Haar kutusuyla telefonda gördüğü kutunun
+farkı mı? `dl_prepare.py --detector app` (`AppCropper`: `mobile/app.js`'in birebir Python eşi; 480 px çalışma
+karesi, 256 px YuNet, 4 karede bir tespit, YuNet→pico eşlemesi, 0.3 yumuşatma, x1.5 kare kutu, 1 s sabit tutma) ile
+60 MCD test videosu (10 kişi × 3 kamera × 2 durum) uygulama kutusuyla yeniden hazırlandı (`data/dl/test_app`), aynı
+videoların Haar kırpıntılarıyla karşılaştırıldı. `results/kirpma_farki/`.
+
+**Geometri** (`scripts/crop_compare.py`, 60 karede bir, Haar kutusuna göre): önden webcam'de kutular neredeyse aynı
+(merkez farkı %0/−%1, boyut 1.01, IoU medyan 0.89); telefonda yatay −%8 kayma, boyut 1.06, IoU 0.78; USB (yan) IoU
+medyan 0.80 ama p10 0.21 (Haar yan yüzde yanlış/eksik buluyor).
+
+**Model hatası** (pencere MAE, Viterbi; video başına eşleştirilmiş Wilcoxon, 48 eşleşen video):
+
+| Yöntem | Haar | Uygulama kutusu | p |
+|---|---|---|---|
+| 5. tur (uygulamadaki model) | 1.32 | 1.47 | 0.67 |
+| — önden / telefon / USB | 0.86 / 1.59 / 1.76 | 0.99 / 2.14 / 1.12 | 0.23 / 0.18 / 0.20 |
+| FactorizePhys PURE (hazır) | 5.62 | **4.37** | **0.012** |
+| POS (kırpıntı ortası) | 11.59 | **10.05** | **0.006** |
+
+**Yorum:** (1) Kutu farkı 5. turun hatasını anlamlı artırmıyor (video düzeyinde de: 0.68 → 0.90, p=0.35); uygulama ile
+çevrimdışı arasındaki fark başka yerden geliyor: canlı kameradaki kare düşmeleri ve zamanlama, yavaş telefonda
+model pencerelerinin atlanması (3.14; v15–v17'de çok iş parçacığı ve hızlı ölçümle ele alındı). (2) Eğitimden bağımsız
+yöntemler (hazır model, POS) uygulama kutusunda anlamlı daha iyi: YuNet kutusu daha iyi bir kırpıntı. 5. turun buna
+rağmen kazanmaması, Haar kutusuna uyum sağladığını düşündürüyor. (3) Kapsam: Haar yan kamerada 20 videonun 11'inde
+yüzü yarıdan az karede buldu (test dışı kaldı); uygulama kutusu 20'sinin hepsinde. Haar'la hazırlanan eğitim
+verisi de aynı nedenle yan açılı videoları kaybediyor. **Sonuç:** uygulama kutusuyla yeniden eğitim olası ama küçük
+bir kazanç (yan açı kapsamı, daha iyi kırpıntı) için uzun bir CPU hazırlığı + GPU turu ister; öncelik kendi telefon
+verisinde (3.19).
+
+### 3.19 Uygulama v18: veri kaydı, WebGPU seçimi, yönlendirme, geçmiş
+
+- **Veri kaydı (60 s):** hızlı ölçümün 60 s'lik hâli; modelin gördüğü 72×72 kırpıntılar, kutular, zaman damgaları ve
+  kullanıcının girdiği oksimetre değeri tek dosyada (`.rppgrec`, 60 s ≈ 25 MB). `scripts/import_own.py` 30 fps
+  `dl_prepare` biçimine çevirir. Tek oksimetre değeriyle dalganın zamanlaması bilinmediğinden (Pearson kaybı fazı
+  ister) bu kayıtlar **telefon test kümesi** olur (`label=sabit_nabiz`, `dl_train` atlar); oksimetre dalga kaydı
+  (`--ppg`) ile eğitime girer. Uçtan uca denendi (sahte kamera, 61 s'de 1610 kare, 26 fps; içe aktarma, test:
+  `tests/test_own_data.py`). Kendi verinin uygulamanın tam girdisiyle toplanması 3.18'deki kutu sorununu da kendiliğinden
+  ortadan kaldırır.
+- **WebGPU:** onnxruntime-web 1.30.0 WebGPU paketi; FactorizePhys'in bütün katmanları destekleniyor, çıktı wasm ile aynı
+  (aynı gürültülü girdide korelasyon 0.99999999, en büyük fark 0.0006; `mobile/test/webgpu_check.mjs`). Hız cihaza göre
+  değiştiğinden ilk açılışta iki arka uç aynı denemeyle ölçülür, WebGPU ≥1.5 kat hızlıysa seçilir ve hatırlanır;
+  teşhis dosyasında `ep`, `ep_bench`. Ders: deneme girdisi sabit (her piksel 128) olunca kare farkları sıfır, model içinde
+  denormal sayılar oluşuyor ve wasm 50 kat yavaşlıyordu (12.5 s); gürültülü girdiyle 149 ms.
+- **int8 nicemleme yapılmadı:** model dosyası 0.25 MB (14 MB olan, ONNX Runtime'ın kendisi); süre ağırlıklarda değil
+  160×72×72'lik etkinliklerde.
+- **Yönlendirme:** yüz kutusu kısa kenarın %18'inden küçükse "yaklaştırın", %80'inden büyükse "uzaklaştırın", model
+  kutusu kareden taşıyorsa "ortalayın", ışık yetersiz/çok parlak. Sinyal iyiyken gösterilmez.
+- **Ölçüm geçmişi:** son 50 ölçüm, oksimetre değeri ve farkıyla, yalnızca tarayıcıda.
+- Gerileme yok: aynı videoda canlı ölçüm v17 72.2 / v18 71.1 BPM, hızlı ölçüm 68.1 (videonun nabzı 66–72 arasında oynuyor).
+
 ## 4. Olumsuz sonuçlar ve mühendislik dersleri
 
 - **2. tur (UBFC-Phys):** bilek sensörünün senkronu kişiden kişiye değişiyor; video başına hizalama gerekti. 8. turda POS
@@ -269,12 +343,12 @@ model kullanıldı.
 - [x] **Mobil kapsama:** yan açı ve telefon görüntüsünde yüz bulunamıyordu (3.9); karma pico + YuNet ile çözüldü (3.10).
 - [ ] **A ve C deneyleri** (FactorizePhys yeni veriyle; FactorizePhys sıfırdan): "kazanç mimariden mi veriden mi"
       ve "ön-eğitim gerekli mi" sorularını kesinleştirir. Şu an 3.4'teki genelleme iddiası bunlar olmadan zayıf.
-- [ ] **Tekrar (seed) sayısı:** her deney tek çalıştırma. En azından ana modeli 2–3 farklı tohumla eğitip ±
+- [~] **Tekrar (seed) sayısı:** `dl_train.py --seed` eklendi (0 = önceki turlar gibi); henüz koşulmadı. Her deney tek çalıştırma. En azından ana modeli 2–3 farklı tohumla eğitip ±
       aralık vermek.
 - [~] **Literatürle karşılaştırılabilir protokol:** PURE → UBFC yapıldı (3.15); video düzeyi MAE ve UBFC → PURE (S2) kaldı. standart çapraz veri seti tabloları (ör. PURE → UBFC,
       UBFC → PURE) en azından ana model için. Şu anki test kümeleri bizim tanımımız.
 - [ ] **Bland-Altman** ve Pearson r tabloları (ana model, her test kümesi).
-- [ ] **Telefonda hız ölçümü** (MMRPhys ONNX 163 KB; masaüstü işlemcide 160 kare 0.13 s).
+- [~] **Telefonda hız ölçümü** (MMRPhys ONNX 163 KB; masaüstü işlemcide 160 kare 0.13 s). v18 teşhis dosyası arka uç ve süreyi (`ep_bench`, `model_ms`) kaydediyor; telefonlardan toplanacak.
 - [ ] **Etiket senkronu bulgusu** (3.1 + 3.3) tek başına kısa bir makale/bildiri olabilir: açık veri setlerinde
       kayma ölçümü, model tabanlı hizalama yöntemi ve eğitime etkisi.
 
@@ -289,6 +363,9 @@ model kullanıldı.
 | Model tabanlı senkron analizi | `results/derin_ogrenme/senkron_model.csv`, `scripts/dl_sync_check.py` |
 | Hizalama kuralları ve kaymalar | `scripts/dl_common.py` (`CAMERA_SHIFT`, `MODEL_SYNC`, `DROP_*`) |
 | Eğitim / değerlendirme | `scripts/dl_train.py`, `scripts/dl_evaluate.py`, `scripts/dl_compare.py` |
+| Kırpma farkı (Haar / uygulama) | `results/kirpma_farki/`, `scripts/crop_compare.py`, `dl_prepare.py --detector app` |
+| Solunum denemesi | `results/solunum/`, `scripts/resp_experiment.py` |
+| Telefon veri kaydı | `scripts/import_own.py` (`.rppgrec`) |
 | Kaggle defterleri | `kaggle/rppg_hazirla.ipynb` (veri), `kaggle/rppg_egitim_7.ipynb` (eğitim) |
 | İş planı | `docs/04_is_plani.md` |
 | Kronoloji (ayrıntı) | `git log` (her commit mesajı sonuçları içeriyor) |

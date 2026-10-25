@@ -1,0 +1,4 @@
+yöntem,video_MAE,video_RMSE,n
+5. tur,0.68,1.67,48
+FactorizePhys PURE (hazır),5.08,12.82,48
+POS (yüz kırpıntısı),15.45,24.74,48
