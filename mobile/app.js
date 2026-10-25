@@ -29,13 +29,14 @@ const els = {
   placeholder: $("placeholder"), placeholderText: $("placeholder-text"),
   hr: $("hr"), snr: $("snr"), conf: $("conf"), fps: $("fps"), status: $("status"),
   progressWrap: $("progress-wrap"), progress: $("progress"),
-  start: $("start"), quick: $("quick"), csv: $("csv"), diag: $("diag"),
+  start: $("start"), quick: $("quick"), rec: $("rec"), recDl: $("rec-dl"), csv: $("csv"), diag: $("diag"),
+  histList: $("hist-list"), histClear: $("hist-clear"),
   refBox: $("ref-box"), refIn: $("ref-in"), refSave: $("ref-save"), refStats: $("ref-stats"), raw: $("raw"), reset: $("reset"),
   modeFace: $("mode-face"), modeFinger: $("mode-finger"), flip: $("flip"), flipLabel: $("flip-label"),
   plotBvp: $("plot-bvp"), plotSpec: $("plot-spec"), plotHist: $("plot-hist"),
 };
 const params = new URLSearchParams(location.search);
-const VERSION = "v17";
+const VERSION = "v18";
 document.getElementById("version").textContent = VERSION;
 
 const state = {
@@ -340,7 +341,7 @@ function analyzeStep() {
   const win = S.filter((s) => s.t >= tEnd - WIN_SEC);
   const valid = win.filter((s) => s.rgb);
   const fps = (state.frameTimes.length - 1) / (state.frameTimes[state.frameTimes.length - 1] - state.frameTimes[0] || 1);
-  els.fps.textContent = state.mode === "face" && state.method === "ai" && dl.ms ? `${fps.toFixed(0)} fps · model ${dl.ms.toFixed(0)} ms × ${dl.threads || 1}` : `${fps.toFixed(0)} fps`;
+  els.fps.textContent = state.mode === "face" && state.method === "ai" && dl.ms ? `${fps.toFixed(0)} fps · model ${dl.ms.toFixed(0)} ms${dl.ep === "webgpu" ? " (GPU)" : ` × ${dl.threads || 1}`}` : `${fps.toFixed(0)} fps`;
 
   const lostMsg = state.mode === "face" ? "Yüz bulunamadı — çerçeveye girin, ışığı artırın" : "Parmağınızı kamera ve flaşın üzerine koyun";
   if (valid.length < win.length * 0.7) {
@@ -353,7 +354,8 @@ function analyzeStep() {
     els.progress.style.width = `${Math.min(100, (100 * span) / MIN_SEC)}%`;
     const lock = !state.camLock ? "" : state.camLock === "yok"
       ? " · kamera ayarı kilitlenemedi, ışığı sabit tutun" : ` · kilitli: ${state.camLock}`;
-    setStatus(`Ölçülüyor… ${Math.ceil(MIN_SEC - span)} s${lock}`, "fair");
+    const hint = faceHint();
+    setStatus(`Ölçülüyor… ${Math.ceil(MIN_SEC - span)} s${hint ? ` — ${hint}` : lock}`, "fair");
     return "isinma";
   }
   els.progressWrap.hidden = true;
@@ -392,7 +394,9 @@ function analyzeStep() {
   els.snr.textContent = `${snr.toFixed(1)} dB`;
   els.conf.textContent = state.mode === "face" ? conf.toFixed(2) : "—";
   const fallback = state.mode === "face" && state.method === "ai" && dl.failed ? " · model açılamadı, yedek yöntem (POS)" : "";
-  setStatus((conf < 0.4 ? "Hareket algılandı — sabit durun" : label) + fallback, conf < 0.4 ? "fair" : level);
+  const hint = level === "good" ? "" : faceHint();     // sinyal zayıfsa olası nedeni söyle
+  setStatus((conf < 0.4 ? "Hareket algılandı — sabit durun" : hint ? `${label} · ${hint}` : label) + fallback,
+    conf < 0.4 ? "fair" : level);
 
   state.log.push({ t: tEnd - state.t0, hr, snr, conf, mode: state.mode, method: methodName(), cam: camName(), lock: state.camLock || "-" });
   state.lastBvp = res.bvp;
@@ -468,35 +472,84 @@ const DL_SIZE = 72, DL_T = 160, DL_HOP = 80, DL_FS = 30, DL_BOX = 1.5, DL_KEEP_S
 const DL_BOX_SEC = 1.0, DL_BOX_MOVE = 0.2;
 // Hızlı ölçüm: kayıt sırasında yalnızca kırpıntı toplanır (model çalışmaz, yavaş telefonda kare düşmez); kayıt
 // bitince bütün klip örtüşen pencerelerle bir kez modelden geçer, nabız kayan 10 s pencerelerdeki takibin medyanı.
-const QUICK_SEC = 20, QUICK_KEEP_SEC = 60, QUICK_MIN_LUMA = 45, QUICK_MAX_LUMA = 235, QUICK_MIN_SNR = -1;
-const quick = { on: false, phase: "", queue: [], t0: null, total: 0 };
+// Veri kaydı: hızlı ölçümün 60 s'lik hâli; kırpıntılar (modelin gördüğü 72x72 girdi), kutular ve zaman damgaları
+// oksimetre değeriyle birlikte indirilir (scripts/import_own.py eğitim verisine çevirir).
+const QUICK_SEC = 20, REC_SEC = 60, QUICK_KEEP_SEC = 75, QUICK_MIN_LUMA = 45, QUICK_MAX_LUMA = 235, QUICK_MIN_SNR = -1;
+const quick = { on: false, phase: "", queue: [], t0: null, total: 0, sec: QUICK_SEC, record: false, t0Epoch: 0 };
 window.__rppgQuick = quick; // tarayıcı testleri için
 const dl = { worker: null, ready: false, failed: "", busy: false, gen: 0, frames: [], t0: null, nextK: null,
   acc: new Map(), ms: 0, canvas: null, box: null, boxT: 0, boxUpdates: 0 };
 window.__rppgDl = dl; // tarayıcı testleri için
 
+// Arka uç: wasm (işlemci) ya da WebGPU (ekran kartı). İlk açılışta WebGPU varsa ikisi de aynı kısa denemeyle ölçülür
+// (dl_worker.js bench); WebGPU en az GPU_GAIN kat hızlıysa ona geçilir. Seçim tarayıcıda hatırlanır (EP_KEY);
+// WebGPU sonradan açılamazsa wasm'a dönülür. ?ep=wasm|webgpu ile zorlanır.
+const EP_KEY = "rppg.ep", GPU_GAIN = 1.5;
+const forcedEp = ["wasm", "webgpu"].includes(params.get("ep")) ? params.get("ep") : "";
+const savedEp = () => { try { return localStorage.getItem(EP_KEY) || ""; } catch { return ""; } };
+const saveEp = (ep) => { try { localStorage.setItem(EP_KEY, ep); } catch { /* gizli sekme */ } };
+
 function dlInit() {
   if (dl.worker || dl.failed) return;
+  const saved = savedEp();
+  const ep = forcedEp || (saved === "webgpu" ? "webgpu" : "wasm");
+  dl.compare = !forcedEp && !saved && "gpu" in navigator;
+  dlStart(ep);
+}
+
+function dlStart(ep) {
   try {
     dl.worker = new Worker("dl_worker.js", { type: "module" });
   } catch (e) {
     dl.failed = "bu tarayıcı modeli çalıştıramıyor";
     return;
   }
-  dl.worker.onmessage = (e) => {
-    const m = e.data;
-    if (m.type === "ready") { dl.ready = true; dl.proto = m.proto || 1; dl.threads = m.threads || 1; }
-    else if (m.type === "error") { dl.failed = m.message; dl.busy = false; }
-    else if (m.type === "bvp") {
-      dl.busy = false;
-      dl.ms = m.ms;
-      if (m.gen === dl.gen) dlAddBvp(m.k0, m.bvp, quick.on);
-      if (quick.on) { if (quick.phase === "hesap") quickNext(); }
-      else dlSchedule();
-    }
-  };
+  dl.ep = ep;
+  dl.worker.onmessage = dlMessage;
   dl.worker.onerror = (e) => { dl.failed = e.message || "model yüklenemedi"; dl.busy = false; };
-  dl.worker.postMessage({ type: "load" });
+  dl.worker.postMessage({ type: "load", ep, bench: dl.compare });
+}
+
+function dlTryGpu() {                          // arka planda WebGPU denemesi; ölçüm wasm ile sürer
+  let w;
+  try { w = new Worker("dl_worker.js", { type: "module" }); } catch { saveEp("wasm"); return; }
+  w.onmessage = (e) => {
+    const m = e.data;
+    if (m.type === "error") { w.terminate(); dl.bench.webgpu = m.message; saveEp("wasm"); return; }
+    if (m.type !== "ready") return;
+    dl.bench.webgpu = Math.round(m.bench_ms);
+    if (!(m.bench_ms * GPU_GAIN < dl.bench.wasm)) { w.terminate(); saveEp("wasm"); return; }
+    saveEp("webgpu");
+    const swap = () => {                        // pencereler arasında (worker boşken) değiştir
+      if (dl.busy) { setTimeout(swap, 50); return; }
+      dl.worker.terminate();
+      dl.worker = w;
+      w.onmessage = dlMessage;
+      dl.ep = "webgpu";
+      dl.ms = 0;
+    };
+    swap();
+  };
+  w.postMessage({ type: "load", ep: "webgpu", bench: true });
+}
+
+function dlMessage(e) {
+  const m = e.data;
+  if (m.type === "ready") {
+    dl.ready = true; dl.proto = m.proto || 1; dl.threads = m.threads || 1;
+    if (dl.compare) { dl.compare = false; dl.bench = { wasm: Math.round(m.bench_ms) }; dlTryGpu(); }
+  } else if (m.type === "error" && !dl.ready && dl.ep === "webgpu") {   // kayıtlı WebGPU artık açılmıyor: wasm
+    dl.worker.terminate();
+    saveEp("wasm");
+    dlStart("wasm");
+  } else if (m.type === "error") { dl.failed = m.message; dl.busy = false; }
+  else if (m.type === "bvp") {
+    dl.busy = false;
+    dl.ms = m.ms;
+    if (m.gen === dl.gen) dlAddBvp(m.k0, m.bvp, quick.on);
+    if (quick.on) { if (quick.phase === "hesap") quickNext(); }
+    else dlSchedule();
+  }
 }
 
 function dlReset() {
@@ -532,7 +585,7 @@ function dlCapture(tSec) {                     // yüz kutusundan 72x72 RGB kır
   ctx.drawImage(v, x0, y0, x1 - x0, y1 - y0, 0, 0, DL_SIZE, DL_SIZE);
   const d = ctx.getImageData(0, 0, DL_SIZE, DL_SIZE).data, px = new Uint8Array(DL_SIZE * DL_SIZE * 3);
   for (let i = 0, j = 0; j < px.length; i += 4, j += 3) { px[j] = d[i]; px[j + 1] = d[i + 1]; px[j + 2] = d[i + 2]; }
-  dl.frames.push({ t: tSec, px });
+  dl.frames.push({ t: tSec, px, b: [Math.round(cx), Math.round(cy), Math.round(size)] });
   if (dl.t0 === null) dl.t0 = tSec;
   const keep = quick.on ? QUICK_KEEP_SEC : DL_KEEP_SEC;
   while (dl.frames.length && tSec - dl.frames[0].t > keep) dl.frames.shift();
@@ -594,12 +647,14 @@ function dlSeries(winSec) {                    // son winSec saniyenin birleşik
 }
 
 // ------------------------------------------------------------------ hızlı ölçüm
-function quickStart() {
+function quickStart(record = false) {
   if (state.running || state.mode !== "face") return;
   quick.on = true;
   quick.phase = "kayit";
   quick.t0 = null;
-  els.quick.disabled = true;
+  quick.record = record;
+  quick.sec = record ? REC_SEC : QUICK_SEC;
+  els.quick.disabled = els.rec.disabled = true;
   start();
 }
 
@@ -618,14 +673,16 @@ function quickStep() {
     if (luma < QUICK_MIN_LUMA) { setStatus("Işık yetersiz — yüzünüze önden ışık gelsin", "bad"); return "hizli_kayit"; }
     if (luma > QUICK_MAX_LUMA) { setStatus("Görüntü çok parlak — doğrudan güneşten uzaklaşın", "bad"); return "hizli_kayit"; }
     quick.t0 = F[F.length - 1].t;
+    quick.t0Epoch = Date.now();
     dl.frames = F.slice(-1);                    // sayım bu kareden başlar; öncesi (yüz aranırken) atılır
   }
   const span = F[F.length - 1].t - quick.t0;
   els.progressWrap.hidden = false;
-  els.progress.style.width = `${Math.min(100, (100 * span) / QUICK_SEC)}%`;
-  if (state.bbox) setStatus(`Kayıt: ${Math.ceil(Math.max(0, QUICK_SEC - span))} s — kıpırdamayın, konuşmayın`, "fair");
+  els.progress.style.width = `${Math.min(100, (100 * span) / quick.sec)}%`;
+  const hint = faceHint();
+  if (state.bbox) setStatus(`Kayıt: ${Math.ceil(Math.max(0, quick.sec - span))} s — ${hint || "kıpırdamayın, konuşmayın"}`, "fair");
   else setStatus("Yüz bulunamadı — çerçeveye girin, ışığı artırın", "bad");
-  if (span >= QUICK_SEC) quickCompute();
+  if (span >= quick.sec) quickCompute();
   return "hizli_kayit";
 }
 
@@ -681,8 +738,15 @@ function quickFinish() {
   els.progressWrap.hidden = true;
   setStatus({ good: "Sonuç güvenilir", fair: "Sonuç orta güvenilir — tekrar ölçmek iyi olur",
     bad: `Sinyal zayıf, sonuç güvenilmez (${hr.toFixed(0)}) — ışığı artırıp tekrar ölçün` }[level] + ` · ${span.toFixed(0)} s`, level);
-  state.log.push({ t: span, hr, snr, conf: 1, mode: "face", method: "model (hızlı)", cam: camName(), lock: state.camLock || "-",
-    reliable, at: new Date().toISOString() });
+  const entry = { t: span, hr, snr, conf: 1, mode: "face", method: quick.record ? "model (kayıt)" : "model (hızlı)", cam: camName(),
+    lock: state.camLock || "-", reliable, at: new Date().toISOString() };
+  state.log.push(entry);
+  addHistory({ hr, kind: quick.record ? "kayıt" : "hızlı", cam: entry.cam, reliable });
+  if (quick.record) {                           // kırpıntılar indirilene kadar bellekte (yeni ölçüm silmez)
+    state.rec = { frames: dl.frames.slice(), t0: quick.t0, t0Epoch: quick.t0Epoch, entry, cam: entry.cam, lock: entry.lock,
+      video: [els.video.videoWidth, els.video.videoHeight], at: entry.at };
+    els.recDl.disabled = false;
+  }
   showRef();
   state.lastBvp = bvp;
   els.csv.disabled = els.reset.disabled = false;
@@ -703,7 +767,8 @@ function quickEnd() {
   quick.on = false;
   quick.phase = "";
   quick.queue = [];
-  els.quick.disabled = state.mode !== "face";
+  quick.record = false;
+  els.quick.disabled = els.rec.disabled = state.mode !== "face";
 }
 
 // ------------------------------------------------------------------ kamera
@@ -843,6 +908,64 @@ function stop(keepStatus = false) {
   if (quick.on && !keepStatus) quickEnd();           // kullanıcı kaydı yarıda durdurdu
   if (!keepStatus) setStatus(state.log.length ? `Durduruldu — ortalama ${avgHr().toFixed(0)} BPM` : "Hazır");
   if (!keepStatus && state.log.length) showRef();
+  const live = state.log.filter((r) => !/^model \(/.test(r.method)).length;
+  if (!keepStatus && live >= 10 && !quick.on) addHistory({ hr: avgHr(), kind: "canlı", cam: state.log.at(-1).cam });
+}
+
+// ------------------------------------------------------------------ ölçüm sırasında yönlendirme
+// Yüz kutusu (pico ölçeği) karenin kısa kenarına göre: MCD masaüstü kameralarında ~0.3, telefon kol boyunda ~0.4–0.5.
+// Küçük yüzde cilt pikseli az, sinyal gürültülü; kenara taşan yüzde kırpıntı eksik kalır.
+const FACE_MIN = 0.18, FACE_MAX = 0.8;
+function faceHint() {
+  if (state.mode !== "face" || !state.bbox) return "";
+  const W = els.work.width, H = els.work.height, b = state.bbox, r = b.w / Math.min(W, H), luma = meanLuma();
+  if (luma < QUICK_MIN_LUMA) return "ışık yetersiz, yüzünüze önden ışık gelsin";
+  if (luma > QUICK_MAX_LUMA) return "görüntü çok parlak";
+  if (r < FACE_MIN) return "telefonu yüzünüze yaklaştırın";
+  if (r > FACE_MAX) return "telefonu biraz uzaklaştırın";
+  const m = 0.75 * b.w * (DL_BOX - 1);             // model kutusu (x1.5) kareden taşıyorsa
+  if (b.x - m < 0 || b.y - m < 0 || b.x + b.w + m > W || b.y + b.h + m > H) return "yüzünüzü ortalayın";
+  return "";
+}
+
+// ------------------------------------------------------------------ ölçüm geçmişi (bu tarayıcıda; hiçbir yere gönderilmez)
+const HIST_KEY = "rppg.gecmis", HIST_MAX = 50;
+const loadHistory = () => { try { return JSON.parse(localStorage.getItem(HIST_KEY) || "[]"); } catch { return []; } };
+function saveHistory(h) {
+  try { localStorage.setItem(HIST_KEY, JSON.stringify(h.slice(-HIST_MAX))); } catch { /* gizli sekme / dolu */ }
+  renderHistory(h);
+}
+function addHistory(r) {
+  const h = loadHistory();
+  h.push({ at: new Date().toISOString(), hr: Math.round(r.hr), kind: r.kind, cam: r.cam, reliable: r.reliable !== false });
+  saveHistory(h);
+}
+function renderHistory(h = loadHistory()) {
+  els.histList.replaceChildren(...h.slice().reverse().map((r) => {
+    const li = document.createElement("li"), d = new Date(r.at);
+    const when = `${d.toLocaleDateString("tr-TR", { day: "2-digit", month: "2-digit" })} ${d.toLocaleTimeString("tr-TR", { hour: "2-digit", minute: "2-digit" })}`;
+    const ref = r.ref ? ` · cihaz ${r.ref} (${r.hr - r.ref >= 0 ? "+" : ""}${r.hr - r.ref})` : "";
+    li.innerHTML = `<span></span><b></b>`;
+    li.firstChild.textContent = `${when} · ${r.kind} · ${r.cam}${ref}`;
+    li.lastChild.textContent = r.reliable ? `${r.hr} BPM` : `(${r.hr}) güvenilmez`;
+    return li;
+  }));
+  if (!h.length) els.histList.innerHTML = "<li><span>Henüz ölçüm yok</span></li>";
+}
+
+// Veri kaydı dosyası (.rppgrec): "RPPGREC1" + başlık uzunluğu (uint32, little-endian) + JSON başlık + kırpıntılar
+// (n x 72 x 72 x 3 uint8, RGB). Okuyucu: scripts/import_own.py.
+function downloadRec() {
+  const r = state.rec;
+  if (!r) return;
+  const F = r.frames, head = { format: "rppg-rec-1", version: VERSION, at: r.at, t0_epoch_ms: r.t0Epoch, ua: navigator.userAgent,
+    cam: r.cam, lock: r.lock, video: r.video, size: DL_SIZE, box_coef: DL_BOX, detector: state.detector, ep: dl.ep, n: F.length,
+    t: F.map((f) => +(f.t - r.t0).toFixed(4)), box: F.map((f) => f.b),
+    result: { hr: r.entry.hr, snr: r.entry.snr, reliable: r.entry.reliable }, ref_bpm: r.entry.ref ?? null };
+  const hb = new TextEncoder().encode(JSON.stringify(head)), pre = new Uint8Array(12);
+  pre.set(new TextEncoder().encode("RPPGREC1"));
+  new DataView(pre.buffer).setUint32(8, hb.length, true);
+  saveFile(`rppg_kayit_${stamp()}.rppgrec`, [pre, hb, ...F.map((f) => f.px)], "application/octet-stream");
 }
 
 // ------------------------------------------------------------------ referans cihazla karşılaştırma (oksimetre / saat)
@@ -857,11 +980,13 @@ function saveRef() {
   const v = Number(els.refIn.value);
   if (!(v >= 30 && v <= 220) || !state.log.length) return;
   const last = state.log[state.log.length - 1];
-  const isQuick = last.method === "model (hızlı)";
+  const isQuick = last.method === "model (hızlı)" || last.method === "model (kayıt)";
   const app = isQuick ? last.hr : avgHr();
   state.refs.push({ at: new Date().toISOString(), ref: v, app, kind: isQuick ? "hızlı" : "canlı", cam: last.cam,
     reliable: last.reliable !== false, snr: last.snr });
   last.ref = v;
+  const h = loadHistory();
+  if (h.length) { h[h.length - 1].ref = v; saveHistory(h); }
   els.refIn.value = "";
   els.refIn.blur();
   refStats();
@@ -903,7 +1028,7 @@ function setMode(mode) {
   state.mode = mode;
   els.modeFace.classList.toggle("on", mode === "face");
   els.modeFinger.classList.toggle("on", mode === "finger");
-  els.quick.disabled = mode !== "face";
+  els.quick.disabled = els.rec.disabled = mode !== "face";
   els.modeFace.setAttribute("aria-selected", mode === "face");
   els.modeFinger.setAttribute("aria-selected", mode === "finger");
   applyFacing();
@@ -935,7 +1060,7 @@ async function flipCamera() {
 
 function saveFile(name, text, type) {
   const a = document.createElement("a");
-  a.href = URL.createObjectURL(new Blob([text], { type }));
+  a.href = URL.createObjectURL(new Blob(Array.isArray(text) ? text : [text], { type }));
   a.download = name;
   a.click();
   setTimeout(() => URL.revokeObjectURL(a.href), 1000);
@@ -954,6 +1079,7 @@ function downloadRaw() {
 function downloadDiag() {
   const info = { version: VERSION, at: new Date().toISOString(), ua: navigator.userAgent, cores: navigator.hardwareConcurrency,
     memory_gb: navigator.deviceMemory, coi: self.crossOriginIsolated, threads: dl.threads, model_ms: dl.ms, model_ready: dl.ready,
+    ep: dl.ep, ep_bench: dl.bench || null, ep_saved: savedEp(),
     model_error: dl.failed, face: { detector: state.detector, yunet_ready: fd.ready, yunet_error: fd.failed, yunet_ms: fd.ms },
     camera: state.track?.getSettings?.() || {}, lock: state.camLock, work: [els.work.width, els.work.height] };
   saveFile(`rppg_teshis_${stamp()}.json`, JSON.stringify({ info, diag: state.diag, log: state.log, refs: state.refs }), "application/json");
@@ -977,7 +1103,10 @@ function downloadCsv() {
 
 // ------------------------------------------------------------------ olaylar
 els.start.addEventListener("click", () => (state.running ? stop() : start()));
-els.quick.addEventListener("click", quickStart);
+els.quick.addEventListener("click", () => quickStart(false));
+els.rec.addEventListener("click", () => quickStart(true));
+els.recDl.addEventListener("click", downloadRec);
+els.histClear.addEventListener("click", () => saveHistory([]));
 els.diag.addEventListener("click", downloadDiag);
 els.refSave.addEventListener("click", saveRef);
 els.refIn.addEventListener("keydown", (e) => { if (e.key === "Enter") saveRef(); });
@@ -995,6 +1124,7 @@ els.reset.addEventListener("click", () => {
 });
 document.addEventListener("visibilitychange", () => { if (document.hidden && state.running) stop(); });
 applyFacing();
+renderHistory();
 
 if ("serviceWorker" in navigator && !params.has("autotest")) {
   navigator.serviceWorker.register("sw.js").catch(() => {});
@@ -1007,5 +1137,6 @@ if ("serviceWorker" in navigator && !params.has("autotest")) {
   });
 }
 if (params.get("autotest") === "finger") setMode("finger");
-if (params.get("autotest") === "hizli") quickStart();
+if (params.get("autotest") === "hizli") quickStart(false);
+else if (params.get("autotest") === "kayit") quickStart(true);
 else if (params.has("autotest")) start();

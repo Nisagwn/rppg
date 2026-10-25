@@ -73,6 +73,9 @@ Her yeni veri setinde etiket kalitesi (SNR), işaret ve zaman kayması eğitimde
 "Ana ekrana ekle" ile uygulama gibi kullanılır ve sonra internetsiz açılır.
 
 - **Yüz modu (ön ya da arka kamera):** eğitilmiş model (5. tur FactorizePhys) + Viterbi takibi. Yüz bulma: pico, bulamazsa YuNet.
+- **Veri kaydı (60 s):** modelin gördüğü yüz kırpıntılarını oksimetre değeriyle birlikte indirir (`.rppgrec`, ~25 MB); `scripts/import_own.py` eğitim/test verisine çevirir. Görüntünün kendisi değil, yalnızca 72×72 yüz kırpıntısı saklanır.
+- **Arka uç seçimi:** ilk açılışta işlemci (wasm) ve ekran kartı (WebGPU) kısa bir denemeyle karşılaştırılır, en az 1.5 kat hızlıysa WebGPU kullanılır ve seçim hatırlanır (iki arka ucun çıktısı aynı: `mobile/test/webgpu_check.mjs`).
+- **Ölçüm geçmişi** (yalnızca bu tarayıcıda) ve ölçüm sırasında yönlendirme (yaklaşın / uzaklaşın / ortalayın / ışık).
 - **Parmak modu (arka kamera + flaş):** temaslı PPG; yüz ölçümünü oksimetresiz doğrulamak için.
 - Oturum **CSV** olarak indirilebilir. Tüm hesaplama telefonda yapılır.
 

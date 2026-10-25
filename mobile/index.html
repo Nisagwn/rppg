@@ -53,6 +53,7 @@
     <div class="starts">
       <button id="start" class="primary">Canlı ölçüm</button>
       <button id="quick" class="primary quick">Hızlı ölçüm (20 s)</button>
+      <button id="rec" class="primary rec">Veri kaydı (60 s)</button>
     </div>
 
     <section class="plots">
@@ -84,7 +85,14 @@
       <button id="raw" disabled>Ham veri indir</button>
       <button id="reset" disabled>Sıfırla</button>
       <button id="diag">Teşhis indir</button>
+      <button id="rec-dl" disabled>Kaydı indir</button>
     </section>
+
+    <details class="history" id="history">
+      <summary>Ölçüm geçmişi</summary>
+      <ol id="hist-list"></ol>
+      <button id="hist-clear" type="button">Geçmişi temizle</button>
+    </details>
 
     <details class="help">
       <summary>Nasıl kullanılır?</summary>
@@ -97,6 +105,12 @@
         <li>Konuşmayın, kıpırdamayın. İlk değer ~8 saniyede gelir, 20–30 saniyede oturur.</li>
         <li>Nabız, bu proje için ~600 kişilik veriyle eğitilmiş bir derin öğrenme modeliyle (FactorizePhys) ölçülür.
           İlk açılışta model dosyaları (~14 MB) bir kez indirilir; sonra çevrimdışı da çalışır.</li>
+      </ul>
+      <h3>Veri kaydı (60 s)</h3>
+      <ul>
+        <li>Hızlı ölçüm gibi çalışır, ama 60 saniye kaydeder ve modelin gördüğü yüz kırpıntılarını saklar.</li>
+        <li>Kayıt bitince oksimetredeki değeri yazıp <b>Kaydet</b>'e, sonra <b>Kaydı indir</b>'e basın. Dosya (~30 MB)
+          modelin telefon görüntüsüyle yeniden eğitilmesi için kullanılır; yalnızca 72x72 piksellik yüz kırpıntısı içerir.</li>
       </ul>
       <h3>Parmak modu (arka kamera + flaş)</h3>
       <ul>

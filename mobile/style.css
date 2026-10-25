@@ -121,6 +121,14 @@ button { font: inherit; }
 .ref-row button { font: inherit; padding: 8px 14px; border-radius: 10px; border: 0; background: var(--accent); color: #fff; }
 .ref-stats { margin: 8px 0 0; font-size: 13px; color: var(--muted); }
 .primary.quick { background: #0f766e; }
+.primary.rec { grid-column: 1 / -1; background: var(--panel); border: 1px solid var(--line); font-size: 14px; padding-top: 10px; padding-bottom: 10px; }
+.history { margin-top: 12px; background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 10px 12px; }
+.history summary { cursor: pointer; color: var(--muted); font-size: 14px; }
+.history ol { margin: 8px 0; padding-left: 0; list-style: none; font-size: 13px; font-variant-numeric: tabular-nums; }
+.history li { display: flex; justify-content: space-between; gap: 8px; padding: 4px 0; border-bottom: 1px solid var(--line); }
+.history li b { color: var(--text); }
+.history li span { color: var(--muted); }
+.history button { font: inherit; font-size: 13px; padding: 6px 10px; border-radius: 8px; border: 1px solid var(--line); background: transparent; color: var(--muted); }
 .primary:disabled { opacity: .45; cursor: default; }
 
 .plots { display: grid; gap: 10px; margin-top: 14px; }

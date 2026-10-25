@@ -10,6 +10,8 @@
 //                            [--params a=1&b=2]                        # uygulamaya ek URL parametreleri
 //                            [--diag teshis.json]                     # saniyelik teşhis: yüz bulundu mu, ölçüm nerede durdu
 //                            [--model aday.onnx]                       # uygulamanın modeli yerine bu ONNX sunulur
+//                            [--eval "ifade"]                          # sayfada değerlendirilip yazdırılır
+//                            [--download dosya --click rec-dl]         # düğmenin indirdiği dosyayı yazar
 //
 // Chrome yolu: CHROME ortam değişkeni ya da Windows/Linux/macOS varsayılanları.
 import { spawn, spawnSync } from "node:child_process";
@@ -86,7 +88,7 @@ ws.addEventListener("message", (e) => {
   if (pending.has(m.id)) { pending.get(m.id)(m.result); pending.delete(m.id); }
 });
 const cdp = (method, params = {}) => new Promise((r) => { pending.set(++id, r); ws.send(JSON.stringify({ id, method, params })); });
-const evaluate = async (expr) => (await cdp("Runtime.evaluate", { expression: expr, returnByValue: true })).result.value;
+const evaluate = async (expr) => (await cdp("Runtime.evaluate", { expression: expr, returnByValue: true, awaitPromise: true })).result.value;
 
 await sleep(seconds * 1000);
 const log = await evaluate("window.__rppg.log");
@@ -113,6 +115,16 @@ if (args.frames) {   // modelin girdisi: bellekteki tüm kırpıntılar (zaman d
     let s = ""; for (let i = 0; i < all.length; i += 32768) s += String.fromCharCode.apply(null, all.subarray(i, i + 32768));
     return { t: F.map((f) => f.t), b64: btoa(s), size: 72 }; })()`)));
 }
+if (args.download) {   // --download dosya --click düğme-id: düğmenin indirdiği dosya (saveFile'ın blob'u) diske yazılır
+  // (Page.setDownloadBehavior başsız Chrome'da yanıt vermeyip testi asılı bırakıyordu)
+  const b64 = await evaluate(`new Promise((ok) => { const orig = HTMLAnchorElement.prototype.click;
+    HTMLAnchorElement.prototype.click = function () { HTMLAnchorElement.prototype.click = orig;
+      fetch(this.href).then((r) => r.arrayBuffer()).then((buf) => { const u = new Uint8Array(buf); let s = "";
+        for (let i = 0; i < u.length; i += 32768) s += String.fromCharCode.apply(null, u.subarray(i, i + 32768)); ok(btoa(s)); }); };
+    document.getElementById(${JSON.stringify(args.click)}).click(); })`);
+  writeFileSync(resolve(args.download), Buffer.from(b64, "base64"));
+}
+if (args.eval) console.log("eval:", JSON.stringify(await evaluate(args.eval)));   // --eval "ifade": sayfada değerlendirilir
 if (args.shot) {
   const { data } = await cdp("Page.captureScreenshot", { format: "png", captureBeyondViewport: true });
   writeFileSync(args.shot, Buffer.from(data, "base64"));
@@ -130,6 +142,6 @@ console.log(JSON.stringify({ mode, expect, windows: log.length, median_last15: m
 if (args.log) writeFileSync(args.log, JSON.stringify(log));
 const dlBroken = mode === "face" && args.yontem !== "klasik" && cam?.dl?.failed;   // klasiğe sessizce düşmesin
 if (dlBroken) console.log("model çalışmadı:", cam.dl.failed);
-const ok = !dlBroken && log.length >= (mode === "hizli" ? 1 : 10) && Math.abs(median - expect) < 3;   // hızlı: tek sonuç
+const ok = !dlBroken && log.length >= (mode === "hizli" || mode === "kayit" ? 1 : 10) && Math.abs(median - expect) < 3;   // hızlı: tek sonuç
 console.log(ok ? "BAŞARILI" : "BAŞARISIZ");
 process.exit(ok ? 0 : 1);
