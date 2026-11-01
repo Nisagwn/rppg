@@ -44,11 +44,11 @@ anlamlılık testleri için: [`docs/07_arastirma_gunlugu.md`](docs/07_arastirma_
 
 ## Nasıl çalışıyor
 
-1. **Yüz:** Haar kaskadı ile tespit, takip, 72×72 kırpıntı (telefonda pico).
+1. **Yüz:** Haar kaskadı ile tespit, takip, 72×72 kırpıntı (telefonda pico, bulamazsa YuNet).
 2. **Nabız dalgası:** iki yol var.
    - **Klasik:** cilt bölgelerinden RGB izleri → POS / CHROM / ICA / LGI → detrend + Butterworth.
    - **Derin öğrenme:** 160 karelik pencereden doğrudan dalga tahmini. Modeller: FactorizePhys (NeurIPS 2024),
-     MMRPhys (2025). İkisi de 40–50 bin parametre.
+     MMRPhys (2025). İkisi de küçük: MMRPhys ~37.5 bin, FactorizePhys ~52 bin parametre.
 3. **Nabız:** spektrogram → hareket farkında **Viterbi** takibi (projenin klasik aşamadaki katkısı).
 4. **Telefon:** model ONNX'e çevrilip tarayıcıda (onnxruntime-web, ayrı iş parçacığında) çalışıyor. Model 163–250 KB.
 
@@ -169,7 +169,7 @@ mobile/        telefon uygulaması (PWA): dsp.js, dl_worker.js (ONNX), model/
 kaggle/        Kaggle/Colab defterleri (veri hazırlama, eğitim turları)
 results/       deney çıktıları; derin_ogrenme/ altında her eğitim turu
 docs/          öneri, plan, rapor, araştırma günlüğü, sunum
-tests/         pytest + mobil node testleri
+tests/         pytest testleri (mobil node testleri: mobile/test/)
 ```
 
 ---
