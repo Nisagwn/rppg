@@ -10,7 +10,10 @@ Hedef: **MMRPhys modelini kendi veri setlerimizle sıfırdan eğitip** hatayı d
 |---|---:|---:|
 | POS (klasik) + Viterbi | 3.54 BPM | 15.63 BPM |
 | FactorizePhys hazır (PURE) + Viterbi | 2.57 BPM | 7.47 BPM |
-| **FactorizePhys ince ayarlı (5. tur) + Viterbi** | **1.04 BPM** | **1.64 BPM** |
+| **FactorizePhys ince ayarlı (5. tur) + Viterbi** | **1.04 BPM**¹ | **1.64 BPM** |
+
+¹ En iyi epoch (`best.pth`). Uygulamadaki ve README/araştırma günlüğündeki karşılaştırmalarda kullanılan son epoch
+(`last.pth`) modeli ana testte 1.10 BPM (`results/derin_ogrenme/kaggle_tur5/SONUCLAR.md`).
 
 Hedef: iki testte de 5. turun altına inmek ve yeni telefon test kümelerinde (MMPD, VIPL-HR) ilk kez sonuç vermek.
 
