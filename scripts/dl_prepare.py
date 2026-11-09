@@ -250,11 +250,25 @@ def process_ubfc(subject_dir, dst, **info):
 def process_pure(zip_path, dst, max_sec=None, **info):
     """PURE oturumu (zip): PNG kareler (ad = zaman damgası, ns) + JSON'da parmak oksimetresi dalga formu.
     Toolbox'ın PURE yükleyicisi gibi 'waveform' kullanılır; kare zamanlarına enterpole edilir."""
-    import json
     import zipfile
-    z = zipfile.ZipFile(zip_path)
-    pngs = sorted((int(os.path.basename(n)[5:-4]), n) for n in z.namelist() if n.endswith(".png"))
-    meta = json.loads(z.read(next(n for n in z.namelist() if n.endswith(".json"))))
+    with zipfile.ZipFile(zip_path) as z:
+        return _process_pure(z.namelist(), z.read, zip_path, dst, max_sec, **info)
+
+
+def process_pure_folder(folder, dst, max_sec=None, **info):
+    """Aynı PURE ön işlemesi; WeiQian98/PURE gibi açılmış PNG + JSON oturumları."""
+    from pathlib import Path
+    names = [str(p) for p in Path(folder).rglob("*") if p.is_file()]
+    return _process_pure(names, lambda name: Path(name).read_bytes(), str(folder), dst, max_sec, **info)
+
+
+def _process_pure(names, read, label, dst, max_sec=None, **info):
+    import json
+    pngs = sorted((int(os.path.basename(n)[5:-4]), n) for n in names if n.endswith(".png"))
+    jsons = [n for n in names if n.endswith(".json") and ".cache" not in n.replace("\\", "/").split("/")]
+    if not pngs or len(jsons) != 1:
+        raise ValueError(f"{label}: PNG kareler ve tam bir PPG JSON dosyası bekleniyor")
+    meta = json.loads(read(jsons[0]))
     t_img = np.array([t for t, _ in pngs], dtype=float) / 1e9
     if max_sec:
         pngs = [p for p, t in zip(pngs, t_img) if t - t_img[0] <= max_sec + 0.1]
@@ -263,8 +277,8 @@ def process_pure(zip_path, dst, max_sec=None, **info):
     t_ppg = np.array([p["Timestamp"] for p in ppg], dtype=float) / 1e9
     wave = np.array([p["Value"]["waveform"] for p in ppg], dtype=float)
     bvp = np.interp(t_img, t_ppg, wave)
-    decode = (cv2.imdecode(np.frombuffer(z.read(n), np.uint8), cv2.IMREAD_COLOR) for _, n in pngs)
-    frames, rate = crop_frames(decode, None, 2, zip_path)
+    decode = (cv2.imdecode(np.frombuffer(read(n), np.uint8), cv2.IMREAD_COLOR) for _, n in pngs)
+    frames, rate = crop_frames(decode, None, 2, label)
     n = min(len(frames), len(t_img))
     f, b = resample(frames[:n], t_img[:n], bvp[:n], t_img[:n])
     save(dst, f, b, rate, **info)
