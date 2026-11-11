@@ -1,0 +1,2 @@
+protocol,seed,checkpoint,epoch,completed_epochs,window_MAE,video_MAE,video_RMSE,n_test,run
+S1,42,best,2,30,0.69,0.89,2.69,42,results\derin_ogrenme\pure_weiqian_s1_seed42

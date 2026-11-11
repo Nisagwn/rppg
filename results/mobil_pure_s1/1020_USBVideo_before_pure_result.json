@@ -1,0 +1,51 @@
+{
+ "mode": "face",
+ "expect": 0,
+ "windows": 25,
+ "median_last15": 73.57165214500968,
+ "hr": [
+  71.2,
+  71.3,
+  73.5,
+  74.4,
+  74.8,
+  74.3,
+  74.2,
+  74.3,
+  74,
+  73.5,
+  66.8,
+  65.6,
+  65.2,
+  68.3,
+  70,
+  70.6,
+  73,
+  73.6,
+  78.4,
+  80.6,
+  82,
+  80.3,
+  79.2,
+  75.8,
+  74.8
+ ],
+ "snr_last": "3.1",
+ "status": "Sinyal iyi",
+ "cam": {
+  "facing": "user",
+  "mirror": true,
+  "label": "Ön kamera",
+  "csvCam": "ön",
+  "method": "model",
+  "dl": {
+   "ready": true,
+   "failed": "",
+   "model": "pure",
+   "ms": 276,
+   "threads": 4,
+   "coi": true,
+   "samples": 600
+  }
+ }
+}

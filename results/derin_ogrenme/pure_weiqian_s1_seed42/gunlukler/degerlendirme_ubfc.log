@@ -1,0 +1,32 @@
+test: 42 video
+
+video düzeyi:
+                                              video_MAE  video_RMSE   n
+yöntem                                                                 
+En iyi epoch                                       0.89        2.69  42
+POS (yüz kırpıntısı)                               1.19        3.00  42
+MMRPhys — WeiQian98/PURE eğitimi, UBFC testi       1.35        4.04  42
+FactorizePhys PURE (hazır)                         1.35        4.06  42
+grup                                                  UBFC  Hepsi  ≤5 BPM %  Medyan
+yöntem                                                                             
+FactorizePhys PURE (hazır)                            0.68   0.68     98.71    0.45
+En iyi epoch                                          0.69   0.69     98.62    0.48
+MMRPhys — WeiQian98/PURE eğitimi, UBFC testi          0.74   0.74     98.48    0.48
+En iyi epoch+Viterbi                                  0.79   0.79     97.88    0.48
+MMRPhys — WeiQian98/PURE eğitimi, UBFC testi+Viterbi  0.80   0.80     98.00    0.52
+FactorizePhys PURE (hazır)+Viterbi                    0.82   0.82     97.72    0.48
+POS (yüz kırpıntısı)+Viterbi                          1.86   1.86     94.66    0.72
+POS (yüz kırpıntısı)                                  2.63   2.63     92.71    0.88
+
+referansı temiz 40 video:
+grup                                                  UBFC  Hepsi  ≤5 BPM %  Medyan
+yöntem                                                                             
+En iyi epoch                                          0.61   0.61     98.99    0.46
+FactorizePhys PURE (hazır)                            0.62   0.62     98.95    0.44
+En iyi epoch+Viterbi                                  0.63   0.63     98.81    0.48
+MMRPhys — WeiQian98/PURE eğitimi, UBFC testi+Viterbi  0.65   0.65     98.81    0.51
+MMRPhys — WeiQian98/PURE eğitimi, UBFC testi          0.66   0.66     98.85    0.47
+FactorizePhys PURE (hazır)+Viterbi                    0.69   0.69     98.41    0.47
+POS (yüz kırpıntısı)+Viterbi                          1.73   1.73     95.65    0.70
+POS (yüz kırpıntısı)                                  2.64   2.64     92.83    0.84
+rapor: /kaggle/working/cikti/test_ubfc_hepsi/SONUCLAR.md

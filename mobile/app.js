@@ -1,3 +1,4 @@
+import { selectModel } from "./model_selection.js";
 // rPPG Nabız — telefon uygulaması.
 // Yüz modu:   ön ya da arka kamera (⇄ düğmesi) -> pico yüz tespiti (Markuš vd. 2013; piksel karşılaştırmalı karar ağaçları,
 //             Viola–Jones ailesinden klasik yöntem) -> 4 ROI (alın, yanaklar, tüm yüz) + YCrCb cilt maskesi
@@ -36,8 +37,9 @@ const els = {
   plotBvp: $("plot-bvp"), plotSpec: $("plot-spec"), plotHist: $("plot-hist"),
 };
 const params = new URLSearchParams(location.search);
-const VERSION = "v18";
-document.getElementById("version").textContent = VERSION;
+const VERSION = "v19";
+const selectedModel = selectModel(params.get("model"));
+document.getElementById("version").textContent = VERSION + (selectedModel.key === "pure" ? " · PURE S1" : "");
 
 const state = {
   mode: "face", running: false, stream: null, track: null, torch: false, camLock: "", lumaHist: [], maskProb: {}, raw: [], wakeLock: null,
@@ -328,7 +330,7 @@ function analyze() {
   const dc = state.dc;
   state.diag.push({ t: state.t0 === null || !state.samples.length ? 0 : state.samples[state.samples.length - 1].t - state.t0,
     frames: dc.frames, face: dc.face, tries: dc.tries, hits: dc.hits, qmax: Math.round(dc.qmax), gate: reason || "olcum",
-    det: state.detector, pico: dc.pico, yunet: dc.yunet, det_ms: Math.round(fd.ms) });
+    det: state.detector, pico: dc.pico, yunet: dc.yunet, det_ms: Math.round(fd.ms), model: selectedModel.key, model_ms: dl.ms });
   if (state.diag.length > 3600) state.diag.shift();
   state.dc = { frames: 0, face: 0, tries: 0, hits: 0, qmax: 0, pico: 0, yunet: 0 };
 }
@@ -477,14 +479,14 @@ const DL_BOX_SEC = 1.0, DL_BOX_MOVE = 0.2;
 const QUICK_SEC = 20, REC_SEC = 60, QUICK_KEEP_SEC = 75, QUICK_MIN_LUMA = 45, QUICK_MAX_LUMA = 235, QUICK_MIN_SNR = -1;
 const quick = { on: false, phase: "", queue: [], t0: null, total: 0, sec: QUICK_SEC, record: false, t0Epoch: 0 };
 window.__rppgQuick = quick; // tarayıcı testleri için
-const dl = { worker: null, ready: false, failed: "", busy: false, gen: 0, frames: [], t0: null, nextK: null,
+const dl = { model: selectedModel.key, worker: null, ready: false, failed: "", busy: false, gen: 0, frames: [], t0: null, nextK: null,
   acc: new Map(), ms: 0, canvas: null, box: null, boxT: 0, boxUpdates: 0 };
 window.__rppgDl = dl; // tarayıcı testleri için
 
 // Arka uç: wasm (işlemci) ya da WebGPU (ekran kartı). İlk açılışta WebGPU varsa ikisi de aynı kısa denemeyle ölçülür
 // (dl_worker.js bench); WebGPU en az GPU_GAIN kat hızlıysa ona geçilir. Seçim tarayıcıda hatırlanır (EP_KEY);
 // WebGPU sonradan açılamazsa wasm'a dönülür. ?ep=wasm|webgpu ile zorlanır.
-const EP_KEY = "rppg.ep", GPU_GAIN = 1.5;
+const EP_KEY = selectedModel.key === "tur5" ? "rppg.ep" : `rppg.ep.${selectedModel.key}`, GPU_GAIN = 1.5;
 const forcedEp = ["wasm", "webgpu"].includes(params.get("ep")) ? params.get("ep") : "";
 const savedEp = () => { try { return localStorage.getItem(EP_KEY) || ""; } catch { return ""; } };
 const saveEp = (ep) => { try { localStorage.setItem(EP_KEY, ep); } catch { /* gizli sekme */ } };
@@ -507,7 +509,7 @@ function dlStart(ep) {
   dl.ep = ep;
   dl.worker.onmessage = dlMessage;
   dl.worker.onerror = (e) => { dl.failed = e.message || "model yüklenemedi"; dl.busy = false; };
-  dl.worker.postMessage({ type: "load", ep, bench: dl.compare });
+  dl.worker.postMessage({ type: "load", ep, bench: dl.compare, model: selectedModel.key });
 }
 
 function dlTryGpu() {                          // arka planda WebGPU denemesi; ölçüm wasm ile sürer
@@ -530,7 +532,7 @@ function dlTryGpu() {                          // arka planda WebGPU denemesi; �
     };
     swap();
   };
-  w.postMessage({ type: "load", ep: "webgpu", bench: true });
+  w.postMessage({ type: "load", ep: "webgpu", bench: true, model: selectedModel.key });
 }
 
 function dlMessage(e) {
@@ -937,7 +939,7 @@ function saveHistory(h) {
 }
 function addHistory(r) {
   const h = loadHistory();
-  h.push({ at: new Date().toISOString(), hr: Math.round(r.hr), kind: r.kind, cam: r.cam, reliable: r.reliable !== false });
+  h.push({ at: new Date().toISOString(), model: selectedModel.key, hr: Math.round(r.hr), kind: r.kind, cam: r.cam, reliable: r.reliable !== false });
   saveHistory(h);
 }
 function renderHistory(h = loadHistory()) {
@@ -958,7 +960,7 @@ function renderHistory(h = loadHistory()) {
 function downloadRec() {
   const r = state.rec;
   if (!r) return;
-  const F = r.frames, head = { format: "rppg-rec-1", version: VERSION, at: r.at, t0_epoch_ms: r.t0Epoch, ua: navigator.userAgent,
+  const F = r.frames, head = { model: selectedModel.key, format: "rppg-rec-1", version: VERSION, at: r.at, t0_epoch_ms: r.t0Epoch, ua: navigator.userAgent,
     cam: r.cam, lock: r.lock, video: r.video, size: DL_SIZE, box_coef: DL_BOX, detector: state.detector, ep: dl.ep, n: F.length,
     t: F.map((f) => +(f.t - r.t0).toFixed(4)), box: F.map((f) => f.b),
     result: { hr: r.entry.hr, snr: r.entry.snr, reliable: r.entry.reliable }, ref_bpm: r.entry.ref ?? null };
@@ -1079,20 +1081,20 @@ function downloadRaw() {
 function downloadDiag() {
   const info = { version: VERSION, at: new Date().toISOString(), ua: navigator.userAgent, cores: navigator.hardwareConcurrency,
     memory_gb: navigator.deviceMemory, coi: self.crossOriginIsolated, threads: dl.threads, model_ms: dl.ms, model_ready: dl.ready,
-    ep: dl.ep, ep_bench: dl.bench || null, ep_saved: savedEp(),
+    model: selectedModel.key, ep: dl.ep, ep_bench: dl.bench || null, ep_saved: savedEp(),
     model_error: dl.failed, face: { detector: state.detector, yunet_ready: fd.ready, yunet_error: fd.failed, yunet_ms: fd.ms },
     camera: state.track?.getSettings?.() || {}, lock: state.camLock, work: [els.work.width, els.work.height] };
   saveFile(`rppg_teshis_${stamp()}.json`, JSON.stringify({ info, diag: state.diag, log: state.log, refs: state.refs }), "application/json");
 }
 
 function downloadCsv() {
-  const rows = ["zaman_s,nabiz_bpm,snr_db,hareket_guveni,mod,yontem,kamera,kamera_kilidi,guvenilir,oksimetre_bpm",
+  const rows = ["zaman_s,nabiz_bpm,snr_db,hareket_guveni,mod,yontem,kamera,kamera_kilidi,guvenilir,oksimetre_bpm,model",
     ...state.log.map((r) => [r.t.toFixed(1), r.hr.toFixed(2), r.snr.toFixed(2), r.conf.toFixed(2), r.mode,
-      `"${r.method || ""}"`, r.cam || "", `"${r.lock}"`, r.reliable === false ? 0 : 1, r.ref ?? ""].join(","))];
+      `"${r.method || ""}"`, r.cam || "", `"${r.lock}"`, r.reliable === false ? 0 : 1, r.ref ?? "", selectedModel.key].join(","))];
   if (state.refs.length) {                      // cihazla karşılaştırma tablosu (her Kaydet bir satır)
-    rows.push("", "zaman,tur,kamera,uygulama_bpm,cihaz_bpm,fark,guvenilir,snr_db",
+    rows.push("", "zaman,tur,kamera,uygulama_bpm,cihaz_bpm,fark,guvenilir,snr_db,model",
       ...state.refs.map((r) => [r.at, r.kind, r.cam, r.app.toFixed(1), r.ref, (r.app - r.ref).toFixed(1), r.reliable ? 1 : 0,
-        r.snr.toFixed(1)].join(",")));
+        r.snr.toFixed(1), selectedModel.key].join(",")));
   }
   const a = document.createElement("a");
   a.href = URL.createObjectURL(new Blob([rows.join("\n")], { type: "text/csv" }));

@@ -192,3 +192,10 @@ tests/         pytest testleri (mobil node testleri: mobile/test/)
 | Nabız saçma değerlerde | 10 s ısınmayı bekleyin, hareketsiz durun, arkadan gelen ışıktan kaçının. |
 | `cv2 ... CascadeClassifier` hatası | OpenCV 5 kurulmuş: `pip install "opencv-python>=4.8,<5"`. |
 | `pip install` hatası | Python 3.11 ya da 3.12 önerilir. |
+
+
+### PURE standart protokolü ve mobil aday (11 Kasım 2026)
+
+PURE ile sıfırdan eğitilen MMRPhys'in 42 UBFC videosunda en iyi checkpoint sonucu: pencere MAE **0.69 BPM**, video MAE **0.89 BPM**. Bu sonuç diğer kamera koşullarında aynı başarıyı garanti etmez: ortak yerel telefon/USB testinde mevcut tur5 modelinden daha yüksek hata verdiği için uygulamanın varsayılanı korunmuştur. PURE adayı `?model=pure` ile denenebilir; v19 CSV ve teşhis çıktıları model kimliğini kaydeder.
+
+[Sonuçlar, model karşılaştırması, telefon/oksimetre ölçüm akışı ve S2/tohum tekrarları](docs/06_pure_sonraki_adimlar.md). [Kaggle S1/S2 defteri](kaggle/rppg_standart_protokoller.ipynb) varsayılan olarak S2/42'ye ayarlıdır; bu yeni koşu henüz çalıştırılmamıştır.

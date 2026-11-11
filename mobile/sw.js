@@ -1,8 +1,8 @@
 // Çevrimdışı çalışma: uygulama dosyalarını önbellekten sun, arka planda güncelle.
-const CACHE = "rppg-v18";
+const CACHE = "rppg-v19";
 const FILES = ["./", "index.html", "style.css", "app.js", "dsp.js", "manifest.webmanifest",
   "vendor/pico.js", "vendor/facefinder", "icons/icon.svg", "icons/icon-192.png", "icons/icon-512.png",
-  "dl_worker.js", "dl_pack.js", "model/factorizephys.onnx", "vendor/ort/ort.wasm.bundle.min.mjs", "vendor/ort/ort-wasm-simd-threaded.wasm", "vendor/ort/ort-wasm-simd-threaded.mjs",
+  "dl_worker.js", "dl_pack.js", "model_selection.js", "model/factorizephys.onnx", "model/mmrphys_pure_s1.onnx", "vendor/ort/ort.wasm.bundle.min.mjs", "vendor/ort/ort-wasm-simd-threaded.wasm", "vendor/ort/ort-wasm-simd-threaded.mjs",
   "face_worker.js", "face_decode.js", "vendor/yunet/face_detection_yunet_2026may.onnx"];
 
 self.addEventListener("install", (e) => {

@@ -96,7 +96,7 @@ if (args.diag) writeFileSync(args.diag, JSON.stringify(await evaluate("window.__
 const cam = await evaluate("({ facing: window.__rppg.facing, mirror: document.getElementById('stage').classList.contains('mirror'), " +
   "label: document.getElementById('flip-label').textContent, csvCam: window.__rppg.log.at(-1)?.cam, " +
   "method: window.__rppg.log.at(-1)?.method, dl: { ready: window.__rppgDl.ready, failed: window.__rppgDl.failed, " +
-  "ms: Math.round(window.__rppgDl.ms), threads: window.__rppgDl.threads, coi: window.crossOriginIsolated, samples: window.__rppgDl.acc.size } })");
+  "model: window.__rppgDl.model, ms: Math.round(window.__rppgDl.ms), threads: window.__rppgDl.threads, coi: window.crossOriginIsolated, samples: window.__rppgDl.acc.size } })");
 const status = await evaluate("document.querySelector('#status span').textContent");
 if (args.ref) {   // oksimetre kutusu: değeri gir, Kaydet'e bas, özet satırını oku
   const r = await evaluate(`(() => { const box = document.getElementById("ref-box"); const i = document.getElementById("ref-in");
@@ -137,8 +137,10 @@ server.close();
 
 const last = log.slice(-15).map((r) => r.hr).sort((a, b) => a - b);
 const median = last[Math.floor(last.length / 2)];
-console.log(JSON.stringify({ mode, expect, windows: log.length, median_last15: median,
-  hr: log.map((r) => +r.hr.toFixed(1)), snr_last: log.at(-1)?.snr.toFixed(1), status, cam }, null, 1));
+const result = { mode, expect, windows: log.length, median_last15: median,
+  hr: log.map((r) => +r.hr.toFixed(1)), snr_last: log.at(-1)?.snr.toFixed(1), status, cam };
+console.log(JSON.stringify(result, null, 1));
+if (args.result) writeFileSync(args.result, JSON.stringify(result, null, 1));
 if (args.log) writeFileSync(args.log, JSON.stringify(log));
 const dlBroken = mode === "face" && args.yontem !== "klasik" && cam?.dl?.failed;   // klasiğe sessizce düşmesin
 if (dlBroken) console.log("model çalışmadı:", cam.dl.failed);

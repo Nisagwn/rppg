@@ -1,0 +1,76 @@
+{
+  "checkpoint": "results/derin_ogrenme/pure_weiqian_s1_seed42/best.pth",
+  "checkpoint_sha256": "4ba889be03c3839eb57e5a541808456f38bbdd46f05142a8b623d5e2ab36e3b0",
+  "onnx": "mobile/model/mmrphys_pure_s1.onnx",
+  "onnx_sha256": "911955eb081dfee5f950580cc498b41695c1c5a380a2286181a558e83e8de369",
+  "onnx_bytes": 166454,
+  "torch": "2.14.0+cu126",
+  "ort": "1.30.0",
+  "provider": "CPUExecutionProvider",
+  "threads": 4,
+  "samples": [
+    {
+      "sample": "random_seed42",
+      "max_abs": 8.64267349243164e-06,
+      "relative_l2": 2.114181143042515e-06,
+      "correlation": 0.9999999999977941,
+      "hr_difference_bpm": 5.813654880171271e-06,
+      "ort_cpu_ms": 136.90780000069935
+    },
+    {
+      "sample": "mcd_1020_FullHDwebcam_before.npy@0",
+      "max_abs": 0.0001289844512939453,
+      "relative_l2": 1.6370491721318103e-05,
+      "correlation": 0.9999999998709909,
+      "hr_difference_bpm": 1.3182966824842879e-05,
+      "ort_cpu_ms": 143.19609999984095
+    },
+    {
+      "sample": "mcd_1020_FullHDwebcam_before.npy@2611",
+      "max_abs": 2.9087066650390625e-05,
+      "relative_l2": 3.646486220532097e-06,
+      "correlation": 0.99999999999424,
+      "hr_difference_bpm": 4.613064788827614e-06,
+      "ort_cpu_ms": 140.21460000003572
+    },
+    {
+      "sample": "mcd_1020_FullHDwebcam_before.npy@5223",
+      "max_abs": 7.62939453125e-06,
+      "relative_l2": 1.409814331054804e-06,
+      "correlation": 0.9999999999990135,
+      "hr_difference_bpm": 5.080617214048289e-06,
+      "ort_cpu_ms": 136.44980000026408
+    },
+    {
+      "sample": "mcd_1020_IriunWebcam_before.npy@0",
+      "max_abs": 0.0010128021240234375,
+      "relative_l2": 0.00012737511133309454,
+      "correlation": 0.9999999919617243,
+      "hr_difference_bpm": 0.001628265841716825,
+      "ort_cpu_ms": 135.95960000020568
+    },
+    {
+      "sample": "mcd_1020_IriunWebcam_before.npy@2613",
+      "max_abs": 0.0010808706283569336,
+      "relative_l2": 0.0001133846744778566,
+      "correlation": 0.999999993670716,
+      "hr_difference_bpm": 0.00018537558386810815,
+      "ort_cpu_ms": 122.31980000069598
+    },
+    {
+      "sample": "mcd_1020_IriunWebcam_before.npy@5227",
+      "max_abs": 1.730024814605713e-05,
+      "relative_l2": 2.443082621539361e-06,
+      "correlation": 0.9999999999972448,
+      "hr_difference_bpm": 1.1724638824262001e-06,
+      "ort_cpu_ms": 128.3517000010761
+    }
+  ],
+  "passed": true,
+  "thresholds": {
+    "relative_l2_below": 0.001,
+    "correlation_above": 0.99999,
+    "hr_difference_below_bpm": 0.1
+  },
+  "note": "Masaüstü CPU; ölçülen süre ilk çağrı ısınmasını da içerebilir, telefon hızı değildir."
+}

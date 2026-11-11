@@ -1,0 +1,217 @@
+eğitim 53 video (9 kişi), doğrulama 5 video, cihaz cuda
+  eğitim nabız dağılımı: 40-70: 31, 70-90: 15, 90-110: 1, 110-130: 3, 130-250: 3
+mimari mmrphys (37480 parametre), rastgele başlatma, kayıp smooth_l1
+başlangıç modeli doğrulama MAE: 43.45 BPM
+  doğrulama: pure/PURE 43.45 (5)
+  örnekleme payı: pure %100
+  epoch 1 adım 100/500 kayıp 0.2766
+  epoch 1 adım 200/500 kayıp 0.1816
+  epoch 1 adım 300/500 kayıp 0.1600
+  epoch 1 adım 400/500 kayıp 0.1536
+  epoch 1 adım 500/500 kayıp 0.1499
+epoch 1: kayıp 0.1843, doğrulama MAE 0.33 BPM, en iyi 0.33 (epoch 1), 147 s [13:34:22]
+  doğrulama: pure/PURE 0.33 (5)
+  epoch 2 adım 100/500 kayıp 0.1373
+  epoch 2 adım 200/500 kayıp 0.1371
+  epoch 2 adım 300/500 kayıp 0.1288
+  epoch 2 adım 400/500 kayıp 0.1284
+  epoch 2 adım 500/500 kayıp 0.1270
+epoch 2: kayıp 0.1317, doğrulama MAE 0.32 BPM, en iyi 0.32 (epoch 2), 145 s [13:36:47]
+  doğrulama: pure/PURE 0.32 (5)
+  epoch 3 adım 100/500 kayıp 0.1293
+  epoch 3 adım 200/500 kayıp 0.1219
+  epoch 3 adım 300/500 kayıp 0.1171
+  epoch 3 adım 400/500 kayıp 0.1186
+  epoch 3 adım 500/500 kayıp 0.1131
+epoch 3: kayıp 0.1200, doğrulama MAE 0.36 BPM, en iyi 0.32 (epoch 2), 145 s [13:39:11]
+  doğrulama: pure/PURE 0.36 (5)
+  epoch 4 adım 100/500 kayıp 0.1118
+  epoch 4 adım 200/500 kayıp 0.1108
+  epoch 4 adım 300/500 kayıp 0.1100
+  epoch 4 adım 400/500 kayıp 0.1112
+  epoch 4 adım 500/500 kayıp 0.1059
+epoch 4: kayıp 0.1099, doğrulama MAE 0.35 BPM, en iyi 0.32 (epoch 2), 145 s [13:41:36]
+  doğrulama: pure/PURE 0.35 (5)
+  epoch 5 adım 100/500 kayıp 0.1060
+  epoch 5 adım 200/500 kayıp 0.1057
+  epoch 5 adım 300/500 kayıp 0.1068
+  epoch 5 adım 400/500 kayıp 0.1045
+  epoch 5 adım 500/500 kayıp 0.1037
+epoch 5: kayıp 0.1053, doğrulama MAE 0.35 BPM, en iyi 0.32 (epoch 2), 144 s [13:44:01]
+  doğrulama: pure/PURE 0.35 (5)
+  epoch 6 adım 100/500 kayıp 0.0987
+  epoch 6 adım 200/500 kayıp 0.0994
+  epoch 6 adım 300/500 kayıp 0.1024
+  epoch 6 adım 400/500 kayıp 0.1020
+  epoch 6 adım 500/500 kayıp 0.1004
+epoch 6: kayıp 0.1006, doğrulama MAE 0.35 BPM, en iyi 0.32 (epoch 2), 145 s [13:46:26]
+  doğrulama: pure/PURE 0.35 (5)
+  epoch 7 adım 100/500 kayıp 0.0982
+  epoch 7 adım 200/500 kayıp 0.0944
+  epoch 7 adım 300/500 kayıp 0.0975
+  epoch 7 adım 400/500 kayıp 0.0946
+  epoch 7 adım 500/500 kayıp 0.0910
+epoch 7: kayıp 0.0952, doğrulama MAE 0.34 BPM, en iyi 0.32 (epoch 2), 146 s [13:48:52]
+  doğrulama: pure/PURE 0.34 (5)
+  epoch 8 adım 100/500 kayıp 0.0948
+  epoch 8 adım 200/500 kayıp 0.0914
+  epoch 8 adım 300/500 kayıp 0.0936
+  epoch 8 adım 400/500 kayıp 0.0937
+  epoch 8 adım 500/500 kayıp 0.0921
+epoch 8: kayıp 0.0931, doğrulama MAE 0.37 BPM, en iyi 0.32 (epoch 2), 146 s [13:51:18]
+  doğrulama: pure/PURE 0.37 (5)
+  epoch 9 adım 100/500 kayıp 0.0897
+  epoch 9 adım 200/500 kayıp 0.0867
+  epoch 9 adım 300/500 kayıp 0.0843
+  epoch 9 adım 400/500 kayıp 0.0890
+  epoch 9 adım 500/500 kayıp 0.0922
+epoch 9: kayıp 0.0884, doğrulama MAE 0.36 BPM, en iyi 0.32 (epoch 2), 146 s [13:53:45]
+  doğrulama: pure/PURE 0.36 (5)
+  epoch 10 adım 100/500 kayıp 0.0873
+  epoch 10 adım 200/500 kayıp 0.0890
+  epoch 10 adım 300/500 kayıp 0.0866
+  epoch 10 adım 400/500 kayıp 0.0819
+  epoch 10 adım 500/500 kayıp 0.0821
+epoch 10: kayıp 0.0854, doğrulama MAE 0.35 BPM, en iyi 0.32 (epoch 2), 146 s [13:56:11]
+  doğrulama: pure/PURE 0.35 (5)
+  epoch 11 adım 100/500 kayıp 0.0839
+  epoch 11 adım 200/500 kayıp 0.0844
+  epoch 11 adım 300/500 kayıp 0.0849
+  epoch 11 adım 400/500 kayıp 0.0801
+  epoch 11 adım 500/500 kayıp 0.0830
+epoch 11: kayıp 0.0833, doğrulama MAE 0.38 BPM, en iyi 0.32 (epoch 2), 146 s [13:58:37]
+  doğrulama: pure/PURE 0.38 (5)
+  epoch 12 adım 100/500 kayıp 0.0824
+  epoch 12 adım 200/500 kayıp 0.0836
+  epoch 12 adım 300/500 kayıp 0.0830
+  epoch 12 adım 400/500 kayıp 0.0801
+  epoch 12 adım 500/500 kayıp 0.0856
+epoch 12: kayıp 0.0829, doğrulama MAE 0.38 BPM, en iyi 0.32 (epoch 2), 146 s [14:01:03]
+  doğrulama: pure/PURE 0.38 (5)
+  epoch 13 adım 100/500 kayıp 0.0787
+  epoch 13 adım 200/500 kayıp 0.0813
+  epoch 13 adım 300/500 kayıp 0.0839
+  epoch 13 adım 400/500 kayıp 0.0800
+  epoch 13 adım 500/500 kayıp 0.0790
+epoch 13: kayıp 0.0806, doğrulama MAE 0.35 BPM, en iyi 0.32 (epoch 2), 147 s [14:03:30]
+  doğrulama: pure/PURE 0.35 (5)
+  epoch 14 adım 100/500 kayıp 0.0835
+  epoch 14 adım 200/500 kayıp 0.0803
+  epoch 14 adım 300/500 kayıp 0.0802
+  epoch 14 adım 400/500 kayıp 0.0776
+  epoch 14 adım 500/500 kayıp 0.0781
+epoch 14: kayıp 0.0799, doğrulama MAE 0.38 BPM, en iyi 0.32 (epoch 2), 146 s [14:05:56]
+  doğrulama: pure/PURE 0.38 (5)
+  epoch 15 adım 100/500 kayıp 0.0803
+  epoch 15 adım 200/500 kayıp 0.0751
+  epoch 15 adım 300/500 kayıp 0.0781
+  epoch 15 adım 400/500 kayıp 0.0779
+  epoch 15 adım 500/500 kayıp 0.0781
+epoch 15: kayıp 0.0779, doğrulama MAE 0.37 BPM, en iyi 0.32 (epoch 2), 146 s [14:08:22]
+  doğrulama: pure/PURE 0.37 (5)
+  epoch 16 adım 100/500 kayıp 0.0820
+  epoch 16 adım 200/500 kayıp 0.0816
+  epoch 16 adım 300/500 kayıp 0.0742
+  epoch 16 adım 400/500 kayıp 0.0719
+  epoch 16 adım 500/500 kayıp 0.0760
+epoch 16: kayıp 0.0771, doğrulama MAE 0.36 BPM, en iyi 0.32 (epoch 2), 146 s [14:10:48]
+  doğrulama: pure/PURE 0.36 (5)
+  epoch 17 adım 100/500 kayıp 0.0722
+  epoch 17 adım 200/500 kayıp 0.0750
+  epoch 17 adım 300/500 kayıp 0.0754
+  epoch 17 adım 400/500 kayıp 0.0755
+  epoch 17 adım 500/500 kayıp 0.0751
+epoch 17: kayıp 0.0746, doğrulama MAE 0.39 BPM, en iyi 0.32 (epoch 2), 146 s [14:13:14]
+  doğrulama: pure/PURE 0.39 (5)
+  epoch 18 adım 100/500 kayıp 0.0732
+  epoch 18 adım 200/500 kayıp 0.0725
+  epoch 18 adım 300/500 kayıp 0.0693
+  epoch 18 adım 400/500 kayıp 0.0750
+  epoch 18 adım 500/500 kayıp 0.0729
+epoch 18: kayıp 0.0726, doğrulama MAE 0.39 BPM, en iyi 0.32 (epoch 2), 146 s [14:15:40]
+  doğrulama: pure/PURE 0.39 (5)
+  epoch 19 adım 100/500 kayıp 0.0750
+  epoch 19 adım 200/500 kayıp 0.0736
+  epoch 19 adım 300/500 kayıp 0.0696
+  epoch 19 adım 400/500 kayıp 0.0719
+  epoch 19 adım 500/500 kayıp 0.0723
+epoch 19: kayıp 0.0725, doğrulama MAE 0.40 BPM, en iyi 0.32 (epoch 2), 146 s [14:18:06]
+  doğrulama: pure/PURE 0.40 (5)
+  epoch 20 adım 100/500 kayıp 0.0760
+  epoch 20 adım 200/500 kayıp 0.0732
+  epoch 20 adım 300/500 kayıp 0.0680
+  epoch 20 adım 400/500 kayıp 0.0723
+  epoch 20 adım 500/500 kayıp 0.0718
+epoch 20: kayıp 0.0723, doğrulama MAE 0.38 BPM, en iyi 0.32 (epoch 2), 146 s [14:20:32]
+  doğrulama: pure/PURE 0.38 (5)
+  epoch 21 adım 100/500 kayıp 0.0694
+  epoch 21 adım 200/500 kayıp 0.0685
+  epoch 21 adım 300/500 kayıp 0.0727
+  epoch 21 adım 400/500 kayıp 0.0735
+  epoch 21 adım 500/500 kayıp 0.0715
+epoch 21: kayıp 0.0711, doğrulama MAE 0.39 BPM, en iyi 0.32 (epoch 2), 146 s [14:22:58]
+  doğrulama: pure/PURE 0.39 (5)
+  epoch 22 adım 100/500 kayıp 0.0709
+  epoch 22 adım 200/500 kayıp 0.0704
+  epoch 22 adım 300/500 kayıp 0.0696
+  epoch 22 adım 400/500 kayıp 0.0678
+  epoch 22 adım 500/500 kayıp 0.0676
+epoch 22: kayıp 0.0693, doğrulama MAE 0.39 BPM, en iyi 0.32 (epoch 2), 146 s [14:25:24]
+  doğrulama: pure/PURE 0.39 (5)
+  epoch 23 adım 100/500 kayıp 0.0673
+  epoch 23 adım 200/500 kayıp 0.0702
+  epoch 23 adım 300/500 kayıp 0.0658
+  epoch 23 adım 400/500 kayıp 0.0693
+  epoch 23 adım 500/500 kayıp 0.0680
+epoch 23: kayıp 0.0681, doğrulama MAE 0.39 BPM, en iyi 0.32 (epoch 2), 146 s [14:27:50]
+  doğrulama: pure/PURE 0.39 (5)
+  epoch 24 adım 100/500 kayıp 0.0662
+  epoch 24 adım 200/500 kayıp 0.0694
+  epoch 24 adım 300/500 kayıp 0.0635
+  epoch 24 adım 400/500 kayıp 0.0680
+  epoch 24 adım 500/500 kayıp 0.0678
+epoch 24: kayıp 0.0670, doğrulama MAE 0.40 BPM, en iyi 0.32 (epoch 2), 146 s [14:30:16]
+  doğrulama: pure/PURE 0.40 (5)
+  epoch 25 adım 100/500 kayıp 0.0648
+  epoch 25 adım 200/500 kayıp 0.0686
+  epoch 25 adım 300/500 kayıp 0.0665
+  epoch 25 adım 400/500 kayıp 0.0660
+  epoch 25 adım 500/500 kayıp 0.0663
+epoch 25: kayıp 0.0665, doğrulama MAE 0.39 BPM, en iyi 0.32 (epoch 2), 146 s [14:32:43]
+  doğrulama: pure/PURE 0.39 (5)
+  epoch 26 adım 100/500 kayıp 0.0686
+  epoch 26 adım 200/500 kayıp 0.0671
+  epoch 26 adım 300/500 kayıp 0.0679
+  epoch 26 adım 400/500 kayıp 0.0666
+  epoch 26 adım 500/500 kayıp 0.0684
+epoch 26: kayıp 0.0677, doğrulama MAE 0.39 BPM, en iyi 0.32 (epoch 2), 147 s [14:35:10]
+  doğrulama: pure/PURE 0.39 (5)
+  epoch 27 adım 100/500 kayıp 0.0685
+  epoch 27 adım 200/500 kayıp 0.0680
+  epoch 27 adım 300/500 kayıp 0.0658
+  epoch 27 adım 400/500 kayıp 0.0655
+  epoch 27 adım 500/500 kayıp 0.0651
+epoch 27: kayıp 0.0666, doğrulama MAE 0.40 BPM, en iyi 0.32 (epoch 2), 147 s [14:37:36]
+  doğrulama: pure/PURE 0.40 (5)
+  epoch 28 adım 100/500 kayıp 0.0643
+  epoch 28 adım 200/500 kayıp 0.0650
+  epoch 28 adım 300/500 kayıp 0.0670
+  epoch 28 adım 400/500 kayıp 0.0652
+  epoch 28 adım 500/500 kayıp 0.0669
+epoch 28: kayıp 0.0657, doğrulama MAE 0.40 BPM, en iyi 0.32 (epoch 2), 147 s [14:40:03]
+  doğrulama: pure/PURE 0.40 (5)
+  epoch 29 adım 100/500 kayıp 0.0676
+  epoch 29 adım 200/500 kayıp 0.0632
+  epoch 29 adım 300/500 kayıp 0.0669
+  epoch 29 adım 400/500 kayıp 0.0661
+  epoch 29 adım 500/500 kayıp 0.0696
+epoch 29: kayıp 0.0667, doğrulama MAE 0.40 BPM, en iyi 0.32 (epoch 2), 147 s [14:42:30]
+  doğrulama: pure/PURE 0.40 (5)
+  epoch 30 adım 100/500 kayıp 0.0672
+  epoch 30 adım 200/500 kayıp 0.0661
+  epoch 30 adım 300/500 kayıp 0.0654
+  epoch 30 adım 400/500 kayıp 0.0691
+  epoch 30 adım 500/500 kayıp 0.0679
+epoch 30: kayıp 0.0671, doğrulama MAE 0.40 BPM, en iyi 0.32 (epoch 2), 147 s [14:44:56]
+  doğrulama: pure/PURE 0.40 (5)
+bitti

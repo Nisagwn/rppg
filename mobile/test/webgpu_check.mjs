@@ -1,12 +1,16 @@
 // WebGPU arka ucunun modeli wasm ile aynı sonuçla çalıştırıp çalıştırmadığını denetler (doğruluk; hız telefonda ölçülür).
 // Aynı rastgele girdi iki oturumdan geçer: ["wasm"] ve ["webgpu"]; en büyük fark ve korelasyon yazdırılır.
 //   node mobile/test/webgpu_check.mjs [--gpu]     # --gpu: gerçek ekran kartı (varsayılan: SwiftShader, işlemcide WebGPU)
-import { spawn } from "node:child_process";
-import { existsSync, mkdtempSync, readFileSync } from "node:fs";
+import { spawn, spawnSync } from "node:child_process";
+import { existsSync, mkdtempSync, readFileSync, writeFileSync } from "node:fs";
 import { createServer } from "node:http";
 import { tmpdir } from "node:os";
 import { extname, join } from "node:path";
 import { fileURLToPath } from "node:url";
+import { selectModel } from "../model_selection.js";
+
+const option = (name) => { const i = process.argv.indexOf(name); return i < 0 ? undefined : process.argv[i + 1]; };
+const model = selectModel(option("--model"));
 
 const root = fileURLToPath(new URL("..", import.meta.url));
 const chrome = process.env.CHROME || ["C:/Program Files/Google/Chrome/Application/chrome.exe",
@@ -18,7 +22,7 @@ ort.env.wasm.wasmPaths = "/vendor/ort/";
 const T = 161, n = 3 * T * 72 * 72, x = new Float32Array(n);
 let s = 1; for (let i = 0; i < n; i++) { s = (s * 16807) % 2147483647; x[i] = 100 + 60 * (s / 2147483647) + 20 * Math.sin(i / 5000); }
 const run = async (ep) => {
-  const ses = await ort.InferenceSession.create("/model/factorizephys.onnx", { executionProviders: [ep], graphOptimizationLevel: "all" });
+  const ses = await ort.InferenceSession.create(${JSON.stringify(model.file.replace("./", "/"))}, { executionProviders: [ep], graphOptimizationLevel: "all" });
   const inp = () => new ort.Tensor("float32", x.slice(), [1, 3, T, 72, 72]);
   await ses.run({ video: inp() });                       // ısınma (gölgelendirici derlemesi)
   const t0 = performance.now(), out = await ses.run({ video: inp() });
@@ -70,6 +74,8 @@ const evaluate = (expression) => new Promise((r) => {
 let res;
 for (let k = 0; k < 180 && !res; k++) { await wait(1000); res = await evaluate("window.__res"); }
 console.log(JSON.stringify(res));
-proc.kill();
+if (option("--out")) writeFileSync(option("--out"), JSON.stringify({ model: model.key, ...res }, null, 2));
+if (process.platform === "win32") spawnSync("taskkill", ["/PID", String(proc.pid), "/T", "/F"]);
+else proc.kill();
 server.close();
 process.exit(res && !res.hata && res.korelasyon > 0.999 ? 0 : 1);

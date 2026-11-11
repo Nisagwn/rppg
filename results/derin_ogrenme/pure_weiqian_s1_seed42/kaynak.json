@@ -1,0 +1,10 @@
+{
+  "archive": "results (16).zip",
+  "archive_sha256": "a46e8690dc216a830781a98aa4e4da319f3b1d3ed960b4320a47abe331498601",
+  "protocol": "PURE -> UBFC; no pretrained weights",
+  "seed": 42,
+  "checkpoints": {
+    "best.pth": "4ba889be03c3839eb57e5a541808456f38bbdd46f05142a8b623d5e2ab36e3b0",
+    "last.pth": "5bbd7d01ee7beac3d08a161e1f713cb3a3d02b4101eca2baf9ea11590a88f0d3"
+  }
+}

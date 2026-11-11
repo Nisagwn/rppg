@@ -1,0 +1,156 @@
+PURE: 59 oturum, kaynak WeiQian98/PURE@b4086794d634b8978337b0ac402d2cd172871e08
+[1/59] 01-01: hazır
+[2/59] 01-02: 2029 kare, yüz %100; ham veri silindi
+[3/59] 01-03: 2482 kare, yüz %100; ham veri silindi
+[4/59] 01-04: 2492 kare, yüz %100; ham veri silindi
+[5/59] 01-05: 2028 kare, yüz %100; ham veri silindi
+[6/59] 01-06: 2040 kare, yüz %100; ham veri silindi
+[7/59] 02-01: 2039 kare, yüz %100; ham veri silindi
+[8/59] 02-02: 1974 kare, yüz %100; ham veri silindi
+HTTP Error 429 thrown while requesting HEAD https://huggingface.co/datasets/WeiQian98/PURE/resolve/b4086794d634b8978337b0ac402d2cd172871e08/02-03/02-03/Image1392646496748244000.png
+Rate limited. Waiting 3.0s before retry [Retry 1/5].
+HTTP Error 429 thrown while requesting HEAD https://huggingface.co/datasets/WeiQian98/PURE/resolve/b4086794d634b8978337b0ac402d2cd172871e08/02-03/02-03/Image1392646496781582000.png
+Rate limited. Waiting 3.0s before retry [Retry 1/5].
+HTTP Error 429 thrown while requesting HEAD https://huggingface.co/datasets/WeiQian98/PURE/resolve/b4086794d634b8978337b0ac402d2cd172871e08/02-03/02-03/Image1392646496814890000.png
+Rate limited. Waiting 3.0s before retry [Retry 1/5].
+HTTP Error 429 thrown while requesting HEAD https://huggingface.co/datasets/WeiQian98/PURE/resolve/b4086794d634b8978337b0ac402d2cd172871e08/02-03/02-03/Image1392646496848229000.png
+Rate limited. Waiting 3.0s before retry [Retry 1/5].
+HTTP Error 429 thrown while requesting HEAD https://huggingface.co/datasets/WeiQian98/PURE/resolve/b4086794d634b8978337b0ac402d2cd172871e08/02-03/02-03/Image1392646496881567000.png
+Rate limited. Waiting 3.0s before retry [Retry 1/5].
+HTTP Error 429 thrown while requesting HEAD https://huggingface.co/datasets/WeiQian98/PURE/resolve/b4086794d634b8978337b0ac402d2cd172871e08/02-03/02-03/Image1392646496914906000.png
+Rate limited. Waiting 3.0s before retry [Retry 1/5].
+HTTP Error 429 thrown while requesting HEAD https://huggingface.co/datasets/WeiQian98/PURE/resolve/b4086794d634b8978337b0ac402d2cd172871e08/02-03/02-03/Image1392646496948244000.png
+Rate limited. Waiting 3.0s before retry [Retry 1/5].
+HTTP Error 429 thrown while requesting HEAD https://huggingface.co/datasets/WeiQian98/PURE/resolve/b4086794d634b8978337b0ac402d2cd172871e08/02-03/02-03/Image1392646496981583000.png
+Rate limited. Waiting 3.0s before retry [Retry 1/5].
+[9/59] 02-03: 2187 kare, yüz %100; ham veri silindi
+[10/59] 02-04: 2224 kare, yüz %100; ham veri silindi
+[11/59] 02-05: 1920 kare, yüz %100; ham veri silindi
+[12/59] 02-06: 1943 kare, yüz %100; ham veri silindi
+[13/59] 03-01: 1974 kare, yüz %100; ham veri silindi
+[14/59] 03-02: 2019 kare, yüz %100; ham veri silindi
+[15/59] 03-03: 2208 kare, yüz %100; ham veri silindi
+HTTP Error 429 thrown while requesting HEAD https://huggingface.co/datasets/WeiQian98/PURE/resolve/b4086794d634b8978337b0ac402d2cd172871e08/03-04/03-04/Image1392649585174165000.png
+Rate limited. Waiting 7.0s before retry [Retry 1/5].
+HTTP Error 429 thrown while requesting HEAD https://huggingface.co/datasets/WeiQian98/PURE/resolve/b4086794d634b8978337b0ac402d2cd172871e08/03-04/03-04/Image1392649585207498000.png
+Rate limited. Waiting 7.0s before retry [Retry 1/5].
+HTTP Error 429 thrown while requesting HEAD https://huggingface.co/datasets/WeiQian98/PURE/resolve/b4086794d634b8978337b0ac402d2cd172871e08/03-04/03-04/Image1392649585240830000.png
+Rate limited. Waiting 6.0s before retry [Retry 1/5].
+HTTP Error 429 thrown while requesting HEAD https://huggingface.co/datasets/WeiQian98/PURE/resolve/b4086794d634b8978337b0ac402d2cd172871e08/03-04/03-04/Image1392649585274167000.png
+Rate limited. Waiting 6.0s before retry [Retry 1/5].
+HTTP Error 429 thrown while requesting HEAD https://huggingface.co/datasets/WeiQian98/PURE/resolve/b4086794d634b8978337b0ac402d2cd172871e08/03-04/03-04/Image1392649585307499000.png
+Rate limited. Waiting 6.0s before retry [Retry 1/5].
+HTTP Error 429 thrown while requesting HEAD https://huggingface.co/datasets/WeiQian98/PURE/resolve/b4086794d634b8978337b0ac402d2cd172871e08/03-04/03-04/Image1392649585340831000.png
+Rate limited. Waiting 6.0s before retry [Retry 1/5].
+HTTP Error 429 thrown while requesting HEAD https://huggingface.co/datasets/WeiQian98/PURE/resolve/b4086794d634b8978337b0ac402d2cd172871e08/03-04/03-04/Image1392649585374164000.png
+Rate limited. Waiting 6.0s before retry [Retry 1/5].
+HTTP Error 429 thrown while requesting HEAD https://huggingface.co/datasets/WeiQian98/PURE/resolve/b4086794d634b8978337b0ac402d2cd172871e08/03-04/03-04/Image1392649585407501000.png
+Rate limited. Waiting 6.0s before retry [Retry 1/5].
+[16/59] 03-04: 2251 kare, yüz %100; ham veri silindi
+[17/59] 03-05: 1938 kare, yüz %100; ham veri silindi
+[18/59] 03-06: 1953 kare, yüz %100; ham veri silindi
+[19/59] 04-01: 1968 kare, yüz %100; ham veri silindi
+[20/59] 04-02: 2026 kare, yüz %100; ham veri silindi
+[21/59] 04-03: 2269 kare, yüz %100; ham veri silindi
+[22/59] 04-04: 2281 kare, yüz %100; ham veri silindi
+[23/59] 04-05: 1950 kare, yüz %100; ham veri silindi
+[24/59] 04-06: 1968 kare, yüz %100; ham veri silindi
+[25/59] 05-01: 1986 kare, yüz %100; ham veri silindi
+[26/59] 05-02: 2006 kare, yüz %100; ham veri silindi
+[27/59] 05-03: 2281 kare, yüz %74; ham veri silindi
+HTTP Error 429 thrown while requesting HEAD https://huggingface.co/datasets/WeiQian98/PURE/resolve/b4086794d634b8978337b0ac402d2cd172871e08/05-04/05-04/Image1392651999074561000.png
+Rate limited. Waiting 12.0s before retry [Retry 1/5].
+HTTP Error 429 thrown while requesting HEAD https://huggingface.co/datasets/WeiQian98/PURE/resolve/b4086794d634b8978337b0ac402d2cd172871e08/05-04/05-04/Image1392651999141225000.png
+Rate limited. Waiting 12.0s before retry [Retry 1/5].
+HTTP Error 429 thrown while requesting HEAD https://huggingface.co/datasets/WeiQian98/PURE/resolve/b4086794d634b8978337b0ac402d2cd172871e08/05-04/05-04/Image1392651999174563000.png
+Rate limited. Waiting 12.0s before retry [Retry 1/5].
+HTTP Error 429 thrown while requesting HEAD https://huggingface.co/datasets/WeiQian98/PURE/resolve/b4086794d634b8978337b0ac402d2cd172871e08/05-04/05-04/Image1392651999107893000.png
+Rate limited. Waiting 12.0s before retry [Retry 1/5].
+HTTP Error 429 thrown while requesting HEAD https://huggingface.co/datasets/WeiQian98/PURE/resolve/b4086794d634b8978337b0ac402d2cd172871e08/05-04/05-04/Image1392651999207895000.png
+Rate limited. Waiting 12.0s before retry [Retry 1/5].
+HTTP Error 429 thrown while requesting HEAD https://huggingface.co/datasets/WeiQian98/PURE/resolve/b4086794d634b8978337b0ac402d2cd172871e08/05-04/05-04/Image1392651999241227000.png
+Rate limited. Waiting 12.0s before retry [Retry 1/5].
+HTTP Error 429 thrown while requesting HEAD https://huggingface.co/datasets/WeiQian98/PURE/resolve/b4086794d634b8978337b0ac402d2cd172871e08/05-04/05-04/Image1392651999274559000.png
+Rate limited. Waiting 12.0s before retry [Retry 1/5].
+HTTP Error 429 thrown while requesting HEAD https://huggingface.co/datasets/WeiQian98/PURE/resolve/b4086794d634b8978337b0ac402d2cd172871e08/05-04/05-04/Image1392651999307891000.png
+Rate limited. Waiting 12.0s before retry [Retry 1/5].
+[28/59] 05-04: 2315 kare, yüz %44; ham veri silindi
+[29/59] 05-05: 1964 kare, yüz %100; ham veri silindi
+HTTP Error 429 thrown while requesting HEAD https://huggingface.co/datasets/WeiQian98/PURE/resolve/b4086794d634b8978337b0ac402d2cd172871e08/05-06/05-06/Image1392651575041158000.png
+Rate limited. Waiting 3.0s before retry [Retry 1/5].
+HTTP Error 429 thrown while requesting HEAD https://huggingface.co/datasets/WeiQian98/PURE/resolve/b4086794d634b8978337b0ac402d2cd172871e08/05-06/05-06/Image1392651575074490000.png
+Rate limited. Waiting 3.0s before retry [Retry 1/5].
+HTTP Error 429 thrown while requesting HEAD https://huggingface.co/datasets/WeiQian98/PURE/resolve/b4086794d634b8978337b0ac402d2cd172871e08/05-06/05-06/Image1392651575107823000.png
+Rate limited. Waiting 3.0s before retry [Retry 1/5].
+HTTP Error 429 thrown while requesting HEAD https://huggingface.co/datasets/WeiQian98/PURE/resolve/b4086794d634b8978337b0ac402d2cd172871e08/05-06/05-06/Image1392651575141160000.png
+Rate limited. Waiting 3.0s before retry [Retry 1/5].
+HTTP Error 429 thrown while requesting HEAD https://huggingface.co/datasets/WeiQian98/PURE/resolve/b4086794d634b8978337b0ac402d2cd172871e08/05-06/05-06/Image1392651575174492000.png
+Rate limited. Waiting 3.0s before retry [Retry 1/5].
+HTTP Error 429 thrown while requesting HEAD https://huggingface.co/datasets/WeiQian98/PURE/resolve/b4086794d634b8978337b0ac402d2cd172871e08/05-06/05-06/Image1392651575207824000.png
+Rate limited. Waiting 3.0s before retry [Retry 1/5].
+HTTP Error 429 thrown while requesting HEAD https://huggingface.co/datasets/WeiQian98/PURE/resolve/b4086794d634b8978337b0ac402d2cd172871e08/05-06/05-06/Image1392651575241156000.png
+Rate limited. Waiting 3.0s before retry [Retry 1/5].
+HTTP Error 429 thrown while requesting HEAD https://huggingface.co/datasets/WeiQian98/PURE/resolve/b4086794d634b8978337b0ac402d2cd172871e08/05-06/05-06/Image1392651575274494000.png
+Rate limited. Waiting 3.0s before retry [Retry 1/5].
+[30/59] 05-06: 1971 kare, yüz %83; ham veri silindi
+[31/59] 06-01: 1976 kare, yüz %100; ham veri silindi
+[32/59] 06-03: 2269 kare, yüz %100; ham veri silindi
+[33/59] 06-04: 2278 kare, yüz %100; ham veri silindi
+[34/59] 06-05: 1959 kare, yüz %100; ham veri silindi
+HTTP Error 429 thrown while requesting HEAD https://huggingface.co/datasets/WeiQian98/PURE/resolve/b4086794d634b8978337b0ac402d2cd172871e08/06-06/06-06/Image1392714549310379000.png
+Rate limited. Waiting 2.0s before retry [Retry 1/5].
+HTTP Error 429 thrown while requesting HEAD https://huggingface.co/datasets/WeiQian98/PURE/resolve/b4086794d634b8978337b0ac402d2cd172871e08/06-06/06-06/Image1392714549343712000.png
+Rate limited. Waiting 2.0s before retry [Retry 1/5].
+HTTP Error 429 thrown while requesting HEAD https://huggingface.co/datasets/WeiQian98/PURE/resolve/b4086794d634b8978337b0ac402d2cd172871e08/06-06/06-06/Image1392714549377044000.png
+Rate limited. Waiting 2.0s before retry [Retry 1/5].
+HTTP Error 429 thrown while requesting HEAD https://huggingface.co/datasets/WeiQian98/PURE/resolve/b4086794d634b8978337b0ac402d2cd172871e08/06-06/06-06/Image1392714549410377000.png
+Rate limited. Waiting 2.0s before retry [Retry 1/5].
+HTTP Error 429 thrown while requesting HEAD https://huggingface.co/datasets/WeiQian98/PURE/resolve/b4086794d634b8978337b0ac402d2cd172871e08/06-06/06-06/Image1392714549443710000.png
+Rate limited. Waiting 2.0s before retry [Retry 1/5].
+HTTP Error 429 thrown while requesting HEAD https://huggingface.co/datasets/WeiQian98/PURE/resolve/b4086794d634b8978337b0ac402d2cd172871e08/06-06/06-06/Image1392714549477042000.png
+Rate limited. Waiting 2.0s before retry [Retry 1/5].
+HTTP Error 429 thrown while requesting HEAD https://huggingface.co/datasets/WeiQian98/PURE/resolve/b4086794d634b8978337b0ac402d2cd172871e08/06-06/06-06/Image1392714549510375000.png
+Rate limited. Waiting 2.0s before retry [Retry 1/5].
+HTTP Error 429 thrown while requesting HEAD https://huggingface.co/datasets/WeiQian98/PURE/resolve/b4086794d634b8978337b0ac402d2cd172871e08/06-06/06-06/Image1392714549543707000.png
+Rate limited. Waiting 2.0s before retry [Retry 1/5].
+[35/59] 06-06: 1969 kare, yüz %100; ham veri silindi
+[36/59] 07-01: 1962 kare, yüz %100; ham veri silindi
+[37/59] 07-02: 2108 kare, yüz %100; ham veri silindi
+[38/59] 07-03: 2257 kare, yüz %100; ham veri silindi
+[39/59] 07-04: 2280 kare, yüz %100; ham veri silindi
+[40/59] 07-05: 1942 kare, yüz %100; ham veri silindi
+[41/59] 07-06: 1960 kare, yüz %100; ham veri silindi
+[42/59] 08-01: 1963 kare, yüz %100; ham veri silindi
+[43/59] 08-02: 1980 kare, yüz %100; ham veri silindi
+HTTP Error 429 thrown while requesting HEAD https://huggingface.co/datasets/WeiQian98/PURE/resolve/b4086794d634b8978337b0ac402d2cd172871e08/08-03/08-03/Image1392716997310777000.png
+Rate limited. Waiting 2.0s before retry [Retry 1/5].
+HTTP Error 429 thrown while requesting HEAD https://huggingface.co/datasets/WeiQian98/PURE/resolve/b4086794d634b8978337b0ac402d2cd172871e08/08-03/08-03/Image1392716997344110000.png
+Rate limited. Waiting 2.0s before retry [Retry 1/5].
+HTTP Error 429 thrown while requesting HEAD https://huggingface.co/datasets/WeiQian98/PURE/resolve/b4086794d634b8978337b0ac402d2cd172871e08/08-03/08-03/Image1392716997377442000.png
+Rate limited. Waiting 2.0s before retry [Retry 1/5].
+HTTP Error 429 thrown while requesting HEAD https://huggingface.co/datasets/WeiQian98/PURE/resolve/b4086794d634b8978337b0ac402d2cd172871e08/08-03/08-03/Image1392716997410775000.png
+Rate limited. Waiting 2.0s before retry [Retry 1/5].
+HTTP Error 429 thrown while requesting HEAD https://huggingface.co/datasets/WeiQian98/PURE/resolve/b4086794d634b8978337b0ac402d2cd172871e08/08-03/08-03/Image1392716997444108000.png
+Rate limited. Waiting 2.0s before retry [Retry 1/5].
+HTTP Error 429 thrown while requesting HEAD https://huggingface.co/datasets/WeiQian98/PURE/resolve/b4086794d634b8978337b0ac402d2cd172871e08/08-03/08-03/Image1392716997477440000.png
+Rate limited. Waiting 2.0s before retry [Retry 1/5].
+HTTP Error 429 thrown while requesting HEAD https://huggingface.co/datasets/WeiQian98/PURE/resolve/b4086794d634b8978337b0ac402d2cd172871e08/08-03/08-03/Image1392716997510773000.png
+Rate limited. Waiting 2.0s before retry [Retry 1/5].
+HTTP Error 429 thrown while requesting HEAD https://huggingface.co/datasets/WeiQian98/PURE/resolve/b4086794d634b8978337b0ac402d2cd172871e08/08-03/08-03/Image1392716997544105000.png
+Rate limited. Waiting 2.0s before retry [Retry 1/5].
+[44/59] 08-03: 2265 kare, yüz %100; ham veri silindi
+[45/59] 08-04: 2297 kare, yüz %100; ham veri silindi
+[46/59] 08-05: 1953 kare, yüz %100; ham veri silindi
+[47/59] 08-06: 1964 kare, yüz %100; ham veri silindi
+[48/59] 09-01: 1964 kare, yüz %100; ham veri silindi
+[49/59] 09-02: 2017 kare, yüz %100; ham veri silindi
+[50/59] 09-03: 2285 kare, yüz %100; ham veri silindi
+[51/59] 09-04: 2579 kare, yüz %100; ham veri silindi
+[52/59] 09-05: 1962 kare, yüz %100; ham veri silindi
+[53/59] 09-06: 1983 kare, yüz %100; ham veri silindi
+[54/59] 10-01: 1956 kare, yüz %100; ham veri silindi
+[55/59] 10-02: 1993 kare, yüz %100; ham veri silindi
+[56/59] 10-03: 2303 kare, yüz %100; ham veri silindi
+[57/59] 10-04: 2338 kare, yüz %100; ham veri silindi
+[58/59] 10-05: 1959 kare, yüz %100; ham veri silindi
+[59/59] 10-06: 1951 kare, yüz %100; ham veri silindi

@@ -7,6 +7,7 @@
 // app.js ikisini kısa bir denemeyle (bench_ms) karşılaştırıp hızlı olanı seçer. İki arka ucun çıktısı aynı
 // (test/webgpu_check.mjs: korelasyon 0.99999999, en büyük fark 0.0006).
 import { packWindow } from "./dl_pack.js";
+import { selectModel } from "./model_selection.js";
 
 // Çok iş parçacığı SharedArrayBuffer ister; sayfa service worker'ın eklediği COOP/COEP başlıklarıyla yalıtılmışsa
 // açılır (bkz. sw.js), değilse tek iş parçacığı. Yüz bulucu ve kamera için bir çekirdek boş bırakılır.
@@ -15,13 +16,13 @@ const T = 161, SIZE = 72;
 
 let ort = null, session = null;
 
-async function load(ep) {
+async function load(ep, modelKey) {
   const t0 = performance.now();
   ort = await import(ep === "webgpu" ? "./vendor/ort/ort.webgpu.bundle.min.mjs" : "./vendor/ort/ort.wasm.bundle.min.mjs");
   ort.env.wasm.numThreads = THREADS;
   ort.env.wasm.wasmPaths = new URL("./vendor/ort/", import.meta.url).href;
   if (ep === "webgpu" && !(await navigator.gpu?.requestAdapter())) throw new Error("WebGPU yok");
-  session = await ort.InferenceSession.create(new URL("./model/factorizephys.onnx", import.meta.url).href,
+  session = await ort.InferenceSession.create(new URL(selectModel(modelKey).file, import.meta.url).href,
     { executionProviders: [ep], graphOptimizationLevel: "all" });
   return performance.now() - t0;
 }
@@ -48,7 +49,7 @@ self.onmessage = async (e) => {
   try {
     if (msg.type === "load") {
       const ep = msg.ep || "wasm";
-      const ms = await load(ep);
+      const ms = await load(ep, msg.model);
       const benchMs = msg.bench ? await bench() : 0;
       self.postMessage({ type: "ready", ms, proto: 2, threads: THREADS, ep, bench_ms: benchMs });   // proto 2: kırpıntı + plan (v11+)
     } else if (msg.type === "run") {

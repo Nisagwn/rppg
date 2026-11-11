@@ -1,0 +1,2 @@
+protocol,n_seeds,window_MAE_mean,window_MAE_std,video_MAE_mean,video_MAE_std
+S1,1,0.69,,0.89,

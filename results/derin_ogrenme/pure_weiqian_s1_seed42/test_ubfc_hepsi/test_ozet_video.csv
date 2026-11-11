@@ -1,0 +1,5 @@
+yöntem,video_MAE,video_RMSE,n
+En iyi epoch,0.89,2.69,42
+POS (yüz kırpıntısı),1.19,3.0,42
+"MMRPhys — WeiQian98/PURE eğitimi, UBFC testi",1.35,4.04,42
+FactorizePhys PURE (hazır),1.35,4.06,42

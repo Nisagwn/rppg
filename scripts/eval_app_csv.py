@@ -28,6 +28,8 @@ def read_refs(path):
     part = text[text.index("zaman,tur,kamera,uygulama_bpm"):]
     df = pd.read_csv(io.StringIO(part))
     df["dosya"] = path
+    if "model" not in df:
+        df["model"] = "eski_kayit"
     return df
 
 
@@ -52,8 +54,9 @@ def main():
     use = df if a.hepsi else df[df.guvenilir == 1]
     if use.empty:
         sys.exit("Güvenilir işaretli ölçüm yok; --hepsi ile deneyin.")
-    t = use.groupby(["tur", "kamera"]).apply(summary, include_groups=False)
-    t.loc[("hepsi", ""), :] = summary(use)
+    t = use.groupby(["model", "tur", "kamera"]).apply(summary, include_groups=False)
+    for model, g in use.groupby("model"):
+        t.loc[(model, "hepsi", ""), :] = summary(g)
     print(t.round(2).to_string())
 
 

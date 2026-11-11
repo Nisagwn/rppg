@@ -30,6 +30,8 @@ def group_of(meta):
     src = str(meta["source"])
     if src == "ubfc":
         return "UBFC"
+    if src == "pure":
+        return "PURE"
     if src == "mmpd":
         return "MMPD (telefon)"
     if src == "vipl":
@@ -107,6 +109,8 @@ def main():
     ap.add_argument("--data", default=os.path.join(ROOT, "data/dl"), help="eğitim verisi (rapordaki özet için)")
     ap.add_argument("--history", default="", help="gecmis.json (varsayılan: modelin klasörü)")
     ap.add_argument("--name", default="FactorizePhys ince ayarlı", help="eğitilen modelin tablodaki adı")
+    ap.add_argument("--no-pretrained", action="store_true",
+                    help="hazır PURE modelini kıyaslamaya ekleme (PURE hedef test kümesiyse gerekli)")
     ap.add_argument("--compare", nargs="*", default=[], metavar="AD=YOL",
                     help="aynı test videolarında ayrıca ölçülecek modeller (ör. önceki tur)")
     ap.add_argument("--tta", action="store_true",
@@ -123,7 +127,8 @@ def main():
     print(f"test: {n_test} video", flush=True)
 
     rows = evaluate("POS", device, a.test, "POS (yüz kırpıntısı)")
-    rows += evaluate(build_model(device, PRETRAINED), device, a.test, "FactorizePhys PURE (hazır)")
+    if not a.no_pretrained:
+        rows += evaluate(build_model(device, PRETRAINED), device, a.test, "FactorizePhys PURE (hazır)")
     tuned = build_model(device, a.model)
     rows += evaluate(tuned, device, a.test, a.name)
     if a.tta:
