@@ -199,3 +199,5 @@ tests/         pytest testleri (mobil node testleri: mobile/test/)
 PURE ile sıfırdan eğitilen MMRPhys'in 42 UBFC videosunda en iyi checkpoint sonucu: pencere MAE **0.69 BPM**, video MAE **0.89 BPM**. Bu sonuç diğer kamera koşullarında aynı başarıyı garanti etmez: ortak yerel telefon/USB testinde mevcut tur5 modelinden daha yüksek hata verdiği için uygulamanın varsayılanı korunmuştur. PURE adayı `?model=pure` ile denenebilir; v19 CSV ve teşhis çıktıları model kimliğini kaydeder.
 
 [Sonuçlar, model karşılaştırması, telefon/oksimetre ölçüm akışı ve S2/tohum tekrarları](docs/06_pure_sonraki_adimlar.md). [Kaggle S1/S2 defteri](kaggle/rppg_standart_protokoller.ipynb) varsayılan olarak S2/42'ye ayarlıdır; bu yeni koşu henüz çalıştırılmamıştır.
+
+11 Kasım ek çalışma: [Yeni veri kaynakları, doğrulanan erişim yolları ve başvuru taslakları](research_notes/veri_arastirmasi_2026_11_11/ARASTIRMA.md). [Telefon uyarlama A/B/C Kaggle defteri](kaggle/rppg_telefon_uyarlama.ipynb), mevcut tur5 modelini çok kameralı MCD üzerinde kontrollü ince ayar için hazırlar; yeni koşular henüz çalıştırılmadı.

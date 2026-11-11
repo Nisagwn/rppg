@@ -16,9 +16,13 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--candidate", default="results/derin_ogrenme/pure_weiqian_s1_seed42/best.pth")
     ap.add_argument("--baseline", default="results/derin_ogrenme/kaggle_tur5/last.pth")
+    ap.add_argument("--candidate-name", default="PURE S1 best")
+    ap.add_argument("--baseline-name", default="Uygulama tur5")
     ap.add_argument("--sets", nargs="+", default=["ana=data/dl/test", "kamera=data/dl/test_kamera"])
     ap.add_argument("--out", default="results/derin_ogrenme/pure_weiqian_s1_seed42/karsilastirma")
     a = ap.parse_args()
+    if a.candidate_name == a.baseline_name:
+        raise ValueError("Aday ve temel model adları farklı olmalı")
     out = Path(a.out)
     out.mkdir(parents=True, exist_ok=True)
     torch.manual_seed(42)
@@ -31,7 +35,7 @@ def main():
         if not paths:
             raise RuntimeError(f"Test kaydı yok: {folder}")
         inventory[name] = [Path(p).name for p in paths]
-        for label, checkpoint in [("PURE S1 best", a.candidate), ("Uygulama tur5", a.baseline)]:
+        for label, checkpoint in [(a.candidate_name, a.candidate), (a.baseline_name, a.baseline)]:
             model = build_model(device, checkpoint)
             # Aynı kırpıntı, ön işleme, örnekleme ve tahmin birleştirme iki modelde de kullanılır.
             for hop in (160, 80):
@@ -49,7 +53,7 @@ def main():
     for (name, hop), g in df.groupby(["test", "hop"]):
         for suffix in ("", "+Viterbi"):
             w = g.pivot(index="video", columns="yöntem", values="MAE")
-            w = w[["PURE S1 best" + suffix, "Uygulama tur5" + suffix]].dropna()
+            w = w[[a.candidate_name + suffix, a.baseline_name + suffix]].dropna()
             x, y = w.iloc[:, 0], w.iloc[:, 1]
             delta = x - y
             pairs.append({"test": name, "hop": hop, "takip": suffix or "argmax", "n": len(w),
@@ -59,12 +63,13 @@ def main():
     pairs = pd.DataFrame(pairs)
     pairs.to_csv(out / "eslestirilmis.csv", index=False)
     (out / "ayarlar.json").write_text(json.dumps(
-        {"candidate": a.candidate, "baseline": a.baseline, "device": str(device),
+        {"candidate": a.candidate, "baseline": a.baseline, "candidate_name": a.candidate_name,
+         "baseline_name": a.baseline_name, "device": str(device),
          "test_files": inventory, "hop": [160, 80]}, ensure_ascii=False, indent=2), encoding="utf-8")
-    report = ["# PURE S1 ve mevcut uygulama modeli", "",
+    report = [f"# {a.candidate_name} ve {a.baseline_name}", "",
               "Her iki model aynı yerel test kayıtları ve aynı 72×72 yüz kırpıntıları üzerinde yeniden çalıştırıldı.",
-              "Ana küme UBFC'nin 8 test kişisi ile MCD'nin 20 önden webcam kaydını içerir; bu küme 42 kişilik UBFC testi değildir.",
-              "Kamera kümesi MCD telefon/yan USB kayıtlarıdır. Yüz kalitesi filtresinden geçen gerçek sayılar tabloda verilir.",
+              "Kullanılan kümeler: " + "; ".join(f"{name}: {len(files)} video" for name, files in inventory.items()) + ".",
+              "Dosya listeleri ayarlar.json'dadır. Yüz kalitesi filtresinden geçen gerçek sayılar tabloda verilir.",
               "Hop 80 uygulamadaki %50 örtüşmeye karşılık gelir; hop 160 önceki çevrimdışı protokoldür.",
               "Pencere MAE: her videonun pencere hatası hesaplanıp videolar eşit ağırlıkla ortalanır.",
               "Video MAE: bütün kaydın spektral tepesinin mutlak hatasıdır; Viterbi bu sütunu değiştirmez.",

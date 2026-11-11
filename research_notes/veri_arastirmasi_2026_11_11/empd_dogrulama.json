@@ -1,0 +1,199 @@
+{
+  "checked": "2026-11-11",
+  "records": [
+    {
+      "id": "18765701",
+      "url": "https://zenodo.org/records/18765701",
+      "license": {
+        "id": "cc-by-4.0"
+      },
+      "files": [
+        {
+          "name": "EPMD_Part_01.tar",
+          "bytes": 46350755840,
+          "url": "https://zenodo.org/api/records/18765701/files/EPMD_Part_01.tar/content"
+        },
+        {
+          "name": "EPMD_metadata.csv",
+          "bytes": 7585,
+          "url": "https://zenodo.org/api/records/18765701/files/EPMD_metadata.csv/content"
+        }
+      ]
+    },
+    {
+      "id": "18766031",
+      "url": "https://zenodo.org/records/18766031",
+      "license": {
+        "id": "cc-by-4.0"
+      },
+      "files": [
+        {
+          "name": "EPMD_Part_02.tar",
+          "bytes": 46173265920,
+          "url": "https://zenodo.org/api/records/18766031/files/EPMD_Part_02.tar/content"
+        }
+      ]
+    },
+    {
+      "id": "18767005",
+      "url": "https://zenodo.org/records/18767005",
+      "license": {
+        "id": "cc-by-4.0"
+      },
+      "files": [
+        {
+          "name": "EPMD_Part_03.tar",
+          "bytes": 41584793600,
+          "url": "https://zenodo.org/api/records/18767005/files/EPMD_Part_03.tar/content"
+        }
+      ]
+    },
+    {
+      "id": "18794932",
+      "url": "https://zenodo.org/records/18794932",
+      "license": {
+        "id": "cc-by-4.0"
+      },
+      "files": [
+        {
+          "name": "EPMD_Part_04.tar",
+          "bytes": 44539719680,
+          "url": "https://zenodo.org/api/records/18794932/files/EPMD_Part_04.tar/content"
+        }
+      ]
+    },
+    {
+      "id": "18774420",
+      "url": "https://zenodo.org/records/18774420",
+      "license": {
+        "id": "cc-by-4.0"
+      },
+      "files": [
+        {
+          "name": "EPMD_Part_05.tar",
+          "bytes": 47704842240,
+          "url": "https://zenodo.org/api/records/18774420/files/EPMD_Part_05.tar/content"
+        }
+      ]
+    },
+    {
+      "id": "18794936",
+      "url": "https://zenodo.org/records/18794936",
+      "license": {
+        "id": "cc-by-4.0"
+      },
+      "files": [
+        {
+          "name": "EPMD_Part_06.tar",
+          "bytes": 47434772480,
+          "url": "https://zenodo.org/api/records/18794936/files/EPMD_Part_06.tar/content"
+        }
+      ]
+    },
+    {
+      "id": "18794938",
+      "url": "https://zenodo.org/records/18794938",
+      "license": {
+        "id": "cc-by-4.0"
+      },
+      "files": [
+        {
+          "name": "EPMD_Part_07.tar",
+          "bytes": 47011686400,
+          "url": "https://zenodo.org/api/records/18794938/files/EPMD_Part_07.tar/content"
+        }
+      ]
+    },
+    {
+      "id": "18801114",
+      "url": "https://zenodo.org/records/18801114",
+      "license": {
+        "id": "cc-by-4.0"
+      },
+      "files": [
+        {
+          "name": "EPMD_Part_08.tar",
+          "bytes": 47386900480,
+          "url": "https://zenodo.org/api/records/18801114/files/EPMD_Part_08.tar/content"
+        }
+      ]
+    },
+    {
+      "id": "18779868",
+      "url": "https://zenodo.org/records/18779868",
+      "license": {
+        "id": "cc-by-4.0"
+      },
+      "files": [
+        {
+          "name": "EPMD_Part_09.tar",
+          "bytes": 45499289600,
+          "url": "https://zenodo.org/api/records/18779868/files/EPMD_Part_09.tar/content"
+        }
+      ]
+    }
+  ],
+  "total_bytes": 413686033825,
+  "part1_tar_headers": [
+    {
+      "path": "amax/tyut/tmp/pulseData/EMPD/csv/recording_2025-04-15_15-21-04.csv",
+      "size": 31503,
+      "type": "0"
+    },
+    {
+      "path": "amax/tyut/tmp/pulseData/EMPD/event/recording_2025-04-15_15-21-04.raw",
+      "size": 2251970898,
+      "type": "0"
+    },
+    {
+      "path": "amax/tyut/tmp/pulseData/EMPD/rgb_640_480/recording_2025-04-15_15-21-04.avi",
+      "size": 726346956,
+      "type": "0"
+    },
+    {
+      "path": "amax/tyut/tmp/pulseData/EMPD/csv/recording_2025-04-15_16-46-25.csv",
+      "size": 31360,
+      "type": "0"
+    },
+    {
+      "path": "amax/tyut/tmp/pulseData/EMPD/event/recording_2025-04-15_16-46-25.raw",
+      "size": 3231033682,
+      "type": "0"
+    },
+    {
+      "path": "amax/tyut/tmp/pulseData/EMPD/rgb_640_480/recording_2025-04-15_16-46-25.avi",
+      "size": 722158006,
+      "type": "0"
+    },
+    {
+      "path": "amax/tyut/tmp/pulseData/EMPD/csv/recording_2025-04-15_17-36-58.csv",
+      "size": 31436,
+      "type": "0"
+    },
+    {
+      "path": "amax/tyut/tmp/pulseData/EMPD/event/recording_2025-04-15_17-36-58.raw",
+      "size": 2857800018,
+      "type": "0"
+    },
+    {
+      "path": "amax/tyut/tmp/pulseData/EMPD/rgb_640_480/recording_2025-04-15_17-36-58.avi",
+      "size": 680194288,
+      "type": "0"
+    },
+    {
+      "path": "amax/tyut/tmp/pulseData/EMPD/csv/recording_2025-04-15_17-38-23.csv",
+      "size": 31445,
+      "type": "0"
+    },
+    {
+      "path": "amax/tyut/tmp/pulseData/EMPD/event/recording_2025-04-15_17-38-23.raw",
+      "size": 3117766994,
+      "type": "0"
+    },
+    {
+      "path": "amax/tyut/tmp/pulseData/EMPD/rgb_640_480/recording_2025-04-15_17-38-23.avi",
+      "size": 680012972,
+      "type": "0"
+    }
+  ]
+}

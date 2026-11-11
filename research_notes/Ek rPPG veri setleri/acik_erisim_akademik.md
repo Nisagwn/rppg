@@ -1,3 +1,5 @@
+> **11 Kasım 2026 güncellemesi:** Bu tarihsel notun bazı erişim/boyut bilgileri değişti veya düzeltildi. LGI README artık indirme sağlanamadığını söylüyor. EMPD'nin 9 arşivinin API boyut toplamı yaklaşık 413.69 GB; önceki 7.5 TB ifadesi indirme boyutu olarak kullanılmamalı. PhysDrive'ın güncel Kaggle açıklaması tek kişilik ham RGB/NIR örneği içeriyor. [Yeni doğrulama ve kaynaklar](../veri_arastirmasi_2026_11_11/ARASTIRMA.md).
+
 # Açık erişimli akademik rPPG (yüz videosu + temas PPG) veri setleri — Ekim 2026
 
 Etiketler: **doğrulandı** = bu oturumda resmi sayfa/kayıt (GitHub README, Zenodo/Mendeley kaydı, lab sayfası) açılıp okundu. **iddia** = yalnızca ikincil kaynak (arama özeti, derleme sayfası, makale) üzerinden; resmi sayfa açılamadı ya da indirme denenmedi. Hiçbir indirme bağlantısı gerçekten indirilerek test edilmedi; "açık" ifadesi sayfadaki erişim koşuluna dayanır.

@@ -1,0 +1,20 @@
+{
+  "metadata_columns": [
+    "Filename",
+    "Label(rest:0,elevate:1)",
+    "Gender(male:0,female:1)",
+    "Participants"
+  ],
+  "metadata_rows": 193,
+  "metadata_example": {
+    "Filename": "recording_2025-04-15_15-21-04",
+    "Label(rest:0,elevate:1)": 0,
+    "Gender(male:0,female:1)": 1,
+    "Participants": "A1"
+  },
+  "ppg_columns": [
+    "Count",
+    "PPG"
+  ],
+  "ppg_rows_first_sample": 4080
+}
