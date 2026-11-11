@@ -4,7 +4,8 @@ Gönderilmemiş taslaklardır. Köşeli parantezleri gerçek bilgilerle doldurun
 
 ## MHAD
 
-To: feijintao3@jd.com  
+To: feijintao3@jd.com
+
 Subject: MHAD Dataset Access Request
 
 Dear MHAD Dataset Team,
@@ -15,12 +16,16 @@ I would like to request access to the MHAD dataset for non-commercial academic r
 
 Could you please provide the application requirements and clarify whether preprocessing/training in private Kaggle notebook sessions and an academic demonstration using trained weights are permitted? We will not redistribute the source recordings or private access links.
 
-Institution: [institution and website]  
-Supervisor: [name and institutional contact]  
+Institution: [institution and website]
+
+Supervisor: [name and institutional contact]
+
 Project description: [short description or link]
 
-Kind regards,  
-[full name]  
+Kind regards,
+
+[full name]
+
 [institutional email]
 
 ## CHILL
@@ -37,17 +42,22 @@ We would like to request academic access to CHILL as an independent evaluation d
 
 Please advise on the required institutional signature and submission procedure for the academic dataset license agreement. We would also appreciate guidance on whether private cloud notebook processing is permitted under the agreement.
 
-Institution and website: [institution, URL]  
-Supervisor: [name, institutional email]  
+Institution and website: [institution, URL]
+
+Supervisor: [name, institutional email]
+
 Research description: [short description or URL]
 
-Kind regards,  
-[full name]  
+Kind regards,
+
+[full name]
+
 [institutional email]
 
 ## PhysDrive: tam RGB setini isteme
 
-To: xyang856@connect.hkust-gz.edu.cn  
+To: xyang856@connect.hkust-gz.edu.cn
+
 Subject: Academic access request for full PhysDrive RGB and physiological data
 
 Dear PhysDrive Dataset Team,
@@ -58,10 +68,14 @@ We understand that the Kaggle package provides a one-subject raw RGB/NIR sample.
 
 Please let us know the available RGB-only package size and whether private Kaggle processing and sharing derived model weights for an academic demonstration are permitted. We will follow the agreement and cite the dataset.
 
-Supervisor/institutional contact: [name and email]  
-Institution website: [URL]  
+Supervisor/institutional contact: [name and email]
+
+Institution website: [URL]
+
 Project description: [description or URL]
 
-Kind regards,  
-[full name]  
+Kind regards,
+
+[full name]
+
 [institutional email]
