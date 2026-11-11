@@ -1,0 +1,19 @@
+{
+  "date": "2026-11-11",
+  "upstream": "https://github.com/ubicomplab/rPPG-Toolbox",
+  "commit": "b7500b848f84ad7f86e277b4612563b69f4f88f9",
+  "weights_url": "https://github.com/ubicomplab/rPPG-Toolbox/blob/b7500b848f84ad7f86e277b4612563b69f4f88f9/final_model_release/iBVP_FactorizePhys_FSAM_Res.pth",
+  "weights_sha256": "21e20ea54498adcf4b4238cc49d407c807df08e2cf8c0e5cf8c6518ab463bf27",
+  "weights_bytes": 219867,
+  "config_sha256": "20bcda52c2ad7f16c875b6860839d5fda9f1f152849a5ee51fe42506c2715d84",
+  "profile_matches_official_network_config": true,
+  "primary_profile": "configs/ibvp_factorizephys_official.json",
+  "diagnostic_profile": "configs/ibvp_factorizephys_fsam_on.json",
+  "training_performed": false,
+  "EMPD_used_in_training_or_evaluation": false,
+  "execution_note": "İlk CUDA karşılaştırmaları kullanıcı GPU kullanma dedikten sonra durduruldu. Tamamlanmış sonuç bırakmadılar. Birincil yeni aday çıkarımı CPU ile, hop=80 altında yeniden başlatıldı. Temel model daha önce kaydedilmiş sonuçlardan alınır.",
+  "primary_results": "official_cpu/",
+  "diagnostic_status": "FSAM=True tanısal kontrol CPU üzerinde hop=80 ile tamamlandı; fsam_on_cpu/",
+  "new_candidate_device": "cpu",
+  "results_complete": true
+}

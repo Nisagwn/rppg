@@ -10,3 +10,4 @@ results/screenshots/
 results/synthetic_quick/
 external/
 results/derin_ogrenme/egitim/last.pth
+results/**/kismi_sonuclar.csv

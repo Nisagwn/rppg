@@ -1,0 +1,225 @@
+test,hop,grup,video,yöntem,MAE,p5,video_hata
+ana,80,MCD egzersiz,1020_FullHDwebcam_after,iBVP FactorizePhys FSAM on diagnostic,1.0596273777649394,98.82352941176471,0.16340435473730963
+ana,80,MCD egzersiz,1020_FullHDwebcam_after,iBVP FactorizePhys FSAM on diagnostic+Viterbi,0.9743986567475083,100.0,0.16340435473730963
+ana,80,MCD dinlenme,1020_FullHDwebcam_before,iBVP FactorizePhys FSAM on diagnostic,2.0621916402078444,91.76470588235294,0.013253053307181517
+ana,80,MCD dinlenme,1020_FullHDwebcam_before,iBVP FactorizePhys FSAM on diagnostic+Viterbi,1.6122222372101425,91.76470588235294,0.013253053307181517
+ana,80,MCD egzersiz,1024_FullHDwebcam_after,iBVP FactorizePhys FSAM on diagnostic,0.7678332435350295,99.41176470588235,0.054561124883420575
+ana,80,MCD egzersiz,1024_FullHDwebcam_after,iBVP FactorizePhys FSAM on diagnostic+Viterbi,0.6985103481785792,100.0,0.054561124883420575
+ana,80,MCD dinlenme,1024_FullHDwebcam_before,iBVP FactorizePhys FSAM on diagnostic,0.5512700897054458,100.0,0.3883081905522374
+ana,80,MCD dinlenme,1024_FullHDwebcam_before,iBVP FactorizePhys FSAM on diagnostic+Viterbi,0.5522021507129034,100.0,0.3883081905522374
+ana,80,MCD egzersiz,1035_FullHDwebcam_after,iBVP FactorizePhys FSAM on diagnostic,0.8303696129277987,99.41176470588235,0.021943163242582386
+ana,80,MCD egzersiz,1035_FullHDwebcam_after,iBVP FactorizePhys FSAM on diagnostic+Viterbi,0.7787702449644137,100.0,0.021943163242582386
+ana,80,MCD dinlenme,1035_FullHDwebcam_before,iBVP FactorizePhys FSAM on diagnostic,0.7429823117970416,98.81656804733728,0.29490317502278174
+ana,80,MCD dinlenme,1035_FullHDwebcam_before,iBVP FactorizePhys FSAM on diagnostic+Viterbi,0.6497270726607828,100.0,0.29490317502278174
+ana,80,MCD egzersiz,1091_FullHDwebcam_after,iBVP FactorizePhys FSAM on diagnostic,7.127809296282222,84.11764705882354,0.2105147232328335
+ana,80,MCD egzersiz,1091_FullHDwebcam_after,iBVP FactorizePhys FSAM on diagnostic+Viterbi,0.7032508926803193,100.0,0.2105147232328335
+ana,80,MCD dinlenme,1091_FullHDwebcam_before,iBVP FactorizePhys FSAM on diagnostic,4.984375271114644,91.76470588235294,0.015326813585417653
+ana,80,MCD dinlenme,1091_FullHDwebcam_before,iBVP FactorizePhys FSAM on diagnostic+Viterbi,0.8220327988202559,100.0,0.015326813585417653
+ana,80,MCD egzersiz,1097_FullHDwebcam_after,iBVP FactorizePhys FSAM on diagnostic,14.89611262796411,34.705882352941174,0.2886586209263129
+ana,80,MCD egzersiz,1097_FullHDwebcam_after,iBVP FactorizePhys FSAM on diagnostic+Viterbi,10.615337998957159,50.588235294117645,0.2886586209263129
+ana,80,MCD dinlenme,1097_FullHDwebcam_before,iBVP FactorizePhys FSAM on diagnostic,14.474041800481245,30.17751479289941,4.399606877524249
+ana,80,MCD dinlenme,1097_FullHDwebcam_before,iBVP FactorizePhys FSAM on diagnostic+Viterbi,7.090507305882282,47.337278106508876,4.399606877524249
+ana,80,MCD egzersiz,1099_FullHDwebcam_after,iBVP FactorizePhys FSAM on diagnostic,5.163181089879748,84.11764705882354,0.3182364575890233
+ana,80,MCD egzersiz,1099_FullHDwebcam_after,iBVP FactorizePhys FSAM on diagnostic+Viterbi,1.8692311595769604,92.3529411764706,0.3182364575890233
+ana,80,MCD dinlenme,1099_FullHDwebcam_before,iBVP FactorizePhys FSAM on diagnostic,4.378779243849575,90.58823529411765,1.8930994202515876
+ana,80,MCD dinlenme,1099_FullHDwebcam_before,iBVP FactorizePhys FSAM on diagnostic+Viterbi,1.3277952868222351,96.47058823529412,1.8930994202515876
+ana,80,MCD egzersiz,1107_FullHDwebcam_after,iBVP FactorizePhys FSAM on diagnostic,27.309882007634286,31.76470588235294,0.04947719237095782
+ana,80,MCD egzersiz,1107_FullHDwebcam_after,iBVP FactorizePhys FSAM on diagnostic+Viterbi,20.584946181864773,52.352941176470594,0.04947719237095782
+ana,80,MCD dinlenme,1107_FullHDwebcam_before,iBVP FactorizePhys FSAM on diagnostic,4.794066079681425,83.52941176470588,1.363024287907166
+ana,80,MCD dinlenme,1107_FullHDwebcam_before,iBVP FactorizePhys FSAM on diagnostic+Viterbi,2.0392706443252857,89.41176470588236,1.363024287907166
+ana,80,MCD egzersiz,1113_FullHDwebcam_after,iBVP FactorizePhys FSAM on diagnostic,1.1793009571050834,95.88235294117648,0.051456726335032954
+ana,80,MCD egzersiz,1113_FullHDwebcam_after,iBVP FactorizePhys FSAM on diagnostic+Viterbi,1.7016327776101439,91.76470588235294,0.051456726335032954
+ana,80,MCD dinlenme,1113_FullHDwebcam_before,iBVP FactorizePhys FSAM on diagnostic,1.1127336109444899,95.85798816568047,0.08169080982685273
+ana,80,MCD dinlenme,1113_FullHDwebcam_before,iBVP FactorizePhys FSAM on diagnostic+Viterbi,1.5249892823781122,91.12426035502959,0.08169080982685273
+ana,80,MCD egzersiz,1115_FullHDwebcam_after,iBVP FactorizePhys FSAM on diagnostic,0.7552209361940981,99.41176470588235,4.525310762794447
+ana,80,MCD egzersiz,1115_FullHDwebcam_after,iBVP FactorizePhys FSAM on diagnostic+Viterbi,0.6904892598382318,100.0,4.525310762794447
+ana,80,MCD dinlenme,1115_FullHDwebcam_before,iBVP FactorizePhys FSAM on diagnostic,1.1961524945723487,97.0414201183432,0.05119347190931478
+ana,80,MCD dinlenme,1115_FullHDwebcam_before,iBVP FactorizePhys FSAM on diagnostic+Viterbi,1.3310062873452084,94.67455621301775,0.05119347190931478
+ana,80,MCD egzersiz,1149_FullHDwebcam_after,iBVP FactorizePhys FSAM on diagnostic,7.57684668060625,85.88235294117646,1.0372720624881566
+ana,80,MCD egzersiz,1149_FullHDwebcam_after,iBVP FactorizePhys FSAM on diagnostic+Viterbi,1.3636961343214096,94.70588235294117,1.0372720624881566
+ana,80,MCD dinlenme,1149_FullHDwebcam_before,iBVP FactorizePhys FSAM on diagnostic,2.8726660767800047,91.17647058823529,0.13937604114742896
+ana,80,MCD dinlenme,1149_FullHDwebcam_before,iBVP FactorizePhys FSAM on diagnostic+Viterbi,0.8907294954565814,100.0,0.13937604114742896
+ana,80,UBFC,subject1,iBVP FactorizePhys FSAM on diagnostic,2.98979420366988,88.09523809523809,0.09093793242085724
+ana,80,UBFC,subject1,iBVP FactorizePhys FSAM on diagnostic+Viterbi,2.1922386939170417,88.09523809523809,0.09093793242085724
+ana,80,UBFC,subject10,iBVP FactorizePhys FSAM on diagnostic,0.36277158109016533,100.0,0.1016051594154419
+ana,80,UBFC,subject10,iBVP FactorizePhys FSAM on diagnostic+Viterbi,0.36510448234448906,100.0,0.1016051594154419
+ana,80,UBFC,subject11,iBVP FactorizePhys FSAM on diagnostic,0.6233807863702481,100.0,0.024676643910538587
+ana,80,UBFC,subject11,iBVP FactorizePhys FSAM on diagnostic+Viterbi,0.6382506402462474,100.0,0.024676643910538587
+ana,80,UBFC,subject3,iBVP FactorizePhys FSAM on diagnostic,1.5632519627801356,96.07843137254902,0.16409028765014
+ana,80,UBFC,subject3,iBVP FactorizePhys FSAM on diagnostic+Viterbi,2.200517279731473,90.19607843137256,0.16409028765014
+ana,80,UBFC,subject4,iBVP FactorizePhys FSAM on diagnostic,1.4846258139600377,94.44444444444444,0.1326025117168399
+ana,80,UBFC,subject4,iBVP FactorizePhys FSAM on diagnostic+Viterbi,5.050895327748713,72.22222222222221,0.1326025117168399
+ana,80,UBFC,subject5,iBVP FactorizePhys FSAM on diagnostic,0.30541231609314307,100.0,0.10363859944197884
+ana,80,UBFC,subject5,iBVP FactorizePhys FSAM on diagnostic+Viterbi,0.30541231609314307,100.0,0.10363859944197884
+ana,80,UBFC,subject8,iBVP FactorizePhys FSAM on diagnostic,0.38929188874508835,100.0,0.025595695831029275
+ana,80,UBFC,subject8,iBVP FactorizePhys FSAM on diagnostic+Viterbi,0.4949698343681713,100.0,0.025595695831029275
+ana,80,UBFC,subject9,iBVP FactorizePhys FSAM on diagnostic,0.4235843642670929,100.0,0.06209192088431337
+ana,80,UBFC,subject9,iBVP FactorizePhys FSAM on diagnostic+Viterbi,0.9897621745790821,94.82758620689656,0.06209192088431337
+ana,80,MCD egzersiz,1020_FullHDwebcam_after,Uygulama tur5,0.4673611716157447,100.0,0.2023424421291366
+ana,80,MCD egzersiz,1020_FullHDwebcam_after,Uygulama tur5+Viterbi,0.4535613756129803,100.0,0.2023424421291366
+ana,80,MCD dinlenme,1020_FullHDwebcam_before,Uygulama tur5,0.3626638228355134,100.0,0.0005247644225363
+ana,80,MCD dinlenme,1020_FullHDwebcam_before,Uygulama tur5+Viterbi,0.3626638228355134,100.0,0.0005247644225363
+ana,80,MCD egzersiz,1024_FullHDwebcam_after,Uygulama tur5,0.4777559437654841,99.41176470588236,0.0243699972007647
+ana,80,MCD egzersiz,1024_FullHDwebcam_after,Uygulama tur5+Viterbi,0.3906640950519061,100.0,0.0243699972007647
+ana,80,MCD dinlenme,1024_FullHDwebcam_before,Uygulama tur5,0.3374174259770111,100.0,0.1610159435047506
+ana,80,MCD dinlenme,1024_FullHDwebcam_before,Uygulama tur5+Viterbi,0.3374174259770111,100.0,0.1610159435047506
+ana,80,MCD egzersiz,1035_FullHDwebcam_after,Uygulama tur5,0.4766572690616791,100.0,0.0401904296326733
+ana,80,MCD egzersiz,1035_FullHDwebcam_after,Uygulama tur5+Viterbi,0.4766572690616791,100.0,0.0401904296326733
+ana,80,MCD dinlenme,1035_FullHDwebcam_before,Uygulama tur5,0.3956662144409705,100.0,0.1056932072472847
+ana,80,MCD dinlenme,1035_FullHDwebcam_before,Uygulama tur5+Viterbi,0.3956662144409705,100.0,0.1056932072472847
+ana,80,MCD egzersiz,1091_FullHDwebcam_after,Uygulama tur5,0.2391430889000927,100.0,0.0455966026351291
+ana,80,MCD egzersiz,1091_FullHDwebcam_after,Uygulama tur5+Viterbi,0.2391430889000927,100.0,0.0455966026351291
+ana,80,MCD dinlenme,1091_FullHDwebcam_before,Uygulama tur5,0.3547130161307945,100.0,0.0009235027770273
+ana,80,MCD dinlenme,1091_FullHDwebcam_before,Uygulama tur5+Viterbi,0.3561570121148895,100.0,0.0009235027770273
+ana,80,MCD egzersiz,1097_FullHDwebcam_after,Uygulama tur5,7.71007202818834,72.94117647058823,0.2293923879715436
+ana,80,MCD egzersiz,1097_FullHDwebcam_after,Uygulama tur5+Viterbi,3.5096591246549256,80.0,0.2293923879715436
+ana,80,MCD dinlenme,1097_FullHDwebcam_before,Uygulama tur5,9.825450971417036,67.45562130177515,0.1202377348960084
+ana,80,MCD dinlenme,1097_FullHDwebcam_before,Uygulama tur5+Viterbi,3.147965481413366,80.4733727810651,0.1202377348960084
+ana,80,MCD egzersiz,1099_FullHDwebcam_after,Uygulama tur5,0.8810766506090834,98.82352941176472,0.0509260682890584
+ana,80,MCD egzersiz,1099_FullHDwebcam_after,Uygulama tur5+Viterbi,0.5833995494947143,100.0,0.0509260682890584
+ana,80,MCD dinlenme,1099_FullHDwebcam_before,Uygulama tur5,0.6502141479151603,100.0,0.0016005467272321
+ana,80,MCD dinlenme,1099_FullHDwebcam_before,Uygulama tur5+Viterbi,0.6470454852079823,100.0,0.0016005467272321
+ana,80,MCD egzersiz,1107_FullHDwebcam_after,Uygulama tur5,0.5674529014818831,100.0,0.0890737312880105
+ana,80,MCD egzersiz,1107_FullHDwebcam_after,Uygulama tur5+Viterbi,0.5674529014818831,100.0,0.0890737312880105
+ana,80,MCD dinlenme,1107_FullHDwebcam_before,Uygulama tur5,0.5329157469168295,100.0,6.086059628758832
+ana,80,MCD dinlenme,1107_FullHDwebcam_before,Uygulama tur5+Viterbi,0.5320985938951246,100.0,6.086059628758832
+ana,80,MCD egzersiz,1113_FullHDwebcam_after,Uygulama tur5,0.7933271537278338,97.6470588235294,0.0394894688780311
+ana,80,MCD egzersiz,1113_FullHDwebcam_after,Uygulama tur5+Viterbi,1.3835937344522051,92.94117647058825,0.0394894688780311
+ana,80,MCD dinlenme,1113_FullHDwebcam_before,Uygulama tur5,0.9819168449174456,95.85798816568048,0.0565252048083095
+ana,80,MCD dinlenme,1113_FullHDwebcam_before,Uygulama tur5+Viterbi,1.2718261773484223,94.0828402366864,0.0565252048083095
+ana,80,MCD egzersiz,1115_FullHDwebcam_after,Uygulama tur5,0.3791846726247587,100.0,4.514925813089192
+ana,80,MCD egzersiz,1115_FullHDwebcam_after,Uygulama tur5+Viterbi,0.3791846726247587,100.0,4.514925813089192
+ana,80,MCD dinlenme,1115_FullHDwebcam_before,Uygulama tur5,0.552465571361235,99.40828402366864,0.142360533590292
+ana,80,MCD dinlenme,1115_FullHDwebcam_before,Uygulama tur5+Viterbi,0.7677584114975738,97.63313609467455,0.142360533590292
+ana,80,MCD egzersiz,1149_FullHDwebcam_after,Uygulama tur5,0.3470280974250298,100.0,0.0304333780938037
+ana,80,MCD egzersiz,1149_FullHDwebcam_after,Uygulama tur5+Viterbi,0.3470280974250298,100.0,0.0304333780938037
+ana,80,MCD dinlenme,1149_FullHDwebcam_before,Uygulama tur5,0.2670855404661211,100.0,0.0549987525584327
+ana,80,MCD dinlenme,1149_FullHDwebcam_before,Uygulama tur5+Viterbi,0.2670855404661211,100.0,0.0549987525584327
+ana,80,UBFC,subject1,Uygulama tur5,1.9924068999675704,88.09523809523809,0.0732684772874989
+ana,80,UBFC,subject1,Uygulama tur5+Viterbi,1.9882718968452568,88.09523809523809,0.0732684772874989
+ana,80,UBFC,subject10,Uygulama tur5,0.4334742146654015,100.0,0.0494077991733945
+ana,80,UBFC,subject10,Uygulama tur5+Viterbi,0.4315289121667812,100.0,0.0494077991733945
+ana,80,UBFC,subject11,Uygulama tur5,0.6446315610503675,100.0,0.0123441366366989
+ana,80,UBFC,subject11,Uygulama tur5+Viterbi,0.6529610983145677,100.0,0.0123441366366989
+ana,80,UBFC,subject3,Uygulama tur5,1.3151292107194827,98.0392156862745,0.0787026459246931
+ana,80,UBFC,subject3,Uygulama tur5+Viterbi,3.873186053215572,76.47058823529412,0.0787026459246931
+ana,80,UBFC,subject4,Uygulama tur5,3.1684331934872585,86.11111111111111,0.1563931442998694
+ana,80,UBFC,subject4,Uygulama tur5+Viterbi,4.941253614093861,72.22222222222221,0.1563931442998694
+ana,80,UBFC,subject5,Uygulama tur5,0.470476236330235,100.0,0.0742954437937442
+ana,80,UBFC,subject5,Uygulama tur5+Viterbi,0.470476236330235,100.0,0.0742954437937442
+ana,80,UBFC,subject8,Uygulama tur5,0.319534977320438,100.0,0.0881250475975718
+ana,80,UBFC,subject8,Uygulama tur5+Viterbi,0.992976766967672,94.82758620689656,0.0881250475975718
+ana,80,UBFC,subject9,Uygulama tur5,0.4523394430713861,100.0,0.0326103304346219
+ana,80,UBFC,subject9,Uygulama tur5+Viterbi,1.056476518797982,94.82758620689656,0.0326103304346219
+kamera,80,MCD egzersiz (telefon),1020_IriunWebcam_after,iBVP FactorizePhys FSAM on diagnostic,6.20928774081655,65.68047337278107,3.2835842849630836
+kamera,80,MCD egzersiz (telefon),1020_IriunWebcam_after,iBVP FactorizePhys FSAM on diagnostic+Viterbi,3.9875972094055556,75.14792899408283,3.2835842849630836
+kamera,80,MCD dinlenme (telefon),1020_IriunWebcam_before,iBVP FactorizePhys FSAM on diagnostic,3.3916913296477746,84.70588235294117,0.006927190335730415
+kamera,80,MCD dinlenme (telefon),1020_IriunWebcam_before,iBVP FactorizePhys FSAM on diagnostic+Viterbi,2.2154239244891225,88.8235294117647,0.006927190335730415
+kamera,80,MCD egzersiz (USB),1020_USBVideo_after,iBVP FactorizePhys FSAM on diagnostic,6.134108614763321,63.52941176470588,0.14186470290216846
+kamera,80,MCD egzersiz (USB),1020_USBVideo_after,iBVP FactorizePhys FSAM on diagnostic+Viterbi,4.6550450013716755,67.64705882352942,0.14186470290216846
+kamera,80,MCD dinlenme (USB),1020_USBVideo_before,iBVP FactorizePhys FSAM on diagnostic,6.431676183238101,66.47058823529412,0.0022177367866191844
+kamera,80,MCD dinlenme (USB),1020_USBVideo_before,iBVP FactorizePhys FSAM on diagnostic+Viterbi,3.3781293052040744,80.0,0.0022177367866191844
+kamera,80,MCD egzersiz (telefon),1024_IriunWebcam_after,iBVP FactorizePhys FSAM on diagnostic,6.5109211137835485,77.64705882352942,6.594566731615842
+kamera,80,MCD egzersiz (telefon),1024_IriunWebcam_after,iBVP FactorizePhys FSAM on diagnostic+Viterbi,2.7742089615037875,85.29411764705883,6.594566731615842
+kamera,80,MCD dinlenme (telefon),1024_IriunWebcam_before,iBVP FactorizePhys FSAM on diagnostic,13.660353652341785,20.710059171597635,6.275506290180147
+kamera,80,MCD dinlenme (telefon),1024_IriunWebcam_before,iBVP FactorizePhys FSAM on diagnostic+Viterbi,8.12449686922217,31.360946745562128,6.275506290180147
+kamera,80,MCD egzersiz (telefon),1035_IriunWebcam_after,iBVP FactorizePhys FSAM on diagnostic,5.706516559505197,72.18934911242604,0.1977161669791343
+kamera,80,MCD egzersiz (telefon),1035_IriunWebcam_after,iBVP FactorizePhys FSAM on diagnostic+Viterbi,3.578507244045731,81.65680473372781,0.1977161669791343
+kamera,80,MCD dinlenme (telefon),1035_IriunWebcam_before,iBVP FactorizePhys FSAM on diagnostic,7.485038544181279,68.42105263157895,0.42754637709647625
+kamera,80,MCD dinlenme (telefon),1035_IriunWebcam_before,iBVP FactorizePhys FSAM on diagnostic+Viterbi,2.7874922908875597,84.7953216374269,0.42754637709647625
+kamera,80,MCD egzersiz (telefon),1091_IriunWebcam_after,iBVP FactorizePhys FSAM on diagnostic,14.811756930778525,57.05882352941176,0.004517158652248554
+kamera,80,MCD egzersiz (telefon),1091_IriunWebcam_after,iBVP FactorizePhys FSAM on diagnostic+Viterbi,11.04906182907475,70.58823529411765,0.004517158652248554
+kamera,80,MCD dinlenme (telefon),1091_IriunWebcam_before,iBVP FactorizePhys FSAM on diagnostic,13.597483401766121,25.294117647058822,13.310352034333121
+kamera,80,MCD dinlenme (telefon),1091_IriunWebcam_before,iBVP FactorizePhys FSAM on diagnostic+Viterbi,7.499330762075865,45.88235294117647,13.310352034333121
+kamera,80,MCD egzersiz (USB),1091_USBVideo_after,iBVP FactorizePhys FSAM on diagnostic,19.802035663316623,36.09467455621302,0.15917945011024415
+kamera,80,MCD egzersiz (USB),1091_USBVideo_after,iBVP FactorizePhys FSAM on diagnostic+Viterbi,8.24340930966029,55.02958579881657,0.15917945011024415
+kamera,80,MCD dinlenme (USB),1091_USBVideo_before,iBVP FactorizePhys FSAM on diagnostic,6.28756384876823,72.35294117647058,3.6015352957953155
+kamera,80,MCD dinlenme (USB),1091_USBVideo_before,iBVP FactorizePhys FSAM on diagnostic+Viterbi,2.608791151741688,88.8235294117647,3.6015352957953155
+kamera,80,MCD egzersiz (telefon),1097_IriunWebcam_after,iBVP FactorizePhys FSAM on diagnostic,17.95426185738376,27.647058823529413,14.288156680509104
+kamera,80,MCD egzersiz (telefon),1097_IriunWebcam_after,iBVP FactorizePhys FSAM on diagnostic+Viterbi,18.41785745320237,16.470588235294116,14.288156680509104
+kamera,80,MCD dinlenme (telefon),1097_IriunWebcam_before,iBVP FactorizePhys FSAM on diagnostic,19.201887608713783,13.017751479289942,27.475083498332083
+kamera,80,MCD dinlenme (telefon),1097_IriunWebcam_before,iBVP FactorizePhys FSAM on diagnostic+Viterbi,23.27858958925442,9.467455621301776,27.475083498332083
+kamera,80,MCD egzersiz (telefon),1099_IriunWebcam_after,iBVP FactorizePhys FSAM on diagnostic,4.978181179871747,78.69822485207101,1.555680188293536
+kamera,80,MCD egzersiz (telefon),1099_IriunWebcam_after,iBVP FactorizePhys FSAM on diagnostic+Viterbi,2.564038017082299,87.57396449704143,1.555680188293536
+kamera,80,MCD dinlenme (telefon),1099_IriunWebcam_before,iBVP FactorizePhys FSAM on diagnostic,5.624935359473379,73.80952380952381,0.0018144306618523842
+kamera,80,MCD dinlenme (telefon),1099_IriunWebcam_before,iBVP FactorizePhys FSAM on diagnostic+Viterbi,3.535743997609041,82.14285714285714,0.0018144306618523842
+kamera,80,MCD egzersiz (USB),1099_USBVideo_after,iBVP FactorizePhys FSAM on diagnostic,15.703488360100552,26.035502958579883,29.141517876474452
+kamera,80,MCD egzersiz (USB),1099_USBVideo_after,iBVP FactorizePhys FSAM on diagnostic+Viterbi,13.764485963552657,31.360946745562128,29.141517876474452
+kamera,80,MCD dinlenme (USB),1099_USBVideo_before,iBVP FactorizePhys FSAM on diagnostic,8.11304722419128,56.213017751479285,6.521435602771575
+kamera,80,MCD dinlenme (USB),1099_USBVideo_before,iBVP FactorizePhys FSAM on diagnostic+Viterbi,6.692603521657293,59.171597633136095,6.521435602771575
+kamera,80,MCD egzersiz (telefon),1107_IriunWebcam_after,iBVP FactorizePhys FSAM on diagnostic,34.224885663478766,17.058823529411764,40.584873535578225
+kamera,80,MCD egzersiz (telefon),1107_IriunWebcam_after,iBVP FactorizePhys FSAM on diagnostic+Viterbi,32.566274687506485,27.058823529411764,40.584873535578225
+kamera,80,MCD dinlenme (telefon),1107_IriunWebcam_before,iBVP FactorizePhys FSAM on diagnostic,11.816262268920587,54.11764705882353,1.4231324163549601
+kamera,80,MCD dinlenme (telefon),1107_IriunWebcam_before,iBVP FactorizePhys FSAM on diagnostic+Viterbi,7.257375031081329,59.411764705882355,1.4231324163549601
+kamera,80,MCD dinlenme (USB),1107_USBVideo_before,iBVP FactorizePhys FSAM on diagnostic,14.940951022507189,36.470588235294116,9.397582654234114
+kamera,80,MCD dinlenme (USB),1107_USBVideo_before,iBVP FactorizePhys FSAM on diagnostic+Viterbi,14.317572987929044,32.94117647058823,9.397582654234114
+kamera,80,MCD egzersiz (telefon),1113_IriunWebcam_after,iBVP FactorizePhys FSAM on diagnostic,11.177487671482242,32.94117647058823,0.21598564247102559
+kamera,80,MCD egzersiz (telefon),1113_IriunWebcam_after,iBVP FactorizePhys FSAM on diagnostic+Viterbi,8.50142447622943,41.17647058823529,0.21598564247102559
+kamera,80,MCD dinlenme (telefon),1113_IriunWebcam_before,iBVP FactorizePhys FSAM on diagnostic,15.869366358728445,19.526627218934912,11.069357623068257
+kamera,80,MCD dinlenme (telefon),1113_IriunWebcam_before,iBVP FactorizePhys FSAM on diagnostic+Viterbi,12.928458918170799,23.668639053254438,11.069357623068257
+kamera,80,MCD egzersiz (telefon),1115_IriunWebcam_after,iBVP FactorizePhys FSAM on diagnostic,6.230574416676039,75.29411764705883,3.373022437787313
+kamera,80,MCD egzersiz (telefon),1115_IriunWebcam_after,iBVP FactorizePhys FSAM on diagnostic+Viterbi,1.799648976291819,94.70588235294117,3.373022437787313
+kamera,80,MCD egzersiz (telefon),1149_IriunWebcam_after,iBVP FactorizePhys FSAM on diagnostic,2.9238323933655517,88.69047619047619,0.9941605748258269
+kamera,80,MCD egzersiz (telefon),1149_IriunWebcam_after,iBVP FactorizePhys FSAM on diagnostic+Viterbi,1.3923127685424046,95.23809523809523,0.9941605748258269
+kamera,80,MCD dinlenme (telefon),1149_IriunWebcam_before,iBVP FactorizePhys FSAM on diagnostic,4.062737955700482,81.65680473372781,1.852130642796638
+kamera,80,MCD dinlenme (telefon),1149_IriunWebcam_before,iBVP FactorizePhys FSAM on diagnostic+Viterbi,1.5773589919032462,95.26627218934911,1.852130642796638
+kamera,80,MCD egzersiz (USB),1149_USBVideo_after,iBVP FactorizePhys FSAM on diagnostic,11.603740494951857,44.37869822485207,1.0422833225106558
+kamera,80,MCD egzersiz (USB),1149_USBVideo_after,iBVP FactorizePhys FSAM on diagnostic+Viterbi,7.263564006233718,63.31360946745562,1.0422833225106558
+kamera,80,MCD dinlenme (USB),1149_USBVideo_before,iBVP FactorizePhys FSAM on diagnostic,7.648234492246019,58.235294117647065,1.1975794325213798
+kamera,80,MCD dinlenme (USB),1149_USBVideo_before,iBVP FactorizePhys FSAM on diagnostic+Viterbi,5.072986022393939,70.58823529411765,1.1975794325213798
+kamera,80,MCD egzersiz (telefon),1020_IriunWebcam_after,Uygulama tur5,0.9688273932534424,97.0414201183432,0.2139323595003048
+kamera,80,MCD egzersiz (telefon),1020_IriunWebcam_after,Uygulama tur5+Viterbi,0.9770329766985744,97.0414201183432,0.2139323595003048
+kamera,80,MCD dinlenme (telefon),1020_IriunWebcam_before,Uygulama tur5,0.8054335245248296,97.05882352941175,0.0165703978497191
+kamera,80,MCD dinlenme (telefon),1020_IriunWebcam_before,Uygulama tur5+Viterbi,0.8035837173893352,97.05882352941175,0.0165703978497191
+kamera,80,MCD egzersiz (USB),1020_USBVideo_after,Uygulama tur5,1.0652827287975954,98.23529411764706,0.1062099286969271
+kamera,80,MCD egzersiz (USB),1020_USBVideo_after,Uygulama tur5+Viterbi,1.1661966425713777,97.05882352941175,0.1062099286969271
+kamera,80,MCD dinlenme (USB),1020_USBVideo_before,Uygulama tur5,1.048915807552709,98.23529411764706,0.0143563403222941
+kamera,80,MCD dinlenme (USB),1020_USBVideo_before,Uygulama tur5+Viterbi,1.013768985227211,98.82352941176472,0.0143563403222941
+kamera,80,MCD egzersiz (telefon),1024_IriunWebcam_after,Uygulama tur5,0.6017751319842387,100.0,3.216553322642412
+kamera,80,MCD egzersiz (telefon),1024_IriunWebcam_after,Uygulama tur5+Viterbi,0.6035694667882806,100.0,3.216553322642412
+kamera,80,MCD dinlenme (telefon),1024_IriunWebcam_before,Uygulama tur5,5.494700822890207,72.7810650887574,0.239555081925971
+kamera,80,MCD dinlenme (telefon),1024_IriunWebcam_before,Uygulama tur5+Viterbi,2.7322087771530934,84.02366863905326,0.239555081925971
+kamera,80,MCD egzersiz (telefon),1035_IriunWebcam_after,Uygulama tur5,0.6068227918131388,100.0,0.0744683467206215
+kamera,80,MCD egzersiz (telefon),1035_IriunWebcam_after,Uygulama tur5+Viterbi,0.606742975828169,100.0,0.0744683467206215
+kamera,80,MCD dinlenme (telefon),1035_IriunWebcam_before,Uygulama tur5,0.5539245569610066,99.41520467836256,0.08665602165199
+kamera,80,MCD dinlenme (telefon),1035_IriunWebcam_before,Uygulama tur5+Viterbi,0.4898964915409523,100.0,0.08665602165199
+kamera,80,MCD egzersiz (telefon),1091_IriunWebcam_after,Uygulama tur5,0.4796136596814955,100.0,0.0224261179937599
+kamera,80,MCD egzersiz (telefon),1091_IriunWebcam_after,Uygulama tur5+Viterbi,0.4796136596814955,100.0,0.0224261179937599
+kamera,80,MCD dinlenme (telefon),1091_IriunWebcam_before,Uygulama tur5,8.392418636079185,57.647058823529406,3.721057119159539
+kamera,80,MCD dinlenme (telefon),1091_IriunWebcam_before,Uygulama tur5+Viterbi,5.704728296704343,61.76470588235294,3.721057119159539
+kamera,80,MCD egzersiz (USB),1091_USBVideo_after,Uygulama tur5,0.5883347129065329,100.0,0.0598815871967985
+kamera,80,MCD egzersiz (USB),1091_USBVideo_after,Uygulama tur5+Viterbi,0.5883347129065329,100.0,0.0598815871967985
+kamera,80,MCD dinlenme (USB),1091_USBVideo_before,Uygulama tur5,0.5301834331883565,100.0,0.0071639336350557
+kamera,80,MCD dinlenme (USB),1091_USBVideo_before,Uygulama tur5+Viterbi,0.5314114414409419,100.0,0.0071639336350557
+kamera,80,MCD egzersiz (telefon),1097_IriunWebcam_after,Uygulama tur5,8.141017792070448,67.64705882352942,0.2499733602257947
+kamera,80,MCD egzersiz (telefon),1097_IriunWebcam_after,Uygulama tur5+Viterbi,3.6113037882129726,81.17647058823529,0.2499733602257947
+kamera,80,MCD dinlenme (telefon),1097_IriunWebcam_before,Uygulama tur5,13.362331494404598,34.9112426035503,0.3360842736877742
+kamera,80,MCD dinlenme (telefon),1097_IriunWebcam_before,Uygulama tur5+Viterbi,6.919531140237462,49.70414201183432,0.3360842736877742
+kamera,80,MCD egzersiz (telefon),1099_IriunWebcam_after,Uygulama tur5,0.752295485345114,100.0,0.0408761837571631
+kamera,80,MCD egzersiz (telefon),1099_IriunWebcam_after,Uygulama tur5+Viterbi,0.7536804877436528,100.0,0.0408761837571631
+kamera,80,MCD dinlenme (telefon),1099_IriunWebcam_before,Uygulama tur5,1.2919428954354542,94.04761904761904,0.0060643168570493
+kamera,80,MCD dinlenme (telefon),1099_IriunWebcam_before,Uygulama tur5+Viterbi,1.0865664516761793,95.83333333333334,0.0060643168570493
+kamera,80,MCD egzersiz (USB),1099_USBVideo_after,Uygulama tur5,1.128700158451473,97.63313609467455,0.0168225494296763
+kamera,80,MCD egzersiz (USB),1099_USBVideo_after,Uygulama tur5+Viterbi,0.930734578678144,100.0,0.0168225494296763
+kamera,80,MCD dinlenme (USB),1099_USBVideo_before,Uygulama tur5,2.794398306841775,90.53254437869822,1.989344046814168
+kamera,80,MCD dinlenme (USB),1099_USBVideo_before,Uygulama tur5+Viterbi,1.7027181800304894,92.89940828402366,1.989344046814168
+kamera,80,MCD egzersiz (telefon),1107_IriunWebcam_after,Uygulama tur5,2.4907269954951508,93.52941176470588,0.0178852283355439
+kamera,80,MCD egzersiz (telefon),1107_IriunWebcam_after,Uygulama tur5+Viterbi,0.6525031617637777,100.0,0.0178852283355439
+kamera,80,MCD dinlenme (telefon),1107_IriunWebcam_before,Uygulama tur5,0.8640351452334386,97.6470588235294,6.113300822155239
+kamera,80,MCD dinlenme (telefon),1107_IriunWebcam_before,Uygulama tur5+Viterbi,0.5940482110328136,100.0,6.113300822155239
+kamera,80,MCD dinlenme (USB),1107_USBVideo_before,Uygulama tur5,11.722723241257018,53.52941176470589,0.0552967345013257
+kamera,80,MCD dinlenme (USB),1107_USBVideo_before,Uygulama tur5+Viterbi,4.519131823951965,68.82352941176471,0.0552967345013257
+kamera,80,MCD egzersiz (telefon),1113_IriunWebcam_after,Uygulama tur5,2.196628452869988,91.76470588235294,0.0273671493443714
+kamera,80,MCD egzersiz (telefon),1113_IriunWebcam_after,Uygulama tur5+Viterbi,1.7172465147204892,92.3529411764706,0.0273671493443714
+kamera,80,MCD dinlenme (telefon),1113_IriunWebcam_before,Uygulama tur5,2.658037818388701,89.3491124260355,0.065036786631154
+kamera,80,MCD dinlenme (telefon),1113_IriunWebcam_before,Uygulama tur5+Viterbi,2.14497609785459,90.53254437869822,0.065036786631154
+kamera,80,MCD egzersiz (telefon),1115_IriunWebcam_after,Uygulama tur5,0.4916253599697269,100.0,4.524067331235216
+kamera,80,MCD egzersiz (telefon),1115_IriunWebcam_after,Uygulama tur5+Viterbi,0.4912100998671304,100.0,4.524067331235216
+kamera,80,MCD egzersiz (telefon),1149_IriunWebcam_after,Uygulama tur5,0.924946580608471,98.8095238095238,1.0303936380702083
+kamera,80,MCD egzersiz (telefon),1149_IriunWebcam_after,Uygulama tur5+Viterbi,0.5454040534614845,100.0,1.0303936380702083
+kamera,80,MCD dinlenme (telefon),1149_IriunWebcam_before,Uygulama tur5,0.5793180369578625,100.0,0.1170467508197532
+kamera,80,MCD dinlenme (telefon),1149_IriunWebcam_before,Uygulama tur5+Viterbi,0.5793180369578625,100.0,0.1170467508197532
+kamera,80,MCD egzersiz (USB),1149_USBVideo_after,Uygulama tur5,4.266000508496965,89.3491124260355,1.041029989859851
+kamera,80,MCD egzersiz (USB),1149_USBVideo_after,Uygulama tur5+Viterbi,1.419215142057714,95.26627218934912,1.041029989859851
+kamera,80,MCD dinlenme (USB),1149_USBVideo_before,Uygulama tur5,2.193610438879181,95.88235294117648,0.056225747467451
+kamera,80,MCD dinlenme (USB),1149_USBVideo_before,Uygulama tur5+Viterbi,1.1995107921445671,97.05882352941175,0.056225747467451

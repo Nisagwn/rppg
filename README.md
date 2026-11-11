@@ -201,3 +201,5 @@ PURE ile sıfırdan eğitilen MMRPhys'in 42 UBFC videosunda en iyi checkpoint so
 [Sonuçlar, model karşılaştırması, telefon/oksimetre ölçüm akışı ve S2/tohum tekrarları](docs/06_pure_sonraki_adimlar.md). [Kaggle S1/S2 defteri](kaggle/rppg_standart_protokoller.ipynb) varsayılan olarak S2/42'ye ayarlıdır; bu yeni koşu henüz çalıştırılmamıştır.
 
 11 Kasım ek çalışma: [Yeni veri kaynakları, doğrulanan erişim yolları ve başvuru taslakları](research_notes/veri_arastirmasi_2026_11_11/ARASTIRMA.md). [Telefon uyarlama A/B/C Kaggle defteri](kaggle/rppg_telefon_uyarlama.ipynb), mevcut tur5 modelini çok kameralı MCD üzerinde kontrollü ince ayar için hazırlar; yeni koşular henüz çalıştırılmadı.
+
+Hazır iBVP-FactorizePhys ağırlıklarının resmî ağ profili ve dikkat-modülü açık kontrolü için [CPU karşılaştırma raporu](results/derin_ogrenme/ibvp_pretrained/SONUCLAR.md). EMPD henüz eğitim veya testte kullanılmadı; yalnız metadata, küçük PPG örneği ve arşiv başlıkları incelendi.

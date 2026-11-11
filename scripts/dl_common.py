@@ -42,9 +42,10 @@ def _mmrphys_class():
     return MMRPhysLEF
 
 
-def build_model(device, weights=PRETRAINED, dropout=0.1, arch=None):
+def build_model(device, weights=PRETRAINED, dropout=0.1, arch=None, md_config=None):
     """weights boşsa rastgele başlatma. Mimari verilmezse kontrol noktasındaki "arch" alanından okunur
-    (yoksa FactorizePhys: eski kontrol noktaları ve toolbox'un hazır ağırlığı)."""
+    (yoksa FactorizePhys: eski kontrol noktaları ve toolbox'un hazır ağırlığı).
+    md_config yalnızca bu model çağrısının ağ ayarlarını değiştirir; global varsayılanlar korunur."""
     import torch
     sd = None
     if weights:
@@ -53,12 +54,16 @@ def build_model(device, weights=PRETRAINED, dropout=0.1, arch=None):
         sd = ck.get("model", ck)
         sd = {k.removeprefix("module."): v for k, v in sd.items()}
     arch = arch or "factorizephys"
+    config = dict(MMR_CONFIG if arch == "mmrphys" else MD_CONFIG)
+    config.update(md_config or {})
+    if config["FRAME_NUM"] != CHUNK:
+        raise ValueError(f"Bu çıkarım hattı {CHUNK} kare bekliyor")
     if arch == "mmrphys":
-        model = _mmrphys_class()(frames=CHUNK, md_config=dict(MMR_CONFIG), in_channels=3, dropout=dropout,
+        model = _mmrphys_class()(frames=CHUNK, md_config=config, in_channels=3, dropout=dropout,
                                  device=device)
     elif arch == "factorizephys":
         from neural_methods.model.FactorizePhys.FactorizePhys import FactorizePhys
-        model = FactorizePhys(frames=CHUNK, md_config=dict(MD_CONFIG), in_channels=3, dropout=dropout, device=device)
+        model = FactorizePhys(frames=CHUNK, md_config=config, in_channels=3, dropout=dropout, device=device)
     else:
         raise ValueError(f"bilinmeyen mimari {arch!r} (seçenekler: {', '.join(ARCHS)})")
     if sd is not None:
@@ -70,6 +75,8 @@ def build_model(device, weights=PRETRAINED, dropout=0.1, arch=None):
             raise ValueError(f"{weights}: ağırlıklar {arch} mimarisine uymuyor (eksik {len(missing)})")
         if missing or unexpected:
             print(f"  ağırlık uyarısı: eksik {len(missing)}, fazla {len(unexpected)}")
+        model.load_report = {"missing": list(missing), "unexpected": list(unexpected)}
+    model.md_config = dict(config)
     model.arch = arch
     return model.to(device)
 

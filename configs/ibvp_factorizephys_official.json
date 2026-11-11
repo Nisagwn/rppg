@@ -1,0 +1,18 @@
+{
+  "description": "Toolbox iBVP -> UBFC FactorizePhys resmî çıkarım ağ ayarları; ortak Haar kırpıntılarıyla kontrollü yerel karşılaştırma",
+  "source": "https://github.com/ubicomplab/rPPG-Toolbox/blob/b7500b848f84ad7f86e277b4612563b69f4f88f9/configs/infer_configs/iBVP_UBFC-rPPG_FactorizePhys_FSAM_Res.yaml",
+  "arch": "factorizephys",
+  "dropout": 0.1,
+  "md_config": {
+    "FRAME_NUM": 160,
+    "MD_FSAM": false,
+    "MD_TYPE": "NMF",
+    "MD_R": 1,
+    "MD_S": 1,
+    "MD_STEPS": 4,
+    "MD_RESIDUAL": true,
+    "MD_INFERENCE": true
+  },
+  "input": "RGB 0-255, 30 fps, 72x72, 160 kare + tekrarlanan son kare",
+  "preprocessing_difference": "Resmî YAML Y5F yüz bulucu kullanıyor; bu deney mevcut Haar kırpıntılarını her iki modelde aynı tutar. Resmî değerlendirme bütün-video FFT; bu karşılaştırmada proje metrikleri de raporlanır."
+}

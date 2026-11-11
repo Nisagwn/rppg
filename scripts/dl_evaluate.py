@@ -71,10 +71,10 @@ def video_name(p):
     return s.split("_", 1)[1] if "_" in s else s
 
 
-def evaluate(model, device, test_dir, label, **predict_kw):
+def evaluate(model, device, test_dir, label, files=None, **predict_kw):
     """model: FactorizePhys ya da "POS" (pos_crop). predict_kw: predict_video'ya (hop, flip)."""
     rows = []
-    for p in test_videos(test_dir):
+    for p in test_videos(test_dir) if files is None else files:
         meta = np.load(p)
         frames = np.load(p[:-4] + ".npy", mmap_mode="r")
         pred = pos_crop(frames) if model == "POS" else predict_video(model, np.asarray(frames), device, **predict_kw)

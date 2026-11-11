@@ -1,0 +1,10 @@
+{
+  "device": "cpu",
+  "hop": 80,
+  "files": [
+    "data/dl/test/ubfc_subject1.npz",
+    "data/dl/test/mcd_1107_FullHDwebcam_after.npz"
+  ],
+  "max_MAE_difference_bpm": 3.775534750083409e-05,
+  "passed": true
+}
