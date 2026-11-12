@@ -14,17 +14,62 @@ sinyal işlemeyle başlayıp derin öğrenmeye uzanıyor; sonunda telefonun tara
 
 ---
 
+## Güncel durum — 13 Kasım 2026
+
+**Uygulamanın varsayılanı hâlâ 5. tur FactorizePhys (tur5), sürüm v19.** Son deneyler mevcut modelin yerine
+geçecek bir iyileşme göstermedi. [Mevcut model](https://nisagwn.github.io/rppg/?model=tur5) ve
+[PURE S1 adayı](https://nisagwn.github.io/rppg/?model=pure) ayrı bağlantılardan denenebilir. Yalnız işlemciyle
+çalıştırmak için bağlantıya `&ep=wasm` ekleyin.
+
+### Telefon uyarlama B: tamamlandı, iyileşme yok
+
+12 Kasım'da arşivlenen B/42 koşusu, tur5'ten başlayarak MCD'nin üç kamerasında `--phone-aug` ile
+**20 epoch × 300 adım** ince ayar yaptı. Aynı 48 test kaydında (10 kişi), hop=80 ve Viterbi ile:
+
+| Model | Pencere MAE (BPM, düşük daha iyi) |
+|---|---:|
+| Mevcut tur5 | **1.2704** |
+| B `best.pth` — başlangıç / epoch 0 | **1.2704** |
+| B `last.pth` — epoch 20 | 1.5030 |
+
+Son modelin hatası yaklaşık %18.3 arttı. Hiçbir epoch başlangıç doğrulama hatasını geçemedi;
+`best.pth` ağırlıklarının tur5 ile birebir aynı olduğu CPU'da doğrulandı. Eğitim çalıştı ve son ağırlıklar
+değişti, fakat uygulama modeli değiştirilmedi. Hazırlanan 60 test kaydının 12'si yüz kalitesi filtresinde
+elendi; bu küme aşağıdaki eski 28 kayıtlık testlerle aynı değildir.
+
+**Sıradaki kontrol:** aynı kişi ayrımı, seed ve ayarlarla telefon artırması kapalı A koşusu. A ve C için
+tamamlanmış sonuç henüz yok; B'deki kötüleşme yalnız artırmaya bağlanamaz.
+[Ayrıntılı B raporu, günlükler ve ağırlıklar](results/derin_ogrenme/telefon_uyarlama_B_seed42/SONUCLAR.md) ·
+[A/B/C Kaggle defteri](kaggle/rppg_telefon_uyarlama.ipynb) (varsayılan B/42; A kontrolü için `DENEY="A"`).
+
+### Diğer son çalışmalar
+
+- **PURE S1/42 tamamlandı:** sıfırdan eğitilen MMRPhys, 42 UBFC videosunda pencere MAE **0.69 BPM**,
+  video MAE **0.89 BPM** verdi. Ancak ortak yerel telefon/USB testinde tur5'ten daha yüksek hata verdiği
+  için ayrı aday olarak tutuluyor. [Sonuçlar ve sonraki adımlar](docs/06_pure_sonraki_adimlar.md).
+  [S1/S2 Kaggle defteri](kaggle/rppg_standart_protokoller.ipynb) varsayılan S2/42'ye ayarlı;
+  S2 ve ek seed tekrarları henüz çalıştırılmadı.
+- **Hazır iBVP-FactorizePhys sınandı:** resmî ağ profili ve dikkat modülü açık ek kontrol, mevcut test
+  hattında tur5'i geçemedi. Yeni aday çıkarımları CPU'da yapıldı; eski tur5 sonuçları doğrulanmış
+  önbellekten kullanıldı. [CPU karşılaştırması ve protokol sınırları](results/derin_ogrenme/ibvp_pretrained/SONUCLAR.md).
+- **EMPD henüz eğitim veya testte kullanılmadı.** Yalnız metadata, küçük PPG örneği ve arşiv başlıkları
+  incelendi; RGB/PPG veri yükleyicisi henüz yok.
+  [Yeni veri kaynaklarının 11 Kasım tarihli teknik incelemesi](research_notes/veri_arastirmasi_2026_11_11/ARASTIRMA.md).
+
+---
+
 ## Öne çıkanlar
 
 |  | Klasik POS | Hazır derin model (PURE) | **Bu proje** (en iyi tur) |
 |---|---:|---:|---:|
-| Ana test (28 video, önden webcam) | 3.54 BPM | 2.57 BPM | **1.10 BPM** (5. tur) |
+| Ana test (8 UBFC + 20 MCD webcam kaydı) | 3.54 BPM | 2.57 BPM | **1.10 BPM** (5. tur) |
 | Telefon / yan USB kamera (28 video) | 15.63 BPM | 7.47 BPM | **1.64 BPM** (5. tur) |
 | VIPL-HR (283 video, webcam + telefon) | 4.81 BPM | 4.53 BPM | **3.49 BPM** (7. tur B) |
 | DLCN, gece ışığı (152 video) | – | – | **1.31 BPM** (7. tur D) |
 
-Ortalama pencere hatası (10 s pencere, parmak PPG referansı, Viterbi takibiyle). Test kişileri hiçbir eğitimde
-kullanılmadı. Her satırın en iyisi farklı bir eğitim turundan; tek bir modelin bütün testlerdeki sonucu ve
+Ortalama pencere hatası (10 s pencere, parmak PPG referansı, Viterbi takibiyle). Bu tablo önceki eğitim turlarının
+sonuçlarını özetler; yukarıdaki B deneyinin 48 kayıtlık testiyle aynı küme değildir. Her satırın en iyisi farklı
+bir eğitim turundan; tek bir modelin bütün testlerdeki sonucu ve
 anlamlılık testleri için: [`docs/07_arastirma_gunlugu.md`](docs/07_arastirma_gunlugu.md).
 
 - **Hazır ağırlık olmadan da aynı seviye.** 2025 tarihli MMRPhys mimarisi tamamen sıfırdan, yalnızca bizim
@@ -35,7 +80,7 @@ anlamlılık testleri için: [`docs/07_arastirma_gunlugu.md`](docs/07_arastirma_
   - VIPL-HR'de kayma videodan videoya −34 ile +11 kare arasında değişiyor.
   - Eğitilmiş modeli referans alan **video başına hizalama yöntemi** geliştirildi. Hizalamadan sonra bütün
     videolarda tepe tam 0 karede.
-- **Telefonda 7 kat daha iyi.** Klasik yöntemin çöktüğü yan açılı ve sıkıştırılmış telefon görüntüsünde
+- **Telefon/yan USB testinde daha düşük hata.** Klasik yöntemin çöktüğü yan açılı ve sıkıştırılmış telefon görüntüsünde
   15.6 → 1.6 BPM.
 - **Klasik katkılar derin modelle birleşiyor.** Hareket farkında Viterbi nabız takibi, derin modelin çıktısında da
   hatayı yarıya indiriyor (telefon/USB testinde 3.80 → 1.96 BPM, p < 0.001).
@@ -108,6 +153,10 @@ sonuç göstermez; hata, sonuç verdiği saniyelerde ölçülür.
 |---|---|
 | **Araştırma günlüğü:** bütün deneyler, bulgular, anlamlılık testleri, olumsuz sonuçlar | [`docs/07_arastirma_gunlugu.md`](docs/07_arastirma_gunlugu.md) |
 | Eğitim turlarının ayrıntılı sonuçları | [`results/derin_ogrenme/`](results/derin_ogrenme/) (`kaggle_tur*/SONUCLAR.md`) |
+| Telefon uyarlama B/42: tamamlanan son ince ayar, başlangıç ve son model kontrolü | [`B deney raporu`](results/derin_ogrenme/telefon_uyarlama_B_seed42/SONUCLAR.md) |
+| PURE S1, mobil aday ve S1/S2 tekrar planı | [`PURE sonrası adımlar`](docs/06_pure_sonraki_adimlar.md) |
+| Hazır iBVP modeliyle CPU karşılaştırması | [`iBVP sonuçları`](results/derin_ogrenme/ibvp_pretrained/SONUCLAR.md) |
+| Yeni veri kaynakları ve EMPD teknik incelemesi (11 Kasım) | [`Veri araştırması`](research_notes/veri_arastirmasi_2026_11_11/ARASTIRMA.md) |
 | Etiket kalitesi ve zaman kayması analizi | [`results/derin_ogrenme/VERI_KALITESI.md`](results/derin_ogrenme/VERI_KALITESI.md), [`senkron_model.csv`](results/derin_ogrenme/senkron_model.csv) |
 | Klasik yöntemler: sentetik, UBFC, MCD, maske deneyi | [`results/synthetic/`](results/synthetic/SONUCLAR.md), [`results/ubfc/`](results/ubfc/SONUCLAR.md), [`results/mcd/`](results/mcd/SONUCLAR.md), [`results/maske_deneyi/`](results/maske_deneyi/SONUCLAR.md) |
 | Dönem raporu | [`docs/05_rapor.md`](docs/05_rapor.md) |
@@ -158,6 +207,13 @@ Büyük eğitimler Kaggle GPU'sunda yapıldı: [`kaggle/rppg_hazirla.ipynb`](kag
 Hugging Face'e koyar; [`kaggle/rppg_egitim_7.ipynb`](kaggle/rppg_egitim_7.ipynb) eğitir, saatte iki kez yedekler ve
 oturum kesilirse kaldığı yerden devam eder (Colab'da da çalışır).
 
+Son deney defterleri: [telefon uyarlama A/B/C](kaggle/rppg_telefon_uyarlama.ipynb) ve
+[standart PURE ↔ UBFC protokolleri](kaggle/rppg_standart_protokoller.ipynb). Tamamlanan ve bekleyen koşular
+yukarıdaki güncel durum bölümünde ayrılır. Yerel `scripts/compare_pure_candidate.py` karşılaştırma betiği
+varsayılan olarak CPU kullanır. Diğer derin öğrenme betikleri CUDA'yı otomatik seçebildiğinden yalnız CPU
+çalışması için komutlardan önce PowerShell'de `$env:CUDA_VISIBLE_DEVICES = '-1'`, Bash'te
+`export CUDA_VISIBLE_DEVICES=-1` ayarlayın.
+
 ---
 
 ## Proje yapısı
@@ -177,7 +233,9 @@ tests/         pytest testleri (mobil node testleri: mobile/test/)
 ## Lisanslar ve kaynaklar
 
 - **Modeller:** FactorizePhys ve rPPG-Toolbox (Liu vd. 2023; Joshi ve Cho, NeurIPS 2024), MMRPhys (Joshi ve Cho 2025;
-  **yalnızca araştırma amaçlı RAIL lisansı**). Mimariler bu çalışmalardan; ağırlıklar bu projede eğitildi.
+  **yalnızca araştırma amaçlı RAIL lisansı**). Mimariler bu çalışmalardan. Uygulamadaki tur5, hazır PURE
+  ağırlıklarından ince ayarlandı; PURE S1 adayı sıfırdan eğitildi. Hazır iBVP ağırlıkları ayrıca karşılaştırıldı,
+  uygulamaya alınmadı; kaynakları ve kullanım koşulları ilgili deney raporlarında belirtilir.
 - **Veri setleri:** UBFC-rPPG, PURE, MCD-rPPG, VIPL-HR, MMPD, COHFACE, DLCN (CC BY-NC-SA 4.0), UBFC-Phys. Her biri
   kendi lisansı ve kullanım koşuluyla; çoğu yalnızca ticari olmayan araştırmaya izin verir. Veri setleri depoda yok.
 - **Temel yöntemler:** Verkruysse vd. 2008; Poh vd. 2010; de Haan ve Jeanne 2013 (CHROM); Wang vd. 2017 (POS);
@@ -192,14 +250,3 @@ tests/         pytest testleri (mobil node testleri: mobile/test/)
 | Nabız saçma değerlerde | 10 s ısınmayı bekleyin, hareketsiz durun, arkadan gelen ışıktan kaçının. |
 | `cv2 ... CascadeClassifier` hatası | OpenCV 5 kurulmuş: `pip install "opencv-python>=4.8,<5"`. |
 | `pip install` hatası | Python 3.11 ya da 3.12 önerilir. |
-
-
-### PURE standart protokolü ve mobil aday (11 Kasım 2026)
-
-PURE ile sıfırdan eğitilen MMRPhys'in 42 UBFC videosunda en iyi checkpoint sonucu: pencere MAE **0.69 BPM**, video MAE **0.89 BPM**. Bu sonuç diğer kamera koşullarında aynı başarıyı garanti etmez: ortak yerel telefon/USB testinde mevcut tur5 modelinden daha yüksek hata verdiği için uygulamanın varsayılanı korunmuştur. PURE adayı `?model=pure` ile denenebilir; v19 CSV ve teşhis çıktıları model kimliğini kaydeder.
-
-[Sonuçlar, model karşılaştırması, telefon/oksimetre ölçüm akışı ve S2/tohum tekrarları](docs/06_pure_sonraki_adimlar.md). [Kaggle S1/S2 defteri](kaggle/rppg_standart_protokoller.ipynb) varsayılan olarak S2/42'ye ayarlıdır; bu yeni koşu henüz çalıştırılmamıştır.
-
-11 Kasım ek çalışma: [Yeni veri kaynakları, doğrulanan erişim yolları ve başvuru taslakları](research_notes/veri_arastirmasi_2026_11_11/ARASTIRMA.md). [Telefon uyarlama A/B/C Kaggle defteri](kaggle/rppg_telefon_uyarlama.ipynb), mevcut tur5 modelini çok kameralı MCD üzerinde kontrollü ince ayar için hazırlar; yeni koşular henüz çalıştırılmadı.
-
-Hazır iBVP-FactorizePhys ağırlıklarının resmî ağ profili ve dikkat-modülü açık kontrolü için [CPU karşılaştırma raporu](results/derin_ogrenme/ibvp_pretrained/SONUCLAR.md). EMPD henüz eğitim veya testte kullanılmadı; yalnız metadata, küçük PPG örneği ve arşiv başlıkları incelendi.
