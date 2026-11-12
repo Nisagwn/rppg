@@ -1,0 +1,7 @@
+camera,yöntem,recordings,window_mae_bpm
+FullHDwebcam,"Telefon uyarlama B, seed 42 last+Viterbi",20,0.9120632687336301
+FullHDwebcam,Uygulama tur5+Viterbi,20,0.8208724389914492
+IriunWebcam,"Telefon uyarlama B, seed 42 last+Viterbi",19,2.0704671963989885
+IriunWebcam,Uygulama tur5+Viterbi,19,1.657540942295205
+USBVideo,"Telefon uyarlama B, seed 42 last+Viterbi",9,1.618252638052224
+USBVideo,Uygulama tur5+Viterbi,9,1.4523051055781933

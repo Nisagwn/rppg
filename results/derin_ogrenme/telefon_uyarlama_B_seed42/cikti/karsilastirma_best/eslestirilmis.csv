@@ -1,0 +1,5 @@
+test,hop,takip,n,aday_MAE,mevcut_MAE,fark_aday_eksi_mevcut,p_Wilcoxon
+mcd_uc_kamera,80,argmax,48,2.1582103827963057,2.1582103827963057,0.0,1.0
+mcd_uc_kamera,80,+Viterbi,48,1.2704473465342006,1.2704473465342006,0.0,1.0
+mcd_uc_kamera,160,argmax,48,2.161745187653817,2.161745187653817,0.0,1.0
+mcd_uc_kamera,160,+Viterbi,48,1.3148210303433956,1.3148210303433956,0.0,1.0

@@ -1,0 +1,170 @@
+Test kümesi (indir): 60 video
+[mpeg4 @ 0x1d496500] Error at MB: 190
+  [1/60] 1020_FullHDwebcam_after: 5384 kare, yüz %100  (30 s)
+[mpeg4 @ 0x1ddf0480] illegal dc vlc
+[mpeg4 @ 0x1ddf0480] Error at MB: 611
+  [2/60] 1020_USBVideo_after: 5376 kare, yüz %100  (58 s)
+[mpeg4 @ 0x1d33cbc0] illegal dc vlc
+[mpeg4 @ 0x1d33cbc0] Error at MB: 219
+  [3/60] 1020_IriunWebcam_after: 5362 kare, yüz %100  (80 s)
+[mpeg4 @ 0x1d40de00] 2. marker bit missing in 3. esc
+[mpeg4 @ 0x1d40de00] Error at MB: 960
+  [4/60] 1020_FullHDwebcam_before: 5383 kare, yüz %100  (110 s)
+[mpeg4 @ 0x1d3a8f40] ac-tex damaged at 29 10
+[mpeg4 @ 0x1d3a8f40] Error at MB: 439
+  [5/60] 1020_USBVideo_before: 5377 kare, yüz %100  (137 s)
+[mpeg4 @ 0x1d408dc0] ac-tex damaged at 26 2
+[mpeg4 @ 0x1d408dc0] Error at MB: 108
+  [6/60] 1020_IriunWebcam_before: 5387 kare, yüz %100  (159 s)
+[mpeg4 @ 0x1d3ed1c0] ac-tex damaged at 10 10
+[mpeg4 @ 0x1d3ed1c0] Error at MB: 420
+  [7/60] 1024_FullHDwebcam_after: 5376 kare, yüz %100  (184 s)
+[mpeg4 @ 0x1d3ed1c0] ac-tex damaged at 8 7
+[mpeg4 @ 0x1d3ed1c0] Error at MB: 295
+  [8/60] 1024_USBVideo_after: 5369 kare, yüz %6  (212 s)
+[mpeg4 @ 0x1d2443c0] ac-tex damaged at 2 2
+[mpeg4 @ 0x1d2443c0] Error at MB: 84
+  [9/60] 1024_IriunWebcam_after: 5397 kare, yüz %100  (235 s)
+[mpeg4 @ 0x1d2443c0] ac-tex damaged at 31 13
+[mpeg4 @ 0x1d2443c0] Error at MB: 564
+  [10/60] 1024_FullHDwebcam_before: 5366 kare, yüz %100  (272 s)
+[mpeg4 @ 0x1d2443c0] ac-tex damaged at 24 11
+[mpeg4 @ 0x1d2443c0] Error at MB: 475
+  [11/60] 1024_USBVideo_before: 5375 kare, yüz %19  (317 s)
+[mpeg4 @ 0x1d313940] ac-tex damaged at 34 7
+[mpeg4 @ 0x1d313940] Error at MB: 321
+  [12/60] 1024_IriunWebcam_before: 5355 kare, yüz %100  (348 s)
+[mpeg4 @ 0x1d355240] ac-tex damaged at 8 12
+[mpeg4 @ 0x1d355240] Error at MB: 500
+  [13/60] 1035_FullHDwebcam_after: 5399 kare, yüz %100  (372 s)
+[mpeg4 @ 0x1d5760c0] illegal dc vlc
+[mpeg4 @ 0x1d5760c0] Error at MB: 825
+  [14/60] 1035_USBVideo_after: 5376 kare, yüz %45  (398 s)
+[mpeg4 @ 0x1d362cc0] Error at MB: 105
+  [15/60] 1035_IriunWebcam_after: 5349 kare, yüz %100  (418 s)
+[mpeg4 @ 0x1d2443c0] Error at MB: 277
+  [16/60] 1035_FullHDwebcam_before: 5362 kare, yüz %100  (440 s)
+[mpeg4 @ 0x1d2c8340] ac-tex damaged at 27 2
+[mpeg4 @ 0x1d2c8340] Error at MB: 109
+  [17/60] 1035_USBVideo_before: 5387 kare, yüz %4  (463 s)
+[mpeg4 @ 0x1d2c8340] ac-tex damaged at 27 2
+[mpeg4 @ 0x1d2c8340] Error at MB: 109
+  [18/60] 1035_IriunWebcam_before: 5400 kare, yüz %100  (481 s)
+[mpeg4 @ 0x1d3ed1c0] ac-tex damaged at 31 27
+[mpeg4 @ 0x1d3ed1c0] Error at MB: 1138
+  [19/60] 1091_FullHDwebcam_after: 5385 kare, yüz %100  (508 s)
+[mpeg4 @ 0x1d2443c0] ac-tex damaged at 11 25
+[mpeg4 @ 0x1d2443c0] Error at MB: 1036
+  [20/60] 1091_USBVideo_after: 5364 kare, yüz %100  (538 s)
+[mpeg4 @ 0x1d362cc0] ac-tex damaged at 6 24
+[mpeg4 @ 0x1d362cc0] Error at MB: 990
+  [21/60] 1091_IriunWebcam_after: 5395 kare, yüz %100  (564 s)
+[mpeg4 @ 0x1d3efe00] mcbpc damaged at 10 4
+[mpeg4 @ 0x1d3efe00] Error at MB: 174
+  [22/60] 1091_FullHDwebcam_before: 5386 kare, yüz %100  (591 s)
+[mpeg4 @ 0x1d362cc0] ac-tex damaged at 24 11
+[mpeg4 @ 0x1d362cc0] Error at MB: 475
+  [23/60] 1091_USBVideo_before: 5391 kare, yüz %100  (622 s)
+[mpeg4 @ 0x1d355240] ac-tex damaged at 14 14
+[mpeg4 @ 0x1d355240] Error at MB: 588
+  [24/60] 1091_IriunWebcam_before: 5393 kare, yüz %100  (647 s)
+[mpeg4 @ 0x1d355240] ac-tex damaged at 29 1
+[mpeg4 @ 0x1d355240] Error at MB: 70
+  [25/60] 1097_FullHDwebcam_after: 5374 kare, yüz %100  (670 s)
+[mpeg4 @ 0x1d600c40] ac-tex damaged at 7 14
+[mpeg4 @ 0x1d600c40] Error at MB: 581
+  [26/60] 1097_USBVideo_after: 5385 kare, yüz %47  (694 s)
+[mpeg4 @ 0x1d3ed1c0] ac-tex damaged at 30 2
+[mpeg4 @ 0x1d3ed1c0] Error at MB: 112
+  [27/60] 1097_IriunWebcam_after: 5391 kare, yüz %98  (714 s)
+[mpeg4 @ 0x1d3126c0] mcbpc damaged at 34 27
+[mpeg4 @ 0x1d3126c0] Error at MB: 1141
+  [28/60] 1097_FullHDwebcam_before: 5361 kare, yüz %100  (749 s)
+[mpeg4 @ 0x1d2c8340] 2. marker bit missing in 3. esc
+[mpeg4 @ 0x1d2c8340] Error at MB: 111
+  [29/60] 1097_USBVideo_before: 5379 kare, yüz %2  (794 s)
+[mpeg4 @ 0x1d5e9740] ac-tex damaged at 30 3
+[mpeg4 @ 0x1d5e9740] Error at MB: 153
+  [30/60] 1097_IriunWebcam_before: 5343 kare, yüz %99  (823 s)
+[mpeg4 @ 0x1d2443c0] ac-tex damaged at 37 9
+[mpeg4 @ 0x1d2443c0] Error at MB: 406
+  [31/60] 1099_FullHDwebcam_after: 5399 kare, yüz %100  (845 s)
+[mpeg4 @ 0x1d2443c0] ac-tex damaged at 3 2
+[mpeg4 @ 0x1d2443c0] Error at MB: 85
+  [32/60] 1099_USBVideo_after: 5365 kare, yüz %100  (868 s)
+[mpeg4 @ 0x1d2443c0] ac-tex damaged at 29 2
+[mpeg4 @ 0x1d2443c0] Error at MB: 111
+  [33/60] 1099_IriunWebcam_after: 5352 kare, yüz %100  (888 s)
+[mpeg4 @ 0x1d2443c0] ac-tex damaged at 7 3
+[mpeg4 @ 0x1d2443c0] Error at MB: 130
+  [34/60] 1099_FullHDwebcam_before: 5388 kare, yüz %100  (915 s)
+[mpeg4 @ 0x1d3ed1c0] Error at MB: 708
+  [35/60] 1099_USBVideo_before: 5351 kare, yüz %100  (938 s)
+[mpeg4 @ 0x1d362cc0] mcbpc damaged at 32 5
+[mpeg4 @ 0x1d362cc0] Error at MB: 237
+  [36/60] 1099_IriunWebcam_before: 5334 kare, yüz %100  (961 s)
+[mpeg4 @ 0x1d362cc0] ac-tex damaged at 25 2
+[mpeg4 @ 0x1d362cc0] Error at MB: 107
+  [37/60] 1107_FullHDwebcam_after: 5396 kare, yüz %100  (992 s)
+[mpeg4 @ 0x1d2443c0] illegal dc vlc
+[mpeg4 @ 0x1d2443c0] Error at MB: 407
+  [38/60] 1107_USBVideo_after: 5381 kare, yüz %47  (1022 s)
+[mpeg4 @ 0x1d2443c0] 2. marker bit missing in 3. esc
+[mpeg4 @ 0x1d2443c0] Error at MB: 150
+  [39/60] 1107_IriunWebcam_after: 5398 kare, yüz %100  (1049 s)
+[mpeg4 @ 0x1d2c8340] ac-tex damaged at 26 1
+[mpeg4 @ 0x1d2c8340] Error at MB: 67
+  [40/60] 1107_FullHDwebcam_before: 5382 kare, yüz %100  (1082 s)
+  [41/60] 1107_USBVideo_before: 5399 kare, yüz %90  (1113 s)
+[mpeg4 @ 0x1d33cbc0] ac-tex damaged at 25 1
+[mpeg4 @ 0x1d33cbc0] Error at MB: 66
+  [42/60] 1107_IriunWebcam_before: 5385 kare, yüz %100  (1139 s)
+[mpeg4 @ 0x1d3ed1c0] ac-tex damaged at 24 2
+[mpeg4 @ 0x1d3ed1c0] Error at MB: 106
+  [43/60] 1113_FullHDwebcam_after: 5392 kare, yüz %100  (1183 s)
+  [44/60] 1113_USBVideo_after: 5387 kare, yüz %0  (1233 s)
+  [45/60] 1113_IriunWebcam_after: 5383 kare, yüz %100  (1267 s)
+[mpeg4 @ 0x1d4b0100] ac-tex damaged at 1 2
+[mpeg4 @ 0x1d4b0100] Error at MB: 83
+  [46/60] 1113_FullHDwebcam_before: 5366 kare, yüz %100  (1308 s)
+[mpeg4 @ 0x1d2443c0] ac-tex damaged at 31 7
+[mpeg4 @ 0x1d2443c0] Error at MB: 318
+  [47/60] 1113_USBVideo_before: 5389 kare, yüz %6  (1352 s)
+[mpeg4 @ 0x1d2c8340] ac-tex damaged at 30 15
+[mpeg4 @ 0x1d2c8340] Error at MB: 645
+  [48/60] 1113_IriunWebcam_before: 5340 kare, yüz %100  (1385 s)
+[mpeg4 @ 0x1d33cbc0] mcbpc damaged at 0 17
+[mpeg4 @ 0x1d33cbc0] Error at MB: 697
+  [49/60] 1115_FullHDwebcam_after: 5377 kare, yüz %100  (1408 s)
+[mpeg4 @ 0x1d5a3480] ac-tex damaged at 23 2
+[mpeg4 @ 0x1d5a3480] Error at MB: 105
+  [50/60] 1115_USBVideo_after: 5389 kare, yüz %30  (1432 s)
+[mpeg4 @ 0x1d33cbc0] ac-tex damaged at 2 29
+[mpeg4 @ 0x1d33cbc0] Error at MB: 1191
+  [51/60] 1115_IriunWebcam_after: 5387 kare, yüz %99  (1449 s)
+[mpeg4 @ 0x1d362cc0] illegal dc vlc
+[mpeg4 @ 0x1d362cc0] Error at MB: 959
+  [52/60] 1115_FullHDwebcam_before: 5354 kare, yüz %100  (1481 s)
+[mpeg4 @ 0x1d3a8f40] ac-tex damaged at 30 3
+[mpeg4 @ 0x1d3a8f40] Error at MB: 153
+  [53/60] 1115_USBVideo_before: 5380 kare, yüz %3  (1523 s)
+[mpeg4 @ 0x1d2c8340] Error at MB: 528
+  [54/60] 1115_IriunWebcam_before: 5334 kare, yüz %44  (1551 s)
+[mpeg4 @ 0x1d362cc0] ac-tex damaged at 18 23
+[mpeg4 @ 0x1d362cc0] Error at MB: 961
+  [55/60] 1149_FullHDwebcam_after: 5385 kare, yüz %98  (1579 s)
+[mpeg4 @ 0x1d5fedc0] ac-tex damaged at 24 2
+[mpeg4 @ 0x1d5fedc0] Error at MB: 106
+  [56/60] 1149_USBVideo_after: 5363 kare, yüz %91  (1603 s)
+[mpeg4 @ 0x1d3126c0] ac-tex damaged at 18 27
+[mpeg4 @ 0x1d3126c0] Error at MB: 1125
+  [57/60] 1149_IriunWebcam_after: 5311 kare, yüz %96  (1623 s)
+[mpeg4 @ 0x1ddf0480] ac-tex damaged at 13 2
+[mpeg4 @ 0x1ddf0480] Error at MB: 95
+  [58/60] 1149_FullHDwebcam_before: 5386 kare, yüz %99  (1651 s)
+[mpeg4 @ 0x1d3126c0] ac-tex damaged at 24 2
+[mpeg4 @ 0x1d3126c0] Error at MB: 106
+  [59/60] 1149_USBVideo_before: 5398 kare, yüz %97  (1675 s)
+[mpeg4 @ 0x1d362cc0] ac-tex damaged at 15 16
+[mpeg4 @ 0x1d362cc0] Error at MB: 671
+  [60/60] 1149_IriunWebcam_before: 5367 kare, yüz %92  (1696 s)

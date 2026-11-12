@@ -1,0 +1,13 @@
+mcd_uc_kamera: Telefon uyarlama B, seed 42 best, hop=160, 48 video, cuda
+mcd_uc_kamera: Telefon uyarlama B, seed 42 best, hop=80, 48 video, cuda
+mcd_uc_kamera: Uygulama tur5, hop=160, 48 video, cuda
+mcd_uc_kamera: Uygulama tur5, hop=80, 48 video, cuda
+         test  hop                                   yöntem  video  pencere_MAE  video_MAE     p5
+mcd_uc_kamera   80         Telefon uyarlama B, seed 42 best     48        2.158      0.739 92.637
+mcd_uc_kamera   80 Telefon uyarlama B, seed 42 best+Viterbi     48        1.270      0.739 94.678
+mcd_uc_kamera   80                            Uygulama tur5     48        2.158      0.739 92.637
+mcd_uc_kamera   80                    Uygulama tur5+Viterbi     48        1.270      0.739 94.678
+mcd_uc_kamera  160         Telefon uyarlama B, seed 42 best     48        2.162      0.681 92.416
+mcd_uc_kamera  160 Telefon uyarlama B, seed 42 best+Viterbi     48        1.315      0.681 94.679
+mcd_uc_kamera  160                            Uygulama tur5     48        2.162      0.681 92.416
+mcd_uc_kamera  160                    Uygulama tur5+Viterbi     48        1.315      0.681 94.679

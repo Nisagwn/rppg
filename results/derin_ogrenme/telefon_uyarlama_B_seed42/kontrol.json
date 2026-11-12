@@ -1,0 +1,70 @@
+{
+  "reviewed_at_utc": "2026-11-12T15:22:14.561459+00:00",
+  "archive_name": "results (18).zip",
+  "archive_bytes": 939651,
+  "archive_sha256": "446bf6d01cae629e4b53bf52c1b55067c7fbefb7ec99f49b93c830cc213be514",
+  "baseline_path": "results/derin_ogrenme/kaggle_tur5/last.pth",
+  "baseline_sha256": "0d545d62af0597b1f3bfe5225f5bac83e7348752d9bd865067cf545781e9c8ef",
+  "local_review_device": "cpu",
+  "local_gpu_used": false,
+  "archive_evaluation_device": "cuda",
+  "experiment": "B",
+  "seed": 42,
+  "completed_epochs": 20,
+  "best": {
+    "epoch": 0,
+    "val_mae": 1.9475072502225828
+  },
+  "last_validation_mae_bpm": 2.169507273606043,
+  "validation_recordings": 39,
+  "manifest_people_counts": {
+    "train": 90,
+    "validation": 10,
+    "test": 10
+  },
+  "manifest_person_overlaps": {
+    "train_validation": [],
+    "train_test": [],
+    "validation_test": []
+  },
+  "input_training_recordings": 600,
+  "input_test_recordings": 60,
+  "evaluated_test_recordings": 48,
+  "test_people_evaluated": 10,
+  "checkpoint_checks": {
+    "best": {
+      "sha256": "ce5c3975e87c7dab6002d0c013c12adb352b2f7d4b911d8e47dbd6473dad4b58",
+      "same_keys": true,
+      "baseline_tensor_count": 16,
+      "candidate_tensor_count": 16,
+      "changed_tensor_names": [],
+      "all_tensors_equal_to_baseline": true
+    },
+    "last": {
+      "sha256": "1a853cdb1fd3a1fb775fa4630ff786c71304a89e365f0a95f2453076d34cee05",
+      "same_keys": true,
+      "baseline_tensor_count": 16,
+      "candidate_tensor_count": 16,
+      "changed_tensor_names": [
+        "rppg_head.final_layer.1.conv_block_3d.0.weight",
+        "rppg_feature_extractor.FeatureExtractor.1.conv_block_3d.0.weight",
+        "rppg_head.conv_block.2.conv_block_3d.0.weight",
+        "rppg_head.fsam.pre_conv_block.0.bias",
+        "rppg_feature_extractor.FeatureExtractor.4.conv_block_3d.0.weight",
+        "rppg_head.final_layer.0.conv_block_3d.0.weight",
+        "rppg_feature_extractor.FeatureExtractor.6.conv_block_3d.0.weight",
+        "rppg_head.conv_block.0.conv_block_3d.0.weight",
+        "rppg_head.fsam.post_conv_block.1.weight",
+        "rppg_head.final_layer.2.weight",
+        "rppg_feature_extractor.FeatureExtractor.0.conv_block_3d.0.weight",
+        "rppg_head.fsam.pre_conv_block.0.weight",
+        "rppg_feature_extractor.FeatureExtractor.5.conv_block_3d.0.weight",
+        "rppg_feature_extractor.FeatureExtractor.2.conv_block_3d.0.weight",
+        "rppg_head.fsam.post_conv_block.0.conv.weight",
+        "rppg_head.conv_block.1.conv_block_3d.0.weight"
+      ],
+      "all_tensors_equal_to_baseline": false
+    }
+  },
+  "assessment": "No improvement over tur5; best weights equal initialization; last weights changed and test MAE increased. A control is needed to isolate phone augmentation effect."
+}
