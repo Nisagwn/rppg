@@ -14,7 +14,16 @@ sinyal işlemeyle başlayıp derin öğrenmeye uzanıyor; sonunda telefonun tara
 
 ---
 
-## Güncel durum — 13 Kasım 2026
+## Güncel durum — 23 Kasım 2026
+
+**PhysDrive erişim bağlantısı alındı; veri henüz eğitimde kullanılmadı.** Yaklaşık 70 GB olarak bildirilen ZIP'in
+gerçek dosya yapısı, katılımcı eşlemesi ve RGB/PPG zamanlaması henüz doğrulanmadı.
+[`inspect_physdrive_zip.py`](scripts/inspect_physdrive_zip.py), arşivi çıkarmadan envanter ve küçük etiket
+dosyalarının biçim raporunu üretir; video gövdelerini okumaz, GPU kullanmaz. Tercih edilen ilk adım yerel ZIP'i
+incelemektir. [Kaggle ön kontrol defteri](kaggle/rppg_physdrive_onkontrol.ipynb) de eklendi; **bu bir eğitim
+defteri değildir**. Bulut kullanım izni varsa özel HF deposundaki ZIP de bloklar hâlinde okunabilir
+(`--hf-repo kullanici/depo --hf-file dosya.zip`, ortamda `HF_TOKEN`); gerçek PhysDrive üzerinde bu yol
+henüz denenmedi. İndirme bağlantısı, ham veri ve kişisel başvuru belgeleri depoya eklenmez.
 
 **Uygulamanın varsayılanı hâlâ 5. tur FactorizePhys (tur5), sürüm v19.** Son deneyler mevcut modelin yerine
 geçecek bir iyileşme göstermedi. [Mevcut model](https://nisagwn.github.io/rppg/?model=tur5) ve
