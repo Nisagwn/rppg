@@ -1,4 +1,4 @@
-"""CPU training on the 15 PhysDrive RGB/BVP/HR packs, one whole session at a time."""
+"""Train on the 15 PhysDrive RGB/BVP/HR packs, one full session at a time."""
 import argparse
 import copy
 import hashlib
@@ -16,8 +16,6 @@ from dataclasses import dataclass
 from pathlib import Path, PurePosixPath
 from zipfile import ZipFile
 
-os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
-
 import cv2
 import numpy as np
 import torch
@@ -32,7 +30,6 @@ SUFFIXES = ("Video/RGB.mp4", "Label/BVP.mat", "Label/HR.mat")
 INVENTORY = "ce76dc5c25257e903bb169eff61424768081970df146fd51145909fb4d0d3069"
 PACK_PATTERN = re.compile(r"PhysDrive_RGB_BVP_HR_(\d{2})_of_15\.zip$", re.I)
 PERSON = re.compile(r"[ABC][FM][A-Z]\d+")
-CPU = torch.device("cpu")
 
 
 @dataclass(frozen=True)
@@ -139,6 +136,7 @@ def splits(sessions):
 
 
 def fit_session(model, opt, frames, bvp, batch_size, seed):
+    device = next(model.parameters()).device
     starts = chunk_starts(len(frames), CHUNK)
     random.Random(seed).shuffle(starts)
     valid = [s for s in starts if np.isfinite(bvp[s:s+CHUNK]).all() and bvp[s:s+CHUNK].std() > 1e-6]
@@ -148,8 +146,8 @@ def fit_session(model, opt, frames, bvp, batch_size, seed):
     total_loss = 0.0
     for i in range(0, len(valid), batch_size):
         starts_batch = valid[i:i+batch_size]
-        x = to_input(np.stack([frames[s:s+CHUNK] for s in starts_batch]), CPU)
-        y = torch.from_numpy(np.stack([bvp[s:s+CHUNK] for s in starts_batch]))
+        x = to_input(np.stack([frames[s:s+CHUNK] for s in starts_batch]), device)
+        y = torch.as_tensor(np.stack([bvp[s:s+CHUNK] for s in starts_batch]), device=device)
         opt.zero_grad(set_to_none=True)
         loss = neg_pearson(model(x)[0], y)
         if not torch.isfinite(loss):
@@ -162,7 +160,7 @@ def fit_session(model, opt, frames, bvp, batch_size, seed):
 
 
 def score_session(model, frames, hr, batch_size):
-    pred = predict_video(model, frames, CPU, batch=batch_size)
+    pred = predict_video(model, frames, next(model.parameters()).device, batch=batch_size)
     if not np.isfinite(pred).all():
         raise FloatingPointError("Sonlu olmayan model tahmini")
     centers, estimates, _ = hr_from_bvp(pred, fs=30.0)
@@ -189,6 +187,11 @@ def write_json(value, path):
 
 
 def run(sessions, split, args):
+    device = torch.device(args.device)
+    if device.type == "cuda" and not torch.cuda.is_available():
+        raise RuntimeError("Kaggle ayarlarından Accelerator → GPU seçip oturumu yeniden başlatın.")
+    name = torch.cuda.get_device_name(device) if device.type == "cuda" else "CPU"
+    print(f"Model cihazı: {device} ({name})", flush=True)
     out = args.out
     out.mkdir(parents=True, exist_ok=True)
     torch.set_num_threads(min(4, os.cpu_count() or 1))
@@ -197,17 +200,24 @@ def run(sessions, split, args):
            "batch": args.batch, "lr": 5e-5, "arch": "factorizephys"}
     checkpoint = out / "physdrive_full_resume.pth"
     resume_from = checkpoint if checkpoint.is_file() else args.resume
-    model = build_model(CPU)
+    # FactorizePhys registers bias1 as a parameter only when constructed on CPU.
+    # Move it afterwards so CPU and CUDA checkpoints share the optimizer layout.
+    model = build_model(torch.device("cpu")).to(device)
+    for module in model.modules():
+        if isinstance(getattr(module, "device", None), torch.device):
+            module.device = device  # FSAM uses this attribute when allocating its bases.
     opt = torch.optim.AdamW(model.parameters(), lr=cfg["lr"], weight_decay=1e-4)
     state = {"cfg": cfg, "phase": 0, "next": 0, "rows": [], "scores": [],
              "best_mae": None, "best": None, "last_train": None}
     if resume_from:
-        state = torch.load(resume_from, map_location=CPU, weights_only=True)
+        state = torch.load(resume_from, map_location="cpu", weights_only=True)
         if state["cfg"] != cfg:
             raise ValueError("Devam dosyasının deney ayarları farklı")
         model.load_state_dict(state["model"])
         opt.load_state_dict(state["optimizer"])
         torch.set_rng_state(state["rng"])
+        if device.type == "cuda" and state.get("cuda_rng") is not None:
+            torch.cuda.set_rng_state(state["cuda_rng"], device)
     phases = [(0, "val")]
     for epoch in range(1, args.epochs + 1):
         phases.extend([(epoch, "train"), (epoch, "val")])
@@ -215,6 +225,7 @@ def run(sessions, split, args):
 
     def save():
         state.update(model=model.state_dict(), optimizer=opt.state_dict(), rng=torch.get_rng_state())
+        state["cuda_rng"] = torch.cuda.get_rng_state(device) if device.type == "cuda" else None
         atomic_save(state, checkpoint, torch.save)
         atomic_save({"phase_index": state["phase"], "next_session": state["next"],
                      "completed": state["phase"] == len(phases), "scores": state["scores"],
@@ -279,6 +290,7 @@ def main():
     p.add_argument("--input", type=Path, required=True)
     p.add_argument("--out", type=Path, default=Path("/kaggle/working/physdrive_full"))
     p.add_argument("--inventory-only", action="store_true")
+    p.add_argument("--device", choices=("cpu", "cuda"), default="cpu")
     p.add_argument("--resume", type=Path)
     p.add_argument("--epochs", type=int, default=3)
     p.add_argument("--batch", type=int, default=2)
